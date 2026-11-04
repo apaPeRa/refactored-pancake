@@ -7,7 +7,13 @@
 
 ## 1 Endurteil
 
-**NICHT BESTANDEN** (knapp). Die inhaltliche Vollständigkeit gegenüber den Quellen ist gegeben: Zählwerte, Tabellenzellen, Bilder, Rückverfolgung, Querverweise und `src_Data` sind in Ordnung. Es bleiben fünf Befunde mittlerer Schwere (Abschnitt 4: B-01 bis B-05), die laut `Agent.md` Abschnitt 8 behoben und nicht nur notiert werden müssen, und sechs Befunde niedriger Schwere. Nach Behebung von B-01 bis B-05 ist der Meilenstein 1 aus Sicht dieser Prüfung bestanden; ein Wiederholungslauf der Skripte genügt.
+**BESTANDEN** (nach Behebung und Wiederholungsprüfung, Abschnitt 5).
+
+- Erstprüfung (Commit `3ee5c37`): **NICHT BESTANDEN**, weil 5 Befunde mittlerer Schwere (B-01 bis B-05) und 6 niedrige (N-01 bis N-06) offen waren. Die inhaltliche Vollständigkeit gegenüber den Quellen war schon damals gegeben.
+- Behebung: Commit `5f500ec` („M1-Befunde behoben“).
+- Wiederholungsprüfung: Alle fünf mittleren Befunde sind belegt behoben, es gibt keine neuen mittleren Befunde. Es bleiben zwei Hinweise niedriger Schwere (N-07, N-08), die den Abschluss nicht verhindern.
+
+Die Abschnitte 2 bis 4 geben die Erstprüfung unverändert wieder (Stand vor der Behebung). Maßgeblich für das Endurteil ist Abschnitt 5.
 
 ## 2 Ergebnis je Prüfpunkt der Beauftragung
 
@@ -76,7 +82,7 @@ Alle Dateinamen sind ASCII und entsprechen dem Muster `<Präfix>-<nn>_<Name>.md`
 
 **Tabellenzellen:** Geprüft wurden nicht nur 15, sondern **alle 50 Tabellen** (684 verschiedene nicht leere Zellen). Jede Zelle wurde (nach Normalisierung von Leerraum, Markdown-Zeichen und Typografie) im zugehörigen RS-Dokument gesucht. 680 Zellen wortgleich gefunden. 4 Zellen weichen nur im Format ab, nicht im Inhalt (Zeilenumbruch der Quelle als Semikolon, Strichtyp, Klammerzeichen), siehe N-05. Es fehlt keine Tabellenzelle.
 
-**Bilder:** Jede der 81 Dateien ist im Dokument der eigenen Seite verlinkt (38 eingebettet mit `![](…)`, übrige als Link und in Medienliste/RM). Keine Datei ist unreferenziert. Mehrfach verwendete Originale (z. B. `RS-12_01.png`) sind zusätzlich von den Seiten verlinkt, die sie wiederverwenden; das ist beabsichtigt.
+**Bilder:** Jede der 81 Dateien ist im Dokument der eigenen Seite verlinkt (38 als eingebettetes Bild, übrige als Link und in Medienliste/RM). Keine Datei ist unreferenziert. Mehrfach verwendete Originale (z. B. `RS-12_01.png`) sind zusätzlich von den Seiten verlinkt, die sie wiederverwenden; das ist beabsichtigt.
 
 ### 3.5 Rückverfolgung
 
@@ -126,7 +132,7 @@ Schwere: **mittel** = vor Abschluss beheben (Verstoß gegen eine Regel in `Agent
 |---|---|---|---|
 | B-01 | `docs/03_HMI-Konzept/Module/HM-23_Nockentabelle.md`, Prüfpunkte, Zeilen 55 und 56 | Prüfpunkt-ID `HM-23-P05` kommt zweimal vor („Beispieltexte“ und „Antippen“); die Folge ist 1, 2, 3, 4, 5, 5, 6. Verstößt gegen „lückenlos, eindeutig“. | Zweite Zeile `HM-23-P06`, bisherige P06 zu `HM-23-P07`; zitierte IDs `HM-23-P06` in anderen Dokumenten prüfen (Skript `c3.py`, `c6.py`). |
 | B-02 | Arbeitsnotizen im Prozessjargon in HS-Seiten: `HS-11` Z. 184, `HS-12` Z. 145, `HS-19` Z. 172, `HS-20` Z. 121, `HS-21` Z. 115, 148, 163, `HS-25` Z. 67, `HS-26` Z. 12, `HS-27` Z. 130, `HS-28` Z. 118, `HS-29` Z. 107, `HS-30` Z. 121, `HS-31` Z. 134, `HS-32` Z. 121, `HS-34` Z. 115, `HS-36` Z. 96, `HS-37` Z. 96, `HS-41` Z. 93; außerdem `Konzept.md` Z. 559 („Entscheidung des Verwalters“) | Sätze wie „der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md“, „der Verwalter überträgt sie nach Annahmen.md“, „Hinweis an den Verwalter“, „Wünsche an den Querschnitts-Agenten (nicht von mir angelegt)“, „dem Querschnitts-Agenten gemeldet“, „Ohne OP-Eintrag im Seiten-Index“ sind Arbeitsnotizen des Erstellungsprozesses. Sie sind veraltet: Die Sammeleinträge A-60 bis A-71 und die OP-Einträge (z. B. OP-57, OP-58, OP-59, OP-64) sind angelegt, die Wünsche (HM-18 Direkteingabe, HM-19 Übersicht) sind in den Modulen umgesetzt. | Alle genannten Sätze streichen oder in Dauerform umformulieren (z. B. „Sammeleintrag: A-62“, „Eintrag: OP-58“). Bei „ohne OP-Eintrag“ jeweils die vorhandene OP-Nummer nennen oder den Satz entfernen. |
-| B-03 | `docs/03_HMI-Konzept/Seiten/HS-07_Heissleim-Nordson.md`, Z. 105 (Taste „Manuell“) | Verweis „…in der Moduldatei noch nicht enthalten, siehe Bericht“. Ein „Bericht“ ohne Kennung als Quelle, und die Aussage ist falsch: `HM-07` enthält `WhilePressed` bereits (Parameter `TriggerMode`, Z. 4 und 15 der Moduldatei, OP-57). | Klammerzusatz ersetzen durch „siehe [HM-07](../Module/HM-07_Aktionstaste.md), OP-57“. |
+| B-03 | `docs/03_HMI-Konzept/Seiten/HS-07_Heissleim-Nordson.md`, Z. 105 (Taste „Manuell“) | Verweis „…in der Moduldatei noch nicht enthalten, siehe Bericht“. Ein „Bericht“ ohne Kennung als Quelle, und die Aussage ist falsch: `HM-07` enthält `WhilePressed` bereits (Parameter `TriggerMode`, Z. 4 und 15 der Moduldatei, OP-57). | Klammerzusatz ersetzen durch „siehe HM-07, OP-57“ (als Link ausgeführt). |
 | B-04 | `docs/03_HMI-Konzept/Seiten/HS-41_Dosierer-Uebersicht.md`, Z. 70, 83, 112, 117, 118, 141 (und Z. 90, 121 „Schwelle Annahme 90 %“) | „Annahme 1“ bis „Annahme 5“ ohne Kennung. Die Aussagen entsprechen A-71 Punkt 1 bis 5 beziehungsweise dem Abschnitt „Annahmen dieser Seite“ der Seite (nummeriert 1 bis 5 ohne Kennung, anders als die Kennungen `Snn-n`/`Knn-n` aller anderen Seiten). Die Formulierung „Annahme 90 %“ ist als Verweis missverständlich. | Abschnitt „Annahmen dieser Seite“ mit Kennungen `S41-1` bis `S41-5` versehen und die sechs Verweise darauf umstellen; „Schwelle Annahme 90 %“ in „Schwelle 90 % (A-nn / OP-27)“ ändern, passende A-Nummer prüfen. In `A-71` die lokalen Kennungen ergänzen. |
 | B-05 | `docs/00_Plan/Fortschritt.md` (nur 1 Eintrag, „M1 / Phase 1, Punkt 1“) und `Task.md` (kein einziger Punkt `[x]`) | `Agent.md` Abschnitt 3 verlangt, erledigte Punkte in `Task.md` abzuhaken und `Fortschritt.md` mit Datum, Erledigtem und Nächstem zu pflegen. Der Stand zeigt Phase 1, 2 und 3 als offen, obwohl alle Artefakte vorliegen; die nächste Session würde falsch aufsetzen. | `Fortschritt.md` je Phase/Paket fortschreiben (neueste oben), Phase 1 bis 3 in `Task.md` abhaken, sobald dieser Bericht „bestanden“ lautet; Punkt „Pruefbericht_M1.md schreiben und Befunde beheben, Commit und Push“ erst nach erfolgreichem Wiederholungslauf abhaken. |
 
@@ -141,9 +147,38 @@ Schwere: **mittel** = vor Abschluss beheben (Verstoß gegen eine Regel in `Agent
 | N-05 | `RS-22` (Tabelle T32, Zeile „State“), `RS-23` (T33, „Regulierung - / +“), `RS-27` (T38, „Pfeiltasten“), `RS-38` (T48, „Farbkennzeichnung“) | Inhalt vollständig, aber nicht buchstabengleich: Zeilenumbrüche der Quelle als „;“, Klammerzeichen „(–)“ als „(--)“ in RS-23, „<< / >>“ als „«“/„»“ beziehungsweise „<<“ / „>>“. Der Wortlaut bleibt erhalten. | Kein Eingriff nötig; bei „wortgetreuen“ Zitaten in RS-23 Strich „–“ statt „--“ verwenden. |
 | N-06 | `docs/03_HMI-Konzept/Module/Modulliste.md` / `HM-38` | Die Herkunftsspalte der Modulliste (`–`) und der Abschnitt „Herkunft“ (`RM-14` als Auslöser) sind formal verschieden, inhaltlich nicht widersprüchlich. | In der Modulliste Spalte RM-Herkunft „– (Auslöser RM-14)“ oder im Modul „Auslöser: RM-14, keine Entsprechung“ vereinheitlichen. |
 
-## 5 Wiederholungsprüfung
+## 5 Behebung und Wiederholungsprüfung
 
-Nach Behebung von B-01 bis B-05 sind die Skripte `c1.py`, `c3.py`, `c5.py`, `c6.py`, `c6c.py` erneut zu starten. Erwartet: keine Meldung `SEQ`, `dups []`, keine Treffer für „Verwalter“, „Querschnitts“ und „siehe Bericht“, keine Treffer für `Annahme [0-9]` ohne Kennung, `Fortschritt.md` mit Einträgen für Phase 1 bis 3. Danach lautet das Urteil BESTANDEN.
+Die Skripte `c1.py`, `c3.py`, `c4c.py`, `c5.py`, `c6.py`, `c6c.py` wurden gegen den Stand `5f500ec` erneut ausgeführt, die behobenen Stellen zusätzlich von Hand geprüft. `src_Data` ist weiterhin unverändert (`git diff f168526 -- src_Data` leer). Geändert wurden laut `git diff` nur Dateien unter `docs/` (Seiten, Module, Plan, Fortschritt, Annahmen).
+
+| Nr. | Prüfung der Behebung | Ergebnis |
+|---|---|---|
+| B-01 | `HM-23`: Prüfpunkte jetzt P01 bis P07 fortlaufend; globale Doppelungsprüfung `dups []` bei weiterhin 1.755 Prüfpunkt-Zeilen; alle zitierten Prüfpunkt-IDs existieren | behoben |
+| B-02 | Suche nach „Verwalter“, „Querschnitts-Agent“, „Ohne OP-Eintrag“, „Ohne Eintrag im Seiten-Index“ in `docs/` außerhalb dieses Berichts: nur noch `Plan_M1.md` Z. 120 (Beschreibung des Arbeitsablaufs im Plan, zulässig) und das Wort „Querschnittsthemen“ in `Konzept.md` (Kapitelname, kein Prozessbezug) | behoben |
+| B-03 | `HS-07` Z. 105: Text lautet jetzt „… siehe HM-07, OP-57“ (verlinkt); kein „Bericht“ mehr | behoben |
+| B-04 | `HS-41`: Abschnitt „Annahmen dieser Seite“ hat die Kennungen S41-1 bis S41-5; Suche nach `Annahme [0-9]` in `docs/` ohne Treffer; `A-71` nennt „Kennungen S41-1 bis S41-5“; alle zitierten lokalen Kennungen sind definiert | behoben |
+| B-05 | `Fortschritt.md` enthält jetzt Einträge für Phase 1, 2 und 3 (neueste oben). `Task.md` ist noch nicht abgehakt (siehe N-07) | behoben (Fortschritt); Abhaken folgt mit diesem Urteil |
+| N-01 | Neue Annahme `A-80` legt die Vorlagenerweiterungen (HM „Herkunft“/„WPF-Umsetzung“, RS-13/14/15 „Bilder“, HS „Platzhalter-Pop-ups“ und „Annahmen dieser Seite“, Reihenfolge nicht vorgeschrieben) einheitlich fest; Pflichtabschnitte weiterhin vollständig | behoben |
+| N-02 | `Plan_M1.md` nennt 44 Fließtextbilder, 37 in Tabellen; „Zwischenstand“ entfernt | behoben |
+| N-03 | `RM/Modulliste.md`: „Stand: Phase 2 abgeschlossen“ statt „R11“ | behoben |
+| N-04 | **Fehlalarm der Erstprüfung.** Die Zeile in `RS-04` lautet „Handbuch `Referenz.docx`, Kapitel 4 …“; die Prüfskript-Ausgabe hatte den Code-Span entfernt und dadurch ein Leerzeichen vor dem Komma vorgetäuscht. Die Executor-Aussage ist zutreffend. | zurückgezogen |
+| N-05 | `RS-23` verwendet jetzt „(–)“ wie die Quelle; die drei übrigen Zellen (RS-22, RS-27, RS-38) unterscheiden sich nur im Format (Zeilenumbruch als „;“, Klammerzeichen); Tabellenprüfung weiterhin 684 Zellen, 0 fehlen inhaltlich | behoben / ohne Handlungsbedarf |
+| N-06 | `HM-38`: Modulliste und Abschnitt „Herkunft“ sind abgestimmt (Skript `c5.py` meldet keine Abweichung der Herkunftsspalten mehr) | behoben |
+
+### Ergebnis der erneuten Skriptläufe
+
+- Struktur (`c1.py`): 5 DS, 22 DM, 39 RS, 36 RM, 43 HS, 38 HM, alle Pflichtdateien vorhanden, keine Lücke. Links: 6.823 (6.817 in der Erstprüfung, Zunahme durch die Behebung und diesen Bericht); **0 defekt**, 1 bekannter Platzhalter in `Annahmen.md`.
+- Prüfpunkte (`c3.py`): 1.755 Zeilen, alle Status „offen“, keine Sequenzlücke, keine Doppelung, jede Tabellenzeile 4 Spalten. Abschnittslisten: Pflichtabschnitte überall vorhanden (Erweiterungen siehe A-80).
+- Tabellen (`c4c.py`): 50 Tabellen, 684 Zellen, 0 inhaltlich fehlend (3 Formatabweichungen).
+- Rückverfolgung (`c5.py`): keine unbekannten HM, kein HM ohne HS, keine HS ohne HM, keine DM/RM ohne HM; Beidseitigkeit HM↔HS konsistent (Treffer nur Negationen „nicht verwendet“).
+- Konsistenz (`c6.py`, `c6c.py`): **A-01 bis A-80** (80 Einträge) und OP-01 bis OP-66 lückenlos, eindeutig, aufsteigend; die Meldung „A-80 außerhalb“ des Skripts ist nur die feste Obergrenze 79 des alten Skripts; kein zitierter Verweis auf eine nicht vorhandene ID; keine „Annahme n“ ohne Kennung; einziger Treffer „Bericht“ in `Konzept.md` Z. 489 ist der Begriff „Prüfbericht“ im Plan für Meilenstein 2 (zulässig).
+
+### Neue Befunde (niedrig)
+
+| Nr. | Datei, Fundstelle | Problem | Soll |
+|---|---|---|---|
+| N-07 | `Task.md`: Phase 1 bis 3 nicht abgehakt; `docs/00_Plan/Fortschritt.md`: Einträge sagen „Wiederholungsprüfung läuft“ beziehungsweise „abwarten“ | Stand überholt, sobald dieses Urteil gilt. | Nach diesem Urteil in `Task.md` die Punkte der Phasen 1 bis 3 abhaken und in `Fortschritt.md` „Gesamtprüfung M1 bestanden, Wiederholungsprüfung bestanden“ vermerken; dann Commit und Push. |
+| N-08 | `HS-27`, `HS-28`, `HS-29`, `HS-41` | „Annahmen dieser Seite“ steht hinter „Offene Punkte“, in den anderen Seiten davor. | Durch A-80 zulässig; Angleichen optional. |
 
 ## 6 Offene Punkte
 

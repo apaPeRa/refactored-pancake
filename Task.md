@@ -17,25 +17,25 @@ Das Referenzhandbuch (alle Seiten) beschreibt den **Funktionsumfang**. Dieser wi
 Erstellt aus Design und Referenz mehrere Markdown-Dateien, die das Design erklären, Seiten und Module definieren und prüfen.
 
 ### Phase 1 – Design-Analyse
-- [ ] Umfang erfassen, Plan nach `docs/00_Plan/Plan_M1.md` schreiben, Ordnerstruktur nach `Agent.md` Abschnitt 5 anlegen, `Fortschritt.md`, `Annahmen.md`, `Offene-Punkte.md` anlegen
-- [ ] Alle Screenshots in `./src_Data/Design` analysieren und `Design-Dokumentation.md` erstellen (Rahmen, Raster, Farben, Typografie, Elementarten, Navigation)
-- [ ] Je Design-Seite eine Seitenbeschreibung `DS-xx` mit Funktion und Prüfpunkten erstellen
-- [ ] Wiederkehrende Elemente erkennen und Module `DM-xx` definieren (Funktion, Parameter, Zustände, Prüfpunkte)
-- [ ] Phase 1 gegen die Screenshots prüfen, Commit
+- [x] Umfang erfassen, Plan nach `docs/00_Plan/Plan_M1.md` schreiben, Ordnerstruktur nach `Agent.md` Abschnitt 5 anlegen, `Fortschritt.md`, `Annahmen.md`, `Offene-Punkte.md` anlegen
+- [x] Alle Screenshots in `./src_Data/Design` analysieren und `Design-Dokumentation.md` erstellen (Rahmen, Raster, Farben, Typografie, Elementarten, Navigation)
+- [x] Je Design-Seite eine Seitenbeschreibung `DS-xx` mit Funktion und Prüfpunkten erstellen
+- [x] Wiederkehrende Elemente erkennen und Module `DM-xx` definieren (Funktion, Parameter, Zustände, Prüfpunkte)
+- [x] Phase 1 gegen die Screenshots prüfen, Commit
 
 ### Phase 2 – Referenz-Analyse
-- [ ] `Referenz.docx` verarbeiten (Text, Tabellen, Bilder extrahieren nach `02_Referenz-Analyse/Medien`), `Referenz-Uebersicht.md` mit vollständiger Seitenliste und Navigationsbaum erstellen
-- [ ] Je Seite im Handbuch (alle) eine Seitenbeschreibung `RS-xx` mit Funktion und Prüfpunkten erstellen, einschließlich Pop-ups und Unterseiten
-- [ ] Wiederkehrende Elemente erkennen (z. B. Motorparameter, Gewichtskorrektur, Dosierer-Parameter) und Module `RM-xx` definieren
-- [ ] Phase 2 gegen das Handbuch prüfen (jede Tabellenzeile und jedes Bild der Quelle ist erfasst), Commit
+- [x] `Referenz.docx` verarbeiten (Text, Tabellen, Bilder extrahieren nach `02_Referenz-Analyse/Medien`), `Referenz-Uebersicht.md` mit vollständiger Seitenliste und Navigationsbaum erstellen
+- [x] Je Seite im Handbuch (alle) eine Seitenbeschreibung `RS-xx` mit Funktion und Prüfpunkten erstellen, einschließlich Pop-ups und Unterseiten
+- [x] Wiederkehrende Elemente erkennen (z. B. Motorparameter, Gewichtskorrektur, Dosierer-Parameter) und Module `RM-xx` definieren
+- [x] Phase 2 gegen das Handbuch prüfen (jede Tabellenzeile und jedes Bild der Quelle ist erfasst), Commit
 
 ### Phase 3 – Neues HMI-Konzept
-- [ ] `Designsystem.md`: Farben, Typografie, Abstände, Größen für 1920 × 1080, Zustände, Hell/Dunkel, nach den Vorgaben in `Agent.md` Abschnitt 6
-- [ ] `Navigation.md`: Navigationsstruktur und Brotkrümel für alle Seiten
-- [ ] Module `HM-xx` aus `DM` und `RM` zusammenführen (Duplikate entfernen)
-- [ ] Seiten `HS-xx` für alle Seiten der Referenz im neuen Design (Layout aus dem Design, wo vorhanden; sonst abgeleitet vom Designsystem und den Modulen), in `Konzept.md` zu einer kohärenten Beschreibung zusammenführen
-- [ ] `Rueckverfolgung.md`: Tabelle Referenzseite → Designseite → neue Seite, Referenzmodul → Designmodul → neues Modul. Jede RS hat eine HS, jede HS verwendet nur vorhandene HM
-- [ ] `Pruefbericht_M1.md` schreiben und Befunde beheben, Commit und Push
+- [x] `Designsystem.md`: Farben, Typografie, Abstände, Größen für 1920 × 1080, Zustände, Hell/Dunkel, nach den Vorgaben in `Agent.md` Abschnitt 6
+- [x] `Navigation.md`: Navigationsstruktur und Brotkrümel für alle Seiten
+- [x] Module `HM-xx` aus `DM` und `RM` zusammenführen (Duplikate entfernen)
+- [x] Seiten `HS-xx` für alle Seiten der Referenz im neuen Design (Layout aus dem Design, wo vorhanden; sonst abgeleitet vom Designsystem und den Modulen), in `Konzept.md` zu einer kohärenten Beschreibung zusammenführen
+- [x] `Rueckverfolgung.md`: Tabelle Referenzseite → Designseite → neue Seite, Referenzmodul → Designmodul → neues Modul. Jede RS hat eine HS, jede HS verwendet nur vorhandene HM
+- [x] `Pruefbericht_M1.md` schreiben und Befunde beheben, Commit und Push
 
 ## Meilenstein 2 – WPF-Projekt (.NET 8, Cloud)
 
