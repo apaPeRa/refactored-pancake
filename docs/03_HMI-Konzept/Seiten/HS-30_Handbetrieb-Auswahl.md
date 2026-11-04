@@ -16,7 +16,7 @@ Rahmen wie auf allen Seiten (Seitenleiste 3\* : Arbeitsbereich 37\*; Kopfzeile 4
 - Das Schloss und die Tasten „Produktion“, „Einstellungen“, „Zurück“ der Referenz-Fußleiste liegen in der Seitenleiste [HM-01](../Module/HM-01_Seitenleiste.md) (A-35).
 
 ```
-Inhaltsbereich (12 Spalten; Raster 4 x 4, je Kachel 3 Spalten, Hoehe Size.Touch.Large)
+Inhaltsbereich (12 Spalten; Raster 4 x 4, je Kachel 3 Spalten, Höhe Size.Touch.Large)
 +------------------+------------------+------------------+------------------+
 | GR1              | GR2              | GR3              | GR4              |
 | Hauptantrieb     | Zuführung Papier | Zuführung Karton | Dornrad          |

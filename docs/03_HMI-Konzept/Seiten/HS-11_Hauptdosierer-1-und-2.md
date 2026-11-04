@@ -29,15 +29,16 @@ Inhaltsbereich (12 Spalten, Gutter Space.M)
 |  ---- Eichdosierung    |  Nachlauf Rührer [ s ]   | Auslastung  [=== 91 %] |
 |  Umdrehungen    [ ]    |  Querschnecke Schalter   | Regulierung aktiv  Ein |
 |  Eichdosierung  [ g ]  |  Querschnecke    [ % ]   | [Manuell] [Entleeren]  |
-|  [ Eichdosierung ]     |                          | [ Einstellung Regul. ] |
+|                        |                          | [ Eichdosierung ]      |
+|                        |                          | [ Einstellung Regul. ] |
 +------------------------+------------------------+------------------------+
 | Funktionsleiste: [«] [»]  1 von 2   [Motorparameter]                      |
 +--------------------------------------------------------------------------+
 ```
 
-- **Gruppe 1 „Sollwerte und Eichdosierung“:** drei Zeilen Sollwerte, Zwischenüberschrift „Eichdosierung“ (Linie `Brush.Divider`, keine Unterstreichung), zwei Eichfelder, darunter die Taste „Eichdosierung“.
+- **Gruppe 1 „Sollwerte und Eichdosierung“:** drei Zeilen Sollwerte, Zwischenüberschrift „Eichdosierung“ (Linie `Brush.Divider`, keine Unterstreichung), zwei Eichfelder. Ein Hinweis-Textfeld zum Ablauf der Eichdosierung steht unter den beiden Eichfeldern.
 - **Gruppe 2 „Schnecke, Rührer, Querschnecke“:** Drehzahl der Schnecke; Rührer (Umschalter, Sollgeschwindigkeit, Nachlauf); Querschnecke (Umschalter, Sollgeschwindigkeit). Der Umschalter steht jeweils über seinem Feld.
-- **Gruppe 3 „Status und Bedienung“:** die beiden Füllstandsanzeigen, der Auslastungsbalken, der Umschalter „Regulierung aktiv“, die Tasten „Manuell“ und „Entleeren“ (nebeneinander, je mindestens `Size.Button.MinWidth`) und die Navigationstaste „Einstellung Regulierung“ (volle Gruppenbreite).
+- **Gruppe 3 „Status und Bedienung“:** die beiden Füllstandsanzeigen, der Auslastungsbalken, der Umschalter „Regulierung aktiv“, die Tasten „Manuell“ und „Entleeren“ (nebeneinander, je mindestens `Size.Button.MinWidth`), die Taste „Eichdosierung“ und die Navigationstaste „Einstellung Regulierung“ (je volle Gruppenbreite). Die Anordnung entspricht [HS-19](../Seiten/HS-19_Nachdosierer.md).
 - Zeilenhöhen: Eingabefelder, Umschalter und Tasten `Size.Touch.Default`, Abstand zwischen Touch-Zielen `Size.Touch.Gap`. Die Summe jeder Gruppe passt in die Höhe des Inhaltsbereichs, ohne zu scrollen (Prüfpunkt HS-11-P21).
 - Die Funktionsleiste enthält links das Blätterpaar (HM-19, mit Positionsanzeige „1 von 2“) und danach die Taste „Motorparameter“ (3 Tasten, höchstens 5 erlaubt).
 
@@ -127,7 +128,7 @@ Fehlendes Modul: keines. Ergänzungswunsch: HM-17 führt HS-11 und HS-12 nicht i
 - **Berechtigung.** Schlüsselsymbol (`Icon.Key`) an den Feldern und Tasten, die in der Referenz einen Schlüssel tragen: alle Eingabefelder, Querschnecke, Rührer, Manuell, Entleeren, Eichdosierung. Ohne ausreichende Rolle: Schloss (`Icon.Lock`), Antippen öffnet das Benutzer-Pop-up bzw. den Hinweis „Berechtigung erforderlich: <Rolle>“; es öffnet kein Eingabe-Pop-up. „Regulierung aktiv“ und „Einstellung Regulierung“ tragen wie in der Referenz keinen Schlüssel (Stufen und Rollen offen, OP-25, OP-04).
 - **Betriebszustand.** Ist eine Aktion im aktuellen Betriebszustand nicht zulässig (zum Beispiel Dosiervorgang bei laufender Produktion), sind „Manuell“, „Entleeren“ und „Eichdosierung“ deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`); Antippen nennt den Grund in der Meldezeile (A-28). Die fachlichen Sperrregeln stehen nicht in der Quelle (Annahme 8, OP-45).
 - **Entleeren.** Dauerfunktion: erstes Antippen startet, Zustand „Läuft“ mit `Icon.State.On`; erneutes Antippen bricht ab.
-- **Eichdosierung.** Taste startet einen Dosiervorgang mit den Umdrehungen aus dem Feld „Eichdosierung Umdrehungen“. Ein Hinweis-Textfeld (Art Info) in Gruppe 1 nennt die Schritte des Handbuchs: Produkt auffangen und wiegen, Gewicht in das Feld „Eichdosierung“ eintragen; die Maschine berechnet daraus die Umdrehungen im Automatikbetrieb (Annahme 9). Das Gewichtsfeld wird nicht automatisch gefüllt.
+- **Eichdosierung.** Taste startet einen Dosiervorgang mit den Umdrehungen aus dem Feld „Eichdosierung Umdrehungen“. Ein Hinweis-Textfeld (Art Info) bei den Eichfeldern nennt die Schritte des Handbuchs: Produkt auffangen und wiegen, Gewicht in das Feld „Eichdosierung“ eintragen; die Maschine berechnet daraus die Umdrehungen im Automatikbetrieb (Annahme 9). Das Gewichtsfeld wird nicht automatisch gefüllt.
 - **Anzeigezustände.** Füllstand-LEDs und Auslastungsbalken zeigen Zustand über Symbol und Wort, nie nur über Farbe. Auslastung ab Warnschwelle (Annahme 5): Statusfarbe, `Icon.Status.Warning` und Zahl. Eingabewerte stehen in Textfarbe (`Brush.Text.Primary`), nicht in Rot; Rot nur für Fehler (Designsystem 1.2).
 - **Fehlerfälle.** Wert außerhalb der Grenzen: HM-12 im Zustand Fehler (Kontur `Border.Thick`, `Brush.Status.Error.Subtle`, `Icon.Status.Error`, Fehlertext), Übernehmen gesperrt. Gestörte Umschalter: Zustand Fehler mit Text (HM-08). Ungültiger Anzeigewert: „---“ (HM-11).
 - **Navigation.** „Einstellung Regulierung“ → HS-23; „Motorparameter“ → HS-12 (aktueller Dosierer); Seitenleiste „Zurück“ und Brotkrümel „Dosierer“ → HS-41; Meldezeile → HS-38. Bei offenem Pop-up sind Seitenleiste, Funktionsleiste und Inhalt gesperrt.
