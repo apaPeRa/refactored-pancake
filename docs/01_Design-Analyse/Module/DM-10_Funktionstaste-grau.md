@@ -13,11 +13,11 @@ Graue Taste mit Textbeschriftung für eine Funktion der Seite. Sie löst eine Ak
 ## Zustände und Darstellung
 | Zustand | Darstellung |
 |---|---|
-| Normal | Grau `#A6A6A6`, Beschriftung dunkelgrau (im Entwurf auch weiß, DS-01/02) |
+| Normal | Grau `#A6A6A6`, Beschriftung dunkelgrau (im Entwurf weiß in DS-01 bis DS-03, dunkelgrau in DS-04) |
 | Gedrückt | im Bild nicht dargestellt |
 | Gesperrt | Hinweis: Hauptdosierer 2 in DS-04 zeigt hellere Schrift (OP-18); Annahme: Sperre zusätzlich durch Symbol (Schloss) oder Text, nicht nur durch hellere Schrift |
 
-**Abgrenzung zu [DM-19](DM-19_Zustandstaste.md):** DM-10 ist ein einmaliger Auslöser (grau, neutral). DM-19 ist eine Taste mit Zustand (z. B. ein/aus), farbig. Die rote/farbige „Manuell“ in DS-03 ist DM-19; die graue „Manuell“ in DS-04 ist DM-10. Gleiche Beschriftung, verschiedene Module (OP-14, OP-15). Zustand wird nie nur über Farbe vermittelt (Agent.md Abschnitt 6): zusätzlich Symbol oder Text. Farben und Fasen des Entwurfs sind Schätzwerte bzw. PowerPoint-Artefakte und werden nicht übernommen.
+**Abgrenzung zu [DM-19](DM-19_Zustandstaste.md):** DM-10 ist ein einmaliger Auslöser (grau, neutral). DM-19 ist eine Taste mit Zustand (z. B. ein/aus), farbig. Die rote/farbige „Manuell“ in DS-03 ist DM-19; die graue „Manuell“ in DS-04 ist DM-10. Gleiche Beschriftung, verschiedene Module (OP-14, A-16). Zustand wird nie nur über Farbe vermittelt (Agent.md Abschnitt 6): zusätzlich Symbol oder Text. Farben und Fasen des Entwurfs sind Schätzwerte bzw. PowerPoint-Artefakte und werden nicht übernommen.
 
 ## Verwendet auf Seiten (IDs)
 - [DS-01](../Seiten/DS-01_Produktion.md) – Produktion

@@ -93,5 +93,5 @@ Modulkandidaten (RM-IDs später):
 3. Zustandsfolge beim Antippen (Zyklus oder Auswahl-Pop-up) und Berechtigung dafür sind nicht beschrieben.
 4. Legenden-Kurzbezeichnungen im Bild (Nicht vorhanden/Schlecht/Vorhanden/Befüllt/Gut) weichen von den Handbuch-Bezeichnungen (Feld grau … grün) ab; Zuordnung per Farbe.
 5. Verwendung von gelb = „vorhanden, nicht befüllt oder gewogen“ umfasst zwei Zustände; unklar, ob „gewogen“ einen eigenen Zustand hat.
-6. Fehlende Taste/Bedeutung: Bedeutung von Schloss-Symbol und spiralförmigem Symbol in der Kopfzeile nicht erläutert.
+6. Bedeutung von Schloss-Symbol (gelb, untere Leiste) und spiralförmigem Symbol (Kopfzeile, rechts neben dem Titel) sind im Handbuch nicht erläutert; beide Symbole sind in RS-28_01 sichtbar.
 7. Zustandsdarstellung nur über Farbe (ISA-101: zusätzliche Kennzeichnung im neuen HMI nötig).

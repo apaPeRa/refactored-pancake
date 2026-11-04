@@ -21,7 +21,7 @@ Bild [RS-32_01.png](../Medien/RS-32_01.png) (blauer Hintergrund):
 - **Untere Funktionsleiste:** keine Taste „Suchen“; gelbes Schloss, „Produktion“ (Haus), „Einstellungen“ (Zahnrad), „Zurück“ (Rücktaste).
 - Hinweis-Textfeld des Handbuchs (siehe unten) ist im Bild nicht zu sehen.
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
@@ -53,7 +53,7 @@ Bild [RS-32_01.png](../Medien/RS-32_01.png) (blauer Hintergrund):
 
 „Zum Setzen eines Gebers muss mindestens ein Not-Aus-Taster gedrückt sein. Anschließend ist die Achse manuell in die Referenzposition bringen. Mit langem Drücken der Taste „Geber setzen“ wird der aktuelle Wert des Motors als neue Geberposition übernommen.“ (Satz „…in die Referenzposition bringen“ so im Original.)
 
-Das Textfeld ist im Dokument doppelt abgelegt (Standarddarstellung und Ersatzdarstellung), der Text ist dort bis auf den ersten Satz (Wiederholung) identisch.
+Das Textfeld ist im Dokument doppelt abgelegt (Hauptansicht und Fallback); laut XML sind beide Ablagen vollständig textgleich. Im Original steht „sein.Anschließend“ ohne Leerzeichen nach dem Punkt.
 
 ### Bilder
 

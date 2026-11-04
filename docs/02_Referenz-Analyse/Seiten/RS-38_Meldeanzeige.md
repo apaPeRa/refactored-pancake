@@ -21,7 +21,7 @@ Alle 6 Zeilen der Tabelle 48, wortgetreu:
 | Automatische Anzeige | Verhalten der Meldezeile | „Beim Auftreten einer Meldung wird die Meldung mit der höchsten Nummer in der Meldezeile im unteren Bereich der HMI-Seiten eingeblendet.“ | Modulkandidat: Meldezeile |
 | Meldeanzeige öffnen | Interaktion (Antippen der Meldezeile) | „Durch Antippen dieser Zeile wird die vollständige Meldeanzeige geöffnet.“ | Modulkandidat: Meldezeile |
 | Meldeanzeige schließen | Interaktion | „Ein weiterer Klick oder die Schaltfläche *Zurück* schließt die Anzeige.“ | Modulkandidat: Funktionsleiste unten |
-| Farbkennzeichnung | Darstellung | „Meldungen sind farblich codiert: Grün: Betriebsstatus Automatik; Gelb: Hinweise und Statusmeldungen; Rot: Störung oder sicherheitsrelevante Meldung. Führen zum Stopp“ | Modulkandidat: Meldungsliste mit Farbcodierung; Modulkandidat: Statusliste |
+| Farbkennzeichnung | Darstellung | (Zeilen der Quelle durch ; getrennt) „Meldungen sind farblich codiert: Grün: Betriebsstatus Automatik; Gelb: Hinweise und Statusmeldungen; Rot: Störung oder sicherheitsrelevante Meldung. Führen zum Stopp“ | Modulkandidat: Meldungsliste mit Farbcodierung; Modulkandidat: Statusliste |
 | Meldungsnummer | Listenspalte „Nummer“ | „Eindeutige Nummer zur Identifikation der Meldung, z. B. für Service oder Dokumentation.“ | Modulkandidat: Meldungsliste mit Farbcodierung |
 | Meldungstext | Listenspalte „Meldung“ | „Kurzbeschreibung der Ursache oder des betroffenen Bereichs.“ | Modulkandidat: Meldungsliste mit Farbcodierung |
 
@@ -53,7 +53,7 @@ Noch keine RM-IDs. Modulkandidaten: Meldezeile, Meldungsliste mit Farbcodierung,
 | RS-38-P05 | Farbe Gelb | Hinweise und Statusmeldungen | offen |
 | RS-38-P06 | Farbe Rot | Störung oder sicherheitsrelevante Meldung, führt zum Stopp | offen |
 | RS-38-P07 | Listenspalten | „Nummer“ (z. B. *090*) und „Meldung“ (Text) | offen |
-| RS-38-P08 | Zustände nicht nur über Farbe | Zusätzlich zur Farbe ist die Meldung über Nummer/Text identifizierbar (siehe Offene Punkte zu Symbolen) | offen |
+| RS-38-P08 | Konzeptanforderung (nicht aus Quelle, Agent.md Abschnitt 6): Zustände nicht nur über Farbe | Zusätzlich zur Farbe ist der Meldungstyp über Symbol oder Text erkennbar (siehe Offene Punkte) | offen |
 | RS-38-P09 | Untere Leiste | Taste „Archiv“ links, Schloss, Produktion, Einstellungen, Zurück | offen |
 | RS-38-P10 | Bildabgleich | Bild zeigt Liste mit Rollbalken, Meldezeile *450* unten, Titel „Meldungsanzeige“ | offen |
 
@@ -64,3 +64,4 @@ Noch keine RM-IDs. Modulkandidaten: Meldezeile, Meldungsliste mit Farbcodierung,
 - Farbe der Meldung *090* „Palettierung nicht bereit“: in der Liste gelb, in der Meldezeile (*450*) rot – Zuordnung Nummer→Farbe nicht erklärt.
 - Handbuch nennt rote Meldungen „Führen zum Stopp“ (Satzbau unvollständig).
 - Meldezeile im Bild überdeckt die untere Listenzeile (*204*).
+- Handbuch und Bild nennen keine Symbole oder Zusatzkennzeichnung neben der Farbe; Zustände sind nur über Farbe unterschieden (Bezug RS-38-P08).

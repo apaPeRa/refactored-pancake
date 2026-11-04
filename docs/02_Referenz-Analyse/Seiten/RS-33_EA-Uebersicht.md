@@ -17,7 +17,7 @@ Bild [RS-33_01.png](../Medien/RS-33_01.png) (blauer Hintergrund):
 - **Untere Funktionsleiste:** links Taste „Suchen“; gelbes Schloss; „Produktion“ (Haus), „Einstellungen“ (Zahnrad), „Zurück“ (Rücktaste).
 - Keine Zahlenfelder, keine Schlüsselsymbole.
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|

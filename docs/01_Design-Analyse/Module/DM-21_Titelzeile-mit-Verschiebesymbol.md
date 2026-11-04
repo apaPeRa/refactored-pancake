@@ -25,6 +25,6 @@ Antippbarkeit der Zeile unklar. Symbol soll ein Touch-Ziel von mindestens 48 px 
 ## Prüfpunkte
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
-| DM-21-P01 | Text | „Sollgewicht KW: 235g | Letztes Gewicht KW: 238g“ | offen |
+| DM-21-P01 | Text | „Sollgewicht KW: 235g \| Letztes Gewicht KW: 238g“ | offen |
 | DM-21-P02 | Symbol | vier Pfeile rechts in der Zeile | offen |
 | DM-21-P03 | Lage | über den drei Dosierer-Karten, volle Breite | offen |

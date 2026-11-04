@@ -1,5 +1,5 @@
 # RS-04 – Einstellungen
-- Quelle: Handbuch `Referenz.docx`, Kapitel 4 „Einstellungen“ (Zweck, Seitenübersicht, Funktionsbeschreibung, Tabelle T4, 19 Zeilen inkl. Kopfzeile); Bild [RS-04_01.png](../Medien/RS-04_01.png)   - Navigationspfad: Einstellung (Brotkrümel laut [Referenz-Uebersicht](../Referenz-Uebersicht.md)). Erreichbar über die Taste „Einstellungen“ der unteren Leiste (im Bild sichtbar, Zahnrad-Symbol) bzw. die Seitenleiste „Einstellungen“ im Design.
+- Quelle: Handbuch `Referenz.docx`, Kapitel 4 „Einstellungen“ (Zweck, Seitenübersicht, Funktionsbeschreibung, Tabelle T4, 19 Zeilen inkl. Kopfzeile); Bild [RS-04_01.png](../Medien/RS-04_01.png)   - Navigationspfad: Einstellung (abgeleitet aus der [Referenz-Uebersicht](../Referenz-Uebersicht.md); im Bild ist kein Brotkrümel sichtbar). Erreichbar über die Taste „Einstellungen“ der unteren Leiste (im Bild sichtbar, Zahnrad-Symbol) bzw. die Seitenleiste „Einstellungen“ im Design.
 
 ## Zweck
 Wortgetreu (Handbuch): „Die Einstellungs-Seite ist die zentrale Seite um zu allen Seiten zu kommen, welche für die Konfiguration und Fehlerbeseitigung nötig sind.“
@@ -75,7 +75,7 @@ Noch keine RM-IDs vergeben. Modulkandidaten dieser Seite: Seitenkopf (Logo, Tite
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Interaktion:** Antippen einer Kachel öffnet die zugehörige Seite (Ziele siehe Elemente Teil B). Das Handbuch beschreibt dies nur indirekt über die „Funktion“-Beschreibungen; ein ausdrücklicher Satz zum Antippen fehlt.
 - **Pop-ups:** keine auf dieser Seite beschrieben. Unterseiten/Ziele: siehe Zielseiten oben.
-- **Navigation:** Brotkrümel „Einstellung“. Die Fußleiste mit „Produktion“, „Einstellungen“, „Zurück“ ist im Bild unten rechts sichtbar. „Navigation (unten links)“ ist auf dieser Seite im Bild leer. Im Design ist die Seitenleiste „Einstellungen“ der Einstieg (laut Referenz-Uebersicht).
+- **Navigation:** Brotkrümel „Einstellung“ (abgeleitet aus der Referenz-Uebersicht, im Bild nicht sichtbar). Die Fußleiste mit „Produktion“, „Einstellungen“, „Zurück“ ist im Bild unten rechts sichtbar. „Navigation (unten links)“ ist auf dieser Seite im Bild leer. Im Design ist die Seitenleiste „Einstellungen“ der Einstieg (laut Referenz-Uebersicht).
 - **Berechtigungen:** im Handbuch nicht beschrieben. Im Bild ist ein geschlossenes Schloss-Symbol zu sehen; ob einzelne Kacheln gesperrt sind, ist nicht erkennbar (alle 18 Kacheln erscheinen identisch grau).
 - **Zustände der Kacheln:** nur ein Zustand erkennbar (grau, aktiv). Kein deaktivierter oder gewählter Zustand beschrieben.
 - **Fehlerfälle/Meldungen:** Die rote Meldezeile zeigt eine Meldung (Beispiel „\*450\* Palettierung nicht bereit“); eine Beschreibung der Meldezeile gibt es in RS-04 nicht.

@@ -11,7 +11,7 @@ Beschreibung von [RS-37_01.png](../Medien/RS-37_01.png):
   - rot: 05.05.2025 10:13:55 – „*120* Störung Hauptantrieb 1MA1: <GR001_Aktoren.instAktor_1MA1.o_sError, STRING>“; „*112* Klimagerät Schaltschrank nicht bereit 0E4“; „*111* Sicherung 0Q3 FU-Antriebe ausgelöst“; „*110* Sicherung 0Q2 Servoantriebe ausgelöst“; „*109*“ bis „*102* Sicherung 0F24A Kanal 8 … Kanal 1 ausgelöst“; „*101* Sicherung 0F24A DC 24 V nicht bereit“; „*100* Steuerung ein Schalter ist ausgeschaltet“
   - gelb: 05.05.2025 10:13:55 – „*081* Höhenregulierung Endlage unten“, „*080* Höhenregulierung Endlage oben“, „*070* Rolle fast leer“; 14.11.2024 16:13:17 / 16:12:07 / 11:06:31 – je „*054* Inbetriebnahme Funktionen aktiv“
   - grün: 13.11.2024 13:46:57 – „*000* Maschine ist bereit“
-  - Sortierung: neueste Meldungen/höchste Nummern oben.
+  - Sortierung: im Bild absteigend nach Nummer bzw. Zeit.
 - **Rechts neben der Liste:** vier Scrolltasten untereinander: „an den Anfang“ (Pfeil nach oben mit Balken), „eine Seite hoch“ (Pfeil nach oben), „eine Seite runter“ (Pfeil nach unten), „ans Ende“ (Pfeil nach unten mit Balken); letztere hat blauen Rahmen (Fokus).
 - **Unter der Liste, vier Tasten:** „Export“ (Schlüsselsymbol) · „Liste leeren“ (Schlüsselsymbol) · „Filter“ · „Alle Anzeigen“.
 - **Meldezeile:** rot „*450* Palettierung nicht bereit“.

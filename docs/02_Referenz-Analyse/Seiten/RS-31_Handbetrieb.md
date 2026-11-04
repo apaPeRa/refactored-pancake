@@ -19,7 +19,7 @@ Bild [RS-31_01.png](../Medien/RS-31_01.png) (blauer Hintergrund):
 - **Meldezeile:** roter Balken „*450* Palettierung nicht bereit“.
 - **Untere Funktionsleiste:** Taste „Suchen“ (im Bild nach rechts versetzt, nicht am linken Rand wie in RS-30), gelbes Schloss, „Produktion“ (Haus), „Einstellungen“ (Zahnrad), „Zurück“ (Rücktaste).
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|

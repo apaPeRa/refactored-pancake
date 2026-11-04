@@ -21,7 +21,7 @@ Bild [RS-30_01.png](../Medien/RS-30_01.png) (Bildschirmfoto der alten HMI, 4:3, 
 - **Untere Funktionsleiste (hellgrau):** links Taste „Suchen“; Mitte-rechts gelbes, geschlossenes Schloss-Symbol; rechts drei Tasten „Produktion“ (mit Haus-Symbol), „Einstellungen“ (mit Zahnrad-Symbol), „Zurück“ (mit Rücktasten-Symbol).
 - Keine Zahlenfelder, keine Schlüsselsymbole auf dieser Seite.
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|

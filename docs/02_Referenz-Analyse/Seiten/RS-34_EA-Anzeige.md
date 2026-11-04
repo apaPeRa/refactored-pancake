@@ -26,7 +26,7 @@ Bild [RS-34_01.png](../Medien/RS-34_01.png) (blauer Hintergrund):
 - **Untere Funktionsleiste:** links Tasten „<<“ und (etwas rechts davon) „>>“; gelbes Schloss; „Produktion“ (Haus), „Einstellungen“ (Zahnrad), „Zurück“ (Rücktaste). Keine Taste „Suchen“.
 - Keine Zahlenfelder (analoge Anzeige im Bild nicht zu sehen), keine Schlüsselsymbole.
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
