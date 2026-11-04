@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Handbetrieb_EA.resx: Texte der Seiten HS-30 bis HS-34 (Handbetrieb, Geber setzen, EA-Übersicht, EA-Anzeige). Schlüssel HSnn_<Element>_<Eigenschaft>. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS30_Search_Label" xml:space="preserve"><value>Suchen</value><comment>Funktionsleiste HS-30/31/33: Taste Suchen</comment></data>
+  <data name="HS30_SearchActor_Title" xml:space="preserve"><value>Aktor suchen</value><comment>Such-Pop-up HS-30/31: Titel</comment></data>
+  <data name="HS30_SearchPlaceholder" xml:space="preserve"><value>Kennzeichnung eingeben</value><comment>Such-Pop-up: Platzhalter</comment></data>
+  <data name="HS30_GR1_Label" xml:space="preserve"><value>GR1 Hauptantrieb</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR2_Label" xml:space="preserve"><value>GR2 Zuführung Papier</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR3_Label" xml:space="preserve"><value>GR3 Zuführung Karton</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR4_Label" xml:space="preserve"><value>GR4 Dornrad</value><comment>Gruppentaste (doppelte Beschriftung wie Referenz, OP-58)</comment></data>
+  <data name="HS30_GR5_Label" xml:space="preserve"><value>GR5 Dornrad</value><comment>Gruppentaste (OP-58)</comment></data>
+  <data name="HS30_GR6_Label" xml:space="preserve"><value>GR6 Heizungen</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR10_Label" xml:space="preserve"><value>GR10 Paketübergabe</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR11_Label" xml:space="preserve"><value>GR11 Rüttlung</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR14_Label" xml:space="preserve"><value>GR14 Endkontrollwaage</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR20_Label" xml:space="preserve"><value>GR20 Schließmaschine</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR41_Label" xml:space="preserve"><value>GR41 Hauptdosierer 1</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR42_Label" xml:space="preserve"><value>GR42 Hauptdosierer 2</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR45_Label" xml:space="preserve"><value>GR45 Nachdosierer</value><comment>Gruppentaste</comment></data>
+  <data name="HS30_GR100_Label" xml:space="preserve"><value>GR100 Schnittstelle</value><comment>Gruppentaste</comment></data>
+  <data name="HS31_JogMinus_Label" xml:space="preserve"><value>Jog −</value><comment>HS-31 Antriebe</comment></data>
+  <data name="HS31_JogPlus_Label" xml:space="preserve"><value>Jog +</value><comment>HS-31 Antriebe</comment></data>
+  <data name="HS31_SwitchOff_Label" xml:space="preserve"><value>Aus / Grundstellung</value><comment>HS-31 schaltende Aktoren</comment></data>
+  <data name="HS31_SwitchOn_Label" xml:space="preserve"><value>Ein / Arbeitsstellung</value><comment>HS-31 schaltende Aktoren</comment></data>
+  <data name="HS31_Position_Label" xml:space="preserve"><value>Position:</value><comment>HS-31 Positionsfeld</comment></data>
+  <data name="HS31_Position_Unit" xml:space="preserve"><value>°/s</value><comment>Einheit aus dem Bild (OP-29)</comment></data>
+  <data name="HS31_PositionBack_Label" xml:space="preserve"><value>Position zurück</value><comment>HS-31</comment></data>
+  <data name="HS31_PositionForward_Label" xml:space="preserve"><value>Position vor</value><comment>HS-31</comment></data>
+  <data name="HS31_Release_Label" xml:space="preserve"><value>Freigabe</value><comment>HS-31 LED</comment></data>
+  <data name="HS31_EndStop_Label" xml:space="preserve"><value>Endlage</value><comment>HS-31 LED</comment></data>
+  <data name="HS31_Released_Word" xml:space="preserve"><value>Erteilt</value><comment>Freigabe erteilt</comment></data>
+  <data name="HS31_Blocked_Word" xml:space="preserve"><value>Gesperrt</value><comment>Freigabe gesperrt</comment></data>
+  <data name="HS31_Reached_Word" xml:space="preserve"><value>Erreicht</value><comment>Endlage erreicht</comment></data>
+  <data name="HS31_NotReached_Word" xml:space="preserve"><value>Nicht erreicht</value><comment>Endlage nicht erreicht</comment></data>
+  <data name="HS31_ReleaseAtPosition_Label" xml:space="preserve"><value>Freigabe bei Position-Nr</value><comment>HS-31 LED</comment></data>
+  <data name="HS31_PositionNumber_Label" xml:space="preserve"><value>Position-Nr:</value><comment>HS-31 Anzeige</comment></data>
+  <data name="HS31_Acceleration_Label" xml:space="preserve"><value>Beschleunigung</value><comment>HS-31 Eingabefeld</comment></data>
+  <data name="HS31_Speed_Label" xml:space="preserve"><value>Geschwindigkeit</value><comment>HS-31 Eingabefeld</comment></data>
+  <data name="HS31_Deceleration_Label" xml:space="preserve"><value>Verzögerung</value><comment>HS-31 Eingabefeld</comment></data>
+  <data name="HS31_Percent_Unit" xml:space="preserve"><value>%</value><comment>Einheit Prozent</comment></data>
+  <data name="HS31_ValueHint_Text" xml:space="preserve"><value>0 bei Beschleunigung und Verzögerung = 100 % bzw. Hardwarevorgabe</value><comment>Hinweiszeile E21</comment></data>
+  <data name="HS31_InputHelp_Text" xml:space="preserve"><value>Bereich 0 bis 100 %; 0 entspricht 100 % bzw. Hardwarevorgabe</value><comment>Eingabe-Pop-up: Grenzen (Dummy, OP-28)</comment></data>
+  <data name="HS31_Message_Caption" xml:space="preserve"><value>Meldung:</value><comment>Aktormeldung</comment></data>
+  <data name="HS31_Message_Empty" xml:space="preserve"><value>–</value><comment>Keine Aktormeldung</comment></data>
+  <data name="HS31_NotManual_Text" xml:space="preserve"><value>Nur im Handbetrieb ansteuerbar</value><comment>Grund für deaktivierte Bewegungstasten (A-28)</comment></data>
+  <data name="HS32_MotorPosition_Label" xml:space="preserve"><value>Motor Position:</value><comment>HS-32</comment></data>
+  <data name="HS32_EncoderPosition_Label" xml:space="preserve"><value>Geber Position:</value><comment>HS-32</comment></data>
+  <data name="HS32_PositionOffset_Label" xml:space="preserve"><value>Positions Offset:</value><comment>HS-32</comment></data>
+  <data name="HS32_Initialized_Label" xml:space="preserve"><value>Achse initialisiert:</value><comment>HS-32</comment></data>
+  <data name="HS32_InitializedOk_Word" xml:space="preserve"><value>OK</value><comment>Achse initialisiert</comment></data>
+  <data name="HS32_NotInitialized_Word" xml:space="preserve"><value>Nicht initialisiert</value><comment>Achse nicht initialisiert (Annahme, OP-39)</comment></data>
+  <data name="HS32_SetEncoder_Label" xml:space="preserve"><value>Geber setzen</value><comment>HS-32 Taste (langes Drücken)</comment></data>
+  <data name="HS32_Warning_Text" xml:space="preserve"><value>Zum Setzen eines Gebers muss mindestens ein Not-Aus-Taster gedrückt sein. Anschließend ist die Achse manuell in die Referenzposition bringen. Mit langem Drücken der Taste „Geber setzen“ wird der aktuelle Wert des Motors als neue Geberposition übernommen.</value><comment>Wortlaut des Handbuchs unverändert zitiert (OP-35)</comment></data>
+  <data name="HS32_Message_Caption" xml:space="preserve"><value>Meldung:</value><comment>HS-32</comment></data>
+  <data name="HS32_Message_Empty" xml:space="preserve"><value>–</value><comment>Keine Meldung</comment></data>
+  <data name="HS32_EncoderSet_Text" xml:space="preserve"><value>Geber gesetzt</value><comment>Rückmeldung nach dem Setzen (Annahme, OP-42)</comment></data>
+  <data name="HS32_NoEmergencyStop_Text" xml:space="preserve"><value>Not-Aus-Taster nicht gedrückt</value><comment>Grund für deaktivierte Taste (A-28)</comment></data>
+  <data name="HS33_SearchEquipment_Title" xml:space="preserve"><value>Betriebsmittel suchen</value><comment>Such-Pop-up HS-33: Titel</comment></data>
+  <data name="HS33_InputsS1_Label" xml:space="preserve"><value>Eingänge S1</value><comment>EA-Schaltfläche</comment></data>
+  <data name="HS33_OutputsS1_Label" xml:space="preserve"><value>Ausgänge S1</value><comment>EA-Schaltfläche</comment></data>
+  <data name="HS33_InputsS300_Label" xml:space="preserve"><value>Eingänge S300</value><comment>EA-Schaltfläche</comment></data>
+  <data name="HS33_OutputsS300_Label" xml:space="preserve"><value>Ausgänge S300</value><comment>EA-Schaltfläche</comment></data>
+  <data name="HS33_InputsS500_Label" xml:space="preserve"><value>Eingänge S500</value><comment>EA-Schaltfläche</comment></data>
+  <data name="HS33_OutputsS500_Label" xml:space="preserve"><value>Ausgänge S500</value><comment>EA-Schaltfläche</comment></data>
+  <data name="HS34_Previous_Label" xml:space="preserve"><value>«</value><comment>Funktionsleiste: vorherige Karte</comment></data>
+  <data name="HS34_Next_Label" xml:space="preserve"><value>»</value><comment>Funktionsleiste: nächste Karte</comment></data>
+  <data name="HS34_Card_Label" xml:space="preserve"><value>Karte</value><comment>Positionsangabe in der Titelzeile</comment></data>
+  <data name="HS34_Position_Format" xml:space="preserve"><value>{0} von {1}</value><comment>Positionsangabe n von m</comment></data>
+  <data name="HS34_ScrollUp_Label" xml:space="preserve"><value>Hoch</value><comment>Signalliste nach oben</comment></data>
+  <data name="HS34_ScrollDown_Label" xml:space="preserve"><value>Runter</value><comment>Signalliste nach unten</comment></data>
+</root>

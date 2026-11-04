@@ -47,7 +47,7 @@
 
             <!-- Bedienbereich (7 Spalten) -->
             <StackPanel Grid.Column="0" VerticalAlignment="Top">
-                <!-- Livegewicht in g, eine Nachkommastelle, "---" bei ungueltigem Wert -->
+                <!-- Livegewicht in g, eine Nachkommastelle, Platzhalter bei ungueltigem Wert -->
                 <c:HM11_ValueDisplay MinHeight="{StaticResource Size.Touch.Large}"
                                      ValueKind="Number" Presentation="Field" Emphasis="Large"
                                      NumberValue="{Binding Weight}" Decimals="1" Unit="{res:Loc HS27_Weight_Unit}" />
