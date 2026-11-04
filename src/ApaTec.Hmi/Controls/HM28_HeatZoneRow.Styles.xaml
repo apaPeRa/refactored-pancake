@@ -38,11 +38,11 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="GlueName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
                            Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />
-                <c:HM12_ValueInput Grid.Column="1" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0" RequiresPermission="True"
+                <c:HM12_ValueInput Grid.Column="1" Margin="{StaticResource Inset.XS}" Unit="{res:Loc Unit_Celsius}" Decimals="0" RequiresPermission="True"
                                    Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                    IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
                                    NumberValue="{Binding Setpoint, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
-                <c:HM11_ValueDisplay Grid.Column="2" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0"
+                <c:HM11_ValueDisplay Grid.Column="2" Margin="{StaticResource Inset.XS}" Unit="{res:Loc Unit_Celsius}" Decimals="0"
                                      NumberValue="{Binding Actual, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM08_ToggleSwitch Grid.Column="3" Margin="{StaticResource Inset.XS}" ToggleStyle="Button"
                                      OnText="{res:Loc HM28_Zone_SwitchOff}" OffText="{res:Loc HM28_Zone_SwitchOn}"
@@ -71,11 +71,11 @@
                                      AutomationProperties.Name="{res:Loc HM28_Monitor_Label}"
                                      IsChecked="{Binding IsMonitored, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                      ToggleCommand="{Binding ToggleMonitorCommand, RelativeSource={RelativeSource TemplatedParent}}" />
-                <c:HM12_ValueInput Grid.Column="3" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0" RequiresPermission="True"
+                <c:HM12_ValueInput Grid.Column="3" Margin="{StaticResource Inset.XS}" Unit="{res:Loc Unit_Celsius}" Decimals="0" RequiresPermission="True"
                                    Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}"
                                    IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
                                    NumberValue="{Binding Setpoint, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
-                <c:HM11_ValueDisplay Grid.Column="4" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0"
+                <c:HM11_ValueDisplay Grid.Column="4" Margin="{StaticResource Inset.XS}" Unit="{res:Loc Unit_Celsius}" Decimals="0"
                                      NumberValue="{Binding Actual, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM09_StatusLed Grid.Column="5" Margin="{StaticResource Inset.XS}" IsCompact="True" ShowStateWord="True"
                                   AutomationProperties.Name="{res:Loc HM28_State_Label}"

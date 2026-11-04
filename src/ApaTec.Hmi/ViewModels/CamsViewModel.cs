@@ -26,8 +26,10 @@ public sealed partial class CamsViewModel : PageViewModelBase
     private readonly ILocalizationService _localization;
     private readonly FunctionBarItem _previousItem = new();
     private readonly FunctionBarItem _nextItem = new();
+    private readonly SynchronizationContext? _context = SynchronizationContext.Current;
     private CamDetail _baseline;
     private bool _loading;
+    private bool _subscribed;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(NumberText), nameof(PositionText))]
@@ -132,20 +134,70 @@ public sealed partial class CamsViewModel : PageViewModelBase
     {
         var number = parameter is NavigationParameters p && p.Get<int>("camNumber") is var n and > 0 ? n : _baseline.Number;
         Load(Math.Clamp(number, _service.FirstNumber, _service.LastNumber));
+        Subscribe();
+        UpdateAuthorization();
+    }
+
+    public override void OnNavigatedFrom() => Unsubscribe();
+
+    /// <summary>Ungeschriebene Aenderungen: Zurueck, Seitenleiste, Brotkruemel und Home fragen "Aenderungen verwerfen?" (S25-2).</summary>
+    public override bool HasLeaveGuard => HasChanges;
+
+    public override Task<bool> CanLeaveAsync() => ConfirmDiscardAsync();
+
+    // Doppelabo-Schutz: OnNavigatedTo laeuft auch beim Blaettern (ReplaceParameter).
+    private void Subscribe()
+    {
+        Unsubscribe();
+        _subscribed = true;
         if (_user is not null)
         {
             _user.SessionChanged += OnSessionChanged;
         }
 
-        UpdateAuthorization();
+        _service.Changed += OnServiceChanged;
     }
 
-    public override void OnNavigatedFrom()
+    private void Unsubscribe()
     {
+        if (!_subscribed)
+        {
+            return;
+        }
+
+        _subscribed = false;
         if (_user is not null)
         {
             _user.SessionChanged -= OnSessionChanged;
         }
+
+        _service.Changed -= OnServiceChanged;
+    }
+
+    private void OnServiceChanged(object? sender, EventArgs e)
+    {
+        if (_context is null || SynchronizationContext.Current == _context)
+        {
+            RefreshLive();
+        }
+        else
+        {
+            _context.Post(_ => RefreshLive(), null);
+        }
+    }
+
+    // Position und Status laufend aktualisieren, ohne eingegebene (ungeschriebene) Werte anzufassen.
+    private void RefreshLive()
+    {
+        if (!_subscribed)
+        {
+            return;
+        }
+
+        var live = _service.GetLive(Current());
+        EncoderPosition = live.Position;
+        StatusLed = live.IsInside ? LedState.On : LedState.Off;
+        StatusText = _localization.GetString(live.IsInside ? "HS25_Status_Inside" : "HS25_Status_Outside");
     }
 
     partial void OnStartAngleChanged(double? value) => OnFieldChanged();
@@ -241,8 +293,9 @@ public sealed partial class CamsViewModel : PageViewModelBase
     [RelayCommand]
     private async Task OpenOverviewAsync()
     {
-        if (_navigation is not null && await ConfirmDiscardAsync())
+        if (_navigation is not null)
         {
+            // Die Rueckfrage "Aenderungen verwerfen?" stellt der Navigationsdienst ueber den Leave-Hook.
             await _navigation.NavigateToAsync(PageKeys.CamOverview, new NavigationParameters("camNumber", CamNumber));
         }
     }

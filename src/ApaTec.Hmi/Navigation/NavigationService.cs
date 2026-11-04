@@ -26,6 +26,7 @@ public sealed class NavigationService : INavigationService
         _session = session;
         _localization = localization;
         _localization.CultureChanged += (_, _) => OnCultureChanged();
+        _session.SessionChanged += (_, _) => OnSessionChanged();
     }
 
     public event EventHandler<NavigatedEventArgs>? Navigated;
@@ -79,6 +80,18 @@ public sealed class NavigationService : INavigationService
             return false;
         }
 
+        // Leave-Hook (Abbrechen/Verwerfen): die aktuelle Seite darf den Wechsel ablehnen.
+        var leaving = CurrentViewModel;
+        if (leaving is not null && !await leaving.CanLeaveAsync())
+        {
+            return false;
+        }
+
+        if (IsModalOpen || !ReferenceEquals(leaving, CurrentViewModel))
+        {
+            return false;
+        }
+
         return NavigateCore(descriptor, parameter);
     }
 
@@ -97,6 +110,16 @@ public sealed class NavigationService : INavigationService
     public bool GoBack()
     {
         if (!CanGoBack || Current is null)
+        {
+            return false;
+        }
+
+        return Guard(GoBackCore);
+    }
+
+    private bool GoBackCore()
+    {
+        if (Current is null)
         {
             return false;
         }
@@ -121,14 +144,18 @@ public sealed class NavigationService : INavigationService
             return false;
         }
 
-        return NavigateCore(descriptor, null);
+        return Guard(() => NavigateCore(descriptor, null));
     }
 
     public void GoHome()
     {
-        CloseAllPopups();
-        _history.Clear();
-        Show(_registry.Get(PageKeys.Production), null);
+        Guard(() =>
+        {
+            CloseAllPopups();
+            _history.Clear();
+            Show(_registry.Get(PageKeys.Production), null);
+            return true;
+        });
     }
 
     public void GoToSettings()
@@ -138,9 +165,51 @@ public sealed class NavigationService : INavigationService
             return;
         }
 
-        _history.Clear();
-        _history.Add(new NavigationEntry(PageKeys.Production, null));
-        Show(_registry.Get(PageKeys.Settings), null);
+        Guard(() =>
+        {
+            _history.Clear();
+            _history.Add(new NavigationEntry(PageKeys.Production, null));
+            Show(_registry.Get(PageKeys.Settings), null);
+            return true;
+        });
+    }
+
+    // Synchrone Navigationswege (Zurueck, Brotkruemel, Home, Einstellungen) pruefen den Leave-Hook der Seite. Meldet die Seite
+    // Aenderungen (HasLeaveGuard), laeuft die Rueckfrage asynchron; die Navigation wird danach ausgefuehrt, falls die Seite zustimmt.
+    // Rueckgabe: true = ausgefuehrt oder angenommen (Rueckfrage laeuft), false = abgelehnt.
+    private bool Guard(Func<bool> navigate)
+    {
+        if (CurrentViewModel is not { HasLeaveGuard: true } leaving || IsModalOpen)
+        {
+            return navigate();
+        }
+
+        _ = GuardAsync(leaving, navigate);
+        return true;
+    }
+
+    private async Task GuardAsync(PageViewModelBase leaving, Func<bool> navigate)
+    {
+        if (await leaving.CanLeaveAsync() && !IsModalOpen && ReferenceEquals(CurrentViewModel, leaving))
+        {
+            navigate();
+        }
+    }
+
+    // Rollenverlust (Navigation.md 5.4, 4.2 Nr. 5): geschuetzte Seite verlassen, Pop-ups ohne Uebernehmen schliessen.
+    private void OnSessionChanged()
+    {
+        if (Current is not { MinimumRole: { } minimum } descriptor || _session.HasRole(minimum))
+        {
+            return;
+        }
+
+        CloseAllPopups();
+        _history.RemoveAll(e => _registry.TryGet(e.Key, out var d) && d.MinimumRole is { } r && !_session.HasRole(r));
+        var parent = descriptor.ParentKey is { } p && _registry.TryGet(p, out var pd) && pd.Kind != PageKind.Popup
+            ? pd
+            : _registry.Get(PageKeys.Production);
+        Show(parent, null);
     }
 
     public Task<bool> OpenMessagesAsync() => NavigateToAsync(PageKeys.MessageView);

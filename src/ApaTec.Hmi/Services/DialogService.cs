@@ -26,14 +26,18 @@ public sealed class DialogService : IDialogService
             ? (PopupViewModelBase)_services.GetRequiredService(type)
             : new PlaceholderPopupViewModel(dialogKey);
 
-        var completion = new TaskCompletionSource<DialogResult<T>>();
-        popup.Closed += (_, e) => completion.TrySetResult(new DialogResult<T>(e.Accepted, e.Result is T value ? value : default));
+        // RunContinuationsAsynchronously: die Fortsetzung des Aufrufers laeuft nie inline im Closed-Ereignis.
+        var completion = new TaskCompletionSource<DialogResult<T>>(TaskCreationOptions.RunContinuationsAsynchronously);
 
         popup.Initialize(dialogKey, parameter);
         if (!_navigation.TryOpenPopup(popup))
         {
             return Task.FromResult(new DialogResult<T>(false, default));
         }
+
+        // Der Navigationsdienst hat seinen Closed-Handler (Pop-up vom Stapel entfernen) in TryOpenPopup bereits registriert;
+        // dieser Handler folgt danach, sodass IsModalOpen beim Ergebnis schon false ist.
+        popup.Closed += (_, e) => completion.TrySetResult(new DialogResult<T>(e.Accepted, e.Result is T value ? value : default));
 
         return completion.Task;
     }

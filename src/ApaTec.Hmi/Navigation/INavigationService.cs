@@ -44,6 +44,10 @@ public interface INavigationService
     void ReplaceParameter(object? parameter);
 
     /// <summary>Zurueck zum obersten Stapeleintrag; bei leerem Stapel (nicht HS-01) zum Elternschluessel. false bei offenem Pop-up oder auf HS-01.</summary>
+    /// <remarks>
+    /// Leave-Hook: Zurueck, Brotkruemel, Home, Einstellungen und <see cref="NavigateToAsync"/> fragen <c>PageViewModelBase.CanLeaveAsync</c> der aktuellen Seite.
+    /// Bei den synchronen Wegen laeuft eine noetige Rueckfrage asynchron (Rueckgabe true = angenommen); Systemwechsel (Rollenverlust, Zeitablauf) fragen nicht.
+    /// </remarks>
     bool GoBack();
 
     /// <summary>Sprung auf eine Seite im Verlauf oder einen Vorfahren (Brotkruemel-Segment); der Stapel wird bis unterhalb der Zielseite gekuerzt.</summary>

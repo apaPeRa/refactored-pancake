@@ -36,10 +36,12 @@
               AutomationProperties.Name="{res:Loc HM23_Number_Name}" />
       <TextBlock x:Name="NameText" Grid.Column="1" Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
                  TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding Name}" />
-      <TextBlock x:Name="StartText" Grid.Column="2" Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
-                 Text="{Binding StartAngle, StringFormat='{}{0:0}&#160;°'}" />
-      <TextBlock x:Name="EndText" Grid.Column="3" Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
-                 Text="{Binding EndAngle, StringFormat='{}{0:0}&#160;°'}" />
+      <TextBlock x:Name="StartText" Grid.Column="2" Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
+        <Run Text="{Binding StartAngle, Mode=OneWay, StringFormat='{}{0:0}'}" /><Run Text="&#160;" /><Run Text="{res:Loc Unit_Degree}" />
+      </TextBlock>
+      <TextBlock x:Name="EndText" Grid.Column="3" Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
+        <Run Text="{Binding EndAngle, Mode=OneWay, StringFormat='{}{0:0}'}" /><Run Text="&#160;" /><Run Text="{res:Loc Unit_Degree}" />
+      </TextBlock>
       <local:HM09_StatusLed x:Name="StatusLed" Grid.Column="4" Margin="{StaticResource Inset.XS}" IsCompact="True" ShowStateWord="True" State="Off" />
     </Grid>
     <DataTemplate.Triggers>

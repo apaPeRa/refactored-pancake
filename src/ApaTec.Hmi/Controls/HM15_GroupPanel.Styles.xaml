@@ -53,7 +53,7 @@
                 <StackPanel x:Name="HighlightMark" Grid.Column="1" Orientation="Horizontal" Visibility="Collapsed" VerticalAlignment="Center">
                   <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}" VerticalAlignment="Center">
                     <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
-                      <Path Style="{StaticResource HM15_IconPath}" Stroke="{DynamicResource Brush.Border.Focus}" Data="{StaticResource Icon.Status.Ok}" />
+                      <Path Style="{StaticResource HM15_IconPath}" Stroke="{DynamicResource Brush.Border.Focus}" Data="{StaticResource Icon.State.On}" />
                     </Grid>
                   </Viewbox>
                   <TextBlock x:Name="HighlightDefault" Style="{StaticResource Text.Caption}" Text="{res:Loc HM15_Highlight_Text}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" Visibility="Collapsed" />

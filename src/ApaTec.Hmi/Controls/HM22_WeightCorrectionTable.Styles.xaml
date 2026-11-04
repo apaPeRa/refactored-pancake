@@ -34,8 +34,8 @@
         <Viewbox x:Name="Tick" Grid.Column="0" Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}" Margin="{StaticResource Inset.XS}">
           <Path Style="{StaticResource HM22.IconPath}" Data="{StaticResource Icon.State.On}" />
         </Viewbox>
-        <local:HM12_ValueInput x:Name="NominalField" Grid.Column="1" Margin="{StaticResource Inset.XS}" NumberValue="{Binding Nominal, Mode=TwoWay}" Command="{Binding EditNominalCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HM22_WeightCorrectionTable}}}" CommandParameter="{Binding}" Unit="g" Decimals="2" RequiresPermission="False" />
-        <local:HM12_ValueInput x:Name="ActualField" Grid.Column="2" Margin="{StaticResource Inset.XS}" NumberValue="{Binding Actual, Mode=TwoWay}" Command="{Binding EditActualCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HM22_WeightCorrectionTable}}}" CommandParameter="{Binding}" Unit="g" Decimals="2" RequiresPermission="False" />
+        <local:HM12_ValueInput x:Name="NominalField" Grid.Column="1" Margin="{StaticResource Inset.XS}" NumberValue="{Binding Nominal, Mode=TwoWay}" Command="{Binding EditNominalCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HM22_WeightCorrectionTable}}}" CommandParameter="{Binding}" Unit="{res:Loc Unit_Gram}" Decimals="2" RequiresPermission="False" />
+        <local:HM12_ValueInput x:Name="ActualField" Grid.Column="2" Margin="{StaticResource Inset.XS}" NumberValue="{Binding Actual, Mode=TwoWay}" Command="{Binding EditActualCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HM22_WeightCorrectionTable}}}" CommandParameter="{Binding}" Unit="{res:Loc Unit_Gram}" Decimals="2" RequiresPermission="False" />
         <!-- zweiter Kanal: Fehlersymbol und Text bei ungueltigem Paar -->
         <StackPanel x:Name="InvalidMark" Grid.Column="3" Orientation="Horizontal" Visibility="Collapsed" VerticalAlignment="Center">
           <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
@@ -86,7 +86,7 @@
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
               <local:HM12_ValueInput Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_TargetWeight_Label}"
-                                     NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditTargetWeightCommand, RelativeSource={RelativeSource TemplatedParent}}" Unit="g" Decimals="1" RequiresPermission="True" />
+                                     NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditTargetWeightCommand, RelativeSource={RelativeSource TemplatedParent}}" Unit="{res:Loc Unit_Gram}" Decimals="1" RequiresPermission="True" />
               <local:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_Trigger_Label}"
                                        RequiresPermission="False" Command="{Binding TriggerCommand, RelativeSource={RelativeSource TemplatedParent}}" />
               <local:HM07_ActionButton Grid.Column="2" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_Adjust_Label}"
@@ -101,7 +101,7 @@
 
             <!-- Berechnungsstand: Symbol und Text als zweiter Kanal -->
             <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_ValidPoints_Label}"
-                                     NumberValue="{Binding ValidPointCount, RelativeSource={RelativeSource TemplatedParent}}" Unit="Stk" Decimals="0" Presentation="Row" />
+                                     NumberValue="{Binding ValidPointCount, RelativeSource={RelativeSource TemplatedParent}}" Unit="{res:Loc Unit_Piece}" Decimals="0" Presentation="Row" />
             <local:HM27_NoticeBox x:Name="TooFewNotice" Margin="{StaticResource Inset.XS}" Visibility="Collapsed"
                                   Kind="Warning" Text="{res:Loc HM22_TooFew_Text}" />
             <local:HM27_NoticeBox x:Name="InvalidNotice" Margin="{StaticResource Inset.XS}" Visibility="Collapsed"

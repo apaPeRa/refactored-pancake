@@ -1,4 +1,6 @@
 using System.ComponentModel;
+using System.Globalization;
+using System.Windows.Data;
 
 namespace ApaTec.Hmi.Controls;
 
@@ -62,4 +64,13 @@ public sealed class FilterField : INotifyPropertyChanged
             }
         }
     }
+}
+
+/// <summary>Minuten seit 00:00 als "hh:mm" nach <see cref="CultureInfo.CurrentCulture"/> (Bereichszeile der Zeitvariante, HM-13); ohne Wert leer.</summary>
+public sealed class HM13_MinutesToTimeConverter : IValueConverter
+{
+    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture) =>
+        value is double minutes ? TimeSpan.FromMinutes(minutes).ToString(@"hh\:mm", CultureInfo.CurrentCulture) : string.Empty;
+
+    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) => Binding.DoNothing;
 }

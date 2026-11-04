@@ -23,4 +23,7 @@ public interface ICamService
     double CalculateResult(double angle, double timeMs);
 
     Task<bool> WriteAsync(CamDetail detail);
+
+    /// <summary>Wenn sich Geberpositionen aendern (Live-Daten fuer <see cref="GetLive"/>; ggf. nicht im UI-Thread).</summary>
+    event EventHandler? Changed;
 }

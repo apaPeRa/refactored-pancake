@@ -11,6 +11,8 @@
     <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
+  <local:HM13_MinutesToTimeConverter x:Key="HM13.MinutesToTime" />
+
   <Style x:Key="HM13_IconPath" TargetType="Path">
     <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
     <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
@@ -165,6 +167,13 @@
                 <Run Text="{Binding Maximum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat={}{0:0.###}}" />
                 <Run Text="{Binding Unit, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat='&#160;{0}'}" />
               </TextBlock>
+              <!-- Zeitvariante: Bereich als "hh:mm bis hh:mm" (Minimum/Maximum sind Minuten seit 00:00) -->
+              <TextBlock x:Name="RangeLineTime" Style="{StaticResource Text.Caption}" Visibility="Collapsed">
+                <Run Text="{res:Loc HM13_Range_Label}" />
+                <Run Text="{Binding Minimum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={StaticResource HM13.MinutesToTime}}" />
+                <Run Text="{res:Loc HM13_RangeTo_Word}" />
+                <Run Text="{Binding Maximum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={StaticResource HM13.MinutesToTime}}" />
+              </TextBlock>
             </StackPanel>
 
             <!-- Ziffernblock: 3 x 4 plus Spalte Ruecktaste/Loeschen -->
@@ -270,12 +279,23 @@
                 <Condition Property="Maximum" Value="{x:Null}" />
               </MultiTrigger.Conditions>
               <Setter TargetName="RangeLine" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RangeLineTime" Property="Visibility" Value="Collapsed" />
             </MultiTrigger>
             <!-- Zeit: Platzhalterstruktur, nur Ziffern -->
             <Trigger Property="InputKind" Value="Time">
               <Setter TargetName="SignKey" Property="Visibility" Value="Hidden" />
               <Setter TargetName="DecimalKey" Property="Visibility" Value="Hidden" />
+              <Setter TargetName="RangeLine" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RangeLineTime" Property="Visibility" Value="Visible" />
             </Trigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="InputKind" Value="Time" />
+                <Condition Property="Minimum" Value="{x:Null}" />
+                <Condition Property="Maximum" Value="{x:Null}" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="RangeLineTime" Property="Visibility" Value="Collapsed" />
+            </MultiTrigger>
             <MultiTrigger>
               <MultiTrigger.Conditions>
                 <Condition Property="InputKind" Value="Time" />
@@ -299,6 +319,7 @@
               <Setter TargetName="DecimalKey" Property="Visibility" Value="Hidden" />
               <Setter TargetName="CurrentLine" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="RangeLine" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RangeLineTime" Property="Visibility" Value="Collapsed" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>

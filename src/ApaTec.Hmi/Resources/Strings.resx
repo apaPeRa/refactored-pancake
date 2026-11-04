@@ -126,4 +126,10 @@
   <data name="Nav_Scales_Crumb" xml:space="preserve"><value>Waagen</value><comment>Brotkruemel-Segment HS-42</comment></data>
   <data name="Nav_ShiftPlan_Title" xml:space="preserve"><value>Schichtplan</value><comment>Seitentitel HS-43</comment></data>
   <data name="Nav_ShiftPlan_Crumb" xml:space="preserve"><value>Schichtplan</value><comment>Brotkruemel-Segment HS-43</comment></data>
+  <data name="Unit_Percent" xml:space="preserve"><value>%</value><comment>Einheit</comment></data>
+  <data name="Unit_Gram" xml:space="preserve"><value>g</value><comment>Einheit</comment></data>
+  <data name="Unit_Second" xml:space="preserve"><value>s</value><comment>Einheit</comment></data>
+  <data name="Unit_Millisecond" xml:space="preserve"><value>ms</value><comment>Einheit</comment></data>
+  <data name="Unit_Piece" xml:space="preserve"><value>Stk</value><comment>Einheit</comment></data>
+  <data name="Unit_Celsius" xml:space="preserve"><value>°C</value><comment>Einheit</comment></data>
 </root>

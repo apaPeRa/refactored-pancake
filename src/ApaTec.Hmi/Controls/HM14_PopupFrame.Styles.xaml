@@ -44,6 +44,10 @@
                   BorderThickness="{StaticResource Border.Medium}"
                   CornerRadius="{StaticResource Radius.Card}"
                   MinWidth="{StaticResource Size.Metric.MinWidth}">
+            <!-- Esc schliesst das Pop-up wie das Kreuz (CloseCommand), solange der Fokus im Rahmen liegt -->
+            <Border.InputBindings>
+              <KeyBinding Key="Escape" Command="{Binding CloseCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Border.InputBindings>
             <Border.MaxWidth>
               <MultiBinding Converter="{StaticResource HM14_WidthRatioConverter}">
                 <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="WidthRatio" />

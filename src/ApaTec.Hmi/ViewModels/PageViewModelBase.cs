@@ -36,6 +36,15 @@ public abstract partial class PageViewModelBase : ObservableObject
     {
     }
 
+    /// <summary>
+    /// true, wenn die Seite ungeschriebene Aenderungen haelt und das Verlassen bestaetigen lassen muss. Der Navigationsdienst ruft dann
+    /// bei Zurueck, Seitenleiste, Brotkruemel und Home <see cref="CanLeaveAsync"/> auf (Leave-Hook).
+    /// </summary>
+    public virtual bool HasLeaveGuard => false;
+
+    /// <summary>Leave-Hook: false = Seite bleibt stehen (z. B. "Aenderungen verwerfen?" abgebrochen). Vorgabe: true.</summary>
+    public virtual Task<bool> CanLeaveAsync() => Task.FromResult(true);
+
     internal void Attach(string pageKey, string title, IReadOnlyList<BreadcrumbItem> breadcrumb)
     {
         PageKey = pageKey;

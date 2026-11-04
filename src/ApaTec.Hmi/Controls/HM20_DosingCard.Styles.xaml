@@ -44,28 +44,28 @@
                   <!-- Hauptdosierer: Soll in % und Soll absolut in g -->
                   <StackPanel x:Name="MainSection">
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_TargetPercent_Label}"
-                                           NumberValue="{Binding TargetPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" RequiresPermission="False"
+                                           NumberValue="{Binding TargetPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Percent}" Decimals="0" RequiresPermission="False"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.TargetPercent}" />
                     <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_TargetWeightAbs_Label}"
-                                             NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}}" Unit="g" Decimals="0" Presentation="Row" />
+                                             NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}}" Unit="{res:Loc Unit_Gram}" Decimals="0" Presentation="Row" />
                   </StackPanel>
                   <!-- Nachdosierer: Soll in g, Max. Nachgabe, Aktuelle Nachgabe, nIO-Hinweis -->
                   <StackPanel x:Name="SecondarySection" Visibility="Collapsed">
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_TargetWeight_Label}"
-                                           NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="g" Decimals="0" RequiresPermission="False"
+                                           NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Gram}" Decimals="0" RequiresPermission="False"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.TargetWeight}" />
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_MaxRefill_Label}"
-                                           NumberValue="{Binding MaxRefill, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="g" Decimals="0" RequiresPermission="False"
+                                           NumberValue="{Binding MaxRefill, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Gram}" Decimals="0" RequiresPermission="False"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.MaxRefill}" />
                     <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CurrentRefill_Label}"
-                                             NumberValue="{Binding CurrentRefill, RelativeSource={RelativeSource TemplatedParent}}" Unit="g" Decimals="0" Presentation="Row" />
+                                             NumberValue="{Binding CurrentRefill, RelativeSource={RelativeSource TemplatedParent}}" Unit="{res:Loc Unit_Gram}" Decimals="0" Presentation="Row" />
                     <!-- Hidden statt Collapsed: die Karte behaelt ihre Hoehe -->
                     <local:HM27_NoticeBox x:Name="RefillNotice" Margin="{StaticResource Inset.XS}" Visibility="Hidden"
                                           Kind="Warning" Text="{res:Loc HM20_RefillRejected_Text}" />
                   </StackPanel>
 
                   <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Regulation_Label}"
-                                           NumberValue="{Binding RegulationValue, RelativeSource={RelativeSource TemplatedParent}}" Unit="g" Decimals="2" Presentation="Row" />
+                                           NumberValue="{Binding RegulationValue, RelativeSource={RelativeSource TemplatedParent}}" Unit="{res:Loc Unit_Gram}" Decimals="2" Presentation="Row" />
 
                   <!-- Fuellstand Trichter oben/unten -->
                   <Grid Margin="{StaticResource Inset.XS}">
@@ -101,7 +101,7 @@
                   <!-- Detaildarstellung: alle Parameter und Seitenlinks -->
                   <StackPanel x:Name="DetailSection" Visibility="Collapsed">
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CalibrationWeight_Label}"
-                                           NumberValue="{Binding CalibrationWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="g" Decimals="2"
+                                           NumberValue="{Binding CalibrationWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Gram}" Decimals="2"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.CalibrationWeight}" />
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CalibrationRevolutions_Label}"
                                            NumberValue="{Binding CalibrationRevolutions, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Decimals="0"
@@ -109,16 +109,16 @@
                     <local:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Calibrate_Label}"
                                              Icon="{StaticResource Icon.Dosing.Calibration}" Command="{Binding CalibrateCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_ScrewSpeed_Label}"
-                                           NumberValue="{Binding ScrewSpeed, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="1/min" Decimals="0"
+                                           NumberValue="{Binding ScrewSpeed, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_RevPerMin}" Decimals="0"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.ScrewSpeed}" />
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_AgitatorPercent_Label}"
-                                           NumberValue="{Binding AgitatorPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0"
+                                           NumberValue="{Binding AgitatorPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Percent}" Decimals="0"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.AgitatorPercent}" />
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_AgitatorRunOn_Label}"
-                                           NumberValue="{Binding AgitatorRunOn, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="s" Decimals="0"
+                                           NumberValue="{Binding AgitatorRunOn, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Second}" Decimals="0"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.AgitatorRunOn}" />
                     <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CrossScrewPercent_Label}"
-                                           NumberValue="{Binding CrossScrewPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0"
+                                           NumberValue="{Binding CrossScrewPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Percent}" Decimals="0"
                                            Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static models:DoserField.CrossScrewPercent}" />
                     <Grid Margin="{StaticResource Inset.XS}">
                       <Grid.ColumnDefinitions>

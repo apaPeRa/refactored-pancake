@@ -8,6 +8,40 @@ namespace ApaTec.Hmi.Services.Dummy;
 public sealed class DummyCamService : ICamService
 {
     private readonly Dictionary<int, CamDetail> _details = new();
+    private readonly object _gate = new();
+    private Timer? _timer;
+    private int _subscribers;
+    private int _position = 140;
+    private EventHandler? _changed;
+
+    /// <summary>Live-Position: der Dummy-Geber laeuft nur, solange jemand das Ereignis abonniert hat.</summary>
+    public event EventHandler? Changed
+    {
+        add
+        {
+            lock (_gate)
+            {
+                _changed += value;
+                if (_subscribers++ == 0)
+                {
+                    _timer = new Timer(_ => Tick(), null, TimeSpan.FromMilliseconds(500), TimeSpan.FromMilliseconds(500));
+                }
+            }
+        }
+
+        remove
+        {
+            lock (_gate)
+            {
+                _changed -= value;
+                if (_subscribers > 0 && --_subscribers == 0)
+                {
+                    _timer?.Dispose();
+                    _timer = null;
+                }
+            }
+        }
+    }
 
     public int FirstNumber => 1;
 
@@ -43,7 +77,17 @@ public sealed class DummyCamService : ICamService
             : new CamDetail(number, row.StartAngle, 0, row.EndAngle, 0, 1, 0, row.Name);
     }
 
-    public CamLiveData GetLive(CamDetail cam) => new(140, 140 >= cam.StartAngle && 140 <= cam.EndAngle);
+    public CamLiveData GetLive(CamDetail cam)
+    {
+        var position = _position;
+        return new(position, position >= cam.StartAngle && position <= cam.EndAngle);
+    }
+
+    private void Tick()
+    {
+        _position = (_position + 20) % 1080;
+        _changed?.Invoke(this, EventArgs.Empty);
+    }
 
     public double CalculateResult(double angle, double timeMs) => angle;
 

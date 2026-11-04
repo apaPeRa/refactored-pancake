@@ -11,6 +11,8 @@
     <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
+  <local:HM17_DeviationConverter x:Key="HM17.Deviation" />
+
   <Style x:Key="HM17_IconPath" TargetType="Path">
     <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
     <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
@@ -132,11 +134,19 @@
               <Setter TargetName="TitleText" Property="HorizontalAlignment" Value="Left" />
               <Setter TargetName="TitleText" Property="TextAlignment" Value="Left" />
             </Trigger>
-            <Trigger Property="HasDeviation" Value="True">
+            <!-- Abweichung: HasDeviation vom ViewModel oder aus DeviationLimit und den zwei Kennwerten (|Letzter Wert - Soll| groesser Grenze) -->
+            <DataTrigger Value="True">
+              <DataTrigger.Binding>
+                <MultiBinding Converter="{StaticResource HM17.Deviation}">
+                  <Binding Path="HasDeviation" RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="DeviationLimit" RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="Values" RelativeSource="{RelativeSource TemplatedParent}" />
+                </MultiBinding>
+              </DataTrigger.Binding>
               <Setter TargetName="Root" Property="Background" Value="{DynamicResource Brush.Status.Warning.Subtle}" />
               <Setter TargetName="Root" Property="BorderBrush" Value="{DynamicResource Brush.Status.Warning.Fg}" />
               <Setter TargetName="DeviationMark" Property="Visibility" Value="Visible" />
-            </Trigger>
+            </DataTrigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>

@@ -28,7 +28,7 @@
   <!-- Winkelfeld der Grafik: HM-12 ohne Beschriftung, Touch-Groesse -->
   <DataTemplate x:Key="HM31.FieldTemplate" DataType="{x:Type m:GlueTrackField}">
     <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" MinWidth="{StaticResource Size.Touch.Large}" MinHeight="{StaticResource Size.Touch.Default}"
-                       Unit="°" Decimals="0" RequiresPermission="True"
+                       Unit="{res:Loc Unit_Degree}" Decimals="0" RequiresPermission="True"
                        NumberValue="{Binding Angle, Mode=TwoWay}"
                        ErrorText="{Binding ErrorText}"
                        ToolTip="{Binding Tooltip}"

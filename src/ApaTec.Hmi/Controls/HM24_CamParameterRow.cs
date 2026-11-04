@@ -101,4 +101,14 @@ public sealed class HM24_CamParameterRow : Control
         get => (bool)GetValue(IsPendingWriteProperty);
         set => SetValue(IsPendingWriteProperty, value);
     }
+
+    /// <summary>Fehlertext der Zeile (Zustand Fehler: Symbol <c>Icon.Status.Error</c> und Text); null oder leer = kein Fehler.</summary>
+    public static readonly DependencyProperty ErrorTextProperty =
+        DependencyProperty.Register(nameof(ErrorText), typeof(string), typeof(HM24_CamParameterRow), new PropertyMetadata(null));
+
+    public string? ErrorText
+    {
+        get => (string?)GetValue(ErrorTextProperty);
+        set => SetValue(ErrorTextProperty, value);
+    }
 }

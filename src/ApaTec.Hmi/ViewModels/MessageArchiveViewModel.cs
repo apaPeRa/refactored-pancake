@@ -134,7 +134,6 @@ public sealed partial class MessageArchiveViewModel : PageViewModelBase
         var message = result.Success
             ? _text.Format("HS37_Result_ExportOk", result.Count)
             : result.ErrorText ?? _text.GetString("HS37_Result_Failed");
-        await Task.Yield();
         await _dialogs.ShowAsync<object>(DialogKeys.FileResult, SystemDialogParameters.FileResult(title, result.Success, message));
     }
 

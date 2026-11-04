@@ -126,7 +126,6 @@ public sealed partial class ServiceViewModel : PageViewModelBase
 
         if (confirmKey is not null)
         {
-            await Task.Yield();
             var answer = await _dialogs.ShowAsync<bool>(
                 DialogKeys.Confirmation,
                 SystemDialogParameters.Confirmation(title, _text.GetString(confirmKey), _text.GetString("HM14_Confirm_Label"), _text.GetString("Popup_Cancel_Label")));
@@ -150,7 +149,6 @@ public sealed partial class ServiceViewModel : PageViewModelBase
         var message = result.Success
             ? _text.Format(okKey, result.Count)
             : result.ErrorText ?? _text.GetString("HS36_Result_Failed");
-        await Task.Yield();
         await _dialogs.ShowAsync<object>(DialogKeys.FileResult, SystemDialogParameters.FileResult(title, result.Success, message));
     }
 

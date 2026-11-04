@@ -19,6 +19,7 @@ public sealed partial class InputDialogViewModel : PopupViewModelBase
 {
     private const int TimeDigits = 4;
     private const int MaxTextLength = 40;
+    private const int MaxNumberLength = 12; // HM-13: Zahl hoechstens 12 Zeichen (Vorzeichen, Ziffern, Komma)
     private const int MinutesPerHour = 60;
     private const int HoursPerDay = 24;
 
@@ -202,10 +203,15 @@ public sealed partial class InputDialogViewModel : PopupViewModelBase
 
     private bool CanAppendDigit()
     {
+        if (_buffer.Length >= MaxNumberLength)
+        {
+            return false;
+        }
+
         var separatorAt = _buffer.IndexOf(Separator, StringComparison.Ordinal);
         if (separatorAt < 0)
         {
-            return _buffer.Length < 15;
+            return true;
         }
 
         return _buffer.Length - separatorAt - Separator.Length < Decimals;
@@ -213,7 +219,7 @@ public sealed partial class InputDialogViewModel : PopupViewModelBase
 
     private void AppendSeparator()
     {
-        if (Kind != InputKind.Number || Decimals == 0 || _buffer.Contains(Separator, StringComparison.Ordinal))
+        if (Kind != InputKind.Number || Decimals == 0 || _buffer.Contains(Separator, StringComparison.Ordinal) || _buffer.Length >= MaxNumberLength - 1)
         {
             return;
         }
