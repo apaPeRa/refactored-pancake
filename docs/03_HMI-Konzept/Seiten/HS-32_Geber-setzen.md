@@ -62,7 +62,7 @@ Die Spalte „Herkunft (RS-32)“ ist die Rückverfolgung zur Referenzseite (Ele
 | E14 „Meldung:“ mit Text | Statusanzeige | Systemhinweise oder Fehler; Bild: leer („–“). Getrennt von der globalen Meldezeile E04 | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) (Art Meldungszeile) | Meldung; T42 „Meldung“ |
 | E15 Tasten „<<“ und „>>“ | Blättertasten | Wechseln zwischen den Gebern (`encoderIndex`); Paar mit Positionsanzeige „n von m“; am Rand deaktiviert | [HM-19](../Module/HM-19_Blaettertasten.md) | Tasten „<<“ / „>>“; T42 „Navigationstasten“ |
 | E16 Funktionsleiste unten | Container | Leer, aber sichtbar; keine Taste „Suchen“ | [HM-06](../Module/HM-06_Funktionsleiste.md) | Untere Funktionsleiste (ohne „Suchen“) |
-| E17 Bestätigungs-Pop-up | Pop-up (modal) | Optionale Rückfrage vor dem Setzen, siehe Zustände | [HM-14](../Module/HM-14_Popup-Rahmen.md) (Bestätigungsvariante) | – (Ergänzung A-40, OP-31) |
+| E17 Bestätigungs-Pop-up | Pop-up (modal) | Optionale Rückfrage vor dem Setzen; vorerst nicht aktiv (siehe Zustände) | [HM-14](../Module/HM-14_Popup-Rahmen.md) (Bestätigungsvariante) | – (Ergänzung A-40, OP-31) |
 
 **Wortlaut des Hinweis-Textfelds (Handbuch, E13):** „Zum Setzen eines Gebers muss mindestens ein Not-Aus-Taster gedrückt sein. Anschließend ist die Achse manuell in die Referenzposition bringen. Mit langem Drücken der Taste „Geber setzen“ wird der aktuelle Wert des Motors als neue Geberposition übernommen.“ Der Quellsatz „… in die Referenzposition bringen“ ist fehlerhaft; die `.resx` führt „… in die Referenzposition zu bringen“ (Quellfehler OP-35, Korrektur ohne inhaltliche Änderung).
 
