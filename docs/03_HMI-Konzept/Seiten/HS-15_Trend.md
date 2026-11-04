@@ -5,7 +5,7 @@
 Die Seite stellt die letzten gewogenen Gewichte grafisch als Kurve dar, damit Schwankungen besser erkannt werden (Handbuch, wortgetreu: „Auf dieser Seite werden die letzten 20 gewogenen Gewichte grafisch dargestellt. Dadurch können Schwankungen besser erkannt werden.“). Reine Anzeigeseite ohne Eingabe. Der Titel „Trend KW“ des Handbuchbilds wird nicht übernommen, die Seite heißt „Trend“ (OP-33).
 
 ## Aufbau (Bereiche, Layout)
-Rahmen wie in Designsystem Abschnitt 3.2. Der **Inhaltsbereich** (Außenrand `Size.Content.Margin`) enthält ein einziges Element (HM-05 wird nicht verwendet; die Kennzahlen im Rahmen gehören zum Rahmen), das Liniendiagramm über alle 12 Spalten und die volle Höhe (Zeile 1\*, Kontrollwert ca. 768 px × 1728 px bei 1920 × 1080: 816 px Inhaltsbereich abzüglich 2 × `Size.Content.Margin` = 768 px Höhe; Breite 1776 px abzüglich 48 px = 1728 px). Die Diagrammfläche liegt auf `Brush.Surface` mit Kontur `Border.Thin` `Brush.Border.Control` und `Radius.Card`; Innenabstand `Space.M`, damit Achsenbeschriftung und Datenbeschriftung am Rand nicht angeschnitten werden (Referenz: oberste Beschriftung „236,4g“ angeschnitten, OP-44). Die Funktionsleiste hat keine seitenspezifischen Tasten (leer, sichtbar).
+Rahmen wie in Designsystem Abschnitt 3.2. Der **Inhaltsbereich** (Außenrand `Size.Content.Margin`) enthält ein einziges Element (die Rahmenkennzahlen Geschwindigkeit und Maschinenwinkel in der Brotkrümelzeile bleiben als HM-05 sichtbar), das Liniendiagramm über alle 12 Spalten und die volle Höhe (Zeile 1\*, Kontrollwert ca. 768 px × 1728 px bei 1920 × 1080: 816 px Inhaltsbereich abzüglich 2 × `Size.Content.Margin` = 768 px Höhe; Breite 1776 px abzüglich 48 px = 1728 px). Die Diagrammfläche liegt auf `Brush.Surface` mit Kontur `Border.Thin` `Brush.Border.Control` und `Radius.Card`; Innenabstand `Space.M`, damit Achsenbeschriftung und Datenbeschriftung am Rand nicht angeschnitten werden (Referenz: oberste Beschriftung „236,4g“ angeschnitten, OP-44). Die Funktionsleiste hat keine seitenspezifischen Tasten (leer, sichtbar).
 
 ```
 Inhaltsbereich (12 Spalten, 1 Zeile)
@@ -44,6 +44,7 @@ Das Handbuch enthält für diese Seite keine Tabelle (0 Tabellenzeilen); Rückve
 - [HM-02](../Module/HM-02_Kopfzeile.md) – Kopfzeile (Rahmen)
 - [HM-03](../Module/HM-03_Meldezeile.md) – Meldezeile (Rahmen)
 - [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) – Brotkrümel-Navigation (Rahmen)
+- [HM-05](../Module/HM-05_Kennzahl-Kachel.md) – Kennzahl-Kachel (Rahmen: Geschwindigkeit und Maschinenwinkel in der Brotkrümelzeile)
 - [HM-06](../Module/HM-06_Funktionsleiste.md) – Funktionsleiste unten (leer)
 - [HM-26](../Module/HM-26_Diagramm.md) – Diagramm, Variante Linie (Trend)
 
@@ -79,6 +80,7 @@ Die Punkte HS-15-P01 bis P08 sind die Entsprechung der Prüfpunkte RS-15-P01 bis
 | HS-15-P12 | Zugänglichkeit | Diagramm hat `AutomationProperties.Name` und eine Wertetabelle als Alternative; Werte sind nicht nur grafisch lesbar | offen |
 | HS-15-P13 | Schriftgröße | Achsen- und Datenbeschriftung mindestens `Font.Size.Caption` (20); Zahlen mit tabellarischen Ziffern | offen |
 | HS-15-P14 | Tokens und Texte | keine Hex-, Pixel- oder Literalwerte; Einheit, „aktuell“, „Keine Daten“ aus `.resx` | offen |
+| HS-15-P16 | Rahmenkennzahlen (HM-05) | Brotkrümelzeile zeigt Geschwindigkeit (1/min) und Maschinenwinkel (°) als HM-05 mit Symbol und Einheit; Geschwindigkeit öffnet HS-03, Winkel ist nur Anzeige | offen |
 | HS-15-P15 | Raster bei 1920 × 1080 | Diagramm füllt den Inhaltsbereich (12 Spalten, volle Höhe) ohne Scrollen; Außenrand `Size.Content.Margin` | offen |
 
 ## Offene Punkte
