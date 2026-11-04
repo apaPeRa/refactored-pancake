@@ -1,0 +1,76 @@
+# HM-14 – Pop-up-Rahmen
+
+## Funktion
+Modaler Rahmen über der Seite für alle Pop-ups (Produktionszähler, Maschinengeschwindigkeit, [Eingabe-Pop-up](HM-13_Eingabe-Pop-up.md), [Zeitplan-Eintrag](HM-30_Zeitplan-Eintrag-Pop-up.md), Bestätigungen). Titelzeile 64 px mit Schließen-Kreuz oben rechts (64 px), freier Inhalt, optionale Taste „Schließen“ unten rechts. Dahinter liegt der Scrim; der Hintergrund ist gesperrt (Annahme der Referenz). Maximale Breite 60 %, kein Schatten.
+
+## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
+Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
+
+| Name (Eigenschaft) | C#-Typ | Einheit | Wertebereich |
+|---|---|---|---|
+| Titel (`Title`) | string | – | z. B. „Produktionszähler“, „Maschinengeschwindigkeit“ |
+| Inhalt (`Content`) | object | – | frei |
+| Breitenanteil (`WidthRatio`) | double | – | 0,3 bis 0,6, Standard 0,6 |
+| Modal (`IsModal`) | bool | – | Standard true |
+| Schließen-Taste zeigen (`ShowCloseButton`) | bool | – | Standard true |
+| Schließen (`CloseCommand`) | ICommand | – | – |
+| Ergebnis (`DialogResult`) | bool? | – | true = übernommen |
+
+## Zustände und Darstellung
+Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
+
+| Zustand | Darstellung (Tokens) | Zweiter Kanal |
+|---|---|---|
+| Offen | `Brush.Surface`, Kontur `Border.Medium` `Brush.Border.Control`, `Radius.Card`, Scrim `Brush.Scrim`, Titel `Font.Size.Title` | Titelzeile mit Schließen-Kreuz, Rahmen |
+| Schließen gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
+| Geschlossen | nicht sichtbar | Scrim verschwindet |
+| Fokus | Fokus bleibt im Pop-up | Fokusrahmen `Border.Thick` `Brush.Border.Focus` |
+| Bestätigungsvariante | Titel mit `Icon.Status.Warning` | Symbol und Text (z. B. Steuerung neu starten) |
+
+## Verwendet auf Seiten (IDs)
+- [HS-01](../Seiten/HS-01_Produktion.md) – Produktion
+- [HS-02](../Seiten/HS-02_Produktionszaehler.md) – Produktionszähler (Pop-up)
+- [HS-03](../Seiten/HS-03_Maschinengeschwindigkeit.md) – Maschinengeschwindigkeit (Pop-up)
+- [HS-05](../Seiten/HS-05_Zufuehrung-Papier.md) – Zuführung Papier
+- [HS-06](../Seiten/HS-06_Zufuehrung-Karton.md) – Zuführung Karton
+- [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
+- [HS-08](../Seiten/HS-08_Heissleim-Parameter.md) – Heißleim Parameter
+- [HS-09](../Seiten/HS-09_Heissleim-Druck.md) – Heißleim Druck
+- [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr
+- [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
+- [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer)
+- [HS-13](../Seiten/HS-13_Kontrollwaage.md) – Kontrollwaage
+- [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine
+- [HS-17](../Seiten/HS-17_Motorparameter-Schliessmaschine.md) – Motorparameter (Schließmaschine)
+- [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine)
+- [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
+- [HS-20](../Seiten/HS-20_Motorparameter.md) – Motorparameter (Nachdosierer)
+- [HS-21](../Seiten/HS-21_Gewichtskorrektur.md) – Gewichtskorrektur (Nachdosierer)
+- [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
+- [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
+- [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
+- [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
+
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+
+## Herkunft
+- [RM-13](../../02_Referenz-Analyse/Module/RM-13_Pop-up-Rahmen.md) – Pop-up-Rahmen: Fenster mit Titelleiste, Schließen-Kreuz und Taste „Schließen“ (Produktionszähler, Maschinengeschwindigkeit)
+- Design: keine Entsprechung (Element nur in der Referenz).
+
+## WPF-Umsetzung
+- **Control:** `HM14_PopupFrame` (UserControl / `ControlTemplate`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Typ:** `UserControl` mit `ContentPresenter`; gehostet in einer Overlay-Schicht des Hauptfensters (`HM14_PopupHost`), geöffnet über `IDialogService`.
+- **Dependency Properties:** `Title`, `Content`, `WidthRatio`, `IsModal`, `ShowCloseButton`; **Command:** `CloseCommand`; `Esc`/Schließen-Kreuz schließt.
+- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Close` (Designsystem).
+- **Namensschema:** Controls heißen nach der HM-ID (A-56).
+- **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
+
+## Prüfpunkte
+| ID | Prüfung | erwartetes Ergebnis | Status |
+|---|---|---|---|
+| HM-14-P01 | Aufbau | Titelzeile, Schließen-Kreuz oben rechts, Inhalt, Taste „Schließen“ unten rechts | offen |
+| HM-14-P02 | Modal | Scrim dahinter, Seite nicht bedienbar | offen |
+| HM-14-P03 | Breite | höchstens 60 % der Fensterbreite | offen |
+| HM-14-P04 | Touch | Schließen-Kreuz und -Taste ≥ 64 px | offen |
+| HM-14-P05 | Kein Schatten | Tiefe nur über Scrim und Kontur | offen |
+| HM-14-P06 | Dokumentierte Pop-ups | HS-02 und HS-03 nutzen den Rahmen | offen |
