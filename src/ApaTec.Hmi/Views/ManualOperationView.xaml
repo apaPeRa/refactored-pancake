@@ -1,0 +1,119 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ManualOperationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:views="clr-namespace:ApaTec.Hmi.Views"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:models="clr-namespace:ApaTec.Hmi.Models"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ManualOperationViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-31 Handbetrieb: 12-Spalten-Raster, Zeilen: Titel, Bewegung und Status, Positionierung (nur Servo), Vorgabewerte, Hinweise, Blaettern und Meldung. -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- E06 Aktor-Ueberschrift -->
+        <controls:HM17_TitleBar Grid.Row="0" Grid.ColumnSpan="12" Margin="{StaticResource Inset.S}" Title="{Binding ActorTitle}" />
+
+        <!-- E07 Jog- -->
+        <controls:HM07_ActionButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="{StaticResource Inset.S}"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="{StaticResource Size.Touch.Large}"
+                                    Label="{Binding JogMinusLabel}" Icon="{StaticResource Icon.Jog.Minus}"
+                                    TriggerMode="WhilePressed" RequiresPermission="True"
+                                    IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanMove}" IsRunning="{Binding IsJogMinusRunning}"
+                                    views:ManualOperationPressBehavior.PressCommand="{Binding BeginJogMinusCommand}"
+                                    views:ManualOperationPressBehavior.ReleaseCommand="{Binding EndJogMinusCommand}" />
+        <!-- E09/E10 Freigabe und Endlage links -->
+        <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
+            <controls:HM09_StatusLed Label="{res:Loc HS31_Release_Label}" State="{Binding ReleaseMinusState}" StateText="{Binding ReleaseMinusText}" />
+            <controls:HM09_StatusLed Label="{res:Loc HS31_EndStop_Label}" State="{Binding EndStopMinusState}" StateText="{Binding EndStopMinusText}" />
+        </StackPanel>
+        <!-- E13 Position -->
+        <controls:HM11_ValueDisplay Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                                    Label="{res:Loc HS31_Position_Label}" ValueKind="Number" NumberValue="{Binding Position}"
+                                    Unit="{res:Loc HS31_Position_Unit}" Decimals="2" Presentation="Field" Emphasis="Large" />
+        <!-- E11/E12 Freigabe und Endlage rechts -->
+        <StackPanel Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
+            <controls:HM09_StatusLed Label="{res:Loc HS31_Release_Label}" State="{Binding ReleasePlusState}" StateText="{Binding ReleasePlusText}" />
+            <controls:HM09_StatusLed Label="{res:Loc HS31_EndStop_Label}" State="{Binding EndStopPlusState}" StateText="{Binding EndStopPlusText}" />
+        </StackPanel>
+        <!-- E08 Jog+ -->
+        <controls:HM07_ActionButton Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2" Margin="{StaticResource Inset.S}"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="{StaticResource Size.Touch.Large}"
+                                    Label="{Binding JogPlusLabel}" Icon="{StaticResource Icon.Jog.Plus}"
+                                    TriggerMode="WhilePressed" RequiresPermission="True"
+                                    IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanMove}" IsRunning="{Binding IsJogPlusRunning}"
+                                    views:ManualOperationPressBehavior.PressCommand="{Binding BeginJogPlusCommand}"
+                                    views:ManualOperationPressBehavior.ReleaseCommand="{Binding EndJogPlusCommand}" />
+
+        <!-- E14 bis E17 Positionierung: nur Servoantriebe im Positioniermodus, sonst faellt die Zeile weg -->
+        <Grid Grid.Row="2" Grid.ColumnSpan="12">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ShowPositioning}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" /><ColumnDefinition Width="4*" /><ColumnDefinition Width="4*" /><ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <controls:HM07_ActionButton Grid.Column="0" Margin="{StaticResource Inset.S}" Label="{res:Loc HS31_PositionBack_Label}"
+                                        Command="{Binding PositionBackCommand}" />
+            <controls:HM09_StatusLed Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                                     Label="{res:Loc HS31_ReleaseAtPosition_Label}" State="{Binding ReleaseAtPositionState}" StateText="{Binding ReleaseAtPositionText}" />
+            <controls:HM11_ValueDisplay Grid.Column="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                                        Label="{res:Loc HS31_PositionNumber_Label}" ValueKind="Number" NumberValue="{Binding PositionNumber}" Decimals="0" Presentation="Field" />
+            <controls:HM07_ActionButton Grid.Column="3" Margin="{StaticResource Inset.S}" Label="{res:Loc HS31_PositionForward_Label}"
+                                        Command="{Binding PositionForwardCommand}" />
+        </Grid>
+
+        <!-- E18 bis E20 Vorgabewerte (je 4 Spalten) -->
+        <controls:HM12_ValueInput Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}"
+                                  Label="{res:Loc HS31_Acceleration_Label}" NumberValue="{Binding Acceleration}" Unit="{res:Loc HS31_Percent_Unit}"
+                                  Decimals="0" Minimum="0" Maximum="100" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                  RequiredRole="{Binding RequiredRoleText}" Command="{Binding EditParameterCommand}"
+                                  CommandParameter="{x:Static models:ManualParameter.Acceleration}" />
+        <controls:HM12_ValueInput Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}"
+                                  Label="{res:Loc HS31_Speed_Label}" NumberValue="{Binding Speed}" Unit="{res:Loc HS31_Percent_Unit}"
+                                  Decimals="0" Minimum="0" Maximum="100" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                  RequiredRole="{Binding RequiredRoleText}" Command="{Binding EditParameterCommand}"
+                                  CommandParameter="{x:Static models:ManualParameter.Speed}" />
+        <controls:HM12_ValueInput Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}"
+                                  Label="{res:Loc HS31_Deceleration_Label}" NumberValue="{Binding Deceleration}" Unit="{res:Loc HS31_Percent_Unit}"
+                                  Decimals="0" Minimum="0" Maximum="100" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                  RequiredRole="{Binding RequiredRoleText}" Command="{Binding EditParameterCommand}"
+                                  CommandParameter="{x:Static models:ManualParameter.Deceleration}" />
+
+        <!-- E21 Hinweiszeile; darunter Grund, wenn die Bewegungstasten gesperrt sind (A-28, dauerhaft sichtbar statt nur per Antippen) -->
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="12" Margin="{StaticResource Inset.S}" Style="{StaticResource Text.Caption}"
+                   Foreground="{DynamicResource Brush.Text.Secondary}" Text="{res:Loc HS31_ValueHint_Text}" />
+        <controls:HM27_NoticeBox Grid.Row="5" Grid.ColumnSpan="12" Margin="{StaticResource Inset.S}" Kind="Info"
+                                 Text="{res:Loc HS31_NotManual_Text}" IsShown="{Binding ShowManualModeNotice}" />
+
+        <!-- E22 Blaettertasten (Paar mit n von m) und E23 Meldung -->
+        <controls:HM19_PagerButtons Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                                    Placement="Inline" Count="{Binding ActorCount}" CurrentIndex="{Binding ActorIndex}"
+                                    PreviousCommand="{Binding PreviousActorCommand}" NextCommand="{Binding NextActorCommand}" />
+        <controls:HM27_NoticeBox Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="8" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                                 Kind="{Binding MessageKind}" Caption="{res:Loc HS31_Message_Caption}" Text="{Binding MessageText}" />
+    </Grid>
+</UserControl>

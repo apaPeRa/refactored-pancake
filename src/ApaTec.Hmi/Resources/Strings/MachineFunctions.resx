@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- MachineFunctions.resx: Texte der Seiten HS-22 Heizungen, HS-23 Regulierung, HS-24 Bildschirm reinigen, HS-25 Nocken, HS-26 Nockenübersicht. Schlüssel HS22_ bis HS26_<Element>_<Eigenschaft>; Neutralsprache Deutsch. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS22_Warning_Caption" xml:space="preserve"><value>Hinweis:</value></data>
+<data name="HS22_Warning_Text" xml:space="preserve"><value>Heizungen bleiben nach dem Abschalten noch eine Zeit lang heiß. Achtung: Verbrennungsgefahr!</value></data>
+<data name="HS22_Info_Text" xml:space="preserve"><value>Die Aktivierung der Heizungen erfolgt über die Seite Produktion.</value></data>
+<data name="HS22_Header_Heating" xml:space="preserve"><value>Heizung</value></data>
+<data name="HS22_Header_Monitor" xml:space="preserve"><value>Meldung</value></data>
+<data name="HS22_Header_Setpoint" xml:space="preserve"><value>Soll</value></data>
+<data name="HS22_Header_Actual" xml:space="preserve"><value>Ist</value></data>
+<data name="HS22_Header_State" xml:space="preserve"><value>State</value></data>
+<data name="HS22_Header_Out" xml:space="preserve"><value>Out</value></data>
+<data name="HS22_ScrollUp_Name" xml:space="preserve"><value>Liste nach oben</value></data>
+<data name="HS22_ScrollDown_Name" xml:space="preserve"><value>Liste nach unten</value></data>
+<data name="HS22_Setpoint_Title" xml:space="preserve"><value>{0}: Soll</value></data>
+<data name="HS22_Unit_Celsius" xml:space="preserve"><value>°C</value></data>
+<data name="HS22_Setpoint_Range" xml:space="preserve"><value>Wert außerhalb {0} bis {1} °C</value></data>
+<data name="HS23_Main_Title" xml:space="preserve"><value>Hauptdosierer</value></data>
+<data name="HS23_Post_Title" xml:space="preserve"><value>Nachdosierer</value></data>
+<data name="HS23_Input_Title" xml:space="preserve"><value>{0} – {1}</value></data>
+<data name="HS23_Input_Range" xml:space="preserve"><value>Wert außerhalb {0} bis {1}</value></data>
+<data name="HS23_Unit_Pieces" xml:space="preserve"><value>Stk</value></data>
+<data name="HS23_Unit_Percent" xml:space="preserve"><value>%</value></data>
+<data name="HS23_Unit_Gram" xml:space="preserve"><value>g</value></data>
+<data name="HS24_Info_Text" xml:space="preserve"><value>Eingaben sind gesperrt. Die Seite schließt sich nach Ablauf automatisch.</value></data>
+<data name="HS25_Bar_Previous" xml:space="preserve"><value>«</value></data>
+<data name="HS25_Bar_Next" xml:space="preserve"><value>»</value></data>
+<data name="HS25_Bar_Overview" xml:space="preserve"><value>Übersicht</value></data>
+<data name="HS25_Position_Text" xml:space="preserve"><value>{0} von {1}</value></data>
+<data name="HS25_Number_Label" xml:space="preserve"><value>Nummer:</value></data>
+<data name="HS25_Start_Label" xml:space="preserve"><value>Anfang:</value></data>
+<data name="HS25_End_Label" xml:space="preserve"><value>Ende:</value></data>
+<data name="HS25_Position_Label" xml:space="preserve"><value>Position:</value></data>
+<data name="HS25_Status_Label" xml:space="preserve"><value>Status:</value></data>
+<data name="HS25_Status_Inside" xml:space="preserve"><value>Innerhalb</value></data>
+<data name="HS25_Status_Outside" xml:space="preserve"><value>Außerhalb</value></data>
+<data name="HS25_Type_Label" xml:space="preserve"><value>Typ:</value></data>
+<data name="HS25_TypeRange_Text" xml:space="preserve"><value>0 - 1079</value></data>
+<data name="HS25_Encoder_Label" xml:space="preserve"><value>Geber:</value></data>
+<data name="HS25_Designation_Label" xml:space="preserve"><value>Bezeichnung:</value></data>
+<data name="HS25_Write_Label" xml:space="preserve"><value>Werte schreiben</value></data>
+<data name="HS25_Write_Failed" xml:space="preserve"><value>Werte konnten nicht geschrieben werden.</value></data>
+<data name="HS25_Number_Title" xml:space="preserve"><value>Nockennummer</value></data>
+<data name="HS25_Number_Unknown" xml:space="preserve"><value>Nocke nicht vorhanden (Nummern {0} bis {1})</value></data>
+<data name="HS25_Start_Angle_Title" xml:space="preserve"><value>Anfang: Winkel</value></data>
+<data name="HS25_Start_Time_Title" xml:space="preserve"><value>Anfang: Zeit</value></data>
+<data name="HS25_End_Angle_Title" xml:space="preserve"><value>Ende: Winkel</value></data>
+<data name="HS25_End_Time_Title" xml:space="preserve"><value>Ende: Zeit</value></data>
+<data name="HS25_Type_Title" xml:space="preserve"><value>Typ</value></data>
+<data name="HS25_Designation_Title" xml:space="preserve"><value>Bezeichnung</value></data>
+<data name="HS25_Unit_Degree" xml:space="preserve"><value>°</value></data>
+<data name="HS25_Unit_Ms" xml:space="preserve"><value>ms</value></data>
+<data name="HS25_Input_Range" xml:space="preserve"><value>Wert außerhalb {0} bis {1}</value></data>
+<data name="HS25_Discard_Title" xml:space="preserve"><value>Änderungen verwerfen?</value></data>
+<data name="HS25_Discard_Message" xml:space="preserve"><value>Die Änderungen an dieser Nocke wurden nicht geschrieben und gehen verloren.</value></data>
+<data name="HS25_Discard_Accept" xml:space="preserve"><value>Verwerfen</value></data>
+<data name="HS26_Bar_Previous" xml:space="preserve"><value>«</value></data>
+<data name="HS26_Bar_Next" xml:space="preserve"><value>»</value></data>
+<data name="HS26_Position_Text" xml:space="preserve"><value>{0} von {1}</value></data>
+</root>

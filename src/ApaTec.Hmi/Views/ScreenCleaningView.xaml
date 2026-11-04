@@ -1,0 +1,38 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ScreenCleaningView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ScreenCleaningViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-24 Bildschirm reinigen: Vollbild, drei Stern-Zeilen 1 : 2 : 1, Fortschrittsbalken ueber 10 von 12 Spalten, Eingabesperre als oberste Schicht. -->
+    <Grid Background="{DynamicResource Brush.Window}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Margin="{StaticResource Inset.L}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource Text.Title}" HorizontalAlignment="Center" Margin="{StaticResource Inset.M}"
+                       Text="{Binding Title}" />
+            <c:HM10_ProgressBar Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.M}" Minimum="0" Maximum="100"
+                                Value="{Binding Progress, Mode=OneWay}" StringFormat="N0" />
+            <c:HM27_NoticeBox Grid.Row="2" Grid.Column="1" Margin="{StaticResource Inset.M}" Kind="Info" Text="{res:Loc HS24_Info_Text}" />
+        </Grid>
+        <!-- Eingabesperre: unsichtbare Deckschicht ueber der gesamten Seite, faengt alle Beruehrungen ab -->
+        <Border Grid.RowSpan="3" Background="Transparent" Focusable="False" IsHitTestVisible="True" />
+    </Grid>
+</UserControl>

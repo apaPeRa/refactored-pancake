@@ -1,0 +1,77 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ProductionCounterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ProductionCounterViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-02 Produktionszaehler (Pop-up) im Rahmen HM-14: Zaehlertabelle links (8 von 12), Summenfelder rechts (4 von 12), Reset links unten; Schliessen und Kreuz liefert der Rahmen. -->
+    <UserControl.Resources>
+        <DataTemplate x:Key="Counter.RowTemplate" DataType="{x:Type vm:ProductionCounterRow}">
+            <c:HM33_CounterRow Margin="{StaticResource Inset.XS}"
+                               MinHeight="{StaticResource Font.LineHeight.Value}"
+                               RowName="{Binding Name}"
+                               Count="{Binding Count}"
+                               ResetTime="{Binding ResetTime}"
+                               IsCurrent="{Binding IsCurrent}" />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <c:HM14_PopupFrame Title="{Binding Title}"
+                       WidthRatio="{StaticResource Size.Popup.WidthRatio}"
+                       ShowCloseButton="True"
+                       CloseCommand="{Binding CancelCommand}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="1" Width="{StaticResource Space.M}" />
+
+                <!-- Zaehlertabelle: Spaltenkopf "Datum / Uhrzeit" ueber der rechten Spalte, darunter 13 Zeilen (Aktuell, Historie 1 bis 12) -->
+                <StackPanel Grid.Column="0" AutomationProperties.Name="{res:Loc ProductionCounter_Table_Automation}">
+                    <Grid Margin="{StaticResource Inset.S}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="4*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" Style="{StaticResource Text.Caption}" Text="{res:Loc HM33_Header_DateTime}" />
+                    </Grid>
+                    <ItemsControl Focusable="False" ItemsSource="{Binding Counters}" ItemTemplate="{StaticResource Counter.RowTemplate}" />
+                </StackPanel>
+
+                <!-- Summenfelder: nur Anzeige -->
+                <StackPanel Grid.Column="2">
+                    <c:HM05_MetricTile Margin="{StaticResource Inset.S}"
+                                       Label="{res:Loc ProductionCounter_Total_Label}"
+                                       Unit="{res:Loc HM33_Count_Unit}"
+                                       Value="{Binding TotalProduction}" />
+                    <c:HM05_MetricTile Margin="{StaticResource Inset.S}"
+                                       Label="{res:Loc ProductionCounter_Hours_Label}"
+                                       TimeValue="{Binding OperatingTime}" />
+                </StackPanel>
+            </Grid>
+
+            <!-- Reset: Haltetaste (Haltedauer Dummy, OP-42); ohne Schluessel (S02-2) -->
+            <c:HM07_ActionButton Grid.Row="1" HorizontalAlignment="Left" Margin="{StaticResource Inset.S}"
+                                 Icon="{StaticResource Icon.Action.Reset}"
+                                 Label="{res:Loc ProductionCounter_Reset_Label}"
+                                 AutomationProperties.Name="{res:Loc ProductionCounter_Reset_Automation}"
+                                 TriggerMode="Hold"
+                                 HoldDuration="{Binding ResetHoldDuration}"
+                                 IsHolding="{Binding IsResetHolding}"
+                                 HoldProgress="{Binding ResetHoldProgress}"
+                                 Command="{Binding ResetCommand}" />
+        </Grid>
+    </c:HM14_PopupFrame>
+</UserControl>

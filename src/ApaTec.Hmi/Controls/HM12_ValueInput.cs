@@ -214,7 +214,7 @@ public sealed class HM12_ValueTextConverter : IMultiValueConverter
         return kind switch
         {
             InputKind.Number => values[1] is double number ? number.ToString("N" + decimals, culture) : Invalid,
-            InputKind.Time => values[1] is double minutes ? TimeSpan.FromMinutes(minutes).ToString(@"hh\:mm", culture) : Invalid,
+            InputKind.Time => values[1] is double minutes ? TimeSpan.FromMinutes(minutes).ToString(@"hh\:mm", culture) : values[2] is string { Length: > 0 } timeText ? timeText : Invalid,
             InputKind.Text => values[2] is string { Length: > 0 } text ? text : Invalid,
             _ => Invalid,
         };

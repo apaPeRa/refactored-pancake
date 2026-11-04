@@ -1,0 +1,84 @@
+<UserControl x:Class="ApaTec.Hmi.Views.HotGlueParametersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:HotGlueParametersViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Views/HotGlueStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- HS-08 Heissleim Parameter: zwei Panels 4 : 8 (globale Einstellungen | Temperaturzonen); Funktionsleiste leer. -->
+    <Grid IsEnabled="{Binding IsOnline}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="8*" />
+        </Grid.ColumnDefinitions>
+
+        <c:HM15_GroupPanel Grid.Column="0" Header="{res:Loc HS08_Global_Heading}">
+            <StackPanel>
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding StandbyDelta}"
+                                   Label="{res:Loc HS08_StandbyDelta_Label}" Unit="{res:Loc HotGlue_Unit_Celsius}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS08_StandbyDelta_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding ReadyDelay}"
+                                   Label="{res:Loc HS08_ReadyDelay_Label}" Unit="{res:Loc HotGlue_Unit_Second}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS08_ReadyDelay_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding OverTemperatureDelta}"
+                                   Label="{res:Loc HS08_OverDelta_Label}" Unit="{res:Loc HotGlue_Unit_Celsius}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS08_OverDelta_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding UnderTemperatureDelta}"
+                                   Label="{res:Loc HS08_UnderDelta_Label}" Unit="{res:Loc HotGlue_Unit_Celsius}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS08_UnderDelta_Caption}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+
+        <Border Grid.Column="1" Style="{StaticResource HotGlue.Gutter}" />
+
+        <c:HM15_GroupPanel Grid.Column="2" Header="{res:Loc HS08_Zones_Heading}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!-- Spaltenkoepfe im Spaltenraster von HM-28 (Name 4, Soll 3, Ist 3, Status 4) -->
+                <Grid Grid.Row="0" Margin="{StaticResource Inset.S}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" Text="{res:Loc HS08_Col_Setpoint}" />
+                    <TextBlock Grid.Column="2" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" Text="{res:Loc HS08_Col_Actual}" />
+                    <TextBlock Grid.Column="3" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" Text="{res:Loc HS08_Col_Status}" />
+                </Grid>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" PanningMode="VerticalOnly">
+                    <ItemsControl ItemsSource="{Binding Zones}" Focusable="False">
+                        <ItemsControl.Resources>
+                            <!-- HM-28 reicht dem Soll-Feld (HM-12) keinen Befehl durch: Befehl und Berechtigung kommen hier aus dem Zonen-ViewModel (Luecke HM-28). -->
+                            <Style TargetType="c:HM12_ValueInput" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
+                                <Setter Property="Command" Value="{Binding EditSetpointCommand}" />
+                                <Setter Property="IsAuthorized" Value="{Binding IsAuthorized}" />
+                            </Style>
+                        </ItemsControl.Resources>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <c:HM28_HeatZoneRow Margin="{StaticResource Inset.XS}" RowKind="Glue" ZoneName="{Binding Name}"
+                                                    Setpoint="{Binding Setpoint, Mode=TwoWay}" Actual="{Binding Actual}"
+                                                    IsZoneEnabled="{Binding IsZoneEnabled, Mode=TwoWay}" StateLed="{Binding StateLed}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>

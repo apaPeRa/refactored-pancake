@@ -1,0 +1,67 @@
+<UserControl x:Class="ApaTec.Hmi.Views.EncoderSettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:views="clr-namespace:ApaTec.Hmi.Views"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:models="clr-namespace:ApaTec.Hmi.Models"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:EncoderSettingViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-32 Geber setzen: Titel, Werte links (Spalten 1-7) und Taste Geber setzen rechts (9-12), Statustext, Warnhinweis, Blaettern und Meldung. -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- E06 Achs-Ueberschrift -->
+        <controls:HM17_TitleBar Grid.Row="0" Grid.ColumnSpan="12" Margin="{StaticResource Inset.S}" Title="{Binding EncoderTitle}" />
+
+        <!-- E07 bis E10 Werte -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
+            <controls:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Label="{res:Loc HS32_MotorPosition_Label}" ValueKind="Number"
+                                        NumberValue="{Binding MotorPosition}" Decimals="3" Presentation="Row" />
+            <controls:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Label="{res:Loc HS32_EncoderPosition_Label}" ValueKind="Number"
+                                        NumberValue="{Binding EncoderPosition}" Decimals="3" Presentation="Row" />
+            <controls:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Label="{res:Loc HS32_PositionOffset_Label}" ValueKind="Number"
+                                        NumberValue="{Binding PositionOffset}" Decimals="3" Presentation="Row" />
+            <controls:HM09_StatusLed Margin="{StaticResource Inset.S}" Label="{res:Loc HS32_Initialized_Label}"
+                                     State="{Binding InitializedState}" StateText="{Binding InitializedText}" />
+        </StackPanel>
+
+        <!-- E11 Geber setzen: langes Druecken (Fortschrittsstreifen, Text Halten) -->
+        <controls:HM07_ActionButton Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="{StaticResource Size.Touch.Large}"
+                                    Label="{res:Loc HS32_SetEncoder_Label}" TriggerMode="Hold" HoldDuration="{Binding HoldDuration}"
+                                    RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanSet}"
+                                    IsHolding="{Binding IsHolding}" HoldProgress="{Binding HoldProgress}"
+                                    views:ManualOperationPressBehavior.PressCommand="{Binding BeginSetCommand}"
+                                    views:ManualOperationPressBehavior.ReleaseCommand="{Binding EndSetCommand}" />
+
+        <!-- E12 Statustext der Steuerung -->
+        <controls:HM27_NoticeBox Grid.Row="2" Grid.ColumnSpan="7" Margin="{StaticResource Inset.S}" Kind="Info"
+                                 Text="{Binding StatusText}" IsShown="{Binding ShowStatusText}" />
+
+        <!-- E13 Warnhinweis Not-Aus, dauerhaft sichtbar -->
+        <controls:HM27_NoticeBox Grid.Row="3" Grid.ColumnSpan="12" Margin="{StaticResource Inset.S}" Kind="Warning"
+                                 Text="{res:Loc HS32_Warning_Text}" />
+
+        <!-- E15 Blaettertasten und E14 Meldung -->
+        <controls:HM19_PagerButtons Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                                    Placement="Inline" Count="{Binding EncoderCount}" CurrentIndex="{Binding EncoderIndex}"
+                                    PreviousCommand="{Binding PreviousEncoderCommand}" NextCommand="{Binding NextEncoderCommand}" />
+        <controls:HM27_NoticeBox Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="8" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                                 Kind="{Binding MessageKind}" Caption="{res:Loc HS32_Message_Caption}" Text="{Binding MessageText}" />
+    </Grid>
+</UserControl>

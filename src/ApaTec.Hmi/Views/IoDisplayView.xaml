@@ -1,0 +1,56 @@
+<UserControl x:Class="ApaTec.Hmi.Views.IoDisplayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:views="clr-namespace:ApaTec.Hmi.Views"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:models="clr-namespace:ApaTec.Hmi.Models"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:IoDisplayViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-34 EA-Anzeige: Karten-Ueberschrift und Signalliste (HM-36); Blaettertasten in der Funktionsleiste, Positionsangabe n von m in der Titelzeile. -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- E06 Karten-Ueberschrift mit Positionsangabe -->
+        <controls:HM17_TitleBar Grid.Row="0" Grid.ColumnSpan="2" Margin="{StaticResource Inset.S}" Title="{Binding CardTitle}" Values="{Binding PositionValues}" />
+
+        <!-- E07/E08 Signalzeilen, Abstand Space.S -->
+        <ItemsControl Grid.Row="1" Grid.Column="0" Focusable="False" ItemsSource="{Binding VisibleRows}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:IoRowViewModel}">
+                    <controls:HM36_IoRow Margin="{StaticResource Inset.XS}"
+                                         Identifier="{Binding Identifier}" Description="{Binding Description}" IoKind="{Binding Kind}"
+                                         State="{Binding State}" AnalogValue="{Binding AnalogValue}" IsReserve="{Binding IsReserve}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Scrolltasten, nur bei mehr Zeilen als sichtbar -->
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="{StaticResource Inset.S}">
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding CanScroll}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+            <controls:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc HS34_ScrollUp_Label}"
+                                        Icon="{StaticResource Icon.Scroll.Up}" Command="{Binding ScrollUpCommand}" />
+            <controls:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc HS34_ScrollDown_Label}"
+                                        Icon="{StaticResource Icon.Scroll.Down}" Command="{Binding ScrollDownCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

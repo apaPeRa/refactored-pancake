@@ -1,0 +1,21 @@
+<UserControl x:Class="ApaTec.Hmi.Views.CamOverviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:CamOverviewViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-26 Nockenuebersicht: Tabelle ueber alle 12 Spalten (HM-23, 11 Zeilen je Seite), Positionsanzeige "n von m" darunter. Blaettertasten in der Funktionsleiste. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <c:HM23_CamTable Grid.Row="0" Rows="{Binding Rows}"
+                         SelectedNumber="{Binding SelectedNumber, Mode=TwoWay}" SelectCommand="{Binding SelectCamCommand}" />
+        <TextBlock Grid.Row="1" Style="{StaticResource Text.Caption}" HorizontalAlignment="Right" Margin="{StaticResource Inset.S}"
+                   Text="{Binding PositionText}" />
+    </Grid>
+</UserControl>

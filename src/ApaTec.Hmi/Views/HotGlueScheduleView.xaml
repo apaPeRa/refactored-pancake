@@ -1,0 +1,28 @@
+<UserControl x:Class="ApaTec.Hmi.Views.HotGlueScheduleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:HotGlueScheduleViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Views/HotGlueStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- HS-10 Zeitschaltuhr: Hinweiszeile oben, darunter Wochenraster mit sieben gleich breiten Tagesspalten (HM-29); Funktionsleiste leer. -->
+    <Grid IsEnabled="{Binding IsOnline}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <c:HM27_NoticeBox Grid.Row="0" Margin="{StaticResource Inset.S}" Kind="Info" Text="{res:Loc HS10_Notice_Text}" />
+        <c:HM29_WeekSchedule Grid.Row="1" Entries="{Binding Entries}" IsAuthorized="{Binding IsAuthorized}"
+                             AddCommand="{Binding AddCommand}" EditCommand="{Binding EditEntryCommand}" />
+    </Grid>
+</UserControl>

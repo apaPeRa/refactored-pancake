@@ -43,6 +43,7 @@ public abstract partial class DosingPageViewModelBase : PageViewModelBase, IBrea
         Service = service;
         Navigation = navigation;
         Session = session;
+        Dialogs = dialogs;
         Localization = localization;
         Interaction = new DosingInteraction(service, session, dialogs, messages, localization);
         IsAuthorized = Interaction.IsAuthorized;
@@ -53,6 +54,8 @@ public abstract partial class DosingPageViewModelBase : PageViewModelBase, IBrea
     protected INavigationService? Navigation { get; }
 
     protected IUserSession? Session { get; }
+
+    protected IDialogService? Dialogs { get; }
 
     protected ILocalizationService Localization { get; }
 

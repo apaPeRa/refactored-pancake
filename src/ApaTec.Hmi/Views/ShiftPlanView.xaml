@@ -1,0 +1,26 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ShiftPlanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ShiftPlanViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-43 Schichtplan (Platzhalter, OP-02): Zeile 1 Hinweis Art Info ueber 12 Spalten, Zeile 2 leerer Gruppenbereich. Nichts erfunden. Funktionsleiste leer. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <c:HM27_NoticeBox Grid.Row="0" Kind="Info" Text="{res:Loc Nav_ShiftPlan_Notice}" />
+        <Border Grid.Row="1" Height="{StaticResource Space.M}" />
+        <c:HM15_GroupPanel Grid.Row="2" Header="{res:Loc Nav_ShiftPlan_Group}">
+            <TextBlock Style="{StaticResource Text.Body}"
+                       Foreground="{DynamicResource Brush.Text.Secondary}"
+                       Text="{res:Loc Nav_ShiftPlan_Empty}" />
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,28 @@
+<UserControl x:Class="ApaTec.Hmi.Views.HotGlueScheduleEntryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:HotGlueScheduleEntryViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Views/HotGlueStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- Pop-up Neuer Eintrag (Zeitschaltuhr, HS-10): HM-14 mit HM-30; Dialogschluessel ScheduleEntry. -->
+    <c:HM14_PopupFrame Title="{res:Loc HS10_Entry_Title}" CloseCommand="{Binding CancelCommand}">
+        <c:HM30_ScheduleEntryDialog IsNew="{Binding IsNew}" Kind="{Binding Kind, Mode=TwoWay}"
+                                    StartActive="{Binding StartActive, Mode=TwoWay}" EndActive="{Binding EndActive, Mode=TwoWay}"
+                                    StartTime="{Binding StartTime, Mode=TwoWay}" EndTime="{Binding EndTime, Mode=TwoWay}"
+                                    ChildCount="{Binding ChildCount}" ErrorText="{Binding ErrorText}"
+                                    ApplyCommand="{Binding AcceptCommand}" CancelCommand="{Binding CancelCommand}" DeleteCommand="{Binding DeleteCommand}"
+                                    PreviousKindCommand="{Binding PreviousKindCommand}" NextKindCommand="{Binding NextKindCommand}"
+                                    EditStartTimeCommand="{Binding EditStartTimeCommand}" EditEndTimeCommand="{Binding EditEndTimeCommand}" />
+    </c:HM14_PopupFrame>
+</UserControl>

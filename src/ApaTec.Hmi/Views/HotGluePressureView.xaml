@@ -1,0 +1,66 @@
+<UserControl x:Class="ApaTec.Hmi.Views.HotGluePressureView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:HotGluePressureViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Views/HotGlueStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- HS-09 Heissleim Druck: zwei Panels 6 : 6 (Druckregelung | Geraetelimits); Funktionsleiste leer. -->
+    <Grid IsEnabled="{Binding IsOnline}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <c:HM15_GroupPanel Grid.Column="0" Header="{res:Loc HS09_Control_Heading}">
+            <StackPanel>
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding UpperSpeed}"
+                                   Label="{res:Loc HS09_UpperSpeed_Label}" Unit="{res:Loc HotGlue_Unit_Rpm}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_UpperSpeed_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding LowerSpeed}"
+                                   Label="{res:Loc HS09_LowerSpeed_Label}" Unit="{res:Loc HotGlue_Unit_Rpm}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_LowerSpeed_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding UpperPressure}"
+                                   Label="{res:Loc HS09_UpperPressure_Label}" Unit="{res:Loc HotGlue_Unit_Bar}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_UpperPressure_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding LowerPressure}"
+                                   Label="{res:Loc HS09_LowerPressure_Label}" Unit="{res:Loc HotGlue_Unit_Bar}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_LowerPressure_Caption}" />
+                <!-- Aktueller Druck: nur Anzeige, ohne Schluessel -->
+                <c:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Label="{res:Loc HS09_Current_Label}" Unit="{res:Loc HotGlue_Unit_Bar}"
+                                     Decimals="1" NumberValue="{Binding CurrentPressure}" IsLimitViolated="{Binding IsPressureOutOfLimits}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_Current_Caption}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+
+        <Border Grid.Column="1" Style="{StaticResource HotGlue.Gutter}" />
+
+        <c:HM15_GroupPanel Grid.Column="2" Header="{res:Loc HS09_Limits_Heading}">
+            <StackPanel>
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding UpperLimit}"
+                                   Label="{res:Loc HS09_UpperLimit_Label}" Unit="{res:Loc HotGlue_Unit_Bar}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_UpperLimit_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding LowerLimit}"
+                                   Label="{res:Loc HS09_LowerLimit_Label}" Unit="{res:Loc HotGlue_Unit_Bar}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_LowerLimit_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding OverDelta}"
+                                   Label="{res:Loc HS09_OverDelta_Label}" Unit="{res:Loc HotGlue_Unit_Bar}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_OverDelta_Caption}" />
+                <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding UnderDelta}"
+                                   Label="{res:Loc HS09_UnderDelta_Label}" Unit="{res:Loc HotGlue_Unit_Bar}" />
+                <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS09_UnderDelta_Caption}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>
