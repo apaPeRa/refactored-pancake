@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Strings.resx: Rahmen- und Navigationstexte, Neutralsprache Deutsch (Agent.md 4, Designsystem.md 11).
+     Schluessel: <Bereich>_<Element>_<Eigenschaft>, englisch, PascalCase. Weitere Sprachen: Strings.<Kultur>.resx.
+     Seitenpakete ergaenzen Texte NICHT hier, sondern in einer eigenen Datei Resources/Strings/<Paket>.resx (wird automatisch gefunden,
+     siehe LocalizationService); Schluesselpraefixe dort sind eindeutig je Seite/Modul (z. B. HS07_..., HM08_...). -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Title" xml:space="preserve"><value>APA-TEC HMI</value><comment>Fenstertitel</comment></data>
+  <data name="Nav_Home_Label" xml:space="preserve"><value>Home</value><comment>Seitenleiste: Home (HS-01)</comment></data>
+  <data name="Nav_SettingsButton_Label" xml:space="preserve"><value>Einstellungen</value><comment>Seitenleiste: Einstellungen (HS-04)</comment></data>
+  <data name="Nav_MessagesButton_Label" xml:space="preserve"><value>Meldungen</value><comment>Seitenleiste: Meldungen (HS-38)</comment></data>
+  <data name="Nav_Back_Label" xml:space="preserve"><value>Zurück</value><comment>Seitenleiste: Zurück</comment></data>
+  <data name="Nav_User_Label" xml:space="preserve"><value>Benutzer</value><comment>Seitenleiste: Benutzerkreis</comment></data>
+  <data name="Frame_Sidebar_Placeholder" xml:space="preserve"><value>Seitenleiste (HM-01)</value><comment>Platzhalter Rahmenbereich</comment></data>
+  <data name="Frame_Header_Placeholder" xml:space="preserve"><value>Kopfzeile (HM-02, HM-03)</value><comment>Platzhalter Rahmenbereich</comment></data>
+  <data name="Frame_Breadcrumb_Placeholder" xml:space="preserve"><value>Brotkrümel (HM-04)</value><comment>Platzhalter Rahmenbereich</comment></data>
+  <data name="Frame_Speed_Placeholder" xml:space="preserve"><value>Geschwindigkeit (HM-05)</value><comment>Platzhalter Rahmenbereich</comment></data>
+  <data name="Frame_Angle_Placeholder" xml:space="preserve"><value>Maschinenwinkel (HM-05)</value><comment>Platzhalter Rahmenbereich</comment></data>
+  <data name="Frame_FunctionBar_Placeholder" xml:space="preserve"><value>Funktionsleiste (HM-06)</value><comment>Platzhalter Rahmenbereich</comment></data>
+  <data name="Placeholder_Page_Text" xml:space="preserve"><value>Diese Seite ist noch nicht umgesetzt.</value><comment>Platzhalter-Seite</comment></data>
+  <data name="Placeholder_Popup_Text" xml:space="preserve"><value>Dieses Pop-up ist noch nicht umgesetzt.</value><comment>Platzhalter-Pop-up</comment></data>
+  <data name="Popup_Close_Label" xml:space="preserve"><value>Schließen</value><comment>Pop-up: Schließen</comment></data>
+  <data name="Popup_Cancel_Label" xml:space="preserve"><value>Abbrechen</value><comment>Pop-up: Abbrechen</comment></data>
+  <data name="Popup_Accept_Label" xml:space="preserve"><value>Übernehmen</value><comment>Pop-up: Übernehmen</comment></data>
+  <data name="Status_Ok_Word" xml:space="preserve"><value>OK</value><comment>Statuswort</comment></data>
+  <data name="Status_Warning_Word" xml:space="preserve"><value>Warnung</value><comment>Statuswort</comment></data>
+  <data name="Status_Error_Word" xml:space="preserve"><value>Fehler</value><comment>Statuswort</comment></data>
+  <data name="Status_Info_Word" xml:space="preserve"><value>Info</value><comment>Statuswort</comment></data>
+  <data name="Status_Inactive_Word" xml:space="preserve"><value>Inaktiv</value><comment>Statuswort</comment></data>
+  <data name="State_On_Word" xml:space="preserve"><value>Ein</value><comment>Zustandswort</comment></data>
+  <data name="State_Off_Word" xml:space="preserve"><value>Aus</value><comment>Zustandswort</comment></data>
+  <data name="Msg_PermissionRequired" xml:space="preserve"><value>Berechtigung erforderlich: {0}</value><comment>Hinweis ohne Berechtigung</comment></data>
+  <data name="Msg_NoMessage" xml:space="preserve"><value>Keine Meldung</value><comment>Meldezeile ohne Meldung</comment></data>
+  <data name="Role_Operator" xml:space="preserve"><value>Bediener</value><comment>Rolle</comment></data>
+  <data name="Role_Technician" xml:space="preserve"><value>Technik</value><comment>Rolle</comment></data>
+  <data name="Role_Service" xml:space="preserve"><value>Service</value><comment>Rolle</comment></data>
+  <data name="Unit_RevPerMin" xml:space="preserve"><value>1/min</value><comment>Einheit</comment></data>
+  <data name="Unit_Degree" xml:space="preserve"><value>°</value><comment>Einheit</comment></data>
+  <!-- Seitentitel und Brotkruemel-Segmente (Navigation.md 5.1) -->
+  <data name="Nav_Production_Title" xml:space="preserve"><value>Produktion</value><comment>Seitentitel HS-01</comment></data>
+  <data name="Nav_Production_Crumb" xml:space="preserve"><value>Produktion</value><comment>Brotkruemel-Segment HS-01</comment></data>
+  <data name="Nav_ProductionCounter_Title" xml:space="preserve"><value>Produktionszähler</value><comment>Seitentitel HS-02</comment></data>
+  <data name="Nav_ProductionCounter_Crumb" xml:space="preserve"><value>Produktionszähler</value><comment>Brotkruemel-Segment HS-02</comment></data>
+  <data name="Nav_MachineSpeed_Title" xml:space="preserve"><value>Maschinengeschwindigkeit</value><comment>Seitentitel HS-03</comment></data>
+  <data name="Nav_MachineSpeed_Crumb" xml:space="preserve"><value>Maschinengeschwindigkeit</value><comment>Brotkruemel-Segment HS-03</comment></data>
+  <data name="Nav_Settings_Title" xml:space="preserve"><value>Einstellungen</value><comment>Seitentitel HS-04</comment></data>
+  <data name="Nav_Settings_Crumb" xml:space="preserve"><value>Einstellung</value><comment>Brotkruemel-Segment HS-04</comment></data>
+  <data name="Nav_FeederPaper_Title" xml:space="preserve"><value>Zuführung Papier</value><comment>Seitentitel HS-05</comment></data>
+  <data name="Nav_FeederPaper_Crumb" xml:space="preserve"><value>Papier</value><comment>Brotkruemel-Segment HS-05</comment></data>
+  <data name="Nav_FeederCarton_Title" xml:space="preserve"><value>Zuführung Karton</value><comment>Seitentitel HS-06</comment></data>
+  <data name="Nav_FeederCarton_Crumb" xml:space="preserve"><value>Karton</value><comment>Brotkruemel-Segment HS-06</comment></data>
+  <data name="Nav_HotGlueNordson_Title" xml:space="preserve"><value>Heißleim Nordson</value><comment>Seitentitel HS-07</comment></data>
+  <data name="Nav_HotGlueNordson_Crumb" xml:space="preserve"><value>Heißleim</value><comment>Brotkruemel-Segment HS-07</comment></data>
+  <data name="Nav_HotGlueParameters_Title" xml:space="preserve"><value>Heißleim Parameter</value><comment>Seitentitel HS-08</comment></data>
+  <data name="Nav_HotGlueParameters_Crumb" xml:space="preserve"><value>Temperatur</value><comment>Brotkruemel-Segment HS-08</comment></data>
+  <data name="Nav_HotGluePressure_Title" xml:space="preserve"><value>Heißleim Druck</value><comment>Seitentitel HS-09</comment></data>
+  <data name="Nav_HotGluePressure_Crumb" xml:space="preserve"><value>Druck</value><comment>Brotkruemel-Segment HS-09</comment></data>
+  <data name="Nav_HotGlueSchedule_Title" xml:space="preserve"><value>Zeitschaltuhr</value><comment>Seitentitel HS-10</comment></data>
+  <data name="Nav_HotGlueSchedule_Crumb" xml:space="preserve"><value>Zeitplan</value><comment>Brotkruemel-Segment HS-10</comment></data>
+  <data name="Nav_MainDosers_Title" xml:space="preserve"><value>Hauptdosierer 1 &amp; 2</value><comment>Seitentitel HS-11</comment></data>
+  <data name="Nav_MainDosers_Crumb" xml:space="preserve"><value>Hauptdosierer</value><comment>Brotkruemel-Segment HS-11</comment></data>
+  <data name="Nav_MainDoserMotor_Title" xml:space="preserve"><value>Motorparameter</value><comment>Seitentitel HS-12</comment></data>
+  <data name="Nav_MainDoserMotor_Crumb" xml:space="preserve"><value>Motorparameter</value><comment>Brotkruemel-Segment HS-12</comment></data>
+  <data name="Nav_CheckWeigher_Title" xml:space="preserve"><value>Kontrollwaage</value><comment>Seitentitel HS-13</comment></data>
+  <data name="Nav_CheckWeigher_Crumb" xml:space="preserve"><value>Kontrollwaage</value><comment>Brotkruemel-Segment HS-13</comment></data>
+  <data name="Nav_SingleWeights_Title" xml:space="preserve"><value>Einzelgewichte</value><comment>Seitentitel HS-14</comment></data>
+  <data name="Nav_SingleWeights_Crumb" xml:space="preserve"><value>Einzelgewichte</value><comment>Brotkruemel-Segment HS-14</comment></data>
+  <data name="Nav_Trend_Title" xml:space="preserve"><value>Trend</value><comment>Seitentitel HS-15</comment></data>
+  <data name="Nav_Trend_Crumb" xml:space="preserve"><value>Trend</value><comment>Brotkruemel-Segment HS-15</comment></data>
+  <data name="Nav_ClosingMachine_Title" xml:space="preserve"><value>Schließmaschine</value><comment>Seitentitel HS-16</comment></data>
+  <data name="Nav_ClosingMachine_Crumb" xml:space="preserve"><value>Schließmaschine</value><comment>Brotkruemel-Segment HS-16</comment></data>
+  <data name="Nav_ClosingMotor_Title" xml:space="preserve"><value>Motorparameter Schließmaschine</value><comment>Seitentitel HS-17</comment></data>
+  <data name="Nav_ClosingMotor_Crumb" xml:space="preserve"><value>Motorparameter</value><comment>Brotkruemel-Segment HS-17</comment></data>
+  <data name="Nav_ClosingWeightCorrection_Title" xml:space="preserve"><value>Gewichtskorrektur Schließmaschine</value><comment>Seitentitel HS-18</comment></data>
+  <data name="Nav_ClosingWeightCorrection_Crumb" xml:space="preserve"><value>Gewichtskorrektur</value><comment>Brotkruemel-Segment HS-18</comment></data>
+  <data name="Nav_PostDoser_Title" xml:space="preserve"><value>Nachdosierer</value><comment>Seitentitel HS-19</comment></data>
+  <data name="Nav_PostDoser_Crumb" xml:space="preserve"><value>Nachdosierer</value><comment>Brotkruemel-Segment HS-19</comment></data>
+  <data name="Nav_PostDoserMotor_Title" xml:space="preserve"><value>Motorparameter</value><comment>Seitentitel HS-20</comment></data>
+  <data name="Nav_PostDoserMotor_Crumb" xml:space="preserve"><value>Motorparameter</value><comment>Brotkruemel-Segment HS-20</comment></data>
+  <data name="Nav_PostDoserWeightCorrection_Title" xml:space="preserve"><value>Gewichtskorrektur</value><comment>Seitentitel HS-21</comment></data>
+  <data name="Nav_PostDoserWeightCorrection_Crumb" xml:space="preserve"><value>Gewichtskorrektur</value><comment>Brotkruemel-Segment HS-21</comment></data>
+  <data name="Nav_Heaters_Title" xml:space="preserve"><value>Heizungen</value><comment>Seitentitel HS-22</comment></data>
+  <data name="Nav_Heaters_Crumb" xml:space="preserve"><value>Heizungen</value><comment>Brotkruemel-Segment HS-22</comment></data>
+  <data name="Nav_Regulation_Title" xml:space="preserve"><value>Regulierung</value><comment>Seitentitel HS-23</comment></data>
+  <data name="Nav_Regulation_Crumb" xml:space="preserve"><value>Regulierung</value><comment>Brotkruemel-Segment HS-23</comment></data>
+  <data name="Nav_ScreenCleaning_Title" xml:space="preserve"><value>Bildschirm reinigen</value><comment>Seitentitel HS-24</comment></data>
+  <data name="Nav_ScreenCleaning_Crumb" xml:space="preserve"><value>Bildschirm reinigen</value><comment>Brotkruemel-Segment HS-24</comment></data>
+  <data name="Nav_Cams_Title" xml:space="preserve"><value>Nocken</value><comment>Seitentitel HS-25</comment></data>
+  <data name="Nav_Cams_Crumb" xml:space="preserve"><value>Nockenschaltwerk</value><comment>Brotkruemel-Segment HS-25</comment></data>
+  <data name="Nav_CamOverview_Title" xml:space="preserve"><value>Nockenübersicht</value><comment>Seitentitel HS-26</comment></data>
+  <data name="Nav_CamOverview_Crumb" xml:space="preserve"><value>Übersicht</value><comment>Brotkruemel-Segment HS-26</comment></data>
+  <data name="Nav_ScaleCalibration_Title" xml:space="preserve"><value>Waagen Kalibrieren</value><comment>Seitentitel HS-27</comment></data>
+  <data name="Nav_ScaleCalibration_Crumb" xml:space="preserve"><value>Waagen kalibrieren</value><comment>Brotkruemel-Segment HS-27</comment></data>
+  <data name="Nav_PackRegister_Title" xml:space="preserve"><value>Packungsregister</value><comment>Seitentitel HS-28</comment></data>
+  <data name="Nav_PackRegister_Crumb" xml:space="preserve"><value>Packungsregister</value><comment>Brotkruemel-Segment HS-28</comment></data>
+  <data name="Nav_ProductionStatistics_Title" xml:space="preserve"><value>Produktionsstatistik</value><comment>Seitentitel HS-29</comment></data>
+  <data name="Nav_ProductionStatistics_Crumb" xml:space="preserve"><value>Produktionsstatistik</value><comment>Brotkruemel-Segment HS-29</comment></data>
+  <data name="Nav_ManualSelection_Title" xml:space="preserve"><value>Handbetrieb Auswahl</value><comment>Seitentitel HS-30</comment></data>
+  <data name="Nav_ManualSelection_Crumb" xml:space="preserve"><value>Handbetrieb</value><comment>Brotkruemel-Segment HS-30</comment></data>
+  <data name="Nav_ManualOperation_Title" xml:space="preserve"><value>Handbetrieb</value><comment>Seitentitel HS-31</comment></data>
+  <data name="Nav_ManualOperation_Crumb" xml:space="preserve"><value>Handbetrieb</value><comment>Brotkruemel-Segment HS-31</comment></data>
+  <data name="Nav_EncoderSetting_Title" xml:space="preserve"><value>Geber setzen</value><comment>Seitentitel HS-32</comment></data>
+  <data name="Nav_EncoderSetting_Crumb" xml:space="preserve"><value>Geber setzen</value><comment>Brotkruemel-Segment HS-32</comment></data>
+  <data name="Nav_IoOverview_Title" xml:space="preserve"><value>EA-Übersicht</value><comment>Seitentitel HS-33</comment></data>
+  <data name="Nav_IoOverview_Crumb" xml:space="preserve"><value>EA-Übersicht</value><comment>Brotkruemel-Segment HS-33</comment></data>
+  <data name="Nav_IoDisplay_Title" xml:space="preserve"><value>EA-Anzeige</value><comment>Seitentitel HS-34</comment></data>
+  <data name="Nav_IoDisplay_Crumb" xml:space="preserve"><value>EA-Anzeige</value><comment>Brotkruemel-Segment HS-34</comment></data>
+  <data name="Nav_SystemSettings_Title" xml:space="preserve"><value>Systemeinstellungen</value><comment>Seitentitel HS-35</comment></data>
+  <data name="Nav_SystemSettings_Crumb" xml:space="preserve"><value>Systemeinstellungen</value><comment>Brotkruemel-Segment HS-35</comment></data>
+  <data name="Nav_Service_Title" xml:space="preserve"><value>Service</value><comment>Seitentitel HS-36</comment></data>
+  <data name="Nav_Service_Crumb" xml:space="preserve"><value>Service</value><comment>Brotkruemel-Segment HS-36</comment></data>
+  <data name="Nav_MessageArchive_Title" xml:space="preserve"><value>Meldearchiv</value><comment>Seitentitel HS-37</comment></data>
+  <data name="Nav_MessageArchive_Crumb" xml:space="preserve"><value>Meldearchiv</value><comment>Brotkruemel-Segment HS-37</comment></data>
+  <data name="Nav_MessageView_Title" xml:space="preserve"><value>Meldeanzeige</value><comment>Seitentitel HS-38</comment></data>
+  <data name="Nav_MessageView_Crumb" xml:space="preserve"><value>Meldungen</value><comment>Brotkruemel-Segment HS-38</comment></data>
+  <data name="Nav_SystemInfo_Title" xml:space="preserve"><value>System- und Antriebsinfos</value><comment>Seitentitel HS-39</comment></data>
+  <data name="Nav_SystemInfo_Crumb" xml:space="preserve"><value>System- und Antriebsinfo</value><comment>Brotkruemel-Segment HS-39</comment></data>
+  <data name="Nav_Feeders_Title" xml:space="preserve"><value>Zuführungen</value><comment>Seitentitel HS-40</comment></data>
+  <data name="Nav_Feeders_Crumb" xml:space="preserve"><value>Zuführungen</value><comment>Brotkruemel-Segment HS-40</comment></data>
+  <data name="Nav_DoserOverview_Title" xml:space="preserve"><value>Dosierer-Übersicht</value><comment>Seitentitel HS-41</comment></data>
+  <data name="Nav_DoserOverview_Crumb" xml:space="preserve"><value>Dosierer</value><comment>Brotkruemel-Segment HS-41</comment></data>
+  <data name="Nav_Scales_Title" xml:space="preserve"><value>Waagen</value><comment>Seitentitel HS-42</comment></data>
+  <data name="Nav_Scales_Crumb" xml:space="preserve"><value>Waagen</value><comment>Brotkruemel-Segment HS-42</comment></data>
+  <data name="Nav_ShiftPlan_Title" xml:space="preserve"><value>Schichtplan</value><comment>Seitentitel HS-43</comment></data>
+  <data name="Nav_ShiftPlan_Crumb" xml:space="preserve"><value>Schichtplan</value><comment>Brotkruemel-Segment HS-43</comment></data>
+</root>

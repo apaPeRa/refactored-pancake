@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Theme.Dark.xaml (Dunkelthema): themenabhaengige Farbtokens (Designsystem.md 10.1). Identische Schluessel in Theme.Light.xaml und Theme.Dark.xaml.
+     Verwendung nur ueber {DynamicResource Brush.*}, sonst wirkt die Laufzeitumschaltung nicht. Keine Hex-Werte ausserhalb dieser Dateien. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    mc:Ignorable="po">
+  <SolidColorBrush x:Key="Brush.Window" Color="#141A21" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Surface" Color="#1E2630" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Surface.Sunken" Color="#1A2129" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Divider" Color="#313B47" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Border.Control" Color="#7A8594" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Border.Focus" Color="#5AA9F5" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Text.Primary" Color="#E8EDF2" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Text.Secondary" Color="#AAB4C0" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Text.Disabled" Color="#8993A0" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Text.OnActive" Color="#E8EDF2" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Sidebar" Color="#0E1319" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Sidebar.Text" Color="#E8EDF2" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Sidebar.Text.Secondary" Color="#AAB4C0" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Sidebar.Selected" Color="#2E3844" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Button.Normal" Color="#2E3844" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Button.Pressed" Color="#3A4656" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Button.Disabled" Color="#1E2630" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Button.Active" Color="#44546A" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Progress.Fill" Color="#AAB4C0" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Scrim" Color="#99000000" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Ok.Fill" Color="#4CC264" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Ok.On" Color="#0B1A0F" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Ok.Fg" Color="#4CC264" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Ok.Subtle" Color="#17341D" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Warning.Fill" Color="#FFC933" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Warning.On" Color="#141A21" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Warning.Fg" Color="#FFC933" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Warning.Subtle" Color="#3D3000" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Error.Fill" Color="#FF6B6B" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Error.On" Color="#141A21" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Error.Fg" Color="#FF6B6B" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Error.Subtle" Color="#3B1D1F" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Info.Fill" Color="#5AA9F5" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Info.On" Color="#0B1620" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Info.Fg" Color="#5AA9F5" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Info.Subtle" Color="#16304A" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Inactive.Fill" Color="#9AA4B1" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Inactive.On" Color="#141A21" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Status.Inactive.Fg" Color="#9AA4B1" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Graphic.Carton" Color="#8A6A4F" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Graphic.Outline" Color="#E8EDF2" po:Freeze="True" />
+  <SolidColorBrush x:Key="Brush.Graphic.Glue" Color="#F0E2B8" po:Freeze="True" />
+</ResourceDictionary>

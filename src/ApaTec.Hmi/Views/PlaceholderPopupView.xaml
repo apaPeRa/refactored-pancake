@@ -1,0 +1,25 @@
+<UserControl x:Class="ApaTec.Hmi.Views.PlaceholderPopupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:PlaceholderPopupViewModel, IsDesignTimeCreatable=False}">
+    <!-- Ersatzansicht fuer Pop-ups ohne eigene View (bis HM-14 Popup-Rahmen vorliegt). -->
+    <Border Background="{DynamicResource Brush.Surface}"
+            BorderBrush="{DynamicResource Brush.Border.Control}"
+            BorderThickness="{StaticResource Border.Medium}"
+            CornerRadius="{StaticResource Radius.Card}"
+            Padding="{StaticResource Inset.M}"
+            MinWidth="{StaticResource Size.Button.MinWidth}">
+        <StackPanel>
+            <TextBlock Style="{StaticResource Text.Value}" Text="{Binding Title}" />
+            <TextBlock Style="{StaticResource Text.Caption}" Text="{res:Loc Placeholder_Popup_Text}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="{StaticResource Inset.M}">
+                <Button Content="{res:Loc Popup_Close_Label}" Command="{Binding CancelCommand}" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

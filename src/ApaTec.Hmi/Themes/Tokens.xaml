@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tokens.xaml: themenunabhaengige Masse, Abstaende, Radien, Rahmen, Schriften (Designsystem.md 10.2 und 10.3).
+     Masse und Schriften duerfen per StaticResource verwendet werden. Alle Masse gelten fuer 1920 x 1080 (WPF-Einheiten).
+     Ergaenzungen gegenueber der Tokenliste (Annahme A-81): Inset.* (Thickness-Varianten der Space.*-Werte), Font.LineHeight.*, Radius.Control.Size und Border.Thin.Size (Double-Varianten fuer Shapes), Size.Window.Width/Height, Size.Workspace.Width, Size.Content.Height. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <!-- Typografie (10.2) -->
+  <FontFamily x:Key="Font.Family.Default">Segoe UI, Arial</FontFamily>
+  <FontWeight x:Key="Font.Weight.Regular">Normal</FontWeight>
+  <FontWeight x:Key="Font.Weight.Strong">SemiBold</FontWeight>
+  <sys:Double x:Key="Font.Size.Caption">20</sys:Double>
+  <sys:Double x:Key="Font.Size.Body">24</sys:Double>
+  <sys:Double x:Key="Font.Size.Value">28</sys:Double>
+  <sys:Double x:Key="Font.Size.Title">32</sys:Double>
+  <sys:Double x:Key="Font.Size.Metric">36</sys:Double>
+  <sys:Double x:Key="Font.LineHeight.Caption">26</sys:Double>
+  <sys:Double x:Key="Font.LineHeight.Body">32</sys:Double>
+  <sys:Double x:Key="Font.LineHeight.Value">36</sys:Double>
+  <sys:Double x:Key="Font.LineHeight.Title">40</sys:Double>
+  <sys:Double x:Key="Font.LineHeight.Metric">44</sys:Double>
+
+  <!-- Hauptfenster (Zielaufloesung) -->
+  <sys:Double x:Key="Size.Window.Width">1920</sys:Double>
+  <sys:Double x:Key="Size.Window.Height">1080</sys:Double>
+
+  <!-- Touch-Ziele und Symbolgroessen (10.3) -->
+  <sys:Double x:Key="Size.Touch.Min">48</sys:Double>
+  <sys:Double x:Key="Size.Touch.Default">64</sys:Double>
+  <sys:Double x:Key="Size.Touch.Large">96</sys:Double>
+  <sys:Double x:Key="Size.Touch.Gap">16</sys:Double>
+  <sys:Double x:Key="Size.Icon.S">24</sys:Double>
+  <sys:Double x:Key="Size.Icon.M">32</sys:Double>
+  <sys:Double x:Key="Size.Icon.L">48</sys:Double>
+
+  <!-- Rahmen-Grid des Hauptfensters (3.2): Spalten 3* : 37*, Zeilen 4* : 3* : 34* : 4* -->
+  <GridLength x:Key="Size.Sidebar.Width">3*</GridLength>
+  <GridLength x:Key="Size.Workspace.Width">37*</GridLength>
+  <GridLength x:Key="Size.Header.Height">4*</GridLength>
+  <GridLength x:Key="Size.Crumb.Height">3*</GridLength>
+  <GridLength x:Key="Size.Content.Height">34*</GridLength>
+  <GridLength x:Key="Size.FunctionBar.Height">4*</GridLength>
+  <GridLength x:Key="Size.Header.Col.Logo">12*</GridLength>
+  <GridLength x:Key="Size.Header.Col.Message">13*</GridLength>
+  <GridLength x:Key="Size.Header.Col.Mode">6*</GridLength>
+  <GridLength x:Key="Size.Header.Col.Clock">4*</GridLength>
+  <GridLength x:Key="Size.Crumb.Col.Path">56*</GridLength>
+  <GridLength x:Key="Size.Crumb.Col.Speed">10*</GridLength>
+  <GridLength x:Key="Size.Crumb.Col.Angle">10*</GridLength>
+
+  <Thickness x:Key="Size.Content.Margin">24</Thickness>
+  <sys:Double x:Key="Size.Button.MinWidth">160</sys:Double>
+  <sys:Double x:Key="Size.FunctionButton.MinWidth">224</sys:Double>
+  <sys:Double x:Key="Size.Avatar">64</sys:Double>
+  <sys:Double x:Key="Size.SelectionBar">6</sys:Double>
+  <sys:Double x:Key="Size.Toggle.Width">96</sys:Double>
+  <sys:Double x:Key="Size.Toggle.Height">48</sys:Double>
+  <sys:Double x:Key="Size.Toggle.Knob">40</sys:Double>
+  <sys:Double x:Key="Size.Field.Height">48</sys:Double>
+  <sys:Double x:Key="Size.Led">32</sys:Double>
+  <sys:Double x:Key="Size.Progress.Height">40</sys:Double>
+  <sys:Double x:Key="Size.Popup.WidthRatio">0.6</sys:Double>
+  <sys:Double x:Key="Size.Popup.TitleHeight">64</sys:Double>
+  <sys:Double x:Key="Size.Header.Clock.MinWidth">192</sys:Double>
+  <sys:Double x:Key="Size.Header.Mode.MinWidth">288</sys:Double>
+  <sys:Double x:Key="Size.Metric.MinWidth">224</sys:Double>
+
+  <!-- Abstaende (3.1) -->
+  <sys:Double x:Key="Space.XS">4</sys:Double>
+  <sys:Double x:Key="Space.S">8</sys:Double>
+  <sys:Double x:Key="Space.M">16</sys:Double>
+  <sys:Double x:Key="Space.L">24</sys:Double>
+  <sys:Double x:Key="Space.XL">32</sys:Double>
+  <Thickness x:Key="Inset.XS">4</Thickness>
+  <Thickness x:Key="Inset.S">8</Thickness>
+  <Thickness x:Key="Inset.M">16</Thickness>
+  <Thickness x:Key="Inset.L">24</Thickness>
+  <Thickness x:Key="Inset.XL">32</Thickness>
+  <Thickness x:Key="Inset.Button">16,0,16,0</Thickness>
+
+  <!-- Radien und Rahmen (4) -->
+  <sys:Double x:Key="Radius.Control.Size">6</sys:Double>
+  <sys:Double x:Key="Border.Thin.Size">1</sys:Double>
+  <CornerRadius x:Key="Radius.None">0</CornerRadius>
+  <CornerRadius x:Key="Radius.Control">6</CornerRadius>
+  <CornerRadius x:Key="Radius.Card">8</CornerRadius>
+  <CornerRadius x:Key="Radius.Pill">32</CornerRadius>
+  <Thickness x:Key="Border.Thin">1</Thickness>
+  <Thickness x:Key="Border.Medium">2</Thickness>
+  <Thickness x:Key="Border.Thick">3</Thickness>
+  <DoubleCollection x:Key="Border.Dash">4 3</DoubleCollection>
+</ResourceDictionary>
