@@ -28,7 +28,7 @@ Alle Zeilen der Handbuchtabellen T9 (Obere Schaltflächen) und T10 (Rechter Anze
 
 | Element | Typ | Funktion (wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Heizungen | Taste (Umschalter, im Bild grün) | „Schaltet alle Heizungen des Geräts, der Schläuche und der Düse ein oder aus.“ | Modulkandidate: Umschalter-Taste (Ein/Aus mit Farbzustand) |
+| Heizungen | Taste (Umschalter, im Bild grün) | „Schaltet alle Heizungen des Geräts, der Schläuche und der Düse ein oder aus.“ | Modulkandidat: Umschalter-Taste (Ein/Aus mit Farbzustand) |
 | Standby | Taste (Umschalter, im Bild rot) | „Reduziert alle eingestellten Temperaturen um 56 °C (Standardwert).“ Einheit °C, Standardwert 56 °C (entspricht „Globale StandBy Temperatur Delta“ auf [RS-08](RS-08_Heissleim-Parameter.md)). | Modulkandidat: Umschalter-Taste (Ein/Aus mit Farbzustand) |
 | Pumpe | Taste (Umschalter, im Bild grün) | „Schaltet die Förderpumpe ein oder aus.“ | Modulkandidat: Umschalter-Taste (Ein/Aus mit Farbzustand) |
 | Zeitschaltuhr | Taste (Umschalter, im Bild rot) | „Aktiviert den internen Zeitplan des Nordson-Geräts.“ (Schaltet nur den Zeitplan ein; die Zeitplanseite selbst ist [RS-10](RS-10_Zeitschaltuhr.md).) | Modulkandidat: Umschalter-Taste (Ein/Aus mit Farbzustand) |
@@ -66,7 +66,7 @@ Wortgetreu: „Zeigt Betriebszustände und Temperaturen verschiedener Komponente
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
 | Kopfzeile (Logo, Titel „Heißleim Zuführung“, Symbol, Uhrzeit/Datum) | Rahmen | Seitenkopf | Modulkandidat: Kopfzeile |
-| Meldezeile | Rahmen, roter Balken mit Text | Zeigt aktuelle Meldung (Bild: „*450* Palettierung nicht bereit“); Antippen öffnet laut Referenz-Übersicht [RS-38](../Seiten/RS-38_Meldeanzeige.md) | Modulkandidat: Meldezeile |
+| Meldezeile | Rahmen, roter Balken mit Text | Zeigt aktuelle Meldung (Bild: „*450* Palettierung nicht bereit“); Antippen öffnet laut Referenz-Übersicht [RS-38](RS-38_Meldeanzeige.md) | Modulkandidat: Meldezeile |
 | Funktionsleiste „Temperatur“ | Navigationstaste | im Handbuch nicht beschrieben; Ziel nach Namen vermutlich [RS-08](RS-08_Heissleim-Parameter.md) | Modulkandidat: Funktionsleiste unten |
 | Funktionsleiste „Druck“ | Navigationstaste | im Handbuch nicht beschrieben; Ziel nach Namen vermutlich [RS-09](RS-09_Heissleim-Druck.md) | Modulkandidat: Funktionsleiste unten |
 | Funktionsleiste „Zeitschaltuhr“ | Navigationstaste | im Handbuch nicht beschrieben; Ziel nach Namen vermutlich [RS-10](RS-10_Zeitschaltuhr.md) | Modulkandidat: Funktionsleiste unten |
@@ -81,7 +81,7 @@ Wortgetreu: „Zeigt Betriebszustände und Temperaturen verschiedener Komponente
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidaten: Kopfzeile, Meldezeile, Funktionsleiste unten, Umschalter-Taste (Ein/Aus mit Farbzustand), Statusliste (LED + Text), Anzeigefeld mit Einheit, Füllstandsbalken, Eingabefeld mit Schlüsselsymbol, Haltetaste.
+Noch keine RM-IDs vergeben. Modulkandidatn: Kopfzeile, Meldezeile, Funktionsleiste unten, Umschalter-Taste (Ein/Aus mit Farbzustand), Statusliste (LED + Text), Anzeigefeld mit Einheit, Füllstandsbalken, Eingabefeld mit Schlüsselsymbol, Haltetaste.
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
