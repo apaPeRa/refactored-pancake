@@ -71,24 +71,22 @@ Die Spalte „Herkunft (RS-30)“ ist die Rückverfolgung zur Referenzseite.
 | E07 Zwei leere Rasterzellen (Zeile 4, Spalten 3 und 4) | Kachel (deaktiviert) | „Reserviert“, gestrichelte Kontur, keine Aktion | [HM-16](../Module/HM-16_Kachel-Navigation.md) | leere Rasterzellen im Bild |
 | E08 Funktionsleiste unten | Container | Nimmt „Suchen“ links auf; keine weiteren Tasten | [HM-06](../Module/HM-06_Funktionsleiste.md) | Untere Funktionsleiste |
 | E09 Taste „Suchen“ | Taste (Antippen) | Öffnet das Such-Pop-up E10 | [HM-07](../Module/HM-07_Aktionstaste.md) | Taste „Suchen“; T40 „Suchen“ |
-| E10 Such-Pop-up „Aktor suchen“ | Pop-up (modal) | Suche nach Betriebsmittelkennzeichnung, Treffer öffnen HS-31 (Definition siehe „Zustände und Interaktion“) | [HM-14](../Module/HM-14_Popup-Rahmen.md) mit Texteingabe nach [HM-13](../Module/HM-13_Eingabe-Pop-up.md) (Variante Text) | T40 „Suchen“ (Suchfunktion nicht abgebildet) |
+| E10 Such-Pop-up „Aktor suchen“ | Pop-up (modal) | Suche nach Betriebsmittelkennzeichnung; Ablauf, Filter und Darstellung siehe HM-38. Seitenspezifisch: Treffer öffnet HS-31 mit `groupId` und `actorId` | [HM-38](../Module/HM-38_Such-Pop-up.md) (Titel „Aktor suchen“) in [HM-14](../Module/HM-14_Popup-Rahmen.md) | T40 „Suchen“ (Suchfunktion nicht abgebildet) |
 
 ## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md) Seitenleiste, [HM-02](../Module/HM-02_Kopfzeile.md) Kopfzeile, [HM-03](../Module/HM-03_Meldezeile.md) Meldezeile, [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) Brotkrümel-Navigation, [HM-05](../Module/HM-05_Kennzahl-Kachel.md) Kennzahl-Kachel, [HM-06](../Module/HM-06_Funktionsleiste.md) Funktionsleiste
 - Seite: [HM-16](../Module/HM-16_Kachel-Navigation.md) Kachel-Navigation, [HM-07](../Module/HM-07_Aktionstaste.md) Aktionstaste
-- Such-Pop-up: [HM-14](../Module/HM-14_Popup-Rahmen.md) Pop-up-Rahmen, [HM-13](../Module/HM-13_Eingabe-Pop-up.md) Eingabe-Pop-up (Variante Text). Das Such-Pop-up wird als Variante „Suche“ von HM-13 geführt: Texteingabezeile plus Trefferliste mit Zeilen aus Kennzeichnung, Bezeichnung und Gruppe (Aufbau siehe „Zustände und Interaktion“). Es ist die gemeinsame Definition für HS-30, HS-31 und HS-33.
+- Such-Pop-up: [HM-38](../Module/HM-38_Such-Pop-up.md) Such-Pop-up (im Rahmen [HM-14](../Module/HM-14_Popup-Rahmen.md)); Aufbau, Filterlogik, Trefferliste und Zustände sind dort definiert.
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Gruppentaste antippen:** Navigation nach HS-31 mit `groupId` (die Taste löst beim Loslassen im Ziel aus, Designsystem 5). Der Brotkrümel von HS-31 zeigt die Gruppe („Einstellung › Handbetrieb › GR20 Schließmaschine“). Es wird keine Maschinenfunktion ausgelöst.
 - **Reservierte Kachel:** deaktiviert (gestrichelte Kontur und Text „Reserviert“); Tippen zeigt in der Meldezeile den Hinweis „Keine Gruppe belegt“ (A-28), keine Navigation.
 - **Berechtigung:** Die Referenz nennt kein Schlüsselsymbol auf dieser Seite; die Seite ist für jeden angemeldeten Benutzer frei (Navigation.md 5.4, OP-25). Die Berechtigungsprüfung findet auf HS-31 an den Bedienelementen statt.
-- **Taste „Suchen“ und Such-Pop-up (hier definiert, auch für HS-31 und HS-33 gültig, Navigation.md 4.1):**
-  - Modal nach den Regeln aus Navigation.md 4.2 (Abdunkelung, Seitenleiste/Funktionsleiste/Brotkrümel gesperrt, kein Schließen durch Antippen außerhalb, kein Verlaufseintrag, Meldezeile nur Anzeige).
-  - Inhalt: Titel „Aktor suchen“, Texteingabezeile (Betriebsmittelkennzeichnung, z. B. „2MA1“; Bildschirmtastatur nach HM-13 Variante Text), darunter die Trefferliste. Die Liste filtert bei jeder Eingabe (Teilzeichenfolge, ohne Unterscheidung von Groß-/Kleinschreibung) über Kennzeichnung und Bezeichnung. Jede Trefferzeile zeigt Kennzeichnung, Bezeichnung und Gruppe, Höhe mindestens `Size.Touch.Min`; bei mehr Treffern als sichtbar scrollt die Liste (`Icon.Scroll.Up`/`.Down`).
-  - Treffer antippen: schließt das Pop-up und öffnet HS-31 mit `groupId` und `actorId` des Treffers. Taste „Abbrechen“ und Kreuz schließen ohne Wirkung. Ohne Treffer steht der Text „Kein Treffer“ (Symbol `Icon.Status.Info`).
-  - Aufbau und Verhalten der Suche sind in der Referenz weder beschrieben noch abgebildet (OP-40, OP-30): Annahme.
+- **Taste „Suchen“ und Such-Pop-up** (Aufbau und Verhalten: [HM-38](../Module/HM-38_Such-Pop-up.md); modal nach Navigation.md 4.2):
+  - Seitenspezifisch: Titel „Aktor suchen“; ein Treffer schließt das Pop-up und öffnet HS-31 mit `groupId` und `actorId` des Treffers. „Abbrechen“ und Kreuz schließen ohne Navigation.
+  - Aufbau und Verhalten der Suche sind in der Referenz nicht beschrieben (OP-40, OP-30): Annahme A-59 in HM-38.
 - **Zurück:** Seitenleiste „Zurück“ geht im Verlauf zurück (normalerweise HS-04). Ein Tippen auf das Brotkrümel-Segment „Einstellung“ führt direkt auf HS-04. Bei offenem Pop-up ist „Zurück“ gesperrt, das Pop-up wird mit „Abbrechen“ geschlossen.
 - **Fehlerfälle:** Eine Gruppe, deren Aktoren die Steuerung nicht meldet, bleibt wählbar; HS-31 zeigt dann Werte als ungültig („---“). Meldungen der Meldezeile werden bei offenem Pop-up erst nach dem Schließen auf HS-38 geöffnet (Navigation.md 4.2, Punkt 7).
 
@@ -99,7 +97,7 @@ Die Spalte „Herkunft (RS-30)“ ist die Rückverfolgung zur Referenzseite.
 | HS-30-P01 | Seitentitel (RS-30-P01) | Letztes Brotkrümel-Segment lautet „Handbetrieb“ (Navigation.md); Seitenname „Handbetrieb Auswahl“ ist Fenster-/Automationsname; die Kopfzeile trägt keinen zweiten Titel | offen |
 | HS-30-P02 | Anzahl und Beschriftung der Gruppentasten (RS-30-P02) | 14 Kacheln: GR1 Hauptantrieb, GR2 Zuführung Papier, GR3 Zuführung Karton, GR4 Dornrad, GR5 Dornrad, GR6 Heizungen, GR10 Paketübergabe, GR11 Rüttlung, GR14 Endkontrollwaage, GR20 Schließmaschine, GR41 Hauptdosierer 1, GR42 Hauptdosierer 2, GR45 Nachdosierer, GR100 Schnittstelle | offen |
 | HS-30-P03 | Anordnung (RS-30-P03) | Raster 4 Spalten × 4 Zeilen in der Reihenfolge der Belegungstabelle; Zeile 4 trägt nur zwei beschriftete Kacheln, die zwei übrigen sind „Reserviert“ | offen |
-| HS-30-P04 | Taste „Suchen“ (RS-30-P04) | Taste links in der Funktionsleiste; öffnet das Such-Pop-up zur Suche nach Betriebsmittelkennzeichnung; Treffer öffnet HS-31 | offen |
+| HS-30-P04 | Taste „Suchen“ (RS-30-P04) | Taste links in der Funktionsleiste; öffnet das Such-Pop-up (HM-38) zur Suche nach Betriebsmittelkennzeichnung; Treffer öffnet HS-31 | offen |
 | HS-30-P05 | Gruppentaste antippen (RS-30-P05) | Öffnet HS-31 mit der gewählten `groupId`; es wird keine Maschinenfunktion ausgelöst | offen |
 | HS-30-P06 | Meldezeile (RS-30-P06) | Zeigt die aktive Meldung mit Nummer und Text im Format „NNN: Text“; Antippen öffnet HS-38 | offen |
 | HS-30-P07 | Rahmentasten (RS-30-P07) | Schloss/Benutzer, Produktion (Home), Einstellungen, Zurück sind in der Seitenleiste erreichbar; die Funktionsleiste enthält nur „Suchen“ | offen |
@@ -110,13 +108,13 @@ Die Spalte „Herkunft (RS-30)“ ist die Rückverfolgung zur Referenzseite.
 | HS-30-P12 | Tokens (Designsystem) | Keine Hex-, Pixel- oder Literalwerte in der Seite; Farben, Schriften, Maße nur als Tokens (`Brush.*`, `Font.*`, `Size.*`, `Space.*`); Texte aus `.resx` | offen |
 | HS-30-P13 | Beschriftung | Mehrzeilige Kacheltexte brechen automatisch an Wortgrenzen um, keine Trennstriche (OP-13) | offen |
 | HS-30-P14 | Rückverfolgung | Jede Zeile der Tabelle T40 und jedes Element des Bildes RS-30_01 ist in der Elementetabelle (E01 bis E10) wiederzufinden | offen |
-| HS-30-P15 | Such-Pop-up modal | Ein Antippen außerhalb schließt nicht; „Zurück“ der Seitenleiste ist gesperrt; „Abbrechen“ schließt ohne Navigation | offen |
+| HS-30-P15 | Such-Pop-up (HM-38) | Modal; Antippen außerhalb schließt nicht; „Zurück“ der Seitenleiste ist gesperrt; Filter und Trefferliste nach HM-38; „Abbrechen“ schließt ohne Navigation | offen |
 
 ## Offene Punkte
 
 - OP-25 (Schlüsselsymbol/Berechtigungsstufen): auf dieser Seite kein Schlüssel; Annahme „frei erreichbar“.
 - OP-26 (Schloss- und Wirbel-Symbol): Schloss → Benutzerkreis (A-35), Wirbel-Symbol → Betriebsart (A-48); Klärung offen.
-- OP-30 (Eingabe-Pop-up undokumentiert) und OP-40 (Suchfunktion nicht beschrieben): Aufbau des Such-Pop-ups ist Annahme.
+- OP-30 (Eingabe-Pop-up undokumentiert) und OP-40 (Suchfunktion nicht beschrieben): Aufbau des Such-Pop-ups ist Annahme (HM-38, A-59).
 - OP-35 (Quellfehler): der Handbuchsatz zu „Tasten Gruppenanwahl“ ist unvollständig; die Funktion ist aus Zweck und Bild abgeleitet.
 - OP-37 (Zugang Handbetrieb): Wechsel zur Aktorseite abgeleitet (A-14, A-39).
 - OP-41 (geräteabhängige Elemente): Anzahl und Namen der Gruppen sind maschinenabhängig.

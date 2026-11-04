@@ -56,20 +56,20 @@ Die Spalte „Herkunft (RS-33)“ ist die Rückverfolgung zur Referenzseite.
 | E07 Zwei leere Rasterzellen (Zeile 2, Spalten 3 und 4) | Kachel (deaktiviert) | „Reserviert“, gestrichelte Kontur, keine Aktion | [HM-16](../Module/HM-16_Kachel-Navigation.md) | leere Rasterzellen im Bild |
 | E08 Funktionsleiste unten | Container | Nimmt „Suchen“ links auf | [HM-06](../Module/HM-06_Funktionsleiste.md) | Untere Funktionsleiste |
 | E09 Taste „Suchen“ | Taste (Antippen) | Öffnet das Such-Pop-up E10 | [HM-07](../Module/HM-07_Aktionstaste.md) | Taste „Suchen“; T43 „Suchen“ |
-| E10 Such-Pop-up „Betriebsmittel suchen“ | Pop-up (modal) | Suche nach Betriebsmittelkennzeichnung (z. B. „0E3“, „0Q5“); Treffer öffnen HS-34 mit der EA-Karte des Betriebsmittels. Aufbau und Verhalten wie in [HS-30](HS-30_Handbetrieb-Auswahl.md) definiert, Trefferzeile zeigt Kennzeichnung, Klartext und Karte | [HM-14](../Module/HM-14_Popup-Rahmen.md) mit Texteingabe nach [HM-13](../Module/HM-13_Eingabe-Pop-up.md) (Variante Text) | T43 „Suchen“ (Suchfunktion nicht abgebildet) |
+| E10 Such-Pop-up „Betriebsmittel suchen“ | Pop-up (modal) | Suche nach Betriebsmittelkennzeichnung (z. B. „0E3“, „0Q5“); Ablauf, Filter und Darstellung siehe HM-38. Seitenspezifisch: Treffer öffnet HS-34 mit `cardGroup` und `cardIndex` der EA-Karte des Betriebsmittels; Trefferzeile zeigt Kennzeichnung, Klartext und Karte | [HM-38](../Module/HM-38_Such-Pop-up.md) (Titel „Betriebsmittel suchen“) in [HM-14](../Module/HM-14_Popup-Rahmen.md) | T43 „Suchen“ (Suchfunktion nicht abgebildet) |
 
 ## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-16](../Module/HM-16_Kachel-Navigation.md) Kachel-Navigation, [HM-07](../Module/HM-07_Aktionstaste.md) Aktionstaste
-- Such-Pop-up: [HM-14](../Module/HM-14_Popup-Rahmen.md) Pop-up-Rahmen, [HM-13](../Module/HM-13_Eingabe-Pop-up.md) Eingabe-Pop-up (Variante Text). Das Such-Pop-up ist die in HS-30 definierte Variante „Suche“ von HM-13: Texteingabezeile plus Trefferliste, hier mit Zeilen aus Kennzeichnung, Klartext und Karte.
+- Such-Pop-up: [HM-38](../Module/HM-38_Such-Pop-up.md) Such-Pop-up (im Rahmen [HM-14](../Module/HM-14_Popup-Rahmen.md)); Aufbau, Filterlogik und Trefferliste sind dort definiert.
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **EA-Schaltfläche antippen:** Navigation nach HS-34 mit `cardGroup` und der ersten Karte der Gruppe (A-39). Der Brotkrümel von HS-34 zeigt die Gruppe („Einstellung › EA-Übersicht › Eingänge S1“). Es wird nichts geschaltet; die Seiten HS-33 und HS-34 sind Diagnoseseiten ohne Schreibzugriff.
 - **Reservierte Kachel:** deaktiviert (gestrichelte Kontur und Text „Reserviert“); Tippen zeigt in der Meldezeile „Keine Kartengruppe belegt“ (A-28), keine Navigation.
 - **Berechtigung, Wertebereiche, Einheiten, Standardwerte:** Das Handbuch nennt keine; die Seite ist ohne Rolle erreichbar und bedienbar (Navigation.md 5.4).
-- **Taste „Suchen“ und Such-Pop-up:** modal nach Navigation.md 4.2 (Abdunkelung, Seiten- und Funktionsleiste gesperrt, kein Schließen durch Antippen außerhalb, kein Verlaufseintrag). Titel „Betriebsmittel suchen“, Texteingabe, gefilterte Trefferliste (Teilzeichenfolge ohne Unterscheidung von Groß-/Kleinschreibung über Kennzeichnung und Klartext). Treffer antippen öffnet HS-34 mit `cardGroup` und `cardIndex` der Karte, die das Betriebsmittel enthält (Annahme A-39). „Abbrechen“ und Kreuz schließen ohne Wirkung; ohne Treffer: „Kein Treffer“ mit `Icon.Status.Info`. Das Pop-up ist in der Referenz weder beschrieben noch abgebildet (OP-40, OP-30).
+- **Taste „Suchen“ und Such-Pop-up** (Aufbau und Verhalten: [HM-38](../Module/HM-38_Such-Pop-up.md); modal nach Navigation.md 4.2). Seitenspezifisch: Titel „Betriebsmittel suchen“; Treffer antippen öffnet HS-34 mit `cardGroup` und `cardIndex` der Karte, die das Betriebsmittel enthält (Annahme A-39). „Abbrechen“ und Kreuz schließen ohne Wirkung. Das Pop-up ist in der Referenz weder beschrieben noch abgebildet (OP-40, OP-30).
 - **Zurück:** Seitenleiste „Zurück“ → Verlauf (normalerweise HS-04); Brotkrümel-Segment „Einstellung“ → HS-04. Bei offenem Pop-up ist „Zurück“ gesperrt. Von HS-34 kommend führt „Zurück“ auf diese Seite.
 - **Fehlerfälle:** Meldet die Steuerung keine EA-Karten einer Gruppe, bleibt die Schaltfläche wählbar; HS-34 zeigt dann die Zustände als „Unbekannt“. Neue Meldungen bei offenem Pop-up öffnen HS-38 erst nach dem Schließen (Navigation.md 4.2, Punkt 7).
 
@@ -89,11 +89,11 @@ Die Spalte „Herkunft (RS-33)“ ist die Rückverfolgung zur Referenzseite.
 | HS-33-P10 | Tokens (Designsystem) | Keine Hex-, Pixel- oder Literalwerte; Farben, Schriften, Maße nur als Tokens; Texte aus `.resx` | offen |
 | HS-33-P11 | Keine Schreibaktion | Kein Element der Seite verändert einen Maschinenzustand | offen |
 | HS-33-P12 | Rückverfolgung | Jede Zeile der Tabelle T43 und jedes Element des Bildes RS-33_01 ist in E01 bis E10 wiederzufinden | offen |
-| HS-33-P13 | Such-Pop-up modal | Antippen außerhalb schließt nicht; „Zurück“ der Seitenleiste ist gesperrt; „Abbrechen“ schließt ohne Navigation | offen |
+| HS-33-P13 | Such-Pop-up (HM-38) | Modal; Antippen außerhalb schließt nicht; „Zurück“ der Seitenleiste ist gesperrt; Filter und Trefferliste nach HM-38; „Abbrechen“ schließt ohne Navigation | offen |
 
 ## Offene Punkte
 
-- OP-30 (Eingabe-Pop-up undokumentiert) und OP-40 (Suchfunktion nicht beschrieben): Aufbau des Such-Pop-ups ist Annahme (Definition in HS-30).
+- OP-30 (Eingabe-Pop-up undokumentiert) und OP-40 (Suchfunktion nicht beschrieben): Aufbau des Such-Pop-ups ist Annahme (HM-38, A-59).
 - OP-33 (abweichende Seitentitel): Bild „EA Auswahl“ gegen Handbuch „EA-Übersicht“; Handbuchname gewinnt.
 - OP-37 (Zugang EA-Anzeige): Zuordnung Schaltfläche zu Karte nicht beschrieben (A-14, A-39).
 - OP-41 (geräteabhängige Elemente): Anzahl der Schaltflächen und Kürzel S1, S300, S500 maschinenabhängig und unerklärt.

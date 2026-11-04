@@ -71,14 +71,14 @@ Die Spalte „Herkunft (RS-31)“ ist die Rückverfolgung zur Referenzseite (Ele
 | E22 Tasten „<<“ und „>>“ | Blättertasten | Wechseln zum vorherigen/nächsten Aktor der Gruppe (vermutet, A-39); Paar mit Positionsanzeige „n von m“; am Rand deaktiviert | [HM-19](../Module/HM-19_Blaettertasten.md) | Tasten „<<“ / „>>“ |
 | E23 „Meldung:“ mit Text | Statusanzeige | Aktorbezogene Meldung, Beispiel „Motorschutz ausgelöst“ (Normaltext: Art `MessageLine`; Störungstext: Art `Error` mit Caption „Meldung:“, `Icon.Status.Error` und Wort „Fehler“; je Zeitpunkt genau eine Art); leer: „–“. Getrennt von der globalen Meldezeile E04 | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) (Art `MessageLine`; bei Störungstext Art `Error` mit Caption „Meldung:“) | „Meldung:“ mit Text |
 | E24 Funktionsleiste unten | Container | Nimmt „Suchen“ links auf | [HM-06](../Module/HM-06_Funktionsleiste.md) | Untere Funktionsleiste |
-| E25 Taste „Suchen“ | Taste (Antippen) | Öffnet das Such-Pop-up (Definition in [HS-30](HS-30_Handbetrieb-Auswahl.md)); Treffer wechselt auf den gefundenen Aktor | [HM-07](../Module/HM-07_Aktionstaste.md) | Taste „Suchen“ |
+| E25 Taste „Suchen“ | Taste (Antippen) | Öffnet das Such-Pop-up ([HM-38](../Module/HM-38_Such-Pop-up.md), Titel „Aktor suchen“); Treffer wechselt auf den gefundenen Aktor | [HM-07](../Module/HM-07_Aktionstaste.md) | Taste „Suchen“ |
 | E26 Eingabe-Pop-up | Pop-up (modal) | Wertevorgabe zu E18 bis E20 mit Grenzen und „Übernehmen“/„Abbrechen“ | [HM-13](../Module/HM-13_Eingabe-Pop-up.md) in [HM-14](../Module/HM-14_Popup-Rahmen.md) | Eingabe in Zahlenfelder (Eingabeweise im Handbuch nicht beschrieben) |
 
 ## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-07](../Module/HM-07_Aktionstaste.md) Aktionstaste, [HM-09](../Module/HM-09_Status-LED.md) Status-LED, [HM-11](../Module/HM-11_Anzeigefeld.md) Anzeigefeld, [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) Eingabefeld mit Schlüsselsymbol, [HM-17](../Module/HM-17_Titelzeile.md) Titelzeile, [HM-19](../Module/HM-19_Blaettertasten.md) Blättertasten, [HM-27](../Module/HM-27_Hinweis-Textfeld.md) Hinweis-Textfeld
-- Pop-ups: [HM-13](../Module/HM-13_Eingabe-Pop-up.md) Eingabe-Pop-up, [HM-14](../Module/HM-14_Popup-Rahmen.md) Pop-up-Rahmen (auch für das Such-Pop-up, siehe HS-30)
+- Pop-ups: [HM-13](../Module/HM-13_Eingabe-Pop-up.md) Eingabe-Pop-up, [HM-38](../Module/HM-38_Such-Pop-up.md) Such-Pop-up, [HM-14](../Module/HM-14_Popup-Rahmen.md) Pop-up-Rahmen
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
@@ -89,7 +89,7 @@ Die Spalte „Herkunft (RS-31)“ ist die Rückverfolgung zur Referenzseite (Ele
 - **Berechtigung:** Schlüsselsymbol an E07, E08, E18, E19, E20 (Berechtigung vorhanden, `Icon.Key`); fehlt die Rolle, steht `Icon.Lock` und Tippen öffnet das Benutzer-Pop-up (Navigation.md 4.1) mit dem Hinweis „Berechtigung erforderlich: <Rolle>“ in der Meldezeile. Die Stufe nennt die Quelle nicht (OP-25, OP-04): Dummy-Rolle.
 - **Eingabe:** Antippen von E18 bis E20 öffnet das Eingabe-Pop-up mit vorbelegtem Wert; Grenzen als Caption („Bereich 0 bis 100 %; 0 entspricht 100 % bzw. Hardwarevorgabe“), Dummy-Grenzen (OP-28). „Übernehmen“ nur bei gültigem Wert, der Wert gilt sofort (Annahme). Ungültig: Fehlerkontur, `Icon.Status.Error` und Text „Wert außerhalb 0 bis 100 %“. Wert 0 wird als 0 % angezeigt, die Hinweiszeile E21 steht dauerhaft darunter.
 - **Blättern:** « und » ersetzen nur den Parameter `actorId` (kein Verlaufseintrag, A-42); die Titelzeile E06 und alle Werte wechseln. Die Tasten sind am Rand der Gruppe deaktiviert (gestrichelt, nicht umlaufend); die Positionsanzeige „n von m“ nennt die Stellung.
-- **Suche:** E25 öffnet das Such-Pop-up aus HS-30. Ein Treffer ersetzt `groupId`/`actorId` der aktuellen Seite (kein Verlaufseintrag, Brotkrümel-Gruppe wird aktualisiert).
+- **Suche:** E25 öffnet das Such-Pop-up ([HM-38](../Module/HM-38_Such-Pop-up.md), Titel „Aktor suchen“). Seitenspezifisch: Ein Treffer ersetzt `groupId`/`actorId` der aktuellen Seite (kein Verlaufseintrag, Brotkrümel-Gruppe wird aktualisiert).
 - **Meldungen:** E23 zeigt die Aktormeldung (Störungstext: HM-27 Art `Error` mit Caption „Meldung:“, `Icon.Status.Error` und Wort „Fehler“; Normaltext: Art `MessageLine`), z. B. „Motorschutz ausgelöst“; ohne Meldung „–“. Die globale Meldung steht in E04, Antippen öffnet HS-38 (bei offenem Pop-up erst nach dem Schließen).
 - **Fehlerfälle:** Ist der Aktor nicht erreichbar, zeigen LEDs „Unbekannt“ (Text „---“), das Positionsfeld „---“, die Bewegungstasten sind deaktiviert. LED-Zustände der Referenz (alle vier aus) entsprechen „Gesperrt“ und „Nicht erreicht“ mit Symbol und Wort (`Icon.Status.Inactive`).
 - **Zurück:** Seitenleiste „Zurück“ → HS-30 (Verlauf). Brotkrümel-Segmente springen nach HS-30 bzw. HS-04. Bei offenem Pop-up ist „Zurück“ gesperrt.
@@ -130,5 +130,5 @@ Die Spalte „Herkunft (RS-31)“ ist die Rückverfolgung zur Referenzseite (Ele
 - OP-34 (Beschriftungsabweichungen): „Jog-“ im Bild gegen „Aus / Grundstellung / Jog –“ im Handbuch.
 - OP-37 (Zugang Handbetrieb): Wechsel von HS-30 abgeleitet (A-14, A-39).
 - OP-39 (fehlende Zustände): Positioniermodus (Position zurück/vor, Position-Nr) im Bild nicht sichtbar; Aufbau nach Handbuchtext, Zustände nach Designsystem.
-- OP-40 (Suche): Such-Pop-up als Annahme (Definition in HS-30).
+- OP-40 (Suche): Such-Pop-up als Annahme (HM-38, A-59).
 - Ohne OP-Eintrag im Seiten-Index (Hinweis an den Verwalter): Halte-/Tippverhalten von Jog (`WhilePressed`), die Zuordnung „Handbetrieb“ = `OperatingMode.Manual` und Grenze des Blätterns (nur innerhalb der Gruppe) sind Annahmen.
