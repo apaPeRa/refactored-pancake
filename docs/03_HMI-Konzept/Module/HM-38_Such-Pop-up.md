@@ -1,7 +1,7 @@
 # HM-38 – Such-Pop-up (Suche mit Trefferliste)
 
 ## Funktion
-**Annahme (A-60, OP-40):** Modaler Dialog zur Suche eines Betriebsmittels nach Kennzeichnung oder Bezeichnung, im [Pop-up-Rahmen](HM-14_Popup-Rahmen.md). Die Referenz nennt die Taste „Suchen“ (HS-30, HS-31, HS-33), beschreibt aber weder Eingabe noch Trefferliste. Inhalt: Titel (z. B. „Aktor suchen“, „Betriebsmittel suchen“), Texteingabezeile mit Bildschirmtastatur (Eingabeart Text aus [HM-13](HM-13_Eingabe-Pop-up.md)), darunter die Trefferliste. Die Liste filtert bei jeder Eingabe (Teilzeichenfolge, ohne Unterscheidung von Groß- und Kleinschreibung) über Kennzeichnung und Bezeichnung. Jede Trefferzeile zeigt Kennzeichnung, Bezeichnung und Gruppe bzw. Karte. Treffer antippen schließt den Dialog und liefert das Ziel an die Seite (HS-31 mit `groupId` und `actorId`, HS-34 mit der EA-Karte). „Abbrechen“ und Kreuz schließen ohne Wirkung. Ein Dialog für alle Suchseiten, keine Kopien je Seite. Modale Regeln nach A-40 und Navigation.md 4.2.
+**Annahme (A-59, OP-40):** Modaler Dialog zur Suche eines Betriebsmittels nach Kennzeichnung oder Bezeichnung, im [Pop-up-Rahmen](HM-14_Popup-Rahmen.md). Die Referenz nennt die Taste „Suchen“ (HS-30, HS-31, HS-33), beschreibt aber weder Eingabe noch Trefferliste. Inhalt: Titel (z. B. „Aktor suchen“, „Betriebsmittel suchen“), Texteingabezeile mit Bildschirmtastatur (Eingabeart Text aus [HM-13](HM-13_Eingabe-Pop-up.md)), darunter die Trefferliste. Die Liste filtert bei jeder Eingabe (Teilzeichenfolge, ohne Unterscheidung von Groß- und Kleinschreibung) über Kennzeichnung und Bezeichnung. Jede Trefferzeile zeigt Kennzeichnung, Bezeichnung und Gruppe bzw. Karte. Treffer antippen schließt den Dialog und liefert das Ziel an die Seite (HS-31 mit `groupId` und `actorId`, HS-34 mit der EA-Karte). „Abbrechen“ und Kreuz schließen ohne Wirkung. Ein Dialog für alle Suchseiten, keine Kopien je Seite. Modale Regeln nach A-40 und Navigation.md 4.2.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -37,7 +37,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt. Hinweis: HS-30, HS-31 und HS-33 führen den Dialog in ihrem Abschnitt „Verwendete Module“ noch als „HM-14 mit HM-13 (Variante Text)“; die Nachführung auf HM-38 steht aus.
 
 ## Herkunft
-- Keine DM- oder RM-Entsprechung: Taste „Suchen“ in [RM-14](../../02_Referenz-Analyse/Module/RM-14_Kachel-Navigation.md)-Seiten (RS-30, RS-31, RS-33); Aufbau und Verhalten sind Annahme (A-60, OP-40, OP-30).
+- Keine DM- oder RM-Entsprechung: Taste „Suchen“ in [RM-14](../../02_Referenz-Analyse/Module/RM-14_Kachel-Navigation.md)-Seiten (RS-30, RS-31, RS-33); Aufbau und Verhalten sind Annahme (A-59, OP-40, OP-30).
 - Design: keine Entsprechung.
 
 ## WPF-Umsetzung

@@ -14,6 +14,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Kachelgröße (`TileSize`) | enum TileSize { Large, Small } | px | Large `Size.Touch.Large` hoch, Small `Size.Touch.Default` hoch („Beleuchtung“) |
 | Leere Kacheln (`EmptyTileMode`) | enum EmptyTileMode { Reserved, Hidden } | – | Reserved Standard (A-29) |
 | Item-Felder deaktiviert (`TileItem.IsDisabled`, `DisabledReason`) | bool, string? | – | deaktivierte Kachel mit Beschriftung und Grund (Meldezeile bei Tippen), z. B. Endkontrollwaage in HS-42 mit `Icon.Block` und Text „Nicht verfügbar“ |
+| Navigationsanzeiger (`ShowNavigationIndicator`) | bool | – | Standard true: `Icon.Chevron` als zweiter Kanal an Navigationskacheln (HS-35) |
 | Elementart (`ItemKind`) | enum TileItemKind { Navigation, StateToggle } | – | Navigation Standard (Kachel-Taste ohne Zustand); StateToggle = jede Zelle ist ein HM-08 in Tastenform, Kachelhöhe |
 | Befehl (`NavigateCommand`) | ICommand (Parameter TileItem) | – | Seite oder Aktion (nur ItemKind Navigation) |
 
@@ -48,7 +49,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 ## WPF-Umsetzung
 - **Control:** `HM16_TileNavigation` (UserControl (Kachel: `ControlTemplate` auf `Button`)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`ItemsControl` mit `UniformGrid`), Kachel `HM16_Tile` als `ControlTemplate`.
-- **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`, `ItemKind`; **Command:** `NavigateCommand`.
+- **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`, `ItemKind`, `ShowNavigationIndicator`; **Command:** `NavigateCommand`.
 - Abstand zwischen Kacheln `Size.Touch.Gap`, Beschriftung aus `.resx`, Umbruch automatisch (OP-13).
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Block`, `Icon.Chevron`, `Icon.Key`, `Icon.Lock`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

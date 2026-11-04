@@ -1,6 +1,6 @@
 # Modulübersicht HMI-Module (HM)
 
-Stand: Konsolidierung nach Phase 3, Punkt 4. Die 38 HMI-Module HM-01 bis HM-38 führen die 22 Design-Module ([DM](../../01_Design-Analyse/Module/)) und die 36 Referenz-Module ([RM](../../02_Referenz-Analyse/Module/Modulliste.md)) zusammen; HM-38 (Such-Pop-up) ist eine Ergänzung aus den Seitenberichten ohne DM/RM-Entsprechung (A-60). Ein HM je Funktion, Varianten sind Parameter (A-45). Die Seiten-IDs HS-01 bis HS-39 entsprechen den RS-Nummern 1:1, HS-40 bis HS-43 sind Zusatzseiten (A-46, A-33); alle 43 HS-Dateien liegen vor. Control-Klassen heißen nach der HM-ID (A-56, `Agent.md` Abschnitt 7). Die Spalte Seiten ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet; in Klammern steht die Anzahl der Seiten, sie enthält auch Verwendungen über Kompositmodule (in den Moduldateien vermerkt „inkl. Verwendung über Kompositmodul“). Die Pop-ups HS-02 und HS-03 tragen keine Rahmenmodule; HS-24 zeigt nur HM-02 (ohne Meldezeile), HM-10 und HM-27.
+Stand: Konsolidierung nach Phase 3, Punkt 4. Die 38 HMI-Module HM-01 bis HM-38 führen die 22 Design-Module ([DM](../../01_Design-Analyse/Module/)) und die 36 Referenz-Module ([RM](../../02_Referenz-Analyse/Module/Modulliste.md)) zusammen; HM-38 (Such-Pop-up) ist eine Ergänzung aus den Seitenberichten ohne DM/RM-Entsprechung (A-59). Ein HM je Funktion, Varianten sind Parameter (A-45). Die Seiten-IDs HS-01 bis HS-39 entsprechen den RS-Nummern 1:1, HS-40 bis HS-43 sind Zusatzseiten (A-46, A-33); alle 43 HS-Dateien liegen vor. Control-Klassen heißen nach der HM-ID (A-56, `Agent.md` Abschnitt 7). Die Spalte Seiten ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet; in Klammern steht die Anzahl der Seiten, sie enthält auch Verwendungen über Kompositmodule (in den Moduldateien vermerkt „inkl. Verwendung über Kompositmodul“). Die Pop-ups HS-02 und HS-03 tragen keine Rahmenmodule; HS-24 zeigt nur HM-02 (ohne Meldezeile), HM-10 und HM-27.
 
 | HM-ID | Name | Control-Klasse | DM-Herkunft | RM-Herkunft | Seiten |
 |---|---|---|---|---|---|
@@ -41,7 +41,7 @@ Stand: Konsolidierung nach Phase 3, Punkt 4. Die 38 HMI-Module HM-01 bis HM-38 f
 | [HM-35](HM-35_Regulierungs-Parameterblock.md) | Regulierungs-Parameterblock | `HM35_RegulationBlock` | – | [RM-34](../../02_Referenz-Analyse/Module/RM-34_Regulierungs-Parameterblock.md) | HS-23 (1) |
 | [HM-36](HM-36_EA-Zeile.md) | EA-Zeile (Signalzeile) | `HM36_IoRow` | – | [RM-35](../../02_Referenz-Analyse/Module/RM-35_EA-Zeile.md) | HS-34 (1) |
 | [HM-37](HM-37_Wertegitter.md) | Wertegitter (Einzelgewichte) | `HM37_ValueGrid` | – | [RM-36](../../02_Referenz-Analyse/Module/RM-36_Wertegitter.md) | HS-14 (1) |
-| [HM-38](HM-38_Such-Pop-up.md) | Such-Pop-up (Suche mit Trefferliste) | `HM38_SearchDialog` | – | – (Annahme A-60, OP-40) | HS-30, HS-31, HS-33 (3) |
+| [HM-38](HM-38_Such-Pop-up.md) | Such-Pop-up (Suche mit Trefferliste) | `HM38_SearchDialog` | – | – (Annahme A-59, OP-40) | HS-30, HS-31, HS-33 (3) |
 
 ## Zusammenführungen (Duplikate entfernt)
 

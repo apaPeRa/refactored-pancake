@@ -38,7 +38,7 @@ Die Seitenleiste ist in beiden Themen dunkel und neutral (Blaugrau), nicht Marke
 
 ### 1.2 Statusfarben
 
-Farbe tritt nur hier auf. Jede Statusfarbe hat drei Tokens: `Brush.Status.<Status>.Fill` (Fläche), `.On` (Text und Symbol auf der Fläche) und `.Fg` (Symbol, Text oder Kontur auf neutraler Fläche); dazu `.Subtle` (Flächenton, siehe unten). Zu jeder Statusfarbe gehört ein festes Symbol und ein Statuswort (Tabelle 1.3).
+Farbe tritt nur hier auf. Jede Statusfarbe hat drei Tokens: `Brush.Status.<Status>.Fill` (Fläche), `.On` (Text und Symbol auf der Fläche) und `.Fg` (Symbol, Text oder Kontur auf neutraler Fläche); dazu `.Subtle` (Flächenton, siehe unten). Zu jeder Statusfarbe gehört ein festes Symbol und ein Statuswort (Tabelle 1.3). **Keine Statusfläche im Normalbetrieb:** Zustände ohne Handlungsbedarf (Ok, aktiv, befüllt, Info) behalten eine neutrale Fläche (`Brush.Surface`); Symbol, Wort und Kontur (`.Fg`) tragen den Zustand. Flächen `.Fill` und `.Subtle` erscheinen nur bei Warnung, Fehler oder Handlungsbedarf (Beispiele: HM-23 Zeile „aktiv“ und HM-32 „In Ordnung“ bleiben neutral).
 
 | Status | Hell Fill | Hell On | Hell Fg | Dunkel Fill | Dunkel On | Dunkel Fg |
 |---|---|---|---|---|---|---|
@@ -118,7 +118,7 @@ Alle Maße sind Vielfache von 8 px (Ausnahme 4 px für feine Abstände). Die Ma�
 | `Space.XS` | 4 | Symbol zu Text |
 | `Space.S` | 8 | Innenabstand innerhalb eines Elements (Symbol/Text, Zeilenabstand), **nie** Abstand zwischen zwei Touch-Zielen (dort `Size.Touch.Gap` = 16) |
 | `Space.M` | 16 | Standardabstand zwischen Elementen (Gutter), Innenabstand Karte |
-| `Space.L` | 24 | Außenrand des Inhaltsbereichs, Abstand zwischen Gruppen |
+| `Space.L` | 24 | Abstand zwischen Gruppen; der Außenrand des Inhaltsbereichs wird in Seiten und Modulen einheitlich über `Size.Content.Margin` (Wert 24, = `Space.L`) angegeben |
 | `Space.XL` | 32 | Abstand zwischen Hauptbereichen |
 | `Size.Touch.Min` | 48 | absolute Untergrenze jedes Touch-Ziels (z. B. Pop-up-Schließen, Tabellenzeile) |
 | `Size.Touch.Default` | 64 | Standardhöhe jeder Taste, Eingabefeld, Umschalterzeile |
@@ -154,7 +154,7 @@ Spalten des Hauptfensters: Seitenleiste **3\*** : Arbeitsbereich **37\*** (Summe
 | **Seitenleiste** (DM-01, DM-02) | 7,5 % der Breite, volle Höhe | von oben: Benutzerkennung (Kreis 64 px, Name, Rolle, Caption 20 px, bis zu 2 Zeilen); darunter Symboltasten Home, Einstellungen, Meldungen (je volle Spaltenbreite × 96 px = `Size.Touch.Large`, Symbol 48 px, 16 px Abstand = `Size.Touch.Gap`); ganz unten Zurück (gleiche Größe, mindestens 16 px Abstand zur darüberliegenden Taste). Auswahl: Symbol der aktuellen Seite mit 6 px Balken (`Size.SelectionBar`) am linken Rand und hellerem Grund (zweiter Kanal zusätzlich zur Farbe). |
 | **Kopfzeile** | 92,5 % der Breite, 8,9 % der Höhe | Spalten **12\* : 13\* : 6\* : 4\*** (Summe 35): Logo (≈ 35 %), Meldezeile (≈ 37 %), Betriebsart (≈ 17 %), Uhrzeit/Datum (≈ 11 %); abgeleitet aus dem Entwurf (35 : 37,5 : 18 : 9) mit etwas mehr Platz für Uhrzeit und Datum. Mindestbreiten: Uhrzeit 192, Betriebsart 288 px. |
 | **Brotkrümel-/Kennzahlzeile** | 6,7 % der Höhe | Spalten **56\* : 10\* : 10\***: Brotkrümel (links, Segmente je 64 px hoch, antippbar als Annahme A-27), Kennzahl Geschwindigkeit, Kennzahl Maschinenwinkel (je ≈ 13 %, Mindestbreite 224 px; Wert 36 px Metric, Symbol 32 px). |
-| **Inhaltsbereich** | 75,6 % der Höhe | Außenrand `Space.L` (24 px), 12-Spalten-Raster (3.3). Seitenspezifisch. |
+| **Inhaltsbereich** | 75,6 % der Höhe | Außenrand `Size.Content.Margin` (24 px), 12-Spalten-Raster (3.3). Seitenspezifisch. |
 | **Untere Funktionsleiste** (DM-09, DM-10) | 8,9 % der Höhe | Fläche vertieft, Innenrand 16 px oben/unten, Tasten 64 px hoch (Rest 16 px), links beginnend, 16 px Abstand, Breite je Taste mindestens 224 px (`Size.FunctionButton.MinWidth`), **höchstens 5 seitenspezifische Tasten** (wie Navigation.md); weitere Aktionen hinter einer Überlauf-Taste `Icon.More` („Mehr“, 64 × 64 px) am rechten Rand der Leiste. Auf leeren Seiten bleibt die Leiste sichtbar (Rahmenkonsistenz). |
 
 ### 3.3 Inhaltsbereich: 12-Spalten-Raster
@@ -246,7 +246,41 @@ Symbole sind monochrome Vektorsymbole (`Geometry` als `Path`, Strichstärke 2 px
 | `Icon.Scroll.Up` / `.Down` | Listen blättern | RM-21 |
 | `Icon.More` | Überlauf der Funktionsleiste („Mehr“) | (Annahme) |
 
-Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Namensschema `Icon.<Bereich>.<Name>`).
+
+
+### 6.1 Fachsymbole aus Modulen und Seiten (Konsolidierung)
+
+Diese Symbole sind in Modulen und Seiten als neu genannt und stehen hier einmal zentral. Spalte „Zweiter Kanal“: Das Symbol steht nie allein, sondern mit dem genannten Text oder der Form. Ausführung als Vektorsymbol nach Abschnitt 6 (Rastergröße 24 px); die Datei `Themes/Icons.xaml` führt dieselben Namen.
+
+| Symbolname | Bedeutung / Verwendung | Zweiter Kanal | Definiert in / verwendet auf |
+|---|---|---|---|
+| `Icon.Action.Reset` | Zähler zurücksetzen (Pfeil im Kreis) | Beschriftung „Reset“, Tooltip | HM-11, HM-34 |
+| `Icon.Add` | Eintrag hinzufügen (Plus) | Tagesname und Text „Neuer Eintrag“ | HM-29 |
+| `Icon.Delete` | Löschen (Papierkorb) | Beschriftung „Löschen“ | HM-30 |
+| `Icon.Dosing.Weight` | Gewichtsstück: abzufüllendes Gewicht („Soll absolut“) | Beschriftung und Einheit g | HM-20, HS-11 |
+| `Icon.Dosing.Calibration` | Eichdosierung (Schnecke mit Waagschale) | Beschriftung „Eichdosierung“ | HM-20, HS-11, HS-19 |
+| `Icon.Fill.Hopper` | Füllstand im Trichter | Beschriftung und Zustandswort | HM-09 |
+| `Icon.Glue.Nozzle` | Kopfleimdüsen (Piktogramm, nur Anzeige) | Beschriftung „Kopfleim“ | HS-16 |
+| `Icon.Jog.Minus` / `.Plus` | Bewegungstasten Jog− / Jog+ des Handbetriebs (Pfeil, Totmann-Taste) | Beschriftung „Jog −“ / „Jog +“ und Zustandswort „Läuft“ | HS-31 |
+| `Icon.List` | Liste / Übersicht (Taste „Übersicht“) | Beschriftung „Übersicht“ | HS-25 |
+| `Icon.Marker.Last` | Marke am jüngsten Wert im Wertegitter (Pfeil) | Kontur `Border.Thick` und Tooltip „letzter Wert“ | HM-37, HS-14 |
+| `Icon.Mode.Service` | Betriebsart Service (Wirbel-/Spiralsymbol der Referenz), Warnstatus | Wort „Service“ auf `Brush.Status.Warning.Fill` | HM-02, HS-36, A-48 |
+| `Icon.Motor.Screw` | Schneckenantrieb (Kartenart Schnecke) | Kartenüberschrift | HM-21, HS-12, HS-17, HS-20 |
+| `Icon.Nav.List` | Navigation zu den Einzelgewichten (Listensymbol) | Tastenbeschriftung „Einzelgewichte“ | HS-13 |
+| `Icon.Nav.Trend` | Navigation zum Trend (Liniendiagramm) | Tastenbeschriftung „Trend“ | HS-13 |
+| `Icon.Pack.Filled` / `.Present` | Packung befüllt / vorhanden (Packungsregister) | Zustandswort „befüllt“ / „vorhanden“ | HM-32, HS-28 |
+| `Icon.Pack.Target` / `.Tare` | Sollgewicht der Packung / Tara | Feldbeschriftung | HS-13 |
+| `Icon.Pack.Over` / `.Under1` / `.Under2` | Übergewicht / Untergewicht TU 1 / TU 2 (Zählfelder) | Feldbeschriftung | HS-13 |
+| `Icon.Production.Current` / `.Last` | Aktuelle / Letzte Produktion (Stückzähler) | Beschriftung der Kennzahl | HS-01 |
+| `Icon.Schedule.Heat` / `.Setback` | Heizphase / Absenkphase im Wochen-Zeitplan | Text, Einrückung, Kontur (durchgezogen/gestrichelt) | HM-29, HS-10 |
+| `Icon.Stat.Mean` | Mittelwert | Beschriftung „Mittelwert“ | HS-01, HS-13, HS-14 |
+| `Icon.Stat.Sigma` / `.StdDev` | Standardabweichung (σ in HS-01, „S“ in HS-13/HS-14; gleiche Bedeutung, Vereinheitlichung offen, OP-65) | Beschriftung „Standardabweichung“ | HS-01, HS-13, HS-14 |
+| `Icon.State.Partial` / `.Pending` | Teilweise (Strich im Kreis) / Ausstehend (Punkt, Befehl gesendet) | Wort „Teilweise“ / „Wird gesetzt“ bzw. „Nicht geschrieben“ | HM-08, HM-12, HM-18, HM-24, HS-01 |
+| `Icon.Weight.AutoZero` | Zähler seit dem letzten automatischen Nullpunkt | Feldbeschriftung | HS-13 |
+| `Icon.Weight.Last` | Letztes Gewicht (mit Index der Waage) | Beschriftung „Letztes Gewicht“ | HS-01 |
+| `Icon.Weight.Scale` | Waage / Netto-Gewicht | Beschriftung („Netto“) | HS-13 |
+
+Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden hier ergänzt (Namensschema `Icon.<Bereich>.<Name>`).
 
 ## 7. Zusammenspiel mit Modulen (Maßvorgaben)
 

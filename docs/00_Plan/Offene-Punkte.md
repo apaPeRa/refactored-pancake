@@ -4,49 +4,53 @@ Widersprüche und Lücken zwischen Design und Referenz. Es wird nichts erfunden;
 
 ## Seiten-Index (Referenz-Seite → Offene Punkte)
 
-Alle Referenz-Seiten sind in mindestens einem Punkt erfasst. OP-25 ff. fassen die Abschnitte „Offene Punkte“ der Seitenbeschreibungen thematisch zusammen.
+Alle Referenz-Seiten und die Zusatzseiten HS-40 bis HS-43 sind in mindestens einem Punkt erfasst. OP-25 ff. fassen die Abschnitte „Offene Punkte“ der Seitenbeschreibungen thematisch zusammen.
 
 | Seite | Offene Punkte |
 |---|---|
-| [RS-01](../02_Referenz-Analyse/Seiten/RS-01_Produktion.md) | OP-25, OP-26, OP-27, OP-29, OP-31, OP-34, OP-35, OP-43, OP-50 |
+| [RS-01](../02_Referenz-Analyse/Seiten/RS-01_Produktion.md) | OP-25, OP-26, OP-27, OP-29, OP-31, OP-34, OP-35, OP-43, OP-50, OP-63, OP-65 |
 | [RS-02](../02_Referenz-Analyse/Seiten/RS-02_Produktionszaehler.md) | OP-25, OP-31, OP-34, OP-42, OP-50 |
 | [RS-03](../02_Referenz-Analyse/Seiten/RS-03_Maschinengeschwindigkeit.md) | OP-25, OP-27, OP-28, OP-30, OP-50 |
-| [RS-04](../02_Referenz-Analyse/Seiten/RS-04_Einstellungen.md) | OP-24, OP-26, OP-34, OP-38, OP-51 |
+| [RS-04](../02_Referenz-Analyse/Seiten/RS-04_Einstellungen.md) | OP-24, OP-26, OP-34, OP-38, OP-51, OP-63 |
 | [RS-05](../02_Referenz-Analyse/Seiten/RS-05_Zufuehrung-Papier.md) | OP-25, OP-26, OP-27, OP-28, OP-30, OP-34, OP-35 |
 | [RS-06](../02_Referenz-Analyse/Seiten/RS-06_Zufuehrung-Karton.md) | OP-25, OP-27, OP-28, OP-29, OP-30, OP-31, OP-36, OP-39, OP-46 |
-| [RS-07](../02_Referenz-Analyse/Seiten/RS-07_Heissleim-Nordson.md) | OP-25, OP-26, OP-28, OP-35, OP-36, OP-39, OP-41, OP-46 |
+| [RS-07](../02_Referenz-Analyse/Seiten/RS-07_Heissleim-Nordson.md) | OP-25, OP-26, OP-28, OP-35, OP-36, OP-39, OP-41, OP-46, OP-57 |
 | [RS-08](../02_Referenz-Analyse/Seiten/RS-08_Heissleim-Parameter.md) | OP-25, OP-28, OP-29, OP-36, OP-41, OP-46 |
 | [RS-09](../02_Referenz-Analyse/Seiten/RS-09_Heissleim-Druck.md) | OP-25, OP-28, OP-36, OP-46 |
 | [RS-10](../02_Referenz-Analyse/Seiten/RS-10_Zeitschaltuhr.md) | OP-25, OP-33, OP-34, OP-36, OP-42, OP-46 |
-| [RS-11](../02_Referenz-Analyse/Seiten/RS-11_Hauptdosierer-1-und-2.md) | OP-25, OP-26, OP-27, OP-28, OP-30, OP-35, OP-38, OP-39, OP-45 |
+| [RS-11](../02_Referenz-Analyse/Seiten/RS-11_Hauptdosierer-1-und-2.md) | OP-25, OP-26, OP-27, OP-28, OP-30, OP-35, OP-38, OP-39, OP-45, OP-65 |
 | [RS-12](../02_Referenz-Analyse/Seiten/RS-12_Motorparameter.md) | OP-25, OP-28, OP-29, OP-30, OP-38, OP-39, OP-45, OP-55 |
-| [RS-13](../02_Referenz-Analyse/Seiten/RS-13_Kontrollwaage.md) | OP-25, OP-26, OP-27, OP-28, OP-29, OP-30, OP-31, OP-32, OP-34, OP-35, OP-47 |
-| [RS-14](../02_Referenz-Analyse/Seiten/RS-14_Einzelgewichte.md) | OP-27, OP-28, OP-32, OP-33, OP-34, OP-39, OP-47 |
+| [RS-13](../02_Referenz-Analyse/Seiten/RS-13_Kontrollwaage.md) | OP-25, OP-26, OP-27, OP-28, OP-29, OP-30, OP-31, OP-32, OP-34, OP-35, OP-47, OP-65 |
+| [RS-14](../02_Referenz-Analyse/Seiten/RS-14_Einzelgewichte.md) | OP-27, OP-28, OP-32, OP-33, OP-34, OP-39, OP-47, OP-56 |
 | [RS-15](../02_Referenz-Analyse/Seiten/RS-15_Trend.md) | OP-32, OP-33, OP-44, OP-47 |
 | [RS-16](../02_Referenz-Analyse/Seiten/RS-16_Schliessmaschine.md) | OP-23, OP-25, OP-26, OP-28, OP-34, OP-36, OP-39 |
 | [RS-17](../02_Referenz-Analyse/Seiten/RS-17_Motorparameter-Schliessmaschine.md) | OP-23, OP-25, OP-28, OP-33, OP-39, OP-45, OP-55 |
-| [RS-18](../02_Referenz-Analyse/Seiten/RS-18_Gewichtskorrektur-Schliessmaschine.md) | OP-23, OP-25, OP-28, OP-30, OP-31, OP-39, OP-45, OP-55 |
+| [RS-18](../02_Referenz-Analyse/Seiten/RS-18_Gewichtskorrektur-Schliessmaschine.md) | OP-23, OP-25, OP-28, OP-30, OP-31, OP-39, OP-45, OP-55, OP-62 |
 | [RS-19](../02_Referenz-Analyse/Seiten/RS-19_Nachdosierer.md) | OP-25, OP-27, OP-28, OP-29, OP-30, OP-35, OP-38, OP-39, OP-45 |
 | [RS-20](../02_Referenz-Analyse/Seiten/RS-20_Motorparameter.md) | OP-25, OP-28, OP-29, OP-30, OP-38, OP-39, OP-45, OP-55 |
-| [RS-21](../02_Referenz-Analyse/Seiten/RS-21_Gewichtskorrektur.md) | OP-25, OP-28, OP-30, OP-33, OP-34, OP-39, OP-45, OP-55 |
+| [RS-21](../02_Referenz-Analyse/Seiten/RS-21_Gewichtskorrektur.md) | OP-25, OP-28, OP-30, OP-33, OP-34, OP-39, OP-45, OP-55, OP-62, OP-64 |
 | [RS-22](../02_Referenz-Analyse/Seiten/RS-22_Heizungen.md) | OP-25, OP-26, OP-27, OP-28, OP-39, OP-41, OP-52 |
 | [RS-23](../02_Referenz-Analyse/Seiten/RS-23_Regulierung.md) | OP-25, OP-27, OP-28, OP-30, OP-45 |
-| [RS-24](../02_Referenz-Analyse/Seiten/RS-24_Bildschirm-reinigen.md) | OP-26, OP-27, OP-31, OP-38, OP-42, OP-44 |
+| [RS-24](../02_Referenz-Analyse/Seiten/RS-24_Bildschirm-reinigen.md) | OP-26, OP-27, OP-31, OP-38, OP-42, OP-44, OP-61 |
 | [RS-25](../02_Referenz-Analyse/Seiten/RS-25_Nocken.md) | OP-25, OP-27, OP-28, OP-29, OP-33, OP-44, OP-48 |
 | [RS-26](../02_Referenz-Analyse/Seiten/RS-26_Nockenuebersicht.md) | OP-25, OP-35, OP-41, OP-44, OP-48 |
 | [RS-27](../02_Referenz-Analyse/Seiten/RS-27_Waagen-Kalibrieren.md) | OP-25, OP-26, OP-28, OP-35, OP-38, OP-41, OP-44, OP-48 |
 | [RS-28](../02_Referenz-Analyse/Seiten/RS-28_Packungsregister.md) | OP-26, OP-27, OP-34, OP-41, OP-43, OP-44, OP-53 |
 | [RS-29](../02_Referenz-Analyse/Seiten/RS-29_Produktionsstatistik.md) | OP-25, OP-26, OP-29, OP-47, OP-54 |
-| [RS-30](../02_Referenz-Analyse/Seiten/RS-30_Handbetrieb-Auswahl.md) | OP-25, OP-26, OP-30, OP-35, OP-37, OP-40, OP-41 |
-| [RS-31](../02_Referenz-Analyse/Seiten/RS-31_Handbetrieb.md) | OP-25, OP-27, OP-28, OP-29, OP-34, OP-37, OP-39, OP-40 |
-| [RS-32](../02_Referenz-Analyse/Seiten/RS-32_Geber-setzen.md) | OP-25, OP-28, OP-31, OP-35, OP-37, OP-39, OP-41, OP-42, OP-48 |
+| [RS-30](../02_Referenz-Analyse/Seiten/RS-30_Handbetrieb-Auswahl.md) | OP-25, OP-26, OP-30, OP-35, OP-37, OP-40, OP-41, OP-58 |
+| [RS-31](../02_Referenz-Analyse/Seiten/RS-31_Handbetrieb.md) | OP-25, OP-27, OP-28, OP-29, OP-34, OP-37, OP-39, OP-40, OP-57 |
+| [RS-32](../02_Referenz-Analyse/Seiten/RS-32_Geber-setzen.md) | OP-25, OP-28, OP-31, OP-35, OP-37, OP-39, OP-41, OP-42, OP-48, OP-59, OP-60 |
 | [RS-33](../02_Referenz-Analyse/Seiten/RS-33_EA-Uebersicht.md) | OP-30, OP-33, OP-37, OP-40, OP-41 |
 | [RS-34](../02_Referenz-Analyse/Seiten/RS-34_EA-Anzeige.md) | OP-27, OP-29, OP-33, OP-37, OP-41, OP-43 |
 | [RS-35](../02_Referenz-Analyse/Seiten/RS-35_Systemeinstellungen.md) | OP-25, OP-26, OP-31, OP-33, OP-44, OP-49 |
 | [RS-36](../02_Referenz-Analyse/Seiten/RS-36_Service.md) | OP-25, OP-26, OP-27, OP-34, OP-40, OP-41, OP-49 |
-| [RS-37](../02_Referenz-Analyse/Seiten/RS-37_Meldearchiv.md) | OP-30, OP-31, OP-38, OP-40, OP-49 |
+| [RS-37](../02_Referenz-Analyse/Seiten/RS-37_Meldearchiv.md) | OP-25, OP-30, OP-31, OP-38, OP-40, OP-49 |
 | [RS-38](../02_Referenz-Analyse/Seiten/RS-38_Meldeanzeige.md) | OP-27, OP-33, OP-35, OP-38, OP-43, OP-44, OP-49 |
 | [RS-39](../02_Referenz-Analyse/Seiten/RS-39_System-und-Antriebsinfos.md) | OP-25, OP-27, OP-28, OP-29, OP-30, OP-33, OP-35, OP-41, OP-44, OP-49 |
+| [HS-40](../03_HMI-Konzept/Seiten/HS-40_Zufuehrungen.md) (Zusatzseite ohne RS) | OP-12, OP-13, OP-20, OP-21, OP-36, OP-51 |
+| [HS-41](../03_HMI-Konzept/Seiten/HS-41_Dosierer-Uebersicht.md) (Zusatzseite ohne RS) | OP-07, OP-08, OP-12, OP-15, OP-17, OP-18, OP-21, OP-22, OP-25, OP-27, OP-28, OP-29, OP-31, OP-39, OP-45 |
+| [HS-42](../03_HMI-Konzept/Seiten/HS-42_Waagen.md) (Zusatzseite ohne RS) | OP-12, OP-13, OP-21, OP-24, OP-41, OP-51 |
+| [HS-43](../03_HMI-Konzept/Seiten/HS-43_Schichtplan.md) (Zusatzseite ohne RS) | OP-02, OP-04, OP-07, OP-21 |
 
 ## Einträge
 
@@ -107,4 +111,13 @@ Alle Referenz-Seiten sind in mindestens einem Punkt erfasst. OP-25 ff. fassen di
 | OP-53 | RS-28 Packungsregister: Zustandsfolge beim Antippen, Zustand „gewogen“, Gruppenzuordnung der Stationen | Farbzuordnung aus Legende; Stationen unnummeriert übernehmen; Bedienlogik offen. | [RS-28](../02_Referenz-Analyse/Seiten/RS-28_Packungsregister.md); offen |
 | OP-54 | RS-29 Produktionsstatistik: Pfeilrichtung, Datumsformat, „heute“ in 30 Tagen, Anzeige ohne Berechtigung | Diagramm als reine Anzeige, Pfeil links = früher (Annahme). | [RS-29](../02_Referenz-Analyse/Seiten/RS-29_Produktionsstatistik.md); offen |
 | OP-55 | Wiederholung/Identität: RS-12, RS-17 und RS-20 verwenden dasselbe Bild, RS-18 und RS-21 ebenfalls; Seiten inhaltlich nicht unterscheidbar | Als getrennte Seiten führen (Annahme A-01), gemeinsame Moduldefinition (Motorparameter-Karte, Gewichtskorrektur-Tabelle) nutzen; Bezug OP-23. | [RS-12](../02_Referenz-Analyse/Seiten/RS-12_Motorparameter.md), [RS-17](../02_Referenz-Analyse/Seiten/RS-17_Motorparameter-Schliessmaschine.md), [RS-18](../02_Referenz-Analyse/Seiten/RS-18_Gewichtskorrektur-Schliessmaschine.md), [RS-20](../02_Referenz-Analyse/Seiten/RS-20_Motorparameter.md), [RS-21](../02_Referenz-Analyse/Seiten/RS-21_Gewichtskorrektur.md); offen |
-
+| OP-56 | Wertegitter Einzelgewichte (HS-14): Sortierrichtung „von oben nach unten und links nach rechts“ ist nicht eindeutig (zeilen- oder spaltenweise); der Pfeil im Bild steht in Zeile 2, Spalte 2 | Zeilenweise Lesefolge mit Pfeil `Icon.Marker.Last` an der jüngsten Zelle; Klärung offen | [HS-14](../03_HMI-Konzept/Seiten/HS-14_Einzelgewichte.md); offen |
+| OP-57 | Jog-Halteverhalten im Handbetrieb (HS-31 Jog+/Jog−) und Taste „Manuell“ (HS-07): Halten oder Tippen, Dauerlauf oder Totmann sind nicht beschrieben | Totmann: Bewegung nur, solange die Taste gedrückt ist (HM-07 `WhilePressed`); endet beim Loslassen, Verlassen der Taste, Seitenwechsel, Rollenverlust und Störung; Klärung offen | [HS-31](../03_HMI-Konzept/Seiten/HS-31_Handbetrieb.md), [HS-07](../03_HMI-Konzept/Seiten/HS-07_Heissleim-Nordson.md); offen |
+| OP-58 | Doppelte Beschriftung „Dornrad“ bei GR4 und GR5 (HS-30, RS-30 Offene Punkte 4); Bedeutung (z. B. Dornrad 1 und 2) ungeklärt | Beide Kacheln unverändert mit dem Wortlaut der Referenz übernommen; Klärung offen | [HS-30](../03_HMI-Konzept/Seiten/HS-30_Handbetrieb-Auswahl.md); offen |
+| OP-59 | Bedeutung des Statustexts „Messer beginnt Schneidbewegung.“ auf „Geber setzen“ (HS-32; Platzhalter oder Rest einer anderen Seite) | Als Statustext der Steuerung unter der LED angezeigt (Text kommt aus der Steuerung); Klärung offen | [HS-32](../03_HMI-Konzept/Seiten/HS-32_Geber-setzen.md); offen |
+| OP-60 | Not-Aus-Bedingung für „Geber setzen“ (HS-32): Verhalten ohne gedrückten Not-Aus und Sperre der Taste nicht beschrieben | Taste nur bedienbar, wenn die Steuerung „Not-Aus gedrückt“ meldet; sonst deaktiviert mit Grund in der Meldezeile (sicherer Zustand bei fehlender Meldung); Klärung offen | [HS-32](../03_HMI-Konzept/Seiten/HS-32_Geber-setzen.md); offen |
+| OP-61 | Alarm während „Bildschirm reinigen“ (HS-24): Meldungen werden während der Eingabesperre nicht angezeigt; ob sie unterdrückt werden oder die Reinigung beenden, ist nicht beschrieben | Kopfzeile ohne Meldezeile bleibt; Meldungen werden erfasst, aber nicht angezeigt; ein kritischer Alarm (Störung) beendet die Reinigung vorzeitig und gibt die Bedienung frei (Navigation.md 6.5, A-66); Klärung offen | [HS-24](../03_HMI-Konzept/Seiten/HS-24_Bildschirm-reinigen.md); offen |
+| OP-62 | Schlüsselsymbol an den Tasten der Gewichtskorrektur (HM-22-P02, HS-18): Das Bild zeigt den Schlüssel nur am Sollgewicht, die Modulbeschreibung nannte ihn auch für „Gewichtsanpassung“ und „Dosierer Auslösen manuell“ | Referenzbild gewinnt: Schlüsselsymbol nur am Sollgewicht-Feld, die beiden Tasten ohne Schlüssel (HM-22-P02 angepasst); Berechtigungsstufe offen (OP-25) | [HS-18](../03_HMI-Konzept/Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md), [HS-21](../03_HMI-Konzept/Seiten/HS-21_Gewichtskorrektur.md); offen |
+| OP-63 | Rezeptanwahl, Benutzer- und Sprachwahl-Pop-up ohne Modul: Inhalt, Bedienung und Berechtigung sind nicht beschrieben (Bezug OP-01, OP-03, OP-04) | Platzhalter-Pop-ups mit Dummy-Inhalt im Pop-up-Rahmen HM-14 über `IDialogService` (Navigation.md 4.1); kein eigenes HM, bis die Funktion geklärt ist | [HS-01](../03_HMI-Konzept/Seiten/HS-01_Produktion.md), [HS-04](../03_HMI-Konzept/Seiten/HS-04_Einstellungen.md); offen |
+| OP-64 | Gewichtskorrektur (HS-21, RS-21): empfohlen sind 3 bis 8 Stützstellen, die Tabelle bietet 20 Zeilen; Bezug Sollgewicht (250,4 g) zu „Soll“ (250 g) unklar | 20 Zeilen als Liste Nr. 1 bis 20 darstellen, mindestens 3 gültige Paare zur Berechnung; die empfohlene Obergrenze 8 wird als Hinweis, nicht als Sperre geführt; Klärung offen | [HS-21](../03_HMI-Konzept/Seiten/HS-21_Gewichtskorrektur.md), [HS-18](../03_HMI-Konzept/Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md); offen |
+| OP-65 | Symbolnamen: Standardabweichung als `Icon.Stat.Sigma` (HS-01) und `Icon.Stat.StdDev` (HS-13, HS-14) doppelt geführt; Dosierer-Symbole (Gewichtsstück, Waagschale, Schnecke) in den Seiten ohne endgültigen Namen | Beide Namen stehen in Designsystem 6.1 mit gleicher Bedeutung; in M2 auf ein Symbol vereinheitlichen; `Icon.Dosing.Weight` und `Icon.Dosing.Calibration` vorläufig angelegt | [HS-01](../03_HMI-Konzept/Seiten/HS-01_Produktion.md), [HS-13](../03_HMI-Konzept/Seiten/HS-13_Kontrollwaage.md), [HS-11](../03_HMI-Konzept/Seiten/HS-11_Hauptdosierer-1-und-2.md); offen |

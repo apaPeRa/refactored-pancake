@@ -13,7 +13,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Bezeichnung (`Name`) | string | – | z. B. „Start Hauptdosierer 1“ |
 | Start (`StartAngle`), Ende (`EndAngle`) | double | ° | 0 bis 360 (Bild); Maschinenwinkel |
 | Aktiv (`IsActive`) | bool | – | Maschine in der aktiven Phase der Nocke |
-| Zeilen je Seite (`RowsPerPage`) | int | Stk | 1 bis 14, abgeleitet aus der verfügbaren Höhe; HS-26 zeigt 11 Zeilen (Nr. 40 bis 50 / 51 bis 59), weil nur das Nummernfeld Touch-Ziel ist und `Size.Touch.Gap` Abstand hält (Seitenannahme S26-1, A-61) |
+| Zeilen je Seite (`RowsPerPage`) | int | Stk | 1 bis 14, abgeleitet aus der verfügbaren Höhe; HS-26 zeigt 11 Zeilen (Nr. 40 bis 50 / 51 bis 59), weil nur das Nummernfeld Touch-Ziel ist und `Size.Touch.Gap` Abstand hält (Seitenannahme S26-1, A-67) |
 | Auswahl (`SelectCommand`) | ICommand<int> | – | Nockennummer; Ziel HS-25 |
 
 ## Zustände und Darstellung

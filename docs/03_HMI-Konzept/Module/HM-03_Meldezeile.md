@@ -21,8 +21,8 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 |---|---|---|
 | Keine Meldung | `Brush.Surface.Sunken`, Text `Brush.Text.Secondary` | Text „Keine Meldung“ |
 | Betriebsstatus | `Brush.Status.Ok.Fill` Fläche, `Brush.Status.Ok.On` | `Icon.Status.Ok` und Klassenwort „Betrieb“ |
-| Hinweis / Warnung | `Brush.Status.Warning.Fill` Fläche, Text `Brush.Status.Warning.On`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | `Icon.Status.Warning` und Wort „Warnung“ |
-| Störung / Alarm | `Brush.Status.Error.Fill` Fläche, `Brush.Status.Error.On` | `Icon.Status.Error` und Wort „Alarm“ |
+| Hinweis / Warnung | `Brush.Status.Warning.Fill` Fläche, Text `Brush.Status.Warning.On`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | `Icon.Status.Warning` und Klassenwort „Hinweis“ |
+| Störung / Alarm | `Brush.Status.Error.Fill` Fläche, `Brush.Status.Error.On` | `Icon.Status.Error` und Klassenwort „Störung“ |
 | Mehrere Meldungen | wie höchste Klasse | Zähler „+ n“ |
 | Gedrückt | Kontur `Border.Medium` | dickere Kontur |
 

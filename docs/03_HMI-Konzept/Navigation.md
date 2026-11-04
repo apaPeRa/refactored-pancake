@@ -146,8 +146,9 @@ Brotkrümel-Regeln (A-34): Wurzel „Einstellung“ (Design, Singular) bzw. „P
 Hinweise zur Tabelle:
 
 - **Antippbarkeit der Segmente** (OP-21) ist Annahme. Das letzte Segment ist nur Anzeige. „Einstellung“ führt immer auf HS-04, „Produktion“ auf HS-01.
+- **Objektkennung im Brotkrümel (einheitlich):** Dynamische Segmente (HS-31 Gruppe, HS-34 Karte) ersetzen das letzte Segment durch den Namen des gewählten Objekts. Eine Objektkennung als Zusatz am Seitensegment (`ObjectSuffix`) tragen HS-11 („1“/„2“), HS-12 („HD1“/„HD2") und HS-20 („ND“). HS-25 (Nockennummer) und HS-27 (Waagenname, nur in der Titelzeile [HM-17](Module/HM-17_Titelzeile.md), K27-7) haben ein statisches Segment. Der Brotkrümel ändert sich beim Blättern nur bei HS-11, HS-12, HS-31 und HS-34.
 - **Dynamische Segmente** (HS-31, HS-34) zeigen den Namen des gewählten Objekts; Quelle ist der Seitentitel im Bild (RS-31: Gruppe, RS-34: „Eingänge S1“). Beim Blättern (Funktionsleisten-Tasten: HS-11, HS-12, HS-25, HS-26, HS-27, HS-34; Tasten im Inhaltsbereich: HS-29, HS-31, HS-32) ändert sich nur das letzte Segment bzw. der Seitentitel, der Verlauf bekommt keinen neuen Eintrag (Abschnitt 5).
-- **Zeitplan/Zeitschaltuhr, Temperatur/Parameter:** Brotkrümel und Funktionstaste tragen die Beschriftung aus dem Design („Zeitplan“, „Temperatur“, „Druck“); der Seitentitel in HS-08 bis HS-10 folgt der Referenz („Heißleim Parameter“, „Heißleim Zuführung Druck“, „Zeitschaltuhr Zuführung“).
+- **Zeitplan/Zeitschaltuhr, Temperatur/Parameter:** Brotkrümel und Funktionstaste tragen die Beschriftung aus dem Design („Zeitplan“, „Temperatur“, „Druck“); der Seitentitel (Fenster- und Automationsname) folgt dem Kapitelnamen der Referenz (OP-33): „Heißleim Nordson“ (HS-07), „Heißleim Parameter“ (HS-08), „Heißleim Druck“ (HS-09), „Zeitschaltuhr“ (HS-10). Die Bildtitel („Heißleim Zuführung Druck“, „Zeitschaltuhr Zuführung“) werden nicht übernommen; die Seiten HS-09 und HS-10 nennen noch den Bildtitel und sind bei der nächsten Prüfung anzugleichen.
 - **HS-02/HS-03** sind Pop-ups und haben keinen eigenen Brotkrümel; der Brotkrümel der Hintergrundseite bleibt stehen. Der Pfad der Referenz („Produktion › Produktionszähler“) entspricht dem Pop-up-Titel.
 - **HS-38 „Meldungen“:** Die Referenz nennt den Pfad „Meldezeile (jede Seite) › Meldeanzeige“; die Meldeanzeige ist Querseite zu jeder Seite und hat im neuen HMI zwei Zugänge (Meldezeile, Seitenleiste), daher steht kein Elternsegment davor und das einzige Segment ist der Seitenleisten-Begriff „Meldungen“ (A-35).
 - **HS-14 „Einzelgewichte“:** Die Referenz-Übersicht schreibt „Einzelgewicht“, der Seitenname und die Taste im Handbuchbild heißen „Einzelgewichte“ (Titel im Bild „Einzelgewichte KW“); der Brotkrümel folgt der Taste und dem Seitennamen.
@@ -189,7 +190,7 @@ Die Leiste ([DM-09](../01_Design-Analyse/Module/DM-09_Funktionsleiste.md)) enth�
 | Produktion | HS-01 | „Schichtplan“ (→ HS-43) | Design (DS-01) |
 | Pop-up | HS-02, HS-03 | im Pop-up: „Reset“ (nur HS-02), „Schließen“ | Handbuch (RS-02, RS-03); Funktionsleiste der Seite dahinter gesperrt |
 | Unterseiten-Navigation | HS-06: „Heißleimgerät“ · HS-07: „Temperatur“, „Druck“, „Zeitplan“ · HS-13: „Trend“, „Einzelgewichte“ · HS-16: „Heißleimgerät“, „Motorparameter“, „Gewichtskorrektur“ · HS-19: „Gewichtskorrektur“, „Motorparameter“, „Regulierung“ | siehe Spalte Seitentyp; Reihenfolge wie im Handbuchbild, Ergänzungen in HS-16 nach A-37 | Handbuch (Bilder), Design (DS-03) |
-| Blättern innerhalb eines Satzes | HS-11: „«“, „»“ (HD 1 ⇄ HD 2) und „Motorparameter“ · HS-12: „«“, „»“ (HD 1 ⇄ HD 2, Annahme; das Handbuch zeigt nur „»“) · HS-25: „«“, „Übersicht“, „»“ · HS-26: „«“, „»“ · HS-27: „«“, „»“ (Waagen) · HS-34: „«“, „»“ (EA-Karten) | Blättertasten ([RM-04](../02_Referenz-Analyse/Module/RM-04_Blaettertasten.md)); ändern nur den Parameter der Seite, erzeugen keinen Verlaufseintrag | Handbuch (T16, T35, T38, T44), Bilder |
+| Blättern innerhalb eines Satzes | HS-11: „«“, „»“ (HD 1 ⇄ HD 2) und „Motorparameter“; die Taste „Einstellung Regulierung“ (→ HS-23) liegt wie in der Referenz im Inhaltsbereich · HS-12: „«“, „»“ (HD 1 ⇄ HD 2, Annahme; das Handbuch zeigt nur „»“) · HS-25: „«“, „Übersicht“, „»“ · HS-26: „«“, „»“ · HS-27: „«“, „»“ (Waagen) · HS-34: „«“, „»“ (EA-Karten) | Blättertasten ([RM-04](../02_Referenz-Analyse/Module/RM-04_Blaettertasten.md)); ändern nur den Parameter der Seite, erzeugen keinen Verlaufseintrag | Handbuch (T16, T35, T38, T44), Bilder |
 | Blättern im Inhaltsbereich (nicht in der Funktionsleiste) | HS-29: Pfeiltasten über dem Diagramm (Tag) · HS-31: „«“, „»“ im unteren Bereich (Aktor, A-39) · HS-32: „«“, „»“ (Geber) | wie oben: `ReplaceParameter`, kein Verlaufseintrag | Handbuch (RS-29, RS-31 T41, RS-32 T42) |
 | Suche | HS-30, HS-31, HS-33 | „Suchen“ (öffnet Such-Pop-up: Betriebsmittelkennzeichnung) | Handbuch (T40, T43) |
 | Aktion / Zustand | HS-14: Umschalter „Einzel / Fortlaufend“ (Zustandstaste) und „Start“ · HS-35: „Lampentest“ · HS-36: „Wago“ (Funktion im Handbuch nicht beschrieben) · HS-38: „Archiv“ (→ HS-37) | Aktionstasten lösen keine Navigation aus, außer „Archiv“ | Handbuch (Bilder), RS-14 (Start „vermutlich“ unten links) |
@@ -207,18 +208,22 @@ Leistenregeln: höchstens 5 seitenspezifische Tasten, Mindestgröße der Tasten 
 | HS-02 Produktionszähler | [RM-13](../02_Referenz-Analyse/Module/RM-13_Pop-up-Rahmen.md) | HS-01 Symbol „Aktuelle Produktion“ | „Schließen“, Kreuz | „Reset“ je nach Schlüsselsymbol der Seite |
 | HS-03 Maschinengeschwindigkeit | RM-13 | HS-01 Tacho-Symbol (Referenz: rot); Kennzahl „Geschwindigkeit“ (A-38) | „Schließen“, Kreuz | Eingabefelder (RM-05) |
 | Zeitplan-Eintrag („Neuer Eintrag“) | [RM-27](../02_Referenz-Analyse/Module/RM-27_Zeitplan-Eintrag-Pop-up.md) | HS-10: Plus-Taste je Tag; Eintrag Heizphase; Eintrag Absenkphase | „Übernehmen“, „Abbrechen“ (Löschen: „Eintrag löschen“) | Plus-Taste mit Schlüsselsymbol |
-| Eingabe-Pop-up | [RM-06](../02_Referenz-Analyse/Module/RM-06_Eingabe-Pop-up.md) | Antippen jedes Eingabefelds mit Schlüsselsymbol ([RM-05](../02_Referenz-Analyse/Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md)); Zeitfelder in RM-27 | „Übernehmen“, „Abbrechen“ | Annahme (A-20); ohne Rolle öffnet das Benutzer-Pop-up |
-| Such-Pop-up | RM-06-Variante Text, im Seitenkonzept HS-30 definiert | HS-30, HS-31, HS-33 Taste „Suchen“ | Treffer wählen oder „Abbrechen“ | keine |
+| Eingabe-Pop-up | [RM-06](../02_Referenz-Analyse/Module/RM-06_Eingabe-Pop-up.md) / [HM-13](Module/HM-13_Eingabe-Pop-up.md) | Antippen jedes Eingabefelds mit Schlüsselsymbol ([RM-05](../02_Referenz-Analyse/Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md)); Zeitfelder in RM-27; HS-18 Direkteingabe der Nockennummer (HS-25) | „Übernehmen“, „Abbrechen“ | Annahme (A-20). **Einheitlich ohne Berechtigung (alle Eingaben und Aktionen mit Schlüsselsymbol):** Das Eingabe-Pop-up bzw. die Aktion öffnet nicht, die Meldezeile zeigt „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up öffnet sich; nach der Anmeldung läuft die ausgelöste Aktion weiter |
+| Such-Pop-up (Suche mit Trefferliste) | [HM-38](Module/HM-38_Such-Pop-up.md) in [HM-14](Module/HM-14_Popup-Rahmen.md), Texteingabe nach [HM-13](Module/HM-13_Eingabe-Pop-up.md); im Seitenkonzept HS-30 definiert (A-59, OP-40) | HS-30, HS-31, HS-33 Taste „Suchen“ | Treffer wählen oder „Abbrechen“ | keine |
+| Filter-Dialog (Meldenummer, Zeit) | HM-13 Filtervariante in HM-14 | HS-37 Taste „Filter“ | „Übernehmen“, „Abbrechen“ | keine |
+| Datei-/Ergebnis-Pop-up | HM-14 (Art FileResult): Dateiauswahl, Fortschritt, Ergebnis | HS-36 „Alle exportieren“, „Liste exportieren“, „Importieren“; HS-37 „Export“ | „Übernehmen“/„Abbrechen“, „Schließen“ | Taste mit Schlüsselsymbol (Dateiformat und Ort offen, OP-49) |
+| Eingabe-Pop-up über HS-03 | HM-13 in HM-14, Tiefe 2 | HS-03 Antippen eines Eingabefelds | „Übernehmen“, „Abbrechen“; danach zurück zu HS-03 | Felder mit Schlüsselsymbol |
 | Benutzer-Pop-up | im Seitenkonzept HS-01 / Rahmen definiert | Seitenleiste Benutzerkreis; berechtigungspflichtige Eingabe ohne Rolle | „Abbrechen“; nach Anmeldung wird die ausgelöste Aktion fortgesetzt | – |
 | Sprachwahl-Pop-up | Platzhalter (OP-03) | HS-04 Funktionsleiste „Sprache“ | Auswahl oder „Abbrechen“ | keine |
 | Rezeptauswahl-Pop-up | Platzhalter (OP-01) | HS-01 Rezept-Feld | Auswahl oder „Abbrechen“ | Annahme: Rolle Technik |
-| Bestätigungs-Pop-up | Platzhalter | zerstörerische oder stoppende Aktionen: HS-35 „Steuerung neu starten“, „Steuerung ausschalten“, „Bedienung beenden“; HS-37 „Liste leeren“ | „Ja“/„Abbrechen“ | Schlüsselsymbol der Taste |
+| Bestätigungs-Pop-up | HM-14 (Art Confirmation, Fokus auf „Abbrechen“) | zerstörerische, stoppende oder die Messung verändernde Aktionen: HS-13 „Nullpunkt setzen“ und „Zähler löschen“; HS-14 „Start“ im Modus Einzel (löscht vorhandene Werte); HS-35 „Steuerung neu starten“, „Steuerung ausschalten“, „Bedienung beenden“; HS-36 Importieren („Werte aus Datei in die Maschine schreiben?“); HS-37 „Liste leeren“ | „Ja“/„Abbrechen“ | Schlüsselsymbol der Taste |
+| Bestätigung „Änderungen verwerfen?“ | HM-14 (Art Confirmation), Tasten „Verwerfen“/„Abbrechen“ | HS-25 beim Blättern, bei „Übersicht“ oder beim Verlassen mit nicht geschriebenen Änderungen (Annahme, im Handbuch nicht beschrieben) | „Verwerfen“, „Abbrechen“ | keine |
 
 Das Handbuch beschreibt Bestätigungsdialoge nicht; sie sind eine Ergänzung (A-40), weil HS-35 laut Handbuch „die Anlage stoppt“.
 
 ### 4.2 Modale Regeln (A-40)
 
-1. **Ein Pop-up zur Zeit, Tiefe höchstens 2.** Zulässige Stapelung: Eingabe-Pop-up über Zeitplan-Eintrag (Zeitfelder) und Bestätigungs-Pop-up über ein anderes Pop-up. Alles andere wird abgelehnt (Anforderung wird verworfen, nicht aufgeschoben).
+1. **Ein Pop-up zur Zeit, Tiefe höchstens 2.** Zulässige Stapelung: Eingabe-Pop-up über Zeitplan-Eintrag (Zeitfelder), Eingabe-Pop-up über HS-03 (Maschinengeschwindigkeit), Benutzer-Pop-up über HS-03 (Eingabe ohne Rolle) und Bestätigungs-Pop-up über ein anderes Pop-up. Alles andere wird abgelehnt (Anforderung wird verworfen, nicht aufgeschoben).
 2. **Blockieren.** Hinter einem Pop-up liegt ein Abdunklungsfeld (Scrim). Seitenleiste, Funktionsleiste und Seiteninhalt sind gesperrt; der Brotkrümel ist nicht bedienbar. Meldezeile und Kopfzeile bleiben sichtbar (Anzeige), antippen ist wirkungslos.
 3. **Schließen.** Jedes Pop-up hat eine eindeutige Schließen-Aktion (Schließen, Abbrechen oder Kreuz). Ein Antippen außerhalb schließt **nicht** (Schutz vor Fehlbedienung bei Touch). Pop-ups mit Änderungen schließen ohne Übernehmen verwerfen die Änderung.
 4. **Verlauf.** Pop-ups stehen nicht im Verlauf. Die Seitenleisten-Taste „Zurück“ ist gesperrt, solange ein Pop-up offen ist; „Schließen“/„Abbrechen“ im Pop-up ersetzt sie.
@@ -348,7 +353,7 @@ DI: `INavigationService`, `IDialogService`, `IUserSession` als Singletons (`Micr
 |---|---|
 | `NavigateTo(Y)` von X (Kachel, Funktionsleiste, Brotkrümel nach unten) | X wird oben auf den Stapel gelegt, Y ist aktuelle Seite |
 | Blättern (HS-11, HS-12, HS-25, HS-26, HS-27, HS-29, HS-31, HS-32, HS-34; «/», » bzw. Pfeiltasten) | `ReplaceParameter`, kein Eintrag |
-| `NavigateTo(Y)` mit Y bereits im Stapel (z. B. Rückweg über Brotkrümel-Segment) | Stapel wird bis unterhalb von Y gekürzt, Y wird aktuell (Sprung zum Vorfahren, keine Schleife) |
+| `NavigateTo(Y)` bzw. `GoToAncestor(Y)` mit Y bereits im Stapel (z. B. Rückweg über Brotkrümel-Segment) | Stapel wird bis unterhalb von Y gekürzt, Y wird aktuell (Sprung zum Vorfahren, keine Schleife). Der Rücksprung folgt dem **Stapeleintrag**: Y erscheint mit den Parametern, die der Stapeleintrag trägt; gleichnamige Parameter der aktuellen Seite (`doserIndex`) werden übernommen (HS-12 → HS-11 zeigt denselben Dosierer). Ist Y nicht im Stapel, wird Y neu geöffnet (Parameter der aktuellen Seite, sonst Standard) |
 | Home | Stapel `[]`, aktuell HS-01 (Schreibweise im ganzen Dokument: Stapel = nur Vorgängerseiten, ohne die aktuelle Seite) |
 | Einstellungen | Stapel `[HS-01]`, aktuell HS-04 |
 | Meldungen / Meldezeile | wie `NavigateTo(HS-38)`; auf HS-38 wirkungslos |
@@ -371,7 +376,7 @@ Sprung über Seitenleiste (Home, Einstellungen) setzt den Stapel zurück, damit 
 ### 5.5 Brotkrümel- und Titel-Bildung
 
 - `Breadcrumb` wird aus `PageDescriptor.ParentKey` gebildet: Wurzel („Einstellung“ aus `Nav_Settings_Crumb`) › Zwischenseiten › Seite. Das letzte Element: `IsCurrent = true`, `IsNavigable = false`.
-- Dynamische Segmente (HS-31, HS-34, HS-27, HS-25): `ViewModel` liefert den Text über `IBreadcrumbTextProvider.GetCrumbText()`, sonst Ressource.
+- Dynamische Segmente (HS-31, HS-34) und Objektkennung als Zusatz (`ObjectSuffix`: HS-11, HS-12, HS-20): `ViewModel` liefert den Text über `IBreadcrumbTextProvider.GetCrumbText()`, sonst Ressource. HS-25 und HS-27 haben statische Segmente (Objekt in Seite bzw. Titelzeile).
 - Der Brotkrümel ist auf HS-24 (`Fullscreen`) ausgeblendet. Pop-ups (`Popup`) ändern ihn nicht.
 - Sprachumschaltung: Ressourcenschlüssel werden zur Anzeigezeit aufgelöst, kein Text im Register.
 
@@ -418,6 +423,7 @@ Sprung über Seitenleiste (Home, Einstellungen) setzt den Stapel zurück, damit 
 | Tasten „Zuführung Papier“/„Zuführung Karton“ in DS-01 (OP-10 nahm Navigation an) | Referenz gewinnt: Zustandstasten (Aktivierung); Navigation nur über „Einstellung › Zuführungen“ | A-38 |
 | Rezept (OP-01), Sprache (OP-03), Schichtplan (OP-02) | Pop-ups bzw. Platzhalterseite HS-43 | A-33, A-40 |
 | Funktion der Taste „Wago“ (HS-36) und „Lampentest“ (HS-35) | Aktionstasten ohne Navigation; Inhalt offen | Handbuch nennt keine Funktion |
+| HS-24 (Bildschirm reinigen): Kopfzeile und Meldezeile | Die Kopfzeile ohne Meldezeile bleibt stehen (HM-02, `ShowMessageLine = false`); Seitenleiste, Brotkrümel, Funktionsleiste und Meldezeile sind ausgeblendet. Ein kritischer Alarm (Meldungsklasse Störung) beendet die Reinigung vorzeitig und gibt die Bedienung frei (Annahme, kein Handbuchbeleg, OP-61) | A-66, OP-31, OP-44 |
 | Stapelverhalten bei Parallelzugängen (z. B. HS-23 aus HS-04 und HS-11) | „Zurück“ folgt dem Verlauf (A-42), Brotkrümel bleibt kanonisch (A-34) | – |
 
 ## 7. Prüfpunkte
@@ -432,3 +438,4 @@ Sprung über Seitenleiste (Home, Einstellungen) setzt den Stapel zurück, damit 
 | NAV-P06 | Jeder Zugang im Baum ist erreichbar und führt zurück | Kein Zyklus, kein Seitenpaar ohne Rückweg | offen |
 | NAV-P07 | Pop-up-Regeln gelten für HS-02, HS-03, RM-27, RM-06 | Abschnitt 4 | offen |
 | NAV-P08 | Neue Annahmen A-33 ff. stehen in Annahmen.md | vorhanden | offen |
+| NAV-P09 | Pop-up-Inventar 4.1 enthält Such-Pop-up, Filter-Dialog, Datei-/Ergebnis-Pop-up, Bestätigungen (HS-13, HS-14, HS-25, HS-35 bis HS-37) und Eingabe-Pop-up über HS-03 | vorhanden | offen |
