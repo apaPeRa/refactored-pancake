@@ -14,31 +14,31 @@ Einstiegsseite für alle Einstellungen: Schnellzugriff links, Kachelmenü zu den
 ## Elemente
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Rahmen (Benutzer, Navigationssymbole, Logo, Meldezeile, Betriebsart, Uhr, Kennzahlen 112 1/min, 245°) | Rahmen | wie DS-01 | DM-01 bis DM-06, DM-08 |
-| Brotkrümel „Einstellung“ | Navigation | Pfad | DM-07 |
-| Bereich „Anwählen/Schnelle Einstellungen“ | Gruppenbereich | Schnellzugriff | DM-11 |
-| Taste „Beleuchtung“ | Kachel-Taste (kleiner, blau) | Funktion nicht beschrieben | DM-12 |
-| Kachel „Zuführungen“ | Kachel-Taste | führt zu Zuführungen (Breadcrumb in DS-03, DS-05) | DM-12 |
-| Kachel „Schließ-maschine“ (Text „Schließ-“ / „maschine“) | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel „Dosierer“ | Kachel-Taste | führt zu DS-04 | DM-12 |
-| Kachel „Heizungen“ | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel (leer), Mitte Reihe 3 links | Kachel-Taste ohne Text | reservierter Platz | DM-12 |
-| Kachel (leer), Mitte Reihe 3 rechts | Kachel-Taste ohne Text | reservierter Platz | DM-12 |
-| Kachel „Waagen“ | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel „Packungs-register“ (Text „Packungs-“ / „register“) | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel „Nocken-schaltwerk“ (Text „Nocken-“ / „schaltwerk“) | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel „Handbetrieb“ | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel (leer), rechts Reihe 2 links | Kachel-Taste ohne Text | reservierter Platz | DM-12 |
-| Kachel „Geräte“ | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel (leer), rechts Reihe 3 links | Kachel-Taste ohne Text | reservierter Platz | DM-12 |
-| Kachel „EA Übersicht“ | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel „Bildschirm reinigen“ | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Kachel „System-einstellungen“ (Text „System-“ / „einstellungen“) | Kachel-Taste | Ziel nicht abgebildet | DM-12 |
-| Funktionsleiste | Leiste | Container | DM-09 |
-| Taste „Sprache“ (grau) | Funktionstaste | Sprachumschaltung (vermutet) | DM-10 |
+| Rahmen (Benutzer, Navigationssymbole, Logo, Meldezeile, Betriebsart, Uhr, Kennzahlen 112 1/min, 245°) | Rahmen | wie DS-01 | [DM-01](../Module/DM-01_Benutzerkennung.md) bis [DM-06](../Module/DM-06_Uhrzeit-und-Datum.md), [DM-08](../Module/DM-08_Kennzahl-Kachel.md) |
+| Brotkrümel „Einstellung“ | Navigation | Pfad | [DM-07](../Module/DM-07_Brotkruemel-Navigation.md) |
+| Bereich „Anwählen/Schnelle Einstellungen“ | Gruppenbereich | Schnellzugriff | [DM-11](../Module/DM-11_Gruppenbereich.md) |
+| Taste „Beleuchtung“ | Kachel-Taste (kleiner, blau) | Funktion nicht beschrieben | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Zuführungen“ | Kachel-Taste | führt zu Zuführungen (Breadcrumb in DS-03, DS-05) | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Schließ-maschine“ (Text „Schließ-“ / „maschine“) | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Dosierer“ | Kachel-Taste | führt zu DS-04 | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Heizungen“ | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel (leer), Mitte Reihe 3 links | Kachel-Taste ohne Text | reservierter Platz | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel (leer), Mitte Reihe 3 rechts | Kachel-Taste ohne Text | reservierter Platz | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Waagen“ | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Packungs-register“ (Text „Packungs-“ / „register“) | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Nocken-schaltwerk“ (Text „Nocken-“ / „schaltwerk“) | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Handbetrieb“ | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel (leer), rechts Reihe 2 links | Kachel-Taste ohne Text | reservierter Platz | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Geräte“ | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel (leer), rechts Reihe 3 links | Kachel-Taste ohne Text | reservierter Platz | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „EA Übersicht“ | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „Bildschirm reinigen“ | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Kachel „System-einstellungen“ (Text „System-“ / „einstellungen“) | Kachel-Taste | Ziel nicht abgebildet | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Funktionsleiste | Leiste | Container | [DM-09](../Module/DM-09_Funktionsleiste.md) |
+| Taste „Sprache“ (grau) | Funktionstaste | Sprachumschaltung (vermutet) | [DM-10](../Module/DM-10_Funktionstaste-grau.md) |
 
 ## Verwendete Module (IDs)
-DM-01 bis DM-09 (Rahmen), DM-10, DM-11, DM-12.
+[DM-01](../Module/DM-01_Benutzerkennung.md) bis [DM-09](../Module/DM-09_Funktionsleiste.md) (Rahmen), [DM-10](../Module/DM-10_Funktionstaste-grau.md), [DM-11](../Module/DM-11_Gruppenbereich.md), [DM-12](../Module/DM-12_Kachel-Taste.md).
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Alle Kacheln im gleichen Zustand (normal). Gedrückt, gesperrt oder aktiv nicht dargestellt.

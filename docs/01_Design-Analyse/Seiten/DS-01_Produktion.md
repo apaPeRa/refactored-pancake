@@ -13,48 +13,48 @@ Startseite (Home) im Betrieb: Überblick über Geschwindigkeit, laufende und let
 ## Elemente
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Benutzerkreis „MM“, „Max Mustermann“, „Technik“ | Anzeige | angemeldeter Benutzer und Rolle | DM-01 |
-| Symbole Home, Zahnrad, Sprechblase „!“, Zurück | Symboltasten | Navigation | DM-02 |
-| Logo „APA-TEC GmbH AUTOMATION AND PACKAGING TECHNOLOGY“ | Grafik | Kopfzeile | DM-03 |
-| „014: Sicherung 4F24 Auslaufband ausgelöst.“ | Meldezeile (gelb) | aktuelle Meldung | DM-04 |
-| „Produktion“ mit Kreispfeilen (grün) | Anzeige | Betriebsart | DM-05 |
-| „9:15“, „06.01.2026“ | Anzeige | Uhrzeit, Datum | DM-06 |
-| Brotkrümel „Produktion“ | Navigation | Pfad (einziges Segment, blau) | DM-07 |
-| „112 1/min“ mit Tachosymbol | Kennzahl | Maschinengeschwindigkeit | DM-08 |
-| „245°“ mit Winkelsymbol | Kennzahl | Maschinenwinkel | DM-08 |
-| Kachel „Geschwindigkeit“ | Gruppenbereich | enthält nur die Taste „Schnell“ (sonst leer) | DM-11 |
-| Taste „Schnell“ (grün) | Zustandstaste | Geschwindigkeitsmodus; Funktion im Bild nicht erkennbar | DM-19 |
-| Kachel „Produktion“ | Gruppenbereich | Produktionsdaten | DM-11 |
-| „Rezeptanwahl“ / „Tolles Rezept“ | Beschriftung/Wert | gewähltes Rezept (Auswahl vermutet) | DM-15 |
-| „Aktuelle Produktion“ / „9854“ | Beschriftung/Wert | Zählerwert | DM-15 |
-| „Letzte Produktion“ / „14531“ | Beschriftung/Wert | Zählerwert | DM-15 |
-| Kachel „EKW“ | Gruppenbereich | leer, nur Überschrift | DM-11 |
-| Kachel „Versorgung“ | Gruppenbereich | Versorgung und Linienbetrieb | DM-11 |
-| „Druckluft“ / „IO“ | Beschriftung/Wert | Zustand | DM-15 |
-| „Papier“ / „IO“ | Beschriftung/Wert | Zustand | DM-15 |
-| „Produkt“ / „IO“ | Beschriftung/Wert | Zustand | DM-15 |
-| Zwischenüberschrift „Linienbetrieb“ (ohne Wert) | Text | Gruppentitel innerhalb der Kachel „Versorgung“; kein Beschriftung/Wert-Paar | DM-11 (Unterüberschrift) |
-| „Bandwaage“ / „Bereit“ | Beschriftung/Wert | Zustand | DM-15 |
-| „Folgemaschine“ / „Läuft“ | Beschriftung/Wert | Zustand | DM-15 |
-| Taste „Automatik“ | Kachel-Taste (blau) | Funktion nicht beschrieben | DM-12 |
-| Taste „Zuführung Papier“ | Kachel-Taste | Funktion nicht beschrieben (Navigation vermutet) | DM-12 |
-| Taste „Zuführung Karton“ | Kachel-Taste | Funktion nicht beschrieben (Navigation vermutet) | DM-12 |
-| Taste „Leerpakete ausblasen“ | Kachel-Taste | Funktion nicht beschrieben | DM-12 |
-| Taste „Abfüllung“ | Kachel-Taste | Funktion nicht beschrieben | DM-12 |
-| Taste „Bunker leerfahren“ | Kachel-Taste | Funktion nicht beschrieben | DM-12 |
-| Umschalter „Bahnkontrolle“ | Umschalter (Knopf rechts, grün) | ein/aus | DM-13 |
-| Umschalter „Heizungen“ | Umschalter | ein/aus | DM-13 |
-| Umschalter „Gebläse Dornrad“ | Umschalter | ein/aus | DM-13 |
-| Umschalter „Produktzuführung“ | Umschalter | ein/aus | DM-13 |
-| Umschalter „Produktüberwachung“ | Umschalter | ein/aus | DM-13 |
-| Umschalter „Rüttlung“ | Umschalter | ein/aus | DM-13 |
-| Umschalter „Entstaubung“ | Umschalter (rechte Spalte) | ein/aus | DM-13 |
-| Umschalter „Linienbetrieb“ | Umschalter (rechte Spalte) | ein/aus | DM-13 |
-| Funktionsleiste | Leiste | Container | DM-09 |
-| Taste „Schichtplan“ (grau) | Funktionstaste | öffnet Schichtplan (vermutet) | DM-10 |
+| Benutzerkreis „MM“, „Max Mustermann“, „Technik“ | Anzeige | angemeldeter Benutzer und Rolle | [DM-01](../Module/DM-01_Benutzerkennung.md) |
+| Symbole Home, Zahnrad, Sprechblase „!“, Zurück | Symboltasten | Navigation | [DM-02](../Module/DM-02_Navigationsleiste.md) |
+| Logo „APA-TEC GmbH AUTOMATION AND PACKAGING TECHNOLOGY“ | Grafik | Kopfzeile | [DM-03](../Module/DM-03_Kopfzeile-Logo.md) |
+| „014: Sicherung 4F24 Auslaufband ausgelöst.“ | Meldezeile (gelb) | aktuelle Meldung | [DM-04](../Module/DM-04_Meldezeile.md) |
+| „Produktion“ mit Kreispfeilen (grün) | Anzeige | Betriebsart | [DM-05](../Module/DM-05_Betriebsart-Anzeige.md) |
+| „9:15“, „06.01.2026“ | Anzeige | Uhrzeit, Datum | [DM-06](../Module/DM-06_Uhrzeit-und-Datum.md) |
+| Brotkrümel „Produktion“ | Navigation | Pfad (einziges Segment, blau) | [DM-07](../Module/DM-07_Brotkruemel-Navigation.md) |
+| „112 1/min“ mit Tachosymbol | Kennzahl | Maschinengeschwindigkeit | [DM-08](../Module/DM-08_Kennzahl-Kachel.md) |
+| „245°“ mit Winkelsymbol | Kennzahl | Maschinenwinkel | [DM-08](../Module/DM-08_Kennzahl-Kachel.md) |
+| Kachel „Geschwindigkeit“ | Gruppenbereich | enthält nur die Taste „Schnell“ (sonst leer) | [DM-11](../Module/DM-11_Gruppenbereich.md) |
+| Taste „Schnell“ (grün) | Zustandstaste | Geschwindigkeitsmodus; Funktion im Bild nicht erkennbar | [DM-19](../Module/DM-19_Zustandstaste.md) |
+| Kachel „Produktion“ | Gruppenbereich | Produktionsdaten | [DM-11](../Module/DM-11_Gruppenbereich.md) |
+| „Rezeptanwahl“ / „Tolles Rezept“ | Beschriftung/Wert | gewähltes Rezept (Auswahl vermutet) | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| „Aktuelle Produktion“ / „9854“ | Beschriftung/Wert | Zählerwert | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| „Letzte Produktion“ / „14531“ | Beschriftung/Wert | Zählerwert | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| Kachel „EKW“ | Gruppenbereich | leer, nur Überschrift | [DM-11](../Module/DM-11_Gruppenbereich.md) |
+| Kachel „Versorgung“ | Gruppenbereich | Versorgung und Linienbetrieb | [DM-11](../Module/DM-11_Gruppenbereich.md) |
+| „Druckluft“ / „IO“ | Beschriftung/Wert | Zustand | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| „Papier“ / „IO“ | Beschriftung/Wert | Zustand | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| „Produkt“ / „IO“ | Beschriftung/Wert | Zustand | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| Zwischenüberschrift „Linienbetrieb“ (ohne Wert) | Text | Gruppentitel innerhalb der Kachel „Versorgung“; kein Beschriftung/Wert-Paar | [DM-11](../Module/DM-11_Gruppenbereich.md) (Unterüberschrift) |
+| „Bandwaage“ / „Bereit“ | Beschriftung/Wert | Zustand | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| „Folgemaschine“ / „Läuft“ | Beschriftung/Wert | Zustand | [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md) |
+| Taste „Automatik“ | Kachel-Taste (blau) | Funktion nicht beschrieben | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Taste „Zuführung Papier“ | Kachel-Taste | Funktion nicht beschrieben (Navigation vermutet) | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Taste „Zuführung Karton“ | Kachel-Taste | Funktion nicht beschrieben (Navigation vermutet) | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Taste „Leerpakete ausblasen“ | Kachel-Taste | Funktion nicht beschrieben | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Taste „Abfüllung“ | Kachel-Taste | Funktion nicht beschrieben | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Taste „Bunker leerfahren“ | Kachel-Taste | Funktion nicht beschrieben | [DM-12](../Module/DM-12_Kachel-Taste.md) |
+| Umschalter „Bahnkontrolle“ | Umschalter (Knopf rechts, grün) | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Umschalter „Heizungen“ | Umschalter | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Umschalter „Gebläse Dornrad“ | Umschalter | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Umschalter „Produktzuführung“ | Umschalter | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Umschalter „Produktüberwachung“ | Umschalter | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Umschalter „Rüttlung“ | Umschalter | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Umschalter „Entstaubung“ | Umschalter (rechte Spalte) | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Umschalter „Linienbetrieb“ | Umschalter (rechte Spalte) | ein/aus | [DM-13](../Module/DM-13_Umschalter.md) |
+| Funktionsleiste | Leiste | Container | [DM-09](../Module/DM-09_Funktionsleiste.md) |
+| Taste „Schichtplan“ (grau) | Funktionstaste | öffnet Schichtplan (vermutet) | [DM-10](../Module/DM-10_Funktionstaste-grau.md) |
 
 ## Verwendete Module (IDs)
-DM-01, DM-02, DM-03, DM-04, DM-05, DM-06, DM-07, DM-08, DM-09, DM-10, DM-11, DM-12, DM-13, DM-15, DM-19 (Modulkandidaten, siehe Design-Dokumentation Abschnitt 8).
+[DM-01](../Module/DM-01_Benutzerkennung.md), [DM-02](../Module/DM-02_Navigationsleiste.md), [DM-03](../Module/DM-03_Kopfzeile-Logo.md), [DM-04](../Module/DM-04_Meldezeile.md), [DM-05](../Module/DM-05_Betriebsart-Anzeige.md), [DM-06](../Module/DM-06_Uhrzeit-und-Datum.md), [DM-07](../Module/DM-07_Brotkruemel-Navigation.md), [DM-08](../Module/DM-08_Kennzahl-Kachel.md), [DM-09](../Module/DM-09_Funktionsleiste.md), [DM-10](../Module/DM-10_Funktionstaste-grau.md), [DM-11](../Module/DM-11_Gruppenbereich.md), [DM-12](../Module/DM-12_Kachel-Taste.md), [DM-13](../Module/DM-13_Umschalter.md), [DM-15](../Module/DM-15_Beschriftung-Wert-Zeile.md), [DM-19](../Module/DM-19_Zustandstaste.md) (Modulkandidaten, siehe Design-Dokumentation Abschnitt 8).
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Alle 8 Umschalter stehen im Bild auf „ein“ (Knopf rechts, grün). Die Aus-Darstellung ist nicht zu sehen.

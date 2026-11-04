@@ -14,37 +14,37 @@ Bedienung und Überwachung der Heißleimanlage: Heizung, Standby und Pumpe schal
 ## Elemente
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Rahmen (Benutzer, Navigationssymbole, Logo, Meldezeile, Betriebsart, Uhr, Kennzahlen 112 1/min, 245°) | Rahmen | wie DS-01 | DM-01 bis DM-06, DM-08 |
-| Brotkrümel „Einstellung“, „Zuführungen“, „Heißleim“ | Navigation | Pfad, 3 Segmente | DM-07 |
-| Taste „Heizung“ (grün) | Zustandstaste | Heizung ein/aus (vermutet) | DM-19 |
-| Taste „Standby“ (grün) | Zustandstaste | Standby | DM-19 |
-| Taste „Pumpe“ (grün) | Zustandstaste | Pumpe | DM-19 |
-| Taste „Zeitplan“ (grün, links unten) | Zustandstaste | Zeitplan der Heizung (vermutet) | DM-19 |
-| Überschrift „Status“ (unterstrichen) | Text | Gruppentitel | DM-11 |
-| LED „Bereitschaft“ | Status-LED (grün) | Zustand | DM-14 |
-| LED „Temperatur“ | Status-LED (grün) | Zustand | DM-14 |
-| LED „Füllsystem“ | Status-LED (grün) | Zustand | DM-14 |
-| LED „Tankfüllstand“ | Status-LED (grün) | Zustand | DM-14 |
-| LED „Tank Klappe“ | Status-LED (grün) | Zustand | DM-14 |
-| LED „Keine Störung“ | Status-LED (grün) | Zustand | DM-14 |
-| LED „Kein Alarm“ | Status-LED (grün) | Zustand | DM-14 |
-| Überschrift „Aktuelle Temperaturen:“ (unterstrichen) | Text | Gruppentitel | DM-11 |
-| „Tank:“ / „150 °C“ | Wertfeld (weiß) | Anzeige | DM-16 |
-| „Verteiler:“ / „150 °C“ | Wertfeld | Anzeige | DM-16 |
-| „Pistole 1:“ / „170 °C“ | Wertfeld | Anzeige | DM-16 |
-| „Schlauch 1:“ / „160 °C“ | Wertfeld | Anzeige | DM-16 |
-| „Füllstand Tank“ / Balken „83%“ (grün) | Fortschrittsbalken | Füllstand | DM-18 |
-| „Ziel Füllstand:“ / „50 %“ (rot, Schlüsselsymbol gelb) | Eingabefeld mit Schlüssel | Sollwert, berechtigungspflichtig | DM-17 |
-| „Max Füllzeit:“ / „60 s“ (rot, Schlüsselsymbol gelb) | Eingabefeld mit Schlüssel | Sollwert, berechtigungspflichtig | DM-17 |
-| Taste „Füllsystem“ (hellgrün) | Zustandstaste | Füllsystem | DM-19 |
-| Taste „Manuell“ (rot) | Zustandstaste | manueller Betrieb | DM-19 |
-| Funktionsleiste | Leiste | Container | DM-09 |
-| Taste „Temperatur“ (grau) | Funktionstaste | Ansicht/Unterseite Temperatur (vermutet) | DM-10 |
-| Taste „Druck“ (grau) | Funktionstaste | Ansicht/Unterseite Druck | DM-10 |
-| Taste „Zeitplan“ (grau) | Funktionstaste | Ansicht/Unterseite Zeitplan | DM-10 |
+| Rahmen (Benutzer, Navigationssymbole, Logo, Meldezeile, Betriebsart, Uhr, Kennzahlen 112 1/min, 245°) | Rahmen | wie DS-01 | [DM-01](../Module/DM-01_Benutzerkennung.md) bis [DM-06](../Module/DM-06_Uhrzeit-und-Datum.md), [DM-08](../Module/DM-08_Kennzahl-Kachel.md) |
+| Brotkrümel „Einstellung“, „Zuführungen“, „Heißleim“ | Navigation | Pfad, 3 Segmente | [DM-07](../Module/DM-07_Brotkruemel-Navigation.md) |
+| Taste „Heizung“ (grün) | Zustandstaste | Heizung ein/aus (vermutet) | [DM-19](../Module/DM-19_Zustandstaste.md) |
+| Taste „Standby“ (grün) | Zustandstaste | Standby | [DM-19](../Module/DM-19_Zustandstaste.md) |
+| Taste „Pumpe“ (grün) | Zustandstaste | Pumpe | [DM-19](../Module/DM-19_Zustandstaste.md) |
+| Taste „Zeitplan“ (grün, links unten) | Zustandstaste | Zeitplan der Heizung (vermutet) | [DM-19](../Module/DM-19_Zustandstaste.md) |
+| Überschrift „Status“ (unterstrichen) | Text | Gruppentitel | [DM-11](../Module/DM-11_Gruppenbereich.md) |
+| LED „Bereitschaft“ | Status-LED (grün) | Zustand | [DM-14](../Module/DM-14_Status-LED.md) |
+| LED „Temperatur“ | Status-LED (grün) | Zustand | [DM-14](../Module/DM-14_Status-LED.md) |
+| LED „Füllsystem“ | Status-LED (grün) | Zustand | [DM-14](../Module/DM-14_Status-LED.md) |
+| LED „Tankfüllstand“ | Status-LED (grün) | Zustand | [DM-14](../Module/DM-14_Status-LED.md) |
+| LED „Tank Klappe“ | Status-LED (grün) | Zustand | [DM-14](../Module/DM-14_Status-LED.md) |
+| LED „Keine Störung“ | Status-LED (grün) | Zustand | [DM-14](../Module/DM-14_Status-LED.md) |
+| LED „Kein Alarm“ | Status-LED (grün) | Zustand | [DM-14](../Module/DM-14_Status-LED.md) |
+| Überschrift „Aktuelle Temperaturen:“ (unterstrichen) | Text | Gruppentitel | [DM-11](../Module/DM-11_Gruppenbereich.md) |
+| „Tank:“ / „150 °C“ | Wertfeld (weiß) | Anzeige | [DM-16](../Module/DM-16_Wertfeld-Anzeige.md) |
+| „Verteiler:“ / „150 °C“ | Wertfeld | Anzeige | [DM-16](../Module/DM-16_Wertfeld-Anzeige.md) |
+| „Pistole 1:“ / „170 °C“ | Wertfeld | Anzeige | [DM-16](../Module/DM-16_Wertfeld-Anzeige.md) |
+| „Schlauch 1:“ / „160 °C“ | Wertfeld | Anzeige | [DM-16](../Module/DM-16_Wertfeld-Anzeige.md) |
+| „Füllstand Tank“ / Balken „83%“ (grün) | Fortschrittsbalken | Füllstand | [DM-18](../Module/DM-18_Fortschrittsbalken.md) |
+| „Ziel Füllstand:“ / „50 %“ (rot, Schlüsselsymbol gelb) | Eingabefeld mit Schlüssel | Sollwert, berechtigungspflichtig | [DM-17](../Module/DM-17_Eingabefeld-mit-Schluesselsymbol.md) |
+| „Max Füllzeit:“ / „60 s“ (rot, Schlüsselsymbol gelb) | Eingabefeld mit Schlüssel | Sollwert, berechtigungspflichtig | [DM-17](../Module/DM-17_Eingabefeld-mit-Schluesselsymbol.md) |
+| Taste „Füllsystem“ (hellgrün) | Zustandstaste | Füllsystem | [DM-19](../Module/DM-19_Zustandstaste.md) |
+| Taste „Manuell“ (rot) | Zustandstaste | manueller Betrieb | [DM-19](../Module/DM-19_Zustandstaste.md) |
+| Funktionsleiste | Leiste | Container | [DM-09](../Module/DM-09_Funktionsleiste.md) |
+| Taste „Temperatur“ (grau) | Funktionstaste | Ansicht/Unterseite Temperatur (vermutet) | [DM-10](../Module/DM-10_Funktionstaste-grau.md) |
+| Taste „Druck“ (grau) | Funktionstaste | Ansicht/Unterseite Druck | [DM-10](../Module/DM-10_Funktionstaste-grau.md) |
+| Taste „Zeitplan“ (grau) | Funktionstaste | Ansicht/Unterseite Zeitplan | [DM-10](../Module/DM-10_Funktionstaste-grau.md) |
 
 ## Verwendete Module (IDs)
-DM-01 bis DM-09 (Rahmen), DM-10, DM-11, DM-14, DM-16, DM-17, DM-18, DM-19.
+[DM-01](../Module/DM-01_Benutzerkennung.md) bis [DM-09](../Module/DM-09_Funktionsleiste.md) (Rahmen), [DM-10](../Module/DM-10_Funktionstaste-grau.md), [DM-11](../Module/DM-11_Gruppenbereich.md), [DM-14](../Module/DM-14_Status-LED.md), [DM-16](../Module/DM-16_Wertfeld-Anzeige.md), [DM-17](../Module/DM-17_Eingabefeld-mit-Schluesselsymbol.md), [DM-18](../Module/DM-18_Fortschrittsbalken.md), [DM-19](../Module/DM-19_Zustandstaste.md).
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Alle 7 LEDs grün. Die Zustände aus / Warnung / Alarm sind nicht dargestellt (Beschriftungen „Keine Störung“, „Kein Alarm“ sind positiv formuliert, grün = erfüllt).

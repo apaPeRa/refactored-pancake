@@ -17,7 +17,7 @@ Beschrifteter Ein/Aus-Schalter (Schiebeschalter) für eine Teilfunktion. Knopf r
 | Aus | im Bild nicht dargestellt; Annahme: Knopf links, grau, zusätzlich Text/Symbol „Aus“ |
 | Gesperrt | im Bild nicht dargestellt; Annahme: Schloss-Symbol |
 
-Der Zustand folgt aus der Knopfposition (nicht nur der Farbe). Im Bild stehen alle 8 + 9 Umschalter auf „ein“. Touch-Ziel mindestens 48 px; im Entwurf ca. 95 × 25 px und zu klein. Die Beschriftung steht links, die Knöpfe sind im Entwurf versetzt (Artefakt).
+Der Zustand folgt aus der Knopfposition (nicht nur der Farbe). Im Bild stehen alle 8 Umschalter in DS-01 und alle 9 in DS-04 auf „ein“. Touch-Ziel mindestens 48 px; im Entwurf ca. 95 × 25 px und zu klein. Die Beschriftung steht links, die Knöpfe sind im Entwurf versetzt (Artefakt).
 
 ## Verwendet auf Seiten (IDs)
 - [DS-01](../Seiten/DS-01_Produktion.md) – Produktion
