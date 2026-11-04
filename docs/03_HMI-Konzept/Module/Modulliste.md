@@ -42,7 +42,6 @@ Stand: Konsolidierung nach Phase 3, Punkt 4. Die 38 HMI-Module HM-01 bis HM-38 f
 | [HM-36](HM-36_EA-Zeile.md) | EA-Zeile (Signalzeile) | `HM36_IoRow` | – | [RM-35](../../02_Referenz-Analyse/Module/RM-35_EA-Zeile.md) | HS-34 (1) |
 | [HM-37](HM-37_Wertegitter.md) | Wertegitter (Einzelgewichte) | `HM37_ValueGrid` | – | [RM-36](../../02_Referenz-Analyse/Module/RM-36_Wertegitter.md) | HS-14 (1) |
 | [HM-38](HM-38_Such-Pop-up.md) | Such-Pop-up (Suche mit Trefferliste) | `HM38_SearchDialog` | – | – (Annahme A-59, OP-40) | HS-30, HS-31, HS-33 (3) |
-| [HM-38](HM-38_Such-Pop-up.md) | Such-Pop-up (Suche mit Trefferliste) | `HM38_SearchDialog` | – | – (Annahme A-60, OP-40) | HS-30, HS-31, HS-33 (3) |
 
 ## Zusammenführungen (Duplikate entfernt)
 

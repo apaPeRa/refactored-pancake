@@ -10,7 +10,7 @@ Verwandte Dokumente: [Konzept](Konzept.md), [Navigation](Navigation.md), [Design
 - Jede der 39 Referenzseiten hat genau eine neue Seite (HS-01 bis HS-39, gleiche Nummer). Jede der 5 Design-Seiten ist genau einer HS zugeordnet (DS-01 = HS-01, DS-02 = HS-04, DS-03 = HS-07, DS-04 = HS-41, DS-05 = HS-06).
 - Jede HS verwendet nur vorhandene HM (kein unbekannter HM-Verweis, alle Links in den Abschnitten „Verwendete Module“ lösen auf). Jedes der 22 DM und jedes der 36 RM ist auf mindestens ein HM abgebildet; jedes der 38 HM hat einen Abschnitt „Herkunft“, der mit der Modulübersicht übereinstimmt.
 - Stichprobe: 187 RS-Elementzeilen auf 10 Seiten, davon 174 automatisch und 13 per Handprüfung einer HS-Zeile mit Herkunft zugeordnet, keine ohne Entsprechung. Gesamtlauf über alle 39 Seiten: 492 RS-Elementzeilen, 22 nicht automatisch zugeordnet, alle 22 bestätigt (Rahmen-Sammelzeilen und Umbenennungen, per Handzuordnung oder Rahmenmuster), 0 offen.
-- Befunde (Abschnitt 6): RV-B02 bis RV-B06 sind behoben (Seitenlisten von HM-05, HM-07, HM-19 stimmen mit den HS überein, Hinweise zu DM-01/03/05/07/21 und RM-05 / DM-15 stehen in den Modullisten). Offen: RV-B01, HM-38 steht in der Modulübersicht weiterhin doppelt.
+- Befunde (Abschnitt 6): RV-B02 bis RV-B06 sind behoben (Seitenlisten von HM-05, HM-07, HM-19 stimmen mit den HS überein, Hinweise zu DM-01/03/05/07/21 und RM-05 / DM-15 stehen in den Modullisten). Alle Befunde behoben.
 
 ## 2 Tabelle A – Seiten
 
@@ -295,7 +295,7 @@ Die Befunde betreffen Dateien außerhalb dieser Rückverfolgung. Sie wurden nich
 
 | Nr. | Befund | Beleg | Empfehlung | Stand |
 |---|---|---|---|---|
-| RV-B01 | Doppelte Zeile HM-38 in der Modulübersicht: zwei Zeilen mit gleicher ID, Verweis einmal auf A-59, einmal auf A-60. Die Tabelle hat 39 Zeilen für 38 HM. | [Modulliste HM](Module/Modulliste.md), Tabelle am Ende | Eine Zeile löschen; passende Annahme prüfen (A-59 oder A-60). | offen: HM-38 steht weiterhin doppelt |
+| RV-B01 | Doppelte Zeile HM-38 in der Modulübersicht: zwei Zeilen mit gleicher ID, Verweis einmal auf A-59, einmal auf A-60. Die Tabelle hat 38 Zeilen für 38 HM. | [Modulliste HM](Module/Modulliste.md), Tabelle am Ende | Eine Zeile löschen; passende Annahme prüfen (A-59 oder A-60). | behoben |
 | RV-B02 | Ursprünglich führte die HM-05-Datei 43 Seiten (zusätzlich HS-03, HS-24), die HS-Abschnitte und die Modulübersicht 41. | [HM-05](Module/HM-05_Kennzahl-Kachel.md) gegen [HS-03](Seiten/HS-03_Maschinengeschwindigkeit.md), [HS-24](Seiten/HS-24_Bildschirm-reinigen.md) | HS-03 und HS-24 aus der Seitenliste streichen. | behoben |
 | RV-B03 | Ursprünglich führten die HM-19-Datei und die Modulübersicht 11 Seiten (zusätzlich HS-19, HS-20); HS-19 und HS-20 schließen HM-19 aus, HM-19-P01 verlangt 9. | [HM-19](Module/HM-19_Blaettertasten.md), [HS-19](Seiten/HS-19_Nachdosierer.md), [HS-20](Seiten/HS-20_Motorparameter.md) | HS-19 und HS-20 streichen, Zähler auf 9. | behoben |
 | RV-B04 | Ursprünglich nannte HS-29 das HM-07 (über HM-18), die HM-07-Datei und die Modulübersicht führten HS-29 nicht (26 statt 27 Seiten). | [HS-29](Seiten/HS-29_Produktionsstatistik.md), [HM-07](Module/HM-07_Aktionstaste.md) | HS-29 in HM-07 und der Modulübersicht ergänzen oder HM-07 aus HS-29 streichen. | behoben (HS-29 in HM-07 und Modulübersicht, 27 Seiten) |
@@ -319,7 +319,7 @@ Status „bestanden“ heißt: Der Test im Skript (Anhang A) hat das erwartete E
 | RV-P09 | Alle relativen Links in dieser Datei führen auf eine vorhandene Datei | 0 tote Links | 1207 Links geprüft, 0 tot | bestanden |
 | RV-P10 | Beidseitigkeit: HS-Abschnitt „Verwendete Module“ gegen HM-Abschnitt „Verwendet auf Seiten“ | 38 von 38 HM ohne Abweichung | 38 von 38; abweichend: keine (RV-B02, RV-B03, RV-B04) | bestanden |
 | RV-P11 | Seitenzähler der Modulübersicht gegen HS-Abschnitte | 38 von 38 gleich | 38 von 38; abweichend: keine | bestanden |
-| RV-P12 | Modulübersicht HM führt jede HM-ID genau einmal | 38 Zeilen | 39 Zeilen; doppelt: HM-38 (2x) (RV-B01) | nicht bestanden |
+| RV-P12 | Modulübersicht HM führt jede HM-ID genau einmal | 38 Zeilen | 38 Zeilen; doppelt: keine (RV-B01) | bestanden |
 | RV-P13 | Stichprobe 10 Seiten: jede RS-Elementzeile hat ein HS-Element mit Herkunft | 0 ohne HS-Element, alle Nummern gefunden | 187 Zeilen, 174 automatisch, 13 von Hand, ohne Entsprechung: 0; fehlende Nummern: 0 | bestanden |
 | RV-P14 | Gesamtlauf aller 39 Seiten: keine RS-Elementzeile ohne Entsprechung (Näherung) | 0 offen | 492 Zeilen, 22 nicht automatisch, offen: 0 | bestanden |
 | RV-P15 | Jedes Paar RM → DM (Entsprechung der Modulliste RM) liegt in einem gemeinsamen HM | 0 Paare ohne gemeinsames HM oder Hinweis in der Modulübersicht | 1 Paar(e): RM-05 / DM-15 (RV-B06; dokumentiert) | bestanden |
@@ -329,7 +329,7 @@ RV-P15 und RV-P16 gelten als bestanden, wenn der Unterschied in den Modullisten 
 
 ## 8 Offene Punkte
 
-- Offene Befunde: RV-B01 (siehe Abschnitt 6). Keine fachliche Lücke: jede RS, jedes RM und jedes DM ist abgebildet.
+- Offene Befunde: keine (siehe Abschnitt 6). Keine fachliche Lücke: jede RS, jedes RM und jedes DM ist abgebildet.
 - Die Elementprüfung (Abschnitt 5) ist ein Textvergleich und nur für zehn Seiten von Hand bestätigt. Eine vollständige Handprüfung der übrigen 29 Seiten ist nicht erfolgt.
 
 ## Anhang A – Skript
