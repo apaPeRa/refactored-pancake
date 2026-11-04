@@ -1,8 +1,8 @@
 # Konzept – Neues HMI (Gesamtbeschreibung und Spezifikation für Meilenstein 2)
 
-Phase 3, Meilenstein 1. Dieses Dokument führt die Teilkonzepte zu einer kohärenten Beschreibung des neuen HMI zusammen und ist die Spezifikation für die WPF-Umsetzung (C# / .NET 8 / MVVM) in Meilenstein 2. Es wiederholt die Teilkonzepte nicht, sondern ordnet sie ein und verweist auf sie: [Designsystem](Designsystem.md) (Farben, Typografie, Maße, Zustände), [Navigation](Navigation.md) (Baum, Brotkrümel, Seitenregister, Dienste), [Modulliste](Module/Modulliste.md) und die Moduldateien `HM-01` bis `HM-38`, die Seitendateien `HS-01` bis `HS-43`. Quellen und Regeln: [Agent.md](../../Agent.md), [Task.md](../../Task.md), [Design-Dokumentation](../01_Design-Analyse/Design-Dokumentation.md), [Referenz-Übersicht](../02_Referenz-Analyse/Referenz-Uebersicht.md), [Plan_M1](../00_Plan/Plan_M1.md), [Annahmen](../00_Plan/Annahmen.md) (A-01 bis A-72), [Offene Punkte](../00_Plan/Offene-Punkte.md) (OP-01 bis OP-65).
+Phase 3, Meilenstein 1. Dieses Dokument führt die Teilkonzepte zu einer kohärenten Beschreibung des neuen HMI zusammen und ist die Spezifikation für die WPF-Umsetzung (C# / .NET 8 / MVVM) in Meilenstein 2. Es wiederholt die Teilkonzepte nicht, sondern ordnet sie ein und verweist auf sie: [Designsystem](Designsystem.md) (Farben, Typografie, Maße, Zustände), [Navigation](Navigation.md) (Baum, Brotkrümel, Seitenregister, Dienste), [Modulliste](Module/Modulliste.md) und die Moduldateien `HM-01` bis `HM-38`, die Seitendateien `HS-01` bis `HS-43`. Quellen und Regeln: [Agent.md](../../Agent.md), [Task.md](../../Task.md), [Design-Dokumentation](../01_Design-Analyse/Design-Dokumentation.md), [Referenz-Übersicht](../02_Referenz-Analyse/Referenz-Uebersicht.md), [Plan_M1](../00_Plan/Plan_M1.md), [Annahmen](../00_Plan/Annahmen.md) (A-01 bis A-79), [Offene Punkte](../00_Plan/Offene-Punkte.md) (OP-01 bis OP-66).
 
-Stand: 2026-11-04. Die Zahlen (43 Seiten, 38 Module, Typen, Links) sind per Skript belegt (Abschnitt 8.2, Prüfpunkte KON-P01 bis KON-P12). Bei Widerspruch zwischen diesem Dokument und einer Seiten- oder Moduldatei gilt die Seiten- bzw. Moduldatei; Abweichungen stehen in Abschnitt „Hinweise zur Konsistenz“.
+Stand: 2026-11-04. Die Zahlen (43 Seiten, 38 Module, Typen, Links) sind per Skript belegt (Abschnitt 8.2, Prüfpunkte KON-P01 bis KON-P14). Bei Widerspruch zwischen diesem Dokument und einer Seiten- oder Moduldatei gilt die Seiten- bzw. Moduldatei; Abweichungen stehen in Abschnitt „Hinweise zur Konsistenz“.
 
 ## Inhalt
 
@@ -346,7 +346,7 @@ Pop-up-Arten: Seitenpop-ups `HS-02`, `HS-03`; Eingabe ([HM-13](Module/HM-13_Eing
 
 ## 6. Technische Umsetzung
 
-### 6.1 Projektstruktur (Vorschlag, Annahme KON-A01)
+### 6.1 Projektstruktur ([A-74](../00_Plan/Annahmen.md))
 
 Lösung unter `src/` (derzeit nicht vorhanden). Eine WPF-Anwendung genügt für M2; eine Aufteilung in Bibliotheken ist später möglich, ohne Namespaces zu ändern.
 
@@ -379,7 +379,7 @@ src/
 - **CommunityToolkit.Mvvm:** ViewModels erben von `ObservableObject` (Basisklasse `PageViewModelBase` mit Titel, `INavigationAware.OnNavigatedTo(object? parameter)` und `OnNavigatedFrom()`); Eigenschaften mit `[ObservableProperty]`, Befehle mit `[RelayCommand]`.
 - **Trennung.** Views kennen keine ViewModels außer über `DataContext`; ViewModels kennen keine Views und kein WPF-Fensterobjekt. ViewModel → View wird per `DataTemplate` in `Views/ViewTemplates.xaml` aufgelöst, das Hauptfenster hostet das aktuelle Seiten-ViewModel in einem `ContentControl`.
 - **Controls.** Grundelemente ([HM-07](Module/HM-07_Aktionstaste.md) bis [HM-12](Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-15](Module/HM-15_Gruppenbereich.md) bis [HM-19](Module/HM-19_Blaettertasten.md), [HM-27](Module/HM-27_Hinweis-Textfeld.md)) als Controls mit `ControlTemplate`/`Style` in `Themes/Styles`, Komposita als `UserControl`; ihre Parameter sind Dependency Properties (A-50, A-56). Pop-ups ([HM-13](Module/HM-13_Eingabe-Pop-up.md), [HM-14](Module/HM-14_Popup-Rahmen.md), [HM-30](Module/HM-30_Zeitplan-Eintrag-Pop-up.md), [HM-38](Module/HM-38_Such-Pop-up.md)) als Overlay im Hauptfenster über den `IDialogService`.
-- **Code-behind.** Views (`*View.xaml.cs`, `MainWindow.xaml.cs`, `App.xaml.cs`) enthalten nur den Konstruktor mit `InitializeComponent()`. Zur Auflösung des Konflikts mit den Dependency Properties der Controls siehe KON-K08 und KON-A03.
+- **Code-behind.** Views (`*View.xaml.cs`, `MainWindow.xaml.cs`, `App.xaml.cs`) enthalten nur den Konstruktor mit `InitializeComponent()`. Die `HM<nn>_…`-Controls sind benutzerdefinierte Steuerelemente; ihr C# enthält nur Dependency-Property-Deklarationen samt CLR-Eigenschaften, keine Logik und keine Ereignisbehandler ([A-73](../00_Plan/Annahmen.md), KON-K08).
 
 ### 6.3 Dependency Injection und Hosting
 
@@ -403,7 +403,7 @@ Vorgaben liegen vollständig in [Navigation](Navigation.md) Abschnitt 5; hier di
 
 `MainViewModel` hält das aktuelle Seiten-ViewModel, die Rahmenzustände (Betriebsart, Kennzahlen, aktuelle Meldung, Meldezähler, Benutzer) und die Befehle der Seitenleiste. Das Hauptfenster setzt `HM-01` bis `HM-06` einmal und blendet sie je `PageDescriptor.ShowFrame`/`PageKind` aus (Abschnitt 2). Die Funktionsleiste erhält ihre Tasten vom Seiten-ViewModel (Sammlung von Taste-Beschreibungen), nicht von der View.
 
-### 6.6 Dummy-Datendienste je Seitengruppe (Entwurf, Annahme KON-A02)
+### 6.6 Dummy-Datendienste je Seitengruppe ([A-75](../00_Plan/Annahmen.md), [A-77](../00_Plan/Annahmen.md))
 
 Die Quellen legen keine Datenschnittstellen fest. Vorschlag: eine Schnittstelle je fachlichem Bereich unter `Services/Data`, Implementierung `Dummy<Name>Service` mit Beispielwerten aus den Bildern und konfigurierbaren Grenzen (A-50, OP-28, OP-41). Ereignisse (`event`) liefern Änderungen an die ViewModels, Befehle bleiben ohne Wirkung auf eine Maschine.
 
@@ -435,7 +435,7 @@ Anzahl: 30 fachliche und 5 Infrastruktur-Schnittstellen sind ein Vorschlag, kein
 
 - Jede View trägt `d:DataContext="{d:DesignInstance Type=vm:<Key>ViewModel, IsDesignTimeCreatable=True}"`; jedes ViewModel hat einen parameterlosen Konstruktor für den Entwurf, der die Dummy-Dienste aus `DesignTime/DesignTimeServices` nutzt. Zur Laufzeit wird das ViewModel per DI mit den Diensten erzeugt.
 - Controls erhalten Beispielwerte über `d:`-Eigenschaften bzw. Standardwerte der Dependency Properties; Beispielwerte stammen aus den Bildern der Referenz und des Designs (Rahmenwerte im Design: Meldung 014, 112 1/min, 245°, 9:15, 06.01.2026; OP-22).
-- Optional und nicht Teil der 43 Seiten: eine Debug-Galerie, die alle Module in allen Zuständen zeigt (Vorschlag KON-A04) – Hilfsmittel für die visuelle Prüfung in M3.
+- Optional und nicht Teil der 43 Seiten: eine Debug-Galerie, die alle Module in allen Zuständen zeigt ([A-76](../00_Plan/Annahmen.md)) – Hilfsmittel für die visuelle Prüfung in M3.
 
 ### 6.8 Regeln für Views und Controls (prüfbar)
 
@@ -480,7 +480,7 @@ Nach [Agent.md](../../Agent.md) Abschnitt 7 kann WPF in der Cloud nur kompiliert
 |---|---|---|---|
 | M2-V01 | Build | `dotnet build src/ApaTec.Hmi.sln -p:EnableWindowsTargeting=true` mit `TreatWarningsAsErrors` | 0 Fehler, 0 Warnungen; ist das SDK nicht installierbar: dokumentieren und statisch prüfen |
 | M2-V02 | XAML wohlgeformt | `xmllint --noout` über alle `*.xaml` und `*.resx` | keine Fehler |
-| M2-V03 | Code-behind leer | Skript: jede `*.xaml.cs` von Views, Fenstern und `App` enthält nur Namespace, Klasse, Konstruktor, `InitializeComponent()`; Controls zusätzlich nur Dependency-Property-Deklarationen (KON-A03) | keine Treffer außerhalb der Regel |
+| M2-V03 | Code-behind leer | Skript: jede `*.xaml.cs` von Views, Fenstern und `App` enthält nur Namespace, Klasse, Konstruktor, `InitializeComponent()`; Controls zusätzlich nur Dependency-Property-Deklarationen und CLR-Eigenschaften ([A-73](../00_Plan/Annahmen.md)) | keine Treffer außerhalb der Regel |
 | M2-V04 | Keine Literale | `grep` nach `#[0-9A-Fa-f]{6,8}`, `Color="`, Zahlenwerten in `Width/Height/Margin/Padding/FontSize` und festen Texten (`Text="[^{]`, `Content="[^{]`) in `Views/` und `Controls/` | keine Treffer |
 | M2-V05 | Themen | `Theme.Light.xaml` und `Theme.Dark.xaml` haben dieselben Schlüssel wie [Designsystem](Designsystem.md) 10.1; `.resx` hat alle Schlüssel, die Views verwenden | Schlüsselmengen gleich |
 | M2-V06 | Seiten und Module vollständig | 43 Views mit ViewModel und `PageDescriptor`, 38 Controls `HMnn_*`; jedes verwendete Control existiert | Zählung 43 / 38 |
@@ -515,11 +515,11 @@ Alles, was ohne Windows nicht entscheidbar ist, bleibt offen und kommt in `Pruef
 | Verhalten | Navigation vollständig durchklicken (Verlauf, Brotkrümel, Pop-up-Regeln), Sprachumschaltung, Bildschirm reinigen (Timer, Rückkehr), Uhr |
 | Offene Fachfragen | Punkte aus `Offene-Punkte.md` und aus `Pruefbericht_M2.md` („offen für Meilenstein 3“), insbesondere OP-57 (Totmann), OP-60 (Not-Aus), OP-61 (Alarm in `HS-24`), OP-65 (Symbolnamen) |
 
-Hinweis: Das Logo (APA-TEC) liegt nur als Bild im Design-Screenshot vor; eine freigestellte Logo-Datei je Thema (`LogoLight`, `LogoDark`, [HM-02](Module/HM-02_Kopfzeile.md)) ist nicht Teil der Quellen. In M2 steht ein Platzhalter, in M3 ist die Grafik einzusetzen (KON-K11).
+Hinweis: Das Logo (APA-TEC) liegt nur als Bild im Design-Screenshot vor; eine freigestellte Logo-Datei je Thema (`LogoLight`, `LogoDark`, [HM-02](Module/HM-02_Kopfzeile.md)) ist nicht Teil der Quellen. In M2 steht ein Platzhalter (Text „APA-TEC“ je Thema), in M3 ist die Grafik einzusetzen ([A-78](../00_Plan/Annahmen.md), OP-66, KON-K11).
 
 ## 9. Annahmen und Offene Punkte
 
-Vollständige Listen: [Annahmen.md](../00_Plan/Annahmen.md) (72 Annahmen) und [Offene-Punkte.md](../00_Plan/Offene-Punkte.md) (65 offene Punkte, mit Seiten-Index). Die für das Konzept tragenden Entscheidungen:
+Vollständige Listen: [Annahmen.md](../00_Plan/Annahmen.md) (79 Annahmen) und [Offene-Punkte.md](../00_Plan/Offene-Punkte.md) (66 offene Punkte, mit Seiten-Index). Die für das Konzept tragenden Entscheidungen:
 
 | Thema | Entscheidung | Annahme / offener Punkt |
 |---|---|---|
@@ -542,34 +542,36 @@ Vollständige Listen: [Annahmen.md](../00_Plan/Annahmen.md) (72 Annahmen) und [O
 | Betriebsarten, Meldungen | Service als Warnstatus; Klassen auf Ok/Warnung/Fehler | A-48, A-49, A-72, OP-22 |
 | Stützstellen, nIO-Regel | mindestens 3 gültige Paare; nIO als Hinweis | A-64, A-65, OP-45, OP-64 |
 
-**Neue Annahmen dieses Dokuments** (noch nicht in `Annahmen.md`; Aufnahme durch den Verwalter empfohlen, da Task.md Annahmen dort verlangt):
+**Annahmen aus der Erstellung dieses Dokuments.** Die Entwurfsentscheidungen aus Abschnitt 6 und 10 stehen in [Annahmen.md](../00_Plan/Annahmen.md):
 
-| Nr | Annahme |
-|---|---|
-| KON-A01 | Projektstruktur, Namespaces und Ordner nach Abschnitt 6.1 (Stamm `ApaTec.Hmi`, ein WPF-Projekt) |
-| KON-A02 | Schnittstellen der Dummy-Datendienste nach Abschnitt 6.6 als Entwurf; Composition Root in `Program.cs` statt `App.xaml.cs` |
-| KON-A03 | Code-behind-Regel: Views leer bis auf `InitializeComponent()`; in Controls zusätzlich reine Dependency-Property-Deklarationen und deren CLR-Eigenschaften (keine Logik, keine Ereignisbehandler) |
-| KON-A04 | Optionale Debug-Galerie der Module für die visuelle Prüfung in M3 |
-| KON-A05 | Ein `ILocalizationService` und `ISettingsService` ergänzen die in Navigation 5.2 genannten Dienste (Sprachwechsel zur Laufzeit, gespeicherte Benutzereinstellungen) |
+| Nr | Annahme | Eintrag |
+|---|---|---|
+| KON-A01 | Projektstruktur, Namespaces und Ordner nach Abschnitt 6.1 (Stamm `ApaTec.Hmi`, ein WPF-Projekt, Composition Root in `Program.cs`) | [A-74](../00_Plan/Annahmen.md) |
+| KON-A02 | 35 Dienst-Schnittstellen mit Dummy-Implementierungen nach Abschnitt 6.6 | [A-75](../00_Plan/Annahmen.md) |
+| KON-A03 | Code-behind-Regel: Views leer bis auf `InitializeComponent()`; Controls als benutzerdefinierte Steuerelemente mit reinen Dependency-Property-Deklarationen | [A-73](../00_Plan/Annahmen.md) |
+| KON-A04 | Optionale Modul-Galerie für die visuelle Prüfung in M3 | [A-76](../00_Plan/Annahmen.md) |
+| KON-A05 | `IThemeService`, `IClockService`, `ILocalizationService`, `ISettingsService` ergänzen die Dienste aus Navigation 5.2 | [A-77](../00_Plan/Annahmen.md) |
+| – | Logo-Platzhalter in M2, Grafik in M3 (OP-66) | [A-78](../00_Plan/Annahmen.md) |
+| – | Klarstellungen KON-K01 bis KON-K05, KON-K09 | [A-79](../00_Plan/Annahmen.md) |
 
 ## 10. Hinweise zur Konsistenz
 
-Beim Zusammenführen gefundene Widersprüche und Lücken zwischen Seiten, Modulen, Navigation und Annahmen. Es wurde nichts in den Teildokumenten geändert; die Empfehlung nennt die Stelle, an der sie bereinigt werden sollte.
+Beim Zusammenführen gefundene Widersprüche und Lücken zwischen Seiten, Modulen, Navigation und Annahmen, mit der Entscheidung des Verwalters. Die Spalte „Stand“ nennt die Bereinigung in den Teildokumenten; Einträge „erledigt“ sind dort umgesetzt, „zu bereinigen“ sind Folgearbeiten an den genannten Dateien.
 
-| Nr | Befund | Fundstellen | Empfehlung |
+| Nr | Befund | Fundstellen | Entscheidung / Stand |
 |---|---|---|---|
-| KON-K01 | `HM-05` wird uneinheitlich als Rahmenmodul geführt: [Modulliste](Module/Modulliste.md) zählt 40 Seiten (inkl. `HS-02`, ohne `HS-03`, `HS-15`, `HS-24`). `HS-15` schließt `HM-05` ausdrücklich aus („Kennzahlen im Rahmen gehören zum Rahmen“), alle anderen Vollseiten führen `HM-05` unter „Verwendete Module“. `HS-02` (Pop-up) führt `HM-05` als Inhalt. Nach [Designsystem](Designsystem.md) 3.2 steht die Kennzahlzeile auf jeder Vollseite. | [HS-15](Seiten/HS-15_Trend.md), [Modulliste](Module/Modulliste.md), [A-46](../00_Plan/Annahmen.md) | Zählweise vereinheitlichen: `HM-05` als Rahmenmodul auf allen Vollseiten außer `HS-24` führen (auch `HS-15`), `HS-02` als Inhaltsverwendung kennzeichnen. In diesem Dokument folgt die Spalte „Hauptmodule“ den Seitendateien |
-| KON-K02 | `HM-16` und sein Prüfpunkt HM-16-P05 nennen für `HS-04` ein Raster 5 × 4 (18 beschriftete, 2 leere Kacheln, Referenzstand); `HS-04`, Designsystem 3.3 und Navigation 6.5 legen 16 Plätze in zwei Rastern 2 × 4 plus Schnellzugriff „Beleuchtung“ fest (A-36). | [HM-16](Module/HM-16_Kachel-Navigation.md), [HS-04](Seiten/HS-04_Einstellungen.md), [Navigation](Navigation.md) 6.5 | `HM-16` Zeile 4 und HM-16-P05 auf 2 × 4 + 2 × 4 plus Schnellzugriff angleichen; Konzept folgt `HS-04` |
-| KON-K03 | [Navigation](Navigation.md) Abschnitt 2 (Hinweise zur Tabelle) sagt, `HS-09` und `HS-10` „nennen noch den Bildtitel“ und seien anzugleichen. Beide Seiten tragen bereits den Kapitelnamen („Heißleim Druck“, „Zeitschaltuhr“) und nennen den Bildtitel nur als Hinweis (OP-33). | [Navigation](Navigation.md), [HS-09](Seiten/HS-09_Heissleim-Druck.md), [HS-10](Seiten/HS-10_Zeitschaltuhr.md) | veralteten Satz in der Navigation streichen |
-| KON-K04 | `HS-24` kündigt an, die Vollbild-Variante der Kopfzeile werde „vom Querschnitts-Agenten in HM-02 und Navigation.md ergänzt“; beides ist inzwischen geschehen (`ShowMessageLine`, Navigation 6.5). Außerdem spricht `HS-24` von Kopfzeile „über die volle Breite“, `HM-02` beschreibt nur, dass das Raster bleibt. | [HS-24](Seiten/HS-24_Bildschirm-reinigen.md), [HM-02](Module/HM-02_Kopfzeile.md) | Satz in `HS-24` streichen und Breite der Vollbild-Kopfzeile (volle Breite ohne Seitenleiste) in `HM-02` ergänzen |
-| KON-K05 | [A-45](../00_Plan/Annahmen.md) nennt „37 HMI-Modulen HM-01 bis HM-37“; es gibt 38 (`HM-38` aus A-59, [Modulliste](Module/Modulliste.md) führt es). | [Annahmen](../00_Plan/Annahmen.md) A-45, A-59 | A-45 um den Verweis auf A-59 ergänzen |
-| KON-K06 | Seitennamen weichen in der Schreibweise ab: Die Seitendateien unterscheiden gleichnamige Seiten durch einen Zusatz in Klammern („Motorparameter (Hauptdosierer)“, „Motorparameter (Nachdosierer)“, „Gewichtskorrektur (Nachdosierer)“, „Motorparameter (Schließmaschine)“); die Navigationstabelle nennt „Motorparameter“ bzw. „Gewichtskorrektur“ (`HS-12`, `HS-20`, `HS-21`) und „Motorparameter Schließmaschine“ (ohne Klammer, `HS-17`, `HS-18`). | [Navigation](Navigation.md) 2, Seitendateien | Dieses Dokument nennt die Namen der Seitendateien; Schlüssel `Nav_<Key>_Title` in der `.resx` einmalig festlegen |
-| KON-K07 | Die in Navigation 5.2 genannten Dienste (`INavigationService`, `IDialogService`, `IUserSession`) werden um `IThemeService` (Designsystem 8) und `IClockService` (HM-02) ergänzt; für die Sprachumschaltung zur Laufzeit (Designsystem 11, OP-03) und die gespeicherten Benutzereinstellungen (A-30) ist kein Dienst definiert. | [Navigation](Navigation.md) 5.2, [Designsystem](Designsystem.md) 8 und 11 | `ILocalizationService` und `ISettingsService` definieren (KON-A05) |
-| KON-K08 | Widerspruch Code-behind: [Agent.md](../../Agent.md) fordert kein Code-behind außer reiner View-Initialisierung; alle Moduldateien führen „kein Code-behind außer `InitializeComponent`“. Zugleich sind die Modulparameter Dependency Properties der Controls (A-50), und Dependency Properties erfordern C#-Code in der Control-Klasse. | Moduldateien (Zeile „Control“), [A-50](../00_Plan/Annahmen.md), [Agent.md](../../Agent.md) 7 | Regel präzisieren (KON-A03): Views leer; in Controls nur Dependency-Property-Deklarationen; Prüfskript M2-V03 entsprechend |
-| KON-K09 | Zählweise „Seiten“ in der [Modulliste](Module/Modulliste.md) schließt Kompositverwendungen ein (z. B. `HM-13` auf `HS-30`, `HS-33` über `HM-38`, `HM-07` auf `HS-29` über `HM-18`); die Spalte „Verwendete Module“ der Seiten nennt sie nicht. Die Abweichungen sind erklärt (kein inhaltlicher Fehler). | [Modulliste](Module/Modulliste.md), [HS-29](Seiten/HS-29_Produktionsstatistik.md), [HS-30](Seiten/HS-30_Handbetrieb-Auswahl.md), [HS-33](Seiten/HS-33_EA-Uebersicht.md) | keine; im Abschnitt 3 dokumentiert (Prüfpunkt KON-P09) |
-| KON-K10 | Typenbezeichnungen sind uneinheitlich: Navigation 5.1 kennt Seite, Zwischenseite, Vollbild, Pop-up, Z; die Seitentitel tragen „(Pop-up)“, „(Zwischenseite)“, „(Platzhalter)“; `HS-41` ist laut Navigation „Seite (Z)“ und hat Design. | [Navigation](Navigation.md) 5.1, Seitenköpfe | Dieses Dokument bildet auf Vollseite, Pop-up und Zusatz ab (Abschnitt 3); `PageKind` im Code: Page, Popup, Fullscreen |
-| KON-K11 | Das Logo ist in Modul `HM-02` als Grafik je Thema verlangt, liegt aber nur im Design-Screenshot vor (keine freigestellte Datei). | [HM-02](Module/HM-02_Kopfzeile.md), `src_Data/Design` | Platzhalter in M2, Grafik in M3 beschaffen |
-| KON-K12 | Stand von Task.md Phase 3: `Rueckverfolgung.md` und `Pruefbericht_M1.md` fehlen noch. Dieses Dokument verweist deshalb nur textlich (ohne Link) darauf. `HS-30`, `HS-31` und `HS-33` wurden während der Erstellung noch überarbeitet; die Tabellen in Abschnitt 3 geben den Stand beim Erzeugen wieder. | [Task.md](../../Task.md) | nach Fertigstellung der Dateien Links ergänzen und KON-P09 erneut ausführen |
+| KON-K01 | `HM-05` war uneinheitlich als Rahmenmodul geführt: Die Modulliste zählte 40 Seiten (ohne `HS-15`), `HS-15` schloss `HM-05` aus, `HS-02` (Pop-up) nutzt es als Inhalt. | [HS-15](Seiten/HS-15_Trend.md), [Modulliste](Module/Modulliste.md) | Entscheidung: `HM-05` gilt auf allen Vollseiten außer `HS-24` ([A-79](../00_Plan/Annahmen.md)); `HS-02` Inhaltsverwendung, `HS-03` nicht. Stand: erledigt, Modulliste zählt 41 Seiten inklusive `HS-15` (Prüfpunkt KON-P14) |
+| KON-K02 | `HM-16` und HM-16-P05 nannten für `HS-04` ein Raster 5 × 4; `HS-04`, Designsystem 3.3 und Navigation 6.5 legen 16 Plätze in zwei Rastern 2 × 4 plus „Beleuchtung“ fest (A-36). | [HM-16](Module/HM-16_Kachel-Navigation.md), [HS-04](Seiten/HS-04_Einstellungen.md) | Entscheidung: `HS-04` gilt ([A-79](../00_Plan/Annahmen.md)). Stand: erledigt, `HM-16` korrigiert |
+| KON-K03 | Navigation Abschnitt 2 sagte, `HS-09` und `HS-10` nennen noch den Bildtitel; beide tragen bereits den Kapitelnamen (OP-33). | [Navigation](Navigation.md), [HS-09](Seiten/HS-09_Heissleim-Druck.md), [HS-10](Seiten/HS-10_Zeitschaltuhr.md) | erledigt, veralteter Satz gestrichen |
+| KON-K04 | `HS-24` kündigte die Vollbild-Variante von `HM-02` als noch zu ergänzen an; sie existiert (`ShowMessageLine`). Breite der Vollbild-Kopfzeile unklar. | [HS-24](Seiten/HS-24_Bildschirm-reinigen.md), [HM-02](Module/HM-02_Kopfzeile.md) | erledigt, Hinweis in `HS-24` gestrichen; Kopfzeile ohne Meldezeile über die volle Fensterbreite ([A-79](../00_Plan/Annahmen.md)) |
+| KON-K05 | [A-45](../00_Plan/Annahmen.md) nannte 37 Module (HM-01 bis HM-37). | [Annahmen](../00_Plan/Annahmen.md) A-45, A-59 | Entscheidung: 38 Module (`HM-38` aus A-59); Stand: erledigt |
+| KON-K06 | Seitennamen weichen in der Schreibweise ab: Die Seitendateien unterscheiden gleichnamige Seiten durch einen Zusatz in Klammern („Motorparameter (Hauptdosierer)“, „Motorparameter (Nachdosierer)“, „Gewichtskorrektur (Nachdosierer)“, „Motorparameter (Schließmaschine)“); die Navigationstabelle nennt „Motorparameter“ bzw. „Gewichtskorrektur“ (`HS-12`, `HS-20`, `HS-21`) und „Motorparameter Schließmaschine“ (`HS-17`, `HS-18`). | [Navigation](Navigation.md) 2, Seitendateien | zu bereinigen: Dieses Dokument nennt die Namen der Seitendateien; Schlüssel `Nav_<Key>_Title` in der `.resx` einmalig festlegen |
+| KON-K07 | Navigation 5.2 nannte nur `INavigationService`, `IDialogService`, `IUserSession`; `IThemeService` (Designsystem 8) und `IClockService` (HM-02) kamen hinzu, für Sprachumschaltung zur Laufzeit (OP-03) und gespeicherte Benutzereinstellungen (A-30) fehlte ein Dienst. | [Navigation](Navigation.md) 5.2, [Designsystem](Designsystem.md) 8 und 11 | Entscheidung: `ILocalizationService` und `ISettingsService` werden aufgenommen ([A-77](../00_Plan/Annahmen.md)); Stand: erledigt |
+| KON-K08 | Code-behind: Agent.md und die Moduldateien fordern „kein Code-behind außer `InitializeComponent`“, Dependency Properties (A-50) erfordern aber C# in der Control-Klasse. | Moduldateien (Zeile „Control“), [A-50](../00_Plan/Annahmen.md), [Agent.md](../../Agent.md) 7 | Entscheidung: Views leer (nur `InitializeComponent`); `HM<nn>`-Controls sind benutzerdefinierte Steuerelemente mit reinen Dependency-Property-Deklarationen ohne Logik ([A-73](../00_Plan/Annahmen.md)); Skript M2-V03 |
+| KON-K09 | Die Spalte „Seiten“ der Modulliste schließt Kompositverwendungen ein (z. B. `HM-13` auf `HS-30`, `HS-33` über `HM-38`, `HM-07` auf `HS-29` über `HM-18`); „Verwendete Module“ der Seiten nennt sie nicht. Erklärt, kein inhaltlicher Fehler. | [Modulliste](Module/Modulliste.md), [HS-29](Seiten/HS-29_Produktionsstatistik.md), [HS-30](Seiten/HS-30_Handbetrieb-Auswahl.md), [HS-33](Seiten/HS-33_EA-Uebersicht.md) | festgehalten in [A-79](../00_Plan/Annahmen.md); in Abschnitt 3 dokumentiert (KON-P09) |
+| KON-K10 | Typenbezeichnungen sind uneinheitlich: Navigation 5.1 kennt Seite, Zwischenseite, Vollbild, Pop-up, Z; die Seitentitel tragen „(Pop-up)“, „(Zwischenseite)“, „(Platzhalter)“. | [Navigation](Navigation.md) 5.1, Seitenköpfe | Dieses Dokument bildet auf Vollseite, Pop-up und Zusatz ab (Abschnitt 3); `PageKind` im Code: Page, Popup, Fullscreen |
+| KON-K11 | Das Logo ist in `HM-02` je Thema verlangt, liegt aber nur im Design-Screenshot vor. | [HM-02](Module/HM-02_Kopfzeile.md), `src_Data/Design` | Platzhalter in M2, Grafik in M3 ([A-78](../00_Plan/Annahmen.md), OP-66) |
+| KON-K12 | Stand von Task.md Phase 3: `Rueckverfolgung.md` und `Pruefbericht_M1.md` fehlen noch; dieses Dokument verweist nur textlich darauf. | [Task.md](../../Task.md) | nach Fertigstellung Links ergänzen und KON-P05 erneut ausführen |
 
 ## 11. Prüfpunkte dieses Dokuments
 
@@ -581,12 +583,13 @@ Die Prüfung ist maschinell (Stand der Erstellung); „bestanden“ gilt für de
 | KON-P02 | Seitentabellen enthalten genau 43 Zeilen, jede ID genau einmal (01 bis 43) | Zeilen `^\| HS-\d\d \|` in Abschnitt 3 zählen und mit 1 bis 43 vergleichen | bestanden |
 | KON-P03 | 38 Moduldateien `HM-01` bis `HM-38`; Modulkatalog hat 38 Zeilen, jede ID einmal | Dateien zählen, Zeilen `^\| \[HM-\d\d\]` in Abschnitt 4 zählen | bestanden |
 | KON-P04 | Control-Klassen eindeutig, Präfix `HM<nn>_` passt zur ID | Klassen aus der Modulliste parsen | bestanden |
-| KON-P05 | alle 459 relativen Links dieses Dokuments lösen auf | jeden Markdown-Link (Text in eckigen, Pfad in runden Klammern) gegen das Dateisystem prüfen | bestanden |
+| KON-P05 | alle 473 relativen Links dieses Dokuments lösen auf | jeden Markdown-Link (Text in eckigen, Pfad in runden Klammern) gegen das Dateisystem prüfen | bestanden |
 | KON-P06 | Typen: 37 Vollseiten, 2 Pop-ups, 4 Zusatzseiten | Typspalte zählen (Pop-up 2, Vollseite 37, Zusatz 4) | bestanden |
 | KON-P07 | Brotkrümel der 43 Zeilen stimmen mit [Navigation](Navigation.md) Abschnitt 2 überein | Spalte gegen Tabelle 2 vergleichen (Pop-ups und `HS-24` mit Zusatz, `<Gruppe>`/`<Karte>` maskiert) | bestanden |
 | KON-P08 | jedes der 38 Module wird auf mindestens einer Seite (Hauptmodule) oder als Rahmenmodul verwendet | Vereinigung der Spalte „Hauptmodule“ mit `HM-01` bis `HM-06` | bestanden |
-| KON-P09 | Hauptmodule je Seite stimmen mit der Seitenspalte der Modulliste überein (ohne Rahmenmodule) | Mengenvergleich `HM-07` bis `HM-38` | bestanden: einzige Abweichung `HM-13` auf `HS-30` und `HS-33` (über `HM-38`, KON-K09) |
+| KON-P09 | Hauptmodule je Seite stimmen mit der Seitenspalte der Modulliste überein (ohne Rahmenmodule) | Mengenvergleich `HM-07` bis `HM-38` | bestanden (keine Abweichung) |
 | KON-P10 | Seitenregister (Navigation 5.1) enthält 43 eindeutige Schlüssel und Routen | Tabelle 5.1 parsen | bestanden |
 | KON-P11 | Design-Vorlage „ja“ für genau 5 Seiten (`HS-01`, `HS-04`, `HS-06`, `HS-07`, `HS-41`), je eine Design-Seite `DS-01` bis `DS-05` | Spalte zählen | bestanden |
-| KON-P12 | Quellenzahlen: 72 Annahmen, 65 offene Punkte, 22 `DM`, 36 `RM`, 39 `RS`, 5 `DS` | Zeilen bzw. Dateien zählen | bestanden |
-| KON-P13 | Jede Aussage über Funktion, Navigation, Maße und Annahmen verweist auf Teilkonzept, Annahme oder offenen Punkt; neue Annahmen sind als `KON-A..` gekennzeichnet | Durchsicht Abschnitte 5 bis 9 | durchgesehen |
+| KON-P12 | Quellenzahlen: 79 Annahmen, 66 offene Punkte, 22 `DM`, 36 `RM`, 39 `RS`, 5 `DS` | Zeilen bzw. Dateien zählen | bestanden |
+| KON-P13 | Jede Aussage über Funktion, Navigation, Maße und Annahmen verweist auf Teilkonzept, Annahme oder offenen Punkt; neue Annahmen sind als `KON-A..` gekennzeichnet und auf A-73 bis A-79 abgebildet | Durchsicht Abschnitte 5 bis 9 | durchgesehen |
+| KON-P14 | `HM-05`: Modulliste zählt 41 Seiten; die Menge (alle Seiten außer `HS-03` und `HS-24`) stimmt mit den Seitendateien („Verwendete Module“) überein, `HS-15` eingeschlossen | Mengenvergleich Modulliste gegen Seitendateien | bestanden |
