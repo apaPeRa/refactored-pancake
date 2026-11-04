@@ -25,6 +25,7 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 | Fortlaufend | automatisch, nach 50 Werten überschrieben |
 | Einzel | Stichprobe, Start löscht |
 | Leere Zelle | nicht beschrieben |
+| Hinweis neues HMI | gut/schlecht nicht nur über LED-Farbe: Text/Symbol ergänzen (Konzeptanforderung, siehe RM-08-P05) |
 
 ## Verwendet auf Seiten (IDs)
 
@@ -37,4 +38,5 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 | RM-36-P01 | Zellen | 10 × 5 = 50 | offen |
 | RM-36-P02 | LED und Pfeil | grün/grau, Pfeil am letzten Wert | offen |
 | RM-36-P03 | Kennzahlen | Standardabweichung, Mittelwert, Anzahl als RM-12 | offen |
-| RM-36-P04 | Verwendet-auf-Liste | alle 1 genannten Seiten verlinken zurück auf RM-36; Links lösen auf | offen |
+| RM-36-P04 | Zustand nicht nur über Farbe | LED-Zustand zusätzlich über Text/Symbol (Konzeptanforderung; Referenz zeigt nur Farbe), vgl. RM-08-P05 | offen |
+| RM-36-P05 | Verwendet-auf-Liste | alle 1 genannten Seiten verlinken zurück auf RM-36; Links lösen auf | offen |

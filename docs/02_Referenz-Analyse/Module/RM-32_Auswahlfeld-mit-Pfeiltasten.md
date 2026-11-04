@@ -2,7 +2,7 @@
 
 ## Funktion
 
-Anzeigefeld mit Pfeiltasten (◄ ►) zum Durchschalten einer Auswahl, mit oder ohne Schlüsselsymbol. [RS-27](../Seiten/RS-27_Waagen-Kalibrieren.md) „Filtertyp“ (Bild „IIR 5 56ms 8Hz“, mit Schlüssel; „Filter setzen“ speichert), [RS-25](../Seiten/RS-25_Nocken.md) „Geber“ (Bild „Geber 1GF Hauptantrieb“, mit Schlüssel) und Nockennummer (Feld „12“ mit Tasten „<<“ und „>>“; Handbuch: „Direkte Auswahl einer Fixierkurve“).
+Anzeigefeld mit Pfeiltasten (◄ ►) zum Durchschalten einer Auswahl, mit oder ohne Schlüsselsymbol. [RS-27](../Seiten/RS-27_Waagen-Kalibrieren.md) „Filtertyp“ (Bild „IIR 5 56ms 8Hz“, mit Schlüssel; „Filter setzen“ speichert), [RS-25](../Seiten/RS-25_Nocken.md) „Geber“ (Bild „Geber 1GF Hauptantrieb“, mit Schlüssel) und Datumsfeld mit Pfeiltasten (RS-29, Auswahl = Tag der letzten 30 Tage, Bild „heute“) und Nockennummer (Feld „12“ mit Tasten „<<“ und „>>“; Handbuch: „Direkte Auswahl einer Fixierkurve“).
 
 Entsprechung im Design: keine (Element nur in der Referenz).
 
@@ -29,6 +29,7 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 
 - [RS-25](../Seiten/RS-25_Nocken.md) – Nocken (2 Nennungen in den Elementtabellen)
 - [RS-27](../Seiten/RS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren (1 Nennung in den Elementtabellen)
+- [RS-29](../Seiten/RS-29_Produktionsstatistik.md) – Produktionsstatistik (Datumsnavigation, 4 Nennungen als RM-30)
 
 ## Prüfpunkte
 

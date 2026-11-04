@@ -2,7 +2,7 @@
 
 ## Funktion
 
-Balkendiagramm mit Datumsnavigation für [RS-29](../Seiten/RS-29_Produktionsstatistik.md): Handbuch: „Mit den Pfeiltasten über dem Diagramm kann zwischen den letzten 30 Tagen gewechselt werden. Das Textfeld zeigt das Datum an.“ Balken je Stunde, orange, mit Zahlenwert darüber.
+Balkendiagramm mit Datumsnavigation für [RS-29](../Seiten/RS-29_Produktionsstatistik.md): Handbuch: „Mit den Pfeiltasten über dem Diagramm kann zwischen den letzten 30 Tagen gewechselt werden. Das Textfeld zeigt das Datum an.“ Balken je Stunde, orange, mit Zahlenwert darüber. Die Datumsnavigation (◄ Datumsfeld ►) ist eine Variante von [RM-32](RM-32_Auswahlfeld-mit-Pfeiltasten.md) (Auswahlfeld mit Pfeiltasten, Auswahl = Tag) und wird dort geführt; RM-30 komponiert sie mit dem Balkendiagramm.
 
 Entsprechung im Design: keine (Element nur in der Referenz).
 
@@ -38,4 +38,5 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 | RM-30-P01 | Achsen | X 0:00 bis 23:00, Y 0 bis 1800 | offen |
 | RM-30-P02 | Navigation | Pfeile wechseln den Tag, Datumsfeld folgt | offen |
 | RM-30-P03 | Werte | Zahlenwerte über den Balken | offen |
-| RM-30-P04 | Verwendet-auf-Liste | alle 1 genannten Seiten verlinken zurück auf RM-30; Links lösen auf | offen |
+| RM-30-P04 | Datumsnavigation | entspricht RM-32 (Variante Datum); RS-29 verlinkt RM-32 | offen |
+| RM-30-P05 | Verwendet-auf-Liste | alle 1 genannten Seiten verlinken zurück auf RM-30; Links lösen auf | offen |

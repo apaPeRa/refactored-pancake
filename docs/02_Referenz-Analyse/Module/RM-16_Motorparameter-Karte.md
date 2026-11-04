@@ -6,6 +6,8 @@ Karte mit Überschrift und Zeilen aus Beschriftung und Eingabefeld ([RM-05](RM-0
 
 Entsprechung im Design: keine (Element nur in der Referenz).
 
+Struktur: Karte = [RM-15](RM-15_Gruppenrahmen.md) mit Überschrift, Zeilen aus [RM-05](RM-05_Eingabefeld-mit-Schluesselsymbol.md); eigen ist nur die feste Parameterzusammenstellung (Verschluss/Schnecke).
+
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 
 | Name | Typ | Einheit | Wertebereich / Beispiele |

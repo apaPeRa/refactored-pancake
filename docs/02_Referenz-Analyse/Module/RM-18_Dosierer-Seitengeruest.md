@@ -40,8 +40,8 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 
 ## Verwendet auf Seiten (IDs)
 
-- [RS-11](../Seiten/RS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2 (genannt im Abschnitt „Verwendete Module“)
-- [RS-19](../Seiten/RS-19_Nachdosierer.md) – Nachdosierer (1 Nennung in den Elementtabellen)
+- [RS-11](../Seiten/RS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2 (Gesamtmodul der Seite, Abschnitt „Verwendete Module“)
+- [RS-19](../Seiten/RS-19_Nachdosierer.md) – Nachdosierer (Gesamtmodul der Seite, Abschnitt „Verwendete Module“)
 
 ## Prüfpunkte
 

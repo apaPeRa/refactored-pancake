@@ -41,6 +41,7 @@ Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
 - [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
 - [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
 - [RM-30](../Module/RM-30_Tagesbalkendiagramm.md) – Tagesbalkendiagramm
+- [RM-32](../Module/RM-32_Auswahlfeld-mit-Pfeiltasten.md) – Auswahlfeld mit Pfeiltasten (Datumsfeld mit Pfeiltasten)
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Tageswahl:** Die Pfeiltasten wechseln zwischen den letzten 30 Tagen; das Textfeld zeigt das gewählte Datum. Beim aktuellen Tag steht im Bild „heute“.

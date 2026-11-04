@@ -26,6 +26,7 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 | Nocke aktiv | LED grün (im Bild Nr. 45, 47, 54, 57, 58) |
 | Leere Nocke | 0 °/0 °, ohne Bezeichnung |
 | Blättern | über [RM-04](RM-04_Blaettertasten.md) „<<“/„>>“; Wirkung nicht beschrieben |
+| Hinweis neues HMI | LED-Zustand (aktive Nockenphase) nicht nur über Farbe (Konzeptanforderung, siehe RM-08-P05) |
 
 ## Verwendet auf Seiten (IDs)
 
@@ -39,4 +40,5 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 | RM-19-P02 | Zeilenzahl | 20 Zeilen (Nr. 40 bis 59) wie im Bild | offen |
 | RM-19-P03 | Sprung | Antippen der Nr. öffnet RS-25 (Handbuch) | offen |
 | RM-19-P04 | LED-Bedeutung | grün = aktive Phase | offen |
-| RM-19-P05 | Verwendet-auf-Liste | alle 1 genannten Seiten verlinken zurück auf RM-19; Links lösen auf | offen |
+| RM-19-P05 | Zustand nicht nur über Farbe | LED-Zustand zusätzlich über Text/Symbol (Konzeptanforderung; Referenz zeigt nur Farbe), vgl. RM-08-P05 | offen |
+| RM-19-P06 | Verwendet-auf-Liste | alle 1 genannten Seiten verlinken zurück auf RM-19; Links lösen auf | offen |

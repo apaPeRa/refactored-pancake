@@ -6,6 +6,8 @@ Zeile aus Beschriftung, Zähler und Zeitpunkt des Zurücksetzens in [RS-02](../S
 
 Entsprechung im Design: keine (Element nur in der Referenz).
 
+Struktur: Zeilen aus Beschriftung und Anzeigefeldern ([RM-07](RM-07_Anzeigefeld.md)); eigen ist nur die Historienlogik (Reset schiebt Einträge nach unten).
+
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 
 | Name | Typ | Einheit | Wertebereich / Beispiele |

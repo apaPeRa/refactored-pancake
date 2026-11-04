@@ -6,6 +6,8 @@ Zeile je Servoantrieb in [RS-39](../Seiten/RS-39_System-und-Antriebsinfos.md) mi
 
 Entsprechung im Design: keine (Element nur in der Referenz).
 
+Struktur: Zeilen aus [RM-07](RM-07_Anzeigefeld.md) (Anzeigewerte), [RM-05](RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Strom Limit) und Textmeldung; eigen ist nur die Antriebszeile.
+
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 
 | Name | Typ | Einheit | Wertebereich / Beispiele |

@@ -6,6 +6,8 @@ Zeile je Heiz- oder Temperaturzone. Variante Heißleim ([RS-08](../Seiten/RS-08_
 
 Entsprechung im Design: keine (Element nur in der Referenz).
 
+Struktur: Zeile aus [RM-05](RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Soll), [RM-07](RM-07_Anzeigefeld.md) (Ist), [RM-10](RM-10_Umschalter-Taste.md) (Statustaste) und [RM-08](RM-08_Status-LED.md) (State/Out); eigen ist nur die Zeilenkomposition.
+
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 
 | Name | Typ | Einheit | Wertebereich / Beispiele |
@@ -26,6 +28,7 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 | Zone aktiv | grüne Statustaste, Ist folgt Soll |
 | Zone abgewählt | rote Taste „Einschalten“, Ist 0 °C |
 | Fehler | State rot (RS-22) |
+| Hinweis neues HMI | Zone aktiv/abgewählt/Fehler nicht nur über Farbe: Beschriftung der Statustaste bleibt, State-LED mit Text/Symbol (Konzeptanforderung, siehe RM-08-P05) |
 
 ## Verwendet auf Seiten (IDs)
 
@@ -39,4 +42,5 @@ Wertebereiche, Standardwerte und Berechtigungen nennt das Handbuch grundsätzlic
 | RM-24-P01 | RS-08 | 6 Zonen mit Soll/Ist/Status wie Tabelle | offen |
 | RM-24-P02 | RS-22 | 12 Zonen, 6 Spalten, Zonenbeschriftung laut Bild | offen |
 | RM-24-P03 | Einheiten | °C (RS-08), ° (RS-22) | offen |
-| RM-24-P04 | Verwendet-auf-Liste | alle 2 genannten Seiten verlinken zurück auf RM-24; Links lösen auf | offen |
+| RM-24-P04 | Zustand nicht nur über Farbe | LED-Zustand zusätzlich über Text/Symbol (Konzeptanforderung; Referenz zeigt nur Farbe), vgl. RM-08-P05 | offen |
+| RM-24-P05 | Verwendet-auf-Liste | alle 2 genannten Seiten verlinken zurück auf RM-24; Links lösen auf | offen |

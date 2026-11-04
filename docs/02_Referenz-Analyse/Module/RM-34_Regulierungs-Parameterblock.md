@@ -6,6 +6,8 @@ Parametersatz der automatischen Gewichtsregulierung je Dosierer auf [RS-23](../S
 
 Entsprechung im Design: keine (Element nur in der Referenz).
 
+Struktur: nutzt [RM-15](RM-15_Gruppenrahmen.md) (je Dosierer ein Panel), [RM-05](RM-05_Eingabefeld-mit-Schluesselsymbol.md), [RM-07](RM-07_Anzeigefeld.md) (Mittelwert mit Zähler), [RM-10](RM-10_Umschalter-Taste.md) und [RM-11](RM-11_Aktionstaste.md); eigen ist nur die Komposition und der Parametersatz.
+
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 
 | Name | Typ | Einheit | Wertebereich / Beispiele |
@@ -14,8 +16,8 @@ Entsprechung im Design: keine (Element nur in der Referenz).
 | Regulierschritt | Zahl | % | 50,0 % / 50,0 % |
 | Toleranz | Zahl | g | 1,0 g (HD), 0,2 g (ND) |
 | Regulierung max | Zahl | g | 75,0 g (HD), 20,0 g (ND) |
-| Regulierung ist | Zahl | g | 0,0 g (HD) |
-| Mittelwert | Zahl, Anzeige, Zähler Stk | g | gleitender Mittelwert über Anzahl Gewichte |
+| Regulierung ist | Zahl | g | 0,0 g (HD), 4,8 g (ND) |
+| Mittelwert | Zahl, Anzeige, Zähler Stk | g | Bild: 0,0 g mit 0 Stk (HD), 250,4 g mit 11 Stk (ND); gleitender Mittelwert über „Anzahl Gewichte“ |
 | Regulierung | Umschalter | – | Ein/Aus der automatischen Regulierung, mit Schlüssel |
 | Regulierung − / + | 2 Tasten mit Schlüssel | – | manuelle Feineinstellung der Korrektur |
 

@@ -4,7 +4,7 @@
 
 Fette, unterstrichene, zentrierte Überschrift, die das Objekt der Seite benennt, das mit Blättertasten gewechselt wird: Waage („16KW1 Kontrollwaage“, RS-27), Antrieb/Aktor („Antrieb Zuführung 2MA1“, RS-31, RS-32) oder EA-Karte („S1_0KDE1“, RS-34). Nicht zu verwechseln mit dem Seitentitel in [RM-01](RM-01_Kopfzeile.md).
 
-Entsprechung im Design: [DM-21](../../01_Design-Analyse/Module/DM-21_Titelzeile-mit-Verschiebesymbol.md).
+Entsprechung im Design: keine. DM-21 (blaue Titelzeile mit Soll-/Ist-Gewicht der Kontrollwaage und Verschiebesymbol) ist ein anderes Element; RM-25 ist eine zentrierte, unterstrichene Objekt-Überschrift ohne Werte.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 
