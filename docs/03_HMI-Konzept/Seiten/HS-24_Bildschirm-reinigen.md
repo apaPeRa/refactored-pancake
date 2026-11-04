@@ -54,7 +54,7 @@ Nicht verwendet, weil Vollbild: HM-01, HM-03, HM-04, HM-05, HM-06 (Modulliste). 
 - **Ende:** Bei 100 % schließt sich die Seite selbst, ohne Stapelwirkung (`GoBack()`); die vorherige Seite (HS-04) wird wiederhergestellt. Die Zielseite ist im Handbuch nicht genannt (Annahme S24-2, OP-38).
 - **Verlängerung:** Erneutes Öffnen der Seite startet das Zeitfenster neu; während des Laufs ist das wegen der Eingabesperre nicht möglich.
 - **Abbruch:** Im Handbuch nicht beschrieben, keine Taste vorhanden; daher kein Abbruch durch den Bediener (Annahme S24-2).
-- **Meldungen während der Reinigung:** Die Meldezeile ist ausgeblendet; neue Meldungen werden weiter erfasst, aber nicht angezeigt; ob sie unterdrückt werden sollen, ist offen (OP-31, OP-44). Nach dem Schließen zeigt die Meldezeile der vorherigen Seite die aktuelle Meldung.
+- **Meldungen und kritischer Alarm während der Reinigung (Navigation.md 6.5, OP-61):** Normale Meldungen werden weiter erfasst, aber nicht angezeigt (Meldezeile ausgeblendet). Tritt ein kritischer Alarm (Meldungsklasse Störung) auf, beendet er die Reinigung sofort: Die Eingabesperre wird aufgehoben, der Balken stoppt, die Seite schließt vorzeitig ohne Stapelwirkung und die vorherige Seite (HS-04) wird wiederhergestellt. Deren Meldezeile zeigt den Alarm im Format „NNN: Text“ mit Symbol und Schweregradwort. Dies ist eine Annahme ohne Handbuchbeleg (S24-4); der Alarm wird nie durch die Eingabesperre verdeckt.
 - **Berechtigungen, Pop-ups, Fehlerfälle:** keine beschrieben; keine Schlüsselsymbole, keine Pop-ups. Fehlt der Zeitgeber (Konfiguration ungültig), gilt eine Dummy-Dauer; die Seite darf sich nie unbegrenzt sperren (Annahme S24-2).
 - **Zweiter Kanal:** Der Fortschritt steht als Zahl im Balken (nicht nur als Füllung); der Zustand „Eingaben gesperrt“ steht als Text im Info-Hinweis.
 
@@ -74,6 +74,7 @@ Nicht verwendet, weil Vollbild: HM-01, HM-03, HM-04, HM-05, HM-06 (Modulliste). 
 | HS-24-P11 | Tokens | Keine Hex- oder Pixelwerte; Grund `Brush.Window`, Balkenhöhe `Size.Progress.Height`, Abstände `Space.*` | offen |
 | HS-24-P12 | Navigation | Brotkrümel-Pfad „Einstellung › Bildschirm reinigen“ nur im Seitenregister; auf der Seite nicht sichtbar; Seite nie im Verlauf | offen |
 | HS-24-P13 | Touch-Ziele | Es gibt keine Touch-Ziele; der Info-Hinweis reagiert nicht auf Berührung | offen |
+| HS-24-P14 | Kritischer Alarm (OP-61) | Tritt während des Zeitfensters ein kritischer Alarm (Störung) auf, endet die Reinigung sofort, die Eingabesperre ist aufgehoben, die vorherige Seite (HS-04) wird wiederhergestellt und deren Meldezeile zeigt den Alarm; normale Meldungen beenden die Reinigung nicht | offen |
 
 ## Offene Punkte
 - OP-26: Bedeutung des roten „Service“-Schriftzugs am Wirbel-Symbol; hier Betriebsart „Service“ mit Warnstatus (A-48).
@@ -82,8 +83,10 @@ Nicht verwendet, weil Vollbild: HM-01, HM-03, HM-04, HM-05, HM-06 (Modulliste). 
 - OP-38: Zielseite nach dem automatischen Schließen und Abbruchmöglichkeit nicht beschrieben.
 - OP-42: Dauer des Zeitfensters nicht angegeben; Dummy-Wert, konfigurierbar.
 - OP-44: Das Bild zeigt Vollbild ohne Meldezeile und Fußleiste; ob Meldungen währenddessen unterdrückt werden, ist unklar.
+- OP-61: Alarm während „Bildschirm reinigen“: Entscheidung laut Navigation.md 6.5, kritischer Alarm beendet die Reinigung; Annahme ohne Handbuchbeleg.
 
 ### Annahmen dieser Seite
 - S24-1: Info-Hinweis „Eingaben gesperrt“ (HM-27, Art Info) ergänzt, damit der Sperrzustand lesbar ist.
 - S24-2: Nach Ablauf Rückkehr zur vorherigen Seite (HS-04), kein Abbruch durch den Bediener, Dummy-Dauer bei ungültiger Konfiguration (die Seite sperrt nie unbegrenzt).
 - S24-3: Die Kopfzeile bleibt in einer Vollbild-Variante ohne Meldezeile sichtbar (RS-Bild zeigt sie; HM-02 ist laut Modulliste auf HS-24 verwendet).
+- S24-4: Ein kritischer Alarm (Meldungsklasse Störung) beendet die Reinigung vorzeitig, gibt die Bedienung frei und wird in der Meldezeile der vorherigen Seite angezeigt (Navigation.md 6.5, OP-61).
