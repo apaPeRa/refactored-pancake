@@ -33,11 +33,12 @@ Die Seitenleiste ist in beiden Themen dunkel und neutral (Blaugrau), nicht Marke
 | Seitenleiste Text sekundär | `#C9D3DE` | `#AAB4C0` | 7,89 / 8,88 |
 | Taste neutral | `#DCE1E7` | `#2E3844` | Text primär: 12,2 / 10,1 |
 | Taste gedrückt | `#C3CBD5` | `#3A4656` | Text primär: 9,8 / 8,14 |
+| Taste deaktiviert | `#FFFFFF` | `#1E2630` | Text deaktiviert: 4,74 / 4,90 |
 | Taste aktiv (Ein) | `#2B3846` | `#44546A` | Text 11,95 / 6,55 |
 
 ### 1.2 Statusfarben
 
-Farbe tritt nur hier auf. Jede Statusfarbe hat zwei Rollen: **Fill** (Fläche, Text und Symbol darauf in `On`) und **Fg** (Symbol oder Text auf neutraler Fläche). Zu jeder Statusfarbe gehört ein festes Symbol und ein Statuswort (Tabelle 1.3).
+Farbe tritt nur hier auf. Jede Statusfarbe hat drei Tokens: `Brush.Status.<Status>.Fill` (Fläche), `.On` (Text und Symbol auf der Fläche) und `.Fg` (Symbol, Text oder Kontur auf neutraler Fläche); dazu `.Subtle` (Flächenton, siehe unten). Zu jeder Statusfarbe gehört ein festes Symbol und ein Statuswort (Tabelle 1.3).
 
 | Status | Hell Fill | Hell On | Hell Fg | Dunkel Fill | Dunkel On | Dunkel Fg |
 |---|---|---|---|---|---|---|
@@ -63,7 +64,7 @@ Begründung der Werte:
 - **Warnung** ist die Ausnahme: Gelb/Amber erreicht als Textfarbe auf Hell nie 4,5 : 1. Deshalb ist die Fläche amber mit dunklem Text (`On` 8,76 : 1), und als Schrift/Symbol auf neutralem Grund dient das dunkle Bernstein `#8A5A00` (5,93 : 1). Warnflächen erhalten eine 2 px Kontur in `Fg`, weil Amber auf Weiß nur 1,83 : 1 hat und sonst als Grafik nicht abgrenzbar wäre.
 - Im Dunkelthema sind die Statusfarben aufgehellt und die `On`-Farbe ist dunkel; so bleiben die Verhältnisse ≥ 4,5 : 1.
 - Rot ist **ausschließlich** Fehler/Alarm. Die rote Eingabewertschrift und die rote Taste „Manuell“ des Entwurfs entfallen (Abschnitt 12).
-- Grün bedeutet „Ok / erfüllt“ (Status-LED, Betriebsart Produktion), **nicht** „Taste ist eingeschaltet“. Ein-Zustand von Tasten und Umschaltern ist neutral (Abschnitt 5).
+- Grün bedeutet „Ok / erfüllt“ und erscheint nur als kleines Symbol (`Brush.Status.Ok.Fg`) an Status-LEDs mit Zustand „erfüllt“ (begründete Ausnahme: Voraussetzungslisten wie in DS-03/DS-04 werden nach dem Vorbild der Referenz mit Grün „erfüllt“ gelesen; das Symbol Haken und das Wort stehen immer dabei). Grün ist **nie** Fläche im Normalbetrieb und **nie** „Taste ist eingeschaltet“. Ein-Zustand von Tasten und Umschaltern ist neutral (Abschnitt 5).
 
 Zusätzlich (Flächenton für Zeilen/Felder im Fehler-, Warn- usw. Zustand, `Subtle`):
 
@@ -88,7 +89,7 @@ Zusätzlich (Flächenton für Zeilen/Felder im Fehler-, Warn- usw. Zustand, `Sub
 
 - **Fokus / Auswahl** (Tastaturfokus, Auswahlrahmen in Listen, Bedienfeld in Bearbeitung): Info-Fg-Farbe, 3 px Rahmen. Info-Blau kennzeichnet hier den Eingabefokus, keinen Status; Kontrast 5,07 : 1 (Hell) / 7,03 : 1 (Dunkel) auf Fenster.
 - **Scrim** (Pop-up-Hintergrund): Schwarz 50 % Deckkraft (Hell) bzw. 60 % (Dunkel). Keine Information.
-- **Grafik Leimspuren** (DM-22): Karton und Leimspur sind Abbildung eines Objekts, keine Statusfarbe; sie dürfen die beiden Neutralbraun-Töne `Brush.Graphic.Carton` (Hell `#C9A07C`, Dunkel `#8A6A4F`) und `Brush.Graphic.Glue` (Hell `#F4E6BF`, Dunkel `#D8C79A`) nutzen. Das ist die einzige Nicht-Status-Farbe und gilt nur für Produktabbildungen; Eingabefelder darin sind normale Wertfelder.
+- **Grafik Leimspuren** (DM-22): Karton und Leimspur sind Abbildung eines Objekts, keine Statusfarbe; sie dürfen die beiden Neutralbraun-Töne `Brush.Graphic.Carton` (Hell `#B07A52`, Dunkel `#8A6A4F`) und `Brush.Graphic.Glue` (Hell `#FBF0D0`, Dunkel `#F0E2B8`) und die Kontur `Brush.Graphic.Outline` (= Text primär) nutzen. Kontraste: Karton auf `Surface` 3,65 / 3,09, Leimspur auf Karton 3,21 / 3,82, Kontur auf Karton 4,39 / 4,19 (alle ≥ 3 : 1 für Grafik). Das ist die einzige Nicht-Status-Farbe und gilt nur für Produktabbildungen; Eingabefelder darin sind normale Wertfelder.
 
 ## 2. Typografie
 
@@ -100,8 +101,7 @@ Größenstufen für Bedienabstand (Bedienerstand ca. 0,6 bis 0,8 m, 21 bis 24-Zo
 |---|---|---|---|---|---|
 | Caption | `Font.Size.Caption` | 20 | Regular | 26 | Datum, Einheiten, Hinweistexte, Rolle in Seitenleiste |
 | Body | `Font.Size.Body` | 24 | Regular | 32 | Beschriftungen, Zeilen, Brotkrümel, Tastentext, Meldungstext |
-| Value | `Font.Size.Value` | 28 | SemiBold | 36 | Wertfelder, Eingabefelder, Messwerte in Zeilen |
-| Subtitle | `Font.Size.Subtitle` | 28 | SemiBold | 36 | Gruppen- und Kartenüberschriften |
+| Value | `Font.Size.Value` | 28 | SemiBold | 36 | Wertfelder, Eingabefelder, Messwerte in Zeilen, Gruppen- und Kartenüberschriften |
 | Title | `Font.Size.Title` | 32 | SemiBold | 40 | Seitentitel, Titelzeile (DM-21), Betriebsart |
 | Metric | `Font.Size.Metric` | 36 | SemiBold | 44 | Kennzahlen (Geschwindigkeit, Winkel), Uhrzeit |
 
@@ -116,12 +116,12 @@ Alle Maße sind Vielfache von 8 px (Ausnahme 4 px für feine Abstände). Die Ma�
 | Token | Wert (px) | Verwendung |
 |---|---|---|
 | `Space.XS` | 4 | Symbol zu Text |
-| `Space.S` | 8 | Innenabstand klein, Abstand zwischen Tasten in dichten Gruppen |
+| `Space.S` | 8 | Innenabstand innerhalb eines Elements (Symbol/Text, Zeilenabstand), **nie** Abstand zwischen zwei Touch-Zielen (dort `Size.Touch.Gap` = 16) |
 | `Space.M` | 16 | Standardabstand zwischen Elementen (Gutter), Innenabstand Karte |
 | `Space.L` | 24 | Außenrand des Inhaltsbereichs, Abstand zwischen Gruppen |
 | `Space.XL` | 32 | Abstand zwischen Hauptbereichen |
 | `Size.Touch.Min` | 48 | absolute Untergrenze jedes Touch-Ziels (z. B. Pop-up-Schließen, Tabellenzeile) |
-| `Size.Touch.Default` | 64 | Standardhöhe jeder Taste, Eingabefeld, Umschalter, Seitenleisten-Symbol |
+| `Size.Touch.Default` | 64 | Standardhöhe jeder Taste, Eingabefeld, Umschalterzeile |
 | `Size.Touch.Large` | 96 | Kachel-Taste (DM-12), Hauptaktionen |
 | `Size.Touch.Gap` | 16 | Mindestabstand zwischen zwei Touch-Zielen (= `Space.M`) |
 | `Size.Icon.S` / `M` / `L` | 24 / 32 / 48 | Symbolgrößen (in Tasten: M; Seitenleiste und Statuszeile: L bzw. M) |
@@ -151,11 +151,11 @@ Spalten des Hauptfensters: Seitenleiste **3\*** : Arbeitsbereich **37\*** (Summe
 
 | Bereich | Anteil | Aufbau |
 |---|---|---|
-| **Seitenleiste** (DM-01, DM-02) | 7,5 % der Breite, volle Höhe | von oben: Benutzerkennung (Kreis 64 px, Name, Rolle, Caption 20 px, bis zu 2 Zeilen); darunter Symboltasten Home, Einstellungen, Meldungen (je 144 × 96, Symbol 48); ganz unten Zurück (144 × 96). Auswahl: Symbol der aktuellen Seite mit 6 px Balken am linken Rand und hellerem Grund (zweiter Kanal zusätzlich zur Farbe). |
+| **Seitenleiste** (DM-01, DM-02) | 7,5 % der Breite, volle Höhe | von oben: Benutzerkennung (Kreis 64 px, Name, Rolle, Caption 20 px, bis zu 2 Zeilen); darunter Symboltasten Home, Einstellungen, Meldungen (je volle Spaltenbreite × 96 px = `Size.Touch.Large`, Symbol 48 px, 16 px Abstand = `Size.Touch.Gap`); ganz unten Zurück (gleiche Größe, mindestens 16 px Abstand zur darüberliegenden Taste). Auswahl: Symbol der aktuellen Seite mit 6 px Balken (`Size.SelectionBar`) am linken Rand und hellerem Grund (zweiter Kanal zusätzlich zur Farbe). |
 | **Kopfzeile** | 92,5 % der Breite, 8,9 % der Höhe | Spalten **12\* : 13\* : 6\* : 4\*** (Summe 35): Logo (≈ 35 %), Meldezeile (≈ 37 %), Betriebsart (≈ 17 %), Uhrzeit/Datum (≈ 11 %); abgeleitet aus dem Entwurf (35 : 37,5 : 18 : 9) mit etwas mehr Platz für Uhrzeit und Datum. Mindestbreiten: Uhrzeit 192, Betriebsart 288 px. |
 | **Brotkrümel-/Kennzahlzeile** | 6,7 % der Höhe | Spalten **56\* : 10\* : 10\***: Brotkrümel (links, Segmente je 64 px hoch, antippbar als Annahme A-27), Kennzahl Geschwindigkeit, Kennzahl Maschinenwinkel (je ≈ 13 %, Mindestbreite 224 px; Wert 36 px Metric, Symbol 32 px). |
 | **Inhaltsbereich** | 75,6 % der Höhe | Außenrand `Space.L` (24 px), 12-Spalten-Raster (3.3). Seitenspezifisch. |
-| **Untere Funktionsleiste** (DM-09, DM-10) | 8,9 % der Höhe | Fläche vertieft, Innenrand 16 px oben/unten, Tasten 64 px hoch (Rest 16 px), links beginnend, 16 px Abstand, Breite je Taste 224 px (Mindestbreite), max. 7 Tasten, bei Bedarf rechtsbündige Gruppe für seitenspezifische Hauptaktion. Auf leeren Seiten bleibt die Leiste sichtbar (Rahmenkonsistenz). |
+| **Untere Funktionsleiste** (DM-09, DM-10) | 8,9 % der Höhe | Fläche vertieft, Innenrand 16 px oben/unten, Tasten 64 px hoch (Rest 16 px), links beginnend, 16 px Abstand, Breite je Taste mindestens 224 px (`Size.FunctionButton.MinWidth`), **höchstens 5 seitenspezifische Tasten** (wie Navigation.md); weitere Aktionen hinter einer Überlauf-Taste `Icon.More` („Mehr“, 64 × 64 px) am rechten Rand der Leiste. Auf leeren Seiten bleibt die Leiste sichtbar (Rahmenkonsistenz). |
 
 ### 3.3 Inhaltsbereich: 12-Spalten-Raster
 
@@ -197,9 +197,9 @@ Jedes interaktive Element kennt die Zustände der Tabelle. Zweiter Kanal = Infor
 |---|---|---|---|
 | **Normal** | `Brush.Button.Normal`, Kontur 1 px `Brush.Border.Control`, Text primär | Beschriftung (Text), bei Zustandstasten Symbol „Aus“ (`Icon.State.Off`) und Wort | Eingabefeld: Fläche, Kontur 1 px. |
 | **Gedrückt** | `Brush.Button.Pressed`, Kontur 2 px, Text primär | dickere Kontur (Form), Rückmeldung unmittelbar (< 100 ms) | Nur während der Berührung. Touch-Ziel wirkt beim Loslassen im Ziel (kein Auslösen beim Berühren). |
-| **Deaktiviert** | Fläche wie Normal, Kontur **gestrichelt**, Text `Brush.Text.Disabled` | gestrichelte Kontur, kein Pressed; Grund wird per Tippen in der Meldezeile als Info-Text genannt (Annahme A-28) | Bedienung durch Betriebszustand verhindert, nicht Berechtigung. Entspricht den „abgeblendeten“ Tasten in DS-04 (OP-18). Kontrast Text auf Fläche 4,74 / 4,90 (freiwillig ≥ 4,5, obwohl WCAG ausgenommen). |
+| **Deaktiviert** | Fläche `Brush.Button.Disabled`, Kontur **gestrichelt**, Text `Brush.Text.Disabled` | gestrichelte Kontur, kein Pressed; Grund wird per Tippen in der Meldezeile als Info-Text genannt (Annahme A-28) | Bedienung durch Betriebszustand verhindert, nicht Berechtigung. Entspricht den „abgeblendeten“ Tasten in DS-04 (OP-18). Kontrast Text auf `Button.Disabled` 4,74 / 4,90 (freiwillig ≥ 4,5, obwohl WCAG ausgenommen); `Text.Disabled` nur auf `Button.Disabled`, `Surface` oder Dunkel-`Window` verwenden, nicht auf `Button.Normal` (3,60 / 3,82). |
 | **Aktiv / Ein** | `Brush.Button.Active` (neutral dunkel), Text `Brush.Text.OnActive` | Symbol Haken (`Icon.State.On`) und Wort „Ein“; beim Umschalter Knopf rechts, Bahn gefüllt, Wort „Ein“ | Neutral, nicht grün. Aus: Knopf links, Bahn leer, Wort „Aus“ + `Icon.State.Off`. |
-| **Fehler** | Kontur 3 px `Brush.Status.Error`, Fläche `Brush.Status.Error.Subtle`, Text primär | Symbol `Icon.Status.Error` und Fehlertext (Zeile unter dem Element, z. B. „Wert außerhalb 0 bis 100 %“) | Gilt für ungültige Eingabe und gestörte Funktion. Bei Alarm zusätzlich Meldezeile. |
+| **Fehler** | Kontur 3 px `Brush.Status.Error.Fg`, Fläche `Brush.Status.Error.Subtle`, Text primär | Symbol `Icon.Status.Error` und Fehlertext (Zeile unter dem Element, z. B. „Wert außerhalb 0 bis 100 %“) | Gilt für ungültige Eingabe und gestörte Funktion. Bei Alarm zusätzlich Meldezeile. |
 | **Berechtigungsgeschützt** | Fläche Normal, Kontur 1 px | Symbol Schloss (`Icon.Lock`, Berechtigung fehlt, nicht bedienbar) bzw. Schlüssel (`Icon.Key`, Berechtigung vorhanden, bedienbar, Anmeldung bzw. Freigabe erforderlich); Tippen ohne Berechtigung öffnet Hinweis „Berechtigung erforderlich: <Rolle>“ | Symbol 24 px oben rechts im Element (Entwurf: gelber Schlüssel am Eingabefeld). Das Symbol steht immer, die Farbe ist `Brush.Text.Primary`, nicht gelb (Gelb = Warnung). |
 | **Fokus** (Ergänzung) | Kontur 3 px `Brush.Border.Focus` | Rahmen (Form) | Bei Tastatur-/Maus-Bedienung, Auswahl in Listen. |
 
@@ -209,8 +209,8 @@ Zustandsanzeigen ohne Bedienung (Status-LED DM-14, Betriebsart DM-05, Meldezeile
 
 | Anzeige | Darstellung |
 |---|---|
-| Status-LED (DM-14) | Kreis 32 px mit Symbol (Haken/!/×/leer) in `Status.*.Fill`, daneben die Beschriftung; eine einzige Variante (Ring und flach des Entwurfs werden vereinheitlicht) |
-| Betriebsart (DM-05) | Fläche `Status.Ok.Fill`, Symbol und Text „Produktion“ in `Status.Ok.On`; andere Betriebsarten: eigenes Symbol, eigener Text, Farbe nur bei Störung (Warnung/Fehler) |
+| Status-LED (DM-14) | Kreis 32 px mit Symbol (Haken/!/×/leer) in `Brush.Status.*.Fg` ohne Fläche, daneben die Beschriftung; eine einzige Variante (Ring und flach des Entwurfs werden vereinheitlicht) |
+| Betriebsart (DM-05) | Normalzustand neutral: Fläche `Brush.Surface`, Symbol `Icon.Mode.Production`, Wort „Produktion“ in `Brush.Text.Primary` (Grundsatz 1: Normalzustand ist grau). Statusfarbe nur bei abweichendem Zustand der Betriebsart (Warnung/Fehler: Fläche `Status.*.Fill`, Text `.On`, Statussymbol) |
 | Meldezeile (DM-04) | Fläche in Statusfarbe der Meldung (Warnung: `Status.Warning.Fill` mit Text `On`), Symbol, Format „NNN: Text“, Schweregradwort; keine Meldung: neutrale Fläche, Text „Keine Meldung“ |
 | Fortschrittsbalken (DM-18) | Balken neutral (Fläche `Brush.Progress.Fill` = Text sekundär), Zahl im Balken und Wert; Statusfarbe nur bei Grenzwertüberschreitung (z. B. Auslastung ≥ 90 % = Warnung) mit Symbol |
 
@@ -244,6 +244,7 @@ Symbole sind monochrome Vektorsymbole (`Geometry` als `Path`, Strichstärke 2 px
 | `Icon.Manual` | Manueller Betrieb | Taste „Manuell“ |
 | `Icon.Empty` | Entleeren | Taste „Entleeren“ |
 | `Icon.Scroll.Up` / `.Down` | Listen blättern | RM-21 |
+| `Icon.More` | Überlauf der Funktionsleiste („Mehr“) | (Annahme) |
 
 Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Namensschema `Icon.<Bereich>.<Name>`).
 
@@ -251,7 +252,7 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 
 | Element | Vorgabe |
 |---|---|
-| Taste | Höhe 64 (`Size.Touch.Default`), Mindestbreite 160, Innenabstand 16 horizontal, Symbol links optional, Text Body, `Radius.Control` |
+| Taste | Höhe 64 (`Size.Touch.Default`), Mindestbreite 160 (`Size.Button.MinWidth`; in der Funktionsleiste 224), Innenabstand 16 horizontal, Symbol links optional, Text Body, `Radius.Control` |
 | Kachel-Taste (DM-12) | Höhe 96, Text Body zentriert, Symbol über dem Text optional, mehrzeilig automatisch; leere Kachel: nicht anzeigen oder Zustand „deaktiviert“ mit Beschriftung „Reserviert“ (Annahme A-29) |
 | Umschalter (DM-13) | Bahn 96 × 48, Knopf 40 px, ganze Zeile (≥ 64 px hoch) antippbar; Beschriftung links, Wort „Ein/Aus“ rechts |
 | Eingabefeld (DM-17) | Höhe 64, Wert Value, Schlüsselsymbol 24 px oben rechts, Einheit hinter dem Wert; Pop-up-Eingabe (Annahme A-20) |
@@ -267,12 +268,12 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 - `App.xaml` bindet `Tokens.xaml`, die aktive Theme-Datei und `Styles/*.xaml` (Standardstile je Control-Typ, nur `DynamicResource`).
 - Umschalten zur Laufzeit: Theme-Dienst (`IThemeService`) ersetzt das erste `MergedDictionary` (Theme) durch das andere. Alle Verweise auf Brushes in Stilen und Seiten verwenden `{DynamicResource Brush.…}`, sonst wirkt die Umschaltung nicht. Maße und Schriften dürfen `StaticResource` sein.
 - Auswahl: Standard folgt der Windows-Einstellung beim Start, manuelle Umschaltung in den Systemeinstellungen (Annahme A-30). Die Wahl bleibt gespeichert (Benutzereinstellung).
-- Kein Element enthält Hex-Werte, `Color=`-Literale oder Pixelmaße, ausgenommen `Tokens.xaml` und die Theme-Dateien. Seiten nutzen Layoutraster (Abschnitt 3.2/3.3) mit `*`-Spalten.
+- Kein Element enthält Hex-Werte, `Color=`-Literale oder Pixelmaße, ausgenommen `Tokens.xaml` und die Theme-Dateien. Seiten nutzen Layoutraster (Abschnitt 3.2/3.3) mit `*`-Spalten; alle in Abschnitt 7 und 3.2 genannten Maße (Mindestbreiten, Umschalter-, LED-, Balken-, Pop-up-Maße) sind Tokens in 10.3.
 - Zustandsfarben für Pressed/Disabled usw. sind eigene Tokens, nicht per Opazität berechnet, damit die Kontraste dieses Dokuments garantiert bleiben.
 
 ## 9. Namensschema
 
-`Brush.<Rolle>[.<Variante>]`, `Font.<Eigenschaft>.<Stufe>`, `Size.<Art>.<Stufe>`, `Space.<Stufe>`, `Radius.<Stufe>`, `Border.<Stufe>`, `Icon.<Name>`. Typen in WPF: `Brush.*` = `SolidColorBrush`, Maße und Größen = `sys:Double`, Randstärken = `Thickness` (Variante `.Thickness`) bzw. `Double`, Radien = `CornerRadius`, Schriftfamilie = `FontFamily`, Gewichte = `FontWeight`, Icons = `Geometry`.
+`Brush.<Rolle>[.<Variante>]`, `Font.<Eigenschaft>.<Stufe>`, `Size.<Art>.<Stufe>`, `Space.<Stufe>`, `Radius.<Stufe>`, `Border.<Stufe>`, `Icon.<Name>`. Typen in WPF: `Brush.*` = `SolidColorBrush`, Maße und Größen = `sys:Double`, Randstärken (`Border.*`) = `Thickness`, Radien = `CornerRadius`, Schriftfamilie = `FontFamily`, Gewichte = `FontWeight`, Icons = `Geometry`.
 
 ## 10. Tokenliste
 
@@ -296,26 +297,32 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 | `Brush.Sidebar.Selected` | SolidColorBrush | `#3F5066` | `#2E3844` | Hintergrund des aktuellen Seitenleisten-Eintrags (mit Balken) |
 | `Brush.Button.Normal` | SolidColorBrush | `#DCE1E7` | `#2E3844` | Taste normal (DM-10, DM-12, DM-19 aus) |
 | `Brush.Button.Pressed` | SolidColorBrush | `#C3CBD5` | `#3A4656` | Taste gedrückt |
+| `Brush.Button.Disabled` | SolidColorBrush | `#FFFFFF` | `#1E2630` | Taste/Umschalter deaktiviert (mit gestrichelter Kontur) |
 | `Brush.Button.Active` | SolidColorBrush | `#2B3846` | `#44546A` | Taste aktiv/Ein, Umschalter ein |
 | `Brush.Progress.Fill` | SolidColorBrush | `#4A5563` | `#AAB4C0` | Balkenfüllung neutral |
 | `Brush.Scrim` | SolidColorBrush | `#80000000` | `#99000000` | Pop-up-Hintergrund |
-| `Brush.Status.Ok` | SolidColorBrush | `#1B7A2B` | `#4CC264` | Ok: Fläche und Symbol |
-| `Brush.Status.Ok.On` | SolidColorBrush | `#FFFFFF` | `#0B1A0F` | Text/Symbol auf Ok-Fläche |
-| `Brush.Status.Ok.Subtle` | SolidColorBrush | `#E4F4E7` | `#17341D` | Zeilen-/Feldhintergrund Ok |
-| `Brush.Status.Warning` | SolidColorBrush | `#F2B600` | `#FFC933` | Warnfläche (Meldezeile) |
-| `Brush.Status.Warning.On` | SolidColorBrush | `#1A222C` | `#141A21` | Text auf Warnfläche |
-| `Brush.Status.Warning.Fg` | SolidColorBrush | `#8A5A00` | `#FFC933` | Warnsymbol/-text und Kontur auf neutralem Grund |
+| `Brush.Status.Ok.Fill` | SolidColorBrush | `#1B7A2B` | `#4CC264` | Erfüllt/in Ordnung: Fläche (Text/Symbol darauf in `.On`) |
+| `Brush.Status.Ok.On` | SolidColorBrush | `#FFFFFF` | `#0B1A0F` | Text und Symbol auf `.Fill` |
+| `Brush.Status.Ok.Fg` | SolidColorBrush | `#1B7A2B` | `#4CC264` | Erfüllt/in Ordnung: Symbol, Text und Kontur auf neutralem Grund |
+| `Brush.Status.Ok.Subtle` | SolidColorBrush | `#E4F4E7` | `#17341D` | Zeilen-/Feldhintergrund Erfüllt/in Ordnung |
+| `Brush.Status.Warning.Fill` | SolidColorBrush | `#F2B600` | `#FFC933` | Warnung: Fläche (Text/Symbol darauf in `.On`) |
+| `Brush.Status.Warning.On` | SolidColorBrush | `#1A222C` | `#141A21` | Text und Symbol auf `.Fill` |
+| `Brush.Status.Warning.Fg` | SolidColorBrush | `#8A5A00` | `#FFC933` | Warnung: Symbol, Text und Kontur auf neutralem Grund |
 | `Brush.Status.Warning.Subtle` | SolidColorBrush | `#FFF4CC` | `#3D3000` | Zeilen-/Feldhintergrund Warnung |
-| `Brush.Status.Error` | SolidColorBrush | `#C62828` | `#FF6B6B` | Fehler/Alarm: Fläche, Symbol, Kontur |
-| `Brush.Status.Error.On` | SolidColorBrush | `#FFFFFF` | `#141A21` | Text auf Fehlerfläche |
-| `Brush.Status.Error.Subtle` | SolidColorBrush | `#FDECEC` | `#3B1D1F` | Fehlerfeld-Hintergrund |
-| `Brush.Status.Info` | SolidColorBrush | `#1565C0` | `#5AA9F5` | Info: Fläche, Symbol |
-| `Brush.Status.Info.On` | SolidColorBrush | `#FFFFFF` | `#0B1620` | Text auf Info-Fläche |
-| `Brush.Status.Info.Subtle` | SolidColorBrush | `#E3F0FD` | `#16304A` | Info-Hintergrund |
-| `Brush.Status.Inactive` | SolidColorBrush | `#5F6975` | `#9AA4B1` | Inaktiv: Symbol, Fläche |
-| `Brush.Status.Inactive.On` | SolidColorBrush | `#FFFFFF` | `#141A21` | Text auf Inaktiv-Fläche |
-| `Brush.Graphic.Carton` | SolidColorBrush | `#C9A07C` | `#8A6A4F` | Kartonzuschnitt (DM-22) |
-| `Brush.Graphic.Glue` | SolidColorBrush | `#F4E6BF` | `#D8C79A` | Leimspuren (DM-22) |
+| `Brush.Status.Error.Fill` | SolidColorBrush | `#C62828` | `#FF6B6B` | Fehler/Alarm: Fläche (Text/Symbol darauf in `.On`) |
+| `Brush.Status.Error.On` | SolidColorBrush | `#FFFFFF` | `#141A21` | Text und Symbol auf `.Fill` |
+| `Brush.Status.Error.Fg` | SolidColorBrush | `#C62828` | `#FF6B6B` | Fehler/Alarm: Symbol, Text und Kontur auf neutralem Grund |
+| `Brush.Status.Error.Subtle` | SolidColorBrush | `#FDECEC` | `#3B1D1F` | Zeilen-/Feldhintergrund Fehler/Alarm |
+| `Brush.Status.Info.Fill` | SolidColorBrush | `#1565C0` | `#5AA9F5` | Information: Fläche (Text/Symbol darauf in `.On`) |
+| `Brush.Status.Info.On` | SolidColorBrush | `#FFFFFF` | `#0B1620` | Text und Symbol auf `.Fill` |
+| `Brush.Status.Info.Fg` | SolidColorBrush | `#1565C0` | `#5AA9F5` | Information: Symbol, Text und Kontur auf neutralem Grund |
+| `Brush.Status.Info.Subtle` | SolidColorBrush | `#E3F0FD` | `#16304A` | Zeilen-/Feldhintergrund Information |
+| `Brush.Status.Inactive.Fill` | SolidColorBrush | `#5F6975` | `#9AA4B1` | Inaktiv/aus: Fläche (Text/Symbol darauf in `.On`) |
+| `Brush.Status.Inactive.On` | SolidColorBrush | `#FFFFFF` | `#141A21` | Text und Symbol auf `.Fill` |
+| `Brush.Status.Inactive.Fg` | SolidColorBrush | `#5F6975` | `#9AA4B1` | Inaktiv/aus: Symbol, Text und Kontur auf neutralem Grund |
+| `Brush.Graphic.Carton` | SolidColorBrush | `#B07A52` | `#8A6A4F` | Kartonzuschnitt (DM-22) |
+| `Brush.Graphic.Outline` | SolidColorBrush | `#1A222C` | `#E8EDF2` | Kontur der Grafik (DM-22) |
+| `Brush.Graphic.Glue` | SolidColorBrush | `#FBF0D0` | `#F0E2B8` | Leimspuren (DM-22) |
 
 ### 10.2 Typografie (themenunabhängig, Datei `Tokens.xaml`)
 
@@ -326,8 +333,7 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 | `Font.Weight.Strong` | FontWeight | `SemiBold` | `SemiBold` | Werte, Überschriften |
 | `Font.Size.Caption` | Double | 20 | 20 | Datum, Einheit, Hinweis |
 | `Font.Size.Body` | Double | 24 | 24 | Beschriftung, Tastentext, Brotkrümel |
-| `Font.Size.Value` | Double | 28 | 28 | Wert- und Eingabefelder |
-| `Font.Size.Subtitle` | Double | 28 | 28 | Gruppen-/Kartenüberschrift |
+| `Font.Size.Value` | Double | 28 | 28 | Wert- und Eingabefelder, Gruppen-/Kartenüberschriften |
 | `Font.Size.Title` | Double | 32 | 32 | Seitentitel, Betriebsart |
 | `Font.Size.Metric` | Double | 36 | 36 | Kennzahlen, Uhrzeit |
 
@@ -337,7 +343,7 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 |---|---|---|---|---|
 | `Size.Touch.Min` | Double | 48 | 48 | absolute Untergrenze Touch-Ziel |
 | `Size.Touch.Default` | Double | 64 | 64 | Standardhöhe Taste, Feld |
-| `Size.Touch.Large` | Double | 96 | 96 | Kachel-Taste, Seitenleisten-Symbol |
+| `Size.Touch.Large` | Double | 96 | 96 | Kachel-Taste (DM-12), Seitenleisten-Symboltaste (Höhe) |
 | `Size.Touch.Gap` | Double | 16 | 16 | Mindestabstand zwischen Touch-Zielen |
 | `Size.Icon.S` | Double | 24 | 24 | Schlüssel-/Schlosssymbol im Feld |
 | `Size.Icon.M` | Double | 32 | 32 | Symbol in Taste, Status-LED |
@@ -347,8 +353,25 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 | `Size.Crumb.Height` | GridLength | 3* | 3* | Zeile Brotkrümel/Kennzahlen |
 | `Size.FunctionBar.Height` | GridLength | 4* | 4* | Zeile untere Funktionsleiste |
 | `Size.Content.Margin` | Thickness | 24 | 24 | Außenrand des Inhaltsbereichs |
+| `Size.Button.MinWidth` | Double | 160 | 160 | Mindestbreite Taste |
+| `Size.FunctionButton.MinWidth` | Double | 224 | 224 | Mindestbreite Taste in der Funktionsleiste |
+| `Size.Avatar` | Double | 64 | 64 | Benutzerkreis (DM-01) |
+| `Size.SelectionBar` | Double | 6 | 6 | Auswahlbalken Seitenleiste |
+| `Size.Toggle.Width` | Double | 96 | 96 | Umschalter-Bahn (DM-13) |
+| `Size.Toggle.Height` | Double | 48 | 48 | Umschalter-Bahn |
+| `Size.Toggle.Knob` | Double | 40 | 40 | Umschalter-Knopf |
+| `Size.Field.Height` | Double | 48 | 48 | Wertfeld (DM-16); Eingabefeld nutzt `Size.Touch.Default` |
+| `Size.Led` | Double | 32 | 32 | Status-LED (DM-14) |
+| `Size.Progress.Height` | Double | 40 | 40 | Fortschrittsbalken (DM-18) |
+| `Size.Popup.WidthRatio` | Double | 0.6 | 0.6 | maximale Pop-up-Breite (Anteil des Fensters) |
+| `Size.Popup.TitleHeight` | Double | 64 | 64 | Titelzeile Pop-up |
+| `Size.Header.Clock.MinWidth` | Double | 192 | 192 | Uhrzeit/Datum |
+| `Size.Header.Mode.MinWidth` | Double | 288 | 288 | Betriebsart |
+| `Size.Metric.MinWidth` | Double | 224 | 224 | Kennzahl-Kachel |
+| `Size.Header.Columns` | GridLength[] | 12* : 13* : 6* : 4* | 12* : 13* : 6* : 4* | Kopfzeile: Logo, Meldezeile, Betriebsart, Uhr (als vier Tokens `Size.Header.Col.Logo/.Message/.Mode/.Clock`) |
+| `Size.Crumb.Columns` | GridLength[] | 56* : 10* : 10* | 56* : 10* : 10* | Brotkrümel, Geschwindigkeit, Winkel (Tokens `Size.Crumb.Col.Path/.Speed/.Angle`) |
 | `Space.XS` | Double | 4 | 4 | feiner Abstand |
-| `Space.S` | Double | 8 | 8 | dichte Abstände |
+| `Space.S` | Double | 8 | 8 | Innenabstand in Elementen (nicht zwischen Touch-Zielen) |
 | `Space.M` | Double | 16 | 16 | Standardabstand, Gutter |
 | `Space.L` | Double | 24 | 24 | Gruppenabstand, Außenrand |
 | `Space.XL` | Double | 32 | 32 | Bereichsabstand |
@@ -359,6 +382,7 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 | `Border.Thin` | Thickness | 1 | 1 | Standardkontur |
 | `Border.Medium` | Thickness | 2 | 2 | gedrückt, Warnfläche, Pop-up |
 | `Border.Thick` | Thickness | 3 | 3 | Fokus, Fehler |
+| `Border.Dash` | DoubleCollection | 4 3 | 4 3 | Strichmuster gestrichelter Kontur (deaktiviert) |
 
 Symbole (`Icon.*`, Geometrien) stehen in `Themes/Icons.xaml`; die Namen sind in Abschnitt 6 festgelegt.
 
@@ -379,9 +403,10 @@ Symbole (`Icon.*`, Geometrien) stehen in `Themes/Icons.xaml`; die Namen sind in 
 | 3D-Fasen und Verläufe an Tasten, Brotkrümeln, Fortschrittsbalken | flache Flächen, 1 bis 3 px Kontur | Agent.md Abschnitt 6; Fasen sind PowerPoint-Effekte. |
 | Meldezeile Amber `#FFC000` mit orangebraunem Text `#C55A11` | Amber mit dunklem Text (8,76 : 1), Symbol und Wort | Orangebraun auf Amber 2,64 : 1 (unter 4,5 : 1); DM-04 verlangt Korrektur und zweiten Kanal. |
 | Name blassblau, Rolle ocker auf Blau (DM-01) | Weiß bzw. `#C9D3DE` (≥ 7,89 : 1) | Entwurf kontrastschwach. |
+| Betriebsart „Produktion“ als volle grüne Fläche `#70AD47` | neutrale Fläche mit Symbol und Wort; Grün nur als Haken-Symbol an LEDs mit „erfüllt“ | Grundsatz 1: Der Normalbetrieb ist grau und unauffällig; eine dauernd grüne Fläche entwertet Statusfarbe. Ausnahme „Grün = erfüllt“ nur an LEDs. |
 | Weiße Schrift auf Grün `#70AD47`, Grau `#A6A6A6`, Kennzahl `#7F7F7F` | Texte auf Statusflächen nur mit `.On`-Werten ≥ 4,5 : 1; Kennzahlen neutral | Weiß auf `#70AD47` 2,71 : 1, Weiß auf `#A6A6A6` 2,43 : 1, Weiß auf `#7F7F7F` 4,0 : 1. |
 | Rote Eingabewerte, rote Taste „Manuell“, reingrüne Taste „Füllsystem“ | Neutral; Rot nur für Fehler, Grün nur für Ok | Doppeldeutigkeit: Rot = Alarm. Betriebsart „Manuell aktiv“ wird per Symbol/Text gezeigt (DM-19, OP-14). |
-| Grüne Umschalter-Knöpfe und grüne Tasten für „Ein“ | neutraler Ein-Zustand mit Haken und Wort „Ein“ | Grün bedeutet „Ok“. Ein-Zustand ist kein Status im ISA-101-Sinn; zweiter Kanal Pflicht (A-15). |
+| Grüne Umschalter-Knöpfe und grüne Tasten für „Ein“ | neutraler Ein-Zustand mit Haken und Wort „Ein“ | Grün bedeutet „Ok“ und ist nie Tastenzustand. Ein-Zustand ist kein Status im ISA-101-Sinn; zweiter Kanal Pflicht (A-15). |
 | Status-LED in zwei Varianten (Ring/flach), nur Farbe | eine Variante mit Symbol und Wort | Zustand nie nur über Farbe. |
 | Fortschrittsbalken gelb/grün-fluoreszierend | neutraler Balken mit Zahl; Statusfarbe nur bei Grenzwert | Farbe nur für Status. |
 | Schrift Calibri vermutlich, 13 bis 24 px | Segoe UI, 20 bis 36 px | Lesbarkeit aus Bedienabstand; Entwurf teils zu klein (A-05). |
@@ -398,7 +423,7 @@ Nicht verändert, weil nur Orientierung: der Rahmenaufbau (Seitenleiste, Kopfzei
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
-| DSY-P01 | Kontraste Text/Symbol | alle Textfarben und Status-`On`/`Fg`-Paare ≥ 4,5 : 1, Konturen ≥ 3 : 1 (Tabellen 1.1, 1.2) | offen |
+| DSY-P01 | Kontraste Text/Symbol | alle Textfarben (inkl. `Text.Disabled` auf `Button.Disabled`) und Status-`On`/`Fg`-Paare ≥ 4,5 : 1; Konturen und Grafik (inkl. DM-22) ≥ 3 : 1 (Tabellen 1.1, 1.2, 1.4) | offen |
 | DSY-P02 | Farbe nur Status | außer 1.2 und 1.4 keine Farbtokens | offen |
 | DSY-P03 | Zustände | jeder Zustand in Abschnitt 5 hat zweiten Kanal | offen |
 | DSY-P04 | Touch | kein Ziel < 48 px, Standard 64 px, Abstand ≥ 16 px | offen |

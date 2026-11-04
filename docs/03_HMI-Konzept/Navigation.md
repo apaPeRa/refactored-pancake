@@ -17,8 +17,8 @@ Legende: `[Zugang]` = Element, das die Seite öffnet. `(Pop-up)` = modal, nicht 
 
 ```
 Rahmen (auf jeder Seite)
-├─ Seitenleiste „Home“ ................ HS-01 Produktion (Stapel zurücksetzen)
-├─ Seitenleiste „Einstellungen“ ....... HS-04 Einstellungen (Stapel auf HS-01, HS-04)
+├─ Seitenleiste „Home“ ................ HS-01 Produktion (Stapel `[]`)
+├─ Seitenleiste „Einstellungen“ ....... HS-04 Einstellungen (Stapel `[HS-01]`)
 ├─ Seitenleiste „Meldungen“ ........... HS-38 Meldeanzeige (OP-08, A-35)
 ├─ Meldezeile antippen ................ HS-38 Meldeanzeige (Handbuch RS-38)
 ├─ Seitenleiste „Zurück“ .............. vorherige Seite im Verlauf
@@ -27,7 +27,7 @@ Rahmen (auf jeder Seite)
 
 HS-01 Produktion (Startseite, Home)
 ├─ [Symbol „Aktuelle Produktion“] ..... HS-02 Produktionszähler (Pop-up)
-├─ [rotes Tacho-Symbol „Geschw. Soll“]  HS-03 Maschinengeschwindigkeit (Pop-up)
+├─ [Tacho-Symbol „Geschw. Soll“ (Referenz: rot)]  HS-03 Maschinengeschwindigkeit (Pop-up)
 ├─ [Funktionsleiste „Schichtplan“] .... HS-43 Schichtplan (Z, Platzhalter, OP-02)
 └─ [Feld „Rezept“] .................... Rezeptauswahl-Pop-up (Platzhalter, OP-01)
 
@@ -100,8 +100,8 @@ Brotkrümel-Regeln (A-34): Wurzel „Einstellung“ (Design, Singular) bzw. „P
 | HS-ID | Seitenname | Brotkrümel | Zugang | Zurück-Ziel | Quelle |
 |---|---|---|---|---|---|
 | HS-01 | Produktion | Produktion | Seitenleiste „Home“; Startseite nach Anmeldung | – (Wurzel; „Zurück“ ist deaktiviert) | Design (DS-01), Handbuch |
-| HS-02 | Produktionszähler | Produktion (Brotkrümel bleibt; Pop-up-Titel „Produktionszähler“) | HS-01: Symbol bei „Aktuelle Produktion“ | HS-01 (Pop-up schließen: „Schließen“, Kreuz, „Zurück“) | Handbuch (RS-02) |
-| HS-03 | Maschinengeschwindigkeit | Produktion (Brotkrümel bleibt; Pop-up-Titel „Maschinengeschwindigkeit“) | HS-01: rotes Tacho-Symbol; Kennzahl-Kachel „Geschwindigkeit“ im Rahmen (Annahme) | Aufrufende Seite (Pop-up schließen) | Handbuch (RS-03); Kennzahl abgeleitet (A-38) |
+| HS-02 | Produktionszähler | Produktion (Brotkrümel bleibt; Pop-up-Titel „Produktionszähler“) | HS-01: Symbol bei „Aktuelle Produktion“ | HS-01 (Pop-up schließen: „Schließen“ oder Kreuz) | Handbuch (RS-02) |
+| HS-03 | Maschinengeschwindigkeit | Produktion (Brotkrümel bleibt; Pop-up-Titel „Maschinengeschwindigkeit“) | HS-01: Tacho-Symbol am Feld „Geschwindigkeit Soll“ (in der Referenz rot); Kennzahl-Kachel „Geschwindigkeit“ im Rahmen (Annahme) | Aufrufende Seite (Pop-up schließen) | Handbuch (RS-03); Kennzahl abgeleitet (A-38) |
 | HS-04 | Einstellungen | Einstellung | Seitenleiste „Einstellungen“ | Verlauf, sonst HS-01 | Design (DS-02), Handbuch |
 | HS-05 | Zuführung Papier | Einstellung › Zuführungen › Papier | HS-40: Kachel „Papier“ | HS-40 (Verlauf) | abgeleitet (Muster DS-03/DS-05; Handbuch: Eintrag in RS-04) |
 | HS-06 | Zuführung Karton | Einstellung › Zuführungen › Karton | HS-40: Kachel „Karton“ | HS-40 (Verlauf) | Design (DS-05), Handbuch |
@@ -146,10 +146,12 @@ Brotkrümel-Regeln (A-34): Wurzel „Einstellung“ (Design, Singular) bzw. „P
 Hinweise zur Tabelle:
 
 - **Antippbarkeit der Segmente** (OP-21) ist Annahme. Das letzte Segment ist nur Anzeige. „Einstellung“ führt immer auf HS-04, „Produktion“ auf HS-01.
-- **Dynamische Segmente** (HS-31, HS-34) zeigen den Namen des gewählten Objekts; Quelle ist der Seitentitel im Bild (RS-31: Gruppe, RS-34: „Eingänge S1“). Beim Blättern (HS-34 «/», HS-27, HS-25, HS-11, HS-12, HS-29, HS-32) ändert sich nur das letzte Segment bzw. der Seitentitel, der Verlauf bekommt keinen neuen Eintrag (Abschnitt 5).
+- **Dynamische Segmente** (HS-31, HS-34) zeigen den Namen des gewählten Objekts; Quelle ist der Seitentitel im Bild (RS-31: Gruppe, RS-34: „Eingänge S1“). Beim Blättern (Funktionsleisten-Tasten: HS-11, HS-12, HS-25, HS-26, HS-27, HS-34; Tasten im Inhaltsbereich: HS-29, HS-31, HS-32) ändert sich nur das letzte Segment bzw. der Seitentitel, der Verlauf bekommt keinen neuen Eintrag (Abschnitt 5).
 - **Zeitplan/Zeitschaltuhr, Temperatur/Parameter:** Brotkrümel und Funktionstaste tragen die Beschriftung aus dem Design („Zeitplan“, „Temperatur“, „Druck“); der Seitentitel in HS-08 bis HS-10 folgt der Referenz („Heißleim Parameter“, „Heißleim Zuführung Druck“, „Zeitschaltuhr Zuführung“).
 - **HS-02/HS-03** sind Pop-ups und haben keinen eigenen Brotkrümel; der Brotkrümel der Hintergrundseite bleibt stehen. Der Pfad der Referenz („Produktion › Produktionszähler“) entspricht dem Pop-up-Titel.
-- **HS-24** blendet nach Referenz Meldezeile und Funktionsleiste aus (Bild ohne Rahmen); Seitenleiste bleibt gesperrt (A-42).
+- **HS-38 „Meldungen“:** Die Referenz nennt den Pfad „Meldezeile (jede Seite) › Meldeanzeige“; die Meldeanzeige ist Querseite zu jeder Seite und hat im neuen HMI zwei Zugänge (Meldezeile, Seitenleiste), daher steht kein Elternsegment davor und das einzige Segment ist der Seitenleisten-Begriff „Meldungen“ (A-35).
+- **HS-14 „Einzelgewichte“:** Die Referenz-Übersicht schreibt „Einzelgewicht“, der Seitenname und die Taste im Handbuchbild heißen „Einzelgewichte“ (Titel im Bild „Einzelgewichte KW“); der Brotkrümel folgt der Taste und dem Seitennamen.
+- **HS-24** blendet nach Referenz Meldezeile und Funktionsleiste aus (Bild ohne Rahmen); die Seitenleiste ist ebenfalls ausgeblendet (Vollbild ohne Rahmen, A-42); die Seite endet nach Ablauf selbst.
 
 ## 3. Rahmennavigation
 
@@ -160,8 +162,8 @@ Aufbau von oben nach unten ([DM-01](../01_Design-Analyse/Module/DM-01_Benutzerke
 | Position | Element | Aktion | Ziel / Regel | Aktiv auf | Quelle |
 |---|---|---|---|---|---|
 | 1 | Benutzerkreis „MM“, Name, Rolle | Antippen öffnet Benutzer-Pop-up (Anmelden, Abmelden, Rolle anzeigen) | ersetzt das gelbe Schloss der Referenz; berechtigungspflichtige Felder lösen bei fehlender Rolle dasselbe Pop-up aus | alle Seiten außer HS-24 | Design, Referenz (Schloss), OP-04 |
-| 2 | Home (Haus) | Navigation | HS-01; Verlauf wird auf `[HS-01]` zurückgesetzt. Auf HS-01 selbst: hervorgehoben, ohne Wirkung | alle außer HS-24 | Design, Referenz (Taste „Produktion“) |
-| 3 | Einstellungen (Zahnrad) | Navigation | HS-04; Verlauf wird auf `[HS-01, HS-04]` gesetzt. Auf HS-04 hervorgehoben | alle außer HS-24 | Design, Referenz (Taste „Einstellungen“) |
+| 2 | Home (Haus) | Navigation | HS-01; Verlauf wird auf `[]` zurückgesetzt. Auf HS-01 selbst: hervorgehoben, ohne Wirkung | alle außer HS-24 | Design, Referenz (Taste „Produktion“) |
+| 3 | Einstellungen (Zahnrad) | Navigation | HS-04; Verlauf wird auf `[HS-01]` gesetzt (Stapel ohne aktuelle Seite). Auf HS-04 hervorgehoben | alle außer HS-24 | Design, Referenz (Taste „Einstellungen“) |
 | 4 | Meldungen (Sprechblase „!“) | Navigation | HS-38; Verlauf: Seite bleibt unten im Stapel. Hervorgehoben, wenn Meldungen anstehen (zusätzlich Zahl/Symbol, nicht nur Farbe) | alle außer HS-24 | Design, OP-08 |
 | 5 | Zurück (Rücktaste) | Verlauf | oberster Stapeleintrag; deaktiviert auf HS-01 (leerer Stapel) | alle außer HS-24 | Design, Referenz (Taste „Zurück“) |
 
@@ -188,10 +190,11 @@ Die Leiste ([DM-09](../01_Design-Analyse/Module/DM-09_Funktionsleiste.md)) enth�
 | Pop-up | HS-02, HS-03 | im Pop-up: „Reset“ (nur HS-02), „Schließen“ | Handbuch (RS-02, RS-03); Funktionsleiste der Seite dahinter gesperrt |
 | Unterseiten-Navigation | HS-06: „Heißleimgerät“ · HS-07: „Temperatur“, „Druck“, „Zeitplan“ · HS-13: „Trend“, „Einzelgewichte“ · HS-16: „Heißleimgerät“, „Motorparameter“, „Gewichtskorrektur“ · HS-19: „Gewichtskorrektur“, „Motorparameter“, „Regulierung“ | siehe Spalte Seitentyp; Reihenfolge wie im Handbuchbild, Ergänzungen in HS-16 nach A-37 | Handbuch (Bilder), Design (DS-03) |
 | Blättern innerhalb eines Satzes | HS-11: „«“, „»“ (HD 1 ⇄ HD 2) und „Motorparameter“ · HS-12: „«“, „»“ (HD 1 ⇄ HD 2, Annahme; das Handbuch zeigt nur „»“) · HS-25: „«“, „Übersicht“, „»“ · HS-26: „«“, „»“ · HS-27: „«“, „»“ (Waagen) · HS-34: „«“, „»“ (EA-Karten) | Blättertasten ([RM-04](../02_Referenz-Analyse/Module/RM-04_Blaettertasten.md)); ändern nur den Parameter der Seite, erzeugen keinen Verlaufseintrag | Handbuch (T16, T35, T38, T44), Bilder |
+| Blättern im Inhaltsbereich (nicht in der Funktionsleiste) | HS-29: Pfeiltasten über dem Diagramm (Tag) · HS-31: „«“, „»“ im unteren Bereich (Aktor, A-39) · HS-32: „«“, „»“ (Geber) | wie oben: `ReplaceParameter`, kein Verlaufseintrag | Handbuch (RS-29, RS-31 T41, RS-32 T42) |
 | Suche | HS-30, HS-31, HS-33 | „Suchen“ (öffnet Such-Pop-up: Betriebsmittelkennzeichnung) | Handbuch (T40, T43) |
 | Aktion / Zustand | HS-14: Umschalter „Einzel / Fortlaufend“ (Zustandstaste) und „Start“ · HS-35: „Lampentest“ · HS-36: „Wago“ (Funktion im Handbuch nicht beschrieben) · HS-38: „Archiv“ (→ HS-37) | Aktionstasten lösen keine Navigation aus, außer „Archiv“ | Handbuch (Bilder), RS-14 (Start „vermutlich“ unten links) |
-| Ohne eigene Tasten | HS-05, HS-08, HS-09, HS-10, HS-15, HS-17, HS-18, HS-20, HS-21, HS-22, HS-23, HS-28, HS-29, HS-32, HS-37, HS-39, HS-41, HS-43 | keine | Handbuch (Bilder), Design (DS-04/DS-05); HS-17 zeigt im Bild ein ausgegrautes „»“, im neuen HMI entfällt es (A-37) |
-| Vollbild | HS-24 | keine; Seitenleiste, Meldezeile und Funktionsleiste ausgeblendet | Handbuch (RS-24) |
+| Ohne eigene Tasten | HS-05, HS-08, HS-09, HS-10, HS-15, HS-17, HS-18, HS-20, HS-21, HS-22, HS-23, HS-28, HS-37, HS-39, HS-41, HS-43 | keine | Handbuch (Bilder), Design (DS-04/DS-05); HS-17 und HS-20 zeigen im Bild (identisch zu RS-12) ein „»“; das Blättern HD 1 ⇄ HD 2 gibt es nur in HS-11/HS-12, es gibt nur einen Nachdosierer und keine Schließmaschinen-Dosierer, daher entfällt es in HS-17 und HS-20 (A-37, A-44) |
+| Vollbild | HS-24 | keine; Seitenleiste, Brotkrümel, Meldezeile und Funktionsleiste ausgeblendet | Handbuch (RS-24) |
 
 Leistenregeln: höchstens 5 seitenspezifische Tasten, Mindestgröße der Tasten nach [Designsystem.md](Designsystem.md); gesperrte Tasten bleiben sichtbar (Symbol oder Text für den Zustand, nicht nur Farbe).
 
@@ -202,7 +205,7 @@ Leistenregeln: höchstens 5 seitenspezifische Tasten, Mindestgröße der Tasten 
 | Pop-up | Modul | Öffnet von | Schließen | Berechtigung |
 |---|---|---|---|---|
 | HS-02 Produktionszähler | [RM-13](../02_Referenz-Analyse/Module/RM-13_Pop-up-Rahmen.md) | HS-01 Symbol „Aktuelle Produktion“ | „Schließen“, Kreuz | „Reset“ je nach Schlüsselsymbol der Seite |
-| HS-03 Maschinengeschwindigkeit | RM-13 | HS-01 Tacho-Symbol; Kennzahl „Geschwindigkeit“ (A-38) | „Schließen“, Kreuz | Eingabefelder (RM-05) |
+| HS-03 Maschinengeschwindigkeit | RM-13 | HS-01 Tacho-Symbol (Referenz: rot); Kennzahl „Geschwindigkeit“ (A-38) | „Schließen“, Kreuz | Eingabefelder (RM-05) |
 | Zeitplan-Eintrag („Neuer Eintrag“) | [RM-27](../02_Referenz-Analyse/Module/RM-27_Zeitplan-Eintrag-Pop-up.md) | HS-10: Plus-Taste je Tag; Eintrag Heizphase; Eintrag Absenkphase | „Übernehmen“, „Abbrechen“ (Löschen: „Eintrag löschen“) | Plus-Taste mit Schlüsselsymbol |
 | Eingabe-Pop-up | [RM-06](../02_Referenz-Analyse/Module/RM-06_Eingabe-Pop-up.md) | Antippen jedes Eingabefelds mit Schlüsselsymbol ([RM-05](../02_Referenz-Analyse/Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md)); Zeitfelder in RM-27 | „Übernehmen“, „Abbrechen“ | Annahme (A-20); ohne Rolle öffnet das Benutzer-Pop-up |
 | Such-Pop-up | RM-06-Variante Text, im Seitenkonzept HS-30 definiert | HS-30, HS-31, HS-33 Taste „Suchen“ | Treffer wählen oder „Abbrechen“ | keine |
@@ -303,15 +306,15 @@ public interface INavigationService
 {
     PageDescriptor Current { get; }
     object? CurrentParameter { get; }
-    IReadOnlyList<PageDescriptor> History { get; }       // back stack, newest last
+    IReadOnlyList<PageDescriptor> History { get; }       // back stack: predecessor pages only, without Current; newest last
     IReadOnlyList<BreadcrumbItem> Breadcrumb { get; }    // canonical path of Current
     bool CanGoBack { get; }
 
     Task<bool> NavigateToAsync(string key, object? parameter = null);
     void ReplaceParameter(object? parameter);            // paging, no history entry
     bool GoBack();
-    void GoHome();                                       // Production, reset stack
-    void GoToSettings();                                 // Settings, stack [Production, Settings]
+    void GoHome();                                       // Production, stack []
+    void GoToSettings();                                 // Settings, stack [Production]
     void GoToAncestor(string key);                       // tap on breadcrumb segment
     void OpenMessages();                                 // MessageView (side bar / message line)
 
@@ -344,9 +347,9 @@ DI: `INavigationService`, `IDialogService`, `IUserSession` als Singletons (`Micr
 | Ereignis | Wirkung auf den Stapel |
 |---|---|
 | `NavigateTo(Y)` von X (Kachel, Funktionsleiste, Brotkrümel nach unten) | X wird oben auf den Stapel gelegt, Y ist aktuelle Seite |
-| Blättern (HS-11, HS-12, HS-25, HS-27, HS-29, HS-32, HS-34 «/») | `ReplaceParameter`, kein Eintrag |
+| Blättern (HS-11, HS-12, HS-25, HS-26, HS-27, HS-29, HS-31, HS-32, HS-34; «/», » bzw. Pfeiltasten) | `ReplaceParameter`, kein Eintrag |
 | `NavigateTo(Y)` mit Y bereits im Stapel (z. B. Rückweg über Brotkrümel-Segment) | Stapel wird bis unterhalb von Y gekürzt, Y wird aktuell (Sprung zum Vorfahren, keine Schleife) |
-| Home | Stapel `[]`, aktuell HS-01 |
+| Home | Stapel `[]`, aktuell HS-01 (Schreibweise im ganzen Dokument: Stapel = nur Vorgängerseiten, ohne die aktuelle Seite) |
 | Einstellungen | Stapel `[HS-01]`, aktuell HS-04 |
 | Meldungen / Meldezeile | wie `NavigateTo(HS-38)`; auf HS-38 wirkungslos |
 | Zurück | oberster Eintrag wird aktuell. Ist der Stapel leer und die Seite nicht HS-01, geht es zum Elternschlüssel; auf HS-01 deaktiviert |
