@@ -52,6 +52,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
+- [HS-29](../Seiten/HS-29_Produktionsstatistik.md) – Produktionsstatistik (inkl. Verwendung über Kompositmodul HM-18)
 - [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
 - [HS-32](../Seiten/HS-32_Geber-setzen.md) – Geber setzen

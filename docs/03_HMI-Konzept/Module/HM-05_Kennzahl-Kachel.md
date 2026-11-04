@@ -75,8 +75,6 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
-HM-05 ist Rahmenmodul (Kennzahlzeile) auf allen Vollseiten außer dem Vollbild HS-24; HS-02 nutzt es als Inhalt (Pop-up), HS-03 nicht. HS-15 zählt mit; die Seitendatei führt HM-05 noch nicht und wird vom Seiten-Agenten angepasst (A-79).
-
 ## Herkunft
 - [DM-08](../../01_Design-Analyse/Module/DM-08_Kennzahl-Kachel.md) – Kennzahl-Kachel: Kennzahlen Geschwindigkeit und Maschinenwinkel in der Rahmenzeile
 - [RM-12](../../02_Referenz-Analyse/Module/RM-12_Kennzahl-Kachel.md) – Kennzahl-Kachel: Kennzahlen der Seiten (Produktion, Zähler, Kontrollwaage, Einzelgewichte)
@@ -99,3 +97,4 @@ HM-05 ist Rahmenmodul (Kennzahlzeile) auf allen Vollseiten außer dem Vollbild H
 | HM-05-P04 | Index | kleine Zahl unten rechts (Letztes Gewicht) | offen |
 | HM-05-P05 | Antippen | Kennzahl mit Chevron öffnet das Pop-up | offen |
 | HM-05-P06 | Farbe | Sollwert nicht rot | offen |
+| HM-05-P07 | Seiten | 41 Seiten: alle Vollseiten außer dem Vollbild HS-24, dazu HS-02 als Inhalt; nicht auf HS-03 und HS-24 | offen |

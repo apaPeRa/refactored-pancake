@@ -41,4 +41,4 @@ Stand: R11. Wiederkehrende Elemente der 39 Referenzseiten ([RS-01 bis RS-39](../
 | [RM-35](RM-35_EA-Zeile.md) | EA-Zeile | 1 | [RS-34](../Seiten/RS-34_EA-Anzeige.md) | – |
 | [RM-36](RM-36_Wertegitter.md) | Wertegitter | 1 | [RS-14](../Seiten/RS-14_Einzelgewichte.md) | – |
 
-Design-Module ohne Entsprechung in der Referenz: DM-01 Benutzerkennung, DM-21 Titelzeile mit Verschiebesymbol, DM-05 Betriebsart-Anzeige, DM-07 Brotkrümel-Navigation (in der Referenz nicht abgebildet).
+Design-Module ohne Entsprechung in der Modulliste der Referenz: DM-01 Benutzerkennung, DM-21 Titelzeile mit Verschiebesymbol, DM-05 Betriebsart-Anzeige, DM-07 Brotkrümel-Navigation (in der Referenz nicht als eigenes Modul abgebildet). Im HMI-Konzept treten sie neben die verwandte Referenzfunktion und sind mit dem jeweiligen RM in einem HM zusammengeführt: DM-01 mit RM-03 in HM-01, DM-05 und DM-03 mit RM-01 in HM-02, DM-07 mit RM-01 in HM-04, DM-21 mit RM-25 in HM-17 (siehe `03_HMI-Konzept/Module/Modulliste.md`).

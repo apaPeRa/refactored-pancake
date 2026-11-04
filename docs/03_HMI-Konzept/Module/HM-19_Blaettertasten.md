@@ -32,8 +32,6 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 ## Verwendet auf Seiten (IDs)
 - [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
 - [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer)
-- [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
-- [HS-20](../Seiten/HS-20_Motorparameter.md) – Motorparameter (Nachdosierer)
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
 - [HS-26](../Seiten/HS-26_Nockenuebersicht.md) – Nockenübersicht
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
