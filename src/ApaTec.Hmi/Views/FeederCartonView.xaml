@@ -1,0 +1,102 @@
+<UserControl x:Class="ApaTec.Hmi.Views.FeederCartonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:FeederCartonViewModel, IsDesignTimeCreatable=True}">
+  <UserControl.Resources>
+    <!-- Eingabefeld HM-12 an ein FeederValueField (DataContext des Felds) -->
+    <Style x:Key="Feeder.Field" TargetType="{x:Type c:HM12_ValueInput}" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
+      <Setter Property="Margin" Value="{StaticResource Inset.S}" />
+      <Setter Property="Label" Value="{Binding Label}" />
+      <Setter Property="NumberValue" Value="{Binding Value}" />
+      <Setter Property="Unit" Value="{Binding Unit}" />
+      <Setter Property="Minimum" Value="{Binding Minimum}" />
+      <Setter Property="Maximum" Value="{Binding Maximum}" />
+      <Setter Property="ErrorText" Value="{Binding ErrorText}" />
+      <Setter Property="IsAuthorized" Value="{Binding IsAuthorized}" />
+      <Setter Property="IsEditing" Value="{Binding IsEditing}" />
+      <Setter Property="RequiredRole" Value="{Binding RequiredRoleText}" />
+      <Setter Property="Command" Value="{Binding EditCommand}" />
+      <Setter Property="AutomationProperties.Name" Value="{Binding Title}" />
+      <Setter Property="AutomationProperties.HelpText" Value="{Binding HelpText}" />
+    </Style>
+  </UserControl.Resources>
+  <!-- HS-06 Zuführung Karton: 12-Spalten-Raster 5 : 7. Links Bedienbereich, rechts Leimspuren-Grafik (HM-31). Funktionsleiste: Heißleimgerät. -->
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="5*" />
+      <ColumnDefinition Width="7*" />
+    </Grid.ColumnDefinitions>
+
+    <Grid Grid.Column="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <c:HM15_GroupPanel Grid.Row="0" Margin="{StaticResource Inset.S}" Header="{res:Loc HS06_Group_Carton_Header}">
+        <c:HM08_ToggleSwitch ToggleStyle="Button" Label="{res:Loc HS06_Glue_Toggle_Label}" RequiresPermission="True"
+                             IsChecked="{Binding GlueEnabled, Mode=TwoWay}" IsAuthorized="{Binding IsGlueAuthorized}"
+                             ToggleCommand="{Binding ToggleGlueCommand}"
+                             AutomationProperties.HelpText="{res:Loc HS06_Glue_Toggle_Help}" />
+      </c:HM15_GroupPanel>
+
+      <c:HM15_GroupPanel Grid.Row="1" Margin="{StaticResource Inset.S}" GroupStyle="Heading" Header="{res:Loc HS06_Heading_Tracks_Header}" />
+
+      <Grid Grid.Row="2">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <c:HM15_GroupPanel Grid.Column="0" Margin="{StaticResource Inset.S}" Header="{res:Loc HS06_Group_MachineAngle_Header}">
+          <c:HM11_ValueDisplay Unit="{res:Loc Unit_Degree}" NumberValue="{Binding MachineAngle}"
+                               AutomationProperties.Name="{res:Loc HS06_Group_MachineAngle_Header}"
+                               AutomationProperties.HelpText="{res:Loc HS06_MachineAngle_Help}" />
+        </c:HM15_GroupPanel>
+        <c:HM15_GroupPanel Grid.Column="1" Margin="{StaticResource Inset.S}" Header="{res:Loc HS06_Group_GlueCold_Header}">
+          <c:HM12_ValueInput Style="{StaticResource Feeder.Field}" DataContext="{Binding GlueCold}" Label="" />
+        </c:HM15_GroupPanel>
+      </Grid>
+
+      <c:HM15_GroupPanel Grid.Row="3" Margin="{StaticResource Inset.S}" Header="{res:Loc HS06_Group_Compensation_Header}">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <c:HM12_ValueInput Grid.Column="0" Style="{StaticResource Feeder.Field}" DataContext="{Binding CompensationOn}" />
+          <c:HM12_ValueInput Grid.Column="1" Style="{StaticResource Feeder.Field}" DataContext="{Binding CompensationOff}" />
+        </Grid>
+      </c:HM15_GroupPanel>
+
+      <c:HM15_GroupPanel Grid.Row="4" Margin="{StaticResource Inset.S}" Header="{res:Loc HS06_Group_Flush_Header}"
+                         AutomationProperties.HelpText="{res:Loc HS06_Flush_Help}">
+        <ItemsControl ItemsSource="{Binding FlushValves}" Focusable="False">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <UniformGrid Columns="3" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <c:HM08_ToggleSwitch ToggleStyle="Button" Margin="{StaticResource Inset.S}" Label="{Binding Name}"
+                                   IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </c:HM15_GroupPanel>
+    </Grid>
+
+    <c:HM31_GlueTrackGraphic Grid.Column="1" Margin="{StaticResource Inset.S}" Title="{res:Loc HM31_Title_Text}"
+                             Fields="{Binding TrackFields}" CommitCommand="{Binding EditTrackCommand}"
+                             AutomationProperties.HelpText="{res:Loc HS06_Track_Help}" />
+  </Grid>
+</UserControl>

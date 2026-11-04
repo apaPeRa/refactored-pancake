@@ -1,0 +1,144 @@
+<UserControl x:Class="ApaTec.Hmi.Views.HotGlueNordsonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:HotGlueNordsonViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Views/HotGlueStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- HS-07 Heissleim Nordson: Raster 2 : 7 : 3 (linke Tastenspalte | Mitte-Panel Status und Temperaturen | rechtes Panel Fuellsystem); Funktionsleiste Temperatur, Druck, Zeitplan. -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Linke Tastenspalte (RS-07 T9) -->
+        <Grid Grid.Column="0" IsEnabled="{Binding IsOnline}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <c:HM08_ToggleSwitch Grid.Row="0" Style="{StaticResource HotGlue.Switch}" DataContext="{Binding Heaters}"
+                                 Label="{res:Loc HS07_Heaters_Label}" Icon="{StaticResource Icon.Heating}" />
+            <c:HM08_ToggleSwitch Grid.Row="1" Style="{StaticResource HotGlue.Switch}" DataContext="{Binding Standby}"
+                                 Label="{res:Loc HS07_Standby_Label}" Icon="{StaticResource Icon.Temperature}" />
+            <!-- Anzeige Absenkung (Annahme SA-07-1) -->
+            <c:HM11_ValueDisplay Grid.Row="2" Margin="{StaticResource Inset.S}" Presentation="Row"
+                                 Label="{res:Loc HS07_Setback_Label}" Unit="{res:Loc HotGlue_Unit_Celsius}" Decimals="0"
+                                 NumberValue="{Binding StandbyDelta}" />
+            <c:HM08_ToggleSwitch Grid.Row="3" Style="{StaticResource HotGlue.Switch}" DataContext="{Binding Pump}"
+                                 Label="{res:Loc HS07_Pump_Label}" Icon="{StaticResource Icon.Pump}" />
+            <c:HM08_ToggleSwitch Grid.Row="5" Style="{StaticResource HotGlue.Switch}" DataContext="{Binding Timer}"
+                                 Label="{res:Loc HS07_Timer_Label}" Icon="{StaticResource Icon.Schedule}" />
+        </Grid>
+
+        <Border Grid.Column="1" Style="{StaticResource HotGlue.Gutter}" />
+
+        <!-- Mitte-Panel -->
+        <c:HM15_GroupPanel Grid.Column="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+
+                <c:HM15_GroupPanel Grid.Column="0" GroupStyle="Heading" Header="{res:Loc HS07_Status_Heading}" Margin="{StaticResource Inset.S}">
+                    <StackPanel>
+                        <c:HM09_StatusLed Margin="{StaticResource Inset.XS}" Label="{res:Loc HS07_Led_Ready}" State="{Binding ReadyLed}" />
+                        <c:HM09_StatusLed Margin="{StaticResource Inset.XS}" Label="{res:Loc HS07_Led_Temperature}" State="{Binding TemperatureLed}" />
+                        <c:HM09_StatusLed Margin="{StaticResource Inset.XS}" Label="{res:Loc HS07_Led_RefillSystem}" State="{Binding RefillSystemLed}" />
+                        <c:HM09_StatusLed Margin="{StaticResource Inset.XS}" Label="{res:Loc HS07_Led_TankLevel}" State="{Binding TankLevelLed}" />
+                        <c:HM09_StatusLed Margin="{StaticResource Inset.XS}" Label="{res:Loc HS07_Led_TankLid}" State="{Binding TankLidLed}" />
+                        <c:HM09_StatusLed Margin="{StaticResource Inset.XS}" Label="{res:Loc HS07_Led_NoFault}" State="{Binding NoFaultLed}" />
+                        <c:HM09_StatusLed Margin="{StaticResource Inset.XS}" Label="{res:Loc HS07_Led_NoAlarm}" State="{Binding NoAlarmLed}" />
+                        <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc HS07_Notice_Text}" />
+                    </StackPanel>
+                </c:HM15_GroupPanel>
+
+                <c:HM15_GroupPanel Grid.Column="1" GroupStyle="Heading" Header="{res:Loc HS07_Temps_Heading}" Margin="{StaticResource Inset.S}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <c:HM11_ValueDisplay Grid.Row="0" Grid.Column="0" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                                             Label="{res:Loc HS07_Temp_Tank}" NumberValue="{Binding TankTemperature}" />
+                        <c:HM11_ValueDisplay Grid.Row="0" Grid.Column="1" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                                             Label="{res:Loc HS07_Temp_Manifold}" NumberValue="{Binding ManifoldTemperature}" />
+                        <c:HM11_ValueDisplay Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                                             Label="{res:Loc HS07_Temp_Gun1}" NumberValue="{Binding Gun1Temperature}" />
+                        <c:HM11_ValueDisplay Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                                             Label="{res:Loc HS07_Temp_Hose1}" NumberValue="{Binding Hose1Temperature}" />
+                        <!-- Weitere Zonen (konfigurationsabhaengig): nur sichtbar, wenn das Geraet sie meldet -->
+                        <c:HM11_ValueDisplay Grid.Row="2" Grid.Column="0" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                                             Visibility="{Binding ShowGun2, Converter={StaticResource BooleanToVisibility}}"
+                                             Label="{res:Loc HS07_Temp_Gun2}" NumberValue="{Binding Gun2Temperature}" />
+                        <c:HM11_ValueDisplay Grid.Row="2" Grid.Column="1" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                                             Visibility="{Binding ShowHose2, Converter={StaticResource BooleanToVisibility}}"
+                                             Label="{res:Loc HS07_Temp_Hose2}" NumberValue="{Binding Hose2Temperature}" />
+                    </Grid>
+                </c:HM15_GroupPanel>
+            </Grid>
+        </c:HM15_GroupPanel>
+
+        <Border Grid.Column="3" Style="{StaticResource HotGlue.Gutter}" />
+
+        <!-- Rechtes Panel: Fuellsystem (RS-07 T10) -->
+        <c:HM15_GroupPanel Grid.Column="4">
+            <Grid IsEnabled="{Binding IsOnline}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <c:HM10_ProgressBar Grid.Row="0" Margin="{StaticResource Inset.S}" Label="{res:Loc HS07_TankLevel_Label}"
+                                    Value="{Binding TankLevel, Mode=OneWay}" IsValueValid="{Binding IsTankLevelValid}" />
+                <StackPanel Grid.Row="1">
+                    <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding TargetLevel}"
+                                       Label="{res:Loc HS07_TargetLevel_Label}" Unit="{res:Loc HotGlue_Unit_Percent}" />
+                    <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS07_TargetLevel_Caption}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <c:HM12_ValueInput Style="{StaticResource HotGlue.Field}" DataContext="{Binding MaxFillTime}"
+                                       Label="{res:Loc HS07_MaxFillTime_Label}" Unit="{res:Loc HotGlue_Unit_Second}" />
+                    <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS07_MaxFillTime_Caption}" />
+                </StackPanel>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <c:HM08_ToggleSwitch Grid.Column="0" Style="{StaticResource HotGlue.Switch}" DataContext="{Binding RefillSystem}"
+                                         Label="{res:Loc HS07_Refill_Label}" Icon="{StaticResource Icon.Fill}" />
+                    <c:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.S}" Label="{res:Loc HS07_Manual_Label}" Icon="{StaticResource Icon.Manual}"
+                                         TriggerMode="WhilePressed" ClickMode="Press" IsRunning="{Binding IsManualFillRunning}"
+                                         Command="{Binding ManualFillCommand}" />
+                </Grid>
+            </Grid>
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>

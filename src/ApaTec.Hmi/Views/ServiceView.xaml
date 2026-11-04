@@ -1,0 +1,44 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ServiceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ServiceViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-36: 12-Spalten-Raster 8 : 4, Gutter Space.M. Links Filter und Variablenliste, rechts Anzeigefeld und drei Aktionstasten. -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1" Width="{StaticResource Space.M}" />
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <controls:HM12_ValueInput Grid.Row="0" MinHeight="{StaticResource Size.Touch.Default}" Margin="{StaticResource Inset.S}"
+                                      Label="{res:Loc HS36_Filter_Label}" InputKind="Text" RequiresPermission="False"
+                                      TextValue="{Binding FilterText}" Command="{Binding EditFilterCommand}" />
+            <controls:HM25_MessageList Grid.Row="1" ListKind="Selection" SelectionMode="Multiple" ScrollStyle="Scrollbar"
+                                       Items="{Binding Variables}" SelectedItems="{Binding SelectedVariables}" TotalCount="{Binding TotalCount}" />
+        </Grid>
+
+        <StackPanel Grid.Column="2">
+            <controls:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Label="{res:Loc HS36_Value_Label}"
+                                        ValueKind="Number" Decimals="2" NumberValue="{Binding MarkedValue}" />
+            <controls:HM07_ActionButton Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Large}"
+                                        Label="{res:Loc HS36_Import_Label}" Command="{Binding ImportCommand}" />
+            <controls:HM07_ActionButton Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Large}"
+                                        Label="{res:Loc HS36_ExportAll_Label}" Command="{Binding ExportAllCommand}" />
+            <controls:HM07_ActionButton Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Large}"
+                                        Label="{res:Loc HS36_ExportList_Label}" Command="{Binding ExportListCommand}" />
+            <controls:HM27_NoticeBox Margin="{StaticResource Inset.S}" Kind="Info" Text="{Binding HintText}" IsShown="{Binding HasHint}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

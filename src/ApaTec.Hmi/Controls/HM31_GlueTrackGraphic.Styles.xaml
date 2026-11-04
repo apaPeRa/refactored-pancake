@@ -32,6 +32,8 @@
                        NumberValue="{Binding Angle, Mode=TwoWay}"
                        ErrorText="{Binding ErrorText}"
                        ToolTip="{Binding Tooltip}"
+                       Command="{Binding CommitCommand, RelativeSource={RelativeSource AncestorType=c:HM31_GlueTrackGraphic}}"
+                       CommandParameter="{Binding}"
                        CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource AncestorType=c:HM31_GlueTrackGraphic}}" />
   </DataTemplate>
 

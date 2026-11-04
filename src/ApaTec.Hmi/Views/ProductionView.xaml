@@ -1,0 +1,247 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ProductionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ProductionViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-01 Produktion. Inhaltsbereich im Raster: Zeilen 11* : 14* mit Zwischenraum Space.M; obere Reihe Spalten 2 : 3 : 3 : 4, untere Reihe 5 : 7 (12-Spalten-Raster ohne Pixelpositionen).
+         Zustaende nie nur ueber Farbe: HM-08 zeigt Symbol und Wort (Ein/Aus/Teilweise/Wird gesetzt/Fehlertext). -->
+    <UserControl.Resources>
+        <!-- gemeinsame Bindungen aller Zustandstasten und Umschalter; DataContext ist ein ProductionToggleItem -->
+        <Style x:Key="Prod.Toggle" TargetType="c:HM08_ToggleSwitch" BasedOn="{StaticResource {x:Type c:HM08_ToggleSwitch}}">
+            <Setter Property="Label" Value="{Binding Label}" />
+            <Setter Property="IsChecked" Value="{Binding IsOn, Mode=OneWay}" />
+            <Setter Property="IsPending" Value="{Binding IsPending}" />
+            <Setter Property="ErrorText" Value="{Binding ErrorText}" />
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+            <Setter Property="ToggleCommand" Value="{Binding ToggleCommand}" />
+        </Style>
+        <Style x:Key="Prod.Switch" TargetType="c:HM08_ToggleSwitch" BasedOn="{StaticResource Prod.Toggle}">
+            <Setter Property="ToggleStyle" Value="Switch" />
+        </Style>
+        <Style x:Key="Prod.Button" TargetType="c:HM08_ToggleSwitch" BasedOn="{StaticResource Prod.Toggle}">
+            <Setter Property="ToggleStyle" Value="Button" />
+        </Style>
+        <!-- Kachel des Tastenblocks: Zustandstaste in Kachelhoehe (S01-5) -->
+        <DataTemplate DataType="{x:Type vm:ProductionToggleItem}">
+            <c:HM08_ToggleSwitch x:Name="Toggle" Style="{StaticResource Prod.Button}" ButtonSize="Tile" />
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Function}" Value="Automatic">
+                    <Setter TargetName="Toggle" Property="IsAggregate" Value="True" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <!-- Versorgungszeile: IO mit Haken, sonst Warnung/Fehler/ungueltig mit Symbol und Zustandswort (S01-11) -->
+        <Style x:Key="Prod.SupplyRow" TargetType="c:HM11_ValueDisplay" BasedOn="{StaticResource {x:Type c:HM11_ValueDisplay}}">
+            <Setter Property="Presentation" Value="Row" />
+            <Setter Property="ValueKind" Value="Text" />
+            <Setter Property="Label" Value="{Binding Label}" />
+            <Setter Property="TextValue" Value="{Binding Word}" />
+            <Setter Property="Icon" Value="{StaticResource Icon.Status.Ok}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Warning">
+                    <Setter Property="Icon" Value="{StaticResource Icon.Status.Warning}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Error">
+                    <Setter Property="Icon" Value="{StaticResource Icon.Status.Error}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State}" Value="Invalid">
+                    <Setter Property="Icon" Value="{StaticResource Icon.Status.Inactive}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <DataTemplate x:Key="Prod.SupplyRowTemplate" DataType="{x:Type vm:ProductionSupplyRow}">
+            <c:HM11_ValueDisplay Style="{StaticResource Prod.SupplyRow}" />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="14*" />
+        </Grid.RowDefinitions>
+
+        <!-- Zeile 1: Geschwindigkeit | Produktion | EKW | Versorgung -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1" Width="{StaticResource Space.M}" />
+            <Border Grid.Column="3" Width="{StaticResource Space.M}" />
+            <Border Grid.Column="5" Width="{StaticResource Space.M}" />
+
+            <!-- Geschwindigkeit: Soll (bedienbar, oeffnet HS-03), Ist, Zustandstaste Schnell am unteren Rand -->
+            <c:HM15_GroupPanel Grid.Column="0" Header="{res:Loc Production_Speed_Header}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <c:HM05_MetricTile Grid.Row="0" Margin="{StaticResource Inset.S}"
+                                       Icon="{StaticResource Icon.Speed}"
+                                       Label="{res:Loc Production_Speed_Setpoint_Label}"
+                                       Unit="{res:Loc Unit_RevPerMin}"
+                                       AutomationProperties.Name="{res:Loc Production_Speed_Setpoint_Automation}"
+                                       Value="{Binding SpeedSetpoint}"
+                                       IsInteractive="True"
+                                       OpenCommand="{Binding OpenMachineSpeedCommand}" />
+                    <c:HM05_MetricTile Grid.Row="1" Margin="{StaticResource Inset.S}"
+                                       Icon="{StaticResource Icon.Speed}"
+                                       Label="{res:Loc Production_Speed_Actual_Label}"
+                                       Unit="{res:Loc Unit_RevPerMin}"
+                                       AutomationProperties.Name="{res:Loc Production_Speed_Actual_Automation}"
+                                       Value="{Binding SpeedActual}" />
+                    <c:HM08_ToggleSwitch Grid.Row="3" Margin="{StaticResource Inset.S}"
+                                         Style="{StaticResource Prod.Button}"
+                                         DataContext="{Binding FastItem}"
+                                         OnText="{res:Loc Production_Speed_Fast_Word}"
+                                         OffText="{res:Loc Production_Speed_Slow_Word}" />
+                </Grid>
+            </c:HM15_GroupPanel>
+
+            <!-- Produktion: Rezeptanwahl, Aktuelle Produktion (bedienbar, oeffnet HS-02), Letzte Produktion -->
+            <c:HM15_GroupPanel Grid.Column="2" Header="{res:Loc Production_Group_Header}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <c:HM07_ActionButton Grid.Row="0" Margin="{StaticResource Inset.S}"
+                                         Label="{Binding RecipeLabel}"
+                                         AutomationProperties.Name="{res:Loc Production_Recipe_Automation}"
+                                         RequiresPermission="True"
+                                         IsAuthorized="{Binding IsRecipeAuthorized}"
+                                         Command="{Binding OpenRecipeCommand}" />
+                    <c:HM05_MetricTile Grid.Row="1" Margin="{StaticResource Inset.S}"
+                                       Icon="{StaticResource Icon.Production.Current}"
+                                       Label="{res:Loc Production_Current_Label}"
+                                       AutomationProperties.Name="{res:Loc Production_Current_Automation}"
+                                       Value="{Binding CurrentProduction}"
+                                       IsInteractive="True"
+                                       OpenCommand="{Binding OpenProductionCounterCommand}" />
+                    <c:HM05_MetricTile Grid.Row="2" Margin="{StaticResource Inset.S}"
+                                       Icon="{StaticResource Icon.Production.Last}"
+                                       Label="{res:Loc Production_Last_Label}"
+                                       Value="{Binding LastProduction}" />
+                </Grid>
+            </c:HM15_GroupPanel>
+
+            <!-- EKW: Letztes Gewicht (mit Index), Mittelwert mit Erfassungsumschalter, Standardabweichung (S01-2) -->
+            <c:HM15_GroupPanel Grid.Column="4" Header="{res:Loc Production_Ekw_Header}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <c:HM05_MetricTile Grid.Row="0" Margin="{StaticResource Inset.S}"
+                                       Icon="{StaticResource Icon.Weight.Last}"
+                                       Label="{res:Loc Production_LastWeight_Label}"
+                                       Unit="{res:Loc Production_Unit_Gram}"
+                                       StringFormat="N1"
+                                       Value="{Binding LastWeight}"
+                                       Index="{Binding LastWeightIndex}" />
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <c:HM05_MetricTile Grid.Column="0" Margin="{StaticResource Inset.S}"
+                                           Icon="{StaticResource Icon.Stat.Mean}"
+                                           Label="{res:Loc Production_Mean_Label}"
+                                           Unit="{res:Loc Production_Unit_Gram}"
+                                           StringFormat="N1"
+                                           Value="{Binding MeanWeight}" />
+                        <c:HM08_ToggleSwitch Grid.Column="1" Margin="{StaticResource Inset.S}"
+                                             ToggleStyle="Button"
+                                             AutomationProperties.Name="{res:Loc Production_WeightMode_Automation}"
+                                             OnText="{res:Loc Production_WeightMode_Continuous}"
+                                             OffText="{res:Loc Production_WeightMode_Sample}"
+                                             IsChecked="{Binding IsContinuous, Mode=OneWay}"
+                                             IsPending="{Binding IsWeightModePending}"
+                                             ToggleCommand="{Binding ToggleWeightModeCommand}" />
+                    </Grid>
+                    <c:HM05_MetricTile Grid.Row="2" Margin="{StaticResource Inset.S}"
+                                       Icon="{StaticResource Icon.Stat.Sigma}"
+                                       Label="{res:Loc Production_StdDev_Label}"
+                                       Unit="{res:Loc Production_Unit_Gram}"
+                                       StringFormat="N1"
+                                       Value="{Binding StandardDeviation}" />
+                </Grid>
+            </c:HM15_GroupPanel>
+
+            <!-- Versorgung: reine Anzeige (Zeilen), Zwischenueberschrift Linienbetrieb -->
+            <c:HM15_GroupPanel Grid.Column="6" Header="{res:Loc Production_Supply_Header}">
+                <StackPanel>
+                    <ItemsControl Focusable="False" ItemsSource="{Binding SupplyRows}" ItemTemplate="{StaticResource Prod.SupplyRowTemplate}" />
+                    <c:HM15_GroupPanel GroupStyle="Heading" Header="{res:Loc Production_Supply_Line_Header}">
+                        <ItemsControl Focusable="False" ItemsSource="{Binding LineRows}" ItemTemplate="{StaticResource Prod.SupplyRowTemplate}" />
+                    </c:HM15_GroupPanel>
+                </StackPanel>
+            </c:HM15_GroupPanel>
+        </Grid>
+
+        <Border Grid.Row="1" Height="{StaticResource Space.M}" />
+
+        <!-- Zeile 2: Tastenblock 3 x 2 (Spalten 5) | Umschalter-Gruppe 5 + 4 Zeilen (Spalten 7) -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1" Width="{StaticResource Space.M}" />
+
+            <c:HM15_GroupPanel Grid.Column="0">
+                <c:HM16_TileNavigation ItemKind="StateToggle" Columns="3" Rows="2" TileSize="Large"
+                                       ShowNavigationIndicator="False"
+                                       Items="{Binding TileItems}" />
+            </c:HM15_GroupPanel>
+
+            <c:HM15_GroupPanel Grid.Column="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="1" Width="{StaticResource Space.M}" />
+                    <StackPanel Grid.Column="0">
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding WebControl}" />
+            <Border Height="{StaticResource Space.M}" />
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding Heating}" />
+            <Border Height="{StaticResource Space.M}" />
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding MandrelBlower}" />
+            <Border Height="{StaticResource Space.M}" />
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding ProductFeed}" />
+            <Border Height="{StaticResource Space.M}" />
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding ProductMonitoring}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding Shaking}" />
+            <Border Height="{StaticResource Space.M}" />
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding DustExtraction}" />
+            <Border Height="{StaticResource Space.M}" />
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding LineOperation}" />
+            <Border Height="{StaticResource Space.M}" />
+            <c:HM08_ToggleSwitch Style="{StaticResource Prod.Switch}" DataContext="{Binding Lighting}" />
+                    </StackPanel>
+                </Grid>
+            </c:HM15_GroupPanel>
+        </Grid>
+    </Grid>
+</UserControl>

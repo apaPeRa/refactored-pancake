@@ -1,0 +1,24 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ProductionStatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ProductionStatisticsViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-29 Produktionsstatistik: Zeile 1 Datumsleiste (HM-18, Pfeile links/rechts, Datumsfeld nur Anzeige), Zeile 2 Balkendiagramm (HM-26) ueber die volle Breite. Funktionsleiste leer. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <c:HM18_SelectorField Grid.Row="0" AllowDirectEntry="False" DisplayText="{Binding DateText}"
+                              PreviousCommand="{Binding ShowEarlierDayCommand}" NextCommand="{Binding ShowLaterDayCommand}" />
+
+        <c:HM26_Chart Grid.Row="1" ChartKind="Bar" Interval="HalfHour" YStep="200" ShowValueLabels="True"
+                      MaxPoints="{Binding MaxPoints}" Series="{Binding Series}" XLabels="{Binding XLabels}"
+                      IsLoading="{Binding IsLoading}" />
+    </Grid>
+</UserControl>

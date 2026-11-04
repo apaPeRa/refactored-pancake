@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dosing.resx: Texte der Dosierer-Seiten HS-11, HS-12, HS-19, HS-20, HS-21, HS-41. Neutralsprache Deutsch; Schluessel Dosing_<Element>_<Eigenschaft>. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Dosing_GroupTargets_Header" xml:space="preserve"><value>Sollwerte und Eichdosierung</value></data>
+  <data name="Dosing_GroupDrives_Header" xml:space="preserve"><value>Schnecke, Rührer, Querschnecke</value></data>
+  <data name="Dosing_GroupStatus_Header" xml:space="preserve"><value>Status und Bedienung</value></data>
+  <data name="Dosing_Calibration_Heading" xml:space="preserve"><value>Eichdosierung</value></data>
+  <data name="Dosing_Hopper_Heading" xml:space="preserve"><value>Füllstand:</value></data>
+  <data name="Dosing_Target_Label" xml:space="preserve"><value>Soll</value></data>
+  <data name="Dosing_TargetAbsolute_Label" xml:space="preserve"><value>Soll absolut</value></data>
+  <data name="Dosing_MaxRefill_Label" xml:space="preserve"><value>Max. Nachgabe</value></data>
+  <data name="Dosing_CurrentRefill_Label" xml:space="preserve"><value>Aktuelle Nachgabe</value></data>
+  <data name="Dosing_RegulationActual_Label" xml:space="preserve"><value>Regulierung Ist</value></data>
+  <data name="Dosing_CalibrationRevolutions_Label" xml:space="preserve"><value>Umdrehungen</value></data>
+  <data name="Dosing_CalibrationWeight_Label" xml:space="preserve"><value>Eichdosierung</value></data>
+  <data name="Dosing_ScrewSpeed_Label" xml:space="preserve"><value>Schnecke Drehzahl</value></data>
+  <data name="Dosing_AgitatorSwitch_Label" xml:space="preserve"><value>Rührer</value></data>
+  <data name="Dosing_AgitatorPercent_Label" xml:space="preserve"><value>Rührer Sollgeschwindigkeit</value></data>
+  <data name="Dosing_AgitatorRunOn_Label" xml:space="preserve"><value>Nachlauf Rührer</value></data>
+  <data name="Dosing_CrossScrewSwitch_Label" xml:space="preserve"><value>Querschnecke</value></data>
+  <data name="Dosing_CrossScrewPercent_Label" xml:space="preserve"><value>Querschnecke Sollgeschwindigkeit</value></data>
+  <data name="Dosing_RegulationSwitch_Label" xml:space="preserve"><value>Regulierung aktiv</value></data>
+  <data name="Dosing_HopperUpper_Label" xml:space="preserve"><value>oben</value></data>
+  <data name="Dosing_HopperLower_Label" xml:space="preserve"><value>unten</value></data>
+  <data name="Dosing_Load_Label" xml:space="preserve"><value>Auslastung</value></data>
+  <data name="Dosing_Manual_Label" xml:space="preserve"><value>Manuell</value></data>
+  <data name="Dosing_Empty_Label" xml:space="preserve"><value>Entleeren</value></data>
+  <data name="Dosing_Calibrate_Label" xml:space="preserve"><value>Eichdosierung</value></data>
+  <data name="Dosing_OpenRegulation_Label" xml:space="preserve"><value>Einstellung Regulierung</value></data>
+  <data name="Dosing_Pager_Previous" xml:space="preserve"><value>«</value></data>
+  <data name="Dosing_Pager_Next" xml:space="preserve"><value>»</value></data>
+  <data name="Dosing_Position_Label" xml:space="preserve"><value>Position</value></data>
+  <data name="Dosing_PositionValue_Format" xml:space="preserve"><value>{0} von {1}</value></data>
+  <data name="Dosing_FunctionBar_Motor" xml:space="preserve"><value>Motorparameter</value></data>
+  <data name="Dosing_FunctionBar_WeightCorrection" xml:space="preserve"><value>Gewichtskorrektur</value></data>
+  <data name="Dosing_FunctionBar_Regulation" xml:space="preserve"><value>Regulierung</value></data>
+  <data name="Dosing_MainDoser_Title" xml:space="preserve"><value>Hauptdosierer {0}</value></data>
+  <data name="Dosing_PostDoser_Title" xml:space="preserve"><value>Nachdosierer</value></data>
+  <data name="Dosing_DoserName_Main" xml:space="preserve"><value>HD{0}</value></data>
+  <data name="Dosing_DoserName_Post" xml:space="preserve"><value>ND</value></data>
+  <data name="Dosing_TargetWeightCheck_Label" xml:space="preserve"><value>Sollgewicht KW</value></data>
+  <data name="Dosing_LastWeightCheck_Label" xml:space="preserve"><value>Letztes Gewicht KW</value></data>
+  <data name="Dosing_CalibrationHint_Text" xml:space="preserve"><value>Ablauf Eichdosierung: Das dosierte Produkt auffangen und wiegen, dann das Gewicht in das Feld „Eichdosierung“ eintragen. Die Maschine berechnet daraus die Umdrehungen im Automatikbetrieb.</value></data>
+  <data name="Dosing_RefillInfo_Text" xml:space="preserve"><value>Max. Nachgabe: Ist die Fehlmenge einer Packung größer, wird nicht dosiert und die Packung als nIO ausgeschieden.</value></data>
+  <data name="Dosing_RefillRejected_Text" xml:space="preserve"><value>Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO</value></data>
+  <data name="Dosing_ActionsBlocked_Hint" xml:space="preserve"><value>Im aktuellen Betriebszustand nicht möglich.</value></data>
+  <data name="Dosing_OutOfRange_Text" xml:space="preserve"><value>Wert außerhalb {0} bis {1} {2}</value></data>
+  <data name="Dosing_WriteFailed_Text" xml:space="preserve"><value>Wert konnte nicht geschrieben werden</value></data>
+  <data name="Dosing_Motor_Closed_Header" xml:space="preserve"><value>Verschluss Zu</value></data>
+  <data name="Dosing_Motor_Open_Header" xml:space="preserve"><value>Verschluss Auf</value></data>
+  <data name="Dosing_Motor_Screw_Header" xml:space="preserve"><value>Schnecke</value></data>
+  <data name="Dosing_Correction_Points_Header" xml:space="preserve"><value>Stützstellen</value></data>
+  <data name="Dosing_Correction_Sample_Header" xml:space="preserve"><value>Probe und Anpassung</value></data>
+  <data name="Dosing_Correction_Flow_Text" xml:space="preserve"><value>Ablauf: 1. Sollgewicht einstellen. 2. Probe mit „Dosierer Auslösen manuell“ dosieren, auffangen und wiegen. 3. Soll und Ist in die Tabelle eintragen, mehrfach über den Arbeitsbereich. 4. „Gewichtsanpassung“ drücken.</value></data>
+  <data name="Dosing_Correction_Hints_Label" xml:space="preserve"><value>Hinweise</value></data>
+  <data name="Dosing_Correction_HintsTitle" xml:space="preserve"><value>Hinweise zur optimalen Nutzung</value></data>
+  <data name="Dosing_Correction_Step1_Title" xml:space="preserve"><value>Dosiergewicht einstellen</value></data>
+  <data name="Dosing_Correction_Step1_Text" xml:space="preserve"><value>Geben Sie rechts unten das gewünschte Zielgewicht ein (Sollgewicht). Dieses Gewicht wird bei der manuellen Dosierung verwendet.</value></data>
+  <data name="Dosing_Correction_Step2_Title" xml:space="preserve"><value>Manuelle Auslösung des Dosierers</value></data>
+  <data name="Dosing_Correction_Step2_Text" xml:space="preserve"><value>Verwenden Sie die Taste Dosierer Auslösen manuell, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.</value></data>
+  <data name="Dosing_Correction_Step3_Title" xml:space="preserve"><value>Wert eintragen</value></data>
+  <data name="Dosing_Correction_Step3_Text" xml:space="preserve"><value>Tragen Sie das verwendete Sollgewicht in die linke Spalte (SOLL) ein und das gemessene tatsächliche Gewicht in die rechte Spalte (IST). Wiederholen Sie diesen Vorgang für mehrere Gewichte über den typischen Arbeitsbereich des Dosierers hinweg.</value></data>
+  <data name="Dosing_Correction_Step4_Title" xml:space="preserve"><value>Gewichtsanpassung berechnen</value></data>
+  <data name="Dosing_Correction_Step4_Text" xml:space="preserve"><value>Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste Gewichtsanpassung. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.</value></data>
+  <data name="Dosing_Correction_Note1_Text" xml:space="preserve"><value>Es sollten mindestens drei, besser fünf bis acht Stützstellen gleichmäßig über den gesamten Gewichtsbereich verteilt eingetragen werden.</value></data>
+  <data name="Dosing_Correction_Note2_Text" xml:space="preserve"><value>Die Werte sollten unter reproduzierbaren Bedingungen aufgenommen werden (z. B. gleiche Produkttemperatur, gleiche Füllhöhe).</value></data>
+  <data name="Dosing_Correction_Note3_Text" xml:space="preserve"><value>Tragen Sie nur gültige Messwerte ein – leere Felder bleiben unberücksichtigt.</value></data>
+  <data name="Dosing_Correction_Note4_Text" xml:space="preserve"><value>Diese Korrektur ist insbesondere bei nichtlinearer Dosiercharakteristik hilfreich (z. B. bei fein rieselnden oder klebrigen Produkten).</value></data>
+  <data name="Dosing_Hints_Close_Label" xml:space="preserve"><value>Schließen</value></data>
+  <data name="Dosing_Field_RegulationValuePost_Help" xml:space="preserve"><value>Aktueller Korrekturwert von der Regulierung. Dieses Gewicht wird auf die aktuelle Nachgabe aufaddiert. Der Wert kann manuell geändert werden.</value></data>
+  <data name="Dosing_Field_TargetPercent_Title" xml:space="preserve"><value>Soll</value></data>
+  <data name="Dosing_Field_TargetPercent_Help" xml:space="preserve"><value>Anteil des Zielgewichts, welches bei der Kontrollwaage angegeben wird, welches für den jeweiligen Hauptdosierer abzufüllen ist.</value></data>
+  <data name="Dosing_Field_TargetWeight_Title" xml:space="preserve"><value>Soll</value></data>
+  <data name="Dosing_Field_TargetWeight_Help" xml:space="preserve"><value>Zielgewicht des Produkts. Der Nachdosierer bekommt das aktuelle Gewicht der Packung von der Kontrollwaage und dosiert die Differenz.</value></data>
+  <data name="Dosing_Field_MaxRefill_Title" xml:space="preserve"><value>Max. Nachgabe</value></data>
+  <data name="Dosing_Field_MaxRefill_Help" xml:space="preserve"><value>Obergrenze an zu dosierendem Produkt. Ist die Fehlmenge in einer Packung größer, wird nicht dosiert und die Packung wird als nIO ausgeschieden.</value></data>
+  <data name="Dosing_Field_RegulationValue_Title" xml:space="preserve"><value>Regulierung Ist</value></data>
+  <data name="Dosing_Field_RegulationValue_Help" xml:space="preserve"><value>Aktueller Korrekturwert von der Regulierung. Dieses Gewicht wird auf das Soll absolut aufaddiert. Der Wert kann manuell geändert werden.</value></data>
+  <data name="Dosing_Field_CalibrationRevolutions_Title" xml:space="preserve"><value>Eichdosierung Umdrehungen</value></data>
+  <data name="Dosing_Field_CalibrationRevolutions_Help" xml:space="preserve"><value>Anzahl Umdrehungen der Dosierschnecke welche bei der Eichdosierung ausgeführt wird. Anhand der Umdrehungen und des Gewichtes im Feld Eichdosierung berechnet die Maschine die Umdrehungen im Automatikbetrieb.</value></data>
+  <data name="Dosing_Field_CalibrationWeight_Title" xml:space="preserve"><value>Eichdosierung</value></data>
+  <data name="Dosing_Field_CalibrationWeight_Help" xml:space="preserve"><value>Hier wird das Gewicht, des während der Eichdosierung dosierten Produkts, eingetragen.</value></data>
+  <data name="Dosing_Field_ScrewSpeed_Title" xml:space="preserve"><value>Schnecke Drehzahl</value></data>
+  <data name="Dosing_Field_ScrewSpeed_Help" xml:space="preserve"><value>Solldrehzahl der Dosierschnecke.</value></data>
+  <data name="Dosing_Field_AgitatorPercent_Title" xml:space="preserve"><value>Rührer</value></data>
+  <data name="Dosing_Field_AgitatorPercent_Help" xml:space="preserve"><value>Sollgeschwindigkeit des Rührers im Trichter.</value></data>
+  <data name="Dosing_Field_AgitatorRunOn_Title" xml:space="preserve"><value>Nachlauf Rührer</value></data>
+  <data name="Dosing_Field_AgitatorRunOn_Help" xml:space="preserve"><value>Zeit, welche der Rührer bei einem Stopp der Maschine nachläuft.</value></data>
+  <data name="Dosing_Field_CrossScrewPercent_Title" xml:space="preserve"><value>Querschnecke</value></data>
+  <data name="Dosing_Field_CrossScrewPercent_Help" xml:space="preserve"><value>Sollgeschwindigkeit der Querschnecke in der Produktzuführung.</value></data>
+  <data name="Dosing_Field_CorrectionTargetWeight_Title" xml:space="preserve"><value>Sollgewicht</value></data>
+  <data name="Dosing_Field_CorrectionTargetWeight_Help" xml:space="preserve"><value>Geben Sie das gewünschte Zielgewicht ein (Sollgewicht). Dieses Gewicht wird bei der manuellen Dosierung verwendet.</value></data>
+  <data name="Dosing_Field_CorrectionPointValue_Title" xml:space="preserve"><value>Stützstelle</value></data>
+  <data name="Dosing_Field_CorrectionPointValue_Help" xml:space="preserve"><value>Tragen Sie das verwendete Sollgewicht (SOLL) und das gemessene tatsächliche Gewicht (IST) ein.</value></data>
+  <data name="Dosing_Field_ClosedPosition_Title" xml:space="preserve"><value>Verschluss Zu – Position</value></data>
+  <data name="Dosing_Field_ClosedPosition_Help" xml:space="preserve"><value>Position in Grad, an der der Verschluss geöffnet bzw. geschlossen ist.</value></data>
+  <data name="Dosing_Field_ClosedSpeed_Title" xml:space="preserve"><value>Verschluss Zu – Geschwindigkeit</value></data>
+  <data name="Dosing_Field_ClosedSpeed_Help" xml:space="preserve"><value>Bewegungsgeschwindigkeit des Aktors in Prozent.</value></data>
+  <data name="Dosing_Field_ClosedAcceleration_Title" xml:space="preserve"><value>Verschluss Zu – Beschleunigung</value></data>
+  <data name="Dosing_Field_ClosedAcceleration_Help" xml:space="preserve"><value>Anstieg der Geschwindigkeit beim Start der Bewegung.</value></data>
+  <data name="Dosing_Field_ClosedDeceleration_Title" xml:space="preserve"><value>Verschluss Zu – Verzögerung</value></data>
+  <data name="Dosing_Field_ClosedDeceleration_Help" xml:space="preserve"><value>Abbremsen vor Erreichen der Endposition.</value></data>
+  <data name="Dosing_Field_ClosedJerk_Title" xml:space="preserve"><value>Verschluss Zu – Ruck</value></data>
+  <data name="Dosing_Field_ClosedJerk_Help" xml:space="preserve"><value>Änderung der Beschleunigung (sanfter Bewegungsbeginn und -ende).</value></data>
+  <data name="Dosing_Field_OpenPosition_Title" xml:space="preserve"><value>Verschluss Auf – Position</value></data>
+  <data name="Dosing_Field_OpenPosition_Help" xml:space="preserve"><value>Position in Grad, an der der Verschluss geöffnet bzw. geschlossen ist.</value></data>
+  <data name="Dosing_Field_OpenSpeed_Title" xml:space="preserve"><value>Verschluss Auf – Geschwindigkeit</value></data>
+  <data name="Dosing_Field_OpenSpeed_Help" xml:space="preserve"><value>Bewegungsgeschwindigkeit des Aktors in Prozent.</value></data>
+  <data name="Dosing_Field_OpenAcceleration_Title" xml:space="preserve"><value>Verschluss Auf – Beschleunigung</value></data>
+  <data name="Dosing_Field_OpenAcceleration_Help" xml:space="preserve"><value>Anstieg der Geschwindigkeit beim Start der Bewegung.</value></data>
+  <data name="Dosing_Field_OpenDeceleration_Title" xml:space="preserve"><value>Verschluss Auf – Verzögerung</value></data>
+  <data name="Dosing_Field_OpenDeceleration_Help" xml:space="preserve"><value>Abbremsen vor Erreichen der Endposition.</value></data>
+  <data name="Dosing_Field_OpenJerk_Title" xml:space="preserve"><value>Verschluss Auf – Ruck</value></data>
+  <data name="Dosing_Field_OpenJerk_Help" xml:space="preserve"><value>Änderung der Beschleunigung (sanfter Bewegungsbeginn und -ende).</value></data>
+  <data name="Dosing_Field_ScrewAcceleration_Title" xml:space="preserve"><value>Schnecke – Beschleunigung</value></data>
+  <data name="Dosing_Field_ScrewAcceleration_Help" xml:space="preserve"><value>Anstieg der Drehgeschwindigkeit beim Start.</value></data>
+  <data name="Dosing_Field_ScrewDeceleration_Title" xml:space="preserve"><value>Schnecke – Verzögerung</value></data>
+  <data name="Dosing_Field_ScrewDeceleration_Help" xml:space="preserve"><value>Abbremsen der Drehung beim Stoppen.</value></data>
+  <data name="Dosing_Field_ScrewJerk_Title" xml:space="preserve"><value>Schnecke – Ruck</value></data>
+  <data name="Dosing_Field_ScrewJerk_Help" xml:space="preserve"><value>Änderung der Beschleunigung für eine produktschonende Bewegung.</value></data>
+</root>

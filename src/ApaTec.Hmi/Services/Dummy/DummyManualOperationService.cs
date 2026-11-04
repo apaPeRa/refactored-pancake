@@ -112,7 +112,7 @@ public sealed class DummyManualOperationService : IManualOperationService
             ReleasePlus: !isImageExample,
             EndStopPlus: false,
             PositionNumber: isPositioning ? 3 : null,
-            ReleaseAtPosition: isPositioning ? false : null,
+            ReleaseAtPosition: isPositioning ? actor.ActorId != "4MA1" : null,
             Acceleration: 100,
             Speed: 20,
             Deceleration: 100,

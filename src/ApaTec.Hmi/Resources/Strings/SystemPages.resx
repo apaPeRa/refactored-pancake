@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SystemPages.resx: Texte der Seiten HS-35 bis HS-39 (Systemeinstellungen, Service, Meldearchiv, Meldeanzeige, System- und Antriebsinfos). Schluessel HS<nn>_<Element>_<Eigenschaft>. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS35_Tile_Quit_Label" xml:space="preserve"><value>Bedienung beenden</value></data>
+  <data name="HS35_Tile_Restart_Label" xml:space="preserve"><value>Steuerung neu starten</value></data>
+  <data name="HS35_Tile_Shutdown_Label" xml:space="preserve"><value>Steuerung ausschalten</value></data>
+  <data name="HS35_Tile_TaskManager_Label" xml:space="preserve"><value>Taskmanager</value></data>
+  <data name="HS35_Tile_Minimize_Label" xml:space="preserve"><value>Bedienung minimieren</value></data>
+  <data name="HS35_Tile_Service_Label" xml:space="preserve"><value>Service</value></data>
+  <data name="HS35_Tile_Archive_Label" xml:space="preserve"><value>Meldearchiv</value></data>
+  <data name="HS35_Tile_SystemInfo_Label" xml:space="preserve"><value>System- und Antriebsinfo</value></data>
+  <data name="HS35_LampTest_Label" xml:space="preserve"><value>Lampentest</value></data>
+  <data name="HS35_LampTest_Hint" xml:space="preserve"><value>Lampentest ausgelöst.</value></data>
+  <data name="HS35_Error_ActionFailed" xml:space="preserve"><value>Die Aktion konnte nicht ausgeführt werden.</value></data>
+  <data name="HS35_Quit_Message" xml:space="preserve"><value>Die Bedienoberfläche wird geschlossen. Die Maschine produziert weiter, Einstellungen können nicht mehr geändert werden. Start und Stopp der Anlage bleiben möglich.</value></data>
+  <data name="HS35_Restart_Message" xml:space="preserve"><value>Achtung: Die Anlage wird dabei gestoppt.</value></data>
+  <data name="HS35_Shutdown_Message" xml:space="preserve"><value>Achtung: Die Anlage wird dabei gestoppt. Ein Neustart erfolgt erst nach dem Wiedereinschalten der Stromversorgung über den Schalter „Steuerung ein“.</value></data>
+  <data name="HS36_Filter_Label" xml:space="preserve"><value>Filter</value></data>
+  <data name="HS36_Filter_Title" xml:space="preserve"><value>Variablen filtern</value></data>
+  <data name="HS36_Value_Label" xml:space="preserve"><value>Wert</value></data>
+  <data name="HS36_Import_Label" xml:space="preserve"><value>Importieren</value></data>
+  <data name="HS36_ExportAll_Label" xml:space="preserve"><value>Alle exportieren</value></data>
+  <data name="HS36_ExportList_Label" xml:space="preserve"><value>Liste exportieren</value></data>
+  <data name="HS36_Wago_Label" xml:space="preserve"><value>Wago</value></data>
+  <data name="HS36_Wago_Hint" xml:space="preserve"><value>Wago ausgelöst.</value></data>
+  <data name="HS36_Hint_NoSelection" xml:space="preserve"><value>Für „Liste exportieren“ zuerst Variablen in der Liste auswählen.</value></data>
+  <data name="HS36_Hint_Busy" xml:space="preserve"><value>Vorgang läuft …</value></data>
+  <data name="HS36_Import_Title" xml:space="preserve"><value>Importieren</value></data>
+  <data name="HS36_ExportAll_Title" xml:space="preserve"><value>Alle Variablen exportieren</value></data>
+  <data name="HS36_ExportList_Title" xml:space="preserve"><value>Ausgewählte Variablen exportieren</value></data>
+  <data name="HS36_File_SuggestedName" xml:space="preserve"><value>Variablen</value></data>
+  <data name="HS36_Import_Confirm" xml:space="preserve"><value>Werte aus Datei in die Maschine schreiben?</value></data>
+  <data name="HS36_Result_ImportOk" xml:space="preserve"><value>Import abgeschlossen: {0} Variablen wiederhergestellt.</value></data>
+  <data name="HS36_Result_ExportOk" xml:space="preserve"><value>Export abgeschlossen: {0} Variablen gespeichert.</value></data>
+  <data name="HS36_Result_Failed" xml:space="preserve"><value>Der Vorgang ist fehlgeschlagen.</value></data>
+  <data name="HS37_Export_Label" xml:space="preserve"><value>Export</value></data>
+  <data name="HS37_Clear_Label" xml:space="preserve"><value>Liste leeren</value></data>
+  <data name="HS37_Filter_Label" xml:space="preserve"><value>Filter</value></data>
+  <data name="HS37_ShowAll_Label" xml:space="preserve"><value>Alle anzeigen</value></data>
+  <data name="HS37_Clear_Title" xml:space="preserve"><value>Liste leeren</value></data>
+  <data name="HS37_Clear_Message" xml:space="preserve"><value>Alle gespeicherten Meldungen werden gelöscht.</value></data>
+  <data name="HS37_Filter_Title" xml:space="preserve"><value>Meldungen filtern</value></data>
+  <data name="HS37_Filter_Number" xml:space="preserve"><value>Meldenummer</value></data>
+  <data name="HS37_Filter_Time" xml:space="preserve"><value>Zeit</value></data>
+  <data name="HS37_Filter_NumberPlaceholder" xml:space="preserve"><value>___</value></data>
+  <data name="HS37_Filter_TimePlaceholder" xml:space="preserve"><value>__.__.____ __:__:__</value></data>
+  <data name="HS37_Export_Title" xml:space="preserve"><value>Meldearchiv exportieren</value></data>
+  <data name="HS37_File_SuggestedName" xml:space="preserve"><value>Meldearchiv</value></data>
+  <data name="HS37_Result_ExportOk" xml:space="preserve"><value>Export abgeschlossen: {0} Meldungen gespeichert.</value></data>
+  <data name="HS37_Result_Failed" xml:space="preserve"><value>Der Export ist fehlgeschlagen.</value></data>
+  <data name="HS38_Archive_Label" xml:space="preserve"><value>Archiv</value></data>
+  <data name="HS38_NewMessage_Text" xml:space="preserve"><value>Neue Meldung</value></data>
+  <data name="HS39_Group_Ipc" xml:space="preserve"><value>IPC</value></data>
+  <data name="HS39_Group_Servo" xml:space="preserve"><value>Servomotoren</value></data>
+  <data name="HS39_Cpu_Label" xml:space="preserve"><value>Prozessorauslastung</value></data>
+  <data name="HS39_CpuCurrent_Label" xml:space="preserve"><value>Aktuell</value></data>
+  <data name="HS39_CpuMax_Label" xml:space="preserve"><value>Max.</value></data>
+  <data name="HS39_Unit_Percent" xml:space="preserve"><value>%</value></data>
+  <data name="HS39_SystemStart_Label" xml:space="preserve"><value>Systemstart</value></data>
+  <data name="HS39_Runtime_Label" xml:space="preserve"><value>Laufzeit gesamt</value></data>
+  <data name="HS39_Status_Label" xml:space="preserve"><value>Status / Diag Code</value></data>
+  <data name="HS39_Build_Label" xml:space="preserve"><value>HMI Applikation Build</value></data>
+  <data name="HS39_Limit_Title" xml:space="preserve"><value>Strom Limit {0}</value></data>
+</root>

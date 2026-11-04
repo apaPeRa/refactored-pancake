@@ -123,8 +123,8 @@
             <!-- Bildlaufbereich: horizontales Scrollen -->
             <ScrollViewer Grid.Row="0"
                           HorizontalScrollBarVisibility="Auto"
-                          VerticalScrollBarVisibility="Disabled"
-                          PanningMode="HorizontalOnly">
+                          VerticalScrollBarVisibility="Auto"
+                          PanningMode="Both">
               <ItemsControl Focusable="False" ItemsSource="{TemplateBinding Stations}">
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>

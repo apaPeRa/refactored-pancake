@@ -1,8 +1,6 @@
-using System.Windows.Controls;
-
 namespace ApaTec.Hmi.Views;
 
-public partial class ScaleCalibrationView : UserControl
+public partial class ScaleCalibrationView
 {
     public ScaleCalibrationView()
     {

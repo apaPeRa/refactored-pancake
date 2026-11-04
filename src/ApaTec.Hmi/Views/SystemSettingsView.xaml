@@ -1,0 +1,25 @@
+<UserControl x:Class="ApaTec.Hmi.Views.SystemSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:SystemSettingsViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-35: Kachelraster 3 x 3 (3 x 1*, 3 Zeilen 1*) aus drei HM-16-Zeilen, damit nur die Navigationskacheln den Chevron tragen (zweiter Kanal). -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:HM16_TileNavigation Grid.Row="0" Columns="3" Rows="1" ShowNavigationIndicator="False"
+                                      Items="{Binding SystemActionTiles}" NavigateCommand="{Binding ActivateTileCommand}" />
+        <controls:HM16_TileNavigation Grid.Row="1" Columns="3" Rows="1" ShowNavigationIndicator="False" EmptyTileMode="Reserved"
+                                      Items="{Binding UtilityTiles}" NavigateCommand="{Binding ActivateTileCommand}" />
+        <controls:HM16_TileNavigation Grid.Row="2" Columns="3" Rows="1" ShowNavigationIndicator="True"
+                                      Items="{Binding NavigationTiles}" NavigateCommand="{Binding ActivateTileCommand}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,110 @@
+<UserControl x:Class="ApaTec.Hmi.Views.HeatersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prim="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:m="clr-namespace:ApaTec.Hmi.Models"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:HeatersViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-22 Heizungen: Hinweiszeile 8 : 4 (fest), Tabellenkopf (fest), Zonenliste (scrollt) mit Bildlaufspalte. Module HM-27, HM-28, HM-07. -->
+    <UserControl.Resources>
+        <!-- Lücke HM-28: kein Befehl für das Soll-Feld; der Stil gilt nur in dieser Seite und setzt Befehl und Berechtigung des Zeilen-ViewModels. -->
+        <Style TargetType="{x:Type c:HM12_ValueInput}" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
+            <Setter Property="Command" Value="{Binding EditSetpointCommand}" />
+            <Setter Property="IsAuthorized" Value="{Binding IsAuthorized}" />
+        </Style>
+        <Style x:Key="Heaters.ScrollUp" TargetType="{x:Type c:HM07_ActionButton}" BasedOn="{StaticResource {x:Type c:HM07_ActionButton}}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding VerticalOffset, ElementName=ZoneScroll}" Value="0">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="{StaticResource Size.Touch.Default}" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Zeile 1: Warnung (8 Spalten) und Info (4 Spalten), scrollt nicht mit -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <c:HM27_NoticeBox Grid.Column="0" Margin="{StaticResource Inset.S}" Kind="Warning"
+                              Caption="{res:Loc HS22_Warning_Caption}" Text="{res:Loc HS22_Warning_Text}" />
+            <c:HM27_NoticeBox Grid.Column="1" Margin="{StaticResource Inset.S}" Kind="Info"
+                              Text="{res:Loc HS22_Info_Text}" />
+        </Grid>
+
+        <!-- Zeile 2: Tabellenkopf, Spaltenraster wie HM-28 (Heizungen) -->
+        <Border Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Min}"
+                Background="{DynamicResource Brush.Surface.Sunken}" BorderBrush="{DynamicResource Brush.Divider}"
+                BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}" Padding="{StaticResource Inset.S}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_Heating}" />
+                <TextBlock Grid.Column="2" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_Monitor}" />
+                <TextBlock Grid.Column="3" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_Setpoint}" />
+                <TextBlock Grid.Column="4" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_Actual}" />
+                <TextBlock Grid.Column="5" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_State}" />
+                <TextBlock Grid.Column="6" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_Out}" />
+            </Grid>
+        </Border>
+
+        <!-- Zeile 3: Zonenliste (12 Zeilen, Wischen) -->
+        <ScrollViewer x:Name="ZoneScroll" Grid.Row="2" Grid.Column="0" Focusable="False"
+                      VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
+            <ItemsControl ItemsSource="{Binding Zones}" Focusable="False">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:HeaterZoneViewModel}">
+                        <c:HM28_HeatZoneRow Margin="{StaticResource Inset.S}" RowKind="Heating"
+                                            ZoneName="{Binding ZoneName}" Setpoint="{Binding Setpoint, Mode=TwoWay}"
+                                            Actual="{Binding Actual}" IsZoneEnabled="{Binding IsZoneEnabled, Mode=TwoWay}"
+                                            IsMonitored="{Binding IsMonitored, Mode=TwoWay}"
+                                            StateLed="{Binding StateLed}" OutputLed="{Binding OutputLed}"
+                                            ToggleZoneCommand="{Binding ToggleZoneCommand}"
+                                            ToggleMonitorCommand="{Binding ToggleMonitorCommand}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Bildlaufspalte (Size.Touch.Min breit), ausserhalb des 12-Spalten-Rasters -->
+        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Width="{StaticResource Size.Touch.Min}" Margin="{StaticResource Inset.S}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <c:HM07_ActionButton Grid.Row="0" Style="{StaticResource Heaters.ScrollUp}" MinWidth="{StaticResource Size.Touch.Min}"
+                                 Icon="{StaticResource Icon.Scroll.Up}" RequiresPermission="False"
+                                 Command="{x:Static prim:ScrollBar.PageUpCommand}" CommandTarget="{Binding ElementName=ZoneScroll}"
+                                 AutomationProperties.Name="{res:Loc HS22_ScrollUp_Name}" />
+            <c:HM07_ActionButton Grid.Row="2" MinWidth="{StaticResource Size.Touch.Min}"
+                                 Icon="{StaticResource Icon.Scroll.Down}" RequiresPermission="False"
+                                 Command="{x:Static prim:ScrollBar.PageDownCommand}" CommandTarget="{Binding ElementName=ZoneScroll}"
+                                 AutomationProperties.Name="{res:Loc HS22_ScrollDown_Name}" />
+        </Grid>
+    </Grid>
+</UserControl>

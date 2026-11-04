@@ -6,6 +6,4 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="HS29_Today_Text" xml:space="preserve"><value>heute</value><comment>HS-29 Datumsfeld fuer den aktuellen Tag</comment></data>
-  <data name="HS29_Earlier_Hint" xml:space="preserve"><value>Der älteste abrufbare Tag ist erreicht.</value><comment>HS-29 Grund fuer deaktivierte linke Pfeiltaste</comment></data>
-  <data name="HS29_Later_Hint" xml:space="preserve"><value>Der aktuelle Tag ist erreicht.</value><comment>HS-29 Grund fuer deaktivierte rechte Pfeiltaste</comment></data>
 </root>

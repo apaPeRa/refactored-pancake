@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Heissleim.resx: Texte der Seiten HS-07 bis HS-10 (Heissleim Nordson, Parameter, Druck, Zeitschaltuhr). Handbuchtexte wortgetreu. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HotGlue_Unit_Celsius" xml:space="preserve"><value>°C</value><comment>Einheit Grad Celsius</comment></data>
+  <data name="HotGlue_Unit_Percent" xml:space="preserve"><value>%</value><comment>Einheit Prozent</comment></data>
+  <data name="HotGlue_Unit_Second" xml:space="preserve"><value>s</value><comment>Einheit Sekunde</comment></data>
+  <data name="HotGlue_Unit_Bar" xml:space="preserve"><value>bar</value><comment>Einheit bar</comment></data>
+  <data name="HotGlue_Unit_Rpm" xml:space="preserve"><value>1/min</value><comment>Einheit Maschinentakt</comment></data>
+  <data name="HotGlue_Switch_NoResponse" xml:space="preserve"><value>Keine Rückmeldung vom Gerät</value><comment>Fehlertext einer Zustandstaste ohne Rückmeldung</comment></data>
+  <data name="HotGlue_Error_Range" xml:space="preserve"><value>Wert außerhalb des zulässigen Bereichs ({0} bis {1})</value><comment>Fehlertext Eingabe außerhalb der Grenzen</comment></data>
+  <data name="HotGlue_Error_Write" xml:space="preserve"><value>Wert konnte nicht übertragen werden</value><comment>Fehlertext Schreibfehler</comment></data>
+  <data name="HS07_Fn_Temperature" xml:space="preserve"><value>Temperatur</value><comment>Funktionsleiste HS-07 → HS-08</comment></data>
+  <data name="HS07_Fn_Pressure" xml:space="preserve"><value>Druck</value><comment>Funktionsleiste HS-07 → HS-09</comment></data>
+  <data name="HS07_Fn_Schedule" xml:space="preserve"><value>Zeitplan</value><comment>Funktionsleiste HS-07 → HS-10</comment></data>
+  <data name="HS07_Heaters_Label" xml:space="preserve"><value>Heizungen</value><comment>Zustandstaste, RS-07 T9 Zeile 1</comment></data>
+  <data name="HS07_Standby_Label" xml:space="preserve"><value>Standby</value><comment>Zustandstaste, RS-07 T9 Zeile 2</comment></data>
+  <data name="HS07_Setback_Label" xml:space="preserve"><value>Absenkung</value><comment>Anzeige Standby-Absenkung (Annahme SA-07-1)</comment></data>
+  <data name="HS07_Pump_Label" xml:space="preserve"><value>Pumpe</value><comment>Zustandstaste, RS-07 T9 Zeile 3</comment></data>
+  <data name="HS07_Timer_Label" xml:space="preserve"><value>Zeitschaltuhr</value><comment>Zustandstaste, RS-07 T9 Zeile 4</comment></data>
+  <data name="HS07_Status_Heading" xml:space="preserve"><value>Status</value><comment>Gruppenüberschrift</comment></data>
+  <data name="HS07_Led_Ready" xml:space="preserve"><value>Bereitschaft</value><comment>LED 1</comment></data>
+  <data name="HS07_Led_Temperature" xml:space="preserve"><value>Temperatur</value><comment>LED 2</comment></data>
+  <data name="HS07_Led_RefillSystem" xml:space="preserve"><value>Füllsystem</value><comment>LED 3</comment></data>
+  <data name="HS07_Led_TankLevel" xml:space="preserve"><value>Tankfüllstand</value><comment>LED 4</comment></data>
+  <data name="HS07_Led_TankLid" xml:space="preserve"><value>Tank Klappe</value><comment>LED 5</comment></data>
+  <data name="HS07_Led_NoFault" xml:space="preserve"><value>Keine Störung</value><comment>LED 6</comment></data>
+  <data name="HS07_Led_NoAlarm" xml:space="preserve"><value>Kein Alarm</value><comment>LED 7</comment></data>
+  <data name="HS07_Notice_Text" xml:space="preserve"><value>Alle Zustände müssen OK zeigen, damit das Gerät betriebsbereit ist.</value><comment>Hinweis zur Betriebsbereitschaft (RS-07-P06)</comment></data>
+  <data name="HS07_Temps_Heading" xml:space="preserve"><value>Aktuelle Temperaturen</value><comment>Gruppenüberschrift</comment></data>
+  <data name="HS07_Temp_Tank" xml:space="preserve"><value>Tank</value><comment>Ist-Temperatur</comment></data>
+  <data name="HS07_Temp_Manifold" xml:space="preserve"><value>Verteiler</value><comment>Ist-Temperatur</comment></data>
+  <data name="HS07_Temp_Gun1" xml:space="preserve"><value>Pistole 1</value><comment>Ist-Temperatur</comment></data>
+  <data name="HS07_Temp_Hose1" xml:space="preserve"><value>Schlauch 1</value><comment>Ist-Temperatur</comment></data>
+  <data name="HS07_Temp_Hose2" xml:space="preserve"><value>Schlauch 2</value><comment>Ist-Temperatur, konfigurationsabhängig</comment></data>
+  <data name="HS07_Temp_Gun2" xml:space="preserve"><value>Pistole 2</value><comment>Ist-Temperatur, konfigurationsabhängig</comment></data>
+  <data name="HS07_TankLevel_Label" xml:space="preserve"><value>Füllstand Tank</value><comment>Fortschrittsbalken, RS-07 T10 Zeile 1</comment></data>
+  <data name="HS07_TargetLevel_Label" xml:space="preserve"><value>Ziel Füllstand</value><comment>Eingabefeld, RS-07 T10 Zeile 2</comment></data>
+  <data name="HS07_TargetLevel_Caption" xml:space="preserve"><value>Nur mit Nachfüllsystem. Fällt der Füllstand, des internen Tank, unter dieses Level wird Granulat vom Nachfüllsystem angefordert.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS07_MaxFillTime_Label" xml:space="preserve"><value>Max Füllzeit</value><comment>Eingabefeld, RS-07 T10 Zeile 3</comment></data>
+  <data name="HS07_MaxFillTime_Caption" xml:space="preserve"><value>Wird der Ziel Füllstand nicht innerhalb der angegebenen Zeit erreicht, führt das zu einer Störung am Heißleimgerät.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS07_Refill_Label" xml:space="preserve"><value>Füllsystem</value><comment>Zustandstaste, RS-07 T10 Zeile 4</comment></data>
+  <data name="HS07_Manual_Label" xml:space="preserve"><value>Manuell</value><comment>Aktionstaste WhilePressed, RS-07 T10 Zeile 5</comment></data>
+  <data name="HS08_Global_Heading" xml:space="preserve"><value>Globale Einstellungen</value><comment>Panel-Überschrift</comment></data>
+  <data name="HS08_Zones_Heading" xml:space="preserve"><value>Temperaturzonen</value><comment>Panel-Überschrift</comment></data>
+  <data name="HS08_Col_Setpoint" xml:space="preserve"><value>Soll:</value><comment>Spaltenkopf</comment></data>
+  <data name="HS08_Col_Actual" xml:space="preserve"><value>Ist:</value><comment>Spaltenkopf</comment></data>
+  <data name="HS08_Col_Status" xml:space="preserve"><value>Status:</value><comment>Spaltenkopf</comment></data>
+  <data name="HS08_Zone_Tank" xml:space="preserve"><value>Tank</value><comment>Zonenname</comment></data>
+  <data name="HS08_Zone_Hose1" xml:space="preserve"><value>Schlauch 1</value><comment>Zonenname</comment></data>
+  <data name="HS08_Zone_Gun1" xml:space="preserve"><value>Pistole 1</value><comment>Zonenname</comment></data>
+  <data name="HS08_Zone_Hose2" xml:space="preserve"><value>Schlauch 2</value><comment>Zonenname</comment></data>
+  <data name="HS08_Zone_Gun2" xml:space="preserve"><value>Pistole 2</value><comment>Zonenname</comment></data>
+  <data name="HS08_Zone_Manifold" xml:space="preserve"><value>Verteiler</value><comment>Zonenname</comment></data>
+  <data name="HS08_StandbyDelta_Label" xml:space="preserve"><value>Globale StandBy Temperatur Delta</value><comment>RS-08 T11 Zeile 1</comment></data>
+  <data name="HS08_StandbyDelta_Caption" xml:space="preserve"><value>Wert um den alle Temperaturen reduziert werden, wenn das Heißleimgerät in Standby versetzt wird.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS08_ReadyDelay_Label" xml:space="preserve"><value>Bereitschaft Verzögerung</value><comment>RS-08 T11 Zeile 2</comment></data>
+  <data name="HS08_ReadyDelay_Caption" xml:space="preserve"><value>Sind alle Bedingungen für einen Betrieb erfüllt, wird erst nach Ablauf der Zeit das Bereitsignal gesendet.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS08_OverDelta_Label" xml:space="preserve"><value>Übertemperatur Delta</value><comment>RS-08 T11 Zeile 3</comment></data>
+  <data name="HS08_OverDelta_Caption" xml:space="preserve"><value>Ist eine Temperatur um diesen Betrag höher als die angegebene Solltemperatur wird die Bereitschaft zurückgenommen.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS08_UnderDelta_Label" xml:space="preserve"><value>Untertemperatur Delta</value><comment>RS-08 T11 Zeile 4</comment></data>
+  <data name="HS08_UnderDelta_Caption" xml:space="preserve"><value>Ist eine Temperatur um diesen Betrag niedriger als die angegebene Solltemperatur wird die Bereitschaft zurückgenommen.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS09_Control_Heading" xml:space="preserve"><value>Druckregelung</value><comment>Panel-Überschrift</comment></data>
+  <data name="HS09_Limits_Heading" xml:space="preserve"><value>Gerätelimits</value><comment>Panel-Überschrift</comment></data>
+  <data name="HS09_UpperSpeed_Label" xml:space="preserve"><value>Obere Geschwindigkeit</value><comment>RS-09 T12 Zeile 1</comment></data>
+  <data name="HS09_UpperSpeed_Caption" xml:space="preserve"><value>Oberer Maschinentakte (in 1/min) bei der, der obere Druck gilt.</value><comment>Wortlaut der Referenz (OP-35)</comment></data>
+  <data name="HS09_LowerSpeed_Label" xml:space="preserve"><value>Untere Geschwindigkeit</value><comment>RS-09 T12 Zeile 2</comment></data>
+  <data name="HS09_LowerSpeed_Caption" xml:space="preserve"><value>Untere Maschinentakte (in 1/min) bei der, der untere Druck gilt.</value><comment>Wortlaut der Referenz (OP-35)</comment></data>
+  <data name="HS09_UpperPressure_Label" xml:space="preserve"><value>Oberer Druck</value><comment>RS-09 T12 Zeile 3</comment></data>
+  <data name="HS09_UpperPressure_Caption" xml:space="preserve"><value>Zielwert für den oberen Betriebsdruck.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS09_LowerPressure_Label" xml:space="preserve"><value>Unterer Druck</value><comment>RS-09 T12 Zeile 4</comment></data>
+  <data name="HS09_LowerPressure_Caption" xml:space="preserve"><value>Zielwert für den unteren Betriebsdruck.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS09_Current_Label" xml:space="preserve"><value>Aktueller Druck</value><comment>RS-09 T12 Zeile 5</comment></data>
+  <data name="HS09_Current_Caption" xml:space="preserve"><value>Anzeige des aktuell anliegenden Systemdrucks.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS09_UpperLimit_Label" xml:space="preserve"><value>Oberes Drucklimit</value><comment>RS-09 T13 Zeile 1</comment></data>
+  <data name="HS09_UpperLimit_Caption" xml:space="preserve"><value>Maximal zulässiger Druck im Prozess. Wird dieser überschritten, erfolgt eine Abschaltung.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS09_LowerLimit_Label" xml:space="preserve"><value>Unteres Drucklimit</value><comment>RS-09 T13 Zeile 2</comment></data>
+  <data name="HS09_LowerLimit_Caption" xml:space="preserve"><value>Minimal zulässiger Druck im Prozess. Bei Unterschreitung kann eine Störung ausgelöst werden.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS09_OverDelta_Label" xml:space="preserve"><value>Überdruck Delta</value><comment>RS-09 T13 Zeile 3</comment></data>
+  <data name="HS09_OverDelta_Caption" xml:space="preserve"><value>Toleranzwert oberhalb des Sollwerts, bevor eine Überdruckmeldung erfolgt.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS09_UnderDelta_Label" xml:space="preserve"><value>Unterdruck Delta</value><comment>RS-09 T13 Zeile 4</comment></data>
+  <data name="HS09_UnderDelta_Caption" xml:space="preserve"><value>Toleranzwert unterhalb des Sollwerts, bevor eine Unterdruckmeldung erfolgt.</value><comment>Wortlaut der Referenz</comment></data>
+  <data name="HS10_Notice_Text" xml:space="preserve"><value>Der Zeitplan läuft unabhängig von der SPS, solange das Gerät eingeschaltet ist. Das Abschalten des Geräts oder des Hauptschalters der Maschine unterbricht ihn.</value><comment>Hinweis zur Geltung (RS-10-P13)</comment></data>
+  <data name="HS10_Entry_Title" xml:space="preserve"><value>Neuer Eintrag</value><comment>Titel des Pop-ups, auch beim Bearbeiten</comment></data>
+  <data name="HS10_StartTime_Title" xml:space="preserve"><value>Startzeit</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS10_EndTime_Title" xml:space="preserve"><value>Endzeit</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS10_Error_NoTime" xml:space="preserve"><value>Mindestens eine Zeit (Start oder Ende) aktivieren</value><comment>Fehlertext Pop-up (Annahme)</comment></data>
+  <data name="HS10_Error_EndBeforeStart" xml:space="preserve"><value>Endzeit liegt vor der Startzeit</value><comment>Fehlertext Pop-up (Annahme)</comment></data>
+  <data name="HS10_Error_TimeMissing" xml:space="preserve"><value>Zeit eingeben</value><comment>Fehlertext Pop-up (Annahme)</comment></data>
+  <data name="HS10_Error_Transfer" xml:space="preserve"><value>Eintrag konnte nicht an das Gerät übertragen werden</value><comment>Hinweis in der Meldezeile (Annahme)</comment></data>
+</root>

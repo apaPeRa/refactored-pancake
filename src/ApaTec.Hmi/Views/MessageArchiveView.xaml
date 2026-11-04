@@ -1,0 +1,40 @@
+<UserControl x:Class="ApaTec.Hmi.Views.MessageArchiveView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:MessageArchiveViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-37: Zeile 1 (1*) Liste mit Scrolltasten (Spalte 12 im Modul HM-25), Zeile 2 Tastenreihe 4 x 3 Spalten. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <controls:HM25_MessageList Grid.Row="0" ListKind="Archive" SortDirection="Descending" ScrollStyle="Buttons" ShowClassColumn="True"
+                                   Items="{Binding VisibleEntries}" TotalCount="{Binding TotalCount}" IsFiltered="{Binding IsFiltered}"
+                                   ScrollFirstCommand="{Binding ScrollFirstCommand}" ScrollPageUpCommand="{Binding ScrollPageUpCommand}"
+                                   ScrollPageDownCommand="{Binding ScrollPageDownCommand}" ScrollLastCommand="{Binding ScrollLastCommand}" />
+        <Grid Grid.Row="1" Margin="{StaticResource Inset.S}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:HM07_ActionButton Grid.Column="0" Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Large}"
+                                        Label="{res:Loc HS37_Export_Label}" RequiresPermission="True" IsAuthorized="{Binding IsPrivilegedAuthorized}"
+                                        Command="{Binding ExportCommand}" />
+            <controls:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Large}"
+                                        Label="{res:Loc HS37_Clear_Label}" RequiresPermission="True" IsAuthorized="{Binding IsPrivilegedAuthorized}"
+                                        Command="{Binding ClearListCommand}" />
+            <controls:HM07_ActionButton Grid.Column="2" Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Large}"
+                                        Label="{res:Loc HS37_Filter_Label}" Command="{Binding FilterCommand}" />
+            <controls:HM07_ActionButton Grid.Column="3" Margin="{StaticResource Inset.S}" MinHeight="{StaticResource Size.Touch.Large}"
+                                        Label="{res:Loc HS37_ShowAll_Label}" Command="{Binding ShowAllCommand}" />
+        </Grid>
+    </Grid>
+</UserControl>

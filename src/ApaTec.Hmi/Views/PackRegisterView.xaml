@@ -1,0 +1,43 @@
+<UserControl x:Class="ApaTec.Hmi.Views.PackRegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:PackRegisterViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-28 Packungsregister: Zeile 1 Stationsgrafik im Bildlauf (HM-32, Legende als feste Leiste im Modul), Zeile 2 Bedeutung von "Gut", Zeile 3 Abhaengigkeitshinweis (HM-27). Funktionsleiste leer. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <c:HM32_PackRegisterGraphic Grid.Row="0" ShowLegend="True"
+                                    Stations="{Binding Stations}"
+                                    LayoutWidth="{Binding LayoutWidth}" LayoutHeight="{Binding LayoutHeight}"
+                                    ToggleStationCommand="{Binding ToggleStationCommand}" />
+
+        <TextBlock Grid.Row="1" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" Margin="{StaticResource Inset.S}"
+                   Text="{res:Loc HS28_OkMeaning_Text}" />
+
+        <StackPanel Grid.Row="2">
+            <c:HM27_NoticeBox Kind="Info" Text="{res:Loc HS28_Dependency_Text}" />
+            <c:HM27_NoticeBox Kind="Warning" Text="{res:Loc HS28_NoData_Text}" Margin="{StaticResource Inset.XS}">
+                <c:HM27_NoticeBox.Style>
+                    <Style TargetType="c:HM27_NoticeBox" BasedOn="{StaticResource {x:Type c:HM27_NoticeBox}}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding HasData}" Value="False">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </c:HM27_NoticeBox.Style>
+            </c:HM27_NoticeBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
