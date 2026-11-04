@@ -81,7 +81,7 @@ Wortgetreu: „Zeigt Betriebszustände und Temperaturen verschiedener Komponente
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidatn: Kopfzeile, Meldezeile, Funktionsleiste unten, Umschalter-Taste (Ein/Aus mit Farbzustand), Statusliste (LED + Text), Anzeigefeld mit Einheit, Füllstandsbalken, Eingabefeld mit Schlüsselsymbol, Haltetaste.
+Noch keine RM-IDs vergeben. Modulkandidaten: Kopfzeile, Meldezeile, Funktionsleiste unten, Umschalter-Taste (Ein/Aus mit Farbzustand), Statusliste (LED + Text), Anzeigefeld mit Einheit, Füllstandsbalken, Eingabefeld mit Schlüsselsymbol, Haltetaste.
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
