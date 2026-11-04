@@ -158,7 +158,7 @@ public sealed partial class FeederCartonViewModel : FeederPageViewModelBase
         var result = await Editor.RequestValueAsync(
             field.Tooltip ?? string.Empty,
             field.Angle,
-            Localization.GetString("Feeder_Unit_Degree"),
+            Localization.GetString("Unit_Degree"),
             decimals: 0,
             Feeder.GetLimits(FeederValue.CartonTrackAngle),
             Localization.GetString("HS06_Track_Help"));

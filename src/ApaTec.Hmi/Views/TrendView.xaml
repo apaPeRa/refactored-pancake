@@ -1,0 +1,23 @@
+<UserControl x:Class="ApaTec.Hmi.Views.TrendView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:TrendViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-15 Trend: ein Liniendiagramm ueber alle 12 Spalten und die volle Hoehe auf Flaeche mit Kontur (HM-26); Funktionsleiste leer. -->
+  <Border Background="{DynamicResource Brush.Surface}"
+          BorderBrush="{DynamicResource Brush.Border.Control}"
+          BorderThickness="{StaticResource Border.Thin}"
+          CornerRadius="{StaticResource Radius.Card}"
+          Padding="{StaticResource Inset.M}">
+    <controls:HM26_Chart ChartKind="Line"
+                         AutomationProperties.Name="{res:Loc HS15_Chart_Name}"
+                         Series="{Binding Series}" XLabels="{Binding XLabels}" YUnit="{Binding YUnit}"
+                         YMinimum="{Binding YMinimum}" YMaximum="{Binding YMaximum}" YStep="{Binding YStep}"
+                         MaxPoints="{Binding MaxPoints}" ShowValueLabels="True" />
+  </Border>
+</UserControl>

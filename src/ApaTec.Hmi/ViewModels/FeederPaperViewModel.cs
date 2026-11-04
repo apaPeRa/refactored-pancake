@@ -49,8 +49,8 @@ public sealed partial class FeederPaperViewModel : FeederPageViewModelBase
         DiameterMin = CreateField(FeederValue.PaperDiameterMin, "HS05_DiameterMin_Label", "Feeder_Unit_Percent", "HS05_DiameterMin_Label", "HS05_DiameterMin_Help");
         BrakeAtMin = CreateField(FeederValue.PaperBrakeAtMin, "HS05_BrakeAtMin_Label", "Feeder_Unit_Percent", "HS05_BrakeAtMin_Label", "HS05_BrakeAtMin_Help");
         SpliceEjectCount = CreateField(FeederValue.PaperSpliceEjectCount, "HS05_SpliceEject_Label", "Feeder_Unit_Pieces", "HS05_SpliceEject_Label", "HS05_SpliceEject_Help");
-        CouplingShift = CreateField(FeederValue.PaperCouplingShift, "HS05_CouplingShift_Label", "Feeder_Unit_Degree", "HS05_CouplingShift_Label", "HS05_CouplingShift_Help");
-        CouplingStopPosition = CreateField(FeederValue.PaperCouplingStopPosition, "HS05_CouplingStop_Label", "Feeder_Unit_Degree", "HS05_CouplingStop_Label", "HS05_CouplingStop_Help");
+        CouplingShift = CreateField(FeederValue.PaperCouplingShift, "HS05_CouplingShift_Label", "Unit_Degree", "HS05_CouplingShift_Label", "HS05_CouplingShift_Help");
+        CouplingStopPosition = CreateField(FeederValue.PaperCouplingStopPosition, "HS05_CouplingStop_Label", "Unit_Degree", "HS05_CouplingStop_Label", "HS05_CouplingStop_Help");
         RefreshAll();
     }
 

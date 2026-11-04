@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Einstellungen_Zufuehrungen.resx: Texte der Seiten HS-04 Einstellungen, HS-05 Zufuehrung Papier, HS-06 Zufuehrung Karton und HS-40 Zufuehrungen.
+     Schluessel HS04_/HS05_/HS06_/HS40_<Element>_<Eigenschaft>, gemeinsame Werte Feeder_*. Hilfetexte (_Help) sind die Beschreibungen der Referenz (RS-04 T4, RS-05 T5 bis T7, RS-06 T8) wortgetreu. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Feeder_Unit_Percent" xml:space="preserve"><value>%</value><comment>Einheit Prozent (HS-05)</comment></data>
+  <data name="Feeder_Unit_Pieces" xml:space="preserve"><value>Stk.</value><comment>Einheit Stueck (HS-05 Auswurf)</comment></data>
+  <data name="Feeder_Unit_Milliseconds" xml:space="preserve"><value>ms</value><comment>Einheit Millisekunden (HS-06 Kompensation)</comment></data>
+  <data name="Feeder_Unit_Seconds" xml:space="preserve"><value>s</value><comment>Einheit Sekunden (HS-06 Leim kalt)</comment></data>
+  <data name="Feeder_Error_Range" xml:space="preserve"><value>Wert außerhalb {0:N0} bis {1:N0} {2}</value><comment>Fehlertext Eingabefeld ausserhalb der Grenzen (Zufuehrungen)</comment></data>
+  <data name="HS04_Fn_Language_Label" xml:space="preserve"><value>Sprache</value><comment>HS-04 Funktionsleiste: Sprachwahl</comment></data>
+  <data name="HS04_Group_Quick_Header" xml:space="preserve"><value>Anwählen/Schnelle Einstellungen</value><comment>HS-04 linke Gruppe</comment></data>
+  <data name="HS04_Group_Plant_Name" xml:space="preserve"><value>Anlage</value><comment>HS-04 mittlere Gruppe (Barrierefreiheitsname, A-36)</comment></data>
+  <data name="HS04_Group_System_Name" xml:space="preserve"><value>System</value><comment>HS-04 rechte Gruppe (Barrierefreiheitsname, A-36)</comment></data>
+  <data name="HS04_Tile_Lighting_Label" xml:space="preserve"><value>Beleuchtung</value><comment>HS-04 Kachel Beleuchtung</comment></data>
+  <data name="HS04_Tile_Feeders_Label" xml:space="preserve"><value>Zuführungen</value><comment>HS-04 Kachel Zufuehrungen</comment></data>
+  <data name="HS04_Tile_ClosingMachine_Label" xml:space="preserve"><value>Schließmaschine</value><comment>HS-04 Kachel Schliessmaschine</comment></data>
+  <data name="HS04_Tile_Dosers_Label" xml:space="preserve"><value>Dosierer</value><comment>HS-04 Kachel Dosierer</comment></data>
+  <data name="HS04_Tile_Heaters_Label" xml:space="preserve"><value>Heizungen</value><comment>HS-04 Kachel Heizungen</comment></data>
+  <data name="HS04_Tile_Regulation_Label" xml:space="preserve"><value>Regulierung</value><comment>HS-04 Kachel Regulierung</comment></data>
+  <data name="HS04_Tile_EncoderSetting_Label" xml:space="preserve"><value>Geber setzen</value><comment>HS-04 Kachel Geber setzen</comment></data>
+  <data name="HS04_Tile_Scales_Label" xml:space="preserve"><value>Waagen</value><comment>HS-04 Kachel Waagen</comment></data>
+  <data name="HS04_Tile_PackRegister_Label" xml:space="preserve"><value>Packungsregister</value><comment>HS-04 Kachel Packungsregister</comment></data>
+  <data name="HS04_Tile_Cams_Label" xml:space="preserve"><value>Nockenschaltwerk</value><comment>HS-04 Kachel Nockenschaltwerk</comment></data>
+  <data name="HS04_Tile_ManualOperation_Label" xml:space="preserve"><value>Handbetrieb</value><comment>HS-04 Kachel Handbetrieb</comment></data>
+  <data name="HS04_Tile_Statistics_Label" xml:space="preserve"><value>Produktionsstatistik</value><comment>HS-04 Kachel Produktionsstatistik</comment></data>
+  <data name="HS04_Tile_Devices_Label" xml:space="preserve"><value>Geräte</value><comment>HS-04 Kachel Geraete (reserviert, ohne Ziel)</comment></data>
+  <data name="HS04_Tile_Devices_Reason" xml:space="preserve"><value>Geräte: derzeit nicht verfügbar</value><comment>HS-04 Grund in der Meldezeile (A-28)</comment></data>
+  <data name="HS04_Tile_Reserved_Reason" xml:space="preserve"><value>Reserviert: derzeit nicht verfügbar</value><comment>HS-04 Grund der reservierten Kachel (A-28)</comment></data>
+  <data name="HS04_Tile_IoOverview_Label" xml:space="preserve"><value>EA Übersicht</value><comment>HS-04 Kachel EA Uebersicht (OP-34)</comment></data>
+  <data name="HS04_Tile_ScreenCleaning_Label" xml:space="preserve"><value>Bildschirm reinigen</value><comment>HS-04 Kachel Bildschirm reinigen</comment></data>
+  <data name="HS04_Tile_SystemSettings_Label" xml:space="preserve"><value>Systemeinstellungen</value><comment>HS-04 Kachel Systemeinstellungen</comment></data>
+  <data name="HS04_Tile_Feeders_Help" xml:space="preserve"><value>Enthält alle Einstellungen der Papierzuführung. Enthält alle Einstellungen der Kartonzuführung. Sowie das Heißleimgerät zuständig für die Kartonzuführung.</value><comment>HS-04 Hilfetext (RS-04 T4 Nr. 1 und 2)</comment></data>
+  <data name="HS04_Tile_ClosingMachine_Help" xml:space="preserve"><value>Hier sind die Einstellungen für den Kopfleim, die Rüttlung und des Auslaufbands untergebracht.</value><comment>HS-04 Hilfetext (T4 Nr. 5)</comment></data>
+  <data name="HS04_Tile_Dosers_Help" xml:space="preserve"><value>Die Einstellungen der beiden Hauptdosierer sowie deren Motorparameter. Die Einstellungen des Nachdosierers sowie dessen Motorparameter.</value><comment>HS-04 Hilfetext (T4 Nr. 3 und 6)</comment></data>
+  <data name="HS04_Tile_Heaters_Help" xml:space="preserve"><value>Status und Einstellungen aller Heizungen im Dornrad und Schließmaschine.</value><comment>HS-04 Hilfetext (T4 Nr. 8)</comment></data>
+  <data name="HS04_Tile_Regulation_Help" xml:space="preserve"><value>Parameter und Status der Regulierungen von Haupt- und Nachdosierer.</value><comment>HS-04 Hilfetext (T4 Nr. 9)</comment></data>
+  <data name="HS04_Tile_EncoderSetting_Help" xml:space="preserve"><value>Systemseite für das Null-Setzen von Gebern.</value><comment>HS-04 Hilfetext (T4 Nr. 16)</comment></data>
+  <data name="HS04_Tile_Scales_Help" xml:space="preserve"><value>Einstellungen der Kontrollwaage und ein Verlauf der letzten Gewichte und Statistik. Einstellungen der Endkontrollwaage und ein Verlauf der letzten Gewichte und Statistik. Systemseite zu Kalibrierung von Waagen und Wägezellen.</value><comment>HS-04 Hilfetext (T4 Nr. 4, 7 und 12)</comment></data>
+  <data name="HS04_Tile_PackRegister_Help" xml:space="preserve"><value>Zeigt den Status aller Packungen in der Maschine an.</value><comment>HS-04 Hilfetext (T4 Nr. 13)</comment></data>
+  <data name="HS04_Tile_Cams_Help" xml:space="preserve"><value>Erlaubt das Bearbeiten aller Nocken. Es gibt eine Übersicht aller Nocken.</value><comment>HS-04 Hilfetext (T4 Nr. 11)</comment></data>
+  <data name="HS04_Tile_ManualOperation_Help" xml:space="preserve"><value>Erlaub das steuern jeden Aktors der Maschine.</value><comment>HS-04 Hilfetext (T4 Nr. 15, Quelltext mit Tippfehler, OP-35)</comment></data>
+  <data name="HS04_Tile_Statistics_Help" xml:space="preserve"><value>Eine grafische Darstellung der Produktion der letzten 30 Tage.</value><comment>HS-04 Hilfetext (T4 Nr. 14)</comment></data>
+  <data name="HS04_Tile_IoOverview_Help" xml:space="preserve"><value>Zeigt alle EA-Karten und den Zustand der entsprechenden Kanäle an.</value><comment>HS-04 Hilfetext (T4 Nr. 17)</comment></data>
+  <data name="HS04_Tile_ScreenCleaning_Help" xml:space="preserve"><value>Eine Seite ohne Bedienelement. So lange die Seite angezeigt wird kann der Bildschirm gereinigt werden.</value><comment>HS-04 Hilfetext (T4 Nr. 10)</comment></data>
+  <data name="HS04_Tile_SystemSettings_Help" xml:space="preserve"><value>Erlaubt das Beenden und Minimieren der HMI. Der IPC kann neugestartet oder heruntergefahren werden. Funktionen wie das Meldearchive und Diagnose für Servo-Antriebe können über die Seite erreicht werden.</value><comment>HS-04 Hilfetext (T4 Nr. 18)</comment></data>
+  <data name="HS40_Tile_Paper_Label" xml:space="preserve"><value>Papier</value><comment>HS-40 Kachel Papier (HS-05)</comment></data>
+  <data name="HS40_Tile_Carton_Label" xml:space="preserve"><value>Karton</value><comment>HS-40 Kachel Karton (HS-06)</comment></data>
+  <data name="HS40_Tile_HotGlue_Label" xml:space="preserve"><value>Heißleim</value><comment>HS-40 Kachel Heissleim (HS-07)</comment></data>
+  <data name="HS05_Group_Roll_Header" xml:space="preserve"><value>Packstoffrolle</value><comment>HS-05 Gruppe Packstoffrolle</comment></data>
+  <data name="HS05_Group_Splice_Header" xml:space="preserve"><value>Klebestelle</value><comment>HS-05 Gruppe Klebestelle</comment></data>
+  <data name="HS05_Group_Coupling_Header" xml:space="preserve"><value>Kupplung</value><comment>HS-05 Gruppe Kupplung</comment></data>
+  <data name="HS05_DiameterRollEnd_Label" xml:space="preserve"><value>Durchmesser Rollenende</value><comment>HS-05 T5 Zeile 1</comment></data>
+  <data name="HS05_DiameterRollEnd_Help" xml:space="preserve"><value>Prozentualer Füllstand der Rolle, ab dem die Meldung Rollenende ausgegeben wird. Diese Meldung führt zum Stopp der Maschine.</value><comment>HS-05 Hilfetext (T5 Zeile 1)</comment></data>
+  <data name="HS05_BrakeStandstill_Label" xml:space="preserve"><value>Bremse Stillstand</value><comment>HS-05 T5 Zeile 2</comment></data>
+  <data name="HS05_BrakeStandstill_Help" xml:space="preserve"><value>Stellwert der an die Bremse gesendet wird, wenn die Maschine steht. Soll hoch genug sein um ein Abrollen zu verhindern aber nicht zu hoch, um ein übermäßiges Losbrechmoment zu vermeiden.</value><comment>HS-05 Hilfetext (T5 Zeile 2)</comment></data>
+  <data name="HS05_DiameterMax_Label" xml:space="preserve"><value>Durchmesser Max</value><comment>HS-05 T5 Zeile 3 (Bild: Durchmesser Max., OP-34)</comment></data>
+  <data name="HS05_DiameterMax_Help" xml:space="preserve"><value>Oberer Durchmesser, ab dem die Bremse den Stellwert aus dem Feld Bremse bei Max als Stellwert erhält. Bei größeren Durchmessern steigt der Bremsdruck nicht weiter.</value><comment>HS-05 Hilfetext (T5 Zeile 3)</comment></data>
+  <data name="HS05_BrakeAtMax_Label" xml:space="preserve"><value>Bremse bei Max</value><comment>HS-05 T5 Zeile 4</comment></data>
+  <data name="HS05_BrakeAtMax_Help" xml:space="preserve"><value>Stellwert der Bremse bei dem Durchmesser welcher im Feld Durchmesser Max angegeben wird. Der Bremsdruck steigt im Betrieb nicht über diesen Wert hinaus.</value><comment>HS-05 Hilfetext (T5 Zeile 4)</comment></data>
+  <data name="HS05_DiameterMin_Label" xml:space="preserve"><value>Durchmesser Min</value><comment>HS-05 T5 Zeile 5</comment></data>
+  <data name="HS05_DiameterMin_Help" xml:space="preserve"><value>Unterer Durchmesser, ab dem die Bremse den Wert aus dem Feld Bremse bei Min als Stellwert erhält. Bei kleineren Durchmessern sinkt der Bremsdruck nicht weiter.</value><comment>HS-05 Hilfetext (T5 Zeile 5)</comment></data>
+  <data name="HS05_BrakeAtMin_Label" xml:space="preserve"><value>Bremse bei Min</value><comment>HS-05 T5 Zeile 6</comment></data>
+  <data name="HS05_BrakeAtMin_Help" xml:space="preserve"><value>Stellwert der Bremse bei dem Durchmesser welcher im Feld Durchmesser Min angegeben wird. Der Bremsdruck sinkt im Betrieb nicht unter diesen Wert.</value><comment>HS-05 Hilfetext (T5 Zeile 6)</comment></data>
+  <data name="HS05_RollDiameter_Label" xml:space="preserve"><value>Durchmesser Rolle</value><comment>HS-05 T5 Zeile 7 (Anzeige)</comment></data>
+  <data name="HS05_RollDiameter_Help" xml:space="preserve"><value>Aktueller gemessener Rollendurchmesser. 100% entspricht dem maximalen Durchmesser, welcher auf der Maschine gefahren wird. 0% dem Rollenkern. Bei deutlichen Abweichungen sollte der Sensor zur Durchmessermessung geprüft und gegebenenfalls neu justiert werden.</value><comment>HS-05 Hilfetext (T5 Zeile 7)</comment></data>
+  <data name="HS05_BrakePressure_Label" xml:space="preserve"><value>Aktueller Bremsdruck</value><comment>HS-05 T5 Zeile 8 (Anzeige; Bild: Aktuelle Bremswert, OP-34)</comment></data>
+  <data name="HS05_BrakePressure_Help" xml:space="preserve"><value>Aktuell an die Bremse gesendeter Stellwert.</value><comment>HS-05 Hilfetext (T5 Zeile 8)</comment></data>
+  <data name="HS05_SpliceEject_Label" xml:space="preserve"><value>Auswurf</value><comment>HS-05 T6 Zeile 1</comment></data>
+  <data name="HS05_SpliceEject_Help" xml:space="preserve"><value>Anzahl der Packungen, die bei Erkennung eines Klebestreifens ausgeworfen werden. Die Packungen werden um die erkannte Klebestelle herum als schlecht markiert. Bei einem Wert von 3 werden die betroffene Packung als schlecht markiert und je eine Packung davor und danach.</value><comment>HS-05 Hilfetext (T6 Zeile 1)</comment></data>
+  <data name="HS05_SpliceDetected_Label" xml:space="preserve"><value>Klebestelle erkannt</value><comment>HS-05 T6 Zeile 2</comment></data>
+  <data name="HS05_SpliceDetected_Help" xml:space="preserve"><value>Zeigt an, ob im letzten Takt eine Klebestelle erkannt wurde.</value><comment>HS-05 Hilfetext (T6 Zeile 2)</comment></data>
+  <data name="HS05_SpliceDetected_On" xml:space="preserve"><value>Erkannt</value><comment>HS-05 Zustandswort Klebestelle erkannt (Annahme, OP-27)</comment></data>
+  <data name="HS05_SpliceDetected_Off" xml:space="preserve"><value>Nicht erkannt</value><comment>HS-05 Zustandswort keine Klebestelle (Annahme, OP-27)</comment></data>
+  <data name="HS05_SpliceSensor_Label" xml:space="preserve"><value>Sensor Klebestelle</value><comment>HS-05 T6 Zeile 3</comment></data>
+  <data name="HS05_SpliceSensor_Help" xml:space="preserve"><value>Zeigt den aktuellen Status des Eingangs für den Klebestellensensor an.</value><comment>HS-05 Hilfetext (T6 Zeile 3)</comment></data>
+  <data name="HS05_CouplingShift_Label" xml:space="preserve"><value>Verschiebung</value><comment>HS-05 T7 Zeile 1</comment></data>
+  <data name="HS05_CouplingShift_Help" xml:space="preserve"><value>Einstellung der elektronischen Kupplung zur Hauptmaschine. Muss angepasst werden, wenn der Papierabzug nicht mit der Position des Dornrads übereinstimmt. Die Einstellung kann im Stillstand oder während der Produktion erfolgen. Beim Verstellen bewegt sich die Zuführung – eine Bewegung in beide Richtungen ist möglich, was zu einem Papierriss führen kann.</value><comment>HS-05 Hilfetext (T7 Zeile 1; Satzpunkt ergaenzt, OP-35)</comment></data>
+  <data name="HS05_CouplingStop_Label" xml:space="preserve"><value>Anhalte Position</value><comment>HS-05 T7 Zeile 2</comment></data>
+  <data name="HS05_CouplingStop_Help" xml:space="preserve"><value>Position, an der die Zuführung zum Stillstand kommt, wenn sie ausgekoppelt wird.</value><comment>HS-05 Hilfetext (T7 Zeile 2)</comment></data>
+  <data name="HS05_Coupling_Notice" xml:space="preserve"><value>Beim Verstellen bewegt sich die Zuführung in beide Richtungen; Papierriss möglich.</value><comment>HS-05 Hinweis-Textfeld Kupplung (Warnung)</comment></data>
+  <data name="HS06_Group_Carton_Header" xml:space="preserve"><value>Karton</value><comment>HS-06 Gruppe Karton</comment></data>
+  <data name="HS06_Glue_Toggle_Label" xml:space="preserve"><value>Ein / Aus</value><comment>HS-06 Taste Ein / Aus</comment></data>
+  <data name="HS06_Glue_Toggle_Help" xml:space="preserve"><value>Erlaubt das Abwählen vom Heißleimauftrag.</value><comment>HS-06 Hilfetext (T8 Zeile 6)</comment></data>
+  <data name="HS06_Heading_Tracks_Header" xml:space="preserve"><value>Einstellungen Leimspuren</value><comment>HS-06 Zwischenueberschrift</comment></data>
+  <data name="HS06_Group_MachineAngle_Header" xml:space="preserve"><value>Maschinenwinkel</value><comment>HS-06 Gruppe Maschinenwinkel</comment></data>
+  <data name="HS06_MachineAngle_Help" xml:space="preserve"><value>Zeigt den aktuellen Maschinenwinkel an. Dieser wird für die Einstellung der Leimspuren benötigt.</value><comment>HS-06 Hilfetext (T8 Zeile 1)</comment></data>
+  <data name="HS06_Group_GlueCold_Header" xml:space="preserve"><value>Leim kalt</value><comment>HS-06 Gruppe Leim kalt</comment></data>
+  <data name="HS06_GlueCold_Label" xml:space="preserve"><value>Leim kalt</value><comment>HS-06 Beschriftung (im Feld nicht angezeigt)</comment></data>
+  <data name="HS06_GlueCold_Title" xml:space="preserve"><value>Leim kalt</value><comment>HS-06 Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS06_GlueCold_Help" xml:space="preserve"><value>Wird die Maschine gestoppt, werden alle Kartons mit Leim in der Zuführung nach der Zeitspanne als „schlecht“ markiert.</value><comment>HS-06 Hilfetext (T8 Zeile 4)</comment></data>
+  <data name="HS06_Group_Compensation_Header" xml:space="preserve"><value>Kompensation</value><comment>HS-06 Gruppe Kompensation</comment></data>
+  <data name="HS06_CompensationOn_Label" xml:space="preserve"><value>Ein:</value><comment>HS-06 Kompensation Ein</comment></data>
+  <data name="HS06_CompensationOn_Title" xml:space="preserve"><value>Kompensation Ein</value><comment>HS-06 Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS06_CompensationOff_Label" xml:space="preserve"><value>Aus:</value><comment>HS-06 Kompensation Aus</comment></data>
+  <data name="HS06_CompensationOff_Title" xml:space="preserve"><value>Kompensation Aus</value><comment>HS-06 Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS06_Compensation_Help" xml:space="preserve"><value>Zeit in Millisekunden, welche die Leimventile zum Ein- bzw. Ausschalten benötigen. Die Ein- und Ausschaltzeitpunkte werden um diesen Betrag verschoben, um einen gleichmäßigen Leimauftrag unabhängig von der Maschinengeschwindigkeit zu gewährleisten.</value><comment>HS-06 Hilfetext (T8 Zeile 3)</comment></data>
+  <data name="HS06_Group_Flush_Header" xml:space="preserve"><value>Anwahl Spülen</value><comment>HS-06 Gruppe Anwahl Spuelen</comment></data>
+  <data name="HS06_Flush_Help" xml:space="preserve"><value>An der Zuführung ist eine Hardwaretaste Leim Spülen montiert, über die Tasten im Bereich Anwahl Spülen kann festgelegt werden, welche Leimventile spülen.</value><comment>HS-06 Hilfetext (T8 Zeile 5)</comment></data>
+  <data name="HS06_Track_Help" xml:space="preserve"><value>Einstellungen für die Leimspuren. Jede Spur besitzt einen Anfangs- und Endpunkt, bezogen auf den Maschinenwinkel.</value><comment>HS-06 Hilfetext (T8 Zeile 2)</comment></data>
+  <data name="HS06_Track_LongStart" xml:space="preserve"><value>Lange Spur Anfang</value><comment>HS-06 Tooltip/Titel Winkelfeld (Annahme, OP-19)</comment></data>
+  <data name="HS06_Track_LongEnd" xml:space="preserve"><value>Lange Spur Ende</value><comment>HS-06 Tooltip/Titel Winkelfeld (Annahme, OP-19)</comment></data>
+  <data name="HS06_Track_TopStart" xml:space="preserve"><value>Spur O{0} Anfang</value><comment>HS-06 Tooltip/Titel Winkelfeld (Annahme, OP-19)</comment></data>
+  <data name="HS06_Track_TopEnd" xml:space="preserve"><value>Spur O{0} Ende</value><comment>HS-06 Tooltip/Titel Winkelfeld (Annahme, OP-19)</comment></data>
+  <data name="HS06_Track_BottomStart" xml:space="preserve"><value>Spur U{0} Anfang</value><comment>HS-06 Tooltip/Titel Winkelfeld (Annahme, OP-19)</comment></data>
+  <data name="HS06_Track_BottomEnd" xml:space="preserve"><value>Spur U{0} Ende</value><comment>HS-06 Tooltip/Titel Winkelfeld (Annahme, OP-19)</comment></data>
+  <data name="HS06_Fn_GlueUnit_Label" xml:space="preserve"><value>Heißleimgerät</value><comment>HS-06 Funktionsleiste: Heissleimgeraet (HS-07)</comment></data>
+  <data name="HS06_Fn_GlueUnit_Help" xml:space="preserve"><value>Öffnet die Seite mit Status- und Einstellmöglichkeiten für das Heißleimgerät der Zuführung.</value><comment>HS-06 Hilfetext (T8 Zeile 7)</comment></data>
+</root>

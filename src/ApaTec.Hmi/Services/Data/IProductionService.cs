@@ -28,7 +28,7 @@ public interface IProductionService
 
     ProductionWeightMode WeightMode { get; }
 
-    /// <summary>Ggesamte Produktion seit Inbetriebnahme (HS-02).</summary>
+    /// <summary>Gesamte Produktion seit Inbetriebnahme (HS-02).</summary>
     long TotalProduction { get; }
 
     /// <summary>Betriebsstunden der Maschine (HS-02, Format hhh:mm:ss).</summary>

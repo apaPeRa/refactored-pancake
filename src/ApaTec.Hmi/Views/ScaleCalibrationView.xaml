@@ -1,0 +1,133 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ScaleCalibrationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ScaleCalibrationViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-27 Waagen kalibrieren: Titelzeile (HM-17) ueber 12 Spalten, darunter Bedienbereich 7 Spalten (HM-11, HM-18, HM-07, HM-27) und Gruppe "Ablauf Kalibrierung" 5 Spalten (HM-15 mit HM-27).
+         Blaettertasten "«" "»" liegen in der Funktionsleiste (PageViewModelBase.FunctionBarItems). Nur Module und Tokens, keine Literale. -->
+    <UserControl.Resources>
+        <!-- Kalibrierschritt: Hinweis-Textfeld ohne Statusart (Meldungszeile ohne Schweregrad); der erwartete Schritt zeigt zusaetzlich Icon.State.On und das Wort "aktuell" in der Beschriftung. -->
+        <Style x:Key="Cal.StepNotice" TargetType="c:HM27_NoticeBox" BasedOn="{StaticResource {x:Type c:HM27_NoticeBox}}">
+            <Setter Property="Kind" Value="MessageLine" />
+            <Setter Property="Margin" Value="{StaticResource Inset.XS}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                    <Setter Property="Icon" Value="{StaticResource Icon.State.On}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Zeile 1: Name der gewaehlten Waage, Positionsanzeige "Waage n von m" als zweiter Kanal des Blaetterns -->
+        <Grid Grid.Row="0">
+            <c:HM17_TitleBar MinHeight="{StaticResource Size.Touch.Default}" Title="{Binding ScaleName}" />
+            <TextBlock Style="{StaticResource Text.Caption}" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Margin="{StaticResource Inset.M}" Text="{Binding PositionText}" />
+        </Grid>
+        <Border Grid.Row="1" Height="{StaticResource Space.M}" />
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Bedienbereich (7 Spalten) -->
+            <StackPanel Grid.Column="0" VerticalAlignment="Top">
+                <!-- Livegewicht in g, eine Nachkommastelle, "---" bei ungueltigem Wert -->
+                <c:HM11_ValueDisplay MinHeight="{StaticResource Size.Touch.Large}"
+                                     ValueKind="Number" Presentation="Field" Emphasis="Large"
+                                     NumberValue="{Binding Weight}" Decimals="1" Unit="{res:Loc HS27_Weight_Unit}" />
+                <Border Height="{StaticResource Space.M}" />
+
+                <!-- Filtertyp mit Pfeiltasten und Schluessel; erst "Filter setzen" uebernimmt die Auswahl -->
+                <c:HM18_SelectorField Label="{res:Loc HS27_Filter_Label}"
+                                      ItemsSource="{Binding FilterTypes}" SelectedIndex="{Binding SelectedFilterIndex, Mode=OneWay}"
+                                      DisplayText="{Binding SelectedFilterText}"
+                                      RequiresApply="True" IsPending="{Binding IsFilterPending}"
+                                      RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                      PreviousCommand="{Binding PreviousFilterCommand}" NextCommand="{Binding NextFilterCommand}" />
+                <Border Height="{StaticResource Space.M}" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <c:HM07_ActionButton Grid.Column="0" VerticalAlignment="Top"
+                                         Label="{res:Loc HS27_FilterSet_Label}" Icon="{StaticResource Icon.Confirm}"
+                                         RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                         Command="{Binding SetFilterCommand}" />
+                    <Border Grid.Column="1" Width="{StaticResource Size.Touch.Gap}" />
+                    <StackPanel Grid.Column="2">
+                        <c:HM07_ActionButton Label="{res:Loc HS27_ZeroSet_Label}" Icon="{StaticResource Icon.Weight.AutoZero}"
+                                             Command="{Binding SetZeroCommand}" />
+                        <TextBlock Style="{StaticResource Text.Caption}" TextWrapping="Wrap" Margin="{StaticResource Inset.S}"
+                                   Text="{res:Loc HS27_ZeroSet_Hint}" />
+                    </StackPanel>
+                </Grid>
+                <Border Height="{StaticResource Space.M}" />
+
+                <!-- Statusanzeige: nur Anzeige, mindestens zwei Textzeilen -->
+                <c:HM27_NoticeBox MinHeight="{StaticResource Size.Touch.Large}" Kind="{Binding StatusKind}" Text="{Binding StatusText}" />
+                <Border Height="{StaticResource Space.M}" />
+
+                <!-- Tastenreihe Kalibrierung (4 gleiche Spalten) -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <c:HM07_ActionButton Grid.Column="0" Label="{res:Loc HS27_CalStart_Label}" Icon="{StaticResource Icon.Dosing.Calibration}"
+                                         RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                         Command="{Binding StartCalibrationCommand}" />
+                    <Border Grid.Column="1" Width="{StaticResource Size.Touch.Gap}" />
+                    <c:HM07_ActionButton Grid.Column="2" Label="{res:Loc HS27_Unloaded_Label}" Icon="{StaticResource Icon.Weight.Scale}"
+                                         RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                         Command="{Binding ConfirmUnloadedCommand}" />
+                    <Border Grid.Column="3" Width="{StaticResource Size.Touch.Gap}" />
+                    <c:HM07_ActionButton Grid.Column="4" Label="{res:Loc HS27_Loaded_Label}" Icon="{StaticResource Icon.Weight.Last}"
+                                         RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                         Command="{Binding ConfirmLoadedCommand}" />
+                    <Border Grid.Column="5" Width="{StaticResource Size.Touch.Gap}" />
+                    <c:HM07_ActionButton Grid.Column="6" Label="{res:Loc HS27_Reset_Label}" Icon="{StaticResource Icon.Action.Reset}"
+                                         Command="{Binding ResetCommand}" />
+                </Grid>
+            </StackPanel>
+
+            <Border Grid.Column="1" Width="{StaticResource Space.M}" />
+
+            <!-- Gruppe "Ablauf Kalibrierung" (5 Spalten): die sieben Handbuchschritte -->
+            <c:HM15_GroupPanel Grid.Column="2" Header="{res:Loc HS27_Group_Header}" VerticalAlignment="Top">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
+                    <ItemsControl Focusable="False" ItemsSource="{Binding Steps}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <c:HM27_NoticeBox Style="{StaticResource Cal.StepNotice}" Caption="{Binding Caption}" Text="{Binding Text}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </c:HM15_GroupPanel>
+        </Grid>
+    </Grid>
+</UserControl>

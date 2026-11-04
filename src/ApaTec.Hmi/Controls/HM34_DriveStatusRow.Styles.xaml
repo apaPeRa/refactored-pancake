@@ -70,6 +70,7 @@
                                      InputKind="Number" Decimals="1"
                                      Unit="{res:Loc HM34_Percent_Unit}"
                                      RequiresPermission="True"
+                                     Command="{TemplateBinding LimitCommand}"
                                      IsAuthorized="{Binding IsLimitAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
                                      NumberValue="{Binding CurrentLimit, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
               <!-- Meldung: Symbol und Text (zweiter Kanal fuer den Fehlerzustand) -->

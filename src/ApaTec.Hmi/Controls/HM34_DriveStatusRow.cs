@@ -91,4 +91,14 @@ public sealed class HM34_DriveStatusRow : Control
         get => (ICommand?)GetValue(ResetMaxCommandProperty);
         set => SetValue(ResetMaxCommandProperty, value);
     }
+
+    /// <summary>Ergaenzung (HS-39): Befehl beim Antippen des Strom-Limit-Felds (oeffnet das Eingabe-Pop-up bzw. das Benutzer-Pop-up); wird an <c>HM12_ValueInput.Command</c> durchgereicht.</summary>
+    public static readonly DependencyProperty LimitCommandProperty =
+        DependencyProperty.Register(nameof(LimitCommand), typeof(ICommand), typeof(HM34_DriveStatusRow), new PropertyMetadata(null));
+
+    public ICommand? LimitCommand
+    {
+        get => (ICommand?)GetValue(LimitCommandProperty);
+        set => SetValue(LimitCommandProperty, value);
+    }
 }

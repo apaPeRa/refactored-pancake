@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Produktion.resx: Texte der Seitengruppe Produktion (HS-01 Produktion, HS-02 Produktionszähler, HS-03 Maschinengeschwindigkeit, HS-43 Schichtplan). Schlüssel <Seite>_<Element>_<Eigenschaft>; HS-43 nach HS-43-P11 mit Nav_ShiftPlan_*. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Production_Speed_Header" xml:space="preserve"><value>Geschwindigkeit</value><comment>HS-01: Gruppenüberschrift Geschwindigkeit</comment></data>
+  <data name="Production_Speed_Setpoint_Label" xml:space="preserve"><value>Soll</value><comment>HS-01: Kennzahl Geschwindigkeit Soll</comment></data>
+  <data name="Production_Speed_Actual_Label" xml:space="preserve"><value>Ist</value><comment>HS-01: Kennzahl Geschwindigkeit Ist</comment></data>
+  <data name="Production_Speed_Setpoint_Automation" xml:space="preserve"><value>Geschwindigkeit Soll, Maschinengeschwindigkeit einstellen</value><comment>Barrierefreiheitsname der Kennzahl Geschwindigkeit Soll</comment></data>
+  <data name="Production_Speed_Actual_Automation" xml:space="preserve"><value>Geschwindigkeit Ist</value><comment>Barrierefreiheitsname der Kennzahl Geschwindigkeit Ist</comment></data>
+  <data name="Production_Speed_Mode_Label" xml:space="preserve"><value>Maschine</value><comment>HS-01: Beschriftung der Zustandstaste Schnell/Langsam (S01-4)</comment></data>
+  <data name="Production_Speed_Fast_Word" xml:space="preserve"><value>Schnell</value><comment>HS-01: Zustandswort Ein der Taste Schnell</comment></data>
+  <data name="Production_Speed_Slow_Word" xml:space="preserve"><value>Langsam</value><comment>HS-01: Zustandswort Aus der Taste Schnell</comment></data>
+  <data name="Production_Group_Header" xml:space="preserve"><value>Produktion</value><comment>HS-01: Gruppenüberschrift Produktion</comment></data>
+  <data name="Production_Recipe_Label" xml:space="preserve"><value>Rezeptanwahl</value><comment>HS-01: Aktionstaste Rezeptanwahl (erste Zeile)</comment></data>
+  <data name="Production_Recipe_Automation" xml:space="preserve"><value>Rezeptanwahl, Rezept auswählen</value><comment>Barrierefreiheitsname der Rezeptanwahl</comment></data>
+  <data name="Production_Current_Label" xml:space="preserve"><value>Aktuelle Produktion</value><comment>HS-01: Kennzahl Aktuelle Produktion</comment></data>
+  <data name="Production_Current_Automation" xml:space="preserve"><value>Aktuelle Produktion, Produktionszähler öffnen</value><comment>Barrierefreiheitsname der Kennzahl Aktuelle Produktion</comment></data>
+  <data name="Production_Last_Label" xml:space="preserve"><value>Letzte Produktion</value><comment>HS-01: Kennzahl Letzte Produktion</comment></data>
+  <data name="Production_Ekw_Header" xml:space="preserve"><value>EKW</value><comment>HS-01: Gruppenüberschrift EKW (S01-2)</comment></data>
+  <data name="Production_LastWeight_Label" xml:space="preserve"><value>Letztes Gewicht</value><comment>HS-01: Kennzahl Letztes Gewicht</comment></data>
+  <data name="Production_Mean_Label" xml:space="preserve"><value>Mittelwert</value><comment>HS-01: Kennzahl Mittelwert</comment></data>
+  <data name="Production_StdDev_Label" xml:space="preserve"><value>Standardabweichung</value><comment>HS-01: Kennzahl Standardabweichung (S01-12)</comment></data>
+  <data name="Production_Unit_Gram" xml:space="preserve"><value>g</value><comment>HS-01: Einheit Gramm</comment></data>
+  <data name="Production_WeightMode_Continuous" xml:space="preserve"><value>Fortlaufend</value><comment>HS-01: Erfassungsart fortlaufend (Bild)</comment></data>
+  <data name="Production_WeightMode_Sample" xml:space="preserve"><value>Stichprobe</value><comment>HS-01: Erfassungsart Stichprobe (S01-8)</comment></data>
+  <data name="Production_WeightMode_Automation" xml:space="preserve"><value>Erfassung Mittelwert umschalten</value><comment>Barrierefreiheitsname des Erfassungsumschalters</comment></data>
+  <data name="Production_Supply_Header" xml:space="preserve"><value>Versorgung</value><comment>HS-01: Gruppenüberschrift Versorgung</comment></data>
+  <data name="Production_Supply_CompressedAir" xml:space="preserve"><value>Druckluft</value><comment>HS-01: Versorgungszeile Druckluft</comment></data>
+  <data name="Production_Supply_Paper" xml:space="preserve"><value>Papier</value><comment>HS-01: Versorgungszeile Papier</comment></data>
+  <data name="Production_Supply_Product" xml:space="preserve"><value>Produkt</value><comment>HS-01: Versorgungszeile Produkt</comment></data>
+  <data name="Production_Supply_Line_Header" xml:space="preserve"><value>Linienbetrieb</value><comment>HS-01: Zwischenüberschrift Linienbetrieb</comment></data>
+  <data name="Production_Supply_BeltScale" xml:space="preserve"><value>Bandwaage</value><comment>HS-01: Versorgungszeile Bandwaage</comment></data>
+  <data name="Production_Supply_FollowMachine" xml:space="preserve"><value>Folgemaschine</value><comment>HS-01: Versorgungszeile Folgemaschine</comment></data>
+  <data name="Production_Function_Automatic" xml:space="preserve"><value>Automatik</value><comment>HS-01: Sammeltaste Automatik Produktion</comment></data>
+  <data name="Production_Function_Lighting" xml:space="preserve"><value>Maschinenbeleuchtung</value><comment>HS-01: Umschalter (S01-1)</comment></data>
+  <data name="Production_Function_MandrelBlower" xml:space="preserve"><value>Gebläse Dornrad</value><comment>HS-01: Umschalter</comment></data>
+  <data name="Production_Function_FeedPaper" xml:space="preserve"><value>Zuführung Papier</value><comment>HS-01: Zustandstaste</comment></data>
+  <data name="Production_Function_FeedCarton" xml:space="preserve"><value>Zuführung Karton</value><comment>HS-01: Zustandstaste</comment></data>
+  <data name="Production_Function_WebControl" xml:space="preserve"><value>Bahnkontrolle</value><comment>HS-01: Umschalter</comment></data>
+  <data name="Production_Function_BlowOutEmptyPacks" xml:space="preserve"><value>Leerpakete ausblasen</value><comment>HS-01: Zustandstaste</comment></data>
+  <data name="Production_Function_ProductFeed" xml:space="preserve"><value>Produktzuführung</value><comment>HS-01: Umschalter</comment></data>
+  <data name="Production_Function_ProductMonitoring" xml:space="preserve"><value>Produktüberwachung</value><comment>HS-01: Umschalter</comment></data>
+  <data name="Production_Function_Filling" xml:space="preserve"><value>Abfüllung</value><comment>HS-01: Zustandstaste</comment></data>
+  <data name="Production_Function_Shaking" xml:space="preserve"><value>Rüttlung</value><comment>HS-01: Umschalter</comment></data>
+  <data name="Production_Function_DustExtraction" xml:space="preserve"><value>Entstaubung</value><comment>HS-01: Umschalter</comment></data>
+  <data name="Production_Function_EmptyHopper" xml:space="preserve"><value>Bunker leerfahren</value><comment>HS-01: Zustandstaste</comment></data>
+  <data name="Production_Function_Heating" xml:space="preserve"><value>Heizungen</value><comment>HS-01: Umschalter (schaltet nur, A-38)</comment></data>
+  <data name="Production_Function_LineOperation" xml:space="preserve"><value>Linienbetrieb</value><comment>HS-01: Umschalter</comment></data>
+  <data name="Production_Function_Fault_Text" xml:space="preserve"><value>Störung gemeldet</value><comment>HS-01: Fehlertext am Umschalter bei gemeldeter Störung (S01-10)</comment></data>
+  <data name="Production_Function_NotAcknowledged_Text" xml:space="preserve"><value>Nicht quittiert</value><comment>HS-01: Fehlertext, wenn die Maschine das Schalten nicht quittiert</comment></data>
+  <data name="Production_Automatic_Hint" xml:space="preserve"><value>Automatik: angewählt wurden {0}</value><comment>HS-01: Info-Text in der Meldezeile; {0} = Liste der Funktionen (S01-14)</comment></data>
+  <data name="Production_Automatic_Separator" xml:space="preserve"><value>, </value><comment>HS-01: Trennzeichen der Funktionsliste im Info-Text</comment></data>
+  <data name="Production_Automatic_AlreadyAll" xml:space="preserve"><value>Automatik: alle erfassten Funktionen sind bereits angewählt</value><comment>HS-01: Info-Text in der Meldezeile</comment></data>
+  <data name="Production_ShiftPlan_Label" xml:space="preserve"><value>Schichtplan</value><comment>HS-01: Funktionsleistentaste (öffnet HS-43)</comment></data>
+  <data name="ProductionCounter_Total_Label" xml:space="preserve"><value>Gesamte Produktion</value><comment>HS-02: Summenfeld</comment></data>
+  <data name="ProductionCounter_Hours_Label" xml:space="preserve"><value>Betriebsstunden</value><comment>HS-02: Summenfeld</comment></data>
+  <data name="ProductionCounter_Reset_Label" xml:space="preserve"><value>Reset</value><comment>HS-02: Haltetaste</comment></data>
+  <data name="ProductionCounter_Reset_Automation" xml:space="preserve"><value>Reset, zum Ausführen gedrückt halten</value><comment>Barrierefreiheitsname der Taste Reset</comment></data>
+  <data name="ProductionCounter_Table_Automation" xml:space="preserve"><value>Produktionszähler, Aktuell und Historie</value><comment>Barrierefreiheitsname der Zählertabelle</comment></data>
+  <data name="MachineSpeed_Maximum_Name" xml:space="preserve"><value>Maximum</value><comment>HS-03: Feldname (Titel des Eingabe-Pop-ups)</comment></data>
+  <data name="MachineSpeed_Fast_Name" xml:space="preserve"><value>Schnell</value><comment>HS-03: Feldname</comment></data>
+  <data name="MachineSpeed_Slow_Name" xml:space="preserve"><value>Langsam</value><comment>HS-03: Feldname</comment></data>
+  <data name="MachineSpeed_Jog_Name" xml:space="preserve"><value>Tippen</value><comment>HS-03: Feldname</comment></data>
+  <data name="MachineSpeed_Minimum_Name" xml:space="preserve"><value>Minimum</value><comment>HS-03: Feldname</comment></data>
+  <data name="MachineSpeed_Field_Label" xml:space="preserve"><value>{0}:</value><comment>HS-03: Feldbeschriftung mit Doppelpunkt; {0} = Feldname</comment></data>
+  <data name="MachineSpeed_WriteError_Text" xml:space="preserve"><value>Schreibfehler: Wert nicht übernommen</value><comment>HS-03: Fehlertext am Feld, der zuletzt gültige Wert bleibt</comment></data>
+  <data name="Nav_ShiftPlan_Notice" xml:space="preserve"><value>Platzhalter: Der Schichtplan ist noch nicht definiert.</value><comment>HS-43: Hinweis-Textfeld Art Info (Platzhalter, OP-02)</comment></data>
+  <data name="Nav_ShiftPlan_Group" xml:space="preserve"><value>Schichtplan</value><comment>HS-43: Überschrift des Gruppenbereichs</comment></data>
+  <data name="Nav_ShiftPlan_Empty" xml:space="preserve"><value>Keine Daten</value><comment>HS-43: Leertext des Gruppenbereichs</comment></data>
+</root>
