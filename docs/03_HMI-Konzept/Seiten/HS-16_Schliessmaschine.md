@@ -8,7 +8,7 @@ Einstellungen für das **Auslaufband** (Sollgeschwindigkeit), den **Kopfleim** (
 Die Seite ist außerdem Elternseite von [HS-17](HS-17_Motorparameter-Schliessmaschine.md) (Motorparameter) und [HS-18](HS-18_Gewichtskorrektur-Schliessmaschine.md) (Gewichtskorrektur) und hat einen zweiten Zugang zu [HS-07](HS-07_Heissleim-Nordson.md) (Taste „Heißleimgerät“) (Annahme A-37 in [Annahmen.md](../../00_Plan/Annahmen.md)).
 
 ## Aufbau (Bereiche, Layout)
-Die Seite liegt im Inhaltsbereich des Rahmen-Grids (Zeile 34\* von 45\*, Außenrand `Space.L`, 12-Spalten-Raster, Gutter `Space.M`, [Designsystem](../Designsystem.md) Abschnitt 3.2/3.3). Rahmen (HM-01 bis HM-06) siehe Abschnitt „Rahmenelemente“.
+Die Seite liegt im Inhaltsbereich des Rahmen-Grids (Zeile 34\* von 45\*, Außenrand `Size.Content.Margin`, 12-Spalten-Raster, Gutter `Space.M`, [Designsystem](../Designsystem.md) Abschnitt 3.2/3.3). Rahmen (HM-01 bis HM-06) siehe Abschnitt „Rahmenelemente“.
 
 **Inhaltsbereich:** eine Zeile (Stern-Höhe), drei Gruppenbereiche in den Spalten **4 : 4 : 4**, in der Reihenfolge des Referenzbilds von links nach rechts: **Auslaufband | Kopfleim | Rüttlung**. Die Gruppe „Auslaufband“ nimmt nur ihre Inhaltshöhe ein und ist oben bündig (Restfläche bleibt leer, wie im Referenzbild). Die Gruppen „Kopfleim“ und „Rüttlung“ haben Inhaltshöhe (Mindesthöhe: alle Zeilen ohne Scrollen).
 
@@ -49,7 +49,7 @@ Spalte „Herkunft“ = Rückverfolgung auf [RS-16](../../02_Referenz-Analyse/Se
 | E02 | Geschwindigkeit (Bild 50 %) | Eingabefeld, Zahl, Einheit %, mit Schlüsselsymbol | Sollgeschwindigkeit des Auslaufbands; Antippen öffnet das Eingabe-Pop-up | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | T22, Zeile „Geschwindigkeit“ |
 | E03 | Gruppe „Kopfleim“ | Gruppenbereich (Panel) | bündelt die Kopfleim-Einstellungen | [HM-15](../Module/HM-15_Gruppenbereich.md) | Bild: Gruppenfeld „Kopfleim“; T23 (Überschrift) |
 | E04 | Umschalter Kopfleim Ein/Aus (Bild „Ein“) | Zustandstaste (Darstellung Taste), Wort „Ein“/„Aus“ mit Symbol, mit Schlüsselsymbol | erlaubt das Abwählen des Kopfleims | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | T23, Zeile „Taste Ein / Aus“ |
-| E05 | Piktogramm Kopfleimdüsen | Fachsymbol (nur Anzeige, ohne Funktion), Name `Icon.Glue.Nozzle` (neu) | Bildhinweis auf Leimventil/Kopfleimdüsen | – (Symbol, siehe Bericht) | Bild: Piktogramm „grauer Block mit zwei Düsen“ |
+| E05 | Piktogramm Kopfleimdüsen | Fachsymbol (nur Anzeige, ohne Funktion), Name `Icon.Glue.Nozzle` (Fachsymbol, S16-6) | Bildhinweis auf Leimventil/Kopfleimdüsen | – (Symbol, Definition im Designsystem) | Bild: Piktogramm „grauer Block mit zwei Düsen“ |
 | E06 | Anfang (Bild 280 °) | Nocken-Parameterzeile, Winkel in °, mit Schlüsselsymbol | Beginn der Nocke für den Kopfleim | [HM-24](../Module/HM-24_Nocken-Parameterzeile.md) (enthält [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md)) | T23, Zeile „Anfang“ |
 | E07 | Ende (Bild 325 °) | Nocken-Parameterzeile, Winkel in °, mit Schlüsselsymbol | Ende der Nocke für den Kopfleim | [HM-24](../Module/HM-24_Nocken-Parameterzeile.md) | T23, Zeile „Ende“ |
 | E08 | Dauer (Bild 50 ms) | Nocken-Parameterzeile, Zeit in ms, mit Schlüsselsymbol | Einschaltdauer des Ventils | [HM-24](../Module/HM-24_Nocken-Parameterzeile.md) | T23, Zeile „Dauer“ |
@@ -97,21 +97,21 @@ Spalte „Herkunft“ = Rückverfolgung auf [RS-16](../../02_Referenz-Analyse/Se
 - [HM-27](../Module/HM-27_Hinweis-Textfeld.md) – Hinweis-Textfeld
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
-**Eingabe.** Antippen eines berechtigten Eingabefelds (E02, E06 bis E08, E12, E13) öffnet das Eingabe-Pop-up (HM-13 in HM-14) mit vorbelegtem Wert, Einheit und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft. Außerhalb tippen schließt nicht (Navigation.md 4.2). Ungültiger Wert: Fehlerzustand mit `Icon.Status.Error` und Text (z. B. „Wert außerhalb 0 bis 100 %“, Grenzen sind Dummy, OP-28). Der übernommene Wert gilt sofort; „Werte schreiben“ und der Zustand „nicht geschrieben“ von HM-24 entfallen auf dieser Seite (Annahme, Referenz kennt auf RS-16 keine Schreibtaste).
+**Eingabe.** Antippen eines berechtigten Eingabefelds (E02, E06 bis E08, E12, E13) öffnet das Eingabe-Pop-up (HM-13 in HM-14) mit vorbelegtem Wert, Einheit und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft. Außerhalb tippen schließt nicht (Navigation.md 4.2). Ungültiger Wert: Fehlerzustand mit `Icon.Status.Error` und Text (z. B. „Wert außerhalb 0 bis 100 %“, Grenzen sind Dummy, OP-28). Der übernommene Wert gilt sofort; „Werte schreiben“ und der Zustand „nicht geschrieben“ von HM-24 entfallen auf dieser Seite (S16-3).
 
-**Umschalter (E04, E11).** Zustand „Ein“: neutral aktiv (`Brush.Button.Active`), `Icon.State.On` und Wort „Ein“; Zustand „Aus“: `Icon.State.Off` und Wort „Aus“ (Referenzbild zeigt Aus nicht, Darstellung nach Designsystem Abschnitt 5; nicht grün). Während der Befehl noch nicht rückgemeldet ist: Zustand „Ausstehend“ (gestrichelt, Text „Wird gesetzt“). Bei „Aus“ bleiben die zugehörigen Felder bedienbar und behalten ihre Werte (Annahme; Beschreibung nur: Abwählen). E11 „Aus“ schaltet beide Rüttlungen ab; E14 benennt das als Text.
+**Umschalter (E04, E11).** Zustand „Ein“: neutral aktiv (`Brush.Button.Active`), `Icon.State.On` und Wort „Ein“; Zustand „Aus“: `Icon.State.Off` und Wort „Aus“ (Referenzbild zeigt Aus nicht, Darstellung nach Designsystem Abschnitt 5; nicht grün). Während der Befehl noch nicht rückgemeldet ist: Zustand „Ausstehend“ (gestrichelt, Text „Wird gesetzt“). Bei „Aus“ bleiben die zugehörigen Felder bedienbar und behalten ihre Werte (S16-2). E11 „Aus“ schaltet beide Rüttlungen ab; E14 benennt das als Text.
 
 **Dauer und Taktung (E08, E09).** Das Ventil wird getaktet, wenn die Nocke bei reduzierter Maschinengeschwindigkeit länger als die Dauer braucht; die Heißleimmenge sinkt. Das ist Steuerungsverhalten, die Seite zeigt nur den Hinweistext E09 (keine eigene Anzeige des Taktbetriebs, da im Handbuch keine beschrieben ist).
 
-**Berechtigungen.** Die Schlüsselsymbole (`Icon.Key`, `Size.Icon.S` oben rechts im Element, Farbe `Brush.Text.Primary`, nicht gelb) kennzeichnen berechtigungspflichtige Eingaben: E02, E04, E06, E07, E08, E11, E12, E13 (6 Felder und 2 Umschalter). Rollen und Stufen sind Dummy (OP-04, OP-25). Ohne ausreichende Rolle: Symbol `Icon.Lock`, Tippen öffnet kein Eingabe-Pop-up, die Meldezeile zeigt „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up zur Anmeldung öffnet (Navigation.md 4.1); nach der Anmeldung wird die Eingabe fortgesetzt.
+**Berechtigungen.** Die Schlüsselsymbole (`Icon.Key`, `Size.Icon.S` oben rechts im Element, Farbe `Brush.Text.Primary`, nicht gelb) kennzeichnen berechtigungspflichtige Eingaben: E02, E04, E06, E07, E08, E11, E12, E13 (6 Felder und 2 Umschalter). Rollen und Stufen sind Dummy (OP-04, OP-25). Ohne ausreichende Rolle gilt Navigation.md 4.1: Symbol `Icon.Lock`, Hinweis „Berechtigung erforderlich: <Rolle>“ und Benutzer-Pop-up zur Anmeldung; das Eingabe-Pop-up öffnet erst nach der Anmeldung.
 
 **Sperrzustände.** Ist eine Bedienung im aktuellen Betriebszustand nicht zulässig (Dummy, OP-31), erscheinen die Elemente deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`, Symbol `Icon.Block`); Tippen nennt den Grund in der Meldezeile (A-28). Die Navigationstasten der Funktionsleiste bleiben bedienbar.
 
-**Navigation und Zurück.** E15 öffnet HS-07, E16 HS-17, E17 HS-18; jeder Wechsel erzeugt einen Verlaufseintrag. „Zurück“ (Seitenleiste) führt im Verlauf zurück, üblicherweise zu HS-04, kommend aus HS-07/HS-17/HS-18 zur dortigen Seite. Das Brotkrümel-Segment „Einstellung“ öffnet HS-04 und kürzt den Verlauf. Die Seitenleisten-Taste „Einstellungen“ ist hervorgehoben (Balken und Hintergrund). Bei offenem Pop-up sind Seitenleiste, Funktionsleiste, Brotkrümel und Seiteninhalt gesperrt. Navigation ändert keinen Maschinenzustand.
+**Navigation und Zurück.** E15 öffnet HS-07, E16 HS-17, E17 HS-18; jeder Wechsel erzeugt einen Verlaufseintrag. „Zurück“ (Seitenleiste) führt im Verlauf zurück, zu HS-04, denn HS-16 wird nur aus HS-04 geöffnet. Die Rückkehr von HS-07, HS-17 und HS-18 hierher regeln die jeweiligen Seiten (Zurück-Ziel HS-16). Das Brotkrümel-Segment „Einstellung“ öffnet HS-04 und kürzt den Verlauf. Die Seitenleisten-Taste „Einstellungen“ ist hervorgehoben (Balken und Hintergrund). Bei offenem Pop-up sind Seitenleiste, Funktionsleiste, Brotkrümel und Seiteninhalt gesperrt. Navigation ändert keinen Maschinenzustand.
 
 **Fehlerfälle.** Wertebereichsverletzung (siehe oben); Meldungen der Steuerung erscheinen in der Meldezeile; Kommunikationsausfall: Felder bleiben mit letztem Wert sichtbar, Dummy-Verhalten in M2.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HS-16-P01 | Titel und Brotkrümel (RS-16-P01) | Brotkrümel „Einstellung › Schließmaschine“, letztes Segment ist die Seite, „Einstellung“ antippbar | offen |
@@ -131,11 +131,19 @@ Spalte „Herkunft“ = Rückverfolgung auf [RS-16](../../02_Referenz-Analyse/Se
 | HS-16-P15 | Touch-Ziele | alle Eingabefelder, Umschalter und Tasten ≥ `Size.Touch.Default` hoch (nie < `Size.Touch.Min`), Abstand untereinander ≥ `Size.Touch.Gap` | offen |
 | HS-16-P16 | Zweiter Kanal | Ein/Aus nur über Wort und Symbol erkennbar (auch in Graustufen); Fehler mit `Icon.Status.Error` und Text; Schloss/Schlüssel als Symbol; deaktiviert gestrichelt | offen |
 | HS-16-P17 | Tokens | keine Hex- oder Pixelwerte in der Seite; Farben, Schriften, Abstände nur als Tokens; Eingabewerte nicht rot (Rot nur für Fehler) | offen |
-| HS-16-P18 | Berechtigung | ohne Rolle zeigt jedes Eingabeelement `Icon.Lock`, öffnet kein Eingabe-Pop-up und nennt in der Meldezeile die erforderliche Rolle | offen |
+| HS-16-P18 | Berechtigung | ohne Rolle (Navigation.md 4.1): `Icon.Lock`, Hinweis „Berechtigung erforderlich: <Rolle>“ und Benutzer-Pop-up; Eingabe-Pop-up öffnet nicht vor der Anmeldung | offen |
 | HS-16-P19 | Eingabe-Pop-up | Antippen eines Felds öffnet HM-13 mit vorbelegtem Wert, Einheit und Grenzen; ungültiger Wert sperrt „Übernehmen“ mit Fehlertext | offen |
 | HS-16-P20 | Layout ohne Scrollen | alle drei Gruppen vollständig im Inhaltsbereich bei 1920 × 1080 (768 px Höhe nach Außenrand) ohne Scrollen | offen |
 | HS-16-P21 | Zurück und modal | „Zurück“ führt im Verlauf zurück (Zugang HS-04 → HS-04); bei offenem Pop-up sind Seitenleiste und Funktionsleiste gesperrt | offen |
 | HS-16-P22 | Texte | alle sichtbaren Texte (Beschriftungen, Hinweise, Statuswörter) aus `.resx`, keine festen Texte im XAML | offen |
+
+## Annahmen dieser Seite
+- **S16-1:** Die drei Gruppen stehen nebeneinander im Raster 4 : 4 : 4 (Muster DS-02), damit alle Touch-Ziele ohne Scrollen passen; das Referenzbild stellt Kopfleim über Rüttlung.
+- **S16-2:** Bei Kopfleim „Aus“ oder Rüttlung „Aus“ bleiben die zugehörigen Felder bedienbar und behalten ihre Werte; die Darstellung „Aus“ folgt dem Designsystem (im Bild nicht gezeigt).
+- **S16-3:** Werte gelten sofort nach „Übernehmen“; der Zustand „nicht geschrieben“ von HM-24 entfällt (RS-16 kennt keine Schreibtaste).
+- **S16-4:** Die Hinweise E09 und E14 sind dauerhaft sichtbare Info-Felder mit Handbuch-Wortlaut.
+- **S16-5:** Reihenfolge der Funktionsleiste: Heißleimgerät, Motorparameter, Gewichtskorrektur (A-37); „Heißleimgerät“ ohne Schlüssel.
+- **S16-6:** Das Piktogramm der Kopfleimdüsen ist ein reines Anzeigesymbol `Icon.Glue.Nozzle` ohne Funktion.
 
 ## Offene Punkte
 Seiten-Index der [Offene-Punkte.md](../../00_Plan/Offene-Punkte.md) für RS-16: OP-23, OP-25, OP-26, OP-28, OP-34, OP-36, OP-39.

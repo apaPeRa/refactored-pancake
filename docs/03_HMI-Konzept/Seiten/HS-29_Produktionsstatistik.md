@@ -42,7 +42,7 @@ Die Referenz hat keine Tabelle; Herkunft sind der Funktionssatz („Mit den Pfei
 | Pfeiltaste rechts (►) | Pfeiltaste der Datumsleiste, `Icon.Chevron` rechts | wechselt zum späteren Tag; beim aktuellen Tag (`dayOffset` = 0) deaktiviert mit gestrichelter Kontur; kein Verlaufseintrag | [HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md) (`NextCommand`) | Elemente-Zeile „Pfeiltaste rechts“ |
 | Textfeld Datum (Bild „heute“) | Anzeigefeld (kein Eingabefeld) zwischen den Pfeilen | zeigt das Datum des angezeigten Tages; für den aktuellen Tag das Wort „heute“, sonst Datum im Format der aktuellen Kultur (TT.MM.JJJJ, Annahme K29-2) | [HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md) (`DisplayText`) | Elemente-Zeile „Textfeld Datum“ |
 | Balkendiagramm Tagesverlauf | Diagramm Art Balken, X = Uhrzeit 0:00 bis 23:00, Y = Zahl | zeigt den Produktionsverlauf des gewählten Tages; Balken neutral (`Brush.Progress.Fill`), keine Statusfarbe (keine Grenzen bekannt) | [HM-26](../Module/HM-26_Diagramm.md) (`ChartKind` = Bar) | Elemente-Zeile „Balkendiagramm“; Bild, Orange Balken |
-| Y-Achse | Achse ohne Titel, Teilung 0 bis 1800 in Schritten von 200 (Referenz; Skalierung vermutlich automatisch, nicht belegt) | zeigt die Größe der Balken; Einheit „Stk“ als Achsenbeschriftung (Annahme K29-1, Referenz hat keine Einheit) | [HM-26](../Module/HM-26_Diagramm.md) (`YUnit`, `YStep`, `YMinimum`/`YMaximum` = automatisch) | Bild, Y-Achse; RS-29-P03 |
+| Y-Achse | Achse ohne Titel, Teilung 0 bis 1800 in Schritten von 200 (Referenz; Skalierung vermutlich automatisch, nicht belegt) | zeigt die Größe der Balken; ohne Titel und ohne Einheit wie in der Referenz (Einheit und Bedeutung offen, OP-29) | [HM-26](../Module/HM-26_Diagramm.md) (`YStep`, `YMinimum`/`YMaximum` = automatisch) | Bild, Y-Achse; RS-29-P03 |
 | X-Achse | Achse mit stündlicher Beschriftung 0:00, 1:00, … 23:00 (Beschriftung nicht schräg: Textfeld `Font.Size.Caption`, bei Platzmangel jede zweite Stunde) | ordnet jeden Balken einer Uhrzeit zu | [HM-26](../Module/HM-26_Diagramm.md) (`XLabels`) | Bild, X-Achse |
 | Zahlenwerte über den Balken | Wertbeschriftung (Zahl, senkrecht gedreht, `Font.Size.Caption`, `Brush.Text.Primary`), auch „0“ bei leeren Balken | zeigt den Wert je Balken | [HM-26](../Module/HM-26_Diagramm.md) (`ShowValueLabels`) | Elemente-Zeile „Zahlenwerte über den Balken“; RS-29-P04 |
 | Gitternetz | Linien `Brush.Divider` | Ablesehilfe; keine Information | [HM-26](../Module/HM-26_Diagramm.md) | Bild, hellblaue Gitternetzlinien |
@@ -64,7 +64,7 @@ Die Modulliste nennt für HS-29 außerdem [HM-07](../Module/HM-07_Aktionstaste.m
 
 **Tageswahl.** Die Pfeiltasten ändern nur den Parameter `dayOffset` (`ReplaceParameter`, kein Verlaufseintrag, [Navigation.md](../Navigation.md) 5.3). Abrufbar sind genau die letzten 30 Tage: `dayOffset` 0 (heute) bis 29, also heute und die 29 Vortage (Annahme K29-4: „heute“ ist eingeschlossen, OP-54). Am Rand ist die betroffene Pfeiltaste deaktiviert (gestrichelte Kontur, kein Pressed; Antippen nennt den Grund in der Meldezeile, A-28). Das Datumsfeld und das Diagramm wechseln mit dem Tag; bis die Daten des neuen Tages vorliegen, zeigt das Diagramm den Text „Lädt …“ (Annahme K29-3).
 
-**Anzeige.** Das Balkendiagramm zeigt den Produktionsverlauf des gewählten Tages. Bildwerte als Dummy-Daten (M2): nach etwa 18 leeren Balken die Werte 63, 802, 624, 591, 449, 0, 41, 0, 226, 208, 839, 353, 450, 447, 1761, 294, 56, danach wieder leere Balken; höchster Balken 1761. Die Balkenzahl folgt der Datenreihe der Steuerung (Referenz zeigt etwa zwei Balken je Stundenbeschriftung, also vermutlich Halbstundenwerte; HM-26 nennt „je Stunde“; Intervall offen, OP-29, Annahme K29-1). Die Y-Achse skaliert automatisch; die Referenzdarstellung 0 bis 1800 in Schritten von 200 ist Ausgangswert der Dummy-Daten.
+**Anzeige.** Das Balkendiagramm zeigt den Produktionsverlauf des gewählten Tages. Bildwerte als Dummy-Daten (M2): nach etwa 18 leeren Balken die Werte 63, 802, 624, 591, 449, 0, 41, 0, 226, 208, 839, 353, 450, 447, 1761, 294, 56, danach wieder leere Balken; höchster Balken 1761. Die Balkenzahl folgt der Datenreihe der Steuerung. Offene Fragen (OP-29): Was ein Balken darstellt und das Intervall; die Referenz zeigt etwa zwei Balken je Stundenbeschriftung (etwa 48 Balken, Halbstunden vermutet), HM-26 nennt „je Stunde“. Die Y-Achse skaliert automatisch; die Referenzdarstellung 0 bis 1800 in Schritten von 200 ist Ausgangswert der Dummy-Daten.
 
 **Zweiter Kanal.** Die Balken tragen ihre Zahl als Text; der aktuelle Tag trägt das Wort „heute“; deaktivierte Pfeile haben gestrichelte Kontur. Es gibt keine Statusfarben auf dieser Seite (keine Grenzwerte, OP-47).
 
@@ -82,7 +82,7 @@ Die Modulliste nennt für HS-29 außerdem [HM-07](../Module/HM-07_Aktionstaste.m
 |---|---|---|---|
 | HS-29-P01 | Seitenname und Pfad (RS-29-P01) | Brotkrümel „Einstellung › Produktionsstatistik“; Zugang über HS-04 Kachel „Produktionsstatistik“; „Zurück“ führt zu HS-04 | offen |
 | HS-29-P02 | Diagrammart (RS-29-P02) | Produktionsverlauf eines Tages als Balkendiagramm; Balken neutral gefüllt (`Brush.Progress.Fill`), keine Zierfarbe | offen |
-| HS-29-P03 | Achsen (RS-29-P03) | X-Achse stündlich 0:00 bis 23:00; Y-Achse bei den Dummy-Daten 0 bis 1800 in Schritten von 200; Y-Achse mit Einheit „Stk“ beschriftet (Annahme) | offen |
+| HS-29-P03 | Achsen (RS-29-P03) | X-Achse stündlich 0:00 bis 23:00; Y-Achse bei den Dummy-Daten 0 bis 1800 in Schritten von 200; Y-Achse ohne Titel und ohne Einheit (wie Referenz) | offen |
 | HS-29-P04 | Wertbeschriftung (RS-29-P04) | Über jedem Balken steht sein Zahlenwert in mindestens `Font.Size.Caption`, auch „0“ bei leeren Balken | offen |
 | HS-29-P05 | Datumsnavigation (RS-29-P05) | Zwei Pfeiltasten links und rechts über dem Diagramm (je mindestens `Size.Touch.Default`) wechseln zwischen den Tagen; links = früher; kein Verlaufseintrag | offen |
 | HS-29-P06 | Datumsfeld (RS-29-P06) | Textfeld zwischen den Pfeilen zeigt das Datum des angezeigten Tages; für den aktuellen Tag das Wort „heute“; nur Anzeige, nicht bedienbar | offen |
@@ -98,6 +98,17 @@ Die Modulliste nennt für HS-29 außerdem [HM-07](../Module/HM-07_Aktionstaste.m
 
 ## Offene Punkte
 
-Aus dem Seiten-Index in [Offene-Punkte.md](../../00_Plan/Offene-Punkte.md): [OP-25](../../00_Plan/Offene-Punkte.md) (Berechtigung), [OP-26](../../00_Plan/Offene-Punkte.md) (Schloss- und Spiralsymbol), [OP-29](../../00_Plan/Offene-Punkte.md) (Einheit der Y-Achse, Zeitintervall der Balken), [OP-47](../../00_Plan/Offene-Punkte.md) (Grenzlinien, Skalierung), [OP-54](../../00_Plan/Offene-Punkte.md) (Pfeilrichtung, Datumsformat, „heute“ in 30 Tagen). Zusätzlich berührt: OP-21 (Antippbarkeit des Brotkrümels).
+Aus dem Seiten-Index in [Offene-Punkte.md](../../00_Plan/Offene-Punkte.md): [OP-25](../../00_Plan/Offene-Punkte.md) (Berechtigung), [OP-26](../../00_Plan/Offene-Punkte.md) (Schloss- und Spiralsymbol), [OP-29](../../00_Plan/Offene-Punkte.md) (Einheit und Bedeutung der Y-Achse, Zeitintervall der Balken), [OP-47](../../00_Plan/Offene-Punkte.md) (Grenzlinien, Skalierung), [OP-54](../../00_Plan/Offene-Punkte.md) (Pfeilrichtung, Datumsformat, „heute“ in 30 Tagen). Zusätzlich berührt: OP-21 (Antippbarkeit des Brotkrümels).
 
-Annahme-Kandidaten dieser Seite (Verwalter, siehe Bericht): K29-1 Einheit „Stk“ an der Y-Achse; Balkenzahl folgt der Datenreihe (Halbstunden oder Stunden offen); K29-2 Datumsformat der aktuellen Kultur (TT.MM.JJJJ), „heute“ nur für den aktuellen Tag; K29-3 Zustände „Keine Daten“ und „Lädt …“ im Diagramm; K29-4 30 Tage = heute plus 29 Vortage (`dayOffset` 0 bis 29, wie Seitenregister). Weiterhin offen: Größe, die der Balken darstellt (Packungen, Stück), Pfeilrichtung (Annahme links = früher), Y-Achsen-Skalierung (fest oder automatisch).
+Weiterhin offen: Was ein Balken darstellt (Packungen, Stück) und dessen Einheit; Intervall (Stunde oder Halbstunde, etwa 48 Balken); Y-Achsen-Skalierung (fest oder automatisch); Pfeilrichtung (Annahme links = früher).
+
+## Annahmen dieser Seite
+
+Lokale Kennungen; der Verwalter überträgt sie nach [Annahmen.md](../../00_Plan/Annahmen.md).
+
+| Kennung | Annahme |
+|---|---|
+| K29-1 | Die Balkenzahl folgt der Datenreihe der Steuerung; die X-Beschriftung ist stündlich; Y-Achse ohne Einheit und Titel (wie Referenz). |
+| K29-2 | Datumsformat der aktuellen Kultur (TT.MM.JJJJ); „heute“ nur für den aktuellen Tag. |
+| K29-3 | Diagramm-Zustände „Keine Daten“ und „Lädt …“. |
+| K29-4 | 30 Tage = heute plus 29 Vortage (`dayOffset` 0 bis 29, wie Seitenregister); links = früher, Randtasten deaktiviert. |

@@ -6,7 +6,7 @@
 Konfiguration der Bewegungsparameter für den **Verschluss** (Zu und Auf) und die **Schnecke**. Wortgetreu (RS-17): „Auf dieser Seite werden die Bewegungsparameter für den Verschluss und die Schnecke eines Schneckendosierers konfiguriert. Die Einstellungen ermöglichen eine optimale Anpassung an das Produktverhalten und die Maschinengeschwindigkeit.“ Der Text ist identisch mit RS-12 und RS-20; der Bezug zur Schließmaschine bleibt fachlich offen (OP-45, OP-55).
 
 ## Aufbau (Bereiche, Layout)
-Inhaltsbereich des Rahmen-Grids (Zeile 34\* von 45\*, Außenrand `Space.L`, 12-Spalten-Raster, Gutter `Space.M`). Eine Zeile mit drei Karten in den Spalten **4 : 4 : 4**: **Verschluss Zu | Verschluss Auf | Schnecke**. Die Karten sind Instanzen von [HM-21](../Module/HM-21_Motorparameter-Karte.md) mit Rahmen [HM-15](../Module/HM-15_Gruppenbereich.md); jede Zeile besteht aus Beschriftung (links) und Eingabefeld (rechts, Höhe `Size.Touch.Default`, Zeilenabstand `Size.Touch.Gap`).
+Inhaltsbereich des Rahmen-Grids (Zeile 34\* von 45\*, Außenrand `Size.Content.Margin`, 12-Spalten-Raster, Gutter `Space.M`). Eine Zeile mit drei Karten in den Spalten **4 : 4 : 4**: **Verschluss Zu | Verschluss Auf | Schnecke**. Die Karten sind Instanzen von [HM-21](../Module/HM-21_Motorparameter-Karte.md) mit Rahmen [HM-15](../Module/HM-15_Gruppenbereich.md); jede Zeile besteht aus Beschriftung (links) und Eingabefeld (rechts, Höhe `Size.Touch.Default`, Zeilenabstand `Size.Touch.Gap`).
 
 ```
 Inhaltsbereich (12 Spalten)
@@ -88,9 +88,9 @@ Spalte „Herkunft“ = Rückverfolgung auf [RS-17](../../02_Referenz-Analyse/Se
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 **Eingabe.** Antippen eines Felds (E02 bis E06, E08 bis E12, E14 bis E16) öffnet das Eingabe-Pop-up (HM-13 in HM-14) mit Feldname (z. B. „Verschluss Zu – Position“), vorbelegtem Wert, Einheit und Grenzen. „Übernehmen“ nur bei gültigem Wert; „Abbrechen“ verwirft; Antippen außerhalb schließt nicht. Das Feld zeigt während der Eingabe `Border.Thick` `Brush.Border.Focus`. Ungültiger Wert: Fehlerzustand mit `Icon.Status.Error` und Fehlertext (Grenzen Dummy, OP-28). Grenzen: Positionen in °, alle anderen in %; die Bezugsgröße der Prozentwerte ist fachlich offen (OP-45).
 
-**Hilfetexte.** Jede Zeile trägt die Beschreibung aus T25/T26 als Hilfetext (Tooltip, HM-21); auf Touch erscheint er beim Halten der Beschriftung (Annahme).
+**Hilfetexte.** Jede Zeile trägt die Beschreibung aus T25/T26 als Hilfetext (Tooltip, HM-21); auf Touch erscheint er beim Halten der Beschriftung (S17-2).
 
-**Berechtigungen.** Alle 13 Felder tragen das Schlüsselsymbol (`Icon.Key`, `Brush.Text.Primary`). Rollen und Stufen sind Dummy (OP-04, OP-25). Ohne ausreichende Rolle: `Icon.Lock`, kein Eingabe-Pop-up, Meldezeile „Berechtigung erforderlich: <Rolle>“, Benutzer-Pop-up zur Anmeldung (Navigation.md 4.1); nach Anmeldung wird die Eingabe fortgesetzt.
+**Berechtigungen.** Alle 13 Felder tragen das Schlüsselsymbol (`Icon.Key`, `Brush.Text.Primary`). Rollen und Stufen sind Dummy (OP-04, OP-25). Ohne ausreichende Rolle gilt Navigation.md 4.1: `Icon.Lock`, Hinweis „Berechtigung erforderlich: <Rolle>“ und Benutzer-Pop-up zur Anmeldung; das Eingabe-Pop-up öffnet erst nach der Anmeldung.
 
 **Sperrzustände.** Läuft die Maschine in einem Zustand, in dem Änderungen nicht zulässig sind (Dummy, OP-31), erscheinen die Felder deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`, `Icon.Block`); Tippen nennt den Grund in der Meldezeile (A-28).
 
@@ -98,7 +98,7 @@ Spalte „Herkunft“ = Rückverfolgung auf [RS-17](../../02_Referenz-Analyse/Se
 
 **Fehlerfälle.** Wertebereichsverletzung (siehe oben); Meldungen der Steuerung in der Meldezeile; weitere Rückmeldungen oder Fehlermeldungen sind im Handbuch nicht beschrieben (nichts erfunden).
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HS-17-P01 | Titel und Pfad (RS-17-P01) | Brotkrümel „Einstellung › Schließmaschine › Motorparameter“; Seitenname „Motorparameter“ (ohne „HD1“); „Einstellung“ und „Schließmaschine“ antippbar | offen |
@@ -116,12 +116,18 @@ Spalte „Herkunft“ = Rückverfolgung auf [RS-17](../../02_Referenz-Analyse/Se
 | HS-17-P13 | Touch-Ziele | alle 13 Felder ≥ `Size.Touch.Default` hoch, Abstand ≥ `Size.Touch.Gap`; keine Ziele < `Size.Touch.Min` | offen |
 | HS-17-P14 | Zweiter Kanal | Fehler mit Symbol und Text; Schloss/Schlüssel als Symbol; deaktiviert gestrichelt; Werte nicht rot | offen |
 | HS-17-P15 | Tokens | keine Hex- oder Pixelwerte; nur Tokens des Designsystems; Karten und Felder aus HM-21, HM-12, HM-15 (keine Kopien) | offen |
-| HS-17-P16 | Berechtigung | ohne Rolle: `Icon.Lock`, kein Eingabe-Pop-up, Hinweis „Berechtigung erforderlich: <Rolle>“ | offen |
+| HS-17-P16 | Berechtigung | ohne Rolle (Navigation.md 4.1): `Icon.Lock`, Hinweis „Berechtigung erforderlich: <Rolle>“ und Benutzer-Pop-up; Eingabe-Pop-up öffnet nicht vor der Anmeldung | offen |
 | HS-17-P17 | Eingabe-Pop-up | öffnet mit Feldname, Wert, Einheit, Grenzen; ungültiger Wert sperrt „Übernehmen“ | offen |
 | HS-17-P18 | Layout ohne Scrollen | drei Karten (längste mit Überschrift und fünf Zeilen) passen bei 1920 × 1080 in 768 px Inhaltshöhe | offen |
 | HS-17-P19 | Zurück | „Zurück“ führt im Verlauf zu HS-16; bei offenem Pop-up gesperrt | offen |
 | HS-17-P20 | Identität mit HS-12/HS-20 | identischer Aufbau (HM-21-P06); kein Dosierer-Wechsel (kein „«“/„»“) | offen |
 | HS-17-P21 | Texte | alle sichtbaren Texte aus `.resx` | offen |
+
+## Annahmen dieser Seite
+- **S17-1:** Karten im Raster 4 : 4 : 4 (Zu | Auf | Schnecke) nach HM-21; das Bild stellt „Schnecke“ unter die Verschlusskarten.
+- **S17-2:** Die Handbuchbeschreibung je Zeile ist Hilfetext (Tooltip, HM-21); auf Touch erscheint er beim Halten der Beschriftung.
+- **S17-3:** Der Seitenname lautet „Motorparameter“ ohne „HD1“ (OP-33); die HM-21-Eigenschaft `DoserName` ist „Schließmaschine“, die Objektkennung im Brotkrümel bleibt leer.
+- **S17-4:** Die Taste „»“ des Bildes entfällt (A-37, A-44); die Funktionsleiste bleibt leer.
 
 ## Offene Punkte
 Seiten-Index der [Offene-Punkte.md](../../00_Plan/Offene-Punkte.md) für RS-17: OP-23, OP-25, OP-28, OP-33, OP-39, OP-45, OP-55.

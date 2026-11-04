@@ -111,6 +111,16 @@ Spalte „Herkunft“ weist die Rückverfolgung nach RS-28 aus (T39 = Tabelle An
 
 Aus dem Seiten-Index in [Offene-Punkte.md](../../00_Plan/Offene-Punkte.md): [OP-26](../../00_Plan/Offene-Punkte.md) (Schloss- und Spiralsymbol), [OP-27](../../00_Plan/Offene-Punkte.md) (Farbbedeutung), [OP-34](../../00_Plan/Offene-Punkte.md) (Legendenkurzbezeichnungen gegen Handbuchbezeichnungen), [OP-41](../../00_Plan/Offene-Punkte.md) (Anzahl der Stationen), [OP-43](../../00_Plan/Offene-Punkte.md) (Zustand nur über Farbe), [OP-44](../../00_Plan/Offene-Punkte.md) (rechte Reihe im Bild abgeschnitten), [OP-53](../../00_Plan/Offene-Punkte.md) (Zustandsfolge beim Antippen, Zustand „gewogen“, Gruppenzuordnung). Zusätzlich berührt: OP-25 (Berechtigung), OP-21 (Antippbarkeit des Brotkrümels).
 
+Weiterhin offen: Gesamtzahl und Zuordnung der Stationen zu realen Maschinenstationen, Nummern der Stationen außerhalb der rechten Reihe, ob „gewogen“ ein eigener Zustand ist (gelb umfasst „nicht befüllt oder gewogen“), Berechtigung für die manuelle Änderung.
+
 ## Annahmen dieser Seite
 
-Lokale Kennungen, vom Verwalter nach Annahmen.md zu übernehmen: K28-1 Touch-Raster (Trefferbereich `Size.Touch.Min`, Abstand `Size.Touch.Gap`) vergrößert die Grafik, daher Bildlauf horizontal und bei Bedarf vertikal; K28-2 Legende und Hinweis als feste Leisten unterhalb des Bildlaufbereichs; K28-3 Dummy-Zustandsfolge zyklisch in Legendenreihenfolge; K28-4 Zustand „keine Daten“ bei fehlender Verbindung. Weiterhin offen: Gesamtzahl und Zuordnung der Stationen zu realen Maschinenstationen, Nummern der Stationen außerhalb der rechten Reihe, Frage, ob „gewogen“ ein eigener Zustand ist (gelb umfasst „nicht befüllt oder gewogen“), Berechtigung für die manuelle Änderung.
+Lokale Kennungen; der Verwalter überträgt sie nach [Annahmen.md](../../00_Plan/Annahmen.md).
+
+| Kennung | Annahme |
+|---|---|
+| K28-1 | Trefferbereich `Size.Touch.Min` und Abstand `Size.Touch.Gap` vergrößern die Grafik; daher Bildlauf horizontal (wie Referenz) und bei Bedarf vertikal. |
+| K28-2 | Legende und Abhängigkeitshinweis sind feste Leisten unterhalb des Bildlaufbereichs. |
+| K28-3 | Dummy-Zustandsfolge beim Antippen: zyklisch in Legendenreihenfolge (fachlich offen, OP-53). |
+| K28-4 | Bei fehlender Verbindung zeigen die Felder „Keine Daten“. |
+| K28-5 | Je Zustand eine Bezeichnung (Nicht vorhanden, Schlecht, Vorhanden, Befüllt, Gut), in Legende und Feld gleich; Flächen neutral, Statusfarbe nur in Symbol und Kontur. |

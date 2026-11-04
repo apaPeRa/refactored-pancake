@@ -17,17 +17,17 @@ Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfze
 Inhaltsbereich (12 Spalten)
 +------------------------+--------------------------------------------+
 | Gruppe "IPC" (4 Sp.)   | Gruppe "Servomotoren" (8 Sp.)              |
-| Prozessorauslastung:   | Kopf:  Diag | Aktuell | Max | Limit        |
+| Prozessorauslastung:   | Kopf: Diag Code | Strom Aktuell | Strom Max | Strom Limit |
 | [=====    ] 15 %       | +----------------------------------------+ |
-| Aktuell [15 %] Max     | | Antrieb Zufuehrung 2MA1                | |
+| Aktuell [15 %] Max     | | Antrieb Zuführung 2MA1                | |
 |        [42 %] (Reset)  | | [0] [0,0 %] [-24,4 %] [100,0 %]  Key   | |
-| Systemstart:           | | Meldung: Motorschutz ausgeloest  Fehler| |
+| Systemstart:           | | Meldung: Motorschutz ausgelöst  Fehler| |
 | [02.04.2025 01:22:42]  | +----------------------------------------+ |
 | Laufzeit gesamt:       | | Verschluss Dosierer 1 41MA1 ...        | |
 | [744 h] [1 m] [14 s]   | | Schnecke Dosierer 1 41MA2 ...          | |
 | Status / Diag Code:    | | Verschluss Dosierer 2 42MA1 ...        | |
 | [5 - running]          | +----------------------------------------+ |
-| [0 (0x000) - No Error] |  Blaettertasten  [ ^ ]  [ v ]  "1-4 von n" |
+| [0 (0x000) - No Error] |  Blättertasten  [ ^ ]  [ v ]  "1-4 von n" |
 | HMI Applikation Build: |                                            |
 | [09.05.2025 10:42:17]  |                                            |
 +------------------------+--------------------------------------------+
@@ -35,10 +35,10 @@ Funktionsleiste unten: leer
 ```
 
 - **Gruppe „IPC“ (Spalten 1 bis 4):** Überschrift „IPC“, darunter die fünf Zeilen der Referenz untereinander. Jede Zeile besteht aus einer Beschriftung (Caption oder Body) und den Feldern darunter, damit sie in die schmale Gruppe passen: Prozessorauslastung (Fortschrittsbalken über die Gruppenbreite, darunter zwei Felder „Aktuell“ und „Max.“ nebeneinander), Systemstart (ein Feld), Laufzeit gesamt (drei Felder „h“, „m“, „s“ nebeneinander), Status / Diag Code (zwei Felder untereinander), HMI Applikation Build (ein Feld).
-- **Gruppe „Servomotoren“ (Spalten 5 bis 12):** Überschrift „Servomotoren“; links die Liste der Antriebe, rechts eine schmale Spalte mit den zwei Blättertasten. Je Antrieb ein Block (Motor-Statuszeile) mit zwei Zeilen: Zeile 1 Antriebsname und die Felder Diag Code, Strom Aktuell, Strom Max, Strom Limit; Zeile 2 das Meldungsfeld über die volle Blockbreite. Eine gemeinsame Beschriftungszeile am Listenkopf („Diag Code“, „Aktuell“, „Max“, „Limit“) spart die Wiederholung. Es sind vier Antriebe gleichzeitig sichtbar; die Blättertasten zeigen weitere.
+- **Gruppe „Servomotoren“ (Spalten 5 bis 12):** Überschrift „Servomotoren“; links die Liste der Antriebe, rechts eine schmale Spalte mit den zwei Blättertasten. Je Antrieb ein Block (Motor-Statuszeile) mit zwei Zeilen: Zeile 1 Antriebsname und die Felder Diag Code, Strom Aktuell, Strom Max, Strom Limit; Zeile 2 das Meldungsfeld über die volle Blockbreite. Eine gemeinsame Beschriftungszeile am Listenkopf („Diag Code“, „Strom Aktuell“, „Strom Max“, „Strom Limit“, wie RS-39) spart die Wiederholung. Es sind vier Antriebe gleichzeitig sichtbar; die Blättertasten zeigen weitere.
 - **Funktionsleiste unten:** leer (Navigation.md 3.3, „Ohne eigene Tasten“).
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 Spalte „Herkunft“ = Rückverfolgung zu [RS-39](../../02_Referenz-Analyse/Seiten/RS-39_System-und-Antriebsinfos.md) (Tabelle 49 = IPC-Bereich, Tabelle 50 = Servomotoren).
 
@@ -60,12 +60,12 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-39](../../02_Referenz-Analyse/Sei
 | Gruppen „IPC“ und „Servomotoren“ | Gruppenbereich | Zwei Gruppen mit Überschrift und Rahmen wie im Bild. | [HM-15](../Module/HM-15_Gruppenbereich.md) | Bild RS-39_01 |
 | Kopfzeile, Meldezeile, Funktionsleiste unten | Rahmen | Wie [HS-35](HS-35_Systemeinstellungen.md): Uhrzeit und Datum, Meldezeile, Funktionsleiste ohne Tasten, Produktion/Einstellungen/Zurück und Anmeldestatus in der Seitenleiste. | [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-01](../Module/HM-01_Seitenleiste.md) | „nur im Bild“, Zeile 3 |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-15](../Module/HM-15_Gruppenbereich.md), [HM-10](../Module/HM-10_Fortschrittsbalken.md), [HM-11](../Module/HM-11_Anzeigefeld.md), [HM-34](../Module/HM-34_Motor-Statuszeile.md) (enthält [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md)), [HM-19](../Module/HM-19_Blaettertasten.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md)
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Zurücksetzen.** Antippen des Maximalwerts (CPU-Auslastung oder Strom Max) setzt ihn zurück; Rückmeldung unmittelbar (Wert springt auf 0 bzw. aktuellen Wert), die Referenz beschreibt keine Rückfrage. Ob eine Berechtigung nötig ist, ist nicht beschrieben (kein Schlüsselsymbol im Bild).
 - **Strom Limit.** Das Feld trägt `Icon.Key`; Eingabe nur mit Berechtigung (Stufe offen, OP-25, Dummy). Ohne Rolle zeigt das Feld `Icon.Lock`, Antippen öffnet das Benutzer-Pop-up. Mit Rolle öffnet Antippen das Eingabe-Pop-up (Titel „Strom Limit <Antrieb>“, Einheit %, Grenzen als Caption). Ungültiger Wert: Fehlerrahmen und Text, „Übernehmen“ deaktiviert; bis zum Übernehmen wird nichts in die Steuerung geschrieben.
@@ -76,7 +76,7 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-39](../../02_Referenz-Analyse/Sei
 - **Pop-ups.** Nur das Eingabe-Pop-up und das Benutzer-Pop-up; Seitenleiste und Inhalt gesperrt (Navigation.md 4.2).
 - **Zurück.** Seitenleiste „Zurück“ oder Brotkrümel-Segment „Systemeinstellungen“ führt nach HS-35.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -98,6 +98,14 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-39](../../02_Referenz-Analyse/Sei
 | HS-39-P16 | Touch-Ziele | Rücksetzbare Felder, Limit-Felder und Blättertasten mindestens `Size.Touch.Min` bzw. `Size.Touch.Default`, Abstand `Size.Touch.Gap`; Schrift mindestens `Font.Size.Caption` | offen |
 | HS-39-P17 | Zweiter Kanal | Fehlerzustand über Symbol und Text, Balkenschwelle über Symbol und Wort, Rücksetzen über `Icon.Action.Reset`, Schloss/Schlüssel als Symbol; kein Zustand nur über Farbe | offen |
 | HS-39-P18 | Tokens | Keine Hex- und Pixelwerte im Seitenaufbau; nur Tokens des Designsystems | offen |
+
+## Annahmen dieser Seite
+
+- S39-1: Layout 4 : 8 mit zwei Gruppenbereichen; vier Antriebsblöcke sichtbar.
+- S39-2: „Laufzeit gesamt“ besteht aus drei Feldern h, m, s; HM-11 (Wertart Duration) bildet das nicht ab (Wunsch: Duration-Variante mit getrennten Feldern oder drei HM-11-Felder).
+- S39-3: Die Pfeiltasten blättern durch die Antriebe mit Positionsanzeige „n–m von k“; HM-19 kennt nur „n von m“ (Wunsch: Fensteranzeige).
+- S39-4: Die rote Schrift bei „Strom Limit“ entfällt; Zurücksetzen der Maxima ohne Rückfrage und ohne Schlüssel, weil das Bild keinen zeigt.
+- S39-5: Antriebe mit Meldung zeigen den Zustand Fehler (Flächenton, Symbol, Text).
 
 ## Offene Punkte
 

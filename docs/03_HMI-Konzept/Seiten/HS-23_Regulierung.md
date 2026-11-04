@@ -39,7 +39,7 @@ Jedes Element existiert je einmal im Panel Hauptdosierer und im Panel Nachdosier
 | Toleranz | Eingabefeld Zahl, Einheit „g“, Schlüsselsymbol | „Bereich um das Sollgewicht, in dem keine Korrektur erfolgt.“ (HD 1,0 g, ND 0,2 g) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) | T33 „Toleranz“ |
 | Regulierung max | Eingabefeld Zahl, Einheit „g“, Schlüsselsymbol | „Maximale Korrektur, die durch die automatische Regulierung vorgenommen werden darf.“ (HD 75,0 g, ND 20,0 g) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) | T33 „Regulierung max“ |
 | Regulierung ist | Eingabefeld Zahl, Einheit „g“, Schlüsselsymbol | „Aktueller Korrekturwert, der auf die Dosierung angewendet wird.“ (HD 0,0 g, ND 4,8 g); im Bild als Eingabefeld mit Schlüssel, daher beibehalten (OP-45); am Limit Warnung mit Text „Maximum erreicht“ | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) | T33 „Regulierung ist“ |
-| Mittelwert | Anzeigefeld, Einheit „g“, mit Zähler „Stk“ unten rechts im Feld, ohne Schlüssel | „Durchschnittliches Gewicht der letzten gemessenen Packungen.“ (HD 0,0 g mit 0 Stk, ND 250,4 g mit 11 Stk); Zähler zählt gewogene Packungen, bei Erreichen von „Anzahl Gewichte“ wird anhand des Mittelwerts ein neuer Korrekturwert berechnet; Zähler zusätzlich als Text „von n“ (n = Anzahl Gewichte, HM-35) | [HM-11](../Module/HM-11_Anzeigefeld.md) (mit `Counter`) | T33 „Mittelwert“ |
+| Mittelwert | Anzeigefeld, Einheit „g“, mit Zähler „Stk“ unten rechts im Feld, ohne Schlüssel | „Durchschnittliches Gewicht der letzten gemessenen Packungen.“ (HD 0,0 g mit 0 Stk, ND 250,4 g mit 11 Stk); Zähler zählt gewogene Packungen, bei Erreichen von „Anzahl Gewichte“ wird anhand des Mittelwerts ein neuer Korrekturwert berechnet; Zähler zusätzlich als Text „von n“ (n = Anzahl Gewichte, HM-35, Annahme S23-3) | [HM-11](../Module/HM-11_Anzeigefeld.md) (mit `Counter`) | T33 „Mittelwert“ |
 | Taste „Regulierung“ | Zustandstaste (Darstellung Taste, volle Panelbreite) mit Schlüsselsymbol | „Schaltet die automatische Regulierung ein oder aus.“ Zustand über `Icon.State.On`/`.Off` und Wort „Ein“/„Aus“, neutral, nicht grün (A-31) | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | T33 „Taste Regulierung“, Bild |
 | Taste „Regulierung −“ | Aktionstaste (Beschriftung zweizeilig „Regulierung“ / „−“) mit Schlüsselsymbol | „Manuelle Feineinstellung der Korrektur. Reduziert (--) … den aktuellen Korrekturwert.“ | [HM-07](../Module/HM-07_Aktionstaste.md) | T33 „Regulierung - / +“, Bild |
 | Taste „Regulierung +“ | Aktionstaste (zweizeilig „Regulierung“ / „+“) mit Schlüsselsymbol | „… erhöht (+) den aktuellen Korrekturwert.“ | [HM-07](../Module/HM-07_Aktionstaste.md) | T33 „Regulierung - / +“, Bild |
@@ -63,15 +63,15 @@ Kein Modul fehlt.
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Automatische Regulierung:** Die Taste „Regulierung“ schaltet je Dosierer die automatische Regulierung ein oder aus; Hauptdosierer und Nachdosierer sind unabhängig. Ein: `Brush.Button.Active`, Symbol Haken, Wort „Ein“; Aus: `Icon.State.Off`, Wort „Aus“. Nach dem Befehl bis zur Rückmeldung „Ausstehend“ (gestrichelte Kontur, `Icon.State.Pending`, Text „Wird gesetzt“). Die Grünfärbung der Referenz entfällt (A-31).
 - **Berechnung (Anzeige):** Pro gewogener Packung zählt der Zähler im Feld „Mittelwert“ hoch. Erreicht er „Anzahl Gewichte“, wird anhand des Mittelwerts ein neuer Korrekturwert berechnet: Liegt der Mittelwert außerhalb der Toleranz, ändert sich der Korrekturwert um den Regulierschritt in Prozent, begrenzt durch „Regulierung max“. Die Berechnung ist Dummy in Meilenstein 2 (OP-45).
-- **Manuelle Korrektur:** „Regulierung −“ verringert, „Regulierung +“ erhöht den aktuellen Korrekturwert („Regulierung ist“) je Tastendruck um eine konfigurierbare Schrittweite (im Handbuch nicht angegeben, Dummy, kein Dauerdruck-Wiederholen angenommen). Gedrückt: Kontur `Border.Medium`. Das Feld „Regulierung ist“ aktualisiert sich sofort.
-- **Korrektur am Limit:** Erreicht „Regulierung ist“ den Wert „Regulierung max“, zeigt das Feld Warnung (`Icon.Status.Warning`, Text „Maximum erreicht“, [HM-35](../Module/HM-35_Regulierungs-Parameterblock.md)); die Taste in Richtung des Limits ist deaktiviert (gestrichelte Kontur).
+- **Manuelle Korrektur:** „Regulierung −“ verringert, „Regulierung +“ erhöht den aktuellen Korrekturwert („Regulierung ist“) je Tastendruck um eine konfigurierbare Schrittweite (Annahme S23-1) (im Handbuch nicht angegeben, Dummy, kein Dauerdruck-Wiederholen angenommen). Gedrückt: Kontur `Border.Medium`. Das Feld „Regulierung ist“ aktualisiert sich sofort.
+- **Korrektur am Limit:** Erreicht „Regulierung ist“ den Wert „Regulierung max“, zeigt das Feld Warnung (`Icon.Status.Warning`, Text „Maximum erreicht“, [HM-35](../Module/HM-35_Regulierungs-Parameterblock.md)); die Taste in Richtung des Limits ist deaktiviert (gestrichelte Kontur, Annahme S23-2).
 - **Eingabefelder:** Antippen öffnet das Eingabe-Pop-up ([HM-13](../Module/HM-13_Eingabe-Pop-up.md)) mit Feldname und Dosierer im Titel, vorbelegtem Wert, Einheit und Dummy-Grenzen (OP-28). „Übernehmen“ nur bei gültigem Wert; ungültig: Fehlertext im Pop-up und Feldzustand Fehler (`Icon.Status.Error`). „Abbrechen“ verwirft. Modale Regeln wie Navigation.md 4.2. Der Mittelwert ist nicht editierbar.
 - **Berechtigungen:** Alle fünf Eingabefelder, die Taste „Regulierung“ und beide Tasten „Regulierung −/+“ tragen das Schlüsselsymbol (Annahme laut OP-25; Stufe offen). Fehlende Rolle: Schloss, Tippen öffnet das Benutzer-Pop-up und setzt die Aktion nach Anmeldung fort; gesperrte Elemente bleiben sichtbar (gestrichelte Kontur, `Icon.Lock`). Der Mittelwert hat keinen Schlüssel.
 - **Navigation:** Seitenleiste „Einstellungen“ hervorgehoben. Der Brotkrümel bleibt kanonisch „Einstellung › Regulierung“, auch bei Zugang aus HS-11 oder HS-19; „Zurück“ führt im Verlauf zur aufrufenden Seite (A-42). Die Seite hat keinen Parameter (zeigt immer beide Dosierer). Funktionsleiste leer.
 - **Fehlerfälle:** keine im Handbuch beschrieben. Keine Verbindung: Werte „---“, Bedienung deaktiviert (gestrichelte Kontur), Grund per Tippen in der Meldezeile (A-28).
 - **Pop-ups:** nur das Eingabe-Pop-up (Tiefe 1).
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HS-23-P01 | Panels (RS-23-P01) | Zwei Panels „Hauptdosierer“ (links) und „Nachdosierer“ (rechts) mit identischem Aufbau, Spaltenverhältnis 6 : 6 | offen |
@@ -88,7 +88,7 @@ Kein Modul fehlt.
 | HS-23-P12 | Bildabdeckung (RS-23-P12) | Jedes Element aus [RS-23_01.png](../../02_Referenz-Analyse/Medien/RS-23_01.png) (zwei Panels mit je sechs Wertfeldern, Taste Regulierung, Tasten − und +, Kopfzeile, Meldezeile, Fußleiste) ist in der Elemente-Tabelle wiederzufinden | offen |
 | HS-23-P13 | Berechtigung | Alle Eingabefelder und Tasten außer Mittelwert tragen den Schlüssel; ohne Rolle Schloss, Tippen öffnet das Benutzer-Pop-up | offen |
 | HS-23-P14 | Eingabe-Pop-up | Titel mit Feldname und Dosierer, Einheit, Grenzen, „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft | offen |
-| HS-23-P15 | Limit | Erreicht „Regulierung ist“ „Regulierung max“, erscheinen Warnsymbol und Text „Maximum erreicht“; Taste „+“ ist deaktiviert (gestrichelt) | offen |
+| HS-23-P15 | Limit | Erreicht „Regulierung ist“ „Regulierung max“, erscheinen Warnsymbol und Text „Maximum erreicht“; Taste „+“ ist deaktiviert (gestrichelt, Annahme S23-2) | offen |
 | HS-23-P16 | Touch-Ziele | Alle Felder und Tasten `Size.Touch.Default` hoch (≥ `Size.Touch.Min`), Abstand ≥ `Size.Touch.Gap` | offen |
 | HS-23-P17 | Zweiter Kanal und Tokens | Kein Zustand nur über Farbe; keine Hex- oder Pixelwerte, nur Tokens aus dem Designsystem | offen |
 | HS-23-P18 | Layout ohne Bildlauf | Beide Panels vollständig sichtbar ohne Scrollen bei der Zielauflösung | offen |
@@ -100,4 +100,8 @@ Kein Modul fehlt.
 - OP-28: Wertebereiche und Standardwerte aller Parameter fehlen (Bildwerte nur Beispiele); Dummy-Grenzen.
 - OP-30: Eingabe-Pop-up ist in der Referenz nicht beschrieben (Modulannahme).
 - OP-45: Fachliche Zusammenhänge unklar: Bezug des Regulierschritts in % (Sollgewicht oder Abweichung), Schrittweite von „Regulierung −/+“, ob „Regulierung ist“ manuell eingebbar sein soll (Referenz zeigt ein Eingabefeld mit Schlüssel, beschreibt aber einen aktuellen Korrekturwert).
-- Annahme dieser Seite (Nummerierung für den Verwalter): H-4 Die Tasten „Regulierung −/+“ ändern den Korrekturwert je Tippen um eine konfigurierbare Dummy-Schrittweite ohne Wiederholfunktion; am Limit „Maximum erreicht“ (HM-35) ist die Taste in Richtung des Limits deaktiviert (Ergänzung, im Handbuch nicht beschrieben).
+
+### Annahmen dieser Seite
+- S23-1: „Regulierung −/+“ ändern den Korrekturwert je Tippen um eine konfigurierbare Dummy-Schrittweite, ohne Wiederholfunktion bei Dauerdruck (Handbuch nennt keine Schrittweite).
+- S23-2: Am Limit („Regulierung ist“ erreicht „Regulierung max“) zeigt das Feld Warnung mit „Maximum erreicht“ (HM-35); zusätzlich ist die Taste in Richtung des Limits deaktiviert (Ergänzung, nicht im Handbuch).
+- S23-3: Der Zähler im Mittelwert-Feld wird als „n Stk“ geführt (wie Referenz) und zusätzlich als Text „von m“ (m = Anzahl Gewichte), Format aus HM-35; „von m“ steht nicht im Handbuch.

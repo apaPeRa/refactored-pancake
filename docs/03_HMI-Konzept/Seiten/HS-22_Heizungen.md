@@ -12,7 +12,7 @@ Rahmen wie auf allen Vollseiten ([Designsystem](../Designsystem.md) Abschnitt 3.
 2. **Tabellenkopf** (Höhe `Size.Touch.Min`): Spaltenköpfe, scrollt nicht mit.
 3. **Zonenliste** (Stern, übrige Höhe): 12 Zeilen je Heizzone, Zeilenhöhe `Size.Touch.Default`, Abstand `Size.Touch.Gap`. Die 12 Zeilen passen bei der Zielauflösung nicht vollständig in den Inhaltsbereich; die Liste scrollt senkrecht (Wischen und Bildlauftasten, siehe unten), der Tabellenkopf bleibt stehen (HM-28: „12 Zeilen scrollbar“).
 
-Spaltenproportionen der Tabelle (zusammen 12 Spalten, zusätzlich rechts eine schmale Bildlaufleiste in Breite `Size.Touch.Min`):
+Spaltenproportionen der Tabelle (zusammen 12 Spalten, zusätzlich rechts außerhalb des 12-Spalten-Rasters eine feste Bildlaufspalte der Breite `Size.Touch.Min`; die 12 Spalten teilen sich die übrige Breite):
 
 | Spalte | Spalten von 12 | Inhalt |
 |---|---|---|
@@ -45,14 +45,14 @@ Rückverfolgung: Die Spalte „Herkunft“ nennt die Zeile in [RS-22](../../02_R
 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
-| Warnhinweis Verbrennungsgefahr | Hinweis-Textfeld, Art Warnung, Symbol und Wort „Warnung“ | Text: „Heizungen bleiben nach dem Abschalten noch eine Zeit lang heiß. Achtung: Verbrennungsgefahr!“; immer sichtbar, auch wenn alle Zonen aus sind; nicht ausblendbar | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | Hinweis-Textfeld (Warnsymbol) |
+| Warnhinweis Verbrennungsgefahr | Hinweis-Textfeld, Art Warnung, Symbol und Wort „Warnung“ | Quelltext (Handbuch): „Hinweis: Heizungen bleiben nach dem Abschalten noch eine Zeit lang heiß. Achtung: Verbrennungsgefahr!“; das Präfix „Hinweis:“ wird als Beschriftung (Caption) des Hinweis-Textfelds geführt, der Rest wörtlich; immer sichtbar, auch wenn alle Zonen aus sind; nicht ausblendbar | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | Hinweis-Textfeld (Warnsymbol) |
 | Info Aktivierung | Hinweis-Textfeld, Art Info | Text: „Die Aktivierung der Heizungen erfolgt über die Seite Produktion.“ (Handbuchwortlaut); reine Anzeige, keine Navigation (A-38: Heizungen in HS-01 ist Zustandstaste) | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | Zweck / Funktionsbeschreibung |
 | Tabellenkopf | Beschriftung, 6 Kopftexte „Heizung“, „Meldung“, „Soll“, „Ist“, „State“, „Out“ (Reihenfolge wie Referenz, Ressourcentexte) | benennt die Spalten; bleibt beim Scrollen sichtbar | [HM-28](../Module/HM-28_Temperaturzonen-Zeile.md) (Spaltenraster) | Aufbau, T32 |
 | Zeilenbeschriftung (12 Zonen) | Text je Zeile | Zonenname: 1 „6E1 Längsnaht Links Zone 1“, 2 „6E1 Längsnaht Links Zone 2“, 3 „6E1 Längsnaht Links Zone 3“, 4 „6E2 Längsnaht Rechts“, 5 „6E3 Boden Oben Vorsiegeln“, 6 „6E4 Boden Unten Vorsiegeln“, 7 „6E4 Boden Oben Fertigsiegeln“, 8 „6E4 Boden Unten Fertigsiegeln“, 9 „20E1 Kopf Vorsiegeln Hinten“, 10 „20E2 Kopf Vorsiegeln Vorne“, 11 „20E3 Kopf Fertigsiegeln Hinten“, 12 „20E4 Kopf Fertigsiegeln Vorne“ (Zonenzahl und Namen sind konfigurationsabhängig, OP-41) | [HM-28](../Module/HM-28_Temperaturzonen-Zeile.md) (Variante Heizungen, `ZoneName`) | Aufbau (Zeilenbeschriftungen), T32 „Zeilenbeschriftung“ |
 | Heizung (je Zone, 12×) | Zustandstaste Ein/Aus mit Schlüsselsymbol | „Jede Heizung kann einzeln ein- oder ausgeschaltet werden.“ Zustand über Symbol und Wort „Ein“/„Aus“, nicht über Grün (A-31) | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) (Darstellung Taste) in [HM-28](../Module/HM-28_Temperaturzonen-Zeile.md) | T32 „Heizung“, Bild Spalte Heizung |
 | Meldung (je Zone, 12×) | Zustandstaste Überwachung mit Schlüsselsymbol | „Überwacht jede Heizung auf Funktion und Sollwertabweichung. Die Überwachung ist separat deaktivierbar.“ Ein: Symbol Haken und Wort „Ein“; Aus: `Icon.State.Off` und Wort „Aus“ | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) in [HM-28](../Module/HM-28_Temperaturzonen-Zeile.md) | T32 „Meldung“, Bild Spalte Meldung |
-| Soll (je Zone, 12×) | Eingabefeld Zahl, Einheit °C (Bild: „°“), Schlüsselsymbol | „Vorgabe der Zieltemperatur der entsprechenden Heizung.“ Antippen öffnet das Eingabe-Pop-up (A-20); Beispielwerte 150 °C (Zonen 1 bis 8), 170 °C (Zonen 9 bis 12) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | T32 „Soll“, Bild Spalte Soll |
-| Ist (je Zone, 12×) | Anzeigefeld, Einheit °C, ohne Schlüssel | „Aktuell Temperatur der der entsprechenden Heizung.“ (Handbuchschreibweise, sinngemäß „Aktuelle Temperatur der Heizung“); nur Anzeige, Beispiel 0 °C | [HM-11](../Module/HM-11_Anzeigefeld.md) | T32 „Ist“, Bild Spalte Ist |
+| Soll (je Zone, 12×) | Eingabefeld Zahl, Einheit „°“ wie im Bild, Anzeige „°C“ als Annahme S22-1 (OP-29), Schlüsselsymbol | „Vorgabe der Zieltemperatur der entsprechenden Heizung.“ Antippen öffnet das Eingabe-Pop-up (A-20); Beispielwerte 150 ° (Zonen 1 bis 8), 170 ° (Zonen 9 bis 12), Anzeige „°C“ nach S22-1 | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | T32 „Soll“, Bild Spalte Soll |
+| Ist (je Zone, 12×) | Anzeigefeld, Einheit „°“ wie im Bild (°C nur Annahme S22-1, OP-29), ohne Schlüssel | „Aktuell Temperatur der der entsprechenden Heizung.“ (Handbuchschreibweise, sinngemäß „Aktuelle Temperatur der Heizung“); nur Anzeige, Beispiel 0 °C | [HM-11](../Module/HM-11_Anzeigefeld.md) | T32 „Ist“, Bild Spalte Ist |
 | State (je Zone, 12×) | Status-LED mit Symbol und Wort | „Zeigt den Status der Heizung an.“ Aus (Handbuch: grau) = leerer Kreis, Wort „Aus“; Zieltemperatur erreicht (grün) = Haken, Wort „OK“; nicht bereit oder Fehler (rot) = Kreuz, Wort „Fehler“ | [HM-09](../Module/HM-09_Status-LED.md) | T32 „State“, Bild Spalte State |
 | Out (je Zone, 12×) | Status-LED mit Symbol und Wort | „Zustand des Ausgangs.“ Ausgang an = Zustand An (Haken, Wort „Ein“), aus = leerer Kreis, Wort „Aus“ (Farbbedeutung im Handbuch nicht beschrieben, Annahme H-3) | [HM-09](../Module/HM-09_Status-LED.md) | T32 „Out“, Bild Spalte Out |
 | Zonenzeile (12×) | Zeilenkomposition | fasst Name, Heizung, Meldung, Soll, Ist, State, Out zu einer Zeile zusammen; Zeilenhöhe `Size.Touch.Default` | [HM-28](../Module/HM-28_Temperaturzonen-Zeile.md) (`RowKind = Heating`) | T32 „Zeilenbeschriftung (nur im Bild)“, Aufbau |
@@ -88,18 +88,18 @@ Kein Modul fehlt.
 - **Fehlerfälle:** keine Verbindung zur Steuerung: Werte zeigen „---“ (HM-09 Unbekannt, HM-11 ungültig), Bedienung deaktiviert (gestrichelte Kontur), Grund per Tippen in der Meldezeile (A-28). Meldetexte siehe Meldezeile.
 - **Pop-ups:** nur das Eingabe-Pop-up; Tiefe 1.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HS-22-P01 | Spalten (RS-22-P01) | Tabelle mit den Spalten Heizung, Meldung, Soll, Ist, State, Out in dieser Reihenfolge; Zonenname links davor | offen |
 | HS-22-P02 | Zeilen und Zonennamen (RS-22-P02) | 12 Zeilen mit genau den zwölf Zonennamen aus dem Abschnitt Elemente, in der Reihenfolge 6E1 Zone 1/2/3, 6E2, 6E3, 6E4 (3 Zeilen), 20E1 bis 20E4 | offen |
 | HS-22-P03 | Heizung je Zone (RS-22-P03) | Jede Zone lässt sich einzeln ein- und ausschalten; Ein ist an Symbol und Wort „Ein“ erkennbar, nicht nur an der Farbe | offen |
 | HS-22-P04 | Meldung je Zone (RS-22-P04) | Überwachung je Zone separat aus- und einschaltbar; Zustand mit Symbol und Wort | offen |
-| HS-22-P05 | Soll (RS-22-P05) | Zieltemperatur je Zone über das Eingabe-Pop-up einstellbar, Einheit im Feld; Beispielwerte 150 °C (Zonen 1 bis 8) und 170 °C (Zonen 9 bis 12) | offen |
+| HS-22-P05 | Soll (RS-22-P05) | Zieltemperatur je Zone über das Eingabe-Pop-up einstellbar, Einheit im Feld; Beispielwerte 150 ° (Zonen 1 bis 8) und 170 ° (Zonen 9 bis 12) (Einheit „°C“ nur Annahme S22-1) | offen |
 | HS-22-P06 | Ist (RS-22-P06) | Aktuelle Temperatur je Zone als Anzeige mit Einheit, nicht editierbar, Antippen ohne Wirkung | offen |
 | HS-22-P07 | State (RS-22-P07) | Aus = leerer Kreis und „Aus“; Zieltemperatur erreicht = Haken und „OK“; nicht bereit/Fehler = Kreuz und „Fehler“; jeweils zusätzlich zur Farbe | offen |
 | HS-22-P08 | Out (RS-22-P08) | Zustand des Ausgangs je Zone mit Symbol und Wort, nicht bedienbar | offen |
-| HS-22-P09 | Hinweis Verbrennungsgefahr (RS-22-P09) | Wortlaut „Heizungen bleiben nach dem Abschalten noch eine Zeit lang heiß. Achtung: Verbrennungsgefahr!“ mit Warnsymbol und Wort „Warnung“ sichtbar, scrollt nicht weg, auch bei allen Zonen „Aus“ | offen |
+| HS-22-P09 | Hinweis Verbrennungsgefahr (RS-22-P09) | Wortlaut „Hinweis: Heizungen bleiben nach dem Abschalten noch eine Zeit lang heiß. Achtung: Verbrennungsgefahr!“ mit Warnsymbol und Wort „Warnung“ sichtbar, scrollt nicht weg, auch bei allen Zonen „Aus“ | offen |
 | HS-22-P10 | Schlüsselsymbole (RS-22-P10) | Heizung, Meldung und Soll tragen das Schlüsselsymbol; Ist, State, Out nicht | offen |
 | HS-22-P11 | Zugang (RS-22-P11) | Erreichbar über Einstellung › Heizungen (HS-04); Info „Aktivierung über Produktion“ sichtbar; Brotkrümel „Einstellung › Heizungen“ | offen |
 | HS-22-P12 | Rahmen und Fußleiste (RS-22-P12) | Produktion, Einstellungen, Zurück liegen in der Seitenleiste; Funktionsleiste ist leer und sichtbar; kein Schloss-Symbol unten | offen |
@@ -117,7 +117,13 @@ Kein Modul fehlt.
 - OP-26: Bedeutung von Schloss, Wirbel-Symbol und „Service“-Schriftzug; hier Anmeldestatus bzw. Betriebsart-Anzeige.
 - OP-27: Farbbedeutung der Status-LEDs und der roten Schrift der Sollwerte nicht belegt; Farbe nur mit Symbol und Wort.
 - OP-28: Wertebereich und Standardwert der Solltemperatur fehlen; Dummy-Grenzen.
+- OP-29: Einheit im Bild nur „°“; „°C“ ist Annahme S22-1.
 - OP-39: Zustände „Heizung aus“ und „Meldung deaktiviert“ sind nicht abgebildet; Darstellung nach Designsystem.
 - OP-41: Anzahl und Namen der Zonen sind geräteabhängig; 12 Zonen aus dem Bild.
 - OP-52: Kombination „Ein“ bei Ist 0 ° und State grau; Deutung „Aktivierung über HS-01 fehlt“ nicht belegt.
-- Annahmen dieser Seite (Nummerierung für den Verwalter): H-1 Einheit der Temperaturen „°C“ (das Bild zeigt nur „°“, HM-28 führt °C); H-2 Bildlauftasten ergänzt; H-3 Out-Farbbedeutung und Deutung „Ein = Zone angewählt“ wie oben.
+
+### Annahmen dieser Seite
+- S22-1: Temperatureinheit „°C“ (Bild und Handbuch zeigen nur „°“, HM-28 führt °C); ausdrücklich Annahme, Klärung OP-29.
+- S22-2: Bildlauftasten (`Icon.Scroll.Up`/`.Down`, HM-07) und feste Bildlaufspalte ergänzt, weil 12 Zeilen nicht in den Inhaltsbereich passen; Hinweiszeile und Tabellenkopf bleiben fest.
+- S22-3: „Ein“ bedeutet „Zone angewählt“; ob geheizt wird, entscheidet die Aktivierung in HS-01 (erklärt Ist 0, State grau, OP-52). State-Wörter „Aus“, „OK“, „Fehler“; Out zeigt „Ein“/„Aus“ (Farbbedeutung nicht belegt).
+- S22-4: Der Info-Hinweis „Aktivierung über Produktion“ (Handbuchwortlaut aus Zweck) ist als zweites Hinweis-Textfeld ergänzt.

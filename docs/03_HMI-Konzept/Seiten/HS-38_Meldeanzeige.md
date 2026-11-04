@@ -18,8 +18,8 @@ Inhaltsbereich (12 Spalten, 1 Zeile 1*)
 +----------------------------------------------------------------+---+
 | Kopf:  Nummer (1*)  |  Klasse (1*) |  Meldung (8*)             | R |
 | 090   [Hinweis]       Palettierung nicht bereit                | o |
-| 098   [Hinweis]       Grundstellungsfahrt Hochstoss            | l |
-| 100   [Stoerung]      Steuerung ein Schalter ist ausgeschaltet | l |
+| 098   [Hinweis]       Grundstellungsfahrt Hochstoß            | l |
+| 100   [Störung]      Steuerung ein Schalter ist ausgeschaltet | l |
 | ...                                                            | b |
 |                                                                | a |
 |                                                                | l |
@@ -32,7 +32,7 @@ Funktionsleiste unten:  [ Archiv ]
 - **Rollbalken:** am rechten Listenrand, Trefferbereich mindestens `Size.Touch.Min` breit; Wischen auf der Liste ist zusätzlich möglich.
 - **Funktionsleiste unten:** links die Taste „Archiv“ (Archiv-Symbol mit Ausrufezeichen), sonst leer.
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 Spalte „Herkunft“ = Rückverfolgung zu [RS-38](../../02_Referenz-Analyse/Seiten/RS-38_Meldeanzeige.md).
 
@@ -49,12 +49,12 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-38](../../02_Referenz-Analyse/Sei
 | Kopfzeile, Schloss, Tasten Produktion/Einstellungen/Zurück | Rahmen | Wie [HS-35](HS-35_Systemeinstellungen.md): Uhrzeit und Datum in der Kopfzeile; Produktion, Einstellungen, Zurück und Anmeldestatus in der Seitenleiste. Der Titel „Meldungsanzeige“ des Bildes gilt nicht; Seitenname laut Kapitel „Meldeanzeige“, Brotkrümel „Meldungen“ (OP-33). | [HM-02](../Module/HM-02_Kopfzeile.md), [HM-01](../Module/HM-01_Seitenleiste.md) | „nur im Bild“, Zeile 3 |
 | Meldezeile (unten im Bild, rot, „\*450\* Palettierung nicht bereit“) | Rahmen | Im neuen Rahmen in der Kopfzeile; zeigt dieselbe Meldung mit Klassenwort und Symbol. | [HM-03](../Module/HM-03_Meldezeile.md) | Bild RS-38_01 |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-25](../Module/HM-25_Meldungsliste.md) (Listenart Live), [HM-07](../Module/HM-07_Aktionstaste.md) („Archiv“)
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Öffnen.** Meldezeile (jede Seite, außer HS-24) oder Seitenleiste „Meldungen“; die Seite wird in den Verlauf gelegt, „Zurück“ führt zur Ausgangsseite. Das Symbol „Meldungen“ in der Seitenleiste ist hervorgehoben (Balken und Zähler-Punkt, nicht nur Farbe).
 - **Keine Berechtigung nötig.** Die Seite trägt keine Schlüsselsymbole; Quittieren ist in der Referenz nicht beschrieben, es gibt keine Quittiertaste (OP-27, Annahme: Meldungen verschwinden mit der Ursache).
@@ -65,7 +65,7 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-38](../../02_Referenz-Analyse/Sei
 - **Pop-ups.** Keine; ist ein Pop-up einer anderen Seite offen, wird die Anforderung zurückgestellt (Navigation.md 4.2 Punkt 7).
 - **Archiv.** Die Taste „Archiv“ wechselt zu HS-37; „Zurück“ dort führt hierher.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -83,6 +83,14 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-38](../../02_Referenz-Analyse/Sei
 | HS-38-P12 | Touch-Ziele | Listenzeilen mindestens `Size.Touch.Min` hoch, Rollbalken mit Trefferbereich mindestens `Size.Touch.Min`, Taste „Archiv“ mindestens `Size.Touch.Default` hoch und `Size.FunctionButton.MinWidth` breit | offen |
 | HS-38-P13 | Leerer Zustand | Ohne Meldungen erscheint „Keine Meldungen“ | offen |
 | HS-38-P14 | Tokens | Keine Hex- und Pixelwerte im Seitenaufbau; nur Tokens des Designsystems | offen |
+
+## Annahmen dieser Seite
+
+- S38-1: Abweichung vom Handbuch: „ein weiterer Klick“ auf die Meldezeile schließt die Anzeige nicht, die Meldezeile ist auf HS-38 wirkungslos (Navigation 3.2); geschlossen wird über „Zurück“. Lokale Annahme dieser Seite.
+- S38-2: Die Liste ist aufsteigend nach Nummer sortiert (Bild); HM-25 erhält dafür einen Parameter Sortierrichtung.
+- S38-3: Zusätzliche Klassenspalte mit Symbol und Wort (A-49) als zweiter Kanal.
+- S38-4: Klassenwörter nach HM-25: „Betrieb“, „Hinweis“, „Störung“. HM-03 verwendet „Warnung“ und „Alarm“ für dieselben Klassen; die Inkonsistenz ist gemeldet.
+- S38-5: Taste „Archiv“ führt zu HS-37; Hinweis „Neue Meldung“ am Listenanfang bei Live-Ergänzung ist eine Annahme.
 
 ## Offene Punkte
 

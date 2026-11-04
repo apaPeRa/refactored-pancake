@@ -34,7 +34,7 @@ Funktionsleiste unten:  [ Wago ]
 - **Rechts (Spalten 9 bis 12):** oben das Anzeigefeld (Höhe `Size.Field.Height`), darunter die drei Aktionstasten untereinander (je `Size.Touch.Large` hoch, Abstand `Size.Touch.Gap`), Rest frei.
 - **Funktionsleiste unten:** links die Taste „Wago“; keine weiteren Tasten.
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 Spalte „Herkunft“ = Rückverfolgung zu [RS-36](../../02_Referenz-Analyse/Seiten/RS-36_Service.md).
 
@@ -52,12 +52,12 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-36](../../02_Referenz-Analyse/Sei
 | Meldezeile, Tasten Produktion/Einstellungen/Zurück, Schloss | Rahmen | Wie [HS-35](HS-35_Systemeinstellungen.md): Meldezeile in der Kopfzeile, Navigationstasten und Anmeldestatus in der Seitenleiste. | [HM-03](../Module/HM-03_Meldezeile.md), [HM-01](../Module/HM-01_Seitenleiste.md) | RS-36 „nur im Bild“, Zeile 6 |
 | Datei-Pop-up und Ergebnis-Pop-up (Ergänzung) | Pop-up | Dateiauswahl für Import und Export, Fortschritt, Erfolg und Fehler; im Handbuch nicht beschrieben. | [HM-14](../Module/HM-14_Popup-Rahmen.md) | Ergänzung zu „Pop-ups … nicht beschrieben“ |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-07](../Module/HM-07_Aktionstaste.md), [HM-11](../Module/HM-11_Anzeigefeld.md), [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md), [HM-25](../Module/HM-25_Meldungsliste.md)
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Berechtigung.** Der Seitenzugang ist geschützt (Mindestrolle Technik, A-41): Die Kachel „Service“ in HS-35 trägt `Icon.Key` bzw. `Icon.Lock`; ohne Rolle öffnet das Benutzer-Pop-up. Auf der Seite selbst tragen die Tasten kein Schlüsselsymbol (wie in der Referenz). Bei Abmeldung navigiert der Dienst nach HS-35 und schließt offene Pop-ups ohne Übernehmen.
 - **Listenauswahl.** Eine ausgewählte Zeile ist durch Rahmen (`Border.Thick`, `Brush.Border.Focus`) und Haken markiert. Die Referenz beschreibt nur eine markierte Zeile; „Liste exportieren“ verlangt „ausgewählte Variablen“, also eine Mehrfachauswahl (Annahme, Modulerweiterung nötig). Antippen einer markierten Zeile hebt die Auswahl auf.
@@ -66,10 +66,10 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-36](../../02_Referenz-Analyse/Sei
 - **Exportieren.** „Alle exportieren“ und „Liste exportieren“ öffnen die Dateiauswahl (Dateiformat, Ort offen, OP-49) und melden Erfolg oder Fehler im Ergebnis-Pop-up. Während eines laufenden Vorgangs sind die drei Tasten deaktiviert (gestrichelte Kontur, Fortschrittstext).
 - **Ohne Auswahl.** „Liste exportieren“ ist deaktiviert (gestrichelte Kontur); Tippen nennt den Grund in der Meldezeile.
 - **Wago.** Aktionstaste ohne Navigation; Funktion offen.
-- **Pop-ups.** Höchstens 2 gestapelt (Eingabe-Pop-up über Seite; Datei- und Bestätigungs-Pop-up nacheinander, nicht gestapelt); Seitenleiste und Inhalt gesperrt; Schließen nur über „Abbrechen“ oder Kreuz (Navigation.md 4.2).
+- **Pop-ups.** Es ist immer nur ein Pop-up offen: Dateiauswahl, Bestätigung und Ergebnis öffnen nacheinander, nicht gestapelt; das Eingabe-Pop-up für das Filterfeld liegt über der Seite. Seitenleiste und Inhalt gesperrt; Schließen nur über „Abbrechen“ oder Kreuz (Navigation.md 4.2).
 - **Zurück.** Seitenleiste „Zurück“ oder Brotkrümel-Segment „Systemeinstellungen“ führt nach HS-35.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -89,6 +89,15 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-36](../../02_Referenz-Analyse/Sei
 | HS-36-P14 | Zweiter Kanal | Servicemodus über Symbol und Wort, Auswahl über Rahmen und Haken, deaktivierte Tasten über gestrichelte Kontur; kein Zustand nur über Farbe, keine rote Schrift für Werte | offen |
 | HS-36-P15 | Tokens | Keine Hex- und Pixelwerte im Seitenaufbau; nur Tokens des Designsystems | offen |
 
+## Annahmen dieser Seite
+
+- S36-1: Das Filterfeld filtert die Liste nach Namensteil (OP-40); die Zahl „859,81“ zeigt den Wert der markierten Variable, neutral statt rot.
+- S36-2: Layout 8 : 4; die drei Tasten tragen kein Schlüsselsymbol, weil der Seitenzugang geschützt ist (A-41).
+- S36-3: Vor „Importieren“ erscheint ein Bestätigungs-Pop-up, Dateiauswahl und Ergebnis laufen über Pop-ups (Eintrag in Navigation 4.1 durch den Querschnitts-Agenten).
+- S36-4: „Liste exportieren“ ist ohne Auswahl deaktiviert; während eines Vorgangs sind die drei Tasten gesperrt (Tastensperre).
+- S36-5: „Liste exportieren“ erfordert Mehrfachauswahl; HM-25 (Listenart Selection) kennt nur eine Einzelauswahl, Erweiterung nötig.
+- S36-6: Betriebsart „Service“ mit `Icon.Mode.Service` in HM-02 (A-48).
+
 ## Offene Punkte
 
 - OP-25: Rollenstufe (Dummy: Technik).
@@ -97,4 +106,5 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-36](../../02_Referenz-Analyse/Sei
 - OP-34: Schreibweise „Alle exportieren“ (Handbuch) gegenüber „Alle Exportieren“ (Bild).
 - OP-40: Funktion des Filterfelds und Listenverhalten (Mehrfachauswahl).
 - OP-41: Zahl der Variablen konfigurationsabhängig.
+- OP-31: Bestätigungs-Pop-up vor „Importieren“, Datei- und Ergebnis-Pop-up sowie die Sperre der Tasten während eines Vorgangs sind nicht beschrieben (Ergänzungen S36-3, S36-4).
 - OP-49: Dateiformat, Ziel, Dateiauswahl, „Wago“, Bedeutung „500 von 111427“.

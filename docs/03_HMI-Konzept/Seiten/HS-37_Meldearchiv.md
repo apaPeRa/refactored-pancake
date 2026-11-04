@@ -18,7 +18,7 @@ Inhaltsbereich (12 Spalten)
 +---------------------------------------------------------+----------+
 | Spalten 1-11: Meldungsliste                             | Spalte 12|
 | Zeit | Ereignis | Beschreibung                          | [ ^^ ]   |
-| 05.05.2025 10:13:55 | KO | [Stoerung] 120: Stoerung ... | [ ^  ]   |
+| 05.05.2025 10:13:55 | KO | [Störung] 120: Störung ... | [ ^  ]   |
 | ...                                                     | [ v  ]   |
 | ... (Zeilen mit Symbol + Klassenwort + Flaechenton)     | [ vv ]   |
 +---------------------------------------------------------+----------+
@@ -33,7 +33,7 @@ Funktionsleiste unten: leer
 - **Tastenreihe (Zeile 2):** vier Aktionstasten gleich breit (je 3 Spalten) in der Reihenfolge der Referenz: „Export“, „Liste leeren“, „Filter“, „Alle anzeigen“. Die Funktionsleiste bleibt leer (Navigation.md 3.3: „Ohne eigene Tasten“); die Aktionen liegen wie im Bild direkt unter der Liste.
 - Ist ein Filter aktiv, erscheint über der Liste (im Kopf der Listenzeile) der Hinweis „Filter aktiv“ mit `Icon.Status.Info` (Teil von [HM-25](../Module/HM-25_Meldungsliste.md)).
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 Spalte „Herkunft“ = Rückverfolgung zu [RS-37](../../02_Referenz-Analyse/Seiten/RS-37_Meldearchiv.md).
 
@@ -42,19 +42,19 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-37](../../02_Referenz-Analyse/Sei
 | Export | Aktionstaste, Schlüssel (`Icon.Key`) | Exportiert die aktuelle Meldeliste zur externen Auswertung (Format und Ziel offen, OP-49); bei aktivem Filter die gefilterte Liste (Annahme: „aktuelle Meldeliste“). | [HM-07](../Module/HM-07_Aktionstaste.md) | RS-37 Tabelle 47, Zeile 1 |
 | Liste leeren | Aktionstaste, Schlüssel, zerstörerisch | Löscht alle gespeicherten Meldungen aus dem Archiv. Vorher Bestätigungs-Pop-up (A-40, OP-31). | [HM-07](../Module/HM-07_Aktionstaste.md); Bestätigung in [HM-14](../Module/HM-14_Popup-Rahmen.md) | Zeile 2 |
 | Filter | Aktionstaste, ohne Schlüssel | Ermöglicht die gezielte Suche nach bestimmten Meldungen anhand von Kriterien wie Zeit oder Meldenummer. Öffnet direkt den Eingabedialog (Filter-Variante, ohne Eingabefeld, nicht gestapelt). | [HM-07](../Module/HM-07_Aktionstaste.md); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) in [HM-14](../Module/HM-14_Popup-Rahmen.md) | Zeile 3 |
-| Alle anzeigen | Aktionstaste (im Bild „Alle Anzeigen“), ohne Schlüssel | Hebt Filtereinstellungen auf und zeigt alle verfügbaren Meldungen an; ohne aktiven Filter deaktiviert. | [HM-07](../Module/HM-07_Aktionstaste.md) | Zeile 4 |
+| Alle anzeigen | Aktionstaste (im Bild „Alle Anzeigen“), ohne Schlüssel | Hebt Filtereinstellungen auf und zeigt alle verfügbaren Meldungen an; ohne aktiven Filter deaktiviert (Annahme S37-4). | [HM-07](../Module/HM-07_Aktionstaste.md) | Zeile 4 |
 | Meldungstabelle (Zeit, Ereignis, Beschreibung) | Liste, Zeilen nach Klasse gekennzeichnet | Zeigt die Meldungen absteigend nach Zeit; Zeitformat „TT.MM.JJJJ hh:mm:ss“; Beschreibung beginnt mit der Meldungsnummer („NNN: Text“, die Sternchen der Referenz entfallen wie in der Meldezeile). Rot = Störung, Gelb = Hinweis/Status, Grün = Betriebsstatus, jeweils mit Symbol und Klassenwort. | [HM-25](../Module/HM-25_Meldungsliste.md) (Listenart Archive) | RS-37 „nur im Bild“, Zeile 1 |
 | Scrolltasten (4 Stück) | Tasten | Blättern in der Liste: Anfang, Seite hoch, Seite runter, Ende (aus Symbolen abgeleitet); Wischen ist zusätzlich möglich. | [HM-25](../Module/HM-25_Meldungsliste.md) (`Icon.Scroll.Up`/`Icon.Scroll.Down`) | „nur im Bild“, Zeile 2 |
 | Spalte „Ereignis“ (Wert „KO“) | Listenspalte | Nicht beschrieben (vermutlich „kommend“); Wert wird unverändert angezeigt (OP-49). | [HM-25](../Module/HM-25_Meldungsliste.md) | „nur im Bild“, Zeile 3 |
 | Meldezeile, Kopfzeile, Funktionsleiste unten | Rahmen | Wie [HS-35](HS-35_Systemeinstellungen.md); Funktionsleiste ohne Tasten; Produktion, Einstellungen, Zurück und Anmeldestatus in der Seitenleiste. | [HM-03](../Module/HM-03_Meldezeile.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-01](../Module/HM-01_Seitenleiste.md) | „nur im Bild“, Zeile 4 |
 | Bestätigungs-Pop-up „Liste leeren“ (Ergänzung) | Pop-up | Warntext „Alle gespeicherten Meldungen werden gelöscht“, „Ja“ und „Abbrechen“. | [HM-14](../Module/HM-14_Popup-Rahmen.md) | Ergänzung zu RS-37 Zustände („Sicherheitsabfrage nicht beschrieben“) |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-25](../Module/HM-25_Meldungsliste.md), [HM-07](../Module/HM-07_Aktionstaste.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md)
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Berechtigung.** „Export“ und „Liste leeren“ tragen `Icon.Key`, „Filter“ und „Alle anzeigen“ nicht (RS-37). Rollenstufe offen (OP-25, Dummy). Ohne Rolle: `Icon.Lock`, Antippen öffnet das Benutzer-Pop-up; nach Anmeldung läuft die Aktion weiter.
 - **Filter.** „Filter“ öffnet einen Eingabedialog für die Kriterien Meldenummer und Zeit (Format TT.MM.JJJJ hh:mm:ss); „Übernehmen“ filtert die Liste, „Abbrechen“ verwirft. Aktiver Filter: Hinweis „Filter aktiv“ mit `Icon.Status.Info` und Taste „Alle anzeigen“ aktiv. Treffer leer: Text „Keine Meldungen“.
@@ -67,7 +67,7 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-37](../../02_Referenz-Analyse/Sei
 - **Pop-ups.** Nur eines gleichzeitig (Filter, Bestätigung, Ergebnis, Benutzer); Seitenleiste und Inhalt gesperrt, Schließen nur über „Abbrechen“/„Schließen“ (Navigation.md 4.2).
 - **Zurück.** Seitenleiste „Zurück“ folgt dem Verlauf (HS-35 oder HS-38); Brotkrümel-Segment „Systemeinstellungen“ führt nach HS-35, „Einstellung“ nach HS-04.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -86,6 +86,14 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-37](../../02_Referenz-Analyse/Sei
 | HS-37-P13 | Touch-Ziele | Tasten der Tastenreihe mindestens `Size.Touch.Large` hoch, Scrolltasten mindestens `Size.Touch.Default`, Listenzeilen mindestens `Size.Touch.Min`, Abstand `Size.Touch.Gap` | offen |
 | HS-37-P14 | Zweiter Kanal | Meldungsklassen mit `Icon.Status.*` und Wort, Filterhinweis mit Symbol und Text, Randzustand der Scrolltasten gestrichelt; kein Zustand nur über Farbe | offen |
 | HS-37-P15 | Tokens | Keine Hex- und Pixelwerte im Seitenaufbau; nur Tokens des Designsystems | offen |
+
+## Annahmen dieser Seite
+
+- S37-1: Die vier Aktionstasten liegen im Inhaltsbereich unter der Liste, die Funktionsleiste bleibt leer (Navigation 3.3).
+- S37-2: In der Beschreibung steht „NNN: Text“ statt der Sternchen der Referenz (wie in der Meldezeile).
+- S37-3: „Export“ nimmt bei aktivem Filter die gefilterte Liste; „Liste leeren“ hat ein Bestätigungs-Pop-up (A-40).
+- S37-4: „Alle anzeigen“ ist ohne aktiven Filter deaktiviert (nicht in der Referenz).
+- S37-5: Der Filterdialog ist eine Variante von HM-13 mit Meldenummer und Zeit in einem Dialog (Erweiterung HM-13; Eintrag in Navigation 4.1 durch den Querschnitts-Agenten).
 
 ## Offene Punkte
 

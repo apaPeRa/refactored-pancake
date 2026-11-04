@@ -28,17 +28,19 @@ Inhaltsbereich (3 Spalten x 3 Zeilen, je 1*)
 Funktionsleiste unten:  [ Lampentest ]
 ```
 
+**Begründung des Layouts:** Die Kacheln liegen direkt im Inhaltsbereich und nicht in einem grauen Gruppenbereich ([HM-15](../Module/HM-15_Gruppenbereich.md)) wie in DS-02, weil die Seite nur dieses eine Raster enthält; ein Rahmen um das einzige Element brächte keine Gliederung und kostete Platz.
+
 Gruppierung nach Wirkung (ohne zusätzliche Rahmen, nur über die Zeilenreihenfolge der Referenz): Zeile 1 und Zeile 2 enthalten Aktionen am System, Zeile 3 Navigationsziele. Die Navigationskacheln tragen als zweiten Kanal das Symbol `Icon.Chevron` (führt zu einer Seite), die Aktionskacheln nicht.
 
 **Untere Funktionsleiste:** links eine Taste „Lampentest“; sonst leer. Die Rahmentasten „Produktion“, „Einstellungen“, „Zurück“ und das Schloss der Referenz liegen in der Seitenleiste ([HM-01](../Module/HM-01_Seitenleiste.md), A-35).
 
-## Elemente
+## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
 Spalte „Herkunft“ = Rückverfolgung zu [RS-35](../../02_Referenz-Analyse/Seiten/RS-35_Systemeinstellungen.md) (Tabelle 45, Zeilen in der Reihenfolge der RS-Datei; „Rahmen“ = Rahmenelementtabelle der RS).
 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
-| Bedienung beenden | Kachel, Aktion, Schlüssel (`Icon.Key`), Warnaktion (`Icon.Status.Warning`) | Schließt die Bedienoberfläche. Die Maschine produziert weiter, Einstellungen können nicht mehr geändert werden, Start und Stopp der Anlage bleiben möglich. Vorher Bestätigungs-Pop-up (A-40). | [HM-16](../Module/HM-16_Kachel-Navigation.md); Bestätigung in [HM-14](../Module/HM-14_Popup-Rahmen.md) | RS-35 Tabelle 45, Zeile 1 |
+| Bedienung beenden | Kachel, Aktion, Schlüssel (`Icon.Key`), Warnaktion (`Icon.Status.Warning`) | Schließt die Bedienoberfläche. Die Maschine produziert weiter, Einstellungen können jedoch nicht mehr geändert werden. Start und Stopp der Anlage bleiben möglich. Vorher Bestätigungs-Pop-up (A-40). | [HM-16](../Module/HM-16_Kachel-Navigation.md); Bestätigung in [HM-14](../Module/HM-14_Popup-Rahmen.md) | RS-35 Tabelle 45, Zeile 1 |
 | Bedienung minimieren | Kachel, Aktion, Schlüssel | Minimiert die HMI-Anzeige und gibt den Windows-Desktop frei. | [HM-16](../Module/HM-16_Kachel-Navigation.md) | Zeile 2 |
 | Taskmanager | Kachel, Aktion, Schlüssel | Öffnet den Windows-Taskmanager. | [HM-16](../Module/HM-16_Kachel-Navigation.md) | Zeile 3 |
 | Steuerung neu starten | Kachel, Aktion, Schlüssel, Warnaktion | Startet die Steuerung neu. Achtung: Die Anlage wird dabei gestoppt. Vorher Bestätigungs-Pop-up mit diesem Warntext. | [HM-16](../Module/HM-16_Kachel-Navigation.md); Bestätigung in [HM-14](../Module/HM-14_Popup-Rahmen.md) | Zeile 4 |
@@ -54,12 +56,12 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-35](../../02_Referenz-Analyse/Sei
 | Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigation | Wandern in die Seitenleiste: Home, Einstellungen (HS-04), Zurück im Verlauf. | [HM-01](../Module/HM-01_Seitenleiste.md) | Rahmen: Tasten Produktion/Einstellungen/Zurück |
 | Bestätigungs-Pop-up (Ergänzung) | Pop-up, Bestätigung | Zeigt Aktionsname, Warnsymbol, Warntext und die Tasten „Ja“ und „Abbrechen“; „Ja“ führt die Aktion aus (A-40). | [HM-14](../Module/HM-14_Popup-Rahmen.md) (Bestätigungsvariante) | Ergänzung zu RS-35 Zustände (Warnhinweise) |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-16](../Module/HM-16_Kachel-Navigation.md) (9 Kacheln, 1 davon leer), [HM-07](../Module/HM-07_Aktionstaste.md) (Lampentest), [HM-14](../Module/HM-14_Popup-Rahmen.md) (Bestätigungs-Pop-up)
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Berechtigungen.** Sechs Kacheln tragen `Icon.Key` oben rechts (Bedienung beenden, Steuerung neu starten, Steuerung ausschalten, Taskmanager, Bedienung minimieren, Service); „Meldearchiv“ und „System- und Antriebsinfo“ tragen keines. Die Rollenstufe je Kachel ist nicht beschrieben (OP-25, Dummy). Ohne ausreichende Rolle zeigt die Kachel `Icon.Lock`; Antippen öffnet das Benutzer-Pop-up, bei Erfolg läuft die ausgelöste Aktion weiter (Navigation.md 4.1, 5.4). „Service“ ist zusätzlich seitengeschützt (Mindestrolle Technik, Seitenregister).
 - **Bestätigung.** „Bedienung beenden“, „Steuerung neu starten“ und „Steuerung ausschalten“ öffnen ein Bestätigungs-Pop-up (Titel mit `Icon.Status.Warning`, Warntext der Referenz, „Ja“ und „Abbrechen“). Ein Antippen außerhalb schließt nicht; „Abbrechen“ führt zurück zur Seite ohne Wirkung. Die Referenz beschreibt keine Sicherheitsabfrage; sie ist Ergänzung (A-40, OP-31).
@@ -71,7 +73,7 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-35](../../02_Referenz-Analyse/Sei
 - **Leere Kachel.** Antippen nennt in der Meldezeile als Info-Text „Reserviert“ (A-28); keine Aktion.
 - **Fehlerfälle.** Schlägt eine Systemaktion fehl (z. B. Taskmanager nicht startbar), erscheint ein Fehlertext in der Meldezeile mit `Icon.Status.Error`; die Referenz beschreibt keine Fehlerfälle (Annahme, Dummy).
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -94,6 +96,15 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-35](../../02_Referenz-Analyse/Sei
 | HS-35-P17 | Zweiter Kanal | Warnaktionen tragen `Icon.Status.Warning` und Text, Navigationskacheln `Icon.Chevron`, reservierte Kachel gestrichelte Kontur und Text; kein Zustand nur über Farbe | offen |
 | HS-35-P18 | Tokens | Keine Hex- und Pixelwerte im Seitenaufbau; nur `Brush.*`, `Size.*`, `Space.*` des Designsystems | offen |
 | HS-35-P19 | Lampentest | Taste „Lampentest“ links in der Funktionsleiste, ohne Navigation; Wirkung als Dummy | offen |
+
+## Annahmen dieser Seite
+
+- S35-1: Der leere Rasterplatz bleibt an seiner Stelle als deaktivierte Kachel „Reserviert“ (A-29).
+- S35-2: Bestätigungs-Pop-up nur bei „Bedienung beenden“, „Steuerung neu starten“, „Steuerung ausschalten“ (A-40); Rollenstufe der Schlüssel-Kacheln ist Dummy (OP-25).
+- S35-3: „Lampentest“ ist eine einfache Aktionstaste (Tippen), Wirkung Dummy (OP-49).
+- S35-4: Kachelzeilen teilen den Inhaltsbereich zu gleichen Teilen, `TileSize` Large gilt als Mindesthöhe (Wunsch an HM-16).
+- S35-5: Navigationskacheln tragen `Icon.Chevron` als zweiten Kanal; HM-16 kennt dieses Symbol nicht (Wunsch: Parameter `ShowNavigationIndicator` in HM-16).
+- S35-6: Bei Verbindungsverlust nach Neustart oder Ausschalten zeigt die Meldezeile den Hinweis; Fehlertext einer fehlgeschlagenen Aktion ebenfalls dort (Dummy).
 
 ## Offene Punkte
 
