@@ -21,9 +21,9 @@ Bild [RS-33_01.png](../Medien/RS-33_01.png) (blauer Hintergrund):
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| EA-Schaltflächen (6: Eingänge/Ausgänge S1, S300, S500) | Tasten im Raster | Handbuch (T43): „Über die Schaltflächen können Ein- und Ausgänge gezielt angezeigt und überprüft werden.“ | Modulkandidat: Auswahl-Kachelraster |
-| Taste „Suchen“ | Taste (untere Leiste, links) | Handbuch (T43): „Öffnet eine Suchfunktion, über die Betriebsmittel anhand ihrer Betriebsmittelkennzeichnung gefunden werden können.“ | Modulkandidat: Suchen-Taste |
-| Kopfzeile, Meldezeile, Untere Funktionsleiste | Rahmen | wie RS-30 | Modulkandidat: Seitenkopf; Meldezeile; Untere Funktionsleiste |
+| EA-Schaltflächen (6: Eingänge/Ausgänge S1, S300, S500) | Tasten im Raster | Handbuch (T43): „Über die Schaltflächen können Ein- und Ausgänge gezielt angezeigt und überprüft werden.“ | [RM-14](../Module/RM-14_Kachel-Navigation.md) |
+| Taste „Suchen“ | Taste (untere Leiste, links) | Handbuch (T43): „Öffnet eine Suchfunktion, über die Betriebsmittel anhand ihrer Betriebsmittelkennzeichnung gefunden werden können.“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| Kopfzeile, Meldezeile, Untere Funktionsleiste | Rahmen | wie RS-30 | [RM-01](../Module/RM-01_Kopfzeile.md); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ### Tabelle T43 (Funktionsbeschreibung), 3 Zeilen (1 Kopfzeile + 2 Datenzeilen), vollständig
 
@@ -40,7 +40,13 @@ Bild [RS-33_01.png](../Medien/RS-33_01.png) (blauer Hintergrund):
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidaten: Seitenkopf, Meldezeile, Untere Funktionsleiste, Suchen-Taste, Auswahl-Kachelraster.
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-14](../Module/RM-14_Kachel-Navigation.md) – Kachel-Navigation
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

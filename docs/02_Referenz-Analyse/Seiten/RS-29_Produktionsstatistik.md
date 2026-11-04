@@ -26,20 +26,21 @@ Das Handbuch enthält keine Tabelle; die Funktionsbeschreibung besteht aus einem
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Pfeiltaste links (◄) | Taste | „Mit den Pfeiltasten über dem Diagramm kann zwischen den letzten 30 Tagen gewechselt werden.“ Richtung (früher/später) nicht angegeben | Modulkandidat: Datumsnavigation (Pfeiltasten mit Datumsfeld) |
-| Pfeiltaste rechts (►) | Taste | wie links | Modulkandidat: Datumsnavigation (Pfeiltasten mit Datumsfeld) |
-| Textfeld Datum (im Bild „heute“) | Textanzeige | „Das Textfeld zeigt das Datum an.“ Im Bild für den aktuellen Tag „heute“ | Modulkandidat: Datumsnavigation (Pfeiltasten mit Datumsfeld) |
-| Balkendiagramm Tagesverlauf | Diagramm (Balken, X = Uhrzeit 0:00 bis 23:00, Y = Zahl 0 bis 1800) | „Verlauf der Produktion eines Tages in einem Balkendiagramm“ | Modulkandidat: Balkendiagramm (Tagesverlauf) |
-| Zahlenwerte über den Balken | Beschriftung | Wert je Balken, im Handbuch nicht beschrieben | Modulkandidat: Balkendiagramm (Tagesverlauf) |
-| Kopfzeile, Meldezeile, untere Leiste (Produktion, Einstellungen, Zurück, Schloss) | Rahmen | Im Handbuch nicht beschrieben | Modulkandidat: Seitenkopf; Modulkandidat: Meldezeile; Modulkandidat: Untere Funktionsleiste |
+| Pfeiltaste links (◄) | Taste | „Mit den Pfeiltasten über dem Diagramm kann zwischen den letzten 30 Tagen gewechselt werden.“ Richtung (früher/später) nicht angegeben | [RM-30](../Module/RM-30_Tagesbalkendiagramm.md) (Pfeiltasten mit Datumsfeld) |
+| Pfeiltaste rechts (►) | Taste | wie links | [RM-30](../Module/RM-30_Tagesbalkendiagramm.md) (Pfeiltasten mit Datumsfeld) |
+| Textfeld Datum (im Bild „heute“) | Textanzeige | „Das Textfeld zeigt das Datum an.“ Im Bild für den aktuellen Tag „heute“ | [RM-30](../Module/RM-30_Tagesbalkendiagramm.md) (Pfeiltasten mit Datumsfeld) |
+| Balkendiagramm Tagesverlauf | Diagramm (Balken, X = Uhrzeit 0:00 bis 23:00, Y = Zahl 0 bis 1800) | „Verlauf der Produktion eines Tages in einem Balkendiagramm“ | [RM-30](../Module/RM-30_Tagesbalkendiagramm.md) (Tagesverlauf) |
+| Zahlenwerte über den Balken | Beschriftung | Wert je Balken, im Handbuch nicht beschrieben | [RM-30](../Module/RM-30_Tagesbalkendiagramm.md) (Tagesverlauf) |
+| Kopfzeile, Meldezeile, untere Leiste (Produktion, Einstellungen, Zurück, Schloss) | Rahmen | Im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
-Modulkandidaten (RM-IDs später):
-- Modulkandidat: Datumsnavigation (Pfeiltasten mit Datumsfeld)
-- Modulkandidat: Balkendiagramm (Tagesverlauf)
-- Modulkandidat: Seitenkopf (Logo, Titel, Uhr/Datum)
-- Modulkandidat: Meldezeile
-- Modulkandidat: Untere Funktionsleiste
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-30](../Module/RM-30_Tagesbalkendiagramm.md) – Tagesbalkendiagramm
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Tageswahl:** Die Pfeiltasten wechseln zwischen den letzten 30 Tagen; das Textfeld zeigt das gewählte Datum. Beim aktuellen Tag steht im Bild „heute“.

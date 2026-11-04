@@ -23,16 +23,21 @@ Tabelle T3 (6 Datenzeilen, Spalten Funktion | Beschreibung):
 
 | Element | Typ | Funktion (Handbuch wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Maximum | Eingabefeld, Einheit 1/min, mit Schlüssel-Symbol (Bild) | „Die Obergrenze für die Maschinengeschwindigkeit.“ | Modulkandidat: Eingabefeld mit Schlüssel |
-| Schnell | Eingabefeld, Einheit 1/min | „Sollgeschwindigkeit, wenn die Taste Maschine Schnell aktiv ist.“ | Modulkandidat: Eingabefeld (Zahleneingabe) |
-| Langsam | Eingabefeld, Einheit 1/min | „Sollgeschwindigkeit, wenn die Taste Maschine Schnell inaktiv ist.“ | Modulkandidat: Eingabefeld (Zahleneingabe) |
-| Tippen | Eingabefeld, Einheit 1/min, mit Schlüssel-Symbol (Bild) | „Vorgabe für den Tippbetrieb. Ist in der Regel nahe dem Minimum.“ | Modulkandidat: Eingabefeld mit Schlüssel |
-| Minimum | Eingabefeld, Einheit 1/min, mit Schlüssel-Symbol (Bild) | „Die Untergrenze für die Maschinengeschwindigkeit.“ | Modulkandidat: Eingabefeld mit Schlüssel |
-| Taste Schließen | Taste | „Schließt das Pop-Up.“ | Modulkandidat: Pop-up-Rahmen (Titel, Schließen) |
-| Titelleiste mit Kreuz | Fensterrahmen | Titel „Maschinengeschwindigkeit“, Kreuz oben rechts (im Handbuch nicht beschrieben) | Modulkandidat: Pop-up-Rahmen |
+| Maximum | Eingabefeld, Einheit 1/min, mit Schlüssel-Symbol (Bild) | „Die Obergrenze für die Maschinengeschwindigkeit.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Schnell | Eingabefeld, Einheit 1/min | „Sollgeschwindigkeit, wenn die Taste Maschine Schnell aktiv ist.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md)) |
+| Langsam | Eingabefeld, Einheit 1/min | „Sollgeschwindigkeit, wenn die Taste Maschine Schnell inaktiv ist.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md)) |
+| Tippen | Eingabefeld, Einheit 1/min, mit Schlüssel-Symbol (Bild) | „Vorgabe für den Tippbetrieb. Ist in der Regel nahe dem Minimum.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Minimum | Eingabefeld, Einheit 1/min, mit Schlüssel-Symbol (Bild) | „Die Untergrenze für die Maschinengeschwindigkeit.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Taste Schließen | Taste | „Schließt das Pop-Up.“ | [RM-13](../Module/RM-13_Pop-up-Rahmen.md) (Titel, Schließen) |
+| Titelleiste mit Kreuz | Fensterrahmen | Titel „Maschinengeschwindigkeit“, Kreuz oben rechts (im Handbuch nicht beschrieben) | [RM-13](../Module/RM-13_Pop-up-Rahmen.md) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Pop-up-Rahmen, Eingabefeld mit Schlüssel, Eingabefeld (Zahleneingabe, bei Antippen vermutlich Eingabe-Pop-up).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-13](../Module/RM-13_Pop-up-Rahmen.md) – Pop-up-Rahmen
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Öffnen: Klick auf das rote Tacho-Symbol (Geschwindigkeit Soll) auf RS-01.

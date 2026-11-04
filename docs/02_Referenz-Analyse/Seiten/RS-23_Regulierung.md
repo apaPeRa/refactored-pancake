@@ -27,16 +27,16 @@ Tabelle T33 des Handbuchs (Spalten Funktion | Beschreibung), 8 Datenzeilen, wort
 
 | Element (Handbuch: Funktion) | Typ | Funktion (Beschreibung wörtlich) | verwendetes Modul |
 |---|---|---|---|
-| Anzahl Gewichte | Zahlenfeld, Einheit „Stk“, Schlüsselsymbol | „Anzahl der Packungen, über die ein gleitender Mittelwert gebildet wird.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol; Modulkandidat: Eingabe-Pop-up |
-| Regulierschritt | Zahlenfeld, Einheit „%“, Schlüsselsymbol | „Prozentuale Änderung, wenn der Mittelwert außerhalb der Toleranz liegt.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Toleranz | Zahlenfeld, Einheit „g“, Schlüsselsymbol | „Bereich um das Sollgewicht, in dem keine Korrektur erfolgt.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Regulierung max | Zahlenfeld, Einheit „g“, Schlüsselsymbol | „Maximale Korrektur, die durch die automatische Regulierung vorgenommen werden darf.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Regulierung ist | Zahlenfeld, Einheit „g“, Schlüsselsymbol | „Aktueller Korrekturwert, der auf die Dosierung angewendet wird.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Mittelwert | Anzeigefeld, Einheit „g“, mit Zähler „Stk“ unten rechts | „Durchschnittliches Gewicht der letzten gemessenen Packungen. Unten rechts werden Packungen gezählt, erreicht der Zähler den Wert in Anzahl Gewichte wird anhand des Mittelwerts ein neuer Korrekturwert berechnet.“ | Modulkandidat: Anzeigefeld mit Zähler |
-| Taste Regulierung | Umschalter (grün mit Beschriftung „Regulierung“, Schlüsselsymbol) | „Schaltet die automatische Regulierung ein oder aus.“ | Modulkandidat: Umschalter mit Schlüsselsymbol |
-| Regulierung - / + | zwei Tasten mit Schlüsselsymbol | „Manuelle Feineinstellung der Korrektur. Reduziert (--) oder erhöht (+) den aktuellen Korrekturwert.“ | Modulkandidat: Tasten Minus/Plus mit Schlüsselsymbol |
-| Panel „Hauptdosierer“ / „Nachdosierer“ (nur im Bild) | Gruppe | Parametersatz je Dosierer, identischer Aufbau | Modulkandidat: Regulierungs-Parameterblock (je Dosierer) |
-| Seitenkopf, Meldezeile, Fußleiste (nur im Bild) | Rahmen | Standardrahmen | Modulkandidat: Seitenkopf (Rahmen); Modulkandidat: Meldezeile; Modulkandidat: Fußleiste (Rahmennavigation) |
+| Anzahl Gewichte | Zahlenfeld, Einheit „Stk“, Schlüsselsymbol | „Anzahl der Packungen, über die ein gleitender Mittelwert gebildet wird.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md); [RM-06](../Module/RM-06_Eingabe-Pop-up.md) |
+| Regulierschritt | Zahlenfeld, Einheit „%“, Schlüsselsymbol | „Prozentuale Änderung, wenn der Mittelwert außerhalb der Toleranz liegt.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Toleranz | Zahlenfeld, Einheit „g“, Schlüsselsymbol | „Bereich um das Sollgewicht, in dem keine Korrektur erfolgt.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Regulierung max | Zahlenfeld, Einheit „g“, Schlüsselsymbol | „Maximale Korrektur, die durch die automatische Regulierung vorgenommen werden darf.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Regulierung ist | Zahlenfeld, Einheit „g“, Schlüsselsymbol | „Aktueller Korrekturwert, der auf die Dosierung angewendet wird.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Mittelwert | Anzeigefeld, Einheit „g“, mit Zähler „Stk“ unten rechts | „Durchschnittliches Gewicht der letzten gemessenen Packungen. Unten rechts werden Packungen gezählt, erreicht der Zähler den Wert in Anzahl Gewichte wird anhand des Mittelwerts ein neuer Korrekturwert berechnet.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) mit Zähler |
+| Taste Regulierung | Umschalter (grün mit Beschriftung „Regulierung“, Schlüsselsymbol) | „Schaltet die automatische Regulierung ein oder aus.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) mit Schlüsselsymbol |
+| Regulierung - / + | zwei Tasten mit Schlüsselsymbol | „Manuelle Feineinstellung der Korrektur. Reduziert (--) oder erhöht (+) den aktuellen Korrekturwert.“ | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| Panel „Hauptdosierer“ / „Nachdosierer“ (nur im Bild) | Gruppe | Parametersatz je Dosierer, identischer Aufbau | [RM-34](../Module/RM-34_Regulierungs-Parameterblock.md) (je Dosierer) |
+| Seitenkopf, Meldezeile, Fußleiste (nur im Bild) | Rahmen | Standardrahmen | [RM-01](../Module/RM-01_Kopfzeile.md) (Rahmen); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) (Rahmennavigation) |
 
 Medien dieser Seite (1 Bild):
 
@@ -45,7 +45,18 @@ Medien dieser Seite (1 Bild):
 | [RS-23_01.png](../Medien/RS-23_01.png) | Seite Regulierung mit zwei Panels (Hauptdosierer, Nachdosierer), je sechs Wertfeldern, grüner Schaltfläche „Regulierung“ und den Tasten „Regulierung -“ und „Regulierung +“ |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Regulierungs-Parameterblock (je Dosierer); Eingabefeld mit Schlüsselsymbol; Eingabe-Pop-up; Anzeigefeld mit Zähler; Umschalter mit Schlüsselsymbol; Tasten Minus/Plus mit Schlüsselsymbol; Seitenkopf (Rahmen); Meldezeile; Fußleiste (Rahmennavigation).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-10](../Module/RM-10_Umschalter-Taste.md) – Umschalter-Taste
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-34](../Module/RM-34_Regulierungs-Parameterblock.md) – Regulierungs-Parameterblock
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Automatische Regulierung:** Taste „Regulierung“ je Dosierer schaltet ein oder aus; im Bild grün (Annahme: grün = eingeschaltet, im Handbuch nicht beschrieben).

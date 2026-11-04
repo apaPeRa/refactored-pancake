@@ -20,11 +20,11 @@ Das Handbuch enthält keine Tabellen für diese Seite; die Funktionen stammen au
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Sollgewicht | Zahlenfeld mit Schlüsselsymbol, Einheit g (Bild: 250,4 g), rechts unten | „Geben Sie rechts unten das gewünschte Zielgewicht ein (*Sollgewicht*). Dieses Gewicht wird bei der manuellen Dosierung verwendet.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe) |
-| Taste „Dosierer Auslösen manuell“ | Taste | „Verwenden Sie die Taste **Dosierer Auslösen manuell**, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.“ | Modulkandidat: Funktionstaste |
-| Spalte SOLL (2 × 10 Felder) | Zahlenfelder, Einheit g | „Tragen Sie das verwendete Sollgewicht in die linke Spalte (*SOLL*) ein“ | Modulkandidat: Gewichtskorrektur (Soll-Ist-Stützstellentabelle) |
+| Sollgewicht | Zahlenfeld mit Schlüsselsymbol, Einheit g (Bild: 250,4 g), rechts unten | „Geben Sie rechts unten das gewünschte Zielgewicht ein (*Sollgewicht*). Dieses Gewicht wird bei der manuellen Dosierung verwendet.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Pop-up-Eingabe) |
+| Taste „Dosierer Auslösen manuell“ | Taste | „Verwenden Sie die Taste **Dosierer Auslösen manuell**, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| Spalte SOLL (2 × 10 Felder) | Zahlenfelder, Einheit g | „Tragen Sie das verwendete Sollgewicht in die linke Spalte (*SOLL*) ein“ | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Soll-Ist-Stützstellentabelle) |
 | Spalte IST (2 × 10 Felder) | Zahlenfelder, Einheit g | „… und das gemessene tatsächliche Gewicht in die rechte Spalte (*IST*). Wiederholen Sie diesen Vorgang für mehrere Gewichte über den typischen Arbeitsbereich des Dosierers hinweg.“ | wie SOLL |
-| Taste „Gewichtsanpassung“ | Taste | „Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste **Gewichtsanpassung**. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.“ | Modulkandidat: Funktionstaste |
+| Taste „Gewichtsanpassung“ | Taste | „Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste **Gewichtsanpassung**. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
 
 ### Bedienablauf (Handbuch, 4 Schritte)
 1. Dosiergewicht einstellen (Sollgewicht rechts unten).
@@ -41,14 +41,23 @@ Das Handbuch enthält keine Tabellen für diese Seite; die Funktionen stammen au
 ### Rahmenelemente laut Bild
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Kopfzeile | Anzeige | im Handbuch nicht beschrieben | Modulkandidat: Statuskopf (Kopfzeile) |
-| Meldezeile „\*450\* Palettierung nicht bereit“ | Anzeige (rot) | im Handbuch nicht beschrieben | Modulkandidat: Meldezeile |
-| Schloss-Symbol, Tasten Produktion, Einstellungen, Zurück | Symbol/Tasten | im Handbuch nicht beschrieben | Modulkandidat: Navigationsleiste unten |
+| Kopfzeile | Anzeige | im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Meldezeile „\*450\* Palettierung nicht bereit“ | Anzeige (rot) | im Handbuch nicht beschrieben | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Schloss-Symbol, Tasten Produktion, Einstellungen, Zurück | Symbol/Tasten | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 Erfasst: 0 Handbuchtabellen; 4 Anleitungsschritte, 4 Hinweise, 2 Tasten, 1 Sollgewichtsfeld, 20 Soll-Ist-Paare (40 Felder) im Bild; 1 Bild.
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs. Modulkandidaten: Gewichtskorrektur (Soll-Ist-Stützstellentabelle; wiederkehrend auf RS-18 und RS-21); Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe); Funktionstaste; Statuskopf; Meldezeile; Navigationsleiste unten.
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) – Gewichtskorrektur-Tabelle
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Leere Felder bleiben bei der Berechnung unberücksichtigt (Hinweis im Handbuch); im Bild stehen unbenutzte Felder auf „0,00 g“.

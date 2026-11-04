@@ -24,23 +24,23 @@ Tabelle T34 „Einstellungen“ (Spalten Funktion | Beschreibung), 8 Datenzeilen
 
 | Element (Handbuch: Funktion) | Typ | Funktion (Beschreibung wörtlich) | verwendetes Modul |
 |---|---|---|---|
-| Auswahl Fixierkurve | Zahlenfeld „Nummer“ (Bild: 12) mit Tasten << und >> | „Direkte Auswahl einer Nockennummer zur Anzeige oder Bearbeitung. Mit den Pfeiltasten kann zwischen Nocken geblättert werden.“ | Modulkandidat: Eingabefeld mit Pfeiltasten (Blättern); Modulkandidat: Eingabe-Pop-up |
-| Anfang / Ende | je drei Felder (Winkel °, Zeit ms, Ergebnis °), Schlüsselsymbol bei den ersten beiden | „Eingabe der Start- und Endposition der Nocke in Bezug auf den ausgewählten Geber. Über die Zeiten können Ansprechzeiten der Hardware kompensiert werden. Richtig eingestellt führen Kompensationszeiten zu einem gleichbleibenden Ergebnis unabhängig von der Maschinengeschwindigkeit“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol; Modulkandidat: Nocken-Positionszeile (Winkel, Zeit, Ergebnis) |
-| Typ | Zahlenfeld (Bild: 3) mit Schlüsselsymbol, daneben Text „0 - 1079“ | „Erlaubt eine Untersetzung der Nocke. Muss nach der Inbetriebnahme der Maschine nicht mehr verändert werden.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Geber | Auswahlfeld (Bild: „Geber 1GF Hauptantrieb“) mit Tasten << und >> und Schlüsselsymbol | „Auswahl des Gebers auf den sich die Nocke bezieht. Ändert sich nicht mehr nach der Inbetriebnahme.“ | Modulkandidat: Auswahlfeld mit Pfeiltasten und Schlüsselsymbol |
-| Bezeichnung | Textfeld (Bild: „Karton ansaugen 1 3KY40“) mit Schlüsselsymbol | „Name und Beschreibung der Nocke. Kann angepasst werden, wenn nötig.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol (Text) |
-| Position | Anzeigefeld (Bild: 140 °) | „Aktueller Wert des angewählten Gebers.“ | Modulkandidat: Anzeigefeld Istwert |
-| Status | Status-LED (Bild: grau) | „Zeigt an ob die aktuelle Geberposition innerhalb der Nocke ist.“ | Modulkandidat: Status-LED |
-| Werte schreiben | Taste mit Schlüsselsymbol | „Erst nach dem Schreiben werden die Änderungen aktiv.“ | Modulkandidat: Taste mit Schlüsselsymbol (Übernehmen) |
+| Auswahl Fixierkurve | Zahlenfeld „Nummer“ (Bild: 12) mit Tasten << und >> | „Direkte Auswahl einer Nockennummer zur Anzeige oder Bearbeitung. Mit den Pfeiltasten kann zwischen Nocken geblättert werden.“ | [RM-32](../Module/RM-32_Auswahlfeld-mit-Pfeiltasten.md) (Blättern); [RM-06](../Module/RM-06_Eingabe-Pop-up.md) |
+| Anfang / Ende | je drei Felder (Winkel °, Zeit ms, Ergebnis °), Schlüsselsymbol bei den ersten beiden | „Eingabe der Start- und Endposition der Nocke in Bezug auf den ausgewählten Geber. Über die Zeiten können Ansprechzeiten der Hardware kompensiert werden. Richtig eingestellt führen Kompensationszeiten zu einem gleichbleibenden Ergebnis unabhängig von der Maschinengeschwindigkeit“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md); [RM-20](../Module/RM-20_Nocken-Parameterzeile.md) (Winkel, Zeit, Ergebnis) |
+| Typ | Zahlenfeld (Bild: 3) mit Schlüsselsymbol, daneben Text „0 - 1079“ | „Erlaubt eine Untersetzung der Nocke. Muss nach der Inbetriebnahme der Maschine nicht mehr verändert werden.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Geber | Auswahlfeld (Bild: „Geber 1GF Hauptantrieb“) mit Tasten << und >> und Schlüsselsymbol | „Auswahl des Gebers auf den sich die Nocke bezieht. Ändert sich nicht mehr nach der Inbetriebnahme.“ | [RM-32](../Module/RM-32_Auswahlfeld-mit-Pfeiltasten.md) und Schlüsselsymbol |
+| Bezeichnung | Textfeld (Bild: „Karton ansaugen 1 3KY40“) mit Schlüsselsymbol | „Name und Beschreibung der Nocke. Kann angepasst werden, wenn nötig.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Text) |
+| Position | Anzeigefeld (Bild: 140 °) | „Aktueller Wert des angewählten Gebers.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) Istwert |
+| Status | Status-LED (Bild: grau) | „Zeigt an ob die aktuelle Geberposition innerhalb der Nocke ist.“ | [RM-08](../Module/RM-08_Status-LED.md) |
+| Werte schreiben | Taste mit Schlüsselsymbol | „Erst nach dem Schreiben werden die Änderungen aktiv.“ | [RM-11](../Module/RM-11_Aktionstaste.md) (Übernehmen) |
 
 Tabelle T35 „Navigation (unten links)“ (Spalten Funktion | Beschreibung), 2 Datenzeilen, wortgetreu:
 
 | Element | Typ | Funktion (Beschreibung wörtlich) | verwendetes Modul |
 |---|---|---|---|
-| Pfeiltasten | Tasten << und >> (Fußleiste links) | „Erlaubt das blättern zwischen den Nocken“ | Modulkandidat: Navigation unten links (Blättern mit Pfeiltasten) |
-| Übersicht | Taste mit Listen-Symbol | „Öffnet die Seite Nockenübersicht.“ | Modulkandidat: Navigation unten links (Blättern mit Pfeiltasten) |
+| Pfeiltasten | Tasten << und >> (Fußleiste links) | „Erlaubt das blättern zwischen den Nocken“ | [RM-04](../Module/RM-04_Blaettertasten.md) |
+| Übersicht | Taste mit Listen-Symbol | „Öffnet die Seite Nockenübersicht.“ | [RM-04](../Module/RM-04_Blaettertasten.md) |
 
-Nur im Bild: Seitenkopf, Meldezeile, Fußleiste Produktion/Einstellungen/Zurück mit Schloss-Symbol (Modulkandidaten: Seitenkopf (Rahmen); Meldezeile; Fußleiste (Rahmennavigation)).
+Nur im Bild: Seitenkopf, Meldezeile, Fußleiste Produktion/Einstellungen/Zurück mit Schloss-Symbol ([RM-01](../Module/RM-01_Kopfzeile.md); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md)).
 
 Medien dieser Seite (1 Bild):
 
@@ -49,7 +49,20 @@ Medien dieser Seite (1 Bild):
 | [RS-25_01.png](../Medien/RS-25_01.png) | Seite Nocken: Nummer 12, Anfang 330 ° / 50 ms / 330 °, Ende 790 ° / 50 ms / 790 °, Position 140 °, Status-LED, Typ 3 (0 - 1079), Geber „Geber 1GF Hauptantrieb“, Taste „Werte schreiben“, Bezeichnung „Karton ansaugen 1 3KY40“, Navigation unten links <<, Übersicht, >> |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Navigation unten links (Blättern mit Pfeiltasten); Eingabefeld mit Pfeiltasten (Blättern); Eingabefeld mit Schlüsselsymbol; Eingabe-Pop-up; Nocken-Positionszeile (Winkel, Zeit, Ergebnis); Auswahlfeld mit Pfeiltasten und Schlüsselsymbol; Anzeigefeld Istwert; Status-LED; Taste mit Schlüsselsymbol (Übernehmen); Seitenkopf (Rahmen); Meldezeile; Fußleiste (Rahmennavigation).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-04](../Module/RM-04_Blaettertasten.md) – Blättertasten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-08](../Module/RM-08_Status-LED.md) – Status-LED
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-20](../Module/RM-20_Nocken-Parameterzeile.md) – Nocken-Parameterzeile
+- [RM-32](../Module/RM-32_Auswahlfeld-mit-Pfeiltasten.md) – Auswahlfeld mit Pfeiltasten
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Nocke wählen:** Nockennummer direkt eingeben oder mit << / >> (neben dem Feld oder in der Fußleiste) blättern.

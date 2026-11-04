@@ -18,11 +18,11 @@ Das Handbuch enthält keine Tabelle; die Funktion steht im Fließtext (Funktions
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Fortschrittsbalken | Anzeige, gelber Balken mit Prozentangabe („77%“) | Zeigt das ablaufende Zeitfenster der Reinigung | Modulkandidat: Fortschrittsbalken |
+| Fortschrittsbalken | Anzeige, gelber Balken mit Prozentangabe („77%“) | Zeigt das ablaufende Zeitfenster der Reinigung | [RM-09](../Module/RM-09_Fortschrittsbalken.md) |
 | Zeitfenster | Zeitgeber (Dauer nicht angegeben) | Startet beim Aufruf; nach Ablauf schließt die Seite automatisch | – (Seitenverhalten) |
 | Eingabesperre | Verhalten | Alle Eingaben werden während des Reinigens ignoriert | – (Seitenverhalten) |
 | Erneuter Aufruf | Verhalten | Verlängerung durch erneutes Öffnen der Seite | – (Seitenverhalten) |
-| Seitenkopf mit „Service“-Schriftzug am Symbol (nur im Bild) | Rahmen | Standardkopfzeile; Schriftzug „Service“ im Handbuch nicht erklärt | Modulkandidat: Seitenkopf (Rahmen) |
+| Seitenkopf mit „Service“-Schriftzug am Symbol (nur im Bild) | Rahmen | Standardkopfzeile; Schriftzug „Service“ im Handbuch nicht erklärt | [RM-01](../Module/RM-01_Kopfzeile.md) (Rahmen) |
 
 Medien dieser Seite (1 Bild):
 
@@ -31,7 +31,11 @@ Medien dieser Seite (1 Bild):
 | [RS-24_01.png](../Medien/RS-24_01.png) | Blaue Seite mit Titel „Bildschirm reinigen“ und gelbem Fortschrittsbalken mit „77%“ |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Fortschrittsbalken; Seitenkopf (Rahmen).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-09](../Module/RM-09_Fortschrittsbalken.md) – Fortschrittsbalken
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Start:** beim Aufruf der Seite startet das Zeitfenster; Fortschrittsbalken läuft von 0 % bis 100 % (Annahme aus Bild: Prozent, Richtung links nach rechts).

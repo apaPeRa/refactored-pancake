@@ -21,7 +21,7 @@ Wertebereiche und Standardwerte sind im Handbuch nicht angegeben; die Bildwerte 
 ### T25 – Verschluss Zu / Verschluss Auf (6 Zeilen inkl. Kopfzeile; Gruppe erscheint zweimal)
 | Element (Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Position | Zahlenfeld mit Schlüsselsymbol, Einheit ° (Bild: Zu 0 °, Auf 37 °) | Position in Grad, an der der Verschluss geöffnet bzw. geschlossen ist. | Modulkandidat: Motorparameter (Verschluss); Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe) |
+| Position | Zahlenfeld mit Schlüsselsymbol, Einheit ° (Bild: Zu 0 °, Auf 37 °) | Position in Grad, an der der Verschluss geöffnet bzw. geschlossen ist. | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Verschluss); [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Pop-up-Eingabe) |
 | Geschwindigkeit | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 80 % / 80 %) | Bewegungsgeschwindigkeit des Aktors in Prozent. | wie Position |
 | Beschleunigung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 % / 0 %) | Anstieg der Geschwindigkeit beim Start der Bewegung. | wie Position |
 | Verzögerung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 % / 0 %) | Abbremsen vor Erreichen der Endposition. | wie Position |
@@ -30,23 +30,31 @@ Wertebereiche und Standardwerte sind im Handbuch nicht angegeben; die Bildwerte 
 ### T26 – Schnecke (4 Zeilen inkl. Kopfzeile)
 | Element (Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Beschleunigung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 %) | Anstieg der Drehgeschwindigkeit beim Start. | Modulkandidat: Motorparameter (Schnecke); Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe) |
+| Beschleunigung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 %) | Anstieg der Drehgeschwindigkeit beim Start. | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Schnecke); [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Pop-up-Eingabe) |
 | Verzögerung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 %) | Abbremsen der Drehung beim Stoppen. | wie Beschleunigung |
 | Ruck | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 %) | Änderung der Beschleunigung für eine produktschonende Bewegung. | wie Beschleunigung |
 
 ### Rahmenelemente laut Bild
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Kopfzeile (Logo, Titel, Wirbelsymbol, Uhrzeit/Datum) | Anzeige | im Handbuch nicht beschrieben | Modulkandidat: Statuskopf (Kopfzeile) |
-| Meldezeile „\*450\* Palettierung nicht bereit“ | Anzeige (rot) | im Handbuch nicht beschrieben | Modulkandidat: Meldezeile |
-| Taste „»“ (links unten, grau) | Taste | im Handbuch nicht beschrieben (vermutlich Umschaltung/Weiter, nicht belegt) | Modulkandidat: Navigationsleiste unten |
-| Schloss-Symbol | Symbol | im Handbuch nicht beschrieben | Modulkandidat: Navigationsleiste unten (Schloss/Berechtigung) |
-| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Tasten | im Handbuch nicht beschrieben | Modulkandidat: Navigationsleiste unten |
+| Kopfzeile (Logo, Titel, Wirbelsymbol, Uhrzeit/Datum) | Anzeige | im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Meldezeile „\*450\* Palettierung nicht bereit“ | Anzeige (rot) | im Handbuch nicht beschrieben | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Taste „»“ (links unten, grau) | Taste | im Handbuch nicht beschrieben (vermutlich Umschaltung/Weiter, nicht belegt) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Schloss-Symbol | Symbol | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) (Schloss/Berechtigung) |
+| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Tasten | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 Erfasst: 2 Handbuchtabellen mit zusammen 8 Datenzeilen (5 + 3; ohne Kopfzeilen) bzw. 10 Tabellenzeilen inkl. Kopfzeilen; Bildwerte: 13 Zahlenfelder (2 × 5 + 3); 1 Bild.
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs. Modulkandidaten: Motorparameter (Verschluss Zu/Auf und Schnecke; wiederkehrend auf RS-12, RS-17, RS-20); Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe); Statuskopf; Meldezeile; Navigationsleiste unten.
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-16](../Module/RM-16_Motorparameter-Karte.md) – Motorparameter-Karte
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Alle Zahlenfelder tragen ein gelbes Schlüsselsymbol (berechtigungsgeschützte Eingabe, nicht erklärt). Ein Eingabe-Pop-up ist im Handbuch nicht beschrieben.

@@ -18,23 +18,32 @@ Alle 3 Zeilen der Tabelle 46, wortgetreu:
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Importieren | Taste | „Lädt eine zuvor gespeicherte Datei mit Variablenwerten und stellt die enthaltenen Werte wieder her.“ | Modulkandidat: Standardtaste (Aktion) |
-| Alle exportieren | Taste (im Bild „Alle Exportieren“) | „Speichert sämtliche aktuellen Variablen der Maschine in einer Datei.“ | Modulkandidat: Standardtaste (Aktion) |
-| Liste exportieren | Taste (im Bild „Liste Exportieren“) | „Speichert nur die in der Liste ausgewählten Variablen in einer Datei.“ | Modulkandidat: Standardtaste (Aktion) |
+| Importieren | Taste | „Lädt eine zuvor gespeicherte Datei mit Variablenwerten und stellt die enthaltenen Werte wieder her.“ | [RM-11](../Module/RM-11_Aktionstaste.md) (Aktion) |
+| Alle exportieren | Taste (im Bild „Alle Exportieren“) | „Speichert sämtliche aktuellen Variablen der Maschine in einer Datei.“ | [RM-11](../Module/RM-11_Aktionstaste.md) (Aktion) |
+| Liste exportieren | Taste (im Bild „Liste Exportieren“) | „Speichert nur die in der Liste ausgewählten Variablen in einer Datei.“ | [RM-11](../Module/RM-11_Aktionstaste.md) (Aktion) |
 
 Nur im Bild sichtbar (nicht im Handbuch beschrieben):
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Eingabefeld über der Liste | Textfeld | nicht beschrieben | Modulkandidat: Eingabefeld (Text) |
-| Variablenliste (500 von 111427 Variablen) | scrollbare Auswahlliste, Zeile markierbar | „in der Liste ausgewählte Variablen“ (Handbuch) | Modulkandidat: Auswahlliste mit Rollbalken |
-| Zahlenanzeige „859,81“ (rot) | Anzeigefeld | nicht beschrieben | Modulkandidat: Wertanzeige-Feld |
-| Roter Schriftzug „Service“ im Kopf | Statusanzeige | nicht beschrieben (vermutlich Hinweis auf aktiven Servicemodus) | Modulkandidat: Kopfzeile |
-| Taste „Wago“ | Taste | nicht beschrieben | Modulkandidat: Funktionsleiste unten |
-| Meldezeile, Navigationstasten Produktion/Einstellungen/Zurück, Schloss | Rahmen | siehe [RS-35](RS-35_Systemeinstellungen.md) | Modulkandidat: Meldezeile; Modulkandidat: Funktionsleiste unten |
+| Eingabefeld über der Liste | Textfeld | nicht beschrieben | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Variablenliste (500 von 111427 Variablen) | scrollbare Auswahlliste, Zeile markierbar | „in der Liste ausgewählte Variablen“ (Handbuch) | [RM-21](../Module/RM-21_Meldungsliste.md) |
+| Zahlenanzeige „859,81“ (rot) | Anzeigefeld | nicht beschrieben | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Roter Schriftzug „Service“ im Kopf | Statusanzeige | nicht beschrieben (vermutlich Hinweis auf aktiven Servicemodus) | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Taste „Wago“ | Taste | nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Meldezeile, Navigationstasten Produktion/Einstellungen/Zurück, Schloss | Rahmen | siehe [RS-35](RS-35_Systemeinstellungen.md) | [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs. Modulkandidaten: Standardtaste (Aktion), Eingabefeld (Text), Auswahlliste mit Rollbalken, Wertanzeige-Feld, Kopfzeile, Meldezeile, Funktionsleiste unten.
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-21](../Module/RM-21_Meldungsliste.md) – Meldungsliste
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Berechtigung: Die Taste „Service“ in RS-35 trägt ein Schlüsselsymbol; auf der Seite selbst zeigen die Tasten keine Schlüsselsymbole.

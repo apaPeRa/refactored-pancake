@@ -18,23 +18,29 @@ Alle 6 Zeilen der Tabelle 48, wortgetreu:
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Automatische Anzeige | Verhalten der Meldezeile | „Beim Auftreten einer Meldung wird die Meldung mit der höchsten Nummer in der Meldezeile im unteren Bereich der HMI-Seiten eingeblendet.“ | Modulkandidat: Meldezeile |
-| Meldeanzeige öffnen | Interaktion (Antippen der Meldezeile) | „Durch Antippen dieser Zeile wird die vollständige Meldeanzeige geöffnet.“ | Modulkandidat: Meldezeile |
-| Meldeanzeige schließen | Interaktion | „Ein weiterer Klick oder die Schaltfläche *Zurück* schließt die Anzeige.“ | Modulkandidat: Funktionsleiste unten |
-| Farbkennzeichnung | Darstellung | (Zeilen der Quelle durch ; getrennt) „Meldungen sind farblich codiert: Grün: Betriebsstatus Automatik; Gelb: Hinweise und Statusmeldungen; Rot: Störung oder sicherheitsrelevante Meldung. Führen zum Stopp“ | Modulkandidat: Meldungsliste mit Farbcodierung; Modulkandidat: Statusliste |
-| Meldungsnummer | Listenspalte „Nummer“ | „Eindeutige Nummer zur Identifikation der Meldung, z. B. für Service oder Dokumentation.“ | Modulkandidat: Meldungsliste mit Farbcodierung |
-| Meldungstext | Listenspalte „Meldung“ | „Kurzbeschreibung der Ursache oder des betroffenen Bereichs.“ | Modulkandidat: Meldungsliste mit Farbcodierung |
+| Automatische Anzeige | Verhalten der Meldezeile | „Beim Auftreten einer Meldung wird die Meldung mit der höchsten Nummer in der Meldezeile im unteren Bereich der HMI-Seiten eingeblendet.“ | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Meldeanzeige öffnen | Interaktion (Antippen der Meldezeile) | „Durch Antippen dieser Zeile wird die vollständige Meldeanzeige geöffnet.“ | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Meldeanzeige schließen | Interaktion | „Ein weiterer Klick oder die Schaltfläche *Zurück* schließt die Anzeige.“ | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Farbkennzeichnung | Darstellung | (Zeilen der Quelle durch ; getrennt) „Meldungen sind farblich codiert: Grün: Betriebsstatus Automatik; Gelb: Hinweise und Statusmeldungen; Rot: Störung oder sicherheitsrelevante Meldung. Führen zum Stopp“ | [RM-21](../Module/RM-21_Meldungsliste.md) mit Farbcodierung; [RM-21](../Module/RM-21_Meldungsliste.md) |
+| Meldungsnummer | Listenspalte „Nummer“ | „Eindeutige Nummer zur Identifikation der Meldung, z. B. für Service oder Dokumentation.“ | [RM-21](../Module/RM-21_Meldungsliste.md) mit Farbcodierung |
+| Meldungstext | Listenspalte „Meldung“ | „Kurzbeschreibung der Ursache oder des betroffenen Bereichs.“ | [RM-21](../Module/RM-21_Meldungsliste.md) mit Farbcodierung |
 
 Nur im Bild sichtbar:
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Taste „Archiv“ (links unten) | Taste | im Handbuch nicht beschrieben (vermutlich Wechsel zu [RS-37](RS-37_Meldearchiv.md)) | Modulkandidat: Funktionsleiste unten |
-| Rollbalken | Bedienelement | Blättern in der Liste | Modulkandidat: Listen-Scrolltasten (hier als Rollbalken) |
-| Kopfzeile, Schloss, Tasten Produktion/Einstellungen/Zurück | Rahmen | siehe [RS-35](RS-35_Systemeinstellungen.md) | Modulkandidat: Kopfzeile; Funktionsleiste unten |
+| Taste „Archiv“ (links unten) | Taste | im Handbuch nicht beschrieben (vermutlich Wechsel zu [RS-37](RS-37_Meldearchiv.md)) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Rollbalken | Bedienelement | Blättern in der Liste | [RM-21](../Module/RM-21_Meldungsliste.md) (hier als Rollbalken) |
+| Kopfzeile, Schloss, Tasten Produktion/Einstellungen/Zurück | Rahmen | siehe [RS-35](RS-35_Systemeinstellungen.md) | [RM-01](../Module/RM-01_Kopfzeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs. Modulkandidaten: Meldezeile, Meldungsliste mit Farbcodierung, Statusliste, Funktionsleiste unten, Kopfzeile, Listen-Scrolltasten.
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-21](../Module/RM-21_Meldungsliste.md) – Meldungsliste
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Auslösung: Meldezeile antippen öffnet die Anzeige; erneutes Antippen oder „Zurück“ schließt sie.

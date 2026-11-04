@@ -27,40 +27,52 @@ Alle Zeilen der Handbuchtabellen T5, T6, T7 (Spalten Funktion | Beschreibung; Be
 ### Bereich „Packstoffrolle“ (T5, 8 Datenzeilen)
 | Element (Funktion) | Typ | Beschreibung (wortgetreu) | Wert im Bild, Einheit | verwendetes Modul |
 |---|---|---|---|---|
-| Durchmesser Rollenende | Eingabefeld (rot, Schlüssel) | Prozentualer Füllstand der Rolle, ab dem die Meldung *Rollenende* ausgegeben wird. Diese Meldung führt zum Stopp der Maschine. | 4 % | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Bremse Stillstand | Eingabefeld (rot, Schlüssel) | Stellwert der an die Bremse gesendet wird, wenn die Maschine steht. Soll hoch genug sein um ein Abrollen zu verhindern aber nicht zu hoch, um ein übermäßiges Losbrechmoment zu vermeiden. | 50 % | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Durchmesser Max | Eingabefeld (rot, Schlüssel) | Oberer Durchmesser, ab dem die Bremse den Stellwert aus dem Feld *Bremse bei Max* als Stellwert erhält. Bei größeren Durchmessern steigt der Bremsdruck nicht weiter. | 100 % (Bild: „Durchmesser Max.“) | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Bremse bei Max | Eingabefeld (rot, Schlüssel) | Stellwert der Bremse bei dem Durchmesser welcher im Feld *Durchmesser Max* angegeben wird. Der Bremsdruck steigt im Betrieb nicht über diesen Wert hinaus. | 14 % (Bild: „Bremse bei Max.“) | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Durchmesser Min | Eingabefeld (rot, Schlüssel) | Unterer Durchmesser, ab dem die Bremse den Wert aus dem Feld *Bremse bei Min* als Stellwert erhält. Bei kleineren Durchmessern sinkt der Bremsdruck nicht weiter. | 10 % (Bild: „Durchmesser Min.“) | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Bremse bei Min | Eingabefeld (rot, Schlüssel) | Stellwert der Bremse bei dem Durchmesser welcher im Feld *Durchmesser Min* angegeben wird. Der Bremsdruck sinkt im Betrieb nicht unter diesen Wert. | 5 % (Bild: „Bremse bei Min.“) | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Durchmesser Rolle | Anzeigefeld (schwarz, ohne Schlüssel) | Aktueller gemessener Rollendurchmesser. 100% entspricht dem maximalen Durchmesser, welcher auf der Maschine gefahren wird. 0% dem Rollenkern. Bei deutlichen Abweichungen sollte der Sensor zur Durchmessermessung geprüft und gegebenenfalls neu justiert werden. | 100 % (Wertebereich laut Text 0 % bis 100 %) | Modulkandidat: Anzeigefeld |
-| Aktueller Bremsdruck | Anzeigefeld (schwarz, ohne Schlüssel) | Aktuell an die Bremse gesendeter Stellwert. | 50 % (Bild-Beschriftung: „Aktuelle Bremswert“) | Modulkandidat: Anzeigefeld |
+| Durchmesser Rollenende | Eingabefeld (rot, Schlüssel) | Prozentualer Füllstand der Rolle, ab dem die Meldung *Rollenende* ausgegeben wird. Diese Meldung führt zum Stopp der Maschine. | 4 % | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Bremse Stillstand | Eingabefeld (rot, Schlüssel) | Stellwert der an die Bremse gesendet wird, wenn die Maschine steht. Soll hoch genug sein um ein Abrollen zu verhindern aber nicht zu hoch, um ein übermäßiges Losbrechmoment zu vermeiden. | 50 % | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Durchmesser Max | Eingabefeld (rot, Schlüssel) | Oberer Durchmesser, ab dem die Bremse den Stellwert aus dem Feld *Bremse bei Max* als Stellwert erhält. Bei größeren Durchmessern steigt der Bremsdruck nicht weiter. | 100 % (Bild: „Durchmesser Max.“) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Bremse bei Max | Eingabefeld (rot, Schlüssel) | Stellwert der Bremse bei dem Durchmesser welcher im Feld *Durchmesser Max* angegeben wird. Der Bremsdruck steigt im Betrieb nicht über diesen Wert hinaus. | 14 % (Bild: „Bremse bei Max.“) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Durchmesser Min | Eingabefeld (rot, Schlüssel) | Unterer Durchmesser, ab dem die Bremse den Wert aus dem Feld *Bremse bei Min* als Stellwert erhält. Bei kleineren Durchmessern sinkt der Bremsdruck nicht weiter. | 10 % (Bild: „Durchmesser Min.“) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Bremse bei Min | Eingabefeld (rot, Schlüssel) | Stellwert der Bremse bei dem Durchmesser welcher im Feld *Durchmesser Min* angegeben wird. Der Bremsdruck sinkt im Betrieb nicht unter diesen Wert. | 5 % (Bild: „Bremse bei Min.“) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Durchmesser Rolle | Anzeigefeld (schwarz, ohne Schlüssel) | Aktueller gemessener Rollendurchmesser. 100% entspricht dem maximalen Durchmesser, welcher auf der Maschine gefahren wird. 0% dem Rollenkern. Bei deutlichen Abweichungen sollte der Sensor zur Durchmessermessung geprüft und gegebenenfalls neu justiert werden. | 100 % (Wertebereich laut Text 0 % bis 100 %) | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Aktueller Bremsdruck | Anzeigefeld (schwarz, ohne Schlüssel) | Aktuell an die Bremse gesendeter Stellwert. | 50 % (Bild-Beschriftung: „Aktuelle Bremswert“) | [RM-07](../Module/RM-07_Anzeigefeld.md) |
 
 ### Bereich „Klebestelle“ (T6, 3 Datenzeilen)
 | Element (Funktion) | Typ | Beschreibung (wortgetreu) | Wert im Bild, Einheit | verwendetes Modul |
 |---|---|---|---|---|
-| Auswurf | Eingabefeld (rot, Schlüssel) | Anzahl der Packungen, die bei Erkennung eines Klebestreifens ausgeworfen werden. Die Packungen werden um die erkannte Klebestelle herum als schlecht markiert. Bei einem Wert von 3 werden die betroffene Packung als schlecht markiert und je eine Packung davor und danach. | 3 Stk. | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Klebestelle erkannt | Status-LED (rund, grau = im Bild aus) | Zeigt an, ob im letzten Takt eine Klebestelle erkannt wurde. | grau (aus); Farbe im Zustand „an“ nicht dargestellt | Modulkandidat: Status-LED |
-| Sensor Klebestelle | Status-LED (rund, grau = im Bild aus) | Zeigt den aktuellen Status des Eingangs für den Klebestellensensor an. | grau (aus); Farbe im Zustand „an“ nicht dargestellt | Modulkandidat: Status-LED |
+| Auswurf | Eingabefeld (rot, Schlüssel) | Anzahl der Packungen, die bei Erkennung eines Klebestreifens ausgeworfen werden. Die Packungen werden um die erkannte Klebestelle herum als schlecht markiert. Bei einem Wert von 3 werden die betroffene Packung als schlecht markiert und je eine Packung davor und danach. | 3 Stk. | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Klebestelle erkannt | Status-LED (rund, grau = im Bild aus) | Zeigt an, ob im letzten Takt eine Klebestelle erkannt wurde. | grau (aus); Farbe im Zustand „an“ nicht dargestellt | [RM-08](../Module/RM-08_Status-LED.md) |
+| Sensor Klebestelle | Status-LED (rund, grau = im Bild aus) | Zeigt den aktuellen Status des Eingangs für den Klebestellensensor an. | grau (aus); Farbe im Zustand „an“ nicht dargestellt | [RM-08](../Module/RM-08_Status-LED.md) |
 
 ### Bereich „Kupplung“ (T7, 2 Datenzeilen)
 | Element (Funktion) | Typ | Beschreibung (wortgetreu) | Wert im Bild, Einheit | verwendetes Modul |
 |---|---|---|---|---|
-| Verschiebung | Eingabefeld (rot, Schlüssel) | Einstellung der elektronischen Kupplung zur Hauptmaschine. Muss angepasst werden, wenn der Papierabzug nicht mit der Position des Dornrads übereinstimmt. Die Einstellung kann im Stillstand oder während der Produktion erfolgen. Beim Verstellen bewegt sich die Zuführung – eine Bewegung in beide Richtungen ist möglich, was zu einem Papierriss führen kann | 290 ° | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Anhalte Position | Eingabefeld (rot, Schlüssel) | Position, an der die Zuführung zum Stillstand kommt, wenn sie ausgekoppelt wird. | 180 ° | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
+| Verschiebung | Eingabefeld (rot, Schlüssel) | Einstellung der elektronischen Kupplung zur Hauptmaschine. Muss angepasst werden, wenn der Papierabzug nicht mit der Position des Dornrads übereinstimmt. Die Einstellung kann im Stillstand oder während der Produktion erfolgen. Beim Verstellen bewegt sich die Zuführung – eine Bewegung in beide Richtungen ist möglich, was zu einem Papierriss führen kann | 290 ° | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Anhalte Position | Eingabefeld (rot, Schlüssel) | Position, an der die Zuführung zum Stillstand kommt, wenn sie ausgekoppelt wird. | 180 ° | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
 
 ### Rahmenelemente (nur im Bild, nicht im Text)
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Logo, Titel „Zuführung Papier“, Spiralsymbol, Uhrzeit und Datum | Seitenkopf | siehe Aufbau; Funktion nicht im Text beschrieben | Modulkandidat: Seitenkopf |
-| Gruppenrahmen „Packstoffrolle“, „Klebestelle“, „Kupplung“ | Gruppenrahmen mit Überschrift | gliedert die Parameter | Modulkandidat: Gruppenrahmen |
-| Meldezeile (rot) | Anzeige/Taste | Beispiel „\*450\* Palettierung nicht bereit“ | Modulkandidat: Meldezeile |
-| Schloss-Symbol und Tasten „Produktion“, „Einstellungen“, „Zurück“ | Fußleiste | Navigation; im Text nicht beschrieben | Modulkandidat: Fußleiste |
+| Logo, Titel „Zuführung Papier“, Spiralsymbol, Uhrzeit und Datum | Seitenkopf | siehe Aufbau; Funktion nicht im Text beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Gruppenrahmen „Packstoffrolle“, „Klebestelle“, „Kupplung“ | Gruppenrahmen mit Überschrift | gliedert die Parameter | [RM-15](../Module/RM-15_Gruppenrahmen.md) |
+| Meldezeile (rot) | Anzeige/Taste | Beispiel „\*450\* Palettierung nicht bereit“ | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Schloss-Symbol und Tasten „Produktion“, „Einstellungen“, „Zurück“ | Fußleiste | Navigation; im Text nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 Summe erfasst: 13 Datenzeilen aus den Handbuchtabellen (8 + 3 + 2), 1 Bild.
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Eingabefeld mit Schlüsselsymbol (9 Felder), Anzeigefeld (2), Status-LED (2), Gruppenrahmen (3), Seitenkopf, Meldezeile, Fußleiste. Das Eingabe-Pop-up (Modulkandidat: Pop-up-Eingabe) ist auf dieser Seite nicht beschrieben, wird aber beim Antippen der Eingabefelder vermutet (siehe Offene Punkte).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-08](../Module/RM-08_Status-LED.md) – Status-LED
+- [RM-15](../Module/RM-15_Gruppenrahmen.md) – Gruppenrahmen
+
+Das Eingabe-Pop-up ([RM-06](../Module/RM-06_Eingabe-Pop-up.md)) ist auf dieser Seite nicht beschrieben, wird aber beim Antippen der Eingabefelder vermutet (siehe Offene Punkte).
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Navigation:** Einstieg über Kachel „Zuführung Papier“ auf RS-04; zurück über „Zurück“ oder „Einstellungen“ der Fußleiste. Keine Unterseiten und keine Pop-ups im Handbuch beschrieben.

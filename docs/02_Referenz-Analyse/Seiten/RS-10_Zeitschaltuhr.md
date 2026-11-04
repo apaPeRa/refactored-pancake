@@ -24,11 +24,11 @@ Die Seite hat keine Handbuchtabellen. Erfasst sind die Bedien- und Beschreibungs
 
 | Element | Typ | Funktion (wortgetreu bzw. Bildbeschreibung) | verwendetes Modul |
 |---|---|---|---|
-| Spalten Montag bis Sonntag | Tagesspalte (7) | Zeitplan je Wochentag; Phasen erscheinen als Einträge in der Spalte | Modulkandidat: Wochen-Zeitplan |
-| Plus-Taste je Tag | Taste (Kopfzelle der Spalte, Plus im schwarzen Kreis, Schlüsselsymbol) | „Soll eine neue Phase hinzugefügt werden kann zwischen zwei Aktionen gewählt werden, Heißphase und Absenkphase (StandBy).“ Öffnet das Pop-up „Neuer Eintrag“ ([RS-10_06](../Medien/RS-10_06.png), [RS-10_03](../Medien/RS-10_03.png)). | Modulkandidat: Wochen-Zeitplan |
-| Eintrag Heizphase | klickbarer Eintrag in der Spalte (Bild: rosa/rot, Zeilen „08:00 ein“ … „16:00 aus“) | „Heizphase: Startzeit: Das Heißleimgerät beginnt mit dem Aufheizen auf die Soll-Temperaturen. Stoppzeit: Das Heißleimgerät schaltet alle Heizungen ab.“ Öffnet das Pop-up (gleiche Struktur), [RS-10_04](../Medien/RS-10_04.png). | Modulkandidat: Wochen-Zeitplan |
-| Eintrag Absenkphase | klickbarer Eintrag, innerhalb einer Heizphase (Bild: türkis/cyan, „12:00 absenken“, „13:00 aufheizen“) | „Absenkphase: Startzeit: Das Heißleimgerät heizt oder kühlt auf eine reduzierte Temperatur. Stoppzeit: Wenn die Heizungen an sind, wird auf die Solltemperaturen hochgeheizt. Sind die Heizungen aus, passiert nichts.“ Kann direkt gelöscht werden, [RS-10_05](../Medien/RS-10_05.png). | Modulkandidat: Wochen-Zeitplan |
-| Schlüsselsymbol je Tag | Symbol in der Kopfzelle | Bedeutung im Handbuch nicht erklärt (Berechtigung/Eingabeschutz vermutet) | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
+| Spalten Montag bis Sonntag | Tagesspalte (7) | Zeitplan je Wochentag; Phasen erscheinen als Einträge in der Spalte | [RM-26](../Module/RM-26_Wochen-Zeitplan.md) |
+| Plus-Taste je Tag | Taste (Kopfzelle der Spalte, Plus im schwarzen Kreis, Schlüsselsymbol) | „Soll eine neue Phase hinzugefügt werden kann zwischen zwei Aktionen gewählt werden, Heißphase und Absenkphase (StandBy).“ Öffnet das Pop-up „Neuer Eintrag“ ([RS-10_06](../Medien/RS-10_06.png), [RS-10_03](../Medien/RS-10_03.png)). | [RM-26](../Module/RM-26_Wochen-Zeitplan.md) |
+| Eintrag Heizphase | klickbarer Eintrag in der Spalte (Bild: rosa/rot, Zeilen „08:00 ein“ … „16:00 aus“) | „Heizphase: Startzeit: Das Heißleimgerät beginnt mit dem Aufheizen auf die Soll-Temperaturen. Stoppzeit: Das Heißleimgerät schaltet alle Heizungen ab.“ Öffnet das Pop-up (gleiche Struktur), [RS-10_04](../Medien/RS-10_04.png). | [RM-26](../Module/RM-26_Wochen-Zeitplan.md) |
+| Eintrag Absenkphase | klickbarer Eintrag, innerhalb einer Heizphase (Bild: türkis/cyan, „12:00 absenken“, „13:00 aufheizen“) | „Absenkphase: Startzeit: Das Heißleimgerät heizt oder kühlt auf eine reduzierte Temperatur. Stoppzeit: Wenn die Heizungen an sind, wird auf die Solltemperaturen hochgeheizt. Sind die Heizungen aus, passiert nichts.“ Kann direkt gelöscht werden, [RS-10_05](../Medien/RS-10_05.png). | [RM-26](../Module/RM-26_Wochen-Zeitplan.md) |
+| Schlüsselsymbol je Tag | Symbol in der Kopfzelle | Bedeutung im Handbuch nicht erklärt (Berechtigung/Eingabeschutz vermutet) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
 
 ### Pop-up „Neuer Eintrag“ (alle klickbaren Bereiche öffnen „ein Pop-Up mit derselben Struktur“)
 
@@ -36,24 +36,24 @@ Aufbau laut [RS-10_03](../Medien/RS-10_03.png) (beschriftete Grafik des Pop-ups,
 
 | Element | Typ | Funktion (Beschriftung im Bild / Handbuch) | verwendetes Modul |
 |---|---|---|---|
-| Titel „Neuer Eintrag:“ | Überschrift | Pop-up-Titel (auch beim Bearbeiten eines vorhandenen Eintrags unverändert) | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Aktion | Dropdown (Auswahlliste) | Auswahl „Heizphase“ oder „Absenkphase“ (aufgeklappt in [RS-10_06](../Medien/RS-10_06.png)); Handbuch: „Heißphase und Absenkphase (StandBy)“ | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Zeit aktiv | zwei Kontrollkästchen (je eines links neben Startzeit und Endzeit) | Aktiviert die jeweilige Zeit; Handbuch: „Um eine Phase anzulegen, muss eine Startzeit oder Stoppzeit angelegt werden. Beide Zeiten können festgelegt werden.“ In [RS-10_06](../Medien/RS-10_06.png) beide unmarkiert, Zeitfelder leer. | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Startzeit | Zeiteingabefeld (Format hh:mm; Bild: 08:00, rote Schrift; leer als „__:__“) | Startzeit der Phase | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Stoppzeit / Endzeit | Zeiteingabefeld (Format hh:mm; Bild: 16:00) | Stoppzeit der Phase; Beschriftung im Pop-up „Endzeit:“, im Handbuchtext „Stoppzeit“ | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Unterelemente | Symbol (Baumstruktur) mit Zähler (Bild: 0; bei Heizphase mit enthaltener Absenkphase 1, orange hinterlegt) | Anzahl der untergeordneten Absenkphasen. Handbuch: „Innerhalb einer Heizphase können Absenkphase enthalten sein.“ | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Übernehmen | Taste (Haken-Symbol) | Eintrag übernehmen/speichern (Beschriftung nur im Bild) | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Abbrechen | Taste (X-Symbol) | Pop-up ohne Änderung schließen (Beschriftung nur im Bild) | Modulkandidat: Pop-up Zeitplan-Eintrag |
-| Eintrag löschen | Taste (Papierkorb-Symbol) | Eintrag löschen. Handbuch: „Um eine Heizphase zu löschen, müssen alle untergeordnete Absenkphasen gelöscht sein.“ In [RS-10_04](../Medien/RS-10_04.png) (Heizphase mit 1 Unterelement) ist die Taste ausgegraut; in [RS-10_05](../Medien/RS-10_05.png) (Absenkphase) aktiv: „Diese Phase kann direkt gelöscht werden.“ Im Neuanlage-Zustand ([RS-10_06](../Medien/RS-10_06.png)) fehlt die Taste. | Modulkandidat: Pop-up Zeitplan-Eintrag |
+| Titel „Neuer Eintrag:“ | Überschrift | Pop-up-Titel (auch beim Bearbeiten eines vorhandenen Eintrags unverändert) | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Aktion | Dropdown (Auswahlliste) | Auswahl „Heizphase“ oder „Absenkphase“ (aufgeklappt in [RS-10_06](../Medien/RS-10_06.png)); Handbuch: „Heißphase und Absenkphase (StandBy)“ | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Zeit aktiv | zwei Kontrollkästchen (je eines links neben Startzeit und Endzeit) | Aktiviert die jeweilige Zeit; Handbuch: „Um eine Phase anzulegen, muss eine Startzeit oder Stoppzeit angelegt werden. Beide Zeiten können festgelegt werden.“ In [RS-10_06](../Medien/RS-10_06.png) beide unmarkiert, Zeitfelder leer. | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Startzeit | Zeiteingabefeld (Format hh:mm; Bild: 08:00, rote Schrift; leer als „__:__“) | Startzeit der Phase | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Stoppzeit / Endzeit | Zeiteingabefeld (Format hh:mm; Bild: 16:00) | Stoppzeit der Phase; Beschriftung im Pop-up „Endzeit:“, im Handbuchtext „Stoppzeit“ | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Unterelemente | Symbol (Baumstruktur) mit Zähler (Bild: 0; bei Heizphase mit enthaltener Absenkphase 1, orange hinterlegt) | Anzahl der untergeordneten Absenkphasen. Handbuch: „Innerhalb einer Heizphase können Absenkphase enthalten sein.“ | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Übernehmen | Taste (Haken-Symbol) | Eintrag übernehmen/speichern (Beschriftung nur im Bild) | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Abbrechen | Taste (X-Symbol) | Pop-up ohne Änderung schließen (Beschriftung nur im Bild) | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
+| Eintrag löschen | Taste (Papierkorb-Symbol) | Eintrag löschen. Handbuch: „Um eine Heizphase zu löschen, müssen alle untergeordnete Absenkphasen gelöscht sein.“ In [RS-10_04](../Medien/RS-10_04.png) (Heizphase mit 1 Unterelement) ist die Taste ausgegraut; in [RS-10_05](../Medien/RS-10_05.png) (Absenkphase) aktiv: „Diese Phase kann direkt gelöscht werden.“ Im Neuanlage-Zustand ([RS-10_06](../Medien/RS-10_06.png)) fehlt die Taste. | [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) |
 
 ### Rahmenelemente
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Kopfzeile | Rahmen | Logo, Titel „Zeitschaltuhr Zuführung“ (in Ausschnitten nur „Zeitschaltuhr“), Symbol, Uhrzeit/Datum | Modulkandidat: Kopfzeile |
-| Meldezeile | Rahmen | Meldung (Bild: „*450* Palettierung nicht bereit“) | Modulkandidat: Meldezeile |
-| Vorhängeschloss (gelb) | Symbol | im Handbuch nicht erklärt | Modulkandidat: Funktionsleiste unten |
-| Produktion / Einstellungen / Zurück | Navigationstasten | Funktion nur aus Beschriftung/Symbol | Modulkandidat: Funktionsleiste unten |
+| Kopfzeile | Rahmen | Logo, Titel „Zeitschaltuhr Zuführung“ (in Ausschnitten nur „Zeitschaltuhr“), Symbol, Uhrzeit/Datum | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Meldezeile | Rahmen | Meldung (Bild: „*450* Palettierung nicht bereit“) | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Vorhängeschloss (gelb) | Symbol | im Handbuch nicht erklärt | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Produktion / Einstellungen / Zurück | Navigationstasten | Funktion nur aus Beschriftung/Symbol | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ### Bilder (6)
 
@@ -68,7 +68,15 @@ Aufbau laut [RS-10_03](../Medien/RS-10_03.png) (beschriftete Grafik des Pop-ups,
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs. Modulkandidaten: Kopfzeile, Meldezeile, Funktionsleiste unten, Wochen-Zeitplan, Pop-up Zeitplan-Eintrag (Dropdown, Zeitfelder, Übernehmen/Abbrechen/Löschen), Eingabefeld mit Schlüsselsymbol, Eingabe-Pop-up (Zeitwert).
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-26](../Module/RM-26_Wochen-Zeitplan.md) – Wochen-Zeitplan
+- [RM-27](../Module/RM-27_Zeitplan-Eintrag-Pop-up.md) – Zeitplan-Eintrag-Pop-up
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

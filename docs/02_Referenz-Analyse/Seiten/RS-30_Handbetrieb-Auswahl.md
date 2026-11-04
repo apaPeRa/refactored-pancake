@@ -25,12 +25,12 @@ Bild [RS-30_01.png](../Medien/RS-30_01.png) (Bildschirmfoto der alten HMI, 4:3, 
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Kopfzeile (Logo, Seitentitel, Symbol, Uhrzeit/Datum) | Anzeige | Siehe Bildbeschreibung; Titel „Handbetrieb Auswahl“, Uhrzeit „13:05:29“, Datum „12.05.2025“ (Bildbeispiel) | Modulkandidat: Seitenkopf |
-| Gruppentasten GR1 … GR100 (14 Stück, Raster 4 × 4) | Taste | Handbuch (T40 „Tasten Gruppenanwahl“): „Über die Tasten können Bereich / Gruppen in der Maschine gezielt angewählt“ (Satz im Original unvollständig) | Modulkandidat: Auswahl-Kachelraster |
-| Taste „Suchen“ | Taste (untere Leiste, links) | Handbuch (T40 „Suchen“): „Öffnet eine Suchfunktion, um Aktoren anhand ihrer Betriebsmittelkennzeichnung zu finden und auszuwählen.“ | Modulkandidat: Suchen-Taste |
-| Meldezeile „*450* Palettierung nicht bereit“ | Anzeige | Rote Meldezeile mit Meldungsnummer in Sternen und Text (Bildbeispiel) | Modulkandidat: Meldezeile |
-| Schloss-Symbol (gelb, geschlossen) | Symbol | Im Handbuch zu dieser Seite nicht erklärt (vermutlich Berechtigungs-/Anmeldestatus) | Modulkandidat: Untere Funktionsleiste |
-| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten | Im Handbuch zu dieser Seite nicht beschrieben; Navigation unten rechts | Modulkandidat: Untere Funktionsleiste |
+| Kopfzeile (Logo, Seitentitel, Symbol, Uhrzeit/Datum) | Anzeige | Siehe Bildbeschreibung; Titel „Handbetrieb Auswahl“, Uhrzeit „13:05:29“, Datum „12.05.2025“ (Bildbeispiel) | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Gruppentasten GR1 … GR100 (14 Stück, Raster 4 × 4) | Taste | Handbuch (T40 „Tasten Gruppenanwahl“): „Über die Tasten können Bereich / Gruppen in der Maschine gezielt angewählt“ (Satz im Original unvollständig) | [RM-14](../Module/RM-14_Kachel-Navigation.md) |
+| Taste „Suchen“ | Taste (untere Leiste, links) | Handbuch (T40 „Suchen“): „Öffnet eine Suchfunktion, um Aktoren anhand ihrer Betriebsmittelkennzeichnung zu finden und auszuwählen.“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| Meldezeile „*450* Palettierung nicht bereit“ | Anzeige | Rote Meldezeile mit Meldungsnummer in Sternen und Text (Bildbeispiel) | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Schloss-Symbol (gelb, geschlossen) | Symbol | Im Handbuch zu dieser Seite nicht erklärt (vermutlich Berechtigungs-/Anmeldestatus) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten | Im Handbuch zu dieser Seite nicht beschrieben; Navigation unten rechts | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ### Tabelle T40 (Funktionsbeschreibung), 3 Zeilen (1 Kopfzeile + 2 Datenzeilen), vollständig
 
@@ -47,7 +47,13 @@ Bild [RS-30_01.png](../Medien/RS-30_01.png) (Bildschirmfoto der alten HMI, 4:3, 
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidaten: Seitenkopf, Meldezeile, Untere Funktionsleiste, Suchen-Taste, Auswahl-Kachelraster.
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-14](../Module/RM-14_Kachel-Navigation.md) – Kachel-Navigation
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

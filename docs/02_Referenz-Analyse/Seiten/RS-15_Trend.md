@@ -20,13 +20,13 @@ Das Handbuch enthält für diese Seite keine Tabelle und keine Funktionsbeschrei
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Trenddiagramm (Kurve, Punkte, Gitter) | Liniendiagramm | stellt „die letzten 20 gewogenen Gewichte grafisch“ dar, „Dadurch können Schwankungen besser erkannt werden“ | Modulkandidat: Trend-Diagramm |
-| Y-Achse Gewicht in g | Achse | Skala 234,0 g bis 236,5 g in Schritten von 0,5 g (Bild) | Modulkandidat: Trend-Diagramm |
-| X-Achse -20 … -0 | Achse | Position der Messung relativ zur letzten (Bild) | Modulkandidat: Trend-Diagramm |
-| Punktbeschriftungen („235,8g“) | Datenbeschriftung | Gewichtswert je Punkt (Bild) | Modulkandidat: Trend-Diagramm |
-| Kopfzeile (Titel „Trend KW“) | Rahmenelement | im Handbuch nicht beschrieben | Modulkandidat: Kopfzeile |
-| Meldezeile „*450* Palettierung nicht bereit“ | Statusleiste, rot | im Handbuch auf dieser Seite nicht beschrieben; siehe [RS-38](RS-38_Meldeanzeige.md) | Modulkandidat: Meldezeile |
-| Vorhängeschloss, „Produktion“, „Einstellungen“, „Zurück“ | Funktionsleiste | im Handbuch nicht beschrieben | Modulkandidat: Funktionsleiste |
+| Trenddiagramm (Kurve, Punkte, Gitter) | Liniendiagramm | stellt „die letzten 20 gewogenen Gewichte grafisch“ dar, „Dadurch können Schwankungen besser erkannt werden“ | [RM-22](../Module/RM-22_Trend-Diagramm.md) |
+| Y-Achse Gewicht in g | Achse | Skala 234,0 g bis 236,5 g in Schritten von 0,5 g (Bild) | [RM-22](../Module/RM-22_Trend-Diagramm.md) |
+| X-Achse -20 … -0 | Achse | Position der Messung relativ zur letzten (Bild) | [RM-22](../Module/RM-22_Trend-Diagramm.md) |
+| Punktbeschriftungen („235,8g“) | Datenbeschriftung | Gewichtswert je Punkt (Bild) | [RM-22](../Module/RM-22_Trend-Diagramm.md) |
+| Kopfzeile (Titel „Trend KW“) | Rahmenelement | im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Meldezeile „*450* Palettierung nicht bereit“ | Statusleiste, rot | im Handbuch auf dieser Seite nicht beschrieben; siehe [RS-38](RS-38_Meldeanzeige.md) | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Vorhängeschloss, „Produktion“, „Einstellungen“, „Zurück“ | Funktionsleiste | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Bilder
 | Nr. | Datei | Pixel | Position | Beschreibung (angesehen) |
@@ -34,11 +34,13 @@ Das Handbuch enthält für diese Seite keine Tabelle und keine Funktionsbeschrei
 | 1 | [RS-15_01.png](../Medien/RS-15_01.png) | 1024 × 768 | Seitenübersicht | Gesamtseite „Trend KW“: orangefarbene Kurve mit 21 beschrifteten Punkten über X-Achse -20 … -0, Y-Achse 234,0 g bis 236,5 g, hellblaues Gitter auf blauem Grund; Aufbau und alle Werte siehe „Aufbau“. |
 
 ## Verwendete Module (IDs)
-RM-IDs werden später vergeben. Modulkandidaten:
-- Modulkandidat: Trend-Diagramm
-- Modulkandidat: Kopfzeile
-- Modulkandidat: Meldezeile
-- Modulkandidat: Funktionsleiste
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-22](../Module/RM-22_Trend-Diagramm.md) – Trend-Diagramm
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Pop-ups:** keine.

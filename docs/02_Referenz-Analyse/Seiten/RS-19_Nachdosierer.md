@@ -7,7 +7,7 @@
 
 Wortgetreu (Handbuch): „Die Seite Nachdosierer beinhaltet die Parameter, die Anwahlen und den Status des Schneckendosierers.“
 
-Der Nachdosierer ergänzt die Hauptdosierer ([RS-11](RS-11_Hauptdosierer-1-und-2.md)) und dosiert laut Handbuch die Differenz zum Zielgewicht anhand des von der Kontrollwaage gemeldeten Packungsgewichts (siehe Zeile „Soll“). Die Seite ist gegenüber RS-11 sehr ähnlich aufgebaut (Modulkandidat „Dosierer-Seite“).
+Der Nachdosierer ergänzt die Hauptdosierer ([RS-11](RS-11_Hauptdosierer-1-und-2.md)) und dosiert laut Handbuch die Differenz zum Zielgewicht anhand des von der Kontrollwaage gemeldeten Packungsgewichts (siehe Zeile „Soll“). Die Seite ist gegenüber RS-11 sehr ähnlich aufgebaut ([RM-18](../Module/RM-18_Dosierer-Seitengeruest.md)).
 
 ## Aufbau (Bereiche, Layout)
 
@@ -35,61 +35,65 @@ Gemeinsame Hinweise: Das Handbuch nennt für keine Zeile Wertebereich, Standardw
 
 | Nr. | Element (Funktion) | Typ | Beschreibung (wortgetreu, Handbuch) | Grafik (Handbuch) | Wert/Einheit im Screenshot | verwendetes Modul |
 |---|---|---|---|---|---|---|
-| 1 | Soll | Eingabefeld (rot, Schlüssel), Beschriftung fett | „Zielgewicht des Produkts. Der Nachdosierer bekommt das aktuelle Gewicht der Packung von der Kontrollwaage und dosiert die Differenz.“ | ![RS-19_02](../Medien/RS-19_02.png) [RS-19_02.png](../Medien/RS-19_02.png) – Gewichtsstück-Symbol (Flasche mit Schild „g“, grau, 68 × 85 px) | „250 g“ (g) | Modulkandidat: Dosierer-Parameterfeld (Eingabefeld mit Schlüsselsymbol) |
-| 2 | Eichdosierung Umdrehungen | Eingabefeld (rot, Schlüssel) | „Anzahl Umdrehungen der Dosierschnecke welche bei der *Eichdosierung* ausgeführt wird. Anhand der Umdrehungen und des Gewichtes im Feld *Eichdosierung* berechnet die Maschine die Umdrehungen im Automatikbetrieb.“ | ![RS-19_03](../Medien/RS-19_03.png) [RS-19_03.png](../Medien/RS-19_03.png) – Schnecken-Symbol (schwarze Förderschnecke, 45 × 87 px) | „5“ (ohne Einheit) | Modulkandidat: Dosierer-Parameterfeld |
-| 3 | Eichdosierung | Eingabefeld (rot, Schlüssel) | „Hier wird das Gewicht, des während der *Eichdosierung* dosierten Produkts, eingetragen.“ | ![RS-19_04](../Medien/RS-19_04.png) [RS-19_04.png](../Medien/RS-19_04.png) – Waagschalen-Symbol (schwarz, Schale mit Tropfen/Zeiger, 48 × 48 px) | „18,50 g“ (g, zwei Nachkommastellen) | Modulkandidat: Dosierer-Parameterfeld |
-| 4 | Max. Nachgabe | Eingabefeld (rot, Schlüssel) | „Obergrenze an zu dosierendem Produkt. Ist die Fehlmenge in einer Packung größer, wird nicht dosiert und die Packung wird als nIO ausgeschieden.“ | keine | „50 g“ (g) | Modulkandidat: Dosierer-Parameterfeld |
-| 5 | Aktuelle Nachgabe | Anzeigefeld (schwarze Schrift, Schlüsselsymbol am Feld sichtbar) | „Zu dosierendes Produkt in die aktuelle Packung.“ | keine | „13 g“ (g) | Modulkandidat: Dosierer-Parameterfeld |
-| 6 | Regulierung Ist | Eingabefeld (rot, Schlüssel) | „Aktueller Korrekturwert von der Regulierung. Dieses Gewicht wird auf die *aktuelle Nachgabe* aufaddiert. Der Wert kann manuell geändert werden.“ | keine | „4,81 g“ (g, zwei Nachkommastellen) | Modulkandidat: Dosierer-Parameterfeld |
-| 7 | Schnecke Drehzahl | Eingabefeld (rot, Schlüssel) | „Solldrehzahl der Dosierschnecke.“ | ![RS-19_05](../Medien/RS-19_05.png) [RS-19_05.png](../Medien/RS-19_05.png) – Tacho-Symbol (schwarzer Halbkreis-Tacho mit Zeiger, 48 × 48 px) | „2800“ (Einheit im Bild nicht sichtbar; RS-11 zeigt „1/min“) | Modulkandidat: Dosierer-Parameterfeld |
-| 8 | Rührer | Eingabefeld (rot, Schlüssel) | „Sollgeschwindigkeit des Rührers im Trichter.“ | ![RS-19_06](../Medien/RS-19_06.png) [RS-19_06.png](../Medien/RS-19_06.png) – Tacho-Symbol (identisch zu RS-19_05) | „30 %“ (%) | Modulkandidat: Dosierer-Parameterfeld |
-| 9 | Nachlauf Rührer | Eingabefeld (rot, Schlüssel) | „Zeit, welche der Rührer bei einem Stopp der Maschine nachläuft.“ | keine | „0 s“ (s) | Modulkandidat: Dosierer-Parameterfeld |
-| 10 | Querschnecke | Eingabefeld (rot, Schlüssel) | „Sollgeschwindigkeit der Querschnecke in der Produktzuführung.“ | ![RS-19_07](../Medien/RS-19_07.png) [RS-19_07.png](../Medien/RS-19_07.png) – Tacho-Symbol (identisch zu RS-19_05) | „30 %“ (%) | Modulkandidat: Dosierer-Parameterfeld |
-| 11 | Füllstand Trichter oben | Zustandsanzeige (Trichter-Symbol + runde Kontrollleuchte) | „Zeigt den Status des Sensors im oberen Bereich des Trichters an.“ | ![RS-19_08](../Medien/RS-19_08.png) [RS-19_08.png](../Medien/RS-19_08.png) – Trichter-Symbol, Füllstandslinie im oberen Trichterbereich (87 × 121 px) | Kontrollleuchte grau | Modulkandidat: Füllstandsanzeige (Trichter + Status-LED) |
-| 12 | Füllstand Trichter unten | Zustandsanzeige (Trichter-Symbol + runde Kontrollleuchte) | „Zeigt den Status des Sensors im unteren Bereich des Trichters an.“ | ![RS-19_09](../Medien/RS-19_09.png) [RS-19_09.png](../Medien/RS-19_09.png) – Trichter-Symbol, Füllstandslinie im unteren Trichterbereich (97 × 126 px); im Screenshot Beschriftung „Füllstand:“ | Kontrollleuchte rot | Modulkandidat: Füllstandsanzeige (Trichter + Status-LED) |
-| 13 | Auslastung | Balkenanzeige mit Prozentwert | „Zeigt an wieviel Prozent der verfügbaren Zeit der Dosiervorgang benötigt. Die Zeit ergibt sich aus der Länge der Nocke für den Dosierer und der Maschinengeschwindigkeit.“ | keine | „73 %“ (%), Balken grün | Modulkandidat: Fortschrittsbalken (Auslastung) |
+| 1 | Soll | Eingabefeld (rot, Schlüssel), Beschriftung fett | „Zielgewicht des Produkts. Der Nachdosierer bekommt das aktuelle Gewicht der Packung von der Kontrollwaage und dosiert die Differenz.“ | ![RS-19_02](../Medien/RS-19_02.png) [RS-19_02.png](../Medien/RS-19_02.png) – Gewichtsstück-Symbol (Flasche mit Schild „g“, grau, 68 × 85 px) | „250 g“ (g) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Eingabefeld mit Schlüsselsymbol) |
+| 2 | Eichdosierung Umdrehungen | Eingabefeld (rot, Schlüssel) | „Anzahl Umdrehungen der Dosierschnecke welche bei der *Eichdosierung* ausgeführt wird. Anhand der Umdrehungen und des Gewichtes im Feld *Eichdosierung* berechnet die Maschine die Umdrehungen im Automatikbetrieb.“ | ![RS-19_03](../Medien/RS-19_03.png) [RS-19_03.png](../Medien/RS-19_03.png) – Schnecken-Symbol (schwarze Förderschnecke, 45 × 87 px) | „5“ (ohne Einheit) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 3 | Eichdosierung | Eingabefeld (rot, Schlüssel) | „Hier wird das Gewicht, des während der *Eichdosierung* dosierten Produkts, eingetragen.“ | ![RS-19_04](../Medien/RS-19_04.png) [RS-19_04.png](../Medien/RS-19_04.png) – Waagschalen-Symbol (schwarz, Schale mit Tropfen/Zeiger, 48 × 48 px) | „18,50 g“ (g, zwei Nachkommastellen) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 4 | Max. Nachgabe | Eingabefeld (rot, Schlüssel) | „Obergrenze an zu dosierendem Produkt. Ist die Fehlmenge in einer Packung größer, wird nicht dosiert und die Packung wird als nIO ausgeschieden.“ | keine | „50 g“ (g) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 5 | Aktuelle Nachgabe | Anzeigefeld (schwarze Schrift, Schlüsselsymbol am Feld sichtbar) | „Zu dosierendes Produkt in die aktuelle Packung.“ | keine | „13 g“ (g) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 6 | Regulierung Ist | Eingabefeld (rot, Schlüssel) | „Aktueller Korrekturwert von der Regulierung. Dieses Gewicht wird auf die *aktuelle Nachgabe* aufaddiert. Der Wert kann manuell geändert werden.“ | keine | „4,81 g“ (g, zwei Nachkommastellen) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 7 | Schnecke Drehzahl | Eingabefeld (rot, Schlüssel) | „Solldrehzahl der Dosierschnecke.“ | ![RS-19_05](../Medien/RS-19_05.png) [RS-19_05.png](../Medien/RS-19_05.png) – Tacho-Symbol (schwarzer Halbkreis-Tacho mit Zeiger, 48 × 48 px) | „2800“ (Einheit im Bild nicht sichtbar; RS-11 zeigt „1/min“) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 8 | Rührer | Eingabefeld (rot, Schlüssel) | „Sollgeschwindigkeit des Rührers im Trichter.“ | ![RS-19_06](../Medien/RS-19_06.png) [RS-19_06.png](../Medien/RS-19_06.png) – Tacho-Symbol (identisch zu RS-19_05) | „30 %“ (%) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 9 | Nachlauf Rührer | Eingabefeld (rot, Schlüssel) | „Zeit, welche der Rührer bei einem Stopp der Maschine nachläuft.“ | keine | „0 s“ (s) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 10 | Querschnecke | Eingabefeld (rot, Schlüssel) | „Sollgeschwindigkeit der Querschnecke in der Produktzuführung.“ | ![RS-19_07](../Medien/RS-19_07.png) [RS-19_07.png](../Medien/RS-19_07.png) – Tacho-Symbol (identisch zu RS-19_05) | „30 %“ (%) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 11 | Füllstand Trichter oben | Zustandsanzeige (Trichter-Symbol + runde Kontrollleuchte) | „Zeigt den Status des Sensors im oberen Bereich des Trichters an.“ | ![RS-19_08](../Medien/RS-19_08.png) [RS-19_08.png](../Medien/RS-19_08.png) – Trichter-Symbol, Füllstandslinie im oberen Trichterbereich (87 × 121 px) | Kontrollleuchte grau | [RM-08](../Module/RM-08_Status-LED.md) (Trichter + Status-LED) |
+| 12 | Füllstand Trichter unten | Zustandsanzeige (Trichter-Symbol + runde Kontrollleuchte) | „Zeigt den Status des Sensors im unteren Bereich des Trichters an.“ | ![RS-19_09](../Medien/RS-19_09.png) [RS-19_09.png](../Medien/RS-19_09.png) – Trichter-Symbol, Füllstandslinie im unteren Trichterbereich (97 × 126 px); im Screenshot Beschriftung „Füllstand:“ | Kontrollleuchte rot | [RM-08](../Module/RM-08_Status-LED.md) (Trichter + Status-LED) |
+| 13 | Auslastung | Balkenanzeige mit Prozentwert | „Zeigt an wieviel Prozent der verfügbaren Zeit der Dosiervorgang benötigt. Die Zeit ergibt sich aus der Länge der Nocke für den Dosierer und der Maschinengeschwindigkeit.“ | keine | „73 %“ (%), Balken grün | [RM-09](../Module/RM-09_Fortschrittsbalken.md) (Auslastung) |
 
 ### Tabelle T28 – Schaltflächen (7 Zeilen inkl. Kopfzeile; 6 Datenzeilen; Spalten Funktion | Beschreibung)
 
 | Nr. | Element (Funktion) | Typ | Beschreibung (wortgetreu, Handbuch) | Zustand im Screenshot | verwendetes Modul |
 |---|---|---|---|---|---|
-| 1 | Querschnecke | Umschalttaste mit Zustandsfarbe | „Erlaubt das Abwählen der Querschnecke. Dadurch wird kein Produkt in den Trichter nachgefüllt.“ | grün (angewählt), Schlüsselsymbol | Modulkandidat: Anwahl-Taste (Umschalter mit Zustandsfarbe) |
-| 2 | Rührer | Umschalttaste mit Zustandsfarbe | „Abwahl für den Rührer im Trichter.“ | grün (angewählt), Schlüsselsymbol | Modulkandidat: Anwahl-Taste |
-| 3 | Manuel (sic; Beschriftung im Screenshot „Manuell“) | Aktionstaste | „Anforderung eines Dosiervorgangs.“ | grau, Schlüsselsymbol | Modulkandidat: Aktionstaste mit Schlüsselsymbol |
-| 4 | Entleeren | Aktionstaste (Dauerfunktion) | „Der Dosierer fördert kontinuierlich Produkt, bis der Vorgang abgebrochen wird.“ | grau, Schlüsselsymbol | Modulkandidat: Aktionstaste mit Schlüsselsymbol |
-| 5 | Eichdosierung | Aktionstaste | „Es wird ein Dosiervorgang gestartet. Der Dosierer macht die im Feld Eichdosierung Umdrehungen angegebenen Umdrehungen. Das dosierte Produkt muss aufgefangen und gewogen werden. Das Gewicht in das Feld Eichdosierung eintragen.“ | grau, Schlüsselsymbol | Modulkandidat: Aktionstaste mit Schlüsselsymbol |
-| 6 | Regulierung aktiv | Umschalttaste mit Zustandsfarbe | „Die automatische Regulierung kann mit dieser Schaltfläche abgewählt werden.“ | grün (aktiv), kein Schlüsselsymbol | Modulkandidat: Anwahl-Taste |
+| 1 | Querschnecke | Umschalttaste mit Zustandsfarbe | „Erlaubt das Abwählen der Querschnecke. Dadurch wird kein Produkt in den Trichter nachgefüllt.“ | grün (angewählt), Schlüsselsymbol | [RM-10](../Module/RM-10_Umschalter-Taste.md) (Umschalter mit Zustandsfarbe) |
+| 2 | Rührer | Umschalttaste mit Zustandsfarbe | „Abwahl für den Rührer im Trichter.“ | grün (angewählt), Schlüsselsymbol | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| 3 | Manuel (sic; Beschriftung im Screenshot „Manuell“) | Aktionstaste | „Anforderung eines Dosiervorgangs.“ | grau, Schlüsselsymbol | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| 4 | Entleeren | Aktionstaste (Dauerfunktion) | „Der Dosierer fördert kontinuierlich Produkt, bis der Vorgang abgebrochen wird.“ | grau, Schlüsselsymbol | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| 5 | Eichdosierung | Aktionstaste | „Es wird ein Dosiervorgang gestartet. Der Dosierer macht die im Feld Eichdosierung Umdrehungen angegebenen Umdrehungen. Das dosierte Produkt muss aufgefangen und gewogen werden. Das Gewicht in das Feld Eichdosierung eintragen.“ | grau, Schlüsselsymbol | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| 6 | Regulierung aktiv | Umschalttaste mit Zustandsfarbe | „Die automatische Regulierung kann mit dieser Schaltfläche abgewählt werden.“ | grün (aktiv), kein Schlüsselsymbol | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
 
 ### Tabelle T29 – Navigation (unten links) (4 Zeilen inkl. Kopfzeile; 3 Datenzeilen; Spalten Funktion | Beschreibung)
 
 | Nr. | Element (Funktion) | Typ | Beschreibung (wortgetreu, Handbuch) | Darstellung im Screenshot | verwendetes Modul |
 |---|---|---|---|---|---|
-| 1 | Gewichtskorrektur | Navigationstaste | „Öffnet eine Seite, welches erlaubt die Dosiergenauigkeit zu verbessern.“ (sic) Zielseite: [RS-21](RS-21_Gewichtskorrektur.md) | Taste ganz links, Beschriftung „Gewichts-korrektur“ (zweizeilig), grau | Modulkandidat: Seitenlink-Taste |
-| 2 | Motorparameter | Navigationstaste | „Öffnet die Seite für die Motorparameter für den aktuellen Dosierer.“ Zielseite: [RS-20](RS-20_Motorparameter.md) | zweite Taste von links, „Motor-parameter“, grau | Modulkandidat: Seitenlink-Taste |
-| 3 | Regulierung | Navigationstaste | „Öffnet die Seite *Regulierung*.“ Zielseite: [RS-23](RS-23_Regulierung.md) | dritte Taste von links, grau | Modulkandidat: Seitenlink-Taste |
+| 1 | Gewichtskorrektur | Navigationstaste | „Öffnet eine Seite, welches erlaubt die Dosiergenauigkeit zu verbessern.“ (sic) Zielseite: [RS-21](RS-21_Gewichtskorrektur.md) | Taste ganz links, Beschriftung „Gewichts-korrektur“ (zweizeilig), grau | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| 2 | Motorparameter | Navigationstaste | „Öffnet die Seite für die Motorparameter für den aktuellen Dosierer.“ Zielseite: [RS-20](RS-20_Motorparameter.md) | zweite Taste von links, „Motor-parameter“, grau | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| 3 | Regulierung | Navigationstaste | „Öffnet die Seite *Regulierung*.“ Zielseite: [RS-23](RS-23_Regulierung.md) | dritte Taste von links, grau | [RM-11](../Module/RM-11_Aktionstaste.md) |
 
 ### Weitere Elemente, die nur im Screenshot sichtbar sind (nicht im Handbuch beschrieben)
 
 | Element | Typ | Beobachtung | verwendetes Modul |
 |---|---|---|---|
-| Logo APA-TEC | Bild | Kopfzeile links | Modulkandidat: Statuskopf (Kopfzeile) |
-| Seitentitel „Nachdosierer“ | Text | unterstrichen, fett | Modulkandidat: Statuskopf |
-| Spiral-Symbol | Symbol | Kopfzeile; Bedeutung nicht beschrieben | Modulkandidat: Statuskopf |
-| Uhrzeit/Datum | Anzeige | „13:03:31“, „12.05.2025“ | Modulkandidat: Statuskopf |
-| Meldezeile | Anzeige | „*450* Palettierung nicht bereit“ (rot); Antippen öffnet laut Referenz-Übersicht [RS-38](RS-38_Meldeanzeige.md) | Modulkandidat: Meldezeile |
-| Schloss-Symbol | Symbol | gelb, geschlossen, unten mittig | Modulkandidat: Funktionsleiste unten |
-| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten | Haus-, Zahnrad-, Pfeil-Symbol; Ziele laut Beschriftung (Annahme): [RS-01](RS-01_Produktion.md), [RS-04](RS-04_Einstellungen.md), vorherige Seite | Modulkandidat: Funktionsleiste unten |
+| Logo APA-TEC | Bild | Kopfzeile links | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Seitentitel „Nachdosierer“ | Text | unterstrichen, fett | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Spiral-Symbol | Symbol | Kopfzeile; Bedeutung nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Uhrzeit/Datum | Anzeige | „13:03:31“, „12.05.2025“ | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Meldezeile | Anzeige | „*450* Palettierung nicht bereit“ (rot); Antippen öffnet laut Referenz-Übersicht [RS-38](RS-38_Meldeanzeige.md) | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Schloss-Symbol | Symbol | gelb, geschlossen, unten mittig | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten | Haus-, Zahnrad-, Pfeil-Symbol; Ziele laut Beschriftung (Annahme): [RS-01](RS-01_Produktion.md), [RS-04](RS-04_Einstellungen.md), vorherige Seite | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidaten dieser Seite:
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
 
-- Statuskopf (Kopfzeile), Meldezeile, Funktionsleiste unten (links: Seitenlink-Tasten Gewichtskorrektur, Motorparameter, Regulierung)
-- Dosierer-Seite (gemeinsames Gerüst mit RS-11)
-- Dosierer-Parameterfeld (Eingabefeld mit Schlüsselsymbol)
-- Eingabe-Pop-up (nicht beschrieben)
-- Füllstandsanzeige (Trichter + Status-LED), Fortschrittsbalken (Auslastung)
-- Anwahl-Taste (Umschalter mit Zustandsfarbe), Aktionstaste mit Schlüsselsymbol, Seitenlink-Taste
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-08](../Module/RM-08_Status-LED.md) – Status-LED
+- [RM-09](../Module/RM-09_Fortschrittsbalken.md) – Fortschrittsbalken
+- [RM-10](../Module/RM-10_Umschalter-Taste.md) – Umschalter-Taste
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-18](../Module/RM-18_Dosierer-Seitengeruest.md) – Dosierer-Seitengerüst
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

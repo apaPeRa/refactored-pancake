@@ -38,16 +38,16 @@ Tabelle T32 des Handbuchs (Spalten Funktion | Beschreibung), 6 Datenzeilen, wort
 
 | Element (Handbuch: Funktion) | Typ | Funktion (Beschreibung wörtlich) | verwendetes Modul |
 |---|---|---|---|
-| Heizung | Schaltfläche Ein/Aus je Zone (Bild: grün, Text „Ein“, Schlüsselsymbol) | „Jede Heizung kann einzeln ein- oder ausgeschaltet werden.“ | Modulkandidat: Umschalter mit Schlüsselsymbol (Ein/Aus) |
-| Meldung | Schaltfläche je Zone (Bild: grau mit grünem Häkchen, Schlüsselsymbol) | „Überwacht jede Heizung auf Funktion und Sollwertabweichung. Die Überwachung ist separat deaktivierbar.“ | Modulkandidat: Umschalter mit Schlüsselsymbol (Überwachung) |
-| Soll | Zahlenfeld (Bild: rote Schrift, Einheit °, Schlüsselsymbol) | „Vorgabe der Zieltemperatur der entsprechenden Heizung.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol; Modulkandidat: Eingabe-Pop-up |
-| Ist | Anzeigefeld (Bild: schwarze Schrift, Einheit °) | „Aktuell Temperatur der der entsprechenden Heizung.“ (Schreibweise wörtlich aus Handbuch) | Modulkandidat: Anzeigefeld Istwert |
-| State | Status-LED | „Zeigt den Status der Heizung an. Grau: Heizung ist aus; Grün: Zieltemperatur erreicht; Rot: Heizung nicht bereit oder Fehler.“ | Modulkandidat: Status-LED |
-| Out | Status-LED | „Zustand des Ausgangs.“ (Farbbedeutung im Handbuch nicht beschrieben) | Modulkandidat: Status-LED |
-| Zeilenbeschriftung (nur im Bild) | Text | Zonenname der Heizung (12 Zonen, siehe Aufbau); im Handbuchtext nicht beschrieben | Modulkandidat: Statusliste (Tabelle mit Zeilen je Zone) |
-| Seitenkopf mit Logo, Titel, Symbol, Uhrzeit/Datum (nur im Bild) | Rahmen | Standard-Kopfzeile des alten HMI | Modulkandidat: Seitenkopf (Rahmen) |
-| Meldezeile (nur im Bild) | Anzeige | Aktuelle Meldung „*450* Palettierung nicht bereit“ | Modulkandidat: Meldezeile |
-| Fußleiste Produktion / Einstellungen / Zurück, Schloss-Symbol (nur im Bild) | Tasten | Seitenwechsel; Schloss-Symbol im Handbuch nicht beschrieben | Modulkandidat: Fußleiste (Rahmennavigation) |
+| Heizung | Schaltfläche Ein/Aus je Zone (Bild: grün, Text „Ein“, Schlüsselsymbol) | „Jede Heizung kann einzeln ein- oder ausgeschaltet werden.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) mit Schlüsselsymbol (Ein/Aus) |
+| Meldung | Schaltfläche je Zone (Bild: grau mit grünem Häkchen, Schlüsselsymbol) | „Überwacht jede Heizung auf Funktion und Sollwertabweichung. Die Überwachung ist separat deaktivierbar.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) mit Schlüsselsymbol (Überwachung) |
+| Soll | Zahlenfeld (Bild: rote Schrift, Einheit °, Schlüsselsymbol) | „Vorgabe der Zieltemperatur der entsprechenden Heizung.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md); [RM-06](../Module/RM-06_Eingabe-Pop-up.md) |
+| Ist | Anzeigefeld (Bild: schwarze Schrift, Einheit °) | „Aktuell Temperatur der der entsprechenden Heizung.“ (Schreibweise wörtlich aus Handbuch) | [RM-07](../Module/RM-07_Anzeigefeld.md) Istwert |
+| State | Status-LED | „Zeigt den Status der Heizung an. Grau: Heizung ist aus; Grün: Zieltemperatur erreicht; Rot: Heizung nicht bereit oder Fehler.“ | [RM-08](../Module/RM-08_Status-LED.md) |
+| Out | Status-LED | „Zustand des Ausgangs.“ (Farbbedeutung im Handbuch nicht beschrieben) | [RM-08](../Module/RM-08_Status-LED.md) |
+| Zeilenbeschriftung (nur im Bild) | Text | Zonenname der Heizung (12 Zonen, siehe Aufbau); im Handbuchtext nicht beschrieben | [RM-24](../Module/RM-24_Temperaturzonen-Zeile.md) mit Zeilen je Zone) |
+| Seitenkopf mit Logo, Titel, Symbol, Uhrzeit/Datum (nur im Bild) | Rahmen | Standard-Kopfzeile des alten HMI | [RM-01](../Module/RM-01_Kopfzeile.md) (Rahmen) |
+| Meldezeile (nur im Bild) | Anzeige | Aktuelle Meldung „*450* Palettierung nicht bereit“ | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Fußleiste Produktion / Einstellungen / Zurück, Schloss-Symbol (nur im Bild) | Tasten | Seitenwechsel; Schloss-Symbol im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) (Rahmennavigation) |
 
 Medien dieser Seite (1 Bild, 1 Hinweis-Textfeld):
 
@@ -56,7 +56,19 @@ Medien dieser Seite (1 Bild, 1 Hinweis-Textfeld):
 | [RS-22_01.png](../Medien/RS-22_01.png) | Seitenübersicht Heizungen: Tabelle mit 12 Heizzonen und den Spalten Heizung, Meldung, Soll, Ist, State, Out (Details siehe Aufbau) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Seitenkopf (Rahmen); Meldezeile; Fußleiste (Rahmennavigation); Umschalter mit Schlüsselsymbol (Ein/Aus); Eingabefeld mit Schlüsselsymbol; Eingabe-Pop-up; Anzeigefeld Istwert; Status-LED; Statusliste (Tabelle mit Zeilen je Zone).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-08](../Module/RM-08_Status-LED.md) – Status-LED
+- [RM-10](../Module/RM-10_Umschalter-Taste.md) – Umschalter-Taste
+- [RM-23](../Module/RM-23_Hinweis-Textfeld.md) – Hinweis-Textfeld
+- [RM-24](../Module/RM-24_Temperaturzonen-Zeile.md) – Temperaturzonen-Zeile
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Heizung ein/aus:** jede der 12 Zonen einzeln schaltbar. Im Bild ist die Schaltfläche grün mit Text „Ein“. Darstellung für „Aus“ ist im Handbuch und im Bild nicht beschrieben.

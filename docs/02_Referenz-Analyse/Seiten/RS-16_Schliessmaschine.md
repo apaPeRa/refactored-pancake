@@ -21,40 +21,50 @@ Quelle der Funktionsbeschreibung: Handbuchtabellen T22–T24 (Spalten „Funktio
 ### T22 – Auslaufband (2 Zeilen inkl. Kopfzeile)
 | Element (Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Geschwindigkeit | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 50 %) | Sollgeschwindigkeit des Auslaufbands. | Modulkandidat: Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe) |
+| Geschwindigkeit | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 50 %) | Sollgeschwindigkeit des Auslaufbands. | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Pop-up-Eingabe) |
 
 ### T23 – Kopfleim (5 Zeilen inkl. Kopfzeile)
 | Element (Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Taste Ein / Aus | Umschalttaste, Anzeige „Ein“ auf grünem Grund (Bild), mit Schlüsselsymbol | Erlaubt das Abwählen des Kopfleims. | Modulkandidat: Umschalttaste Ein/Aus |
-| Anfang | Zahlenfeld mit Schlüsselsymbol, Einheit ° (Bild: 280 °) | Beginn der Nocke für den Kopfleim. | Modulkandidat: Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe); Modulkandidat: Nocken-Parametergruppe (Anfang/Ende/Dauer) |
+| Taste Ein / Aus | Umschalttaste, Anzeige „Ein“ auf grünem Grund (Bild), mit Schlüsselsymbol | Erlaubt das Abwählen des Kopfleims. | [RM-10](../Module/RM-10_Umschalter-Taste.md) Ein/Aus |
+| Anfang | Zahlenfeld mit Schlüsselsymbol, Einheit ° (Bild: 280 °) | Beginn der Nocke für den Kopfleim. | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Pop-up-Eingabe); [RM-20](../Module/RM-20_Nocken-Parameterzeile.md) (Anfang/Ende/Dauer) |
 | Ende | Zahlenfeld mit Schlüsselsymbol, Einheit ° (Bild: 325 °) | Ende der Nocke für den Kopfleim. | wie „Anfang“ |
 | Dauer | Zahlenfeld mit Schlüsselsymbol, Einheit ms (Bild: 50 ms) | Einschaltdauer des Ventils. Benötigt die Nocke länger, aufgrund einer reduzierten Maschinengeschwindigkeit, wird das Ventil getaktet. Damit wird die Menge an Heißleim reduziert. | wie „Anfang“ |
 
 ### T24 – Rüttlung (3 Zeilen inkl. Kopfzeile)
 | Element (Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Taste Ein / Aus | Umschalttaste, Anzeige „Ein“ auf grünem Grund (Bild), mit Schlüsselsymbol | Erlaubt das Abwählen der Rüttlung. Schaltet beide Rüttlungen ab. | Modulkandidat: Umschalttaste Ein/Aus |
-| Rüttlung 1 / 2 | zwei Zahlenfelder „Rüttlung 1:“ (Bild: 25 %) und „Rüttlung 2:“ (Bild: 25 %) mit Schlüsselsymbol, Einheit % | Intensität der Rüttlung. | Modulkandidat: Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe) |
+| Taste Ein / Aus | Umschalttaste, Anzeige „Ein“ auf grünem Grund (Bild), mit Schlüsselsymbol | Erlaubt das Abwählen der Rüttlung. Schaltet beide Rüttlungen ab. | [RM-10](../Module/RM-10_Umschalter-Taste.md) Ein/Aus |
+| Rüttlung 1 / 2 | zwei Zahlenfelder „Rüttlung 1:“ (Bild: 25 %) und „Rüttlung 2:“ (Bild: 25 %) mit Schlüsselsymbol, Einheit % | Intensität der Rüttlung. | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Pop-up-Eingabe) |
 
 ### Rahmenelemente laut Bild (nicht im Text beschrieben)
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Logo APA-TEC | Grafik | im Handbuch nicht beschrieben | Modulkandidat: Statuskopf (Kopfzeile) |
-| Seitentitel „Schließmaschine“ | Text | Seitenname | Modulkandidat: Statuskopf (Kopfzeile) |
-| Rundes Wirbelsymbol | Symbol | im Handbuch nicht beschrieben | Modulkandidat: Statuskopf (Kopfzeile) |
-| Uhrzeit 13:03:21, Datum 12.05.2025 | Anzeige | im Handbuch nicht beschrieben | Modulkandidat: Statuskopf (Kopfzeile) |
-| Meldezeile „\*450\* Palettierung nicht bereit“ | Anzeige (rot) | im Handbuch nicht beschrieben | Modulkandidat: Meldezeile |
-| Taste „Heißleimgerät“ | Taste | im Handbuch nicht beschrieben; Sprungziel unklar (vermutlich Heißleim-Seite, nicht belegt) | Modulkandidat: Navigationsleiste unten (seitenspezifische Taste) |
-| Schloss-Symbol (gelb, geschlossen) | Symbol | im Handbuch nicht beschrieben (Bedienberechtigung/Sperre?) | Modulkandidat: Navigationsleiste unten (Schloss/Berechtigung) |
-| Taste „Produktion“ (Haus) | Taste | im Handbuch nicht beschrieben (Name; Sprung zu RS-01 anzunehmen) | Modulkandidat: Navigationsleiste unten |
-| Taste „Einstellungen“ (Zahnrad) | Taste | im Handbuch nicht beschrieben (Sprung zu RS-04 anzunehmen) | Modulkandidat: Navigationsleiste unten |
-| Taste „Zurück“ | Taste | im Handbuch nicht beschrieben | Modulkandidat: Navigationsleiste unten |
+| Logo APA-TEC | Grafik | im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Seitentitel „Schließmaschine“ | Text | Seitenname | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Rundes Wirbelsymbol | Symbol | im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Uhrzeit 13:03:21, Datum 12.05.2025 | Anzeige | im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Meldezeile „\*450\* Palettierung nicht bereit“ | Anzeige (rot) | im Handbuch nicht beschrieben | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Taste „Heißleimgerät“ | Taste | im Handbuch nicht beschrieben; Sprungziel unklar (vermutlich Heißleim-Seite, nicht belegt) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) (seitenspezifische Taste) |
+| Schloss-Symbol (gelb, geschlossen) | Symbol | im Handbuch nicht beschrieben (Bedienberechtigung/Sperre?) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) (Schloss/Berechtigung) |
+| Taste „Produktion“ (Haus) | Taste | im Handbuch nicht beschrieben (Name; Sprung zu RS-01 anzunehmen) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Taste „Einstellungen“ (Zahnrad) | Taste | im Handbuch nicht beschrieben (Sprung zu RS-04 anzunehmen) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Taste „Zurück“ | Taste | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 Erfasst: 3 Handbuchtabellen mit zusammen 7 Datenzeilen (1 + 4 + 2; ohne Kopfzeilen) bzw. 10 Tabellenzeilen inkl. Kopfzeilen; 1 Bild.
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben (folgt in R11). Modulkandidaten: Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe); Umschalttaste Ein/Aus; Nocken-Parametergruppe (Anfang/Ende/Dauer); Statuskopf (Kopfzeile); Meldezeile; Navigationsleiste unten.
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-10](../Module/RM-10_Umschalter-Taste.md) – Umschalter-Taste
+- [RM-15](../Module/RM-15_Gruppenrahmen.md) – Gruppenrahmen
+- [RM-20](../Module/RM-20_Nocken-Parameterzeile.md) – Nocken-Parameterzeile
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Zahlenfelder mit gelbem Schlüsselsymbol: Das Schlüsselsymbol deutet auf eine berechtigungsgeschützte Eingabe hin; im Handbuch ist weder Bedeutung noch Berechtigungsstufe noch ein Eingabe-Pop-up beschrieben. Pop-ups oder Unterseiten dieser Seite: keine beschrieben.

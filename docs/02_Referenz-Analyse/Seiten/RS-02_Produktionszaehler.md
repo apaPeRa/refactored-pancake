@@ -33,17 +33,23 @@ Das Kapitel enthält keine Tabelle; die Elemente stammen aus der Funktionsbeschr
 
 | Element | Typ | Funktion (wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Aktuell | Zahlenfeld + Datum/Uhrzeit-Feld (nur Anzeige) | „Die Felder *Aktuell* und *Historie 1 bis 12* zeigen die ausgebrachten Packungen seit dem Reset-Zeitpunkt, welcher in der Spalte *Datum / Uhrzeit* angezeigt wird, an.“ | Modulkandidat: Zählerzeile (Zähler + Zeitstempel) |
-| Historie 1 … Historie 12 (12 Zeilen) | Zahlenfeld + Datum/Uhrzeit-Feld (nur Anzeige) | wie „Aktuell“. Bei leerer Historie: Zähler 0, Datum „--.--.---- --:--:--“ (Bild) | Modulkandidat: Zählerzeile |
-| Spalte Datum / Uhrzeit | Spaltenüberschrift | zeigt den Reset-Zeitpunkt je Zähler | Modulkandidat: Zählerzeile |
-| Gesamte Produktion | Zahlenfeld (nur Anzeige) | „zeigt den Gesamtzähler an. Das sind alle Packungen, welche seit der Inbetriebnahme der Maschine produziert wurden.“ | Modulkandidat: Kennzahl-Kachel |
-| Betriebsstunden | Zeitfeld (nur Anzeige), Format hhh:mm:ss laut Bild | „zeigt die gesamte Zeit an, welche die Maschine bisher produziert hat.“ | Modulkandidat: Kennzahl-Kachel |
-| Reset | Taste (gedrückt halten) | „Ein Reset wird ausgeführt, wenn die Taste *Reset* für eine kurze Zeit gehalten wird. Der Reset wurde erfolgreich ausgeführt, wenn alle Einträge um eine Spalte nach unten rutschen.“ | Modulkandidat: Funktionstaste (Haltetaste) |
-| Schließen | Taste | „Mit *Schließen* wird das Pop-Up geschlossen.“ | Modulkandidat: Pop-up-Rahmen (Titel, Schließen) |
-| Titelleiste mit Kreuz | Fensterrahmen | Titel „Produktionszähler“, Kreuz oben rechts (im Handbuch nicht beschrieben) | Modulkandidat: Pop-up-Rahmen |
+| Aktuell | Zahlenfeld + Datum/Uhrzeit-Feld (nur Anzeige) | „Die Felder *Aktuell* und *Historie 1 bis 12* zeigen die ausgebrachten Packungen seit dem Reset-Zeitpunkt, welcher in der Spalte *Datum / Uhrzeit* angezeigt wird, an.“ | [RM-31](../Module/RM-31_Zaehlerzeile.md) (Zähler + Zeitstempel) |
+| Historie 1 … Historie 12 (12 Zeilen) | Zahlenfeld + Datum/Uhrzeit-Feld (nur Anzeige) | wie „Aktuell“. Bei leerer Historie: Zähler 0, Datum „--.--.---- --:--:--“ (Bild) | [RM-31](../Module/RM-31_Zaehlerzeile.md) |
+| Spalte Datum / Uhrzeit | Spaltenüberschrift | zeigt den Reset-Zeitpunkt je Zähler | [RM-31](../Module/RM-31_Zaehlerzeile.md) |
+| Gesamte Produktion | Zahlenfeld (nur Anzeige) | „zeigt den Gesamtzähler an. Das sind alle Packungen, welche seit der Inbetriebnahme der Maschine produziert wurden.“ | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) |
+| Betriebsstunden | Zeitfeld (nur Anzeige), Format hhh:mm:ss laut Bild | „zeigt die gesamte Zeit an, welche die Maschine bisher produziert hat.“ | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) |
+| Reset | Taste (gedrückt halten) | „Ein Reset wird ausgeführt, wenn die Taste *Reset* für eine kurze Zeit gehalten wird. Der Reset wurde erfolgreich ausgeführt, wenn alle Einträge um eine Spalte nach unten rutschen.“ | [RM-11](../Module/RM-11_Aktionstaste.md) (Haltetaste) |
+| Schließen | Taste | „Mit *Schließen* wird das Pop-Up geschlossen.“ | [RM-13](../Module/RM-13_Pop-up-Rahmen.md) (Titel, Schließen) |
+| Titelleiste mit Kreuz | Fensterrahmen | Titel „Produktionszähler“, Kreuz oben rechts (im Handbuch nicht beschrieben) | [RM-13](../Module/RM-13_Pop-up-Rahmen.md) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Pop-up-Rahmen, Zählerzeile, Kennzahl-Kachel, Funktionstaste (Haltetaste).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-12](../Module/RM-12_Kennzahl-Kachel.md) – Kennzahl-Kachel
+- [RM-13](../Module/RM-13_Pop-up-Rahmen.md) – Pop-up-Rahmen
+- [RM-31](../Module/RM-31_Zaehlerzeile.md) – Zählerzeile
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Öffnen: Klick auf das Symbol bei „Aktuelle Produktion“ auf RS-01.

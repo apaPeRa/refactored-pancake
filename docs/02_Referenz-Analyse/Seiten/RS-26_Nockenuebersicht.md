@@ -43,13 +43,13 @@ Tabelle T36 (Spalten Funktion | Beschreibung), 4 Datenzeilen, wortgetreu:
 
 | Element (Handbuch: Funktion) | Typ | Funktion (Beschreibung wörtlich) | verwendetes Modul |
 |---|---|---|---|
-| Nockennummer | Tippbares Nummernfeld (Spalte „Nr.“) | „Nummer der Nocke. Durch Antippen wird die zugehörige Einstellseite geöffnet.“ | Modulkandidat: Tabelle mit Nocken (Nockenzeile) |
-| Start | Anzeigefeld in ° (Spalte „Start“) | „Startposition der Nocke bezogen auf den Maschinenwinkel.“ | Modulkandidat: Tabelle mit Nocken (Nockenzeile) |
-| Ende | Anzeigefeld in ° (Spalte „Ende“) | „Endposition der Nocke bezogen auf den Maschinenwinkel.“ | Modulkandidat: Tabelle mit Nocken (Nockenzeile) |
-| LED | Status-LED je Zeile | „Zeigt den Status der Nocke an. Leuchtet die LED grün, befindet sich die Maschine aktuell in der aktiven Phase der Nocke.“ | Modulkandidat: Status-LED |
-| Bezeichnung (nur im Bild) | Anzeigefeld ohne Spaltenkopf | Name der Nocke; im Handbuchtext nicht beschrieben | Modulkandidat: Tabelle mit Nocken (Nockenzeile) |
-| Tasten „<<“ und „>>“ in der Fußleiste (nur im Bild) | Tasten | Im Handbuch dieser Seite nicht beschrieben (vermutlich Blättern zwischen Nockenseiten) | Modulkandidat: Navigation unten links (Blättern mit Pfeiltasten) |
-| Seitenkopf, Meldezeile, Fußleiste (nur im Bild) | Rahmen | Standardrahmen | Modulkandidat: Seitenkopf (Rahmen); Modulkandidat: Meldezeile; Modulkandidat: Fußleiste (Rahmennavigation) |
+| Nockennummer | Tippbares Nummernfeld (Spalte „Nr.“) | „Nummer der Nocke. Durch Antippen wird die zugehörige Einstellseite geöffnet.“ | [RM-19](../Module/RM-19_Nockentabelle.md) (Nockenzeile) |
+| Start | Anzeigefeld in ° (Spalte „Start“) | „Startposition der Nocke bezogen auf den Maschinenwinkel.“ | [RM-19](../Module/RM-19_Nockentabelle.md) (Nockenzeile) |
+| Ende | Anzeigefeld in ° (Spalte „Ende“) | „Endposition der Nocke bezogen auf den Maschinenwinkel.“ | [RM-19](../Module/RM-19_Nockentabelle.md) (Nockenzeile) |
+| LED | Status-LED je Zeile | „Zeigt den Status der Nocke an. Leuchtet die LED grün, befindet sich die Maschine aktuell in der aktiven Phase der Nocke.“ | [RM-08](../Module/RM-08_Status-LED.md) |
+| Bezeichnung (nur im Bild) | Anzeigefeld ohne Spaltenkopf | Name der Nocke; im Handbuchtext nicht beschrieben | [RM-19](../Module/RM-19_Nockentabelle.md) (Nockenzeile) |
+| Tasten „<<“ und „>>“ in der Fußleiste (nur im Bild) | Tasten | Im Handbuch dieser Seite nicht beschrieben (vermutlich Blättern zwischen Nockenseiten) | [RM-04](../Module/RM-04_Blaettertasten.md) |
+| Seitenkopf, Meldezeile, Fußleiste (nur im Bild) | Rahmen | Standardrahmen | [RM-01](../Module/RM-01_Kopfzeile.md) (Rahmen); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) (Rahmennavigation) |
 
 Medien dieser Seite (1 Bild):
 
@@ -58,7 +58,15 @@ Medien dieser Seite (1 Bild):
 | [RS-26_01.png](../Medien/RS-26_01.png) | Tabelle der Nocken 40 bis 59 mit Bezeichnung, Start, Ende und Status-LED (5 grün: 45, 47, 54, 57, 58) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Tabelle mit Nocken (Nockenzeile); Status-LED; Navigation unten links (Blättern mit Pfeiltasten); Seitenkopf (Rahmen); Meldezeile; Fußleiste (Rahmennavigation).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-04](../Module/RM-04_Blaettertasten.md) – Blättertasten
+- [RM-08](../Module/RM-08_Status-LED.md) – Status-LED
+- [RM-19](../Module/RM-19_Nockentabelle.md) – Nockentabelle
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Sprung zur Einstellseite:** Antippen der Nockennummer öffnet die zugehörige Einstellseite ([RS-25](RS-25_Nocken.md)) mit dieser Nocke.

@@ -28,14 +28,14 @@ Seitenbild: ![RS-01_01](../Medien/RS-01_01.png) – Screenshot der alten Oberfl�
 
 | Element | Typ | Funktion (Handbuch wortgetreu) | Grafik | verwendetes Modul |
 |---|---|---|---|---|
-| Geschwindigkeit Soll | Zahlenfeld mit Symbol (Symbol bedienbar); im Bild „50“, rote Schrift | „Vorgabe der gewünschten Maschinengeschwindigkeit. Je nach Situation kann die Maschinengeschwindigkeit von diesem Wert abweichen. Ein Klick auf das rote Tachosymbol öffnet eine Eingabe für alle Geschwindigkeiten.“ (→ [RS-03](RS-03_Maschinengeschwindigkeit.md)) | ![RS-01_02](../Medien/RS-01_02.png) rotes Tacho-Symbol (48 × 48 px) | Modulkandidat: Kennzahl-Kachel (Symbol + Wert); Modulkandidat: Eingabe-Pop-up (Ziel RS-03) |
-| Geschwindigkeit Ist | Zahlenfeld mit Symbol (nur Anzeige); im Bild „0“ | „Ausgabe der aktuellen Maschinengeschwindigkeit. Hat die Maschine einen zentralen Geber oder Servomotor entspricht der Wert dieser Geschwindigkeit. Handelt es sich um eine getaktete Maschine wird der Wert anhand der Ausbringung berechnet.“ | ![RS-01_03](../Medien/RS-01_03.png) schwarzes Tacho-Symbol (48 × 48) | Modulkandidat: Kennzahl-Kachel |
-| Aktuelle Produktion | Zahlenfeld mit Symbol (Symbol bedienbar); im Bild „874183“ | „Ein rücksetzbarer Stückzähler. Ein Klick auf das Symbol öffnet das Pop-Up Produktionszähler.“ (→ [RS-02](RS-02_Produktionszaehler.md)) | ![RS-01_04](../Medien/RS-01_04.png) Uhr-Symbol mit Punkt links und kurzem Strich darunter (73 × 73) | Modulkandidat: Kennzahl-Kachel; Modulkandidat: Eingabe-Pop-up (Ziel RS-02, siehe dort) |
-| Letzte Produktion | Zahlenfeld mit Symbol (nur Anzeige); im Bild „7“ | „Der Wert des Stückzählers beim letzten Rücksetzen.“ | ![RS-01_05](../Medien/RS-01_05.png) Uhr-Symbol mit gestrichelter senkrechter Linie links (100 × 100) | Modulkandidat: Kennzahl-Kachel |
-| Maschinenwinkel | Zahlenfeld mit Symbol; im Bild „140“ | „Winkel des Hauptgebers. Die meisten Nocken und Antriebe richten sich nach diesem Geber.“ | ![RS-01_06](../Medien/RS-01_06.png) Winkel-Symbol (spitzer Winkel mit Bogen, 48 × 48) | Modulkandidat: Kennzahl-Kachel |
-| Letztes Gewicht | Zahlenfeld mit Symbol; im Bild „0,0“, kleine „0“ unten rechts im Feld | „Das letzte gewogene Gewicht in der Maschine. gibt es mehrere Dosierer oder Waagen zeigt der kleinere Wert unten rechts im Feld die Nummer des Dosierers oder der Waage an.“ | ![RS-01_07](../Medien/RS-01_07.png) Waagen-Symbol (Tacho-Halbkreis mit Zeiger unter Aufhängung, 48 × 48) | Modulkandidat: Kennzahl-Kachel (mit Index-Anzeige unten rechts) |
-| Mittelwert | Zahlenfeld mit Symbol und Umschaltfläche; im Bild „250,2“, Schaltfläche „Fortlaufend“ | „Mittleres Gewicht der ausgebrachten Packungen. Kann fortlaufend oder stichprobenartig erfasst werden. Die Schaltfläche rechts vom Ausgabefeld erlaubt das Umschalten.“ | ![RS-01_08](../Medien/RS-01_08.png) Symbol „X“ mit Querstrich (Mittelwert-Zeichen, 48 × 48) | Modulkandidat: Kennzahl-Kachel; Modulkandidat: Umschalter (Fortlaufend / Stichprobe) |
-| Standartabweichung | Zahlenfeld mit Symbol (nur Anzeige); im Bild „0,3“ | „Die Standartabweichung der ausgebrachten Packungen. Der Wert wird anhand derselben Gewichte wie der Mittelwert berechnet. Entsprechend kann die Ausgabe fortlaufend oder stichprobenartig sein.“ | ![RS-01_09](../Medien/RS-01_09.png) fettes „S“ (25 × 28) | Modulkandidat: Kennzahl-Kachel |
+| Geschwindigkeit Soll | Zahlenfeld mit Symbol (Symbol bedienbar); im Bild „50“, rote Schrift | „Vorgabe der gewünschten Maschinengeschwindigkeit. Je nach Situation kann die Maschinengeschwindigkeit von diesem Wert abweichen. Ein Klick auf das rote Tachosymbol öffnet eine Eingabe für alle Geschwindigkeiten.“ (→ [RS-03](RS-03_Maschinengeschwindigkeit.md)) | ![RS-01_02](../Medien/RS-01_02.png) rotes Tacho-Symbol (48 × 48 px) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) (Symbol + Wert); [RM-13](../Module/RM-13_Pop-up-Rahmen.md) (Ziel RS-03) |
+| Geschwindigkeit Ist | Zahlenfeld mit Symbol (nur Anzeige); im Bild „0“ | „Ausgabe der aktuellen Maschinengeschwindigkeit. Hat die Maschine einen zentralen Geber oder Servomotor entspricht der Wert dieser Geschwindigkeit. Handelt es sich um eine getaktete Maschine wird der Wert anhand der Ausbringung berechnet.“ | ![RS-01_03](../Medien/RS-01_03.png) schwarzes Tacho-Symbol (48 × 48) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) |
+| Aktuelle Produktion | Zahlenfeld mit Symbol (Symbol bedienbar); im Bild „874183“ | „Ein rücksetzbarer Stückzähler. Ein Klick auf das Symbol öffnet das Pop-Up Produktionszähler.“ (→ [RS-02](RS-02_Produktionszaehler.md)) | ![RS-01_04](../Medien/RS-01_04.png) Uhr-Symbol mit Punkt links und kurzem Strich darunter (73 × 73) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md); [RM-13](../Module/RM-13_Pop-up-Rahmen.md) (Ziel RS-02, siehe dort) |
+| Letzte Produktion | Zahlenfeld mit Symbol (nur Anzeige); im Bild „7“ | „Der Wert des Stückzählers beim letzten Rücksetzen.“ | ![RS-01_05](../Medien/RS-01_05.png) Uhr-Symbol mit gestrichelter senkrechter Linie links (100 × 100) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) |
+| Maschinenwinkel | Zahlenfeld mit Symbol; im Bild „140“ | „Winkel des Hauptgebers. Die meisten Nocken und Antriebe richten sich nach diesem Geber.“ | ![RS-01_06](../Medien/RS-01_06.png) Winkel-Symbol (spitzer Winkel mit Bogen, 48 × 48) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) |
+| Letztes Gewicht | Zahlenfeld mit Symbol; im Bild „0,0“, kleine „0“ unten rechts im Feld | „Das letzte gewogene Gewicht in der Maschine. gibt es mehrere Dosierer oder Waagen zeigt der kleinere Wert unten rechts im Feld die Nummer des Dosierers oder der Waage an.“ | ![RS-01_07](../Medien/RS-01_07.png) Waagen-Symbol (Tacho-Halbkreis mit Zeiger unter Aufhängung, 48 × 48) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) (mit Index-Anzeige unten rechts) |
+| Mittelwert | Zahlenfeld mit Symbol und Umschaltfläche; im Bild „250,2“, Schaltfläche „Fortlaufend“ | „Mittleres Gewicht der ausgebrachten Packungen. Kann fortlaufend oder stichprobenartig erfasst werden. Die Schaltfläche rechts vom Ausgabefeld erlaubt das Umschalten.“ | ![RS-01_08](../Medien/RS-01_08.png) Symbol „X“ mit Querstrich (Mittelwert-Zeichen, 48 × 48) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md); [RM-10](../Module/RM-10_Umschalter-Taste.md) (Fortlaufend / Stichprobe) |
+| Standartabweichung | Zahlenfeld mit Symbol (nur Anzeige); im Bild „0,3“ | „Die Standartabweichung der ausgebrachten Packungen. Der Wert wird anhand derselben Gewichte wie der Mittelwert berechnet. Entsprechend kann die Ausgabe fortlaufend oder stichprobenartig sein.“ | ![RS-01_09](../Medien/RS-01_09.png) fettes „S“ (25 × 28) | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) |
 
 ### Steuerfunktionen (mittig) – Tabelle T2 (16 Datenzeilen, Spalten Funktion | Beschreibung)
 
@@ -43,39 +43,47 @@ Alle Elemente sind Tasten (Typ: Schalter, an/aus) im 4×4-Raster von Bild [RS-01
 
 | Element | Typ | Funktion (Handbuch wortgetreu) | verwendetes Modul |
 |---|---|---|---|
-| Automatik Produktion (Z1/S1) | Taste, grau/grün | „Aktiviert alle Funktionen der Maschine für die Produktion. Ist die Schaltfläche grau, so ist mindestens eine Funktion abgewählt.“ | Modulkandidat: Funktionstaste (Schalter mit Zustandsfarbe) |
-| Maschine schnell / langsam (Z2/S1, Beschriftung im Bild „Maschine schnell“) | Taste | „Erlaubt eine direkte Umschaltung zwischen zwei Geschwindigkeiten. Hilfreich beim Anlauf und bei der Problemsuche.“ | Modulkandidat: Funktionstaste |
-| Maschinen-beleuchtung (Z3/S1) | Taste | „Schaltet die Maschinenbeleuchtung ein oder aus.“ | Modulkandidat: Funktionstaste |
-| Gebläse Dornrad (Z4/S1) | Taste | „Erlaubt das Schalten des Sauggebläses im Dornrad. Wird in der Regel automatisch gesteuert.“ | Modulkandidat: Funktionstaste |
-| Zuführung Papier (Z1/S2) | Taste | „Aktiviert die Zuführung für das Innenpapier.“ | Modulkandidat: Funktionstaste |
-| Zuführung Karton (Z2/S2) | Taste | „Aktiviert die Zuführung des Außenkartons. Ist kein Papier auf dem Dorn wird kein Karton abgezogen.“ | Modulkandidat: Funktionstaste |
-| Bahnkontrolle (Z3/S2) | Taste | „Schaltet die Überwachung des Papierabzugs in der Papierzuführung ein. Abhängig von der Nocke muss der entsprechende Sensor belegt werden und auch wieder frei werden. Fehler beim Abzug oder beim Nachfüllen führen zu einer Störung und zum Stopp der Maschine.“ | Modulkandidat: Funktionstaste |
-| Leerpakete ausblasen (Z4/S2) | Taste | „Alle Packungen im Dornrad werden als schlecht markiert und bei der nächsten Möglichkeit ausgeblasen.“ | Modulkandidat: Funktionstaste |
-| Produktzuführung (Z1/S3) | Taste | „Schaltet alle Komponenten ein welche für die Produktzuführung nötig sind. Das beinhaltet Bänder, Schnecken. Klappen werden geöffnet.“ | Modulkandidat: Funktionstaste |
-| Produktüberwachung (Z2/S3, Beschriftung im Bild „Produkt-überwachung“) | Taste | „Ist die Überwachung aktiv, stoppt die Maschine mit einer Störung, wenn die Trichter und Füllrohre an den Dosierern leer sind. Zum Leerfahren der Produktzuführung muss die Überwachung abgeschaltet werden.“ | Modulkandidat: Funktionstaste |
-| Abfüllung (Z3/S3) | Taste | „Damit kann das Abfüllen der Packungen abgeschaltet werden. Die Packungen werden auf den Waagen als schlecht markiert und werden an der nächsten Möglichkeit ausgeschleust.“ | Modulkandidat: Funktionstaste |
-| Rüttlung (Z4/S3) | Taste | „Erlaubt das Zu- und Abschalten der Rüttlung im Schließteil der Maschine.“ | Modulkandidat: Funktionstaste |
-| Entstaubung (Z1/S4) | Taste | „Steuert das Ventil für die Entstaubung in der Schließmaschine.“ | Modulkandidat: Funktionstaste |
-| Bunker leerfahren (Z2/S4) | Taste | „Sendet ein Signal an die vorgelagerte Produktzuführung und fordert ein Leerfahren des Produktbunkers an.“ | Modulkandidat: Funktionstaste |
-| Heizungen (Z3/S4) | Taste | „Erlaubt das Zu- und Abschalten aller Heizungen in der Maschine.“ (Detailseite: [RS-22](RS-22_Heizungen.md), Querbezug laut Übersicht) | Modulkandidat: Funktionstaste |
-| Linienbetrieb (Z4/S4) | Taste | „Ist der Linienbetrieb aktiv, reagiert die Maschine auf nachfolgende Anlagen und Stoppt oder fährt Leer abhängig von den Signalen.“ | Modulkandidat: Funktionstaste |
+| Automatik Produktion (Z1/S1) | Taste, grau/grün | „Aktiviert alle Funktionen der Maschine für die Produktion. Ist die Schaltfläche grau, so ist mindestens eine Funktion abgewählt.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) (Schalter mit Zustandsfarbe) |
+| Maschine schnell / langsam (Z2/S1, Beschriftung im Bild „Maschine schnell“) | Taste | „Erlaubt eine direkte Umschaltung zwischen zwei Geschwindigkeiten. Hilfreich beim Anlauf und bei der Problemsuche.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Maschinen-beleuchtung (Z3/S1) | Taste | „Schaltet die Maschinenbeleuchtung ein oder aus.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Gebläse Dornrad (Z4/S1) | Taste | „Erlaubt das Schalten des Sauggebläses im Dornrad. Wird in der Regel automatisch gesteuert.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Zuführung Papier (Z1/S2) | Taste | „Aktiviert die Zuführung für das Innenpapier.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Zuführung Karton (Z2/S2) | Taste | „Aktiviert die Zuführung des Außenkartons. Ist kein Papier auf dem Dorn wird kein Karton abgezogen.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Bahnkontrolle (Z3/S2) | Taste | „Schaltet die Überwachung des Papierabzugs in der Papierzuführung ein. Abhängig von der Nocke muss der entsprechende Sensor belegt werden und auch wieder frei werden. Fehler beim Abzug oder beim Nachfüllen führen zu einer Störung und zum Stopp der Maschine.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Leerpakete ausblasen (Z4/S2) | Taste | „Alle Packungen im Dornrad werden als schlecht markiert und bei der nächsten Möglichkeit ausgeblasen.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Produktzuführung (Z1/S3) | Taste | „Schaltet alle Komponenten ein welche für die Produktzuführung nötig sind. Das beinhaltet Bänder, Schnecken. Klappen werden geöffnet.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Produktüberwachung (Z2/S3, Beschriftung im Bild „Produkt-überwachung“) | Taste | „Ist die Überwachung aktiv, stoppt die Maschine mit einer Störung, wenn die Trichter und Füllrohre an den Dosierern leer sind. Zum Leerfahren der Produktzuführung muss die Überwachung abgeschaltet werden.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Abfüllung (Z3/S3) | Taste | „Damit kann das Abfüllen der Packungen abgeschaltet werden. Die Packungen werden auf den Waagen als schlecht markiert und werden an der nächsten Möglichkeit ausgeschleust.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Rüttlung (Z4/S3) | Taste | „Erlaubt das Zu- und Abschalten der Rüttlung im Schließteil der Maschine.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Entstaubung (Z1/S4) | Taste | „Steuert das Ventil für die Entstaubung in der Schließmaschine.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Bunker leerfahren (Z2/S4) | Taste | „Sendet ein Signal an die vorgelagerte Produktzuführung und fordert ein Leerfahren des Produktbunkers an.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Heizungen (Z3/S4) | Taste | „Erlaubt das Zu- und Abschalten aller Heizungen in der Maschine.“ (Detailseite: [RS-22](RS-22_Heizungen.md), Querbezug laut Übersicht) | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
+| Linienbetrieb (Z4/S4) | Taste | „Ist der Linienbetrieb aktiv, reagiert die Maschine auf nachfolgende Anlagen und Stoppt oder fährt Leer abhängig von den Signalen.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
 
 ### Rahmenelemente laut Seitenbild (nicht in den Handbuch-Tabellen beschrieben)
 
 | Element | Typ | Beschreibung laut Bild | verwendetes Modul |
 |---|---|---|---|
-| Logo APA-TEC | Grafik | oben links | Modulkandidat: Kopfzeile |
-| Seitentitel „Produktion“ | Text, unterstrichen | oben mittig | Modulkandidat: Kopfzeile |
-| Wirbel-Symbol | Symbol | rechts neben dem Titel, blau, Funktion nicht beschrieben | Modulkandidat: Kopfzeile |
-| Uhrzeit / Datum | Anzeige | „13:01:12“ / „12.05.2025“ | Modulkandidat: Kopfzeile |
-| Meldezeile | Anzeige (Balken, rot) | „*450* Palettierung nicht bereit“; Antippen öffnet laut Referenz-Übersicht die Meldeanzeige ([RS-38](RS-38_Meldeanzeige.md)) | Modulkandidat: Meldezeile |
-| Schloss-Symbol | Symbol (gelb) | untere Leiste links, Funktion nicht beschrieben | Modulkandidat: Funktionsleiste |
-| Taste „Produktion“ (Haus) | Navigationstaste | untere Leiste, aktuelle Seite hervorgehoben | Modulkandidat: Navigationsleiste |
-| Taste „Einstellungen“ (Zahnrad) | Navigationstaste | untere Leiste, führt laut Referenz-Übersicht zu [RS-04](RS-04_Einstellungen.md) | Modulkandidat: Navigationsleiste |
-| Taste „Zurück“ | Navigationstaste | untere Leiste | Modulkandidat: Navigationsleiste |
+| Logo APA-TEC | Grafik | oben links | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Seitentitel „Produktion“ | Text, unterstrichen | oben mittig | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Wirbel-Symbol | Symbol | rechts neben dem Titel, blau, Funktion nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Uhrzeit / Datum | Anzeige | „13:01:12“ / „12.05.2025“ | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Meldezeile | Anzeige (Balken, rot) | „*450* Palettierung nicht bereit“; Antippen öffnet laut Referenz-Übersicht die Meldeanzeige ([RS-38](RS-38_Meldeanzeige.md)) | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Schloss-Symbol | Symbol (gelb) | untere Leiste links, Funktion nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Taste „Produktion“ (Haus) | Navigationstaste | untere Leiste, aktuelle Seite hervorgehoben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Taste „Einstellungen“ (Zahnrad) | Navigationstaste | untere Leiste, führt laut Referenz-Übersicht zu [RS-04](RS-04_Einstellungen.md) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Taste „Zurück“ | Navigationstaste | untere Leiste | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten dieser Seite: Kopfzeile, Meldezeile, Navigationsleiste (untere Funktionsleiste), Kennzahl-Kachel (Symbol + Wert, 7-mal; Variante mit Index unten rechts), Umschalter (Fortlaufend/Stichprobe), Funktionstaste (Schalter grau/grün, 16-mal), Eingabe-Pop-up (Ziele RS-02, RS-03).
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-10](../Module/RM-10_Umschalter-Taste.md) – Umschalter-Taste
+- [RM-12](../Module/RM-12_Kennzahl-Kachel.md) – Kennzahl-Kachel
+- [RM-13](../Module/RM-13_Pop-up-Rahmen.md) – Pop-up-Rahmen
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Pop-ups: Klick auf das rote Tacho-Symbol (Geschwindigkeit Soll) öffnet [RS-03](RS-03_Maschinengeschwindigkeit.md); Klick auf das Symbol bei „Aktuelle Produktion“ öffnet [RS-02](RS-02_Produktionszaehler.md).

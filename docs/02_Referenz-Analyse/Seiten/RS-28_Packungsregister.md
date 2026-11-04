@@ -28,11 +28,11 @@ Tabelle T39 „Funktionsbeschreibung“ (5 Datenzeilen; Spalten Handbuch: Anzeig
 
 | Element | Typ | Funktion (Wortlaut Handbuch) | verwendetes Modul |
 |---|---|---|---|
-| Feld grau | Zustandsfeld einer Station | „An dieser Position befindet sich aktuell keine Packung.“ (Legende im Bild: „Nicht vorhanden“) | Modulkandidat: Packungsstation-Feld (Zustandsfarbe) |
-| Feld rot | Zustandsfeld einer Station | „Die Packung ist als Schlechtpackung markiert und wird ausgestoßen.“ (Legende: „Schlecht“) | Modulkandidat: Packungsstation-Feld (Zustandsfarbe) |
-| Feld gelb | Zustandsfeld einer Station | „Es befindet sich eine Packung an dieser Position, sie wurde jedoch noch nicht befüllt oder gewogen.“ (Legende: „Vorhanden“) | Modulkandidat: Packungsstation-Feld (Zustandsfarbe) |
-| Feld orange | Zustandsfeld einer Station | „Die Packung wurde mit Produkt befüllt.“ (Legende: „Befüllt“) | Modulkandidat: Packungsstation-Feld (Zustandsfarbe) |
-| Feld grün | Zustandsfeld einer Station | „Die Packung wurde von der Endkontrollwaage (EKW) als in Ordnung bewertet.“ (Legende: „Gut“) | Modulkandidat: Packungsstation-Feld (Zustandsfarbe) |
+| Feld grau | Zustandsfeld einer Station | „An dieser Position befindet sich aktuell keine Packung.“ (Legende im Bild: „Nicht vorhanden“) | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) (Zustandsfarbe) |
+| Feld rot | Zustandsfeld einer Station | „Die Packung ist als Schlechtpackung markiert und wird ausgestoßen.“ (Legende: „Schlecht“) | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) (Zustandsfarbe) |
+| Feld gelb | Zustandsfeld einer Station | „Es befindet sich eine Packung an dieser Position, sie wurde jedoch noch nicht befüllt oder gewogen.“ (Legende: „Vorhanden“) | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) (Zustandsfarbe) |
+| Feld orange | Zustandsfeld einer Station | „Die Packung wurde mit Produkt befüllt.“ (Legende: „Befüllt“) | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) (Zustandsfarbe) |
+| Feld grün | Zustandsfeld einer Station | „Die Packung wurde von der Endkontrollwaage (EKW) als in Ordnung bewertet.“ (Legende: „Gut“) | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) (Zustandsfarbe) |
 
 Fließtext der Funktionsbeschreibung (Wortlaut):
 - „Durch Antippen eines Felds kann der Zustand einer Station manuell verändert werden.“
@@ -42,23 +42,22 @@ Zusätzliche, nur im Bild sichtbare Elemente:
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Linker Block (6 Felder) | Stationsreihe | Im Handbuch nicht benannt | Modulkandidat: Stationsreihe/Packungsregister-Grafik |
-| Drehstern (12 Felder) | Stationskranz mit Mittelkreis | Im Handbuch nicht benannt | Modulkandidat: Stationsreihe/Packungsregister-Grafik |
-| Rechte Reihe (Nr. 40 bis mind. 61) | nummerierte Stationsreihe | Im Handbuch nicht benannt | Modulkandidat: Stationsreihe/Packungsregister-Grafik |
-| Vertikale Spalte (9 Felder) | Stationsreihe | Im Handbuch nicht benannt | Modulkandidat: Stationsreihe/Packungsregister-Grafik |
-| Legende (5 Einträge) | Farblegende | Entspricht T39 mit anderen Kurzbezeichnungen | Modulkandidat: Zustandslegende |
-| Bildlaufleiste horizontal | Scrollleiste | Seitlich scrollen | Modulkandidat: Scrollbereich |
-| Kopfzeile, Meldezeile, untere Leiste (Produktion, Einstellungen, Zurück, Schloss) | Rahmen | Im Handbuch nicht beschrieben | Modulkandidat: Seitenkopf; Modulkandidat: Meldezeile; Modulkandidat: Untere Funktionsleiste |
+| Linker Block (6 Felder) | Stationsreihe | Im Handbuch nicht benannt | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) |
+| Drehstern (12 Felder) | Stationskranz mit Mittelkreis | Im Handbuch nicht benannt | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) |
+| Rechte Reihe (Nr. 40 bis mind. 61) | nummerierte Stationsreihe | Im Handbuch nicht benannt | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) |
+| Vertikale Spalte (9 Felder) | Stationsreihe | Im Handbuch nicht benannt | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) |
+| Legende (5 Einträge) | Farblegende | Entspricht T39 mit anderen Kurzbezeichnungen | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) |
+| Bildlaufleiste horizontal | Scrollleiste | Seitlich scrollen | [RM-29](../Module/RM-29_Packungsregister-Grafik.md) |
+| Kopfzeile, Meldezeile, untere Leiste (Produktion, Einstellungen, Zurück, Schloss) | Rahmen | Im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
-Modulkandidaten (RM-IDs später):
-- Modulkandidat: Packungsstation-Feld (Zustandsfarbe)
-- Modulkandidat: Zustandslegende
-- Modulkandidat: Stationsreihe/Packungsregister-Grafik
-- Modulkandidat: Scrollbereich
-- Modulkandidat: Seitenkopf (Logo, Titel, Uhr/Datum)
-- Modulkandidat: Meldezeile
-- Modulkandidat: Untere Funktionsleiste
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-29](../Module/RM-29_Packungsregister-Grafik.md) – Packungsregister-Grafik
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Zustände je Station (5):** grau = nicht vorhanden, rot = Schlecht (wird ausgestoßen), gelb = vorhanden (noch nicht befüllt/gewogen), orange = befüllt, grün = gut (EKW-Bewertung in Ordnung). Zustände sind im Referenz-HMI nur über Farbe dargestellt (im neuen HMI zusätzlich Symbol/Text nötig, Agent.md Abschnitt 6).

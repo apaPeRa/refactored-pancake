@@ -30,11 +30,11 @@ Bild [RS-34_01.png](../Medien/RS-34_01.png) (blauer Hintergrund):
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Karten-Überschrift „S1_0KDE1“ | Anzeige (Text) | Bezeichnung der angezeigten EA-Karte (Bildbeispiel) | Modulkandidat: Aktor-Überschrift |
-| Digitale Anzeige (LED) | Status-LED mit SPS-Kennung und Klartext | Handbuch (T44): „Jeder digitale Ein- oder Ausgang wird mit einer Statusleuchte angezeigt. Daneben steht die SPS-Kennung sowie eine Klartextbeschreibung.“ | Modulkandidat: EA-Zeile (LED, Kennung, Klartext); Status-LED |
-| Analoge Anzeige | numerische Anzeige | Handbuch (T44): „Analoge Eingänge oder Ausgänge werden als numerische Werte angezeigt. Diese Darstellung ist auf speziellen Karten aktiv, auf denen analoge Signale verarbeitet werden.“ Im Bild nicht dargestellt | Modulkandidat: Anzeigefeld mit Beschriftung |
-| Navigationstasten „<<“ / „>>“ | Tasten (untere Leiste) | Handbuch (T44): „Blättern zwischen den einzelnen EA-Karten. Jede Karte ist auf einer eigenen Seite dargestellt.“ | Modulkandidat: Navigationstasten << / >> |
-| Kopfzeile, Meldezeile, Untere Funktionsleiste | Rahmen | wie RS-30 | Modulkandidat: Seitenkopf; Meldezeile; Untere Funktionsleiste |
+| Karten-Überschrift „S1_0KDE1“ | Anzeige (Text) | Bezeichnung der angezeigten EA-Karte (Bildbeispiel) | [RM-25](../Module/RM-25_Objekt-Ueberschrift.md) |
+| Digitale Anzeige (LED) | Status-LED mit SPS-Kennung und Klartext | Handbuch (T44): „Jeder digitale Ein- oder Ausgang wird mit einer Statusleuchte angezeigt. Daneben steht die SPS-Kennung sowie eine Klartextbeschreibung.“ | [RM-35](../Module/RM-35_EA-Zeile.md) (LED, Kennung, Klartext); [RM-08](../Module/RM-08_Status-LED.md) |
+| Analoge Anzeige | numerische Anzeige | Handbuch (T44): „Analoge Eingänge oder Ausgänge werden als numerische Werte angezeigt. Diese Darstellung ist auf speziellen Karten aktiv, auf denen analoge Signale verarbeitet werden.“ Im Bild nicht dargestellt | [RM-07](../Module/RM-07_Anzeigefeld.md) mit Beschriftung |
+| Navigationstasten „<<“ / „>>“ | Tasten (untere Leiste) | Handbuch (T44): „Blättern zwischen den einzelnen EA-Karten. Jede Karte ist auf einer eigenen Seite dargestellt.“ | [RM-04](../Module/RM-04_Blaettertasten.md) |
+| Kopfzeile, Meldezeile, Untere Funktionsleiste | Rahmen | wie RS-30 | [RM-01](../Module/RM-01_Kopfzeile.md); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ### Tabelle T44 (Funktionsbeschreibung), 4 Zeilen (1 Kopfzeile + 3 Datenzeilen), vollständig
 
@@ -52,7 +52,16 @@ Bild [RS-34_01.png](../Medien/RS-34_01.png) (blauer Hintergrund):
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidaten: Seitenkopf, Meldezeile, Untere Funktionsleiste, EA-Zeile (LED, Kennung, Klartext), Status-LED, Anzeigefeld mit Beschriftung, Navigationstasten << / >>, Aktor-Überschrift (Karten-Überschrift).
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-04](../Module/RM-04_Blaettertasten.md) – Blättertasten
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-08](../Module/RM-08_Status-LED.md) – Status-LED
+- [RM-25](../Module/RM-25_Objekt-Ueberschrift.md) – Objekt-Überschrift
+- [RM-35](../Module/RM-35_EA-Zeile.md) – EA-Zeile
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

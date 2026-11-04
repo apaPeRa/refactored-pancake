@@ -33,41 +33,43 @@ Die Tabelle gilt für beide Karten „Verschluss Zu“ und „Verschluss Auf“ 
 
 | Nr. | Element (Funktion) | Typ | Beschreibung (wortgetreu, Handbuch) | Wert/Einheit im Screenshot (Zu / Auf) | verwendetes Modul |
 |---|---|---|---|---|---|
-| 1 | Position | Eingabefeld (rot, Schlüssel) | „Position in Grad, an der der Verschluss geöffnet bzw. geschlossen ist.“ | „0 °“ / „37 °“ (Einheit Grad) | Modulkandidat: Motorparameter (Verschluss-Karte) |
-| 2 | Geschwindigkeit | Eingabefeld (rot, Schlüssel) | „Bewegungsgeschwindigkeit des Aktors in Prozent.“ | „80 %“ / „80 %“ (Einheit %) | Modulkandidat: Motorparameter (Verschluss-Karte) |
-| 3 | Beschleunigung | Eingabefeld (rot, Schlüssel) | „Anstieg der Geschwindigkeit beim Start der Bewegung.“ | „0 %“ / „0 %“ | Modulkandidat: Motorparameter (Verschluss-Karte) |
-| 4 | Verzögerung | Eingabefeld (rot, Schlüssel) | „Abbremsen vor Erreichen der Endposition.“ | „0 %“ / „0 %“ | Modulkandidat: Motorparameter (Verschluss-Karte) |
-| 5 | Ruck | Eingabefeld (rot, Schlüssel) | „Änderung der Beschleunigung (sanfter Bewegungsbeginn und -ende).“ | „0 %“ / „0 %“ | Modulkandidat: Motorparameter (Verschluss-Karte) |
+| 1 | Position | Eingabefeld (rot, Schlüssel) | „Position in Grad, an der der Verschluss geöffnet bzw. geschlossen ist.“ | „0 °“ / „37 °“ (Einheit Grad) | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Verschluss-Karte) |
+| 2 | Geschwindigkeit | Eingabefeld (rot, Schlüssel) | „Bewegungsgeschwindigkeit des Aktors in Prozent.“ | „80 %“ / „80 %“ (Einheit %) | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Verschluss-Karte) |
+| 3 | Beschleunigung | Eingabefeld (rot, Schlüssel) | „Anstieg der Geschwindigkeit beim Start der Bewegung.“ | „0 %“ / „0 %“ | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Verschluss-Karte) |
+| 4 | Verzögerung | Eingabefeld (rot, Schlüssel) | „Abbremsen vor Erreichen der Endposition.“ | „0 %“ / „0 %“ | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Verschluss-Karte) |
+| 5 | Ruck | Eingabefeld (rot, Schlüssel) | „Änderung der Beschleunigung (sanfter Bewegungsbeginn und -ende).“ | „0 %“ / „0 %“ | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Verschluss-Karte) |
 
 ### Tabelle T18 – Schnecke (4 Zeilen inkl. Kopfzeile; 3 Datenzeilen; Spalten Funktion | Beschreibung)
 
 | Nr. | Element (Funktion) | Typ | Beschreibung (wortgetreu, Handbuch) | Wert/Einheit im Screenshot | verwendetes Modul |
 |---|---|---|---|---|---|
-| 1 | Beschleunigung | Eingabefeld (rot, Schlüssel) | „Anstieg der Drehgeschwindigkeit beim Start.“ | „0 %“ | Modulkandidat: Motorparameter (Schnecke-Karte) |
-| 2 | Verzögerung | Eingabefeld (rot, Schlüssel) | „Abbremsen der Drehung beim Stoppen.“ | „0 %“ | Modulkandidat: Motorparameter (Schnecke-Karte) |
-| 3 | Ruck | Eingabefeld (rot, Schlüssel) | „Änderung der Beschleunigung für eine produktschonende Bewegung.“ | „0 %“ | Modulkandidat: Motorparameter (Schnecke-Karte) |
+| 1 | Beschleunigung | Eingabefeld (rot, Schlüssel) | „Anstieg der Drehgeschwindigkeit beim Start.“ | „0 %“ | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Schnecke-Karte) |
+| 2 | Verzögerung | Eingabefeld (rot, Schlüssel) | „Abbremsen der Drehung beim Stoppen.“ | „0 %“ | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Schnecke-Karte) |
+| 3 | Ruck | Eingabefeld (rot, Schlüssel) | „Änderung der Beschleunigung für eine produktschonende Bewegung.“ | „0 %“ | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Schnecke-Karte) |
 
 ### Weitere Elemente, die nur im Screenshot sichtbar sind (nicht im Handbuch beschrieben)
 
 | Element | Typ | Beobachtung | verwendetes Modul |
 |---|---|---|---|
-| Seitentitel „Motorparameter HD1“ | Text | unterstrichen, fett; Zusatz „HD1“ kennzeichnet den Dosierer | Modulkandidat: Statuskopf (Kopfzeile) |
-| Logo, Spiral-Symbol, Uhrzeit/Datum | Anzeige | wie auf RS-11 | Modulkandidat: Statuskopf |
-| Schnecken-Symbol in Karte „Schnecke“ | Bild | schwarze Förderschnecke (kein eigener Bildverweis im Handbuch-Text) | Modulkandidat: Motorparameter (Schnecke-Karte) |
-| Meldezeile | Anzeige | „*450* Palettierung nicht bereit“ | Modulkandidat: Meldezeile |
-| Taste „»“ | Navigationstaste | grau, Doppelpfeil; Funktion im Handbuch zu dieser Seite nicht beschrieben | Modulkandidat: Seitenumschalter (Pfeiltasten) |
-| Schloss-Symbol | Symbol | gelb, geschlossen | Modulkandidat: Funktionsleiste unten |
-| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten | wie auf RS-11 | Modulkandidat: Funktionsleiste unten |
+| Seitentitel „Motorparameter HD1“ | Text | unterstrichen, fett; Zusatz „HD1“ kennzeichnet den Dosierer | [RM-01](../Module/RM-01_Kopfzeile.md) (Kopfzeile) |
+| Logo, Spiral-Symbol, Uhrzeit/Datum | Anzeige | wie auf RS-11 | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Schnecken-Symbol in Karte „Schnecke“ | Bild | schwarze Förderschnecke (kein eigener Bildverweis im Handbuch-Text) | [RM-16](../Module/RM-16_Motorparameter-Karte.md) (Schnecke-Karte) |
+| Meldezeile | Anzeige | „*450* Palettierung nicht bereit“ | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Taste „»“ | Navigationstaste | grau, Doppelpfeil; Funktion im Handbuch zu dieser Seite nicht beschrieben | [RM-04](../Module/RM-04_Blaettertasten.md) (Pfeiltasten) |
+| Schloss-Symbol | Symbol | gelb, geschlossen | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten | wie auf RS-11 | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidaten dieser Seite:
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
 
-- Motorparameter (Verschluss-Karte Zu/Auf mit 5 Feldern; Schnecke-Karte mit 3 Feldern; wiederkehrend auf RS-12, RS-17, RS-20)
-- Dosierer-Parameterfeld (Eingabefeld mit Schlüsselsymbol)
-- Eingabe-Pop-up (numerisch, nicht beschrieben)
-- Statuskopf (Kopfzeile), Meldezeile, Funktionsleiste unten
-- Seitenumschalter (Pfeiltasten)
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-04](../Module/RM-04_Blaettertasten.md) – Blättertasten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-16](../Module/RM-16_Motorparameter-Karte.md) – Motorparameter-Karte
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

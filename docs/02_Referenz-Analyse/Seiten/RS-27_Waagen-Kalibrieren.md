@@ -30,31 +30,31 @@ Tabelle T37 „Steuerelemente“ (9 Datenzeilen, Wortlaut der Beschreibung aus d
 
 | Element | Typ | Funktion (Wortlaut Handbuch) | verwendetes Modul |
 |---|---|---|---|
-| Gewichtsanzeige | Anzeigefeld (Zahl mit Einheit „g“, im Bild „-398.9 g“) | „Zeigt das Livegewicht der ausgewählten Waage an.“ | Modulkandidat: Gewichtsanzeige (Livewert mit Einheit) |
-| Filtertyp | Auswahlfeld mit Pfeiltasten (◄ ►), Schlüsselsymbol; im Bild „IIR 5 56ms 8Hz“ | „Auswahl eines digitalen Filters zur Stabilisierung der Gewichtsanzeige. Änderungen wirken sich auf die Reaktionsgeschwindigkeit und Genauigkeit aus.“ | Modulkandidat: Auswahlfeld mit Pfeiltasten; Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Filter setzen | Taste, Schlüsselsymbol | „Speichert den ausgewählten Filtertyp. Ein fehlerhaftes Schreiben wird angezeigt im Feld darunter angezeigt.“ (Wortlaut inkl. Doppelung „angezeigt“) | Modulkandidat: Funktionstaste mit Schlüsselsymbol |
-| Nullpunkt setzen | Taste, ohne Schlüsselsymbol | „Setzt den Nullpunkt der Waage bei unbelasteter Waage.“ | Modulkandidat: Funktionstaste |
-| Statusanzeige | Textfeld (nur Anzeige) | „Zeigt Meldungen, Fehler und Hinweise zur angewählten Waage an.“ Im Bild: „Fehler beim schreiben der Filterwerte“ | Modulkandidat: Statusanzeige-Textfeld |
-| Start Kalibrierung | Taste, Schlüsselsymbol | „Startet den Kalibriervorgang. Siehe untenstehenden Abschnitt für den Ablauf.“ | Modulkandidat: Funktionstaste mit Schlüsselsymbol |
-| Entlastet | Taste, Schlüsselsymbol | „Wird während der Kalibrierung gedrückt, wenn sich kein Gewicht auf der Waage befindet.“ | Modulkandidat: Funktionstaste mit Schlüsselsymbol |
-| Belastet | Taste, Schlüsselsymbol | „Wird gedrückt, wenn das Kalibriergewicht auf der Waage liegt und sich die Anzeige stabilisiert hat.“ | Modulkandidat: Funktionstaste mit Schlüsselsymbol |
-| Reset | Taste, ohne Schlüsselsymbol | „Bricht den Kalibriervorgang ab und setzt alle Zwischenschritte zurück. Quittiert anstehende Fehler der aktuellen Waage.“ | Modulkandidat: Funktionstaste |
+| Gewichtsanzeige | Anzeigefeld (Zahl mit Einheit „g“, im Bild „-398.9 g“) | „Zeigt das Livegewicht der ausgewählten Waage an.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) (Livewert mit Einheit) |
+| Filtertyp | Auswahlfeld mit Pfeiltasten (◄ ►), Schlüsselsymbol; im Bild „IIR 5 56ms 8Hz“ | „Auswahl eines digitalen Filters zur Stabilisierung der Gewichtsanzeige. Änderungen wirken sich auf die Reaktionsgeschwindigkeit und Genauigkeit aus.“ | [RM-32](../Module/RM-32_Auswahlfeld-mit-Pfeiltasten.md); [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Filter setzen | Taste, Schlüsselsymbol | „Speichert den ausgewählten Filtertyp. Ein fehlerhaftes Schreiben wird angezeigt im Feld darunter angezeigt.“ (Wortlaut inkl. Doppelung „angezeigt“) | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| Nullpunkt setzen | Taste, ohne Schlüsselsymbol | „Setzt den Nullpunkt der Waage bei unbelasteter Waage.“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| Statusanzeige | Textfeld (nur Anzeige) | „Zeigt Meldungen, Fehler und Hinweise zur angewählten Waage an.“ Im Bild: „Fehler beim schreiben der Filterwerte“ | [RM-23](../Module/RM-23_Hinweis-Textfeld.md) |
+| Start Kalibrierung | Taste, Schlüsselsymbol | „Startet den Kalibriervorgang. Siehe untenstehenden Abschnitt für den Ablauf.“ | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| Entlastet | Taste, Schlüsselsymbol | „Wird während der Kalibrierung gedrückt, wenn sich kein Gewicht auf der Waage befindet.“ | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| Belastet | Taste, Schlüsselsymbol | „Wird gedrückt, wenn das Kalibriergewicht auf der Waage liegt und sich die Anzeige stabilisiert hat.“ | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| Reset | Taste, ohne Schlüsselsymbol | „Bricht den Kalibriervorgang ab und setzt alle Zwischenschritte zurück. Quittiert anstehende Fehler der aktuellen Waage.“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
 
 Zusätzliche, nur im Bild sichtbare Elemente (nicht in T37 beschrieben):
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Überschrift „16KW1 Kontrollwaage“ | Textanzeige (unterstrichen) | Name der angewählten Waage; im Handbuchtext nicht beschrieben | Modulkandidat: Waagenauswahl-Titel (Name der angewählten Waage) |
-| Seitentitel „Waagen Kalibrieren“, Logo, spiralförmiges Symbol, Uhrzeit, Datum | Kopfzeile | Rahmenelement, im Handbuch nicht beschrieben | Modulkandidat: Seitenkopf (Logo, Titel, Uhr/Datum) |
-| Meldezeile „\*450\* Palettierung nicht bereit“ | Meldezeile (rot) | Rahmenelement, im Handbuch nicht auf dieser Seite beschrieben (vgl. [RS-38](RS-38_Meldeanzeige.md)) | Modulkandidat: Meldezeile |
-| Schloss-Symbol (gelb) | Symbol in unterer Leiste | im Handbuch nicht beschrieben | Modulkandidat: Untere Funktionsleiste |
-| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten (Haus, Zahnrad, Rücktaste) | im Handbuch für diese Seite nicht beschrieben | Modulkandidat: Untere Funktionsleiste |
+| Überschrift „16KW1 Kontrollwaage“ | Textanzeige (unterstrichen) | Name der angewählten Waage; im Handbuchtext nicht beschrieben | [RM-25](../Module/RM-25_Objekt-Ueberschrift.md) (Name der angewählten Waage) |
+| Seitentitel „Waagen Kalibrieren“, Logo, spiralförmiges Symbol, Uhrzeit, Datum | Kopfzeile | Rahmenelement, im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) (Logo, Titel, Uhr/Datum) |
+| Meldezeile „\*450\* Palettierung nicht bereit“ | Meldezeile (rot) | Rahmenelement, im Handbuch nicht auf dieser Seite beschrieben (vgl. [RS-38](RS-38_Meldeanzeige.md)) | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Schloss-Symbol (gelb) | Symbol in unterer Leiste | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigationstasten (Haus, Zahnrad, Rücktaste) | im Handbuch für diese Seite nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 Tabelle T38 „Navigationsbereich (unten links)“ (1 Datenzeile):
 
 | Element | Typ | Funktion (Wortlaut Handbuch) | verwendetes Modul |
 |---|---|---|---|
-| Pfeiltasten („<<“ / „>>“) | zwei Tasten unten links | „Erlaubt das blättern zwischen den verbauten Waagen.“ | Modulkandidat: Blätter-Pfeiltasten (Navigation unten links) |
+| Pfeiltasten („<<“ / „>>“) | zwei Tasten unten links | „Erlaubt das blättern zwischen den verbauten Waagen.“ | [RM-04](../Module/RM-04_Blaettertasten.md) (Navigation unten links) |
 
 ### Kalibriervorgang (Handbuch, 7 Schritte, Wortlaut)
 1. „Waage gründlich reinigen. Sie muss korrekt eingebaut und befestigt sein.“
@@ -68,17 +68,20 @@ Tabelle T38 „Navigationsbereich (unten links)“ (1 Datenzeile):
 Wertebereiche, Standardwerte, Einheiten: Das Handbuch nennt keine. Im Bild erkennbar: Einheit „g“ (Gewichtsanzeige, Wert „-398.9“, eine Nachkommastelle, Dezimalpunkt); Filtertyp-Beispieltext „IIR 5 56ms 8Hz“. Die Liste der wählbaren Filtertypen und das geforderte Kalibriergewicht sind nicht genannt.
 
 ## Verwendete Module (IDs)
-Modulkandidaten (RM-IDs werden später vergeben):
-- Modulkandidat: Seitenkopf (Logo, Titel, Uhr/Datum)
-- Modulkandidat: Meldezeile
-- Modulkandidat: Untere Funktionsleiste (Produktion / Einstellungen / Zurück, Schloss)
-- Modulkandidat: Blätter-Pfeiltasten (Navigation unten links, „<<“ / „>>“)
-- Modulkandidat: Gewichtsanzeige (Livewert mit Einheit)
-- Modulkandidat: Auswahlfeld mit Pfeiltasten
-- Modulkandidat: Eingabefeld mit Schlüsselsymbol / Funktionstaste mit Schlüsselsymbol
-- Modulkandidat: Funktionstaste
-- Modulkandidat: Statusanzeige-Textfeld
-- Modulkandidat: Kalibrier-Ablauf (Tastenfolge Start Kalibrierung, Entlastet, Belastet, Reset) – nur diese Seite, ggf. kein Modul
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-04](../Module/RM-04_Blaettertasten.md) – Blättertasten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-23](../Module/RM-23_Hinweis-Textfeld.md) – Hinweis-Textfeld
+- [RM-25](../Module/RM-25_Objekt-Ueberschrift.md) – Objekt-Überschrift
+- [RM-32](../Module/RM-32_Auswahlfeld-mit-Pfeiltasten.md) – Auswahlfeld mit Pfeiltasten
+- Kein Modul: Kalibrier-Ablauf (Tastenfolge Start Kalibrierung, Entlastet, Belastet, Reset), seitenspezifisch (A-22)
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Waagenwahl:** „<<“ / „>>“ unten links wechseln zwischen den verbauten Waagen; die Überschrift (im Bild „16KW1 Kontrollwaage“) und die Livegewichtsanzeige beziehen sich auf die gewählte Waage. Anzahl und Namen der Waagen sind im Handbuch nicht genannt.

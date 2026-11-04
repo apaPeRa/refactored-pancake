@@ -21,27 +21,34 @@ Erfasst werden alle 8 Zeilen der Tabelle „Funktionsbeschreibung“ (Tabelle 45
 
 | Element | Typ | Funktion (wortgetreu) | Berechtigung (laut Bild) | verwendetes Modul |
 |---|---|---|---|---|
-| Bedienung beenden | Taste (Kachel) | „Schließt die Bedienoberfläche. Die Maschine produziert weiter, Einstellungen können jedoch nicht mehr geändert werden. Start und Stopp der Anlage bleiben möglich.“ | Schlüsselsymbol | Modulkandidat: Menükachel-Taste; Modulkandidat: Taste mit Schlüsselsymbol (Berechtigung) |
-| Bedienung minimieren | Taste (Kachel) | „Minimiert die HMI-Anzeige und gibt den Windows-Desktop frei.“ | Schlüsselsymbol | Modulkandidat: Menükachel-Taste; Modulkandidat: Taste mit Schlüsselsymbol (Berechtigung) |
-| Taskmanager | Taste (Kachel) | „Öffnet den Windows-Taskmanager.“ | Schlüsselsymbol | Modulkandidat: Menükachel-Taste; Modulkandidat: Taste mit Schlüsselsymbol (Berechtigung) |
-| Steuerung neu starten | Taste (Kachel) | „Startet die Steuerung neu. Achtung: Die Anlage wird dabei gestoppt.“ | Schlüsselsymbol | Modulkandidat: Menükachel-Taste; Modulkandidat: Taste mit Schlüsselsymbol (Berechtigung) |
-| Steuerung ausschalten | Taste (Kachel) | „Fährt den IPC herunter. Achtung: Die Anlage wird dabei gestoppt. Ein Neustart erfolgt erst nach dem Wiedereinschalten der Stromversorgung über den Schalter „Steuerung ein“.“ | Schlüsselsymbol | Modulkandidat: Menükachel-Taste; Modulkandidat: Taste mit Schlüsselsymbol (Berechtigung) |
-| Meldearchiv | Taste (Kachel), Navigation | „Öffnet die Seite zum Meldearchiv.“ → [RS-37](RS-37_Meldearchiv.md) | kein Schlüsselsymbol | Modulkandidat: Menükachel-Taste |
-| System- und Antriebsinfo | Taste (Kachel), Navigation | „Öffnet die Diagnoseseite für System- und Antriebsinformationen.“ → [RS-39](RS-39_System-und-Antriebsinfos.md) | kein Schlüsselsymbol | Modulkandidat: Menükachel-Taste |
-| Service | Taste (Kachel), Navigation | „Öffnet die Service-Seite mit erweiterten Systemfunktionen.“ → [RS-36](RS-36_Service.md) | Schlüsselsymbol | Modulkandidat: Menükachel-Taste; Modulkandidat: Taste mit Schlüsselsymbol (Berechtigung) |
+| Bedienung beenden | Taste (Kachel) | „Schließt die Bedienoberfläche. Die Maschine produziert weiter, Einstellungen können jedoch nicht mehr geändert werden. Start und Stopp der Anlage bleiben möglich.“ | Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md); [RM-11](../Module/RM-11_Aktionstaste.md) (Berechtigung) |
+| Bedienung minimieren | Taste (Kachel) | „Minimiert die HMI-Anzeige und gibt den Windows-Desktop frei.“ | Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md); [RM-11](../Module/RM-11_Aktionstaste.md) (Berechtigung) |
+| Taskmanager | Taste (Kachel) | „Öffnet den Windows-Taskmanager.“ | Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md); [RM-11](../Module/RM-11_Aktionstaste.md) (Berechtigung) |
+| Steuerung neu starten | Taste (Kachel) | „Startet die Steuerung neu. Achtung: Die Anlage wird dabei gestoppt.“ | Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md); [RM-11](../Module/RM-11_Aktionstaste.md) (Berechtigung) |
+| Steuerung ausschalten | Taste (Kachel) | „Fährt den IPC herunter. Achtung: Die Anlage wird dabei gestoppt. Ein Neustart erfolgt erst nach dem Wiedereinschalten der Stromversorgung über den Schalter „Steuerung ein“.“ | Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md); [RM-11](../Module/RM-11_Aktionstaste.md) (Berechtigung) |
+| Meldearchiv | Taste (Kachel), Navigation | „Öffnet die Seite zum Meldearchiv.“ → [RS-37](RS-37_Meldearchiv.md) | kein Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md) |
+| System- und Antriebsinfo | Taste (Kachel), Navigation | „Öffnet die Diagnoseseite für System- und Antriebsinformationen.“ → [RS-39](RS-39_System-und-Antriebsinfos.md) | kein Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md) |
+| Service | Taste (Kachel), Navigation | „Öffnet die Service-Seite mit erweiterten Systemfunktionen.“ → [RS-36](RS-36_Service.md) | Schlüsselsymbol | [RM-14](../Module/RM-14_Kachel-Navigation.md); [RM-11](../Module/RM-11_Aktionstaste.md) (Berechtigung) |
 
 Rahmenelemente (nur im Bild, nicht in der Tabelle):
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Kopfzeile (Logo, Seitentitel, Symbol, Uhrzeit/Datum) | Rahmen | Anzeige; Funktion des Symbols nicht beschrieben | Modulkandidat: Kopfzeile |
-| Meldezeile „*450* Palettierung nicht bereit“ | Anzeige/Taste | Öffnet laut [RS-38](RS-38_Meldeanzeige.md) durch Antippen die Meldeanzeige | Modulkandidat: Meldezeile |
-| Taste „Lampentest“ | Taste | im Handbuch nicht beschrieben | Modulkandidat: Funktionsleiste unten |
-| Vorhängeschloss-Symbol | Symbol | im Handbuch nicht beschrieben (vermutlich Anmeldestatus) | Modulkandidat: Funktionsleiste unten |
-| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigation | Wechsel zur Startseite / zu [RS-04](RS-04_Einstellungen.md) / eine Ebene zurück (Bedeutung aus Beschriftung und Symbol, im Handbuch für diese Seite nicht beschrieben) | Modulkandidat: Funktionsleiste unten |
+| Kopfzeile (Logo, Seitentitel, Symbol, Uhrzeit/Datum) | Rahmen | Anzeige; Funktion des Symbols nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Meldezeile „*450* Palettierung nicht bereit“ | Anzeige/Taste | Öffnet laut [RS-38](RS-38_Meldeanzeige.md) durch Antippen die Meldeanzeige | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Taste „Lampentest“ | Taste | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Vorhängeschloss-Symbol | Symbol | im Handbuch nicht beschrieben (vermutlich Anmeldestatus) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
+| Tasten „Produktion“, „Einstellungen“, „Zurück“ | Navigation | Wechsel zur Startseite / zu [RS-04](RS-04_Einstellungen.md) / eine Ebene zurück (Bedeutung aus Beschriftung und Symbol, im Handbuch für diese Seite nicht beschrieben) | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs vergeben. Modulkandidaten: Menükachel-Taste, Taste mit Schlüsselsymbol (Berechtigung), Kopfzeile, Meldezeile, Funktionsleiste unten.
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-14](../Module/RM-14_Kachel-Navigation.md) – Kachel-Navigation
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Berechtigungen: Fünf Tasten plus „Service“ tragen ein gelbes Schlüsselsymbol (Bedienung beenden, Steuerung neu starten, Steuerung ausschalten, Taskmanager, Bedienung minimieren, Service). „Meldearchiv“ und „System- und Antriebsinfo“ haben keines. Das Handbuch nennt weder Benutzerstufe noch Anmeldeverfahren.

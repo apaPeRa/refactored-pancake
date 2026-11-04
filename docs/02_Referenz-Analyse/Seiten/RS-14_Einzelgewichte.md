@@ -19,19 +19,19 @@ Tabelle 21 „Funktionsbeschreibung“ (7 Zeilen inkl. Kopfzeile = 6 Datenzeilen
 
 | Nr. | Element (Handbuch: Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|---|
-| 1 | Standardabweichung | Anzeigefeld, g (Beispiel „0,7 g“) | Zeigt die Standardabweichung der gemessenen Werte an. | Modulkandidat: Kennzahl-Anzeige (Wert mit Symbol und Einheit) |
-| 2 | Mittelwert | Anzeigefeld, g (Beispiel „235,4 g“) | Zeigt den Mittelwert der letzten 50 Messwerte an. | Modulkandidat: Kennzahl-Anzeige (Wert mit Symbol und Einheit) |
-| 3 | Anzahl | Anzeigefeld, Stückzahl (Beispiel „50“, rote Schrift) | Anzahl zu erfassenden Werte. | Modulkandidat: Kennzahl-Anzeige (Wert mit Symbol und Einheit) |
-| 4 | Werte | Wertegitter 10 × 5 mit Status-LED je Wert und Positionspfeil | Werte sind von oben nach unten und links nach rechts sortiert. Ein Pfeil zeigt auf das zuletzt erfasste Gewicht. Grüne LED zeigt ein gutes Gewicht an. Grau steht für ein schlechtes Gewicht. | Modulkandidat: Wertegitter mit Status-LED; Modulkandidat: Status-LED |
-| 5 | Start | Taste | Startet ein neuer Messdurchlauf. | Modulkandidat: Schaltfläche (vermutlich Funktionsleiste unten links; Start ist im Bild nicht sichtbar) |
-| 6 | Einzel / Fortlaufend | Umschalter (auf dem Bild Taste mit Beschriftung „Fortlaufend“) | Einzel: Manuelle Stichprobenmessung. Start löscht alle bisherigen Werte. Fortlaufend: Automatischer Betrieb. Nach Erreichen von 50 Werten wird fortlaufend überschrieben. Ermöglicht gleitenden Mittelwert. (Im Handbuch „Einzel“ und „Fortlaufend“ unterstrichen.) | Modulkandidat: Umschalter |
+| 1 | Standardabweichung | Anzeigefeld, g (Beispiel „0,7 g“) | Zeigt die Standardabweichung der gemessenen Werte an. | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) (Wert mit Symbol und Einheit) |
+| 2 | Mittelwert | Anzeigefeld, g (Beispiel „235,4 g“) | Zeigt den Mittelwert der letzten 50 Messwerte an. | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) (Wert mit Symbol und Einheit) |
+| 3 | Anzahl | Anzeigefeld, Stückzahl (Beispiel „50“, rote Schrift) | Anzahl zu erfassenden Werte. | [RM-12](../Module/RM-12_Kennzahl-Kachel.md) (Wert mit Symbol und Einheit) |
+| 4 | Werte | Wertegitter 10 × 5 mit Status-LED je Wert und Positionspfeil | Werte sind von oben nach unten und links nach rechts sortiert. Ein Pfeil zeigt auf das zuletzt erfasste Gewicht. Grüne LED zeigt ein gutes Gewicht an. Grau steht für ein schlechtes Gewicht. | [RM-36](../Module/RM-36_Wertegitter.md); [RM-08](../Module/RM-08_Status-LED.md) |
+| 5 | Start | Taste | Startet ein neuer Messdurchlauf. | [RM-11](../Module/RM-11_Aktionstaste.md) (vermutlich Funktionsleiste unten links; Start ist im Bild nicht sichtbar) |
+| 6 | Einzel / Fortlaufend | Umschalter (auf dem Bild Taste mit Beschriftung „Fortlaufend“) | Einzel: Manuelle Stichprobenmessung. Start löscht alle bisherigen Werte. Fortlaufend: Automatischer Betrieb. Nach Erreichen von 50 Werten wird fortlaufend überschrieben. Ermöglicht gleitenden Mittelwert. (Im Handbuch „Einzel“ und „Fortlaufend“ unterstrichen.) | [RM-10](../Module/RM-10_Umschalter-Taste.md) |
 
 ### Weitere Elemente laut Seitenbild (nicht in der Handbuchtabelle)
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Kopfzeile (Logo, Titel „Einzelgewichte KW“, Wirbelsymbol, Uhrzeit, Datum) | Rahmenelement | im Handbuch nicht beschrieben | Modulkandidat: Kopfzeile |
-| Meldezeile „*450* Palettierung nicht bereit“ | Statusleiste, rot | im Handbuch auf dieser Seite nicht beschrieben; siehe [RS-38](RS-38_Meldeanzeige.md) | Modulkandidat: Meldezeile |
-| Vorhängeschloss (gelb), Tasten „Produktion“, „Einstellungen“, „Zurück“ | Funktionsleiste | im Handbuch nicht beschrieben | Modulkandidat: Funktionsleiste |
+| Kopfzeile (Logo, Titel „Einzelgewichte KW“, Wirbelsymbol, Uhrzeit, Datum) | Rahmenelement | im Handbuch nicht beschrieben | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Meldezeile „*450* Palettierung nicht bereit“ | Statusleiste, rot | im Handbuch auf dieser Seite nicht beschrieben; siehe [RS-38](RS-38_Meldeanzeige.md) | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Vorhängeschloss (gelb), Tasten „Produktion“, „Einstellungen“, „Zurück“ | Funktionsleiste | im Handbuch nicht beschrieben | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Bilder
 | Nr. | Datei | Pixel | Position | Beschreibung (angesehen) |
@@ -39,14 +39,17 @@ Tabelle 21 „Funktionsbeschreibung“ (7 Zeilen inkl. Kopfzeile = 6 Datenzeilen
 | 1 | [RS-14_01.png](../Medien/RS-14_01.png) | 1024 × 768 | Seitenübersicht | Gesamtseite Einzelgewichte KW, Aufbau und alle 50 Werte siehe Abschnitt „Aufbau“. Kennzahlen: Standardabweichung 0,7 g; Mittelwert 235,4 g; Anzahl 50 (rot). 50 grüne LEDs, ein Pfeil in Zeile 2/Spalte 2, Taste „Fortlaufend“ links unten. |
 
 ## Verwendete Module (IDs)
-RM-IDs werden später vergeben. Modulkandidaten:
-- Modulkandidat: Kopfzeile
-- Modulkandidat: Meldezeile
-- Modulkandidat: Funktionsleiste
-- Modulkandidat: Kennzahl-Anzeige (Wert mit Symbol und Einheit)
-- Modulkandidat: Wertegitter mit Status-LED
-- Modulkandidat: Status-LED
-- Modulkandidat: Umschalter
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-08](../Module/RM-08_Status-LED.md) – Status-LED
+- [RM-10](../Module/RM-10_Umschalter-Taste.md) – Umschalter-Taste
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-12](../Module/RM-12_Kennzahl-Kachel.md) – Kennzahl-Kachel
+- [RM-36](../Module/RM-36_Wertegitter.md) – Wertegitter
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Pop-ups:** keine beschrieben.

@@ -30,10 +30,10 @@ Das Kapitel enthält keine Tabellen mit Funktions-/Beschreibungsspalten. Erfasst
 
 | Nr. | Schritt | Beschreibung (wortgetreu, Handbuch) | betroffenes Element | verwendetes Modul |
 |---|---|---|---|---|
-| 1 | Dosiergewicht einstellen | „Geben Sie rechts unten das gewünschte Zielgewicht ein (*Sollgewicht*). Dieses Gewicht wird bei der manuellen Dosierung verwendet.“ | Eingabefeld „Sollgewicht“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| 2 | Manuelle Auslösung des Dosierers | „Verwenden Sie die Taste **Dosierer Auslösen manuell**, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.“ | Taste „Dosierer Auslösen manuell“ | Modulkandidat: Aktionstaste |
-| 3 | Wert eintragen | „Tragen Sie das verwendete Sollgewicht in die linke Spalte (*SOLL*) ein und das gemessene tatsächliche Gewicht in die rechte Spalte (*IST*). Wiederholen Sie diesen Vorgang für mehrere Gewichte über den typischen Arbeitsbereich des Dosierers hinweg.“ | Tabelle Soll/Ist (Stützstellen) | Modulkandidat: Gewichtskorrektur (Stützstellen-Tabelle) |
-| 4 | Gewichtsanpassung berechnen | „Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste **Gewichtsanpassung**. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.“ | Taste „Gewichtsanpassung“ | Modulkandidat: Aktionstaste |
+| 1 | Dosiergewicht einstellen | „Geben Sie rechts unten das gewünschte Zielgewicht ein (*Sollgewicht*). Dieses Gewicht wird bei der manuellen Dosierung verwendet.“ | Eingabefeld „Sollgewicht“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| 2 | Manuelle Auslösung des Dosierers | „Verwenden Sie die Taste **Dosierer Auslösen manuell**, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.“ | Taste „Dosierer Auslösen manuell“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| 3 | Wert eintragen | „Tragen Sie das verwendete Sollgewicht in die linke Spalte (*SOLL*) ein und das gemessene tatsächliche Gewicht in die rechte Spalte (*IST*). Wiederholen Sie diesen Vorgang für mehrere Gewichte über den typischen Arbeitsbereich des Dosierers hinweg.“ | Tabelle Soll/Ist (Stützstellen) | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Stützstellen-Tabelle) |
+| 4 | Gewichtsanpassung berechnen | „Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste **Gewichtsanpassung**. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.“ | Taste „Gewichtsanpassung“ | [RM-11](../Module/RM-11_Aktionstaste.md) |
 
 ### Hinweise zur optimalen Nutzung (Aufzählung im Handbuch, 4 Punkte)
 
@@ -48,29 +48,32 @@ Das Kapitel enthält keine Tabellen mit Funktions-/Beschreibungsspalten. Erfasst
 
 | Element | Typ | Funktion / Beobachtung | Wert/Einheit im Screenshot | verwendetes Modul |
 |---|---|---|---|---|
-| Spaltenkopf „SOLL“ (zweimal) | Beschriftung | Spalte der verwendeten Sollgewichte | – | Modulkandidat: Gewichtskorrektur (Stützstellen-Tabelle) |
-| Spaltenkopf „IST“ (zweimal) | Beschriftung | Spalte der gemessenen Istgewichte | – | Modulkandidat: Gewichtskorrektur (Stützstellen-Tabelle) |
-| SOLL-Felder linker Block (10) | Eingabefeld (rot) | Soll-Gewicht je Stützstelle | „18,00 g“, „22,00 g“, 8 × „0,00 g“ | Modulkandidat: Gewichtskorrektur (Stützstellen-Tabelle) |
-| IST-Felder linker Block (10) | Eingabefeld (rot) | gemessenes Ist-Gewicht je Stützstelle | „20,00 g“, „24,00 g“, 8 × „0,00 g“ | Modulkandidat: Gewichtskorrektur (Stützstellen-Tabelle) |
-| SOLL-Felder rechter Block (10) | Eingabefeld (rot) | wie oben | 10 × „0,00 g“ | Modulkandidat: Gewichtskorrektur (Stützstellen-Tabelle) |
-| IST-Felder rechter Block (10) | Eingabefeld (rot) | wie oben | 10 × „0,00 g“ | Modulkandidat: Gewichtskorrektur (Stützstellen-Tabelle) |
-| Taste „Gewichtsanpassung“ | Aktionstaste (grau) | berechnet die Korrekturkennlinie aus den Stützstellen (Handbuch Schritt 4) | – | Modulkandidat: Aktionstaste |
-| Taste „Dosierer Auslösen manuell“ | Aktionstaste (grau) | dosiert eine Probe mit dem Sollgewicht (Schritt 2) | – | Modulkandidat: Aktionstaste |
-| Feld „Sollgewicht:“ | Eingabefeld (rot, Schlüsselsymbol) | Zielgewicht für die manuelle Dosierung (Schritt 1) | „250,4 g“ (g, eine Nachkommastelle) | Modulkandidat: Eingabefeld mit Schlüsselsymbol |
-| Kopfzeile | Anzeige | Logo, Titel „Gewichtskorrektur“, Spiral-Symbol, Uhrzeit/Datum | „13:03:35“, „12.05.2025“ | Modulkandidat: Statuskopf |
-| Meldezeile | Anzeige | „*450* Palettierung nicht bereit“ (rot) | – | Modulkandidat: Meldezeile |
-| Funktionsleiste unten | Tasten | Schloss-Symbol, „Produktion“, „Einstellungen“, „Zurück“ | – | Modulkandidat: Funktionsleiste unten |
+| Spaltenkopf „SOLL“ (zweimal) | Beschriftung | Spalte der verwendeten Sollgewichte | – | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Stützstellen-Tabelle) |
+| Spaltenkopf „IST“ (zweimal) | Beschriftung | Spalte der gemessenen Istgewichte | – | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Stützstellen-Tabelle) |
+| SOLL-Felder linker Block (10) | Eingabefeld (rot) | Soll-Gewicht je Stützstelle | „18,00 g“, „22,00 g“, 8 × „0,00 g“ | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Stützstellen-Tabelle) |
+| IST-Felder linker Block (10) | Eingabefeld (rot) | gemessenes Ist-Gewicht je Stützstelle | „20,00 g“, „24,00 g“, 8 × „0,00 g“ | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Stützstellen-Tabelle) |
+| SOLL-Felder rechter Block (10) | Eingabefeld (rot) | wie oben | 10 × „0,00 g“ | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Stützstellen-Tabelle) |
+| IST-Felder rechter Block (10) | Eingabefeld (rot) | wie oben | 10 × „0,00 g“ | [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) (Stützstellen-Tabelle) |
+| Taste „Gewichtsanpassung“ | Aktionstaste (grau) | berechnet die Korrekturkennlinie aus den Stützstellen (Handbuch Schritt 4) | – | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| Taste „Dosierer Auslösen manuell“ | Aktionstaste (grau) | dosiert eine Probe mit dem Sollgewicht (Schritt 2) | – | [RM-11](../Module/RM-11_Aktionstaste.md) |
+| Feld „Sollgewicht:“ | Eingabefeld (rot, Schlüsselsymbol) | Zielgewicht für die manuelle Dosierung (Schritt 1) | „250,4 g“ (g, eine Nachkommastelle) | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
+| Kopfzeile | Anzeige | Logo, Titel „Gewichtskorrektur“, Spiral-Symbol, Uhrzeit/Datum | „13:03:35“, „12.05.2025“ | [RM-01](../Module/RM-01_Kopfzeile.md) |
+| Meldezeile | Anzeige | „*450* Palettierung nicht bereit“ (rot) | – | [RM-02](../Module/RM-02_Meldezeile.md) |
+| Funktionsleiste unten | Tasten | Schloss-Symbol, „Produktion“, „Einstellungen“, „Zurück“ | – | [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 Bilder: Die Seite hat laut Medienliste genau ein Bild (`RS-21_01`, siehe Abschnitt Aufbau); Tabellenbilder gibt es nicht.
 
 ## Verwendete Module (IDs)
 
-Noch keine RM-IDs vergeben. Modulkandidaten dieser Seite:
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
 
-- Gewichtskorrektur (Stützstellen-Tabelle Soll/Ist mit Aktionstasten „Gewichtsanpassung“ und „Dosierer Auslösen manuell“ und Feld „Sollgewicht“; wiederkehrend auf RS-18 und RS-21)
-- Eingabefeld mit Schlüsselsymbol, Eingabe-Pop-up (nicht beschrieben)
-- Aktionstaste
-- Statuskopf, Meldezeile, Funktionsleiste unten
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-06](../Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up
+- [RM-11](../Module/RM-11_Aktionstaste.md) – Aktionstaste
+- [RM-17](../Module/RM-17_Gewichtskorrektur-Tabelle.md) – Gewichtskorrektur-Tabelle
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

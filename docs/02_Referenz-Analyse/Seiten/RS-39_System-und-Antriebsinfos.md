@@ -29,33 +29,43 @@ Alle 6 Zeilen Tabelle 49 (IPC-Bereich), wortgetreu:
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Prozessorauslastung | Balken + 2 Zahlenfelder (Aktuell / Max., Einheit %) | „Aktuelle und maximale CPU-Auslastung des IPCs.“ | Modulkandidat: Fortschrittsbalken; Modulkandidat: Wertanzeige-Feld |
-| Systemstart | Datum/Uhrzeit-Anzeige | „Datum und Uhrzeit des letzten Starts der Steuerung.“ | Modulkandidat: Wertanzeige-Feld |
-| Laufzeit gesamt | Anzeige in h / m / s | „Zeit seit der Inbetriebnahme des Systems.“ | Modulkandidat: Wertanzeige-Feld |
-| Status / Diag Code | 2 Textfelder | „Diagnosestatus und laufende Systemmeldungen.“ | Modulkandidat: Wertanzeige-Feld |
-| HMI Applikation Build | Datum/Uhrzeit-Anzeige | „Zeitpunkt der letzten Softwareinstallation bzw. des letzten Updates der HMI.“ | Modulkandidat: Wertanzeige-Feld |
-| Maximale Auslastung zurücksetzen | Interaktion (Antippen des Maximalwertfelds) | „Der Maximalwert der CPU-Auslastung kann durch Antippen zurückgesetzt werden.“ | Modulkandidat: Rücksetzbares Maximalwertfeld |
+| Prozessorauslastung | Balken + 2 Zahlenfelder (Aktuell / Max., Einheit %) | „Aktuelle und maximale CPU-Auslastung des IPCs.“ | [RM-09](../Module/RM-09_Fortschrittsbalken.md); [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Systemstart | Datum/Uhrzeit-Anzeige | „Datum und Uhrzeit des letzten Starts der Steuerung.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Laufzeit gesamt | Anzeige in h / m / s | „Zeit seit der Inbetriebnahme des Systems.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Status / Diag Code | 2 Textfelder | „Diagnosestatus und laufende Systemmeldungen.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| HMI Applikation Build | Datum/Uhrzeit-Anzeige | „Zeitpunkt der letzten Softwareinstallation bzw. des letzten Updates der HMI.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Maximale Auslastung zurücksetzen | Interaktion (Antippen des Maximalwertfelds) | „Der Maximalwert der CPU-Auslastung kann durch Antippen zurückgesetzt werden.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) |
 
 Alle 5 Zeilen Tabelle 50 (Servomotoren), wortgetreu:
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Diag Code | Zahlenfeld je Antrieb | „Diagnosenummer des Antriebs (z. B. für Servofehler oder Überlast).“ | Modulkandidat: Wertanzeige-Feld |
-| Meldung | Textfeld je Antrieb | „Textmeldung zur Fehlerursache (z. B. „Motorschutz ausgelöst“).“ | Modulkandidat: Wertanzeige-Feld |
-| Strom Ist / Max / Limit | 3 Zahlenfelder je Antrieb (Einheit % laut Bild; im Bild „Aktuell / Max / Limit“) | „Vergleich von aktuellem Stromwert, bisherigem Höchstwert und konfiguriertem Grenzwert.“ | Modulkandidat: Wertanzeige-Feld; Modulkandidat: Rücksetzbares Maximalwertfeld |
-| Strom Max zurücksetzen | Interaktion (Klick auf Maximalwert) | „Ein Klick auf den Maximalwert setzt diesen auf 0l zurück.“ (im Handbuch „0l“, vermutlich „0“) | Modulkandidat: Rücksetzbares Maximalwertfeld |
-| Strom Limit | Zahlenfeld mit Schlüsselsymbol (rote Schrift) | „Begrenzung des zulässigen Motorstroms zur Fehlerprävention.“ | Modulkandidat: Eingabefeld mit Schlüsselsymbol (Berechtigung) |
+| Diag Code | Zahlenfeld je Antrieb | „Diagnosenummer des Antriebs (z. B. für Servofehler oder Überlast).“ | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Meldung | Textfeld je Antrieb | „Textmeldung zur Fehlerursache (z. B. „Motorschutz ausgelöst“).“ | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Strom Ist / Max / Limit | 3 Zahlenfelder je Antrieb (Einheit % laut Bild; im Bild „Aktuell / Max / Limit“) | „Vergleich von aktuellem Stromwert, bisherigem Höchstwert und konfiguriertem Grenzwert.“ | [RM-07](../Module/RM-07_Anzeigefeld.md); [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Strom Max zurücksetzen | Interaktion (Klick auf Maximalwert) | „Ein Klick auf den Maximalwert setzt diesen auf 0l zurück.“ (im Handbuch „0l“, vermutlich „0“) | [RM-07](../Module/RM-07_Anzeigefeld.md) |
+| Strom Limit | Zahlenfeld mit Schlüsselsymbol (rote Schrift) | „Begrenzung des zulässigen Motorstroms zur Fehlerprävention.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) (Berechtigung) |
 
 Nur im Bild sichtbar:
 
 | Element | Typ | Funktion | verwendetes Modul |
 |---|---|---|---|
-| Pfeiltasten hoch/runter rechts | Tasten | im Handbuch nicht beschrieben (Blättern durch die Antriebsliste angenommen) | Modulkandidat: Listen-Scrolltasten |
-| Antriebsnamen (Antrieb Zuführung 2MA1, Verschluss Dosierer 1 41MA1, Schnecke Dosierer 1 41MA2, Verschluss Dosierer 2 42MA1) | Beschriftung | – | Modulkandidat: Motor-Statuszeile (Servoantrieb) |
-| Kopfzeile, Meldezeile, Funktionsleiste unten | Rahmen | siehe [RS-35](RS-35_Systemeinstellungen.md) | Modulkandidat: Kopfzeile; Meldezeile; Funktionsleiste unten |
+| Pfeiltasten hoch/runter rechts | Tasten | im Handbuch nicht beschrieben (Blättern durch die Antriebsliste angenommen) | [RM-21](../Module/RM-21_Meldungsliste.md) |
+| Antriebsnamen (Antrieb Zuführung 2MA1, Verschluss Dosierer 1 41MA1, Schnecke Dosierer 1 41MA2, Verschluss Dosierer 2 42MA1) | Beschriftung | – | [RM-33](../Module/RM-33_Motor-Statuszeile.md) (Servoantrieb) |
+| Kopfzeile, Meldezeile, Funktionsleiste unten | Rahmen | siehe [RS-35](RS-35_Systemeinstellungen.md) | [RM-01](../Module/RM-01_Kopfzeile.md); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) |
 
 ## Verwendete Module (IDs)
-Noch keine RM-IDs. Modulkandidaten: Fortschrittsbalken, Wertanzeige-Feld, Rücksetzbares Maximalwertfeld, Eingabefeld mit Schlüsselsymbol (Berechtigung), Motor-Statuszeile (Servoantrieb), Listen-Scrolltasten, Kopfzeile, Meldezeile, Funktionsleiste unten.
+
+Module dieser Seite (Definitionen in der [Modulliste](../Module/Modulliste.md)):
+
+- [RM-01](../Module/RM-01_Kopfzeile.md) – Kopfzeile
+- [RM-02](../Module/RM-02_Meldezeile.md) – Meldezeile
+- [RM-03](../Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten
+- [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
+- [RM-07](../Module/RM-07_Anzeigefeld.md) – Anzeigefeld
+- [RM-09](../Module/RM-09_Fortschrittsbalken.md) – Fortschrittsbalken
+- [RM-21](../Module/RM-21_Meldungsliste.md) – Meldungsliste
+- [RM-33](../Module/RM-33_Motor-Statuszeile.md) – Motor-Statuszeile
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Zurücksetzen: Antippen des Maximalwerts der CPU-Auslastung setzt ihn zurück; Klick auf „Strom Max“ setzt auf 0 (im Handbuch „0l“).
