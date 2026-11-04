@@ -1,0 +1,114 @@
+<UserControl x:Class="ApaTec.Hmi.Views.MainDosersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:m="clr-namespace:ApaTec.Hmi.Models"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:MainDosersViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-11 Hauptdosierer 1 und 2: Titelzeile (HM-17) und drei Gruppenbereiche 4 : 4 : 4 (HM-15). Felder HM-12, Anzeigen HM-09 bis HM-11, Tasten HM-07, Umschalter HM-08. Blaettern in der Funktionsleiste. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <c:HM17_TitleBar Grid.Row="0" Grid.ColumnSpan="3" Margin="{StaticResource Inset.S}" Title="{Binding Doser.Title}" Values="{Binding PositionValues}" />
+
+        <c:HM15_GroupPanel Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_GroupTargets_Header}">
+            <StackPanel>
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_Target_Label}"
+                                   NumberValue="{Binding Doser.TargetPercent}" Unit="%" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   ErrorText="{Binding Doser.Errors[TargetPercent]}"
+                                   Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.TargetPercent}" />
+                <c:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_TargetAbsolute_Label}" Icon="{StaticResource Icon.Dosing.Weight}"
+                                     NumberValue="{Binding Doser.TargetWeight}" Unit="g" Decimals="0" Presentation="Row" />
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_RegulationActual_Label}"
+                                   NumberValue="{Binding Doser.RegulationValue}" Unit="g" Decimals="2" IsAuthorized="{Binding IsAuthorized}"
+                                   ErrorText="{Binding Doser.Errors[RegulationValue]}"
+                                   Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.RegulationValue}" />
+                <c:HM15_GroupPanel GroupStyle="Heading" Margin="{StaticResource Inset.XS}" Header="{res:Loc Dosing_Calibration_Heading}">
+                    <StackPanel>
+                        <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CalibrationRevolutions_Label}" Icon="{StaticResource Icon.Motor.Screw}"
+                                           NumberValue="{Binding Doser.CalibrationRevolutions}" Unit="" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                           ErrorText="{Binding Doser.Errors[CalibrationRevolutions]}"
+                                           Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.CalibrationRevolutions}" />
+                        <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CalibrationWeight_Label}" Icon="{StaticResource Icon.Weight.Scale}"
+                                           NumberValue="{Binding Doser.CalibrationWeight}" Unit="g" Decimals="2" IsAuthorized="{Binding IsAuthorized}"
+                                           ErrorText="{Binding Doser.Errors[CalibrationWeight]}"
+                                           Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.CalibrationWeight}" />
+                    </StackPanel>
+                </c:HM15_GroupPanel>
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc Dosing_CalibrationHint_Text}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+
+        <c:HM15_GroupPanel Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_GroupDrives_Header}">
+            <StackPanel>
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_ScrewSpeed_Label}" Icon="{StaticResource Icon.Speed}"
+                                   NumberValue="{Binding Doser.ScrewSpeed}" Unit="1/min" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   ErrorText="{Binding Doser.Errors[ScrewSpeed]}"
+                                   Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.ScrewSpeed}" />
+                <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_AgitatorSwitch_Label}" IsChecked="{Binding Doser.AgitatorEnabled}" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" />
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_AgitatorPercent_Label}" Icon="{StaticResource Icon.Speed}"
+                                   NumberValue="{Binding Doser.AgitatorPercent}" Unit="%" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   ErrorText="{Binding Doser.Errors[AgitatorPercent]}"
+                                   Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.AgitatorPercent}" />
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_AgitatorRunOn_Label}"
+                                   NumberValue="{Binding Doser.AgitatorRunOn}" Unit="s" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   ErrorText="{Binding Doser.Errors[AgitatorRunOn]}"
+                                   Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.AgitatorRunOn}" />
+                <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CrossScrewSwitch_Label}" IsChecked="{Binding Doser.CrossScrewEnabled}" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" />
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CrossScrewPercent_Label}" Icon="{StaticResource Icon.Speed}"
+                                   NumberValue="{Binding Doser.CrossScrewPercent}" Unit="%" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   ErrorText="{Binding Doser.Errors[CrossScrewPercent]}"
+                                   Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.CrossScrewPercent}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+
+        <c:HM15_GroupPanel Grid.Row="1" Grid.Column="2" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_GroupStatus_Header}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" Text="{res:Loc Dosing_Hopper_Heading}" />
+                <Grid Margin="{StaticResource Inset.XS}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <c:HM09_StatusLed Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_HopperUpper_Label}" State="{Binding Doser.HopperUpper}" Icon="{StaticResource Icon.Fill.Hopper}" />
+                    <c:HM09_StatusLed Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_HopperLower_Label}" State="{Binding Doser.HopperLower}" Icon="{StaticResource Icon.Fill.Hopper}" />
+                </Grid>
+                <c:HM10_ProgressBar Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_Load_Label}" Value="{Binding Doser.Load}" WarningThreshold="90" StringFormat="N0" />
+                <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_RegulationSwitch_Label}" IsChecked="{Binding Doser.RegulationEnabled}" />
+                <Border Background="Transparent">
+                    <Border.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding Doser.ShowBlockedHintCommand}" />
+                    </Border.InputBindings>
+                    <StackPanel>
+                        <Grid Margin="{StaticResource Inset.XS}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <c:HM07_ActionButton Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_Manual_Label}" Icon="{StaticResource Icon.Manual}"
+                                                 RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" Command="{Binding Doser.ManualCommand}" />
+                            <c:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_Empty_Label}" Icon="{StaticResource Icon.Empty}"
+                                                 TriggerMode="Continuous" IsRunning="{Binding Doser.IsEmptying}"
+                                                 RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" Command="{Binding Doser.ToggleEmptyingCommand}" />
+                        </Grid>
+                        <c:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_Calibrate_Label}" Icon="{StaticResource Icon.Dosing.Calibration}"
+                                             RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" Command="{Binding Doser.CalibrateCommand}" />
+                    </StackPanel>
+                </Border>
+                <c:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_OpenRegulation_Label}" Command="{Binding OpenRegulationCommand}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>
