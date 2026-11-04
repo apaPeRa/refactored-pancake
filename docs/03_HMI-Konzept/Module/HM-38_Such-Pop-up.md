@@ -30,11 +30,11 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Abgebrochen | Dialog schließt, keine Navigation | – |
 
 ## Verwendet auf Seiten (IDs)
-- [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl (Definition des Dialogs)
+- [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
 - [HS-33](../Seiten/HS-33_EA-Uebersicht.md) – EA-Übersicht
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Hinweis: Die genannten HS-Seiten führen den Dialog noch als „HM-14 mit HM-13 (Variante Text)“; die Nachführung auf HM-38 in deren Abschnitt „Verwendete Module“ steht aus (Stand Konsolidierung, siehe Modulliste).
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt. Hinweis: HS-30, HS-31 und HS-33 führen den Dialog in ihrem Abschnitt „Verwendete Module“ noch als „HM-14 mit HM-13 (Variante Text)“; die Nachführung auf HM-38 steht aus.
 
 ## Herkunft
 - Keine DM- oder RM-Entsprechung: Taste „Suchen“ in [RM-14](../../02_Referenz-Analyse/Module/RM-14_Kachel-Navigation.md)-Seiten (RS-30, RS-31, RS-33); Aufbau und Verhalten sind Annahme (A-60, OP-40, OP-30).

@@ -39,6 +39,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-01](../Seiten/HS-01_Produktion.md) – Produktion
 - [HS-02](../Seiten/HS-02_Produktionszaehler.md) – Produktionszähler (Pop-up)
 - [HS-03](../Seiten/HS-03_Maschinengeschwindigkeit.md) – Maschinengeschwindigkeit (Pop-up)
+- [HS-04](../Seiten/HS-04_Einstellungen.md) – Einstellungen
 - [HS-05](../Seiten/HS-05_Zufuehrung-Papier.md) – Zuführung Papier
 - [HS-06](../Seiten/HS-06_Zufuehrung-Karton.md) – Zuführung Karton
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
@@ -48,6 +49,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
 - [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer)
 - [HS-13](../Seiten/HS-13_Kontrollwaage.md) – Kontrollwaage
+- [HS-14](../Seiten/HS-14_Einzelgewichte.md) – Einzelgewichte
 - [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine
 - [HS-17](../Seiten/HS-17_Motorparameter-Schliessmaschine.md) – Motorparameter (Schließmaschine)
 - [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine)
@@ -57,14 +59,15 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
-- [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
+- [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
+- [HS-33](../Seiten/HS-33_EA-Uebersicht.md) – EA-Übersicht
+- [HS-35](../Seiten/HS-35_Systemeinstellungen.md) – Systemeinstellungen
 - [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-13)
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [RM-13](../../02_Referenz-Analyse/Module/RM-13_Pop-up-Rahmen.md) – Pop-up-Rahmen: Fenster mit Titelleiste, Schließen-Kreuz und Taste „Schließen“ (Produktionszähler, Maschinengeschwindigkeit)

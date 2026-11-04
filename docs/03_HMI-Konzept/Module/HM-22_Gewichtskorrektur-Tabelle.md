@@ -14,7 +14,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Sollgewicht (`TargetWeight`) | double | g | Bild 250,4 |
 | Gültige Stützstellen (`ValidPointCount`) | int | Stk | berechnet, 0 bis 20; Mindestzahl 3, empfohlen 5 bis 8 |
 | Ergebnis (`CalculationState`) | enum CalculationState { None, TooFewPoints, Invalid, Calculated } | – | – |
-| Gewichtsanpassung (`AdjustCommand`), Dosierer auslösen (`TriggerCommand`) | ICommand | – | beide mit Schlüssel |
+| Gewichtsanpassung (`AdjustCommand`), Dosierer auslösen (`TriggerCommand`) | ICommand | – | beide ohne Schlüssel (Referenzbild gewinnt); das Schlüsselsymbol steht nur am Sollgewicht-Feld |
 
 ## Zustände und Darstellung
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
@@ -32,7 +32,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine)
 - [HS-21](../Seiten/HS-21_Gewichtskorrektur.md) – Gewichtskorrektur (Nachdosierer)
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [RM-17](../../02_Referenz-Analyse/Module/RM-17_Gewichtskorrektur-Tabelle.md) – Gewichtskorrektur-Tabelle: Soll/Ist-Stützstellen, Gewichtsanpassung, Dosierer auslösen
@@ -51,7 +51,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HM-22-P01 | Aufbau | 2 Blöcke × 10 Zeilen mit SOLL und IST, 20 Wertepaare | offen |
-| HM-22-P02 | Tasten | Gewichtsanpassung und Dosierer Auslösen manuell, beide mit Schlüssel | offen |
+| HM-22-P02 | Tasten | Gewichtsanpassung und Dosierer Auslösen manuell ohne Schlüsselsymbol; Schlüsselsymbol nur am Sollgewicht-Feld (Referenzbild, OP-25) | offen |
 | HM-22-P03 | Sollgewicht | Feld mit Einheit g, 1 Nachkommastelle | offen |
 | HM-22-P04 | Leere Felder | 0,00 g wird ignoriert | offen |
 | HM-22-P05 | Zu wenige Punkte | Hinweis mit Symbol bei weniger als 3 Stützstellen | offen |

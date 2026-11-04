@@ -44,7 +44,6 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer)
 - [HS-13](../Seiten/HS-13_Kontrollwaage.md) – Kontrollwaage
 - [HS-14](../Seiten/HS-14_Einzelgewichte.md) – Einzelgewichte
-- [HS-15](../Seiten/HS-15_Trend.md) – Trend
 - [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine
 - [HS-17](../Seiten/HS-17_Motorparameter-Schliessmaschine.md) – Motorparameter (Schließmaschine)
 - [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine)
@@ -73,7 +72,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 - [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-08](../../01_Design-Analyse/Module/DM-08_Kennzahl-Kachel.md) – Kennzahl-Kachel: Kennzahlen Geschwindigkeit und Maschinenwinkel in der Rahmenzeile

@@ -48,9 +48,9 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
-- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-20)
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-13](../../01_Design-Analyse/Module/DM-13_Umschalter.md) – Umschalter: Schiebeschalter

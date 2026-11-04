@@ -10,6 +10,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 |---|---|---|---|
 | Beschriftung (`Label`) | string | – | z. B. Aktueller Druck, Maschinenwinkel, Soll, Regulierwert, Aktuelle Produktion |
 | Wertart (`ValueKind`) | enum ValueKind { Number, Text, DateTime, Duration } | – | – |
+| Dauer-Darstellung (`DurationLayout`) | enum DurationLayout { Single, Parts } | – | Single = ein Feld hhh:mm:ss; Parts = drei Felder Stunden, Minuten, Sekunden mit Einheiten h, m, s (HS-39 „Laufzeit gesamt“) |
 | Zahlenwert (`NumberValue`) | double? | Einheit | z. B. 150 °C, 0,7 bar, 113 g, 48 %, −398,9 g |
 | Textwert (`TextValue`) | string? | – | z. B. „IO“, „Bereit“, „Läuft“ |
 | Zeitwert (`TimeValue`) | DateTime? / TimeSpan? | TT.MM.JJJJ hh:mm:ss / hhh:mm:ss | Platzhalter „--.--.---- --:--:--“ bei leer |
@@ -42,9 +43,9 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
 - [HS-08](../Seiten/HS-08_Heissleim-Parameter.md) – Heißleim Parameter
 - [HS-09](../Seiten/HS-09_Heissleim-Druck.md) – Heißleim Druck
-- [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2 (inkl. Verwendung über Kompositmodul HM-20)
-- [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine (inkl. Verwendung über Kompositmodul HM-24)
-- [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer (inkl. Verwendung über Kompositmodul HM-20)
+- [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr (inkl. Verwendung über Kompositmodul HM-30)
+- [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
+- [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
@@ -54,9 +55,9 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-34](../Seiten/HS-34_EA-Anzeige.md) – EA-Anzeige
 - [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-20)
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-15](../../01_Design-Analyse/Module/DM-15_Beschriftung-Wert-Zeile.md) – Beschriftung-Wert-Zeile: Beschriftung-Wert-Zeile als reiner Text

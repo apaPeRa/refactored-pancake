@@ -26,13 +26,15 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Objektwechsel | Titel wechselt mit dem Objekt | Titeltext |
 
 ## Verwendet auf Seiten (IDs)
+- [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
+- [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer)
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
 - [HS-32](../Seiten/HS-32_Geber-setzen.md) – Geber setzen
 - [HS-34](../Seiten/HS-34_EA-Anzeige.md) – EA-Anzeige
 - [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-21](../../01_Design-Analyse/Module/DM-21_Titelzeile-mit-Verschiebesymbol.md) – Titelzeile mit Verschiebesymbol: blaue Titelzeile mit Soll-/Istgewicht und Verschiebesymbol

@@ -1,7 +1,7 @@
 # HS-20 – Motorparameter (Nachdosierer)
 
 - Quelle: [RS-20](../../02_Referenz-Analyse/Seiten/RS-20_Motorparameter.md) (Funktionsumfang, Tabellen T30, T31, Prüfpunkte; Text und Bild textgleich zu [RS-12](../../02_Referenz-Analyse/Seiten/RS-12_Motorparameter.md)). Kein Design vorhanden (OP-07); Aufbau aus [Designsystem](../Designsystem.md) und den Modulen abgeleitet, identisch zu [HS-12](../Seiten/HS-12_Motorparameter.md). Zugänge und Brotkrümel nach [Navigation.md](../Navigation.md).
-- Navigationspfad: Einstellung › Dosierer › Nachdosierer › Motorparameter (Objektkennung „ND“, Annahme 10). Zugang: [HS-19](../Seiten/HS-19_Nachdosierer.md) Funktionsleiste „Motorparameter“ (aktueller Dosierer = Nachdosierer). Zurück-Ziel: HS-19. Seitenschlüssel `PostDoserMotor` / `settings/dosers/post/motor`.
+- Navigationspfad: Einstellung › Dosierer › Nachdosierer › Motorparameter (Objektkennung (`ObjectSuffix`) „ND“, S20-1). Zugang: [HS-19](../Seiten/HS-19_Nachdosierer.md) Funktionsleiste „Motorparameter“ (aktueller Dosierer = Nachdosierer). Zurück-Ziel: HS-19. Seitenschlüssel `PostDoserMotor` / `settings/dosers/post/motor`.
 
 ## Zweck
 
@@ -25,7 +25,9 @@ Inhaltsbereich (12 Spalten)
 +--------------------------------------------------------------------------+
 ```
 
-Die Anordnung weicht vom Referenzbild ab (dort liegt die Karte „Schnecke“ unten mittig): im 4 : 4 : 4-Raster stehen alle drei Karten nebeneinander, die Reihenfolge Zu, Auf, Schnecke bleibt. Jede Karte ist ein Gruppenbereich (HM-15) mit Überschrift in `Font.Size.Value`; Zeilen aus Beschriftung links und Eingabefeld rechts, Höhe `Size.Touch.Default`, Abstand `Size.Touch.Gap`; die größte Karte (5 Zeilen) passt ohne Scrollen in den Inhaltsbereich. Die Funktionsleiste bleibt leer, aber sichtbar. Die Blättertaste „»“ des Referenzbildes entfällt: Es gibt nur einen Nachdosierer, das Blättern HD 1 ⇄ HD 2 gilt nur für HS-11 und HS-12 (Navigation.md 3.3, A-44).
+Die Anordnung weicht vom Referenzbild ab (dort liegt die Karte „Schnecke“ unten mittig): im 4 : 4 : 4-Raster stehen alle drei Karten nebeneinander, die Reihenfolge Zu, Auf, Schnecke bleibt. Jede Karte ist ein Gruppenbereich (HM-15) mit Überschrift in `Font.Size.Value`; Zeilen aus Beschriftung links und Eingabefeld rechts, Höhe `Size.Touch.Default`, Abstand `Size.Touch.Gap`. Die Funktionsleiste bleibt leer, aber sichtbar. Die Blättertaste „»“ des Referenzbildes entfällt: Es gibt nur einen Nachdosierer, das Blättern HD 1 ⇄ HD 2 gilt nur für HS-11 und HS-12 (Navigation.md 3.3, A-44).
+
+**Höhenbilanz** (Kontrollrechnung bei 1920 × 1080; nutzbare Inhaltshöhe 768 = Inhaltszeile 34\* abzüglich 2 × `Size.Content.Margin`; keine Titelzeile): Karte Verschluss (größte) = 5 Zeilen (320) + 4 Abstände (64) + Kopf (52) + Innenabstand (32) = 468; Karte Schnecke = 3 Zeilen (192) + 2 Abstände (32) + Kopf (52) + Innenabstand (32) = 308. Beide liegen unter 768; es wird nicht gescrollt (Prüfpunkt HS-20-P15).
 
 ## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
@@ -38,7 +40,7 @@ Spalte „Herkunft (RS-20)“: T30 = Verschluss Zu / Verschluss Auf (je Karte 5 
 | Seitenleiste (Benutzerkreis, Home, Einstellungen, Meldungen, Zurück) | Rahmen | ersetzt Schloss, „Produktion“, „Einstellungen“, „Zurück“ der Referenz; „Zurück“ öffnet den obersten Verlaufseintrag (HS-19) | [HM-01](../Module/HM-01_Seitenleiste.md) | W: Schloss, Tasten „Produktion“, „Einstellungen“, „Zurück“ |
 | Kopfzeile: Logo, Betriebsart, Uhrzeit/Datum | Rahmen | wie HS-11 (Spiral-Symbol: Betriebsart, OP-26) | [HM-02](../Module/HM-02_Kopfzeile.md) | W: Logo, Spiral-Symbol, Uhrzeit/Datum |
 | Meldezeile | Anzeige | aktuelle Meldung (Referenzbild „*450* Palettierung nicht bereit“); Antippen öffnet HS-38 | [HM-03](../Module/HM-03_Meldezeile.md) | W: Meldezeile |
-| Brotkrümel „Einstellung › Dosierer › Nachdosierer › Motorparameter“ | Navigation | Seitenpfad, Objektkennung „ND“ am letzten Segment (statt des Bildtitels „Motorparameter HD1“, der den Hauptdosierer meint, OP-33); „Nachdosierer“ führt zu HS-19 | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | W: Seitentitel „Motorparameter HD1“ |
+| Brotkrümel „Einstellung › Dosierer › Nachdosierer › Motorparameter“ | Navigation | Seitenpfad, Objektkennung (`ObjectSuffix`) „ND“ am letzten Segment (statt des Bildtitels „Motorparameter HD1“, der den Hauptdosierer meint, OP-39; S20-1); „Nachdosierer“ führt zu HS-19 | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | W: Seitentitel „Motorparameter HD1“ |
 | Kennzahlen Geschwindigkeit, Maschinenwinkel | Anzeige | Rahmenkennzahlen | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) | (Rahmen) |
 
 ### Karten Verschluss Zu und Verschluss Auf (T30)
@@ -82,18 +84,19 @@ Spalte „Herkunft (RS-20)“: T30 = Verschluss Zu / Verschluss Auf (je Karte 5 
 - [HM-15](../Module/HM-15_Gruppenbereich.md) – Gruppenbereich (Rahmen der Karten)
 - [HM-21](../Module/HM-21_Motorparameter-Karte.md) – Motorparameter-Karte
 
-Fehlendes Modul: keines. HM-19 (Blättertasten) wird nicht verwendet, obwohl HM-19 und Modulliste HS-20 als Verwendung führen (Abweichung, siehe Bericht).
+Blättertasten (HM-19) werden nicht verwendet (nur ein Nachdosierer).
+
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Bezug zum Dosierer.** Die Seite gilt immer für den Nachdosierer; Brotkrümel und `DoserName` „ND“ nennen ihn. Es gibt keinen Parameter und kein Blättern.
-- **Eingabe-Pop-up.** Antippen eines Felds öffnet HM-13 in HM-14 mit Titel (Kartenname und Zeilenname), aktuellem Wert, Einheit (° oder %) und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht (Navigation.md 4.2). Der Handbuchtext der Zeile erscheint als Hilfetext im Pop-up (Annahme 7), die Karte kann ihn zusätzlich als Tooltip tragen. In der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
+- **Eingabe-Pop-up.** Antippen eines Felds öffnet HM-13 in HM-14 mit Titel (Kartenname und Zeilenname), aktuellem Wert, Einheit (° oder %) und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht (Navigation.md 4.2). Der Handbuchtext der Zeile erscheint als Hilfetext im Pop-up (S20-2), die Karte kann ihn zusätzlich als Tooltip tragen. In der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
 - **Berechtigung.** Alle 13 Felder tragen `Icon.Key`; ohne Berechtigung `Icon.Lock`, Antippen öffnet kein Eingabe-Pop-up, sondern den Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. das Benutzer-Pop-up (OP-25, OP-04).
 - **Fehlerfälle.** Ungültiger Wert: Feld im Zustand Fehler (Kontur `Border.Thick`, `Brush.Status.Error.Subtle`, `Icon.Status.Error`, Text „Wert außerhalb a bis b Einheit“); Übernehmen gesperrt. Werte in Textfarbe (`Brush.Text.Primary`), nicht in Rot.
 - **Einheiten.** Position in Grad (°), alle übrigen Felder in Prozent (%); die Bezugsgröße der Prozentwerte ist offen (OP-45).
 - **Navigation.** Seitenleiste „Zurück“ → HS-19 (Verlauf); Brotkrümel „Nachdosierer“ → HS-19, „Dosierer“ → HS-41; Meldezeile → HS-38. Bei offenem Pop-up ist alles außer dem Pop-up gesperrt.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -113,10 +116,19 @@ Fehlendes Modul: keines. HM-19 (Blättertasten) wird nicht verwendet, obwohl HM-
 | HS-20-P14 | Zweiter Kanal und Tokens | Schloss/Schlüssel und Fehler mit Symbol, Form oder Text; keine Hex- oder Pixelwerte; Texte aus `.resx` | offen |
 | HS-20-P15 | Layout | drei Karten 4 : 4 : 4 im Inhaltsbereich; größte Karte passt ohne Scrollen | offen |
 
+## Annahmen dieser Seite
+
+Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+
+| Kennung | Annahme |
+|---|---|
+| S20-1 | Brotkrümel-Objektkennung (`ObjectSuffix`) „ND“ für den Nachdosierer; Navigation.md und HM-04 nennen sie nicht, das Referenzbild trägt „HD1“. |
+| S20-2 | Der Handbuchtext je Zeile erscheint als Hilfetext im Eingabe-Pop-up (Touch kennt keine Tooltips). |
+
 ## Offene Punkte
 
 - OP-25 Berechtigungsstufen und Schlüsselsymbol; OP-04 Benutzer/Anmeldung.
 - OP-28 Wertebereiche und Standardwerte; OP-29 Einheiten; OP-30 Eingabe-Pop-up.
-- OP-33 Seitentitel Bild gegenüber Handbuch („Motorparameter HD1“); OP-38 Zugang und Navigationspfade.
-- OP-39 fehlender Screenshot Nachdosierer (Bild zeigt HD1); OP-55 Seite bildidentisch zu RS-12 und RS-17.
+- OP-39 fehlender Screenshot Nachdosierer: das Bild zeigt den Titel „Motorparameter HD1“; OP-38 Zugang und Navigationspfade.
+- OP-55 Seite bildidentisch zu RS-12 und RS-17.
 - OP-45 Bezugsgröße der Prozentwerte.

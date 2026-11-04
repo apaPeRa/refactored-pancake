@@ -58,14 +58,14 @@ HS-37 (Meldearchiv) nutzt die Filtervariante: die Filter-Taste öffnet den Dialo
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
-- [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
+- [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
+- [HS-33](../Seiten/HS-33_EA-Uebersicht.md) – EA-Übersicht
 - [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-12)
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [RM-06](../../02_Referenz-Analyse/Module/RM-06_Eingabe-Pop-up.md) – Eingabe-Pop-up: undokumentiertes Eingabe-Pop-up der Referenz; alle Angaben Annahme (A-51)

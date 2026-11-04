@@ -29,7 +29,7 @@ Inhaltsbereich (12 Spalten, Gutter Space.M)
 +--------------------------------------------------------------------------+
 ```
 
-- **Gruppe links „Stützstellen“ (8 Spalten):** zwei Blöcke zu je 4 Spalten nebeneinander mit den Spaltenköpfen „SOLL“ und „IST“ (fett, `Font.Weight.Strong`; als Kopf der Wertespalten wie in der Referenz) und je 10 Zeilen aus Zeilennummer, Soll-Feld und Ist-Feld. Linker Block Zeilen 1 bis 10, rechter Block Zeilen 11 bis 20 (Annahme 13). Zeilenhöhe `Size.Touch.Min`, Abstand `Size.Touch.Gap` (HM-22); Kopfzeile plus 10 Zeilen plus Innenabstand ergeben rund 94 % der nutzbaren Inhaltshöhe, es wird nicht gescrollt.
+- **Gruppe links „Stützstellen“ (8 Spalten):** zwei Blöcke zu je 4 Spalten nebeneinander mit den Spaltenköpfen „SOLL“ und „IST“ (fett, `Font.Weight.Strong`; als Kopf der Wertespalten wie in der Referenz) und je 10 Zeilen aus Zeilennummer, Soll-Feld und Ist-Feld. Linker Block Zeilen 1 bis 10, rechter Block Zeilen 11 bis 20 (S21-2). Zeilenhöhe `Size.Touch.Min`, Abstand `Size.Touch.Gap` (HM-22); Kopfzeile plus 10 Zeilen plus Innenabstand ergeben rund 94 % der nutzbaren Inhaltshöhe, es wird nicht gescrollt.
 - **Gruppe rechts „Probe und Anpassung“ (4 Spalten):** von oben das Eingabefeld „Sollgewicht:“, die Taste „Dosierer Auslösen manuell“, die Taste „Gewichtsanpassung“, die Statuszeile zu den Stützstellen (Zähler und Berechnungsergebnis), das Hinweis-Textfeld mit dem Kurzablauf (4 Schritte) und die Taste „Hinweise“. Die Reihenfolge entspricht der Referenz (Tasten oben, Sollgewicht darunter), jedoch mit dem Sollgewicht an erster Stelle, weil es der erste Schritt des Ablaufs ist (Handbuch: „rechts unten“, Abweichung der Ortsangabe der Referenz, RS-21 Offener Punkt 1).
 - Die Funktionsleiste bleibt leer, aber sichtbar (Navigation.md 3.3).
 
@@ -48,6 +48,12 @@ Das Referenzkapitel hat keine Funktionstabellen; die Quelle sind die vier Schrit
 | Kennzahlen Geschwindigkeit, Maschinenwinkel | Anzeige | Rahmenkennzahlen | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) | (Rahmen) |
 | Funktionsleiste (leer) | Leiste ohne Tasten | bleibt sichtbar; keine Tasten wie in der Referenz | [HM-06](../Module/HM-06_Funktionsleiste.md) | E: Funktionsleiste (keine Tasten links) |
 
+### Gliederung
+
+| Element | Typ | Funktion | verwendetes Modul | Herkunft (RS-21) |
+|---|---|---|---|---|
+| Gruppenbereiche „Stützstellen“ (8 Spalten) und „Probe und Anpassung“ (4 Spalten) | Gruppenbereich (Panel) | rahmen die zwei Tabellenblöcke (E) bzw. die rechte Spalte mit Tasten und Sollgewicht (E, S1, S2, S4) | [HM-15](../Module/HM-15_Gruppenbereich.md) | E: Tabellenblöcke, rechte Spalte |
+
 ### Stützstellen-Tabelle (E, S3)
 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft (RS-21) |
@@ -58,7 +64,7 @@ Das Referenzkapitel hat keine Funktionstabellen; die Quelle sind die vier Schrit
 | IST-Felder linker Block (10) | Eingabefeld, Einheit g, 2 Nachkommastellen, ohne Schlüssel | gemessenes Ist-Gewicht je Stützstelle; Bild „20,00 g“, „24,00 g“, 8 × „0,00 g“ | HM-22 mit HM-12 | E: IST-Felder linker Block |
 | SOLL-Felder rechter Block (10) | Eingabefeld, Einheit g, 2 Nachkommastellen | wie oben; Bild 10 × „0,00 g“ | HM-22 mit HM-12 | E: SOLL-Felder rechter Block |
 | IST-Felder rechter Block (10) | Eingabefeld, Einheit g, 2 Nachkommastellen | wie oben; Bild 10 × „0,00 g“ | HM-22 mit HM-12 | E: IST-Felder rechter Block |
-| Zeilennummer 1 bis 20 | Beschriftung | macht die 20 Wertepaare zählbar (Annahme 13) | HM-22 | (neu, Rückverfolgung zu E: 2 × 10 Zeilen) |
+| Zeilennummer 1 bis 20 | Beschriftung | macht die 20 Wertepaare zählbar (S21-2) | HM-22 | (neu, Rückverfolgung zu E: 2 × 10 Zeilen) |
 | Zeilenzustand „leer“ / „gefüllt“ | Zustandsanzeige je Zeile | Wert „0,00 g“ = leer, Zeile in `Brush.Text.Secondary` ohne Haken; gefüllt: Haken `Icon.State.On`; „leere Felder bleiben unberücksichtigt“ | HM-22 | H3 |
 
 ### Probe und Anpassung (S1, S2, S4)
@@ -66,17 +72,21 @@ Das Referenzkapitel hat keine Funktionstabellen; die Quelle sind die vier Schrit
 | Element | Typ | Funktion | verwendetes Modul | Herkunft (RS-21) |
 |---|---|---|---|---|
 | Sollgewicht | Eingabefeld mit Schlüssel, Beschriftung fett, Einheit g, 1 Nachkommastelle | „Geben Sie rechts unten das gewünschte Zielgewicht ein (Sollgewicht). Dieses Gewicht wird bei der manuellen Dosierung verwendet.“ Bild 250,4 g | HM-22 mit HM-12 | S1; E: Feld „Sollgewicht:“ |
-| Dosierer Auslösen manuell | Aktionstaste mit Schlüssel | „Verwenden Sie die Taste Dosierer Auslösen manuell, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.“ | HM-22 mit [HM-07](../Module/HM-07_Aktionstaste.md) | S2; E: Taste „Dosierer Auslösen manuell“ |
-| Gewichtsanpassung | Aktionstaste mit Schlüssel | „Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste Gewichtsanpassung. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.“ | HM-22 mit HM-07 | S4; E: Taste „Gewichtsanpassung“ |
+| Dosierer Auslösen manuell | Aktionstaste, ohne Schlüssel (wie Referenzbild) | „Verwenden Sie die Taste Dosierer Auslösen manuell, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.“ | HM-22 mit [HM-07](../Module/HM-07_Aktionstaste.md) | S2; E: Taste „Dosierer Auslösen manuell“ |
+| Gewichtsanpassung | Aktionstaste, ohne Schlüssel (wie Referenzbild) | „Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste Gewichtsanpassung. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.“ | HM-22 mit HM-07 | S4; E: Taste „Gewichtsanpassung“ |
 | Statuszeile Stützstellen | Anzeige mit Symbol und Text | „Gültige Stützstellen: n von 20“ und Berechnungsergebnis („Mindestens 3 Stützstellen“, „Kennlinie berechnet“, „Soll und Ist erforderlich“); Empfehlung 5 bis 8 | HM-22 (`ValidPointCount`, `CalculationState`) | H1, S4 |
 | Ablauf in 4 Schritten (Kurzfassung) | Hinweis-Textfeld (Art Info) | Kurzfassung der Schritte S1 bis S4 (Sollgewicht einstellen, Probe auslösen und wiegen, Soll und Ist eintragen, Gewichtsanpassung drücken) | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | S1 bis S4 |
-| Hinweise | Aktionstaste (öffnet Pop-up), Symbol `Icon.Status.Info` | öffnet das Pop-up „Hinweise zur optimalen Nutzung“ mit dem vollständigen Handbuchtext (Annahme 12) | HM-07 | H1 bis H4 |
+| Hinweise | Aktionstaste (öffnet Pop-up), Symbol `Icon.Status.Info` | öffnet das Pop-up „Hinweise zur optimalen Nutzung“ mit dem vollständigen Handbuchtext (S21-1) | HM-07 | S1 bis S4, H1 bis H4 |
 
 ### Pop-up „Hinweise zur optimalen Nutzung“ (Pop-up, kein eigener Seitenschlüssel)
 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft (RS-21) |
 |---|---|---|---|---|
 | Pop-up-Rahmen mit Titel und „Schließen“ | Pop-up | zeigt die vier Schritte (S1 bis S4) und die vier Hinweise (H1 bis H4) wortgetreu, `.resx`; schließt nur über „Schließen“ oder Kreuz | [HM-14](../Module/HM-14_Popup-Rahmen.md) | S1 bis S4, H1 bis H4 |
+| Schritt 1 „Dosiergewicht einstellen“ | Text | „Geben Sie rechts unten das gewünschte Zielgewicht ein (Sollgewicht). Dieses Gewicht wird bei der manuellen Dosierung verwendet.“ | HM-14 (Inhalt Text) | S1 |
+| Schritt 2 „Manuelle Auslösung des Dosierers“ | Text | „Verwenden Sie die Taste Dosierer Auslösen manuell, um eine Probe mit dem eingestellten Sollgewicht zu dosieren. Die Probe in einem Behälter auffangen und wiegen.“ | HM-14 (Inhalt Text) | S2 |
+| Schritt 3 „Wert eintragen“ | Text | „Tragen Sie das verwendete Sollgewicht in die linke Spalte (SOLL) ein und das gemessene tatsächliche Gewicht in die rechte Spalte (IST). Wiederholen Sie diesen Vorgang für mehrere Gewichte über den typischen Arbeitsbereich des Dosierers hinweg.“ | HM-14 (Inhalt Text) | S3 |
+| Schritt 4 „Gewichtsanpassung berechnen“ | Text | „Nachdem mehrere Stützstellen eingetragen wurden, drücken Sie die Taste Gewichtsanpassung. Die Steuerung erstellt daraus eine Korrekturkennlinie, mit der das Dosierergebnis automatisch an das tatsächliche Verhalten des Systems angepasst wird.“ | HM-14 (Inhalt Text) | S4 |
 | H1 | Text | „Es sollten mindestens drei, besser fünf bis acht Stützstellen gleichmäßig über den gesamten Gewichtsbereich verteilt eingetragen werden.“ | HM-14 (Inhalt Text) | H1 |
 | H2 | Text | „Die Werte sollten unter reproduzierbaren Bedingungen aufgenommen werden (z. B. gleiche Produkttemperatur, gleiche Füllhöhe).“ | HM-14 (Inhalt Text) | H2 |
 | H3 | Text | „Tragen Sie nur gültige Messwerte ein – leere Felder bleiben unberücksichtigt.“ | HM-14 (Inhalt Text) | H3 |
@@ -94,23 +104,23 @@ Das Referenzkapitel hat keine Funktionstabellen; die Quelle sind die vier Schrit
 - [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol
 - [HM-13](../Module/HM-13_Eingabe-Pop-up.md) – Eingabe-Pop-up
 - [HM-14](../Module/HM-14_Popup-Rahmen.md) – Pop-up-Rahmen (Eingabe, Hinweise)
+- [HM-15](../Module/HM-15_Gruppenbereich.md) – Gruppenbereich (zwei Panels)
 - [HM-22](../Module/HM-22_Gewichtskorrektur-Tabelle.md) – Gewichtskorrektur-Tabelle
 - [HM-27](../Module/HM-27_Hinweis-Textfeld.md) – Hinweis-Textfeld (Kurzablauf)
 
-Fehlendes Modul: keines.
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Eingabe-Pop-up.** Antippen eines Soll-, Ist- oder Sollgewicht-Felds öffnet HM-13 in HM-14 mit Titel (zum Beispiel „Stützstelle 3 – SOLL“ bzw. „Sollgewicht“), aktuellem Wert, Einheit g und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht. Das Pop-up ist in der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
-- **Berechtigung.** In der Referenz trägt nur das Feld „Sollgewicht“ ein Schlüsselsymbol, die Tabellenfelder nicht. Das neue HMI übernimmt das: `Icon.Key` am Sollgewicht, an „Dosierer Auslösen manuell“ und an „Gewichtsanpassung“ (beide Tasten mit Schlüssel laut HM-22); ohne Rolle `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. Benutzer-Pop-up. Die Stufen sind offen (OP-25, OP-04).
+- **Berechtigung.** Wie in der Referenz trägt nur das Feld „Sollgewicht“ ein Schlüsselsymbol (`Icon.Key`); die Tabellenfelder und die Tasten „Dosierer Auslösen manuell“ und „Gewichtsanpassung“ haben keinen Schlüssel. Ohne Rolle am Sollgewicht: `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. Benutzer-Pop-up. Die Stufen sind offen (OP-25, OP-04). HM-22 beschreibt beide Tasten mit Schlüssel (HM-22-P02); das weicht von RS-21 ab und ist dem Querschnitts-Agenten gemeldet.
 - **Gültige Stützstelle.** Eine Zeile zählt nur, wenn Soll und Ist größer als 0,00 g sind; „0,00 g“ gilt als leer und wird nicht berücksichtigt (Handbuch H3). Ist nur eines der beiden Felder gefüllt, zeigt die Zeile den Zustand Ungültig (`Brush.Status.Error.Subtle`, `Icon.Status.Error`, Text „Soll und Ist erforderlich“; Annahme aus HM-22).
-- **Gewichtsanpassung.** Bei weniger als 3 gültigen Stützstellen berechnet die Taste nicht; die Statuszeile zeigt `Icon.Status.Warning` und „Mindestens 3 Stützstellen“ (Annahme 14, Handbuch: mindestens drei, besser fünf bis acht). Bei ungültigen Zeilen ebenfalls keine Berechnung. Bei Erfolg: `Icon.Status.Ok` und „Kennlinie berechnet“ (Zustand Berechnet). Rückmeldung nach „Gewichtsanpassung“ ist in der Referenz nicht beschrieben (RS-21 Offener Punkt 3).
-- **Dosierer Auslösen manuell.** Dosiert eine Probe mit dem Wert aus „Sollgewicht“. Nicht zulässig im ungeeigneten Betriebszustand: Taste deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`), Antippen nennt den Grund in der Meldezeile (A-28); fachliche Regeln nicht belegt (Annahme 8).
+- **Gewichtsanpassung.** Bei weniger als 3 gültigen Stützstellen berechnet die Taste nicht; die Statuszeile zeigt `Icon.Status.Warning` und „Mindestens 3 Stützstellen“ (S21-3, Handbuch: mindestens drei, besser fünf bis acht). Bei ungültigen Zeilen ebenfalls keine Berechnung. Bei Erfolg: `Icon.Status.Ok` und „Kennlinie berechnet“ (Zustand Berechnet). Rückmeldung nach „Gewichtsanpassung“ ist in der Referenz nicht beschrieben (RS-21 Offener Punkt 3).
+- **Dosierer Auslösen manuell.** Dosiert eine Probe mit dem Wert aus „Sollgewicht“. Nicht zulässig im ungeeigneten Betriebszustand: Taste deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`), Antippen nennt den Grund in der Meldezeile (A-28); fachliche Regeln nicht belegt (S21-4).
 - **Hinweise.** Taste „Hinweise“ öffnet das Pop-up (ein Pop-up zur Zeit, Seitenleiste und Inhalt gesperrt, Schließen nur über „Schließen“ oder Kreuz; Navigation.md 4.2).
 - **Fehlerfälle.** Ungültiger Wert im Eingabe-Pop-up: Fehlertext mit Symbol, Übernehmen gesperrt. Fehler beim Schreiben der Stützstellen: Zeile im Zustand Fehler mit Text. Werte in Textfarbe, nicht in Rot.
 - **Navigation.** Seitenleiste „Zurück“ → HS-19 (Verlauf); Brotkrümel „Nachdosierer“ → HS-19, „Dosierer“ → HS-41; Meldezeile → HS-38. Navigation ändert keinen Maschinenzustand.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -127,16 +137,28 @@ Fehlendes Modul: keines.
 | HS-21-P11 | Rahmenelemente (RS-21-P12) | Kopfzeile, Meldezeile, Seitenleiste (Benutzer, Home, Einstellungen, Zurück) vorhanden; Funktionsleiste sichtbar, leer | offen |
 | HS-21-P12 | Brotkrümel (RS-21-P13) | „Einstellung › Dosierer › Nachdosierer › Gewichtskorrektur“ | offen |
 | HS-21-P13 | Eingabe-Pop-up | jedes Eingabefeld öffnet HM-13 mit Einheit g und Grenzen; ungültiger Wert: Fehlertext mit Symbol | offen |
-| HS-21-P14 | Berechtigung | Schlüsselsymbol an Sollgewicht und den zwei Tasten; ohne Rolle Schloss und Hinweis | offen |
+| HS-21-P14 | Berechtigung | Schlüsselsymbol nur am Feld „Sollgewicht“ (wie RS-21-Bild); Tabellenfelder und Tasten „Dosierer Auslösen manuell“ und „Gewichtsanpassung“ ohne Schlüssel; ohne Rolle am Sollgewicht Schloss und Hinweis | offen |
 | HS-21-P15 | Ungültige Zeile | nur Soll oder nur Ist gefüllt: Zeile mit Symbol und Text als ungültig gekennzeichnet, nicht nur über Farbe | offen |
 | HS-21-P16 | Touch-Ziele | Tabellenfelder mindestens `Size.Touch.Min` hoch, Tasten und Sollgewicht mindestens `Size.Touch.Default` hoch, Abstand mindestens `Size.Touch.Gap` | offen |
 | HS-21-P17 | Zweiter Kanal und Tokens | leer/gefüllt (Haken), ungültig, berechnet, gesperrt mit Symbol, Form oder Text; keine Hex- oder Pixelwerte; Texte aus `.resx` | offen |
 | HS-21-P18 | Layout | Gruppen 8 : 4; die 20 Wertepaare passen ohne Scrollen in den Inhaltsbereich bei Zielauflösung 1920 × 1080 | offen |
 
+## Annahmen dieser Seite
+
+Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+
+| Kennung | Annahme |
+|---|---|
+| S21-1 | Die vollständigen Schritte und Hinweise stehen wortgetreu in einem Pop-up (HM-14) hinter der Taste „Hinweise“ im Inhalt, weil Navigation.md für HS-21 keine Funktionsleistentasten vorsieht; auf der Seite steht nur ein Kurzablauf. |
+| S21-2 | Die 20 Wertepaare sind eine Liste Nr. 1 bis 20 (links 1 bis 10, rechts 11 bis 20); „0,00 g“ gilt als leer. |
+| S21-3 | „Gewichtsanpassung“ berechnet nicht bei weniger als 3 gültigen Stützstellen (Warnung mit Symbol und Text); eine Zeile mit nur Soll oder nur Ist ist ungültig (nach HM-22). |
+| S21-4 | „Dosierer Auslösen manuell“ ist im ungeeigneten Betriebszustand deaktiviert (A-28); die fachlichen Sperrregeln fehlen in der Quelle. |
+
 ## Offene Punkte
 
-- OP-25 Berechtigungsstufen (Schlüssel nur am Sollgewicht); OP-04 Benutzer/Anmeldung.
+- OP-25 Berechtigungsstufen (Schlüssel nur am Sollgewicht, HM-22-P02 weicht ab); OP-04 Benutzer/Anmeldung.
 - OP-28 Wertebereiche, Standardwerte und Darstellung leerer Felder (Bild zeigt „0,00 g“); OP-30 Eingabe-Pop-up und Rückmeldung nach „Gewichtsanpassung“.
 - OP-33 Seitentitel Bild gegenüber Handbuch; OP-34 Abweichung der Ortsangabe („rechts unten“ gegenüber Bildmitte rechts).
-- OP-39 fehlende Gewichtskorrektur je Dosierer (Geltungsbereich: Nachdosierer oder alle Dosierer); OP-45 Bezug „Sollgewicht“ (250,4 g) zu „Soll“ (250 g) in HS-19; Stützstellenzahl 3 bis 8 empfohlen gegenüber 20 Zeilen.
+- OP-39 fehlende Gewichtskorrektur je Dosierer (Geltungsbereich: Nachdosierer oder alle Dosierer); OP-45 Bezug „Sollgewicht“ (250,4 g) zu „Soll“ (250 g) in HS-19.
+- Ohne Eintrag im Seiten-Index: empfohlene 3 bis 8 Stützstellen gegenüber 20 Zeilen (RS-21 Offener Punkt 2); dem Querschnitts-Agenten gemeldet.
 - OP-55 Seite ist bildidentisch mit RS-18 (gemeinsames Modul HM-22).

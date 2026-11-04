@@ -40,9 +40,8 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige
-- [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [RM-21](../../02_Referenz-Analyse/Module/RM-21_Meldungsliste.md) – Meldungsliste: Meldearchiv, Meldeanzeige, Variablenliste mit Scrolltasten

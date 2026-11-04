@@ -30,7 +30,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 ## Verwendet auf Seiten (IDs)
 - [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [RM-26](../../02_Referenz-Analyse/Module/RM-26_Wochen-Zeitplan.md) – Wochen-Zeitplan: sieben Tagesspalten Montag bis Sonntag mit Heiz- und Absenkphasen

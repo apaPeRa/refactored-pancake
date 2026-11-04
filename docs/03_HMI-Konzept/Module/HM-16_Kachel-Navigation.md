@@ -39,7 +39,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-40](../Seiten/HS-40_Zufuehrungen.md) – Zuführungen
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-12](../../01_Design-Analyse/Module/DM-12_Kachel-Taste.md) – Kachel-Taste: große Kachel-Taste, auch ohne Beschriftung
@@ -50,7 +50,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`ItemsControl` mit `UniformGrid`), Kachel `HM16_Tile` als `ControlTemplate`.
 - **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`, `ItemKind`; **Command:** `NavigateCommand`.
 - Abstand zwischen Kacheln `Size.Touch.Gap`, Beschriftung aus `.resx`, Umbruch automatisch (OP-13).
-- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Block`, `Icon.Key`, `Icon.Lock`, `Icon.Status.Warning`.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Block`, `Icon.Chevron`, `Icon.Key`, `Icon.Lock`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

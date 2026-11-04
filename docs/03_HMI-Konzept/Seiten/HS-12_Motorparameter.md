@@ -1,7 +1,7 @@
 # HS-12 – Motorparameter (Hauptdosierer)
 
 - Quelle: [RS-12](../../02_Referenz-Analyse/Seiten/RS-12_Motorparameter.md) (Funktionsumfang, Tabellen T17, T18, Prüfpunkte). Kein Design vorhanden (OP-07); Aufbau aus [Designsystem](../Designsystem.md) (Raster 3.3) und den Modulen abgeleitet. Zugänge und Brotkrümel nach [Navigation.md](../Navigation.md).
-- Navigationspfad: Einstellung › Dosierer › Hauptdosierer › Motorparameter (Objektkennung „HD1“ bzw. „HD2“; Seitentitel der Referenz „Motorparameter HD1“). Zugang: [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) Funktionsleiste „Motorparameter“ für den aktuell angewählten Dosierer (Parameter `doserIndex`). Zurück-Ziel: HS-11. Seitenschlüssel `MainDoserMotor` / `settings/dosers/main/motor`.
+- Navigationspfad: Einstellung › Dosierer › Hauptdosierer › Motorparameter (Objektkennung (`ObjectSuffix`) „HD1“ bzw. „HD2“; Seitentitel der Referenz „Motorparameter HD1“). Zugang: [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) Funktionsleiste „Motorparameter“ für den aktuell angewählten Dosierer (Parameter `doserIndex`). Zurück-Ziel: HS-11. Seitenschlüssel `MainDoserMotor` / `settings/dosers/main/motor`.
 
 ## Zweck
 
@@ -32,7 +32,18 @@ Inhaltsbereich (12 Spalten)
 +--------------------------------------------------------------------------+
 ```
 
-Die Anordnung weicht vom Referenzbild ab (dort liegt die Karte „Schnecke“ unten mittig): im 4 : 4 : 4-Raster stehen alle drei Karten nebeneinander, die Reihenfolge Zu, Auf, Schnecke bleibt. Jede Karte ist ein Gruppenbereich (HM-15) mit Überschrift in `Font.Size.Value`; Zeilen aus Beschriftung links und Eingabefeld rechts, Höhe `Size.Touch.Default`, Abstand `Size.Touch.Gap`. Die Höhe der größten Karte (5 Zeilen) passt ohne Scrollen in den Inhaltsbereich. Die Funktionsleiste enthält nur das Blätterpaar.
+Die Anordnung weicht vom Referenzbild ab (dort liegt die Karte „Schnecke“ unten mittig): im 4 : 4 : 4-Raster stehen alle drei Karten nebeneinander, die Reihenfolge Zu, Auf, Schnecke bleibt. Jede Karte ist ein Gruppenbereich (HM-15) mit Überschrift in `Font.Size.Value`; Zeilen aus Beschriftung links und Eingabefeld rechts, Höhe `Size.Touch.Default`, Abstand `Size.Touch.Gap`. Die Funktionsleiste enthält nur das Blätterpaar.
+
+**Höhenbilanz** (Kontrollrechnung bei 1920 × 1080; nutzbare Inhaltshöhe 768 = Inhaltszeile 34\* abzüglich 2 × `Size.Content.Margin`):
+
+| Bereich | Rechnung | Summe |
+|---|---|---|
+| Titelzeile | Zeile `Size.Touch.Default` plus Abstand `Space.M` | 80, verbleiben 688 |
+| Karte Verschluss (größte) | 5 Zeilen (320) + 4 Abstände (64) + Kopf (52) + Innenabstand (32) | 468 |
+| Karte Schnecke | 3 Zeilen (192) + 2 Abstände (32) + Kopf (52) + Innenabstand (32) | 308 |
+
+Alle Karten liegen unter 688; es wird nicht gescrollt (Prüfpunkt HS-12-P17).
+
 
 ## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 
@@ -45,9 +56,9 @@ Spalte „Herkunft (RS-12)“: T17 = Verschluss Zu / Verschluss Auf (je Karte 5 
 | Seitenleiste (Benutzerkreis, Home, Einstellungen, Meldungen, Zurück) | Rahmen | ersetzt Schloss, „Produktion“, „Einstellungen“, „Zurück“ der Referenz; „Zurück“ öffnet den obersten Verlaufseintrag (HS-11) | [HM-01](../Module/HM-01_Seitenleiste.md) | W: Schloss, Tasten „Produktion“, „Einstellungen“, „Zurück“ |
 | Kopfzeile: Logo, Betriebsart, Uhrzeit/Datum | Rahmen | wie HS-11 (Spiral-Symbol der Referenz: Betriebsart, OP-26) | [HM-02](../Module/HM-02_Kopfzeile.md) | W: Logo, Spiral-Symbol, Uhrzeit/Datum |
 | Meldezeile | Anzeige | aktuelle Meldung (Referenzbild „*450* Palettierung nicht bereit“); Antippen öffnet HS-38 | [HM-03](../Module/HM-03_Meldezeile.md) | W: Meldezeile |
-| Brotkrümel „Einstellung › Dosierer › Hauptdosierer › Motorparameter“ | Navigation | Seitenpfad, Objektkennung „HD1“/„HD2“ am letzten Segment (Referenz-Seitentitel „Motorparameter HD1“); „Hauptdosierer“ führt zu HS-11 mit demselben `doserIndex` | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | W: Seitentitel „Motorparameter HD1“ |
+| Brotkrümel „Einstellung › Dosierer › Hauptdosierer › Motorparameter“ | Navigation | Seitenpfad, Objektkennung (`ObjectSuffix`) „HD1“/„HD2“ am letzten Segment (Referenz-Seitentitel „Motorparameter HD1“); „Hauptdosierer“ führt zu HS-11 mit demselben `doserIndex` | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | W: Seitentitel „Motorparameter HD1“ |
 | Kennzahlen Geschwindigkeit, Maschinenwinkel | Anzeige | Rahmenkennzahlen | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) | (Rahmen) |
-| Titelzeile „Hauptdosierer 1“ / „Hauptdosierer 2“ | Überschrift | benennt den Dosierer, für den die Parameter gelten; wechselt mit den Blättertasten (Annahme 1) | [HM-17](../Module/HM-17_Titelzeile.md) | W: Zusatz „HD1“ im Titel; Zugangsregel „aktueller Dosierer“ |
+| Titelzeile „Hauptdosierer 1“ / „Hauptdosierer 2“ | Überschrift | benennt den Dosierer, für den die Parameter gelten; wechselt mit den Blättertasten (S12-1) | [HM-17](../Module/HM-17_Titelzeile.md) | W: Zusatz „HD1“ im Titel; Zugangsregel „aktueller Dosierer“ |
 
 ### Karten Verschluss Zu und Verschluss Auf (T17)
 
@@ -76,7 +87,7 @@ Die Zeilen gelten für beide Karten; „Zu“ und „Auf“ haben je ein Feld pr
 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft (RS-12) |
 |---|---|---|---|---|
-| Pfeiltasten „«“ „»“ mit Positionsanzeige „1 von 2“ | Blättertasten (Paar) in der Funktionsleiste | wechseln HD 1 ⇄ HD 2, Seite und Karten wechseln auf den anderen Dosierer, kein Verlaufseintrag; Randtaste deaktiviert. Die Referenz zeigt nur „»“, deren Funktion ist nicht beschrieben (RS-12 Offener Punkt 3); Navigation.md 3.3 legt das Blättern HD 1 ⇄ HD 2 für HS-12 fest (Annahme 6) | [HM-19](../Module/HM-19_Blaettertasten.md) in [HM-06](../Module/HM-06_Funktionsleiste.md) | W: Taste „»“ |
+| Pfeiltasten „«“ „»“ mit Positionsanzeige „1 von 2“ | Blättertasten (Paar) in der Funktionsleiste | wechseln HD 1 ⇄ HD 2, Seite und Karten wechseln auf den anderen Dosierer, kein Verlaufseintrag; Randtaste deaktiviert. Die Referenz zeigt nur „»“, deren Funktion ist nicht beschrieben (RS-12 Offener Punkt 3); Navigation.md 3.3 legt das Blättern HD 1 ⇄ HD 2 für HS-12 fest (S12-2) | [HM-19](../Module/HM-19_Blaettertasten.md) in [HM-06](../Module/HM-06_Funktionsleiste.md) | W: Taste „»“ |
 
 Die Taste „Motorparameter“ gibt es auf dieser Seite nicht (wie in der Referenz: erste Position leer).
 
@@ -96,19 +107,18 @@ Die Taste „Motorparameter“ gibt es auf dieser Seite nicht (wie in der Refere
 - [HM-19](../Module/HM-19_Blaettertasten.md) – Blättertasten
 - [HM-21](../Module/HM-21_Motorparameter-Karte.md) – Motorparameter-Karte
 
-Fehlendes Modul: keines. Ergänzungswunsch: HM-17 führt HS-12 nicht in „Verwendet auf Seiten“ (siehe Bericht).
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Bezug zum Dosierer.** Die Seite zeigt immer die Parameter eines Dosierers: `doserIndex` aus dem Zugang von HS-11. Titelzeile und Brotkrümel-Objektkennung nennen ihn („Hauptdosierer 1“, „HD1“).
-- **Blättern.** „«“ und „»“ wechseln `doserIndex` per `ReplaceParameter`; alle 13 Werte werden durch die des anderen Dosierers ersetzt, kein Verlaufseintrag. Am Rand ist die Taste deaktiviert (gestrichelte Kontur, Positionsanzeige „1 von 2“). „Zurück“ führt nach HS-11 mit dem zuletzt in HS-12 gewählten Dosierer (Annahme 11).
-- **Eingabe-Pop-up.** Antippen eines Felds öffnet HM-13 mit Titel (Kartenname und Zeilenname, zum Beispiel „Verschluss Auf – Position“), aktuellem Wert, Einheit (° oder %) und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht. Der Handbuchtext der Zeile erscheint als Hilfetext im Pop-up (Annahme 7), die Karte kann ihn zusätzlich als Tooltip tragen. Das Pop-up ist in der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
+- **Blättern.** „«“ und „»“ wechseln `doserIndex` per `ReplaceParameter`; alle 13 Werte werden durch die des anderen Dosierers ersetzt, kein Verlaufseintrag. Am Rand ist die Taste deaktiviert (gestrichelte Kontur, Positionsanzeige „1 von 2“). „Zurück“ folgt dem Stapeleintrag (Navigation.md 5.3): HS-11 erscheint mit dem Parameter `doserIndex`, mit dem HS-12 geöffnet wurde; das Blättern in HS-12 ändert den Stapel nicht.
+- **Eingabe-Pop-up.** Antippen eines Felds öffnet HM-13 mit Titel (Kartenname und Zeilenname, zum Beispiel „Verschluss Auf – Position“), aktuellem Wert, Einheit (° oder %) und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht. Der Handbuchtext der Zeile erscheint als Hilfetext im Pop-up (S12-3), die Karte kann ihn zusätzlich als Tooltip tragen. Das Pop-up ist in der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
 - **Berechtigung.** Alle 13 Felder tragen `Icon.Key`; ohne Berechtigung `Icon.Lock`, Antippen öffnet kein Eingabe-Pop-up, sondern den Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. das Benutzer-Pop-up (OP-25, OP-04). Gesperrte Felder sind weiterhin lesbar.
 - **Fehlerfälle.** Ungültiger Wert: Feld im Zustand Fehler (Kontur `Border.Thick`, `Brush.Status.Error.Subtle`, `Icon.Status.Error`, Text „Wert außerhalb a bis b Einheit“). Fehler beim Schreiben eines Werts: Feld im Zustand Fehler mit Text. Wert in Textfarbe (`Brush.Text.Primary`), nicht in Rot (Designsystem 1.2).
 - **Einheiten.** Position in Grad (°), alle übrigen Felder in Prozent (%). Die Bezugsgröße der Prozentwerte bei Beschleunigung, Verzögerung und Ruck ist offen (RS-12 Offener Punkt 2, OP-45); die Beschriftung nennt nur die Einheit.
 - **Navigation.** „Zurück“ (Seitenleiste) → HS-11; Brotkrümel „Hauptdosierer“ → HS-11, „Dosierer“ → HS-41; Meldezeile → HS-38. Bei offenem Pop-up ist alles außer dem Pop-up gesperrt.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -129,6 +139,16 @@ Fehlendes Modul: keines. Ergänzungswunsch: HM-17 führt HS-12 nicht in „Verwe
 | HS-12-P15 | Zweiter Kanal und Tokens | Schloss/Schlüssel, Fehler, deaktivierte Randtaste mit Symbol, Form oder Text; keine Hex- oder Pixelwerte; Texte aus `.resx` | offen |
 | HS-12-P16 | Wiederverwendung | Karten sind HM-21 (Felder HM-12, Rahmen HM-15), identisch aufgebaut wie HS-17 und HS-20 | offen |
 | HS-12-P17 | Layout | drei Karten 4 : 4 : 4 unter der Titelzeile; größte Karte passt ohne Scrollen in den Inhaltsbereich | offen |
+
+## Annahmen dieser Seite
+
+Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+
+| Kennung | Annahme |
+|---|---|
+| S12-1 | Titelzeile (HM-17) als Objektüberschrift „Hauptdosierer 1/2“; die Seite zeigt den Dosierer, von dem sie geöffnet wurde. |
+| S12-2 | Blättern HD 1 ⇄ HD 2 wie in HS-11: `ReplaceParameter` ohne Verlaufseintrag, Positionsanzeige „1 von 2“, Randtaste deaktiviert (Navigation.md 3.3 legt das Blättern für HS-12 fest; das Referenzbild zeigt nur „»“). |
+| S12-3 | Der Handbuchtext je Zeile erscheint als Hilfetext im Eingabe-Pop-up (Touch kennt keine Tooltips). |
 
 ## Offene Punkte
 

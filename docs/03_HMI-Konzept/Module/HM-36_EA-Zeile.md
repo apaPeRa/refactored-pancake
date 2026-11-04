@@ -24,11 +24,12 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Analog | Zahl `Font.Size.Value` | Zahlenwert statt LED |
 | Reserve | Text `Brush.Text.Secondary` | Klartext „RESERVE“ |
 | Fehler | Zeile `Brush.Status.Error.Subtle` | `Icon.Status.Error` |
+| Unbekannt | LED `Icon.Status.Inactive` mit gestrichelter Kontur (`Border.Dash`), Wert „---“ | Wort „Unbekannt“ (Kommunikation zur Steuerung gestört oder Signal nicht gemeldet) |
 
 ## Verwendet auf Seiten (IDs)
 - [HS-34](../Seiten/HS-34_EA-Anzeige.md) – EA-Anzeige
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [RM-35](../../02_Referenz-Analyse/Module/RM-35_EA-Zeile.md) – EA-Zeile: Zeile der Signalliste mit LED, SPS-Kennung und Klartext

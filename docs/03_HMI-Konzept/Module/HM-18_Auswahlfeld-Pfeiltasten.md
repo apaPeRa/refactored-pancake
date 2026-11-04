@@ -32,12 +32,11 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 ## Verwendet auf Seiten (IDs)
 - [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr (inkl. Verwendung über Kompositmodul HM-30)
-- [HS-15](../Seiten/HS-15_Trend.md) – Trend (inkl. Verwendung über Kompositmodul HM-26)
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
 - [HS-29](../Seiten/HS-29_Produktionsstatistik.md) – Produktionsstatistik
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [RM-32](../../02_Referenz-Analyse/Module/RM-32_Auswahlfeld-mit-Pfeiltasten.md) – Auswahlfeld mit Pfeiltasten: Filtertyp, Geber, Datum, Nockennummer

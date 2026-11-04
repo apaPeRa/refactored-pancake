@@ -38,35 +38,31 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-01](../Seiten/HS-01_Produktion.md) – Produktion
 - [HS-02](../Seiten/HS-02_Produktionszaehler.md) – Produktionszähler (Pop-up)
 - [HS-04](../Seiten/HS-04_Einstellungen.md) – Einstellungen
+- [HS-06](../Seiten/HS-06_Zufuehrung-Karton.md) – Zuführung Karton
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
-- [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr (inkl. Verwendung über Kompositmodul HM-18)
+- [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr
 - [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
-- [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer) (inkl. Verwendung über Kompositmodul HM-19)
 - [HS-13](../Seiten/HS-13_Kontrollwaage.md) – Kontrollwaage
 - [HS-14](../Seiten/HS-14_Einzelgewichte.md) – Einzelgewichte
-- [HS-15](../Seiten/HS-15_Trend.md) – Trend (inkl. Verwendung über Kompositmodul HM-18)
-- [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine)
+- [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine
+- [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine) (inkl. Verwendung über Kompositmodul HM-22)
 - [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
-- [HS-20](../Seiten/HS-20_Motorparameter.md) – Motorparameter (Nachdosierer) (inkl. Verwendung über Kompositmodul HM-19)
 - [HS-21](../Seiten/HS-21_Gewichtskorrektur.md) – Gewichtskorrektur (Nachdosierer)
+- [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
-- [HS-26](../Seiten/HS-26_Nockenuebersicht.md) – Nockenübersicht (inkl. Verwendung über Kompositmodul HM-19)
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
-- [HS-29](../Seiten/HS-29_Produktionsstatistik.md) – Produktionsstatistik (inkl. Verwendung über Kompositmodul HM-18)
 - [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
 - [HS-32](../Seiten/HS-32_Geber-setzen.md) – Geber setzen
 - [HS-33](../Seiten/HS-33_EA-Uebersicht.md) – EA-Übersicht
-- [HS-34](../Seiten/HS-34_EA-Anzeige.md) – EA-Anzeige (inkl. Verwendung über Kompositmodul HM-19)
 - [HS-35](../Seiten/HS-35_Systemeinstellungen.md) – Systemeinstellungen
 - [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
-- [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige (inkl. Verwendung über Kompositmodul HM-25)
-- [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos (inkl. Verwendung über Kompositmodul HM-25)
-- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
+- [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-20)
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-10](../../01_Design-Analyse/Module/DM-10_Funktionstaste-grau.md) – Funktionstaste (grau): graue Funktionstaste ohne Zustand, auch Manuell/Entleeren in Karten

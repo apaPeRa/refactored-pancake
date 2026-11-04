@@ -33,14 +33,24 @@ Die Überschrift-Variante deckt die Textüberschriften ohne Rahmen ab (HS-07 „
 - [HS-05](../Seiten/HS-05_Zufuehrung-Papier.md) – Zuführung Papier
 - [HS-06](../Seiten/HS-06_Zufuehrung-Karton.md) – Zuführung Karton
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
+- [HS-08](../Seiten/HS-08_Heissleim-Parameter.md) – Heißleim Parameter
 - [HS-09](../Seiten/HS-09_Heissleim-Druck.md) – Heißleim Druck
-- [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer) (inkl. Verwendung über Kompositmodul HM-21)
+- [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
+- [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer)
+- [HS-13](../Seiten/HS-13_Kontrollwaage.md) – Kontrollwaage
 - [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine
 - [HS-17](../Seiten/HS-17_Motorparameter-Schliessmaschine.md) – Motorparameter (Schließmaschine) (inkl. Verwendung über Kompositmodul HM-21)
-- [HS-20](../Seiten/HS-20_Motorparameter.md) – Motorparameter (Nachdosierer) (inkl. Verwendung über Kompositmodul HM-21)
-- [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung (inkl. Verwendung über Kompositmodul HM-35)
+- [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine)
+- [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
+- [HS-20](../Seiten/HS-20_Motorparameter.md) – Motorparameter (Nachdosierer)
+- [HS-21](../Seiten/HS-21_Gewichtskorrektur.md) – Gewichtskorrektur (Nachdosierer)
+- [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
+- [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
+- [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
+- [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-11](../../01_Design-Analyse/Module/DM-11_Gruppenbereich.md) – Gruppenbereich: grauer Container mit Überschrift, Zwischenüberschrift

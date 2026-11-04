@@ -11,6 +11,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Logo (`LogoLight`, `LogoDark`) | ImageSource / DrawingImage | – | je Thema eine Variante, fest |
 | Betriebsart (`OperatingMode`) | enum OperatingMode { Production, Setup, Manual, Service, Fault } | – | Bild nur Production; weitere offen (OP-22), Aufzählung erweiterbar |
 | Betriebsart-Text (`OperatingModeText`) | string | – | Ressourcentext, z. B. „Produktion“ |
+| Meldezeile zeigen (`ShowMessageLine`) | bool | – | Standard true; false = Kopfzeile ohne Meldezeile, das Logo-/Betriebsart-/Uhr-Raster bleibt (Vollbild HS-24) |
 | Zeit (`Now`) | DateTime | HH:mm:ss | 00:00:00 bis 23:59:59; Design „9:15“ ohne Sekunden, Referenz „13:01:12“ (A-47) |
 | Sekunden zeigen (`ShowSeconds`) | bool | – | Standard true |
 | Zeit gültig (`IsTimeValid`) | bool | – | false zeigt „--:--:--“ |
@@ -71,7 +72,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 - [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-03](../../01_Design-Analyse/Module/DM-03_Kopfzeile-Logo.md) – Kopfzeile Logo: Logo

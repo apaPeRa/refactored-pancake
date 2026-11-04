@@ -18,21 +18,30 @@ Inhaltsbereich (12 Spalten, Gutter Space.M)
 | Eichdosierung (4 Sp.)  | Querschnecke (4 Sp.)   | (4 Sp.)                |
 |  Soll          [ g ]   |  Schnecke Drehzahl[1/min]| Füllstand Trichter     |
 |  Max. Nachgabe [ g ]   |  Rührer  Schalter Ein/Aus|   oben  [LED] Wort     |
-|  Aktuelle Nachg. [ g ] |  Rührer          [ % ]   |   unten [LED] Wort     |
-|  Regulierung Ist [g]   |  Nachlauf Rührer [ s ]   | Auslastung  [=== 73 %] |
-|  ---- Eichdosierung    |  Querschnecke Schalter   | Regulierung aktiv  Ein |
-|  Umdrehungen    [ ]    |  Querschnecke    [ % ]   | [Manuell] [Entleeren]  |
-|  Eichdosierung  [ g ]  |                          | [ Eichdosierung ]      |
-|  Hinweis Ablauf        |                          | Hinweis Nachgabe (nIO) |
+|  Hinweis nIO (Info)    |  Rührer          [ % ]   |   unten [LED] Wort     |
+|  Aktuelle Nachg. [ g ] |  Nachlauf Rührer [ s ]   | Auslastung  [=== 73 %] |
+|  Regulierung Ist [g]   |  Querschnecke Schalter   | Regulierung aktiv  Ein |
+|  ---- Eichdosierung    |  Querschnecke    [ % ]   | [Manuell] [Entleeren]  |
+|  Umdrehungen    [ ]    |                          | [ Eichdosierung ]      |
+|  Eichdosierung  [ g ]  |                          | Hinweis Ablauf (Info)  |
 +------------------------+------------------------+------------------------+
 | Funktionsleiste: [Gewichtskorrektur] [Motorparameter] [Regulierung]       |
 +--------------------------------------------------------------------------+
 ```
 
-- **Gruppe 1 „Sollwerte und Eichdosierung“:** Soll, Max. Nachgabe, Aktuelle Nachgabe (Anzeige), Regulierung Ist; Zwischenüberschrift „Eichdosierung“ (Linie `Brush.Divider`); Eichfelder Umdrehungen und Gewicht; darunter ein Hinweis-Textfeld zum Ablauf der Eichdosierung.
+- **Gruppe 1 „Sollwerte und Eichdosierung“:** Soll, Max. Nachgabe mit dem Hinweis-Textfeld zur nIO-Regel direkt darunter (Position wie in HM-20), Aktuelle Nachgabe (Anzeige), Regulierung Ist; Zwischenüberschrift „Eichdosierung“ (Linie `Brush.Divider`); Eichfelder Umdrehungen und Gewicht.
 - **Gruppe 2 „Schnecke, Rührer, Querschnecke“:** wie HS-11 (Drehzahl; Rührer mit Umschalter, Sollgeschwindigkeit, Nachlauf; Querschnecke mit Umschalter und Sollgeschwindigkeit).
-- **Gruppe 3 „Status und Bedienung“:** Füllstand oben und unten, Auslastungsbalken, Umschalter „Regulierung aktiv“, Tasten „Manuell“ und „Entleeren“ nebeneinander, Taste „Eichdosierung“, darunter das Hinweis-Textfeld zur Max. Nachgabe (nIO-Regel).
-- Zeilenhöhen: Felder, Umschalter und Tasten `Size.Touch.Default`, Abstand zwischen Touch-Zielen `Size.Touch.Gap`; jede Gruppe passt ohne Scrollen in den Inhaltsbereich (Prüfpunkt HS-19-P21).
+- **Gruppe 3 „Status und Bedienung“:** Füllstand oben und unten, Auslastungsbalken, Umschalter „Regulierung aktiv“, Tasten „Manuell“ und „Entleeren“ nebeneinander, Taste „Eichdosierung“, darunter das Hinweis-Textfeld zum Ablauf der Eichdosierung.
+- Zeilenhöhen: Felder, Umschalter und Tasten `Size.Touch.Default`, Abstand zwischen Touch-Zielen `Size.Touch.Gap`.
+- **Höhenbilanz** (Kontrollrechnung bei 1920 × 1080; nutzbare Inhaltshöhe 768 = Inhaltszeile 34\* abzüglich 2 × `Size.Content.Margin`; keine Titelzeile):
+
+  | Bereich | Rechnung | Summe |
+  |---|---|---|
+  | Gruppe 1 | 6 Felder (384) + Hinweis nIO (80) + Zwischenüberschrift (40) + 7 Abstände (112) + Kopf (52) + Innenabstand (32) | 700 |
+  | Gruppe 2 | 6 Zeilen (384) + 5 Abstände (80) + Kopf (52) + Innenabstand (32) | 548 |
+  | Gruppe 3 | Füllstandsblock (128) + Auslastung (72) + 3 Tasten/Umschalter (192) + Hinweis Ablauf (120) + 5 Abstände (80) + Kopf (52) + Innenabstand (32) | 676 |
+
+  Alle Gruppen liegen unter 768; es wird nicht gescrollt (Prüfpunkt HS-19-P21).
 - Die Funktionsleiste trägt links drei Tasten in der Reihenfolge des Referenzbildes: „Gewichtskorrektur“, „Motorparameter“, „Regulierung“ (höchstens 5 erlaubt).
 
 ## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
@@ -57,16 +66,23 @@ Spalte „Herkunft (RS-19)“: T27 = Parameter und Status, T28 = Schaltflächen,
 | Eichdosierung Umdrehungen | Eingabefeld mit Schlüssel, ohne Einheit, Symbol Schnecke | „Anzahl Umdrehungen der Dosierschnecke welche bei der Eichdosierung ausgeführt wird. Anhand der Umdrehungen und des Gewichtes im Feld Eichdosierung berechnet die Maschine die Umdrehungen im Automatikbetrieb.“ Beispiel 5 | HM-20 mit HM-12 | T27 Nr. 2 |
 | Eichdosierung (Gewicht) | Eingabefeld mit Schlüssel, Einheit g, 2 Nachkommastellen, Symbol Waagschale | „Hier wird das Gewicht, des während der Eichdosierung dosierten Produkts, eingetragen.“ Beispiel 18,50 g | HM-20 mit HM-12 | T27 Nr. 3 |
 | Max. Nachgabe | Eingabefeld mit Schlüssel, Einheit g | „Obergrenze an zu dosierendem Produkt. Ist die Fehlmenge in einer Packung größer, wird nicht dosiert und die Packung wird als nIO ausgeschieden.“ Beispiel 50 g | HM-20 mit HM-12 | T27 Nr. 4 |
-| Aktuelle Nachgabe | Anzeigefeld, Einheit g (Anzeige, ohne Schlüssel; Annahme 3) | „Zu dosierendes Produkt in die aktuelle Packung.“ Beispiel 13 g | HM-20 mit [HM-11](../Module/HM-11_Anzeigefeld.md) | T27 Nr. 5 |
+| Aktuelle Nachgabe | Anzeigefeld, Einheit g (Anzeige, ohne Schlüssel; S19-1) | „Zu dosierendes Produkt in die aktuelle Packung.“ Beispiel 13 g | HM-20 mit [HM-11](../Module/HM-11_Anzeigefeld.md) | T27 Nr. 5 |
 | Regulierung Ist | Eingabefeld mit Schlüssel, Einheit g, 2 Nachkommastellen | „Aktueller Korrekturwert von der Regulierung. Dieses Gewicht wird auf die aktuelle Nachgabe aufaddiert. Der Wert kann manuell geändert werden.“ Beispiel 4,81 g | HM-20 mit HM-12 | T27 Nr. 6 |
-| Schnecke Drehzahl | Eingabefeld mit Schlüssel, Einheit 1/min (Annahme 15), Symbol Tacho | „Solldrehzahl der Dosierschnecke.“ Beispiel 2800 | HM-20 mit HM-12 | T27 Nr. 7 |
+| Schnecke Drehzahl | Eingabefeld mit Schlüssel, Einheit 1/min (S19-7), Symbol Tacho | „Solldrehzahl der Dosierschnecke.“ Beispiel 2800 | HM-20 mit HM-12 | T27 Nr. 7 |
 | Rührer (Sollgeschwindigkeit) | Eingabefeld mit Schlüssel, Einheit %, Symbol Tacho | „Sollgeschwindigkeit des Rührers im Trichter.“ Beispiel 30 % | HM-20 mit HM-12 | T27 Nr. 8 |
 | Nachlauf Rührer | Eingabefeld mit Schlüssel, Einheit s | „Zeit, welche der Rührer bei einem Stopp der Maschine nachläuft.“ Beispiel 0 s | HM-20 mit HM-12 | T27 Nr. 9 |
 | Querschnecke (Sollgeschwindigkeit) | Eingabefeld mit Schlüssel, Einheit %, Symbol Tacho | „Sollgeschwindigkeit der Querschnecke in der Produktzuführung.“ Beispiel 30 % | HM-20 mit HM-12 | T27 Nr. 10 |
-| Füllstand Trichter oben | Status-LED mit Trichter-Symbol, Beschriftung „oben“ | „Zeigt den Status des Sensors im oberen Bereich des Trichters an.“ Zustand mit Symbol und Wort (Annahme 4) | HM-20 mit [HM-09](../Module/HM-09_Status-LED.md) | T27 Nr. 11 |
+| Füllstand Trichter oben | Status-LED mit Trichter-Symbol, Beschriftung „oben“ | „Zeigt den Status des Sensors im oberen Bereich des Trichters an.“ Zustand mit Symbol und Wort (S19-2) | HM-20 mit [HM-09](../Module/HM-09_Status-LED.md) | T27 Nr. 11 |
 | Füllstand Trichter unten | Status-LED mit Trichter-Symbol, Beschriftung „unten“ | „Zeigt den Status des Sensors im unteren Bereich des Trichters an.“ Beschriftung „Füllstand:“ der Referenz als Gruppenzeile über beiden LEDs | HM-20 mit HM-09 | T27 Nr. 12 |
-| Auslastung | Fortschrittsbalken mit Zahl im Balken, Einheit % | „Zeigt an wieviel Prozent der verfügbaren Zeit der Dosiervorgang benötigt. Die Zeit ergibt sich aus der Länge der Nocke für den Dosierer und der Maschinengeschwindigkeit.“ Beispiel 73 % (unter der Warnschwelle: neutrale Füllung; Annahme 5) | HM-20 mit [HM-10](../Module/HM-10_Fortschrittsbalken.md) | T27 Nr. 13 |
-| Hinweis zur Max. Nachgabe | Hinweis-Textfeld (Art Info, bei Ereignis Warnung) | zeigt die Regel zur Max. Nachgabe als Text; ist die Fehlmenge einer Packung größer als „Max. Nachgabe“, wechselt es auf Warnung mit `Icon.Status.Warning` und dem Text „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ (Annahme 16) | HM-20 mit [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | T27 Nr. 4 (Beschreibungstext), Prüfpunkt RS-19-P10 |
+| Auslastung | Fortschrittsbalken mit Zahl im Balken, Einheit % | „Zeigt an wieviel Prozent der verfügbaren Zeit der Dosiervorgang benötigt. Die Zeit ergibt sich aus der Länge der Nocke für den Dosierer und der Maschinengeschwindigkeit.“ Beispiel 73 % (unter der Warnschwelle: neutrale Füllung; S19-3) | HM-20 mit [HM-10](../Module/HM-10_Fortschrittsbalken.md) | T27 Nr. 13 |
+| Hinweis zur Max. Nachgabe | Hinweis-Textfeld (Art Info, bei Ereignis Warnung) | zeigt die Regel zur Max. Nachgabe als Text; ist die Fehlmenge einer Packung größer als „Max. Nachgabe“, wechselt es auf Warnung mit `Icon.Status.Warning` und dem Text „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ (S19-8) | HM-20 mit [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | T27 Nr. 4 (Beschreibungstext), Prüfpunkt RS-19-P10 |
+
+### Gliederung und Hinweis zur Eichdosierung
+
+| Element | Typ | Funktion | verwendetes Modul | Herkunft (RS-19) |
+|---|---|---|---|---|
+| Gruppenbereiche „Sollwerte und Eichdosierung“, „Schnecke, Rührer, Querschnecke“, „Status und Bedienung“ | Gruppenbereich (Panel) | gliedern die Felder der Tabellen T27 und T28 in drei Rahmen mit Überschrift; Beschriftung „Füllstand:“ der Referenz als Zeile im dritten Panel | [HM-15](../Module/HM-15_Gruppenbereich.md) | T27 (Gliederung), W: „Füllstand:“ |
+| Hinweis Ablauf Eichdosierung | Hinweis-Textfeld (Art Info) | nennt die Schritte der Eichdosierung (Auffangen, Wiegen, Gewicht eintragen; S19-5) | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | T28 Nr. 5, T27 Nr. 2 und 3 |
 
 ### Schaltflächen (T28)
 
@@ -75,7 +91,7 @@ Spalte „Herkunft (RS-19)“: T27 = Parameter und Status, T28 = Schaltflächen,
 | Querschnecke (Anwahl) | Umschalter mit Schlüssel | „Erlaubt das Abwählen der Querschnecke. Dadurch wird kein Produkt in den Trichter nachgefüllt.“ Zustand Ein/Aus mit Symbol und Wort | HM-20 mit [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | T28 Nr. 1 |
 | Rührer (Anwahl) | Umschalter mit Schlüssel | „Abwahl für den Rührer im Trichter.“ | HM-20 mit HM-08 | T28 Nr. 2 |
 | Manuell | Aktionstaste mit Schlüssel (Antippen) | „Anforderung eines Dosiervorgangs.“ (Handbuch „Manuel“, Bildbeschriftung „Manuell“) | HM-20 mit [HM-07](../Module/HM-07_Aktionstaste.md) | T28 Nr. 3 |
-| Entleeren | Aktionstaste mit Schlüssel (Dauerfunktion) | „Der Dosierer fördert kontinuierlich Produkt, bis der Vorgang abgebrochen wird.“ Zustand „Läuft“ mit Symbol und Wort; Abbruch durch erneutes Antippen (Annahme 8) | HM-20 mit HM-07 | T28 Nr. 4 |
+| Entleeren | Aktionstaste mit Schlüssel (Dauerfunktion) | „Der Dosierer fördert kontinuierlich Produkt, bis der Vorgang abgebrochen wird.“ Zustand „Läuft“ mit Symbol und Wort; Abbruch durch erneutes Antippen (S19-4) | HM-20 mit HM-07 | T28 Nr. 4 |
 | Eichdosierung (Taste) | Aktionstaste mit Schlüssel | „Es wird ein Dosiervorgang gestartet. Der Dosierer macht die im Feld Eichdosierung Umdrehungen angegebenen Umdrehungen. Das dosierte Produkt muss aufgefangen und gewogen werden. Das Gewicht in das Feld Eichdosierung eintragen.“ | HM-20 mit HM-07 | T28 Nr. 5 |
 | Regulierung aktiv | Umschalter, ohne Schlüssel | „Die automatische Regulierung kann mit dieser Schaltfläche abgewählt werden.“ | HM-20 mit HM-08 | T28 Nr. 6 |
 
@@ -109,22 +125,23 @@ Weitere Elemente nur im Referenzbild (Logo, Seitentitel, Spiral-Symbol, Uhrzeit/
 - [HM-20](../Module/HM-20_Dosierer-Karte.md) – Dosierer-Karte (Darstellung Detail, Variante Nachdosierer)
 - [HM-27](../Module/HM-27_Hinweis-Textfeld.md) – Hinweis-Textfeld (Eichdosierung, Max. Nachgabe)
 
-Fehlendes Modul: keines. HM-19 (Blättertasten) wird bewusst nicht verwendet.
+Blättertasten (HM-19) werden nicht verwendet (nur ein Nachdosierer).
+
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
-- **Eingabe-Pop-up.** Antippen jedes Eingabefelds (HM-12) öffnet HM-13 in HM-14 mit Titel (Feldname), aktuellem Wert, Einheit und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht (Navigation.md 4.2). Der Handbuchtext der Zeile steht als Hilfetext im Pop-up (Annahme 7). Pop-up in der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
-- **Berechtigung.** Schlüsselsymbol (`Icon.Key`) an allen Eingabefeldern und den Tasten Querschnecke, Rührer, Manuell, Entleeren, Eichdosierung (wie in der Referenz); „Aktuelle Nachgabe“ ist reine Anzeige (Annahme 3); „Regulierung aktiv“ und die Tasten der Funktionsleiste ohne Schlüssel. Ohne Rolle: `Icon.Lock`, Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. Benutzer-Pop-up, kein Eingabe-Pop-up (OP-25, OP-04).
-- **nIO-Logik.** Ist die Fehlmenge einer Packung größer als „Max. Nachgabe“, wird nicht dosiert und die Packung als nIO ausgeschieden („nIO“ im Handbuch nicht erklärt; Annahme: nicht in Ordnung). Die Seite zeigt das im Hinweis-Textfeld mit Symbol und Text, nicht nur über Farbe; „Aktuelle Nachgabe“ zeigt in diesem Fall nicht dosiert (Wert 0 g, Annahme 16).
+- **Eingabe-Pop-up.** Antippen jedes Eingabefelds (HM-12) öffnet HM-13 in HM-14 mit Titel (Feldname), aktuellem Wert, Einheit und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht (Navigation.md 4.2). Der Handbuchtext der Zeile steht als Hilfetext im Pop-up (S19-6). Pop-up in der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
+- **Berechtigung.** Schlüsselsymbol (`Icon.Key`) an allen Eingabefeldern und den Tasten Querschnecke, Rührer, Manuell, Entleeren, Eichdosierung (wie in der Referenz); „Aktuelle Nachgabe“ ist reine Anzeige (S19-1); „Regulierung aktiv“ und die Tasten der Funktionsleiste ohne Schlüssel. Ohne Rolle: `Icon.Lock`, Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. Benutzer-Pop-up, kein Eingabe-Pop-up (OP-25, OP-04).
+- **nIO-Logik.** Ist die Fehlmenge einer Packung größer als „Max. Nachgabe“, wird nicht dosiert und die Packung als nIO ausgeschieden („nIO“ im Handbuch nicht erklärt; Annahme: nicht in Ordnung). Die Seite zeigt das im Hinweis-Textfeld mit Symbol und Text, nicht nur über Farbe; „Aktuelle Nachgabe“ zeigt in diesem Fall nicht dosiert (Wert 0 g, S19-8).
 - **Regulierung Ist.** wird auf die „Aktuelle Nachgabe“ aufaddiert und kann manuell geändert werden (Eingabefeld). Das Zusammenspiel von „Soll“ (g), Aktueller Nachgabe und „Sollgewicht“ in HS-21 ist fachlich offen (OP-45).
-- **Eichdosierung.** Taste startet einen Dosiervorgang mit den Umdrehungen aus „Eichdosierung Umdrehungen“. Ein Hinweis-Textfeld (Art Info) in Gruppe 1 nennt die Schritte des Handbuchs: Produkt auffangen und wiegen, Gewicht in das Feld „Eichdosierung“ eintragen, die Maschine berechnet daraus die Umdrehungen im Automatikbetrieb (Annahme 9). Das Gewichtsfeld wird nicht automatisch gefüllt.
+- **Eichdosierung.** Taste startet einen Dosiervorgang mit den Umdrehungen aus „Eichdosierung Umdrehungen“. Ein Hinweis-Textfeld (Art Info) in Gruppe 3 nennt die Schritte des Handbuchs: Produkt auffangen und wiegen, Gewicht in das Feld „Eichdosierung“ eintragen, die Maschine berechnet daraus die Umdrehungen im Automatikbetrieb (S19-5). Das Gewichtsfeld wird nicht automatisch gefüllt.
 - **Entleeren.** Dauerfunktion: erstes Antippen startet („Läuft“ mit `Icon.State.On`), erneutes Antippen bricht ab.
-- **Betriebszustand.** Nicht zulässige Aktionen (Manuell, Entleeren, Eichdosierung) sind deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`), Antippen nennt den Grund in der Meldezeile (A-28); fachliche Regeln sind nicht belegt (Annahme 8, OP-45).
-- **Anzeigezustände.** Füllstand-LEDs und Auslastungsbalken zeigen Zustand über Symbol und Wort, nie nur über Farbe; Auslastung ab Warnschwelle in Statusfarbe mit `Icon.Status.Warning` und Zahl (Annahme 5). Eingabewerte in Textfarbe, nicht in Rot; Rot nur für Fehler.
+- **Betriebszustand.** Nicht zulässige Aktionen (Manuell, Entleeren, Eichdosierung) sind deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`), Antippen nennt den Grund in der Meldezeile (A-28); fachliche Regeln sind nicht belegt (S19-4, OP-45).
+- **Anzeigezustände.** Füllstand-LEDs und Auslastungsbalken zeigen Zustand über Symbol und Wort, nie nur über Farbe; Auslastung ab Warnschwelle in Statusfarbe mit `Icon.Status.Warning` und Zahl (S19-3). Eingabewerte in Textfarbe, nicht in Rot; Rot nur für Fehler.
 - **Fehlerfälle.** Wert außerhalb der Grenzen: HM-12 im Zustand Fehler (Kontur `Border.Thick`, `Brush.Status.Error.Subtle`, `Icon.Status.Error`, Fehlertext). Gestörte Umschalter: Zustand Fehler mit Text. Ungültige Anzeige: „---“.
 - **Navigation.** „Gewichtskorrektur“ → HS-21; „Motorparameter“ → HS-20; „Regulierung“ → HS-23; Seitenleiste „Zurück“ und Brotkrümel „Dosierer“ → HS-41; Meldezeile → HS-38. Bei offenem Pop-up sind Seitenleiste, Funktionsleiste und Inhalt gesperrt. Navigation ändert keinen Maschinenzustand.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
@@ -149,6 +166,21 @@ Fehlendes Modul: keines. HM-19 (Blättertasten) wird bewusst nicht verwendet.
 | HS-19-P19 | Touch-Ziele | alle Felder, Umschalter und Tasten mindestens `Size.Touch.Default` hoch (Trefferfläche nie unter `Size.Touch.Min`), Abstand mindestens `Size.Touch.Gap`; Funktionstasten mindestens `Size.FunctionButton.MinWidth` breit | offen |
 | HS-19-P20 | Zweiter Kanal und Tokens | kein Zustand nur über Farbe (Umschalter, LEDs, Balken, nIO, Sperre, Fehler); keine Hex- oder Pixelwerte; Texte aus `.resx` | offen |
 | HS-19-P21 | Layout | drei Gruppen 4 : 4 : 4; jede Gruppe passt ohne Scrollen in den Inhaltsbereich bei Zielauflösung 1920 × 1080 | offen |
+
+## Annahmen dieser Seite
+
+Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+
+| Kennung | Annahme |
+|---|---|
+| S19-1 | „Aktuelle Nachgabe“ ist ein Anzeigefeld (HM-11) ohne Schlüssel, nicht eingebbar; das Handbuch nennt es nicht als eingebbar. |
+| S19-2 | Füllstand-LEDs: Symbol und Wort; Sensor meldet Produkt = Ok, oben ohne Produkt = Aus, unten ohne Produkt = Fehler (nach HM-20). |
+| S19-3 | Auslastung: Warnschwelle 90 % (HM-10); 73 % bleibt neutral. |
+| S19-4 | Manuell, Entleeren, Eichdosierung sind im ungeeigneten Betriebszustand deaktiviert (A-28); die fachlichen Sperrregeln fehlen in der Quelle. Entleeren: Abbruch durch erneutes Antippen. |
+| S19-5 | Hinweis-Textfeld zur Eichdosierung (Auffangen, Wiegen, Gewicht eintragen); das Gewichtsfeld wird nicht automatisch gefüllt. |
+| S19-6 | Der Handbuchtext je Feld erscheint als Hilfetext im Eingabe-Pop-up (Touch kennt keine Tooltips). |
+| S19-7 | „Schnecke Drehzahl“ hat die Einheit 1/min wie in HS-11 (das Referenzbild zeigt „2800“ ohne Einheit). |
+| S19-8 | Das Hinweis-Textfeld zur Max. Nachgabe zeigt die nIO-Regel immer als Info; bei Fehlmenge über Max. Nachgabe wechselt es auf Warnung („nicht dosiert, Packung nIO“, nach HM-20) und „Aktuelle Nachgabe“ zeigt 0 g. „nIO“ gilt als „nicht in Ordnung“. |
 
 ## Offene Punkte
 

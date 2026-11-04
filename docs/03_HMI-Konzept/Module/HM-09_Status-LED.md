@@ -12,7 +12,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Zustand (`State`) | enum LedState { Off, On, Warning, Error, Unknown } | – | Off = Inaktiv, On = Ok |
 | Zustandswort (`StateText`) | string? | – | überschreibt das Standardwort |
 | Wort zeigen (`ShowStateWord`) | bool | – | Standard true, in kompakter Form false |
-| Kompakt (`IsCompact`) | bool | – | ohne Beschriftung/Wort |
+| Kompakt (`IsCompact`) | bool | – | ohne Beschriftung und kleinere LED; das Statuswort steuert getrennt `ShowStateWord`: In kompakter Form darf es entfallen, wenn die Symbolform den Zustand eindeutig trägt (Haken, Dreieck, Kreuz, leerer Kreis) und das Wort als Tooltip und `AutomationProperties.Name` erhalten bleibt; wo Platz ist (z. B. HS-14), bleibt das Wort sichtbar |
 | Fachsymbol (`Icon`) | Geometry? | – | z. B. `Icon.Fill.Hopper` |
 | Kennung (`Identifier`) | string? | – | SPS-Name, z. B. S1_0KDE1_3 |
 
@@ -31,19 +31,18 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 ## Verwendet auf Seiten (IDs)
 - [HS-05](../Seiten/HS-05_Zufuehrung-Papier.md) – Zuführung Papier
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
-- [HS-08](../Seiten/HS-08_Heissleim-Parameter.md) – Heißleim Parameter (inkl. Verwendung über Kompositmodul HM-28)
 - [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
 - [HS-14](../Seiten/HS-14_Einzelgewichte.md) – Einzelgewichte
 - [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
-- [HS-26](../Seiten/HS-26_Nockenuebersicht.md) – Nockenübersicht
+- [HS-26](../Seiten/HS-26_Nockenuebersicht.md) – Nockenübersicht (inkl. Verwendung über Kompositmodul HM-23)
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
 - [HS-32](../Seiten/HS-32_Geber-setzen.md) – Geber setzen
-- [HS-34](../Seiten/HS-34_EA-Anzeige.md) – EA-Anzeige
-- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
+- [HS-34](../Seiten/HS-34_EA-Anzeige.md) – EA-Anzeige (inkl. Verwendung über Kompositmodul HM-36)
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-20)
 
-Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
+Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
 ## Herkunft
 - [DM-14](../../01_Design-Analyse/Module/DM-14_Status-LED.md) – Status-LED: runde Zustandsanzeige
