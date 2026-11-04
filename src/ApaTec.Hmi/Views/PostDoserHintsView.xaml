@@ -1,0 +1,39 @@
+<UserControl x:Class="ApaTec.Hmi.Views.PostDoserHintsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:PostDoserHintsViewModel, IsDesignTimeCreatable=True}">
+    <!-- Pop-up "Hinweise zur optimalen Nutzung" (HS-21, S21-1) im Pop-up-Rahmen HM-14: links die vier Schritte, rechts die vier Hinweise; schliesst nur ueber Kreuz oder "Schliessen". -->
+    <c:HM14_PopupFrame Title="{Binding Title}" CloseCommand="{Binding CancelCommand}">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="{StaticResource Inset.S}">
+                <TextBlock Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step1_Title}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step1_Text}" />
+                <TextBlock Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step2_Title}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step2_Text}" />
+                <TextBlock Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step3_Title}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step3_Text}" />
+                <TextBlock Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step4_Title}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Step4_Text}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="{StaticResource Inset.S}">
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Note1_Text}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Note2_Text}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Note3_Text}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc Dosing_Correction_Note4_Text}" />
+                </StackPanel>
+            </Grid>
+            <c:HM07_ActionButton HorizontalAlignment="Right" Margin="{StaticResource Inset.S}" Label="{res:Loc Dosing_Hints_Close_Label}" Command="{Binding CancelCommand}" />
+        </StackPanel>
+    </c:HM14_PopupFrame>
+</UserControl>

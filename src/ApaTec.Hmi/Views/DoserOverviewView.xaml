@@ -1,0 +1,40 @@
+<UserControl x:Class="ApaTec.Hmi.Views.DoserOverviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:DoserOverviewViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-41 Dosierer-Uebersicht: Titelzeile (HM-17) mit Sollgewicht und letztem Gewicht der Kontrollwaage, darunter drei Karten HM-20 (Kompakt) 4 : 4 : 4. -->
+    <UserControl.Resources>
+        <DataTemplate x:Key="DoserCard" DataType="{x:Type vm:DoserItemViewModel}">
+            <c:HM20_DosingCard CardMode="Compact" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+                               Title="{Binding Title}" DoserKind="{Binding DoserKind}"
+                               TargetPercent="{Binding TargetPercent}" TargetWeight="{Binding TargetWeight}"
+                               MaxRefill="{Binding MaxRefill}" CurrentRefill="{Binding CurrentRefill}" RefillResult="{Binding RefillResult}"
+                               RegulationValue="{Binding RegulationValue}" HopperUpper="{Binding HopperUpper}" HopperLower="{Binding HopperLower}"
+                               Load="{Binding Load}" IsSelected="{Binding IsSelected}" IsEmptying="{Binding IsEmptying}"
+                               CrossScrewEnabled="{Binding CrossScrewEnabled, Mode=TwoWay}" AgitatorEnabled="{Binding AgitatorEnabled, Mode=TwoWay}"
+                               RegulationEnabled="{Binding RegulationEnabled, Mode=TwoWay}"
+                               ManualCommand="{Binding ManualCommand}" EmptyCommand="{Binding ToggleEmptyingCommand}" OpenDetailCommand="{Binding OpenDetailCommand}" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <c:HM17_TitleBar Grid.Row="0" Grid.ColumnSpan="3" Margin="{StaticResource Inset.S}" Values="{Binding ReferenceValues}" />
+        <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Main1}" ContentTemplate="{StaticResource DoserCard}" />
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Main2}" ContentTemplate="{StaticResource DoserCard}" />
+        <ContentControl Grid.Row="1" Grid.Column="2" Content="{Binding Post}" ContentTemplate="{StaticResource DoserCard}" />
+    </Grid>
+</UserControl>

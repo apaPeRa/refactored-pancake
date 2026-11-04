@@ -1,0 +1,34 @@
+<UserControl x:Class="ApaTec.Hmi.Views.PostDoserWeightCorrectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:PostDoserWeightCorrectionViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-21 Gewichtskorrektur (Nachdosierer): links Stuetzstellen-Tabelle HM-22 (8 Spalten), rechts Kurzablauf und Taste "Hinweise" (4 Spalten); Funktionsleiste leer. -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <c:HM15_GroupPanel Grid.Column="0" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_Correction_Points_Header}">
+            <c:HM22_WeightCorrectionTable Points="{Binding Points}" TargetWeight="{Binding TargetWeight, Mode=TwoWay}"
+                                          ValidPointCount="{Binding ValidPointCount}" CalculationState="{Binding CalculationState}"
+                                          TriggerCommand="{Binding TriggerCommand}" AdjustCommand="{Binding AdjustCommand}"
+                                          EditTargetWeightCommand="{Binding EditTargetWeightCommand}"
+                                          EditNominalCommand="{Binding EditNominalCommand}" EditActualCommand="{Binding EditActualCommand}" />
+        </c:HM15_GroupPanel>
+
+        <c:HM15_GroupPanel Grid.Column="1" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_Correction_Sample_Header}">
+            <StackPanel>
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc Dosing_Correction_Flow_Text}" />
+                <c:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_Correction_Hints_Label}" Icon="{StaticResource Icon.Status.Info}"
+                                     Command="{Binding ShowHintsCommand}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>

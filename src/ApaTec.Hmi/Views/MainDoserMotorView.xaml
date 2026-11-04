@@ -1,0 +1,33 @@
+<UserControl x:Class="ApaTec.Hmi.Views.MainDoserMotorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:MainDoserMotorViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-12 Motorparameter (Hauptdosierer): Titelzeile HM-17 und drei Karten HM-21 (Verschluss Zu, Verschluss Auf, Schnecke) im Raster 4 : 4 : 4. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <c:HM17_TitleBar Grid.Row="0" Grid.ColumnSpan="3" Margin="{StaticResource Inset.S}" Title="{Binding DoserTitle}" Values="{Binding PositionValues}" />
+        <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+                                   CardKind="ClosureClosed" Title="{res:Loc Dosing_Motor_Closed_Header}" DoserName="{Binding DoserName}"
+                                   Position="{Binding ClosedPosition, Mode=TwoWay}" Speed="{Binding ClosedSpeed, Mode=TwoWay}" Acceleration="{Binding ClosedAcceleration, Mode=TwoWay}" Deceleration="{Binding ClosedDeceleration, Mode=TwoWay}" Jerk="{Binding ClosedJerk, Mode=TwoWay}" EditCommand="{Binding EditClosedCommand}" />
+        <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+                                   CardKind="ClosureOpen" Title="{res:Loc Dosing_Motor_Open_Header}" DoserName="{Binding DoserName}"
+                                   Position="{Binding OpenPosition, Mode=TwoWay}" Speed="{Binding OpenSpeed, Mode=TwoWay}" Acceleration="{Binding OpenAcceleration, Mode=TwoWay}" Deceleration="{Binding OpenDeceleration, Mode=TwoWay}" Jerk="{Binding OpenJerk, Mode=TwoWay}" EditCommand="{Binding EditOpenCommand}" />
+        <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+                                   CardKind="Screw" Title="{res:Loc Dosing_Motor_Screw_Header}" DoserName="{Binding DoserName}"
+                                   Acceleration="{Binding ScrewAcceleration, Mode=TwoWay}" Deceleration="{Binding ScrewDeceleration, Mode=TwoWay}" Jerk="{Binding ScrewJerk, Mode=TwoWay}" EditCommand="{Binding EditScrewCommand}" />
+    </Grid>
+</UserControl>
