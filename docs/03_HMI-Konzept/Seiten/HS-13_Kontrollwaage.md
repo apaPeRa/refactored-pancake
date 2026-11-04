@@ -5,9 +5,9 @@
 Die Seite dient dazu, die Kontrollwaage zu beobachten und Einstellungen an den Zielgewichten und den statistischen Werten (Grenzwerte, Tara, automatischer Nullpunkt) vorzunehmen. Zusätzlich zeigt sie Werte, die zur Berechnung der Nachdosierung dienen (Handbuch, wortgetreu: „… die Kontrollwaage zu beobachten und Einstellungen an den Zielgewichten und statistischen Werten vorzunehmen. Zusätzlich werden Werte angezeigt, die zur Berechnung der Nachdosierung dienen.“). Von hier aus erreicht man die Unterseiten [HS-15](HS-15_Trend.md) (Trend) und [HS-14](HS-14_Einzelgewichte.md) (Einzelgewichte).
 
 ## Aufbau (Bereiche, Layout)
-Rahmen (Seitenleiste, Kopfzeile mit Meldezeile, Brotkrümel mit Kennzahlen, Funktionsleiste) wie in Designsystem Abschnitt 3.2. Der **Inhaltsbereich** (Außenrand `Size.Content.Margin`, 12-Spalten-Raster, Gutter `Space.M`) enthält fünf Gruppen untereinander, jede als Überschrift-Variante von [HM-15](../Module/HM-15_Gruppenbereich.md) (Text mit Trennlinie `Brush.Divider`, keine Panel-Fläche, damit die Höhe für Eingabefelder mit Zähler reicht). Abstand zwischen den Gruppen `Space.L`. Die Reihenfolge folgt der Leserichtung der Referenz (Netto/Brutto/Live, Statistik, Zielwerte, Grenzwerte mit Zählern, Zählerzeile).
+Rahmen (Seitenleiste, Kopfzeile mit Meldezeile, Brotkrümel mit Kennzahlen, Funktionsleiste) wie in Designsystem Abschnitt 3.2. Der **Inhaltsbereich** (Außenrand `Size.Content.Margin`, 12-Spalten-Raster, Gutter `Space.M`) enthält fünf Gruppen untereinander, jede als Überschrift-Variante von [HM-15](../Module/HM-15_Gruppenbereich.md) (Text mit Trennlinie `Brush.Divider`, keine Panel-Fläche, damit die Höhe für Eingabefelder mit Zähler reicht). Abstand zwischen den Gruppen `Space.L`. Die Reihenfolge folgt der Leserichtung der Referenz (Netto/Brutto/Live, Statistik, Wägeparameter, Grenzwerte mit Zählern, Zählerzeile).
 
-Zeilenproportionen im Inhaltsbereich: **4\* : 3\* : 3\* : 4\* : 3\*** (Kontrollwert bei 1920 × 1080: ca. 170 / 127 / 127 / 170 / 127 px bei 816 px Inhaltshöhe abzüglich vier Gruppenabstände; Mindesthöhen: Überschrift `Font.Size.Value` + Eingabefeld `Size.Touch.Default`, mit Zähler zusätzlich `Size.Field.Height`).
+Zeilenproportionen im Inhaltsbereich: **4\* : 3\* : 3\* : 4,5\* : 3\*** (Summe 17,5). Rechnung bei 1920 × 1080: Inhaltsbereich 816 px abzüglich Außenrand oben und unten (2 × `Size.Content.Margin` = 48 px) = 768 px; abzüglich vier Gruppenabstände (4 × `Space.L` = 96 px) = 672 px; 1\* = 38,4 px, also ca. 154 / 115 / 115 / 173 / 115 px. Mindesthöhen je Zeile: Überschrift (Zeilenhöhe von `Font.Size.Value` = 36 px) + `Space.S` (8) + Feld: Zeilen mit Kachel oder Eingabefeld 36 + 8 + 64 = 108 px (erfüllt von 115 px; Netto-Kachel in Zeile 1: 36 + 8 + 96 = 140 px, erfüllt von 154 px); Zeile „Grenzwerte und Ausschuss“ 36 + 8 + 64 (Eingabefeld, `Size.Touch.Default`) + 8 (`Space.S`) + 48 (Zählfeld, `Size.Field.Height`) = 164 px (erfüllt von 173 px; bei 4\* wären es nur 154 px und damit zu wenig). Die Summe der Mindesthöhen (140 + 108 + 108 + 164 + 108 = 628 px) liegt unter 672 px; bei kleinerer Skalierung greift die `Viewbox` des Hauptfensters.
 
 ```
 Inhaltsbereich (12 Spalten)
@@ -18,10 +18,10 @@ Inhaltsbereich (12 Spalten)
 | Statistik                                                                3*  |
 | [ Mittelwert (4)      ] [ Standardabw. S (4)     ] [ Leistung Ist (4)       ]|
 +------------------------------------------------------------------------------+
-| Zielwerte                                                                3*  |
+| Wägeparameter                                                                3*  |
 | [ Sollgewicht (4)     ] [ Tara (4)               ] [ Autom. Nullpunkt (4) 104]|
 +------------------------------------------------------------------------------+
-| Grenzwerte und Ausschuss                                                 4*  |
+| Grenzwerte und Ausschuss                                                 4,5*  |
 | [ Übergewicht (4)     ] [ Untergewicht TU 1 (4)  ] [ Untergewicht TU 2 (4)    ]|
 | [   Zähler 435        ] [   Zähler 0             ] [   Zähler 1093            ]|
 +------------------------------------------------------------------------------+
@@ -34,7 +34,7 @@ Funktionsleiste: [ Trend ] [ Einzelgewichte ]                       (leer rechts
 Alle Spalten- und Zeilenanteile sind Sternmaße; Mindestbreiten der Kacheln `Size.Metric.MinWidth`, Tasten `Size.Button.MinWidth`, in der Funktionsleiste `Size.FunctionButton.MinWidth`. Abstand zwischen zwei Touch-Zielen mindestens `Size.Touch.Gap`.
 
 ## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
-Spalte „Herkunft“ ist die Rückverfolgung zur Referenz ([RS-13](../../02_Referenz-Analyse/Seiten/RS-13_Kontrollwaage.md): Tabelle 19 Zeile 1–17 = Nr. 1–17, Tabelle 20 = Nr. 18–19). Fachsymbole (`Icon.*`) sind im jeweiligen HM-Symbolbestand zu ergänzen (Bericht, Abschnitt fehlende Symbole); die Beschriftung als Text steht immer dabei (zweiter Kanal).
+Spalte „Herkunft“ ist die Rückverfolgung zur Referenz ([RS-13](../../02_Referenz-Analyse/Seiten/RS-13_Kontrollwaage.md): Tabelle 19 Zeile 1–17 = Nr. 1–17, Tabelle 20 = Nr. 18–19). Fachsymbole (`Icon.*`) werden zentral im Designsystem geführt; die Beschriftung als Text steht immer dabei (zweiter Kanal).
 
 ### Gruppe „Gewicht“
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
@@ -51,32 +51,32 @@ Spalte „Herkunft“ ist die Rückverfolgung zur Referenz ([RS-13](../../02_Ref
 | Standardabweichung (S) | Anzeigekachel, g (Beispiel „1,2 g“) | Standardabweichung der zuletzt gewogenen Packungen; Handbuchbild fehlt, im Seitenbild Symbol „S“ | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (`Icon.Stat.StdDev`, Label „Standardabweichung“) | RS-13 Nr. 5 |
 | Leistung Ist | Anzeigekachel, 1/min (Beispiel „114,6 1/min“), Tachosymbol | durchschnittlich gewogene Packungen pro Minute | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (`Icon.Speed`, Label „Leistung Ist“) | RS-13 Nr. 6, Bild RS-13_06 |
 
-### Gruppe „Zielwerte“
+### Gruppe „Wägeparameter“
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
 | Sollgewicht | Eingabefeld mit Schlüsselsymbol, g (Beispiel „235,0 g“); Wert nicht rot, sondern `Font.Weight.Strong` | Zielgewicht für die Hauptdosierer; Antippen öffnet das Eingabe-Pop-up | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`Icon.Pack.Target`, `Decimals` 1); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-13 Nr. 7, Bild RS-13_07 |
 | Tara | Eingabefeld mit Schlüsselsymbol, g (Beispiel „15,0 g“) | Gewicht der leeren Packung | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`Icon.Pack.Tare`); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-13 Nr. 8, Bild RS-13_08 |
-| Automatischer Nullpunkt | Eingabefeld mit Schlüsselsymbol, Stückzahl in Stk (Beispiel „5000 Stk“) mit Zusatzzähler unten rechts im Feld (Beispiel „104“) | Anzahl Packungen, nach der die Maschine einen automatischen Nullpunkt durchführt; **0 deaktiviert** die Funktion (Feld zeigt dann Text „Aus“ zusätzlich zur 0); Zusatzzähler = Packungen seit dem letzten Nullpunkt (`AutomationProperties.Name` „Packungen seit dem letzten Nullpunkt“) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`Counter`, `Icon.Weight.AutoZero`, `Decimals` 0); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-13 Nr. 9, Bild RS-13_09 |
+| Automatischer Nullpunkt | Eingabefeld mit Schlüsselsymbol, Stückzahl in Stk (Beispiel „5000 Stk“) mit Zusatzzähler unten rechts im Feld (Beispiel „104“) | Anzahl Packungen, nach der die Maschine einen automatischen Nullpunkt durchführt; **0 deaktiviert** die Funktion (Feld zeigt dann zusätzlich das Wort „Aus“, Annahme S13-7); Zusatzzähler = Packungen seit dem letzten Nullpunkt (`AutomationProperties.Name` „Packungen seit dem letzten Nullpunkt“) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`Counter`, `Icon.Weight.AutoZero`, `Decimals` 0); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-13 Nr. 9, Bild RS-13_09 |
 
 ### Gruppe „Grenzwerte und Ausschuss“
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
-| Übergewicht | Eingabefeld mit Schlüsselsymbol, g (Beispiel „268,0 g“) mit gekoppeltem Zählfeld darunter (Beispiel „435“) | Packungen mit einem Produktgewicht **gleich oder größer** werden als schlecht markiert und ausgeworfen; Zähler = Anzahl schlechter Packungen seit dem letzten „Zähler löschen“ | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`CoupledCounter`, `Icon.Pack.Over`); [HM-13](../Module/HM-13_Eingabe-Pop-up.md); Zählfeld: [HM-11](../Module/HM-11_Anzeigefeld.md) bzw. HM-12-Zähler | RS-13 Nr. 10, Bild RS-13_10 |
-| Untergewicht TU 1 | Eingabefeld mit Schlüsselsymbol, g (Beispiel „200,0 g“) mit Zählfeld darunter (Beispiel „0“); Beschriftung „Untergewicht TU 1“ (zweizeilig „Untergewicht / TU 1“) | Packungen mit einem Produktgewicht **gleich oder kleiner** werden als schlecht markiert und ausgeworfen, **wenn kein Guthaben mehr vorhanden ist**; Zähler wie oben | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`CoupledCounter`, `Icon.Pack.Under1`); [HM-13](../Module/HM-13_Eingabe-Pop-up.md); [HM-11](../Module/HM-11_Anzeigefeld.md) | RS-13 Nr. 11, Bild RS-13_11 |
-| Untergewicht TU 2 | Eingabefeld mit Schlüsselsymbol, g (Beispiel „200,0 g“) mit Zählfeld darunter (Beispiel „1093“) | Packungen mit einem Produktgewicht **gleich oder kleiner** werden als schlecht markiert und ausgeworfen; Zähler wie oben | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`CoupledCounter`, `Icon.Pack.Under2`); [HM-13](../Module/HM-13_Eingabe-Pop-up.md); [HM-11](../Module/HM-11_Anzeigefeld.md) | RS-13 Nr. 12, Bild RS-13_12 |
+| Übergewicht | Eingabefeld mit Schlüsselsymbol, g (Beispiel „268,0 g“) mit gekoppeltem Zählfeld darunter (Beispiel „435“) | Packungen mit einem Produktgewicht **gleich oder größer** werden als schlecht markiert und ausgeworfen; Zähler = Anzahl schlechter Packungen seit dem letzten „Zähler löschen“ | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`CoupledCounter`, `Icon.Pack.Over`); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-13 Nr. 10, Bild RS-13_10 |
+| Untergewicht TU 1 | Eingabefeld mit Schlüsselsymbol, g (Beispiel „200,0 g“) mit Zählfeld darunter (Beispiel „0“); Beschriftung „Untergewicht TU 1“ (zweizeilig „Untergewicht / TU 1“) | Packungen mit einem Produktgewicht **gleich oder kleiner** werden als schlecht markiert und ausgeworfen, **wenn kein Guthaben mehr vorhanden ist**; Zähler wie oben | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`CoupledCounter`, `Icon.Pack.Under1`); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-13 Nr. 11, Bild RS-13_11 |
+| Untergewicht TU 2 | Eingabefeld mit Schlüsselsymbol, g (Beispiel „200,0 g“) mit Zählfeld darunter (Beispiel „1093“) | Packungen mit einem Produktgewicht **gleich oder kleiner** werden als schlecht markiert und ausgeworfen; Zähler wie oben | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (`CoupledCounter`, `Icon.Pack.Under2`); [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-13 Nr. 12, Bild RS-13_12 |
 
 ### Gruppe „Zähler“
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
-| Gut-Packungen | Zählkachel (Beispiel „874794“), Symbol `Icon.Status.Ok` und Wort „Gut“ | Anzahl guter Packungen seit dem letzten „Zähler löschen“ | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (Einheit „Stk“, `Decimals` 0) | RS-13 Nr. 13, Bild RS-13_13 |
+| Gut-Packungen | Zählkachel (Beispiel „874794“), Symbol `Icon.Status.Ok`, Beschriftung „Gut-Packungen“ (wie Quelle, Annahme S13-2) | Anzahl guter Packungen seit dem letzten „Zähler löschen“ | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (Label „Gut-Packungen“, `StringFormat` `N0`, ohne Einheit) | RS-13 Nr. 13, Bild RS-13_13 |
 | T1 % | Anzeigekachel, Beschriftung „T1 %“, Wert mit drei Nachkommastellen (Beispiel „0,000“) | prozentuales Verhältnis der Schlecht-Packungen von Tu1 zu Tu2; Einheit und Bezugsgröße offen (OP-29, OP-47) | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (`StringFormat` `N3`) | RS-13 Nr. 14 (kein Bild) |
-| Schlecht Packungen | Zählkachel (Beispiel „1528“), Symbol `Icon.Status.Warning` und Wort „Schlecht“ | Anzahl schlechter Packungen seit dem letzten „Zähler löschen“; Warnsymbol statt rotem Kreuz, weil „schlecht“ ein Qualitätsurteil und kein Alarm ist (Annahme S13-2, analog A-55) | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (Einheit „Stk“) | RS-13 Nr. 15, Bild RS-13_14 |
+| Schlecht Packungen | Zählkachel (Beispiel „1528“), Symbol `Icon.Status.Warning`, Beschriftung „Schlecht Packungen“ (wie Quelle) | Anzahl schlechter Packungen seit dem letzten „Zähler löschen“; Warnsymbol statt rotem Kreuz, weil „schlecht“ ein Qualitätsurteil und kein Alarm ist (Annahme S13-2, analog A-55). Die Quelle nennt für beide Zähler keine Einheit (OP-29) | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (Label „Schlecht Packungen“, `StringFormat` `N0`, ohne Einheit) | RS-13 Nr. 15, Bild RS-13_14 |
 | Taste „Zähler löschen“ | Aktionstaste mit Schlüsselsymbol, Höhe `Size.Touch.Default` | setzt alle Zählwerte der Seite auf 0 (Gut, Schlecht, Zähler Übergewicht, TU 1, TU 2; Auslegung S13-3); öffnet vorher das Bestätigungs-Pop-up (Annahme S13-1) | [HM-07](../Module/HM-07_Aktionstaste.md) (`RequiresPermission`); Pop-up [HM-14](../Module/HM-14_Popup-Rahmen.md) | RS-13 Nr. 17 |
 
 ### Funktionsleiste unten (seitenspezifische Tasten)
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
-| Taste „Trend“ | Aktionstaste (Navigation) mit Liniendiagramm-Symbol `Icon.Nav.Trend`, erste Taste links | zeigt den Verlauf der letzten Gewichte in einem Diagramm; öffnet [HS-15](HS-15_Trend.md) | [HM-06](../Module/HM-06_Funktionsleiste.md) mit [HM-07](../Module/HM-07_Aktionstaste.md) | RS-13 Nr. 18 |
+| Taste „Trend“ | Aktionstaste (Navigation) mit Liniendiagramm-Symbol `Icon.Nav.Trend`, erste Taste links | zeigt den Verlauf der letzten Gewichte in einem Diagramm (Handbuch hier „letzte 50 Packungen“, RS-15: 20 Gewichte, Bild: 21 Positionen, OP-32); öffnet [HS-15](HS-15_Trend.md) | [HM-06](../Module/HM-06_Funktionsleiste.md) mit [HM-07](../Module/HM-07_Aktionstaste.md) | RS-13 Nr. 18 |
 | Taste „Einzelgewichte“ | Aktionstaste (Navigation) mit Listensymbol `Icon.Nav.List`, zweite Taste links | zeigt bis zu 50 letzte Gewichte tabellarisch; öffnet [HS-14](HS-14_Einzelgewichte.md) | [HM-06](../Module/HM-06_Funktionsleiste.md) mit [HM-07](../Module/HM-07_Aktionstaste.md) | RS-13 Nr. 19 |
 
 ### Rahmenelemente (nicht in den Handbuchtabellen, laut Seitenbild RS-13_01)
@@ -97,8 +97,7 @@ Spalte „Herkunft“ ist die Rückverfolgung zur Referenz ([RS-13](../../02_Ref
 - [HM-05](../Module/HM-05_Kennzahl-Kachel.md) – Kennzahl-Kachel (Netto, Brutto, Live, Mittelwert, S, Leistung Ist, Gut, T1 %, Schlecht)
 - [HM-06](../Module/HM-06_Funktionsleiste.md) – Funktionsleiste unten (Trend, Einzelgewichte)
 - [HM-07](../Module/HM-07_Aktionstaste.md) – Aktionstaste (Nullpunkt setzen, Zähler löschen, Navigationstasten, Pop-up-Tasten)
-- [HM-11](../Module/HM-11_Anzeigefeld.md) – Anzeigefeld (Zählfelder unter den Grenzwerten)
-- [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol (Sollgewicht, Tara, Automatischer Nullpunkt, Übergewicht, TU 1, TU 2)
+- [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol (Sollgewicht, Tara, Automatischer Nullpunkt; Übergewicht, TU 1, TU 2 mit gekoppeltem Zählfeld `CoupledCounter`)
 - [HM-13](../Module/HM-13_Eingabe-Pop-up.md) – Eingabe-Pop-up (Ziffernblock)
 - [HM-14](../Module/HM-14_Popup-Rahmen.md) – Pop-up-Rahmen (Bestätigungen)
 - [HM-15](../Module/HM-15_Gruppenbereich.md) – Gruppenbereich, Variante Überschrift (fünf Gruppen)
@@ -108,7 +107,7 @@ Spalte „Herkunft“ ist die Rückverfolgung zur Referenz ([RS-13](../../02_Ref
 
 **Anzeigen.** Alle Kennzahlkacheln und Zählfelder sind reine Anzeige, aktualisiert mit jeder Wägung. Ungültiger oder fehlender Wert: Text „---“ (HM-05/HM-11). Der Live-Wert kann negativ sein (Beispiel −399,0 g); das Vorzeichen ist Teil des Texts. Anzeigewerte in `Brush.Text.Primary`, Einheiten in `Brush.Text.Secondary`.
 
-**Eingabefelder (Berechtigung).** Sollgewicht, Tara, Automatischer Nullpunkt, Übergewicht, Untergewicht TU 1 und TU 2 tragen das Schlüsselsymbol (`Icon.Key`, Textfarbe, nicht gelb). Mit Berechtigung öffnet Antippen das Eingabe-Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) (Titel = Feldname, aktueller Wert, Grenzen mit Einheit, „Übernehmen“/„Abbrechen“). Ohne Berechtigung zeigt das Feld `Icon.Lock`; Antippen öffnet das Benutzer-Pop-up zur Anmeldung bzw. den Hinweis „Berechtigung erforderlich: <Rolle>“; nach erfolgreicher Anmeldung wird die Eingabe fortgesetzt. Die Rolle je Feld ist offen (OP-25, OP-04). Der alte rote Eingabewert entfällt (Rot nur für Fehler).
+**Eingabefelder (Berechtigung).** Sollgewicht, Tara, Automatischer Nullpunkt, Übergewicht, Untergewicht TU 1 und TU 2 tragen das Schlüsselsymbol (`Icon.Key`, Textfarbe, nicht gelb). Mit Berechtigung öffnet Antippen das Eingabe-Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) (Titel = Feldname, aktueller Wert, Grenzen mit Einheit, „Übernehmen“/„Abbrechen“). Ohne Berechtigung zeigt das Feld `Icon.Lock`; Antippen zeigt den Hinweis „Berechtigung erforderlich: <Rolle>“ und öffnet das Benutzer-Pop-up (Navigation.md Abschnitt 4.1); nach erfolgreicher Anmeldung wird die Eingabe fortgesetzt, bei Abbruch bleibt der Wert unverändert. Die Rolle je Feld ist offen (OP-25, OP-04). Der alte rote Eingabewert entfällt (Rot nur für Fehler).
 
 **Fehlerfälle.** Ungültige Eingabe (außerhalb der konfigurierten Grenzen): Übernehmen im Pop-up gesperrt; Fehlerzustand mit Kontur `Border.Thick` `Brush.Status.Error.Fg`, Fläche `Brush.Status.Error.Subtle`, `Icon.Status.Error` und Fehlertext. Wertebereiche sind konfigurierbare Dummy-Werte (OP-28); eine Beziehungsprüfung (z. B. Übergewicht > Sollgewicht > TU 1 ≥ TU 2) ist in der Quelle nicht beschrieben und wird nicht erfunden. Kommunikationsausfall der Waage: Werte „---“ und Meldung in der Meldezeile.
 
@@ -134,7 +133,7 @@ Die Punkte HS-13-P01 bis P15 sind die Entsprechung der Prüfpunkte RS-13-P01 bis
 | HS-13-P05 | Sollgewicht, Tara (RS-13-P05) | zwei Eingabefelder in g mit Schlüsselsymbol; Beschriftung „Sollgewicht“ (Zielgewicht für die Hauptdosierer) und „Tara“ (Gewicht der leeren Packung); Antippen öffnet HM-13 | offen |
 | HS-13-P06 | Automatischer Nullpunkt (RS-13-P06) | Eingabe in Stk; Wert 0 deaktiviert die Funktion und zeigt „Aus“; Zusatzzähler unten rechts zeigt die Packungen seit dem letzten Nullpunkt | offen |
 | HS-13-P07 | Übergewicht, TU 1, TU 2 mit Zählfeld (RS-13-P07) | drei Eingabefelder in g mit Schlüsselsymbol, darunter je ein Zählfeld; Beschriftungstexte „Übergewicht“, „Untergewicht TU 1“, „Untergewicht TU 2“; fachliche Bedeutung (nur Dokumentation, kein Bedienelement): Übergewicht gleich oder größer = schlecht und ausgeworfen; TU 1 gleich oder kleiner = schlecht, ausgeworfen wenn kein Guthaben mehr vorhanden; TU 2 gleich oder kleiner = schlecht und ausgeworfen | offen |
-| HS-13-P08 | Zähler Gut und Schlecht (RS-13-P08) | beide zeigen die Anzahl seit dem letzten „Zähler löschen“; Gut mit `Icon.Status.Ok` und Wort „Gut“, Schlecht mit `Icon.Status.Warning` und Wort „Schlecht“ (nicht nur Farbe) | offen |
+| HS-13-P08 | Zähler Gut und Schlecht (RS-13-P08) | beide zeigen die Anzahl seit dem letzten „Zähler löschen“; Beschriftungen „Gut-Packungen“ (mit `Icon.Status.Ok`) und „Schlecht Packungen“ (mit `Icon.Status.Warning`); Unterscheidung über Symbol und Text, nicht nur Farbe; keine Einheit | offen |
 | HS-13-P09 | Anzeige T1 % (RS-13-P09) | Beschriftung „T1 %“, Wert mit drei Nachkommastellen (Beispiel „0,000“); Bedeutung (Dokumentation): prozentuales Verhältnis der Schlecht-Packungen von Tu1 zu Tu2 | offen |
 | HS-13-P10 | Taste „Nullpunkt setzen“ (RS-13-P10) | vorhanden, Schlüsselsymbol, Höhe `Size.Touch.Default`; nach Bestätigung wird der Waagen-Nullpunkt neu gesetzt; der Hinweis „Waage unbelastet und sauber“ steht im Bestätigungs-Pop-up | offen |
 | HS-13-P11 | Taste „Zähler löschen“ (RS-13-P11) | vorhanden, Schlüsselsymbol; nach Bestätigung stehen Gut, Schlecht, Zähler Übergewicht, TU 1 und TU 2 auf 0 | offen |
@@ -142,14 +141,14 @@ Die Punkte HS-13-P01 bis P15 sind die Entsprechung der Prüfpunkte RS-13-P01 bis
 | HS-13-P13 | Symbole der Referenz-Bilder (RS-13-P13) | Waage (Netto, Brutto, Live), X̄, Tacho, Sollgewicht-Packung, Tara, Pfeile-gegen-Strich (Autom. Nullpunkt), Übergewicht, Tu1, Tu2, Gut-Haken, Schlecht-Kreuz als Vektorsymbole `Icon.*` vorhanden und zusätzlich beschriftet; keine Bitmaps | offen |
 | HS-13-P14 | Vollständigkeit Tabelle 19 und 20 (RS-13-P14) | jede der 17 Zeilen Hauptbereich und 2 Zeilen Navigation ist im Layout wiederzufinden (Rückverfolgung in „Elemente“) | offen |
 | HS-13-P15 | Funktionsleiste und Rahmen (RS-13-P15) | Trend, Einzelgewichte in der Funktionsleiste; Schloss, „Produktion“, „Einstellungen“, „Zurück“ der Referenz sind als Benutzerkreis, Home, Zahnrad, Zurück in der Seitenleiste vorhanden und nicht doppelt in der Funktionsleiste | offen |
-| HS-13-P16 | Berechtigung | alle sechs Eingabefelder und beide Aktionstasten zeigen `Icon.Key` (berechtigt) bzw. `Icon.Lock` (nicht berechtigt); Schlüssel in `Brush.Text.Primary`, nicht gelb; ohne Berechtigung öffnet Antippen das Benutzer-Pop-up statt HM-13 | offen |
+| HS-13-P16 | Berechtigung | alle sechs Eingabefelder und beide Aktionstasten zeigen `Icon.Key` (berechtigt) bzw. `Icon.Lock` (nicht berechtigt); Schlüssel in `Brush.Text.Primary`, nicht gelb; ohne Berechtigung erscheint der Hinweis „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up öffnet sich statt HM-13 | offen |
 | HS-13-P17 | Eingabe und Fehler | Antippen eines berechtigten Felds öffnet HM-13 mit vorbelegtem Wert; ungültiger Wert: Übernehmen gesperrt, Fehlerzustand mit `Icon.Status.Error` und Fehlertext | offen |
 | HS-13-P18 | Bestätigungen | „Nullpunkt setzen“ und „Zähler löschen“ lösen erst nach „Ja“ aus; „Abbrechen“ oder Kreuz lässt alles unverändert; Antippen außerhalb des Pop-ups schließt nicht | offen |
 | HS-13-P19 | Farbe nur Status (Designsystem 1.2) | Eingabewerte nicht rot; kein Element der Seite nutzt Statusfarbe außer Gut-Symbol (Ok), Schlecht-Symbol (Warnung) und Fehlerzustände; Gruppen neutral | offen |
-| HS-13-P20 | Zweiter Kanal | Gut/Schlecht, Berechtigung, Aus (Autom. Nullpunkt = 0), Deaktiviert und Fehler sind jeweils mit Symbol oder Text erkennbar | offen |
+| HS-13-P20 | Zweiter Kanal | Gut-/Schlecht-Zähler, Berechtigung, Aus (Autom. Nullpunkt = 0), Deaktiviert und Fehler sind jeweils mit Symbol oder Text erkennbar | offen |
 | HS-13-P21 | Touch-Ziele | Eingabefelder und Tasten mindestens `Size.Touch.Default` hoch, Trefferfläche nie unter `Size.Touch.Min`; Abstand zwischen Touch-Zielen mindestens `Size.Touch.Gap` | offen |
 | HS-13-P22 | Tokens und Texte | keine Hex-, Pixel- oder Literalwerte; alle Texte (Beschriftungen, Einheiten, Pop-up-Texte) aus `.resx`; Schrift mindestens `Font.Size.Caption` | offen |
-| HS-13-P23 | Raster bei 1920 × 1080 | Zeilenproportionen 4\* : 3\* : 3\* : 4\* : 3\*; alle Elemente sichtbar ohne Scrollen; Zählfeld unter Eingabefeld verdeckt nichts | offen |
+| HS-13-P23 | Raster bei 1920 × 1080 | Zeilenproportionen 4\* : 3\* : 3\* : 4,5\* : 3\*; bei 768 px Inhaltshöhe (nach Außenrand) und 4 × `Space.L` ca. 154 / 115 / 115 / 173 / 115 px; die Zeile „Grenzwerte und Ausschuss“ misst mindestens 164 px (Überschrift 36 + 8 + Eingabefeld 64 + 8 + Zählfeld 48); alle Elemente ohne Scrollen sichtbar, Zählfeld verdeckt nichts | offen |
 | HS-13-P24 | Modale Regeln | bei offenem Pop-up sind Seitenleiste, Funktionsleiste, Brotkrümel und Seiteninhalt gesperrt; „Zurück“ der Seitenleiste ist gesperrt | offen |
 
 ## Offene Punkte
@@ -158,9 +157,11 @@ Verweise auf [Offene-Punkte.md](../../00_Plan/Offene-Punkte.md) (Seiten-Index RS
 - Statistik-Intervall und -Größe von Mittelwert, S und Leistung Ist („zuletzt gewogene Packungen“) sind nicht angegeben (OP-47).
 - Unterschied TU 1/TU 2 ist nur über den Satz „wenn kein Guthaben mehr vorhanden ist“ erkennbar; Beschriftung unverändert übernommen.
 
-**Seitenannahmen (zur Aufnahme in Annahmen.md vorgeschlagen):**
+**Annahmen dieser Seite** (lokale Kennungen, gelten für HS-13):
 - S13-1: „Nullpunkt setzen“ und „Zähler löschen“ erhalten ein Bestätigungs-Pop-up (HM-14 mit HM-07-Tasten). Begründung: löschende bzw. die Messung verändernde Aktion, OP-31, A-40; das Handbuch beschreibt nur den Bedienhinweis „Waage unbelastet und sauber“.
-- S13-2: Das Symbol für „Schlecht Packungen“ ist ein Warndreieck mit Wort „Schlecht“ statt des roten Kreuz-Kreises der Referenz (Rot nur für Fehler/Alarm, A-55 analog).
+- S13-2: Das Symbol für „Schlecht Packungen“ ist ein Warndreieck statt des roten Kreuz-Kreises der Referenz (Rot nur für Fehler/Alarm, A-55 analog), „Gut-Packungen“ trägt `Icon.Status.Ok`. Die Beschriftungen bleiben wie in der Quelle; Gut- und Schlecht-Zähler erhalten keine Einheit „Stk“ (die Quelle nennt keine, OP-29).
 - S13-3: „Zähler löschen“ setzt die fünf Zählfelder (Gut, Schlecht, Zähler Übergewicht, TU 1, TU 2) zurück; der Zusatzzähler im Feld Automatischer Nullpunkt gehört nicht dazu (zählt „seit dem letzten Nullpunkt“). Das Handbuch sagt nur „alle Zählwerte auf dieser Seite“.
-- S13-4: Netto, Brutto, Live, Statistik und Zähler sind Anzeigekacheln HM-05 (nicht HM-11), weil die Referenz sie als Kennzahl-Kachel mit Symbol führt (RM-12 → HM-05).
+- S13-4: Netto, Brutto, Live, Statistik und Zähler sind Anzeigekacheln HM-05 (Herkunft RM-12 Kennzahl-Kachel); die Zählfelder unter Übergewicht, TU 1 und TU 2 sind der gekoppelte Zähler (`CoupledCounter`) von HM-12.
 - S13-5: Die Gruppen verwenden die Überschrift-Variante von HM-15, weil die Panel-Variante in den Zeilen mit Eingabefeld und Zähler die Mindesthöhen nicht einhält.
+- S13-6: Die Gruppenüberschriften „Gewicht“, „Statistik“, „Wägeparameter“, „Grenzwerte und Ausschuss“ und „Zähler“ sind fachlich gewählt; die Referenz hat keine Gruppenüberschriften.
+- S13-7: Bei Eingabe 0 im Feld Automatischer Nullpunkt zeigt das Feld zusätzlich das Wort „Aus“ (zweiter Kanal für „deaktiviert“); die Quelle sagt nur „0 deaktiviert“.

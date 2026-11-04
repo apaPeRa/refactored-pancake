@@ -33,7 +33,7 @@ Inhaltsbereich (12 Spalten)
 |          | Heizung | Meldung | Soll    |Ist |State|Out |     |           |  Kopf (fest)
 |  3 Sp.   |  2 Sp.  |  2 Sp.  |  2 Sp.  |1Sp.|1 Sp.|1Sp.|     |           |
 +----------+---------+---------+---------+----+-----+----+-----+-----------+
-| 6E1 Läng.| [Ein  ]K | [Haken]K | [150 °C]K| 0 °C| (OK)| (Aus)|  ^  Bildlauf
+| 6E1 Läng.| [Ein  ]K | [Haken]K | [150 °]K  | 0 °  | (OK)| (Aus)|  ^  Bildlauf
 | ...      |         |         |         |    |     |    |     |  v  (Size.Touch.Min)
 | 20E4 Kopf| (Zeilen 8 bis 12 per Bildlauf erreichbar)         |
 +----------+---------+---------+---------+----+-----+----+-----+-----------+
