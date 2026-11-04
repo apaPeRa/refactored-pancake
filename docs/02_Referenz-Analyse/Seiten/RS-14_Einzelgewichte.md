@@ -23,7 +23,7 @@ Tabelle 21 „Funktionsbeschreibung“ (7 Zeilen inkl. Kopfzeile = 6 Datenzeilen
 | 2 | Mittelwert | Anzeigefeld, g (Beispiel „235,4 g“) | Zeigt den Mittelwert der letzten 50 Messwerte an. | Modulkandidat: Kennzahl-Anzeige (Wert mit Symbol und Einheit) |
 | 3 | Anzahl | Anzeigefeld, Stückzahl (Beispiel „50“, rote Schrift) | Anzahl zu erfassenden Werte. | Modulkandidat: Kennzahl-Anzeige (Wert mit Symbol und Einheit) |
 | 4 | Werte | Wertegitter 10 × 5 mit Status-LED je Wert und Positionspfeil | Werte sind von oben nach unten und links nach rechts sortiert. Ein Pfeil zeigt auf das zuletzt erfasste Gewicht. Grüne LED zeigt ein gutes Gewicht an. Grau steht für ein schlechtes Gewicht. | Modulkandidat: Wertegitter mit Status-LED; Modulkandidat: Status-LED |
-| 5 | Start | Taste | Startet ein neuer Messdurchlauf. | Modulkandidat: Schaltfläche (Funktionsleiste unten links) |
+| 5 | Start | Taste | Startet ein neuer Messdurchlauf. | Modulkandidat: Schaltfläche (vermutlich Funktionsleiste unten links; Start ist im Bild nicht sichtbar) |
 | 6 | Einzel / Fortlaufend | Umschalter (auf dem Bild Taste mit Beschriftung „Fortlaufend“) | Einzel: Manuelle Stichprobenmessung. Start löscht alle bisherigen Werte. Fortlaufend: Automatischer Betrieb. Nach Erreichen von 50 Werten wird fortlaufend überschrieben. Ermöglicht gleitenden Mittelwert. (Im Handbuch „Einzel“ und „Fortlaufend“ unterstrichen.) | Modulkandidat: Umschalter |
 
 ### Weitere Elemente laut Seitenbild (nicht in der Handbuchtabelle)
@@ -55,7 +55,7 @@ RM-IDs werden später vergeben. Modulkandidaten:
 - **Modus Fortlaufend:** automatischer Betrieb; nach 50 Werten wird fortlaufend überschrieben; ermöglicht gleitenden Mittelwert.
 - **LED je Wert:** grün = gutes Gewicht; grau = schlechtes Gewicht.
 - **Pfeil:** zeigt auf das zuletzt erfasste Gewicht.
-- **Navigation:** Zurück zur Kontrollwaage über „Zurück“ bzw. Funktionsleiste; Produktion / Einstellungen rechts in der Funktionsleiste.
+- **Navigation:** Annahme (Handbuch sagt dazu nichts): Rückkehr zur Kontrollwaage über „Zurück“; Produktion / Einstellungen rechts in der Funktionsleiste.
 - **Fehlerfälle:** im Handbuch keine beschrieben.
 
 ## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)

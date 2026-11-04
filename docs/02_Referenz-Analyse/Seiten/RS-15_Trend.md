@@ -44,7 +44,7 @@ RM-IDs werden später vergeben. Modulkandidaten:
 - **Pop-ups:** keine.
 - **Bedienung:** keine Eingabe- oder Schaltelemente im Inhaltsbereich; reine Anzeigeseite.
 - **Berechtigungen:** keine beschrieben.
-- **Navigation:** Rückkehr über „Zurück“ (zur Kontrollwaage, RS-13); Produktion / Einstellungen über die Funktionsleiste.
+- **Navigation:** Annahme (Handbuch sagt dazu nichts): Rückkehr über „Zurück“ zur Kontrollwaage (RS-13); Produktion / Einstellungen über die Funktionsleiste.
 - **Fehlerfälle:** keine beschrieben.
 
 ## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)

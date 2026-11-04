@@ -3,7 +3,7 @@
 - Navigationspfad: Einstellung › Schließmaschine › Motorparameter (Elternseite unklar, Annahme A-11; Handbuchposition nach [RS-16](RS-16_Schliessmaschine.md))
 
 ## Zweck
-Wortgetreu: „Auf dieser Seite werden die Bewegungsparameter für den Verschluss und die Schnecke eines Schneckendosierers konfiguriert. Die Einstellungen ermöglichen eine optimale Anpassung an das Produktverhalten und die Maschinengeschwindigkeit.“ Der Text ist identisch mit dem Kapitel Motorparameter der Hauptdosierer ([RS-12](RS-12_Motorparameter-Hauptdosierer.md)) und Nachdosierer ([RS-20](RS-20_Motorparameter-Nachdosierer.md)).
+Wortgetreu: „Auf dieser Seite werden die Bewegungsparameter für den Verschluss und die Schnecke eines Schneckendosierers konfiguriert. Die Einstellungen ermöglichen eine optimale Anpassung an das Produktverhalten und die Maschinengeschwindigkeit.“ Der Text ist identisch mit dem Kapitel Motorparameter der Hauptdosierer ([RS-12](RS-12_Motorparameter.md)) und Nachdosierer ([RS-20](RS-20_Motorparameter.md)).
 
 ## Aufbau (Bereiche, Layout)
 Das Seitenbild [RS-17_01](../Medien/RS-17_01.png) (blauer Hintergrund, graue Gruppenfelder) zeigt:
@@ -22,17 +22,17 @@ Wertebereiche und Standardwerte sind im Handbuch nicht angegeben; die Bildwerte 
 | Element (Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|
 | Position | Zahlenfeld mit Schlüsselsymbol, Einheit ° (Bild: Zu 0 °, Auf 37 °) | Position in Grad, an der der Verschluss geöffnet bzw. geschlossen ist. | Modulkandidat: Motorparameter (Verschluss); Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe) |
-| Geschwindigkeit | Zahlenfeld, Einheit % (Bild: 80 % / 80 %) | Bewegungsgeschwindigkeit des Aktors in Prozent. | wie Position |
-| Beschleunigung | Zahlenfeld, Einheit % (Bild: 0 % / 0 %) | Anstieg der Geschwindigkeit beim Start der Bewegung. | wie Position |
-| Verzögerung | Zahlenfeld, Einheit % (Bild: 0 % / 0 %) | Abbremsen vor Erreichen der Endposition. | wie Position |
-| Ruck | Zahlenfeld, Einheit % (Bild: 0 % / 0 %) | Änderung der Beschleunigung (sanfter Bewegungsbeginn und -ende). | wie Position |
+| Geschwindigkeit | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 80 % / 80 %) | Bewegungsgeschwindigkeit des Aktors in Prozent. | wie Position |
+| Beschleunigung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 % / 0 %) | Anstieg der Geschwindigkeit beim Start der Bewegung. | wie Position |
+| Verzögerung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 % / 0 %) | Abbremsen vor Erreichen der Endposition. | wie Position |
+| Ruck | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 % / 0 %) | Änderung der Beschleunigung (sanfter Bewegungsbeginn und -ende). | wie Position |
 
 ### T26 – Schnecke (4 Zeilen inkl. Kopfzeile)
 | Element (Funktion) | Typ | Funktion (Beschreibung wortgetreu) | verwendetes Modul |
 |---|---|---|---|
 | Beschleunigung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 %) | Anstieg der Drehgeschwindigkeit beim Start. | Modulkandidat: Motorparameter (Schnecke); Eingabefeld mit Schlüsselsymbol (Pop-up-Eingabe) |
-| Verzögerung | Zahlenfeld, Einheit % (Bild: 0 %) | Abbremsen der Drehung beim Stoppen. | wie Beschleunigung |
-| Ruck | Zahlenfeld, Einheit % (Bild: 0 %) | Änderung der Beschleunigung für eine produktschonende Bewegung. | wie Beschleunigung |
+| Verzögerung | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 %) | Abbremsen der Drehung beim Stoppen. | wie Beschleunigung |
+| Ruck | Zahlenfeld mit Schlüsselsymbol, Einheit % (Bild: 0 %) | Änderung der Beschleunigung für eine produktschonende Bewegung. | wie Beschleunigung |
 
 ### Rahmenelemente laut Bild
 | Element | Typ | Funktion | verwendetes Modul |

@@ -93,9 +93,9 @@ RM-IDs werden später vergeben. Modulkandidaten:
 - **Darstellung:** Anzeigewerte schwarz auf Weiß; Werte mit Schlüsselsymbol rot auf Weiß; Zähler schwarz auf Weiß.
 - **Automatischer Nullpunkt:** Wert 0 deaktiviert die Funktion (wortgetreu). Der kleine Zusatzwert zählt die Packungen seit dem letzten Nullpunkt.
 - **Taste Nullpunkt setzen:** setzt den Waagen-Nullpunkt neu; die Waage muss unbelastet und sauber sein (Bedienhinweis, keine Abfrage beschrieben).
-- **Taste Zähler löschen:** setzt alle Zählwerte der Seite auf 0 (Gut, Schlecht, Zähler Übergewicht/Tu1/Tu2). Eine Rückfrage ist nicht beschrieben.
+- **Taste Zähler löschen:** setzt alle Zählwerte der Seite auf 0 (wortgetreu: „alle Zählwerte auf dieser Seite“). Die Auslegung auf Gut, Schlecht, Zähler Übergewicht/Tu1/Tu2 ist eine Auslegung, nicht im Handbuch aufgezählt; ob auch der Zusatzzähler „104“ im Feld Automatischer Nullpunkt (Bild RS-13_01) zurückgesetzt wird, ist nicht beschrieben. Eine Rückfrage ist nicht beschrieben.
 - **Ausschuss-Logik (wortgetreu):** Übergewicht: gleich oder größer → schlecht, ausgeworfen. TU 1: gleich oder kleiner → schlecht, ausgeworfen, „wenn kein Guthaben mehr vorhanden ist“. TU 2: gleich oder kleiner → schlecht, ausgeworfen.
-- **Navigation:** Taste „Trend“ → [RS-15](RS-15_Trend.md); Taste „Einzelgewichte“ → [RS-14](RS-14_Einzelgewichte.md); „Produktion“, „Einstellungen“, „Zurück“ rechts in der Funktionsleiste.
+- **Navigation:** Taste „Trend“ → [RS-15](RS-15_Trend.md); Taste „Einzelgewichte“ → [RS-14](RS-14_Einzelgewichte.md); „Produktion“, „Einstellungen“, „Zurück“ rechts in der Funktionsleiste (Annahme: Zurück führt zur vorherigen Seite; das Handbuch sagt dazu nichts).
 - **Fehler-/Zustandsbeschreibungen:** Das Handbuch beschreibt keine Fehlerfälle für diese Seite. Auf dem Seitenbild steht in der Meldezeile „*450* Palettierung nicht bereit“ (rot).
 
 ## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)

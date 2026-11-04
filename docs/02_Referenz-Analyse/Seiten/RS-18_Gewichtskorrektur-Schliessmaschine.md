@@ -3,7 +3,7 @@
 - Navigationspfad: Einstellung › Schließmaschine › Gewichtskorrektur (Elternseite unklar, Annahme A-11; Handbuchposition nach [RS-17](RS-17_Motorparameter-Schliessmaschine.md))
 
 ## Zweck
-Wortgetreu: „Diese Seite dient der Korrektur und Feinabstimmung der Dosiergenauigkeit von Schneckendosierern. Durch die Eingabe mehrerer Soll-Ist-Wertepaare werden sogenannte Stützstellen definiert. Daraus berechnet die Steuerung eine Korrekturkurve, mit der die Dosierleistung über den gesamten Gewichtsbereich verbessert wird.“ Inhaltlich identisch mit [RS-21](RS-21_Gewichtskorrektur-Nachdosierer.md).
+Wortgetreu: „Diese Seite dient der Korrektur und Feinabstimmung der Dosiergenauigkeit von Schneckendosierern. Durch die Eingabe mehrerer Soll-Ist-Wertepaare werden sogenannte Stützstellen definiert. Daraus berechnet die Steuerung eine Korrekturkurve, mit der die Dosierleistung über den gesamten Gewichtsbereich verbessert wird.“ Inhaltlich identisch mit [RS-21](RS-21_Gewichtskorrektur.md).
 
 ## Aufbau (Bereiche, Layout)
 Das Seitenbild [RS-18_01](../Medien/RS-18_01.png) (blauer Hintergrund) zeigt:
