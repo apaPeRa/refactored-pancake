@@ -93,7 +93,7 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-36](../../02_Referenz-Analyse/Sei
 
 - S36-1: Das Filterfeld filtert die Liste nach Namensteil (OP-40); die Zahl „859,81“ zeigt den Wert der markierten Variable, neutral statt rot.
 - S36-2: Layout 8 : 4; die drei Tasten tragen kein Schlüsselsymbol, weil der Seitenzugang geschützt ist (A-41).
-- S36-3: Vor „Importieren“ erscheint ein Bestätigungs-Pop-up, Dateiauswahl und Ergebnis laufen über Pop-ups (Eintrag in Navigation 4.1 durch den Querschnitts-Agenten).
+- S36-3: Vor „Importieren“ erscheint ein Bestätigungs-Pop-up, Dateiauswahl und Ergebnis laufen über Pop-ups (Navigation 4.1).
 - S36-4: „Liste exportieren“ ist ohne Auswahl deaktiviert; während eines Vorgangs sind die drei Tasten gesperrt (Tastensperre).
 - S36-5: „Liste exportieren“ erfordert Mehrfachauswahl; HM-25 (Listenart Selection) kennt nur eine Einzelauswahl, Erweiterung nötig.
 - S36-6: Betriebsart „Service“ mit `Icon.Mode.Service` in HM-02 (A-48).

@@ -104,7 +104,7 @@ Weiterhin offen: Was ein Balken darstellt (Packungen, Stück) und dessen Einheit
 
 ## Annahmen dieser Seite
 
-Lokale Kennungen; der Verwalter überträgt sie nach [Annahmen.md](../../00_Plan/Annahmen.md).
+Lokale Kennungen; Sammeleintrag: [A-68](../../00_Plan/Annahmen.md).
 
 | Kennung | Annahme |
 |---|---|

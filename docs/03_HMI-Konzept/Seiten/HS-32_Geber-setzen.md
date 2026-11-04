@@ -118,4 +118,4 @@ Die Spalte „Herkunft (RS-32)“ ist die Rückverfolgung zur Referenzseite (Ele
 - OP-41 (geräteabhängige Elemente): Anzahl und Reihenfolge der Geber.
 - OP-42 (Zeit- und Dauerangaben): Dauer des langen Drückens und Rückmeldung nach dem Setzen; Dummy-Werte.
 - OP-48 (Bedeutung Geber setzen): Ablauf und Bedeutung einzelner Felder offen, keine Annahme über Fachlogik.
-- Ohne OP-Eintrag im Seiten-Index (Hinweis an den Verwalter): Bedeutung des Statustexts „Messer beginnt Schneidbewegung.“ (RS-32, Offene Punkte 1; Platzhalter oder Rest) und die Sperre der Taste ohne Not-Aus.
+- OP-59 Bedeutung des Statustexts „Messer beginnt Schneidbewegung.“ (RS-32, Offene Punkte 1; Platzhalter oder Rest); OP-60 Sperre der Taste ohne Not-Aus.

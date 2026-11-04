@@ -115,7 +115,7 @@ Weiterhin offen: Gesamtzahl und Zuordnung der Stationen zu realen Maschinenstati
 
 ## Annahmen dieser Seite
 
-Lokale Kennungen; der Verwalter überträgt sie nach [Annahmen.md](../../00_Plan/Annahmen.md).
+Lokale Kennungen; Sammeleintrag: [A-68](../../00_Plan/Annahmen.md).
 
 | Kennung | Annahme |
 |---|---|

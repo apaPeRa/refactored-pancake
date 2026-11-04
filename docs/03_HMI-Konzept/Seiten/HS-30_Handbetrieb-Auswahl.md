@@ -118,4 +118,4 @@ Die Spalte „Herkunft (RS-30)“ ist die Rückverfolgung zur Referenzseite.
 - OP-35 (Quellfehler): der Handbuchsatz zu „Tasten Gruppenanwahl“ ist unvollständig; die Funktion ist aus Zweck und Bild abgeleitet.
 - OP-37 (Zugang Handbetrieb): Wechsel zur Aktorseite abgeleitet (A-14, A-39).
 - OP-41 (geräteabhängige Elemente): Anzahl und Namen der Gruppen sind maschinenabhängig.
-- Ohne OP-Eintrag im Seiten-Index (Hinweis an den Verwalter): die doppelte Beschriftung „Dornrad“ bei GR4 und GR5 (RS-30, Offene Punkte 4) bleibt unverändert übernommen; Bedeutung (z. B. Dornrad 1/2) ungeklärt.
+- OP-58 die doppelte Beschriftung „Dornrad“ bei GR4 und GR5 (RS-30, Offene Punkte 4) bleibt unverändert übernommen; Bedeutung (z. B. Dornrad 1/2) ungeklärt.

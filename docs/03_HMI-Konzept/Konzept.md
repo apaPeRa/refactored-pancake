@@ -556,7 +556,7 @@ Vollständige Listen: [Annahmen.md](../00_Plan/Annahmen.md) (79 Annahmen) und [O
 
 ## 10. Hinweise zur Konsistenz
 
-Beim Zusammenführen gefundene Widersprüche und Lücken zwischen Seiten, Modulen, Navigation und Annahmen, mit der Entscheidung des Verwalters. Die Spalte „Stand“ nennt die Bereinigung in den Teildokumenten; Einträge „erledigt“ sind dort umgesetzt, „zu bereinigen“ sind Folgearbeiten an den genannten Dateien.
+Beim Zusammenführen gefundene Widersprüche und Lücken zwischen Seiten, Modulen, Navigation und Annahmen, mit der jeweiligen Entscheidung. Die Spalte „Stand“ nennt die Bereinigung in den Teildokumenten; Einträge „erledigt“ sind dort umgesetzt, „zu bereinigen“ sind Folgearbeiten an den genannten Dateien.
 
 | Nr | Befund | Fundstellen | Entscheidung / Stand |
 |---|---|---|---|

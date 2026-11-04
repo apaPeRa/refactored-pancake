@@ -93,7 +93,7 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-37](../../02_Referenz-Analyse/Sei
 - S37-2: In der Beschreibung steht „NNN: Text“ statt der Sternchen der Referenz (wie in der Meldezeile).
 - S37-3: „Export“ nimmt bei aktivem Filter die gefilterte Liste; „Liste leeren“ hat ein Bestätigungs-Pop-up (A-40).
 - S37-4: „Alle anzeigen“ ist ohne aktiven Filter deaktiviert (nicht in der Referenz).
-- S37-5: Der Filterdialog ist eine Variante von HM-13 mit Meldenummer und Zeit in einem Dialog (Erweiterung HM-13; Eintrag in Navigation 4.1 durch den Querschnitts-Agenten).
+- S37-5: Der Filterdialog ist eine Variante von HM-13 mit Meldenummer und Zeit in einem Dialog (Erweiterung HM-13; Navigation 4.1).
 
 ## Offene Punkte
 

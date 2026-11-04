@@ -1,6 +1,6 @@
 # Modulliste der Referenz (RM)
 
-Stand: R11. Wiederkehrende Elemente der 39 Referenzseiten ([RS-01 bis RS-39](../Seiten/)). Gleiches ist ein Modul, Varianten stehen als Parameter in der Moduldatei. Die Spalte „Entsprechung DM“ verweist auf das Design-Modul, soweit es eines gibt (Design-Module: [Module](../../01_Design-Analyse/Module/)).
+Stand: Phase 2 abgeschlossen. Wiederkehrende Elemente der 39 Referenzseiten ([RS-01 bis RS-39](../Seiten/)). Gleiches ist ein Modul, Varianten stehen als Parameter in der Moduldatei. Die Spalte „Entsprechung DM“ verweist auf das Design-Modul, soweit es eines gibt (Design-Module: [Module](../../01_Design-Analyse/Module/)).
 
 | ID | Name | Anzahl Seiten | Seiten | Entsprechung DM |
 |---|---|---|---|---|

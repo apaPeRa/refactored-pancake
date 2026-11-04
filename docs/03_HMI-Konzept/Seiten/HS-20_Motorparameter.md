@@ -118,7 +118,7 @@ Blättertasten (HM-19) werden nicht verwendet (nur ein Nachdosierer).
 
 ## Annahmen dieser Seite
 
-Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+Lokale Kennungen; Sammeleintrag: [A-65](../../00_Plan/Annahmen.md).
 
 | Kennung | Annahme |
 |---|---|

@@ -34,7 +34,7 @@ Tabelle T33 des Handbuchs (Spalten Funktion | Beschreibung), 8 Datenzeilen, wort
 | Regulierung ist | Zahlenfeld, Einheit „g“, Schlüsselsymbol | „Aktueller Korrekturwert, der auf die Dosierung angewendet wird.“ | [RM-05](../Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) |
 | Mittelwert | Anzeigefeld, Einheit „g“, mit Zähler „Stk“ unten rechts | „Durchschnittliches Gewicht der letzten gemessenen Packungen. Unten rechts werden Packungen gezählt, erreicht der Zähler den Wert in Anzahl Gewichte wird anhand des Mittelwerts ein neuer Korrekturwert berechnet.“ | [RM-07](../Module/RM-07_Anzeigefeld.md) mit Zähler |
 | Taste Regulierung | Umschalter (grün mit Beschriftung „Regulierung“, Schlüsselsymbol) | „Schaltet die automatische Regulierung ein oder aus.“ | [RM-10](../Module/RM-10_Umschalter-Taste.md) mit Schlüsselsymbol |
-| Regulierung - / + | zwei Tasten mit Schlüsselsymbol | „Manuelle Feineinstellung der Korrektur. Reduziert (--) oder erhöht (+) den aktuellen Korrekturwert.“ | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
+| Regulierung - / + | zwei Tasten mit Schlüsselsymbol | „Manuelle Feineinstellung der Korrektur. Reduziert (–) oder erhöht (+) den aktuellen Korrekturwert.“ | [RM-11](../Module/RM-11_Aktionstaste.md) mit Schlüsselsymbol |
 | Panel „Hauptdosierer“ / „Nachdosierer“ (nur im Bild) | Gruppe | Parametersatz je Dosierer, identischer Aufbau | [RM-34](../Module/RM-34_Regulierungs-Parameterblock.md) (je Dosierer) |
 | Seitenkopf, Meldezeile, Fußleiste (nur im Bild) | Rahmen | Standardrahmen | [RM-01](../Module/RM-01_Kopfzeile.md) (Rahmen); [RM-02](../Module/RM-02_Meldezeile.md); [RM-03](../Module/RM-03_Funktionsleiste-unten.md) (Rahmennavigation) |
 

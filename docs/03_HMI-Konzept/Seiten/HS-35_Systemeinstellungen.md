@@ -102,7 +102,7 @@ Spalte „Herkunft“ = Rückverfolgung zu [RS-35](../../02_Referenz-Analyse/Sei
 - S35-1: Der leere Rasterplatz bleibt an seiner Stelle als deaktivierte Kachel „Reserviert“ (A-29).
 - S35-2: Bestätigungs-Pop-up nur bei „Bedienung beenden“, „Steuerung neu starten“, „Steuerung ausschalten“ (A-40); Rollenstufe der Schlüssel-Kacheln ist Dummy (OP-25).
 - S35-3: „Lampentest“ ist eine einfache Aktionstaste (Tippen), Wirkung Dummy (OP-49).
-- S35-4: Kachelzeilen teilen den Inhaltsbereich zu gleichen Teilen, `TileSize` Large gilt als Mindesthöhe (Wunsch an HM-16).
+- S35-4: Kachelzeilen teilen den Inhaltsbereich zu gleichen Teilen, `TileSize` Large gilt als Mindesthöhe (Anforderung an HM-16).
 - S35-5: Navigationskacheln tragen `Icon.Chevron` als zweiten Kanal; HM-16 kennt dieses Symbol nicht (Wunsch: Parameter `ShowNavigationIndicator` in HM-16).
 - S35-6: Bei Verbindungsverlust nach Neustart oder Ausschalten zeigt die Meldezeile den Hinweis; Fehlertext einer fehlgeschlagenen Aktion ebenfalls dort (Dummy).
 

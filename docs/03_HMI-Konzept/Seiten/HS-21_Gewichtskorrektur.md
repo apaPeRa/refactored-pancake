@@ -112,7 +112,7 @@ Das Referenzkapitel hat keine Funktionstabellen; die Quelle sind die vier Schrit
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Eingabe-Pop-up.** Antippen eines Soll-, Ist- oder Sollgewicht-Felds öffnet HM-13 in HM-14 mit Titel (zum Beispiel „Stützstelle 3 – SOLL“ bzw. „Sollgewicht“), aktuellem Wert, Einheit g und Grenzen; „Übernehmen“ nur bei gültigem Wert, „Abbrechen“ verwirft, Antippen außerhalb schließt nicht. Das Pop-up ist in der Referenz nicht beschrieben (A-20, OP-30); Grenzen sind Dummy (OP-28).
-- **Berechtigung.** Wie in der Referenz trägt nur das Feld „Sollgewicht“ ein Schlüsselsymbol (`Icon.Key`); die Tabellenfelder und die Tasten „Dosierer Auslösen manuell“ und „Gewichtsanpassung“ haben keinen Schlüssel. Ohne Rolle am Sollgewicht: `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. Benutzer-Pop-up. Die Stufen sind offen (OP-25, OP-04). HM-22 beschreibt beide Tasten mit Schlüssel (HM-22-P02); das weicht von RS-21 ab und ist dem Querschnitts-Agenten gemeldet.
+- **Berechtigung.** Wie in der Referenz trägt nur das Feld „Sollgewicht“ ein Schlüsselsymbol (`Icon.Key`); die Tabellenfelder und die Tasten „Dosierer Auslösen manuell“ und „Gewichtsanpassung“ haben keinen Schlüssel. Ohne Rolle am Sollgewicht: `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ bzw. Benutzer-Pop-up. Die Stufen sind offen (OP-25, OP-04). HM-22 beschreibt beide Tasten mit Schlüssel (HM-22-P02); das weicht von RS-21 ab (OP-62).
 - **Gültige Stützstelle.** Eine Zeile zählt nur, wenn Soll und Ist größer als 0,00 g sind; „0,00 g“ gilt als leer und wird nicht berücksichtigt (Handbuch H3). Ist nur eines der beiden Felder gefüllt, zeigt die Zeile den Zustand Ungültig (`Brush.Status.Error.Subtle`, `Icon.Status.Error`, Text „Soll und Ist erforderlich“; Annahme aus HM-22).
 - **Gewichtsanpassung.** Bei weniger als 3 gültigen Stützstellen berechnet die Taste nicht; die Statuszeile zeigt `Icon.Status.Warning` und „Mindestens 3 Stützstellen“ (S21-3, Handbuch: mindestens drei, besser fünf bis acht). Bei ungültigen Zeilen ebenfalls keine Berechnung. Bei Erfolg: `Icon.Status.Ok` und „Kennlinie berechnet“ (Zustand Berechnet). Rückmeldung nach „Gewichtsanpassung“ ist in der Referenz nicht beschrieben (RS-21 Offener Punkt 3).
 - **Dosierer Auslösen manuell.** Dosiert eine Probe mit dem Wert aus „Sollgewicht“. Nicht zulässig im ungeeigneten Betriebszustand: Taste deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`), Antippen nennt den Grund in der Meldezeile (A-28); fachliche Regeln nicht belegt (S21-4).
@@ -145,7 +145,7 @@ Das Referenzkapitel hat keine Funktionstabellen; die Quelle sind die vier Schrit
 
 ## Annahmen dieser Seite
 
-Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+Lokale Kennungen; Sammeleintrag: [A-65](../../00_Plan/Annahmen.md).
 
 | Kennung | Annahme |
 |---|---|
@@ -160,5 +160,5 @@ Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von 
 - OP-28 Wertebereiche, Standardwerte und Darstellung leerer Felder (Bild zeigt „0,00 g“); OP-30 Eingabe-Pop-up und Rückmeldung nach „Gewichtsanpassung“.
 - OP-33 Seitentitel Bild gegenüber Handbuch; OP-34 Abweichung der Ortsangabe („rechts unten“ gegenüber Bildmitte rechts).
 - OP-39 fehlende Gewichtskorrektur je Dosierer (Geltungsbereich: Nachdosierer oder alle Dosierer); OP-45 Bezug „Sollgewicht“ (250,4 g) zu „Soll“ (250 g) in HS-19.
-- Ohne Eintrag im Seiten-Index: empfohlene 3 bis 8 Stützstellen gegenüber 20 Zeilen (RS-21 Offener Punkt 2); dem Querschnitts-Agenten gemeldet.
+- OP-64 empfohlene 3 bis 8 Stützstellen gegenüber 20 Zeilen (RS-21 Offener Punkt 2).
 - OP-55 Seite ist bildidentisch mit RS-18 (gemeinsames Modul HM-22).

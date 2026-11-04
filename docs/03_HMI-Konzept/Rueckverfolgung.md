@@ -198,7 +198,7 @@ Die Herkunft ist dem Abschnitt „Herkunft“ der HM-Datei entnommen und stimmt 
 | [HM-35](Module/HM-35_Regulierungs-Parameterblock.md) | [Regulierungs-Parameterblock](Module/HM-35_Regulierungs-Parameterblock.md) | nur RM | – | [RM-34](../02_Referenz-Analyse/Module/RM-34_Regulierungs-Parameterblock.md) | nur Referenz; im Design nicht vorhanden |
 | [HM-36](Module/HM-36_EA-Zeile.md) | [EA-Zeile (Signalzeile)](Module/HM-36_EA-Zeile.md) | nur RM | – | [RM-35](../02_Referenz-Analyse/Module/RM-35_EA-Zeile.md) | nur Referenz; im Design nicht vorhanden |
 | [HM-37](Module/HM-37_Wertegitter.md) | [Wertegitter (Einzelgewichte)](Module/HM-37_Wertegitter.md) | nur RM | – | [RM-36](../02_Referenz-Analyse/Module/RM-36_Wertegitter.md) | nur Referenz; im Design nicht vorhanden |
-| [HM-38](Module/HM-38_Such-Pop-up.md) | [Such-Pop-up (Suche mit Trefferliste)](Module/HM-38_Such-Pop-up.md) | Ergänzung | – | – | Ergänzung aus Seitenberichten ohne DM/RM (A-59, OP-30, OP-40) |
+| [HM-38](Module/HM-38_Such-Pop-up.md) | [Such-Pop-up (Suche mit Trefferliste)](Module/HM-38_Such-Pop-up.md) | Ergänzung | – | – | Ergänzung aus Seitendateien ohne DM/RM (A-59, OP-30, OP-40) |
 
 Verteilung der Herkunft: DM + RM 17, nur RM 20, nur DM 0, Ergänzung ohne DM/RM 1 (Summe 38).
 

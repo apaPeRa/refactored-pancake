@@ -53,5 +53,5 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 | HM-23-P03 | Leere Nocken | Nr. 48, 50, 59 mit 0 °/0 ° | offen |
 | HM-23-P04 | Status | LED mit Symbol und Wort, Zeilenfläche bleibt neutral (Designsystem 1.2) | offen |
 | HM-23-P05 | Beispieltexte | Beispieldaten tragen den Quellwortlaut der Bildbeschriftungen („Hauptdoserer“, „Fehlaketausstoß“); die Korrektur der Schreibweise ist eine Entscheidung (OP-35), nicht stillschweigend | offen |
-| HM-23-P05 | Antippen | Nockennummer öffnet HS-25 | offen |
-| HM-23-P06 | Zeilenhöhe | ≥ `Size.Touch.Min` | offen |
+| HM-23-P06 | Antippen | Nockennummer öffnet HS-25 | offen |
+| HM-23-P07 | Zeilenhöhe | ≥ `Size.Touch.Min` | offen |

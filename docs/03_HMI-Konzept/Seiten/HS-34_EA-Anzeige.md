@@ -112,4 +112,4 @@ Der Klartext wird unverändert aus der Konfiguration angezeigt (Großbuchstaben 
 - OP-33 (abweichende Seitentitel): Bildtitel „Eingänge S1“ gegen Handbuchname „EA-Anzeige“; sichtbar ist der Name der Kartengruppe als letztes Brotkrümel-Segment (Navigation.md).
 - OP-37 (Zugang EA-Anzeige): Zuordnung Schaltfläche zu Karte und Anzahl der Karten je Gruppe nicht beschrieben (A-14, A-39).
 - OP-41 (geräteabhängige Elemente): Anzahl der Karten, Zeilen je Karte und analoge Karten sind maschinenabhängig.
-- Ohne OP-Eintrag im Seiten-Index (Hinweis an den Verwalter): Übernahme der Klartexte in Großbuchstaben und ASCII-Schreibung (RS-34, Offene Punkte 4) ist als „unverändert“ entschieden; Normalisierung bleibt offen.
+- Offen: Die Klartexte in Großbuchstaben und ASCII-Schreibung (RS-34, Offene Punkte 4) werden unverändert übernommen; eine Normalisierung bleibt offen.

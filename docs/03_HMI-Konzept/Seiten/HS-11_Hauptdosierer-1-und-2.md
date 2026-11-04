@@ -181,7 +181,7 @@ Logo, Seitentitel, Spiral-Symbol, Uhrzeit/Datum, Meldezeile, Schloss und die Tas
 
 ## Annahmen dieser Seite
 
-Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+Lokale Kennungen; Sammeleintrag: [A-62](../../00_Plan/Annahmen.md).
 
 | Kennung | Annahme |
 |---|---|

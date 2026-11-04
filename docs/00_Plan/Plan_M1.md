@@ -20,8 +20,8 @@ Gemeinsamer Rahmen auf allen Seiten: Seitenleiste (Benutzerkreis „MM“ mit Na
 ### Referenz (`src_Data/Referenz/Referenz.docx`)
 - Gliederung: 1 Titel „Funktionsumfang“, **39 Kapitel der Ebene 2 (= 39 Seiten/Pop-ups)**, je Kapitel „Zweck“, „Seitenübersicht“, „Funktionsbeschreibung“ (Ebene 3), teils Ebene 4 (Unterbereiche).
 - **Tabellen:** 50 Tabellen auf Kapitelebene (insgesamt 54 `w:tbl`-Elemente, davon 4 verschachtelt).
-- **Bilder:** 83 Bildverweise (`w:drawing`) im Dokument, davon 46 direkt im Fließtext (je Kapitel ein Seitenbild, Zeitschaltuhr 6, Heizungen und Geber setzen je 2) und 37 innerhalb von Tabellen; 63 eindeutige Dateien in `word/media`.
-- Pandoc-Ausgabe: 1537 Zeilen Markdown (Zwischenstand außerhalb des Repos).
+- **Bilder:** 83 Bildverweise (`w:drawing`) im Dokument, davon 44 direkt im Fließtext (je Kapitel ein Seitenbild, Zeitschaltuhr 6, Heizungen und Geber setzen je 2) und 37 innerhalb von Tabellen; 63 eindeutige Dateien in `word/media`.
+- Pandoc-Ausgabe: 1537 Zeilen Markdown.
 
 ## 2. Vorläufige Seitenliste (Referenz, in Handbuchreihenfolge)
 

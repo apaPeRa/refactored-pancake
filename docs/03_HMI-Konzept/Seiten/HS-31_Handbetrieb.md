@@ -131,4 +131,4 @@ Die Spalte „Herkunft (RS-31)“ ist die Rückverfolgung zur Referenzseite (Ele
 - OP-37 (Zugang Handbetrieb): Wechsel von HS-30 abgeleitet (A-14, A-39).
 - OP-39 (fehlende Zustände): Positioniermodus (Position zurück/vor, Position-Nr) im Bild nicht sichtbar; Aufbau nach Handbuchtext, Zustände nach Designsystem.
 - OP-40 (Suche): Such-Pop-up als Annahme (HM-38, A-59).
-- Ohne OP-Eintrag im Seiten-Index (Hinweis an den Verwalter): Halte-/Tippverhalten von Jog (`WhilePressed`), die Zuordnung „Handbetrieb“ = `OperatingMode.Manual` und Grenze des Blätterns (nur innerhalb der Gruppe) sind Annahmen.
+- OP-57 Halte-/Tippverhalten von Jog (`WhilePressed`); Annahmen (A-69): Zuordnung „Handbetrieb“ = `OperatingMode.Manual` und Grenze des Blätterns (nur innerhalb der Gruppe).

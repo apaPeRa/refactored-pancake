@@ -142,7 +142,7 @@ Die Taste „Motorparameter“ gibt es auf dieser Seite nicht (wie in der Refere
 
 ## Annahmen dieser Seite
 
-Lokale Kennungen; der Querschnitts-Agent überführt sie in Sammeleinträge von Annahmen.md.
+Lokale Kennungen; Sammeleintrag: [A-62](../../00_Plan/Annahmen.md).
 
 | Kennung | Annahme |
 |---|---|
