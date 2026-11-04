@@ -62,3 +62,5 @@ DM-01 bis DM-09 (Rahmen), DM-10, DM-11, DM-12.
 - Ziele der Kacheln mit Referenzseiten abgleichen: OP-12.
 - Leere Kacheln, „Geräte“, „Beleuchtung“: OP-05; Sprache: OP-03.
 - Mehrzeilige Kachelbeschriftung mit Trennstrich („Schließ-maschine“): Silbentrennung im Entwurf, im neuen HMI klären: OP-13.
+- Zwischenseite „Zuführungen“ (Ziel der Kachel „Zuführungen“) fehlt im Design: OP-20; Kachelziele ohne Designseite: OP-07.
+- Seitenleisten-Symbole, Antippbarkeit: OP-08, OP-21; identische Rahmenwerte: OP-22.

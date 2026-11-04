@@ -51,7 +51,7 @@ Meldezeile, Betriebsart, Uhrzeit, Geschwindigkeit und Winkel zeigen auf allen f�
 
 - Kein sichtbares Spaltenraster; der Entwurf ist von Hand in PowerPoint positioniert. Die Ausrichtung ist nicht exakt (z. B. DS-01: Tasten der zweiten Reihe leicht versetzt, Umschalter auf verschiedenen x-Positionen; DS-04: Knöpfe der Umschalter in der Nachdosierer-Karte versetzt).
 - Ableitbare Aufteilung des Inhaltsbereichs:
-  - DS-01: obere Reihe 4 Kacheln (Geschwindigkeit, Produktion, EKW, Versorgung), Breiten ca. 220 : 257 : 350 : 413 px; untere Reihe 2 Bereiche (Tasten ca. 555 px, Umschalter ca. 695 px).
+  - DS-01: obere Reihe 4 Kacheln (Geschwindigkeit, Produktion, EKW, Versorgung), Breiten ca. 222 : 257 : 351 : 397 px (x 109–331, 343–600, 607–958, 965–1362); untere Reihe 2 Bereiche (Tasten ca. 555 px, Umschalter ca. 695 px).
   - DS-02: 3 Spalten (links breit ca. 405 px, Mitte und rechts je ca. 405 px) mit einem Kachelraster 2 × 4 in der Mitte und 2 × 4 rechts.
   - DS-03: links schmale Tastenspalte (ca. 200 px), Mitte breit (Status und Temperaturen), rechts schmal (Füllstand).
   - DS-04: Titelzeile über 3 gleich breiten Karten (je ca. 400 px, Abstand ca. 20 px).
@@ -135,7 +135,7 @@ Die Definitionen `DM-xx` schreibt ein späterer Agent. IDs und Namen sind fest, 
 | DM-07 | Brotkrümel-Navigation | Einstellung › Zuführungen › Heißleim |
 | DM-08 | Kennzahl-Kachel | 112 1/min, 245° |
 | DM-09 | Funktionsleiste | untere hellblaue Leiste |
-| DM-10 | Funktionstaste (grau) | Schichtplan, Sprache, Temperatur, Druck, Zeitplan |
+| DM-10 | Funktionstaste (grau) | Schichtplan, Sprache, Temperatur, Druck, Zeitplan, Manuell, Entleeren (graue Tasten in den Dosierer-Karten, DS-04). Abgrenzung: die rote/farbige „Manuell“ in DS-03 ist eine Zustandstaste (DM-19) |
 | DM-11 | Gruppenbereich | grauer Bereich mit Überschrift |
 | DM-12 | Kachel-Taste | Automatik, Zuführungen, Waagen, leere Kachel |
 | DM-13 | Umschalter | Bahnkontrolle, Querschnecke |

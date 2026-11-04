@@ -19,10 +19,10 @@ Zuführung Karton ein-/ausschalten und die Einstellungen der Leimspuren (je Spur
 | Text „Einstellungen Leimspuren“ (weiß) | Beschriftung | Zwischenüberschrift; darunter ist der Bereich links leer | DM-11 |
 | Grafik „Leimspuren“ (Titel oben links in der Grafik, blauer Rahmen) | Grafik | Kartonzuschnitt mit Leimspuren | DM-22 |
 | Leimspuren (helle senkrechte Balken) | Grafik | 1 lange Spur links über die ganze Höhe, je 4 kurze Spuren oben und unten (jeweils die erste direkt neben der langen Spur) | DM-22 |
-| Wertfelder oben, Reihe 1 | Eingabefeld (weiß, rot, kleines gelbes Symbol oben rechts) | 200, 205, 205, 205, 205 | DM-22 |
-| Wertfelder oben, Reihe 2 | Eingabefeld | 225, 225, 225, 225 | DM-22 |
-| Wertfelder unten, Reihe 1 | Eingabefeld | 300, 310, 310, 310, 310 | DM-22 |
-| Wertfelder unten, Reihe 2 | Eingabefeld | 325, 329, 329, 329 | DM-22 |
+| Wertfelder oben, Reihe 1 | Eingabefeld (weiß, rot, kleines gelbes Symbol oben rechts) | 200, 205, 205, 205, 205 | DM-17 (in Grafik DM-22 platziert) |
+| Wertfelder oben, Reihe 2 | Eingabefeld | 225, 225, 225, 225 | DM-17 (in Grafik DM-22 platziert) |
+| Wertfelder unten, Reihe 1 | Eingabefeld | 300, 310, 310, 310, 310 | DM-17 (in Grafik DM-22 platziert) |
+| Wertfelder unten, Reihe 2 | Eingabefeld | 325, 329, 329, 329 | DM-17 (in Grafik DM-22 platziert) |
 | Funktionsleiste (leer) | Leiste | Container, ohne Tasten | DM-09 |
 
 Anordnung der Wertfelder (von links nach rechts, Position im Zuschnitt):
@@ -35,7 +35,7 @@ Anordnung der Wertfelder (von links nach rechts, Position im Zuschnitt):
 | unten 2 (unterhalb, auf den unteren Klappen) | – · 325 · 329 · 329 · 329 |
 
 ## Verwendete Module (IDs)
-DM-01 bis DM-09 (Rahmen), DM-11, DM-19, DM-22 (DM-17 als Bauart der Wertfelder).
+DM-01 bis DM-09 (Rahmen), DM-11, DM-17, DM-19, DM-22. Aufteilung: DM-22 ist die Grafik (Kartonzuschnitt, Leimspuren, Platzierung der Felder), DM-17 sind die 18 Wertfelder (Eingabefeld mit Schlüssel) darin.
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - Taste „Ein / Aus“ im Bild grün; Aus-Zustand nicht dargestellt.
@@ -61,3 +61,5 @@ DM-01 bis DM-09 (Rahmen), DM-11, DM-19, DM-22 (DM-17 als Bauart der Wertfelder).
 - Einheit der Leimspurwerte und Bedeutung der Felder (Position/Länge?): OP-19.
 - Symbol an Wertfeldern vs. Schlüsselsymbol: OP-04.
 - Abgleich mit Referenz (Zuführung Karton): OP-15.
+- Zwischenseite „Zuführungen“ (mittleres Brotkrümel-Segment) fehlt im Design: OP-20.
+- Seitenleisten-Symbole, Antippbarkeit: OP-08, OP-21; identische Rahmenwerte: OP-22.

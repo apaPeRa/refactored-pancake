@@ -33,7 +33,7 @@ Startseite (Home) im Betrieb: Überblick über Geschwindigkeit, laufende und let
 | „Druckluft“ / „IO“ | Beschriftung/Wert | Zustand | DM-15 |
 | „Papier“ / „IO“ | Beschriftung/Wert | Zustand | DM-15 |
 | „Produkt“ / „IO“ | Beschriftung/Wert | Zustand | DM-15 |
-| Zwischenüberschrift „Linienbetrieb“ | Text | Gruppentitel | DM-15 |
+| Zwischenüberschrift „Linienbetrieb“ (ohne Wert) | Text | Gruppentitel innerhalb der Kachel „Versorgung“; kein Beschriftung/Wert-Paar | DM-11 (Unterüberschrift) |
 | „Bandwaage“ / „Bereit“ | Beschriftung/Wert | Zustand | DM-15 |
 | „Folgemaschine“ / „Läuft“ | Beschriftung/Wert | Zustand | DM-15 |
 | Taste „Automatik“ | Kachel-Taste (blau) | Funktion nicht beschrieben | DM-12 |
@@ -84,3 +84,5 @@ DM-01, DM-02, DM-03, DM-04, DM-05, DM-06, DM-07, DM-08, DM-09, DM-10, DM-11, DM-
 - Bedeutung der sechs blauen Tasten (Funktion vs. Navigation): OP-10.
 - Leere Kachel „EKW“: OP-06; Rezeptanwahl: OP-01; Schichtplan: OP-02; Benutzer: OP-04.
 - „IO“ (vermutlich „in Ordnung“) ohne Legende; weitere Werte unbekannt: OP-11.
+- Ziele von „Zuführung Papier“/„Zuführung Karton“ (Zwischenseite „Zuführungen“ fehlt im Design): OP-20; Seiten ohne Design (Schichtplan u. a.): OP-07.
+- Bedeutung der Seitenleisten-Symbole und Antippbarkeit von Brotkrümel/Kennzahlen: OP-08, OP-21; identische Rahmenwerte: OP-22.

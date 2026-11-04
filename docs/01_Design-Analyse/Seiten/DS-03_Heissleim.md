@@ -73,3 +73,5 @@ DM-01 bis DM-09 (Rahmen), DM-10, DM-11, DM-14, DM-16, DM-17, DM-18, DM-19.
 - Schlüsselsymbol = Berechtigung: OP-04.
 - Abgleich mit Referenz (Heißleim Nordson, Parameter, Druck, Zeitschaltuhr): OP-15.
 - Weitere Pistolen/Schläuche (nur „Pistole 1“, „Schlauch 1“ sichtbar): OP-16.
+- Zwischenseite „Zuführungen“ (mittleres Brotkrümel-Segment) fehlt im Design: OP-20; Unterseiten Temperatur/Druck/Zeitplan ohne Design: OP-07.
+- Seitenleisten-Symbole, Antippbarkeit von Brotkrümel: OP-08, OP-21; identische Rahmenwerte: OP-22.

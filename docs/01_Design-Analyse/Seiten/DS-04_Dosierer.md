@@ -71,3 +71,5 @@ DM-01 bis DM-09 (Rahmen), DM-10, DM-13, DM-14, DM-15, DM-18, DM-20, DM-21.
 - Bedeutung von „KW“ (Titelzeile) und des Verschiebesymbols: OP-17.
 - Bedeutung der hellblauen Hervorhebung und deaktivierten Tasten: OP-18.
 - Abgleich mit Referenz (Hauptdosierer 1 & 2, Nachdosierer): OP-15.
+- Detailseiten der Dosierer (Ziel des Verschiebesymbols) ohne Design: OP-07.
+- Seitenleisten-Symbole, Antippbarkeit: OP-08, OP-21; identische Rahmenwerte: OP-22.
