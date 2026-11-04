@@ -42,17 +42,17 @@ Farbe tritt nur hier auf. Jede Statusfarbe hat drei Tokens: `Brush.Status.<Statu
 
 | Status | Hell Fill | Hell On | Hell Fg | Dunkel Fill | Dunkel On | Dunkel Fg |
 |---|---|---|---|---|---|---|
-| Ok | `#1B7A2B` | `#FFFFFF` | `#1B7A2B` | `#4CC264` | `#0B1A0F` | `#4CC264` |
+| Ok | `#187228` | `#FFFFFF` | `#187228` | `#4CC264` | `#0B1A0F` | `#4CC264` |
 | Warnung | `#F2B600` | `#1A222C` | `#8A5A00` | `#FFC933` | `#141A21` | `#FFC933` |
 | Fehler | `#C62828` | `#FFFFFF` | `#C62828` | `#FF6B6B` | `#141A21` | `#FF6B6B` |
 | Info | `#1565C0` | `#FFFFFF` | `#1565C0` | `#5AA9F5` | `#0B1620` | `#5AA9F5` |
 | Inaktiv | `#5F6975` | `#FFFFFF` | `#5F6975` | `#9AA4B1` | `#141A21` | `#9AA4B1` |
 
-Kontrastverhältnisse (alle ≥ 4,5 : 1):
+Kontrastverhältnisse (alle ≥ 4,5 : 1; `Fg` ist zusätzlich auf `Surface.Sunken` geprüft, Mindestwert Hell 4,52 (Inaktiv), Dunkel 5,85 (Fehler)):
 
 | Status | On auf Fill (Hell / Dunkel) | Fg auf Fläche (Hell `#FFFFFF` / Dunkel `#1E2630`) | Fg auf Fenster (Hell `#EEF1F4` / Dunkel `#141A21`) |
 |---|---|---|---|
-| Ok | 5,43 / 7,88 | 5,43 / 6,70 | 4,79 / 7,68 |
+| Ok | 6,04 / 7,88 | 6,04 / 6,70 | 5,33 / 7,68 |
 | Warnung | 8,76 / 11,38 | 5,93 / 9,93 | 5,23 / 11,38 |
 | Fehler | 5,62 / 6,31 | 5,62 / 5,50 | 4,96 / 6,31 |
 | Info | 5,75 / 7,33 | 5,75 / 6,13 | 5,07 / 7,03 |
@@ -70,7 +70,7 @@ Zusätzlich (Flächenton für Zeilen/Felder im Fehler-, Warn- usw. Zustand, `Sub
 
 | Status | Hell | Dunkel | Kontrast Fg auf Subtle (Hell / Dunkel) |
 |---|---|---|---|
-| Ok | `#E4F4E7` | `#17341D` | 4,76 / 5,96 |
+| Ok | `#E4F4E7` | `#17341D` | 5,29 / 5,96 |
 | Warnung | `#FFF4CC` | `#3D3000` | 5,38 (Fg `#8A5A00`) / 8,42 |
 | Fehler | `#FDECEC` | `#3B1D1F` | 4,92 / 5,48 |
 | Info | `#E3F0FD` | `#16304A` | 4,97 / 5,42 |
@@ -301,9 +301,9 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden dort ergänzt (Na
 | `Brush.Button.Active` | SolidColorBrush | `#2B3846` | `#44546A` | Taste aktiv/Ein, Umschalter ein |
 | `Brush.Progress.Fill` | SolidColorBrush | `#4A5563` | `#AAB4C0` | Balkenfüllung neutral |
 | `Brush.Scrim` | SolidColorBrush | `#80000000` | `#99000000` | Pop-up-Hintergrund |
-| `Brush.Status.Ok.Fill` | SolidColorBrush | `#1B7A2B` | `#4CC264` | Erfüllt/in Ordnung: Fläche (Text/Symbol darauf in `.On`) |
+| `Brush.Status.Ok.Fill` | SolidColorBrush | `#187228` | `#4CC264` | Erfüllt/in Ordnung: Fläche (Text/Symbol darauf in `.On`) |
 | `Brush.Status.Ok.On` | SolidColorBrush | `#FFFFFF` | `#0B1A0F` | Text und Symbol auf `.Fill` |
-| `Brush.Status.Ok.Fg` | SolidColorBrush | `#1B7A2B` | `#4CC264` | Erfüllt/in Ordnung: Symbol, Text und Kontur auf neutralem Grund |
+| `Brush.Status.Ok.Fg` | SolidColorBrush | `#187228` | `#4CC264` | Erfüllt/in Ordnung: Symbol, Text und Kontur auf neutralem Grund |
 | `Brush.Status.Ok.Subtle` | SolidColorBrush | `#E4F4E7` | `#17341D` | Zeilen-/Feldhintergrund Erfüllt/in Ordnung |
 | `Brush.Status.Warning.Fill` | SolidColorBrush | `#F2B600` | `#FFC933` | Warnung: Fläche (Text/Symbol darauf in `.On`) |
 | `Brush.Status.Warning.On` | SolidColorBrush | `#1A222C` | `#141A21` | Text und Symbol auf `.Fill` |
