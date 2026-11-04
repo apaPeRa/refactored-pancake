@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dialogs.resx: Texte der Dialog-ViewModels ohne HS-Seite (Eingabe, Bestaetigung, Filter, Datei/Ergebnis, Sprache, Benutzer, Rezept; Integration, A-88).
+     Neutralsprache Deutsch. Schluessel: <Modul>_<Element>_<Eigenschaft>. Wird vom LocalizationService automatisch gefunden. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Dialog_Input_Title" xml:space="preserve"><value>Eingabe</value><comment>Eingabe-Pop-up: Rahmentitel</comment></data>
+  <data name="Dialog_Input_CurrentTime" xml:space="preserve"><value>Aktuell: {0}</value><comment>Eingabe-Pop-up Zeit: aktueller Wert hh:mm</comment></data>
+  <data name="Dialog_Input_Invalid" xml:space="preserve"><value>Ungültige Eingabe.</value><comment>Eingabe-Pop-up: Standard-Fehlertext</comment></data>
+  <data name="Dialog_Input_InvalidTime" xml:space="preserve"><value>Ungültige Uhrzeit (hh:mm).</value><comment>Eingabe-Pop-up Zeit: Fehlertext</comment></data>
+  <data name="Dialog_Input_Range" xml:space="preserve"><value>Wert muss zwischen {0} und {1} {2} liegen.</value><comment>Eingabe-Pop-up: Bereichsfehler, {2} = Einheit</comment></data>
+  <data name="Dialog_Input_Min" xml:space="preserve"><value>Wert muss mindestens {0} {1} betragen.</value><comment>Eingabe-Pop-up: Fehler nur untere Grenze</comment></data>
+  <data name="Dialog_Input_Max" xml:space="preserve"><value>Wert darf höchstens {0} {1} betragen.</value><comment>Eingabe-Pop-up: Fehler nur obere Grenze</comment></data>
+  <data name="Dialog_Filter_Title" xml:space="preserve"><value>Filter</value><comment>Filter-Dialog: Standardtitel</comment></data>
+  <data name="Dialog_Filter_Incomplete" xml:space="preserve"><value>Eingabe unvollständig.</value><comment>Filter-Dialog: Zeitfeld nicht vollständig</comment></data>
+  <data name="Dialog_Filter_InvalidDate" xml:space="preserve"><value>Ungültiges Datum oder ungültige Uhrzeit.</value><comment>Filter-Dialog: Zeitfeld kein gültiger Zeitpunkt</comment></data>
+  <data name="Dialog_File_Name_Label" xml:space="preserve"><value>Dateiname</value><comment>Datei-Pop-up: Beschriftung des Dateinamens</comment></data>
+  <data name="Dialog_Language_Title" xml:space="preserve"><value>Sprache</value><comment>Sprachwahl-Pop-up: Titel</comment></data>
+  <data name="Dialog_Language_Hint" xml:space="preserve"><value>Sprache wählen</value><comment>Sprachwahl-Pop-up: Hinweis über der Liste</comment></data>
+  <data name="Dialog_Recipe_Title" xml:space="preserve"><value>Rezept</value><comment>Rezeptauswahl-Pop-up: Titel</comment></data>
+  <data name="Dialog_Recipe_Hint" xml:space="preserve"><value>Rezept wählen</value><comment>Rezeptauswahl-Pop-up: Hinweis über der Liste</comment></data>
+  <data name="Dialog_User_Title" xml:space="preserve"><value>Benutzer</value><comment>Benutzer-Pop-up: Titel</comment></data>
+  <data name="Dialog_User_Role_Label" xml:space="preserve"><value>Rolle: </value><comment>Benutzer-Pop-up: Beschriftung der aktuellen Rolle</comment></data>
+  <data name="Dialog_User_Choose_Hint" xml:space="preserve"><value>Rolle wählen</value><comment>Benutzer-Pop-up: Hinweis über der Rollenliste</comment></data>
+  <data name="Dialog_User_SignIn_Label" xml:space="preserve"><value>Anmelden</value><comment>Benutzer-Pop-up: Taste Anmelden</comment></data>
+  <data name="Dialog_User_SignOut_Label" xml:space="preserve"><value>Abmelden</value><comment>Benutzer-Pop-up: Taste Abmelden</comment></data>
+</root>

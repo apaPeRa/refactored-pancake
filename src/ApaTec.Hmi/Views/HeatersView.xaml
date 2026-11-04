@@ -12,11 +12,6 @@
              d:DataContext="{d:DesignInstance Type=vm:HeatersViewModel, IsDesignTimeCreatable=True}">
     <!-- HS-22 Heizungen: Hinweiszeile 8 : 4 (fest), Tabellenkopf (fest), Zonenliste (scrollt) mit Bildlaufspalte. Module HM-27, HM-28, HM-07. -->
     <UserControl.Resources>
-        <!-- Lücke HM-28: kein Befehl für das Soll-Feld; der Stil gilt nur in dieser Seite und setzt Befehl und Berechtigung des Zeilen-ViewModels. -->
-        <Style TargetType="{x:Type c:HM12_ValueInput}" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
-            <Setter Property="Command" Value="{Binding EditSetpointCommand}" />
-            <Setter Property="IsAuthorized" Value="{Binding IsAuthorized}" />
-        </Style>
         <Style x:Key="Heaters.ScrollUp" TargetType="{x:Type c:HM07_ActionButton}" BasedOn="{StaticResource {x:Type c:HM07_ActionButton}}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding VerticalOffset, ElementName=ZoneScroll}" Value="0">
@@ -84,7 +79,8 @@
                                             IsMonitored="{Binding IsMonitored, Mode=TwoWay}"
                                             StateLed="{Binding StateLed}" OutputLed="{Binding OutputLed}"
                                             ToggleZoneCommand="{Binding ToggleZoneCommand}"
-                                            ToggleMonitorCommand="{Binding ToggleMonitorCommand}" />
+                                            ToggleMonitorCommand="{Binding ToggleMonitorCommand}"
+                                            EditCommand="{Binding EditSetpointCommand}" IsAuthorized="{Binding IsAuthorized}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -280,7 +280,7 @@ Diese Symbole sind in Modulen und Seiten als neu genannt und stehen hier einmal 
 | `Icon.Weight.Last` | Letztes Gewicht (mit Index der Waage) | Beschriftung „Letztes Gewicht“ | HS-01 |
 | `Icon.Weight.Scale` | Waage / Netto-Gewicht | Beschriftung („Netto“) | HS-13 |
 
-Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden hier ergänzt (Namensschema `Icon.<Bereich>.<Name>`).
+Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden hier ergänzt (Namensschema `Icon.<Bereich>.<Name>`). Vollständigkeit: `src/tools/check_icons.py` prüft, dass jedes in Seiten, Controls und ViewModels verwendete `Icon.*` in `Themes/Icons.xaml` definiert und in Abschnitt 6/6.1 beschrieben ist (Stand Integration M2-06: 68 Symbole, keines fehlt; die Geometrien sind Platzhalter, Verfeinerung in M3). Fehlt ein Symbol, wird zuerst die Zeile in dieser Tabelle, dann die Geometrie in `Icons.xaml` ergänzt.
 
 ## 7. Zusammenspiel mit Modulen (Maßvorgaben)
 

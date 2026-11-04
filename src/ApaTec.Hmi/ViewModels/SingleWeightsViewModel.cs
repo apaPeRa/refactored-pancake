@@ -164,7 +164,7 @@ public sealed partial class SingleWeightsViewModel : PageViewModelBase
     {
         if (Mode == SamplingMode.Single && HasValues && _dialogs is not null)
         {
-            var request = new NavigationParameters("title", _loc.GetString("HS14_Start_Title")).With("text", _loc.GetString("HS14_Start_Text"));
+            var request = new ConfirmationRequest(_loc.GetString("HS14_Start_Title"), _loc.GetString("HS14_Start_Text"));
             var result = await _dialogs.ShowAsync<bool>(DialogKeys.Confirmation, request);
             if (!result.Accepted)
             {

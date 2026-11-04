@@ -40,25 +40,34 @@
     <Setter Property="Margin" Value="{StaticResource Inset.S}" />
   </Style>
 
+  <!-- Filterzeile antippbar: Taste ohne eigene Darstellung, aktive Zeile mit Border.Thick und Brush.Border.Focus -->
+  <ControlTemplate x:Key="HM13_FilterRowButtonTemplate" TargetType="Button">
+    <ContentPresenter />
+  </ControlTemplate>
+
   <DataTemplate x:Key="HM13_FilterFieldTemplate" DataType="{x:Type local:FilterField}">
-    <Border x:Name="Row"
-            Background="{DynamicResource Brush.Surface}"
-            BorderBrush="{DynamicResource Brush.Border.Control}"
-            BorderThickness="{StaticResource Border.Thin}"
-            CornerRadius="{StaticResource Radius.Control}"
-            MinHeight="{StaticResource Size.Touch.Default}"
-            Margin="{StaticResource Inset.XS}"
-            Padding="{StaticResource Inset.S}">
-      <Grid>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Style="{StaticResource Text.Caption}" Text="{Binding Name}" VerticalAlignment="Center" />
-        <TextBlock x:Name="ValueText" Grid.Column="1" Style="{StaticResource Text.Value}" Text="{Binding Value}" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBlock x:Name="PlaceholderText" Grid.Column="1" Style="{StaticResource Text.Disabled}" Text="{Binding Placeholder}" TextAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
-      </Grid>
-    </Border>
+    <Button Template="{StaticResource HM13_FilterRowButtonTemplate}" Focusable="False"
+            Command="{Binding SelectFieldCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HM13_NumericKeypadDialog}}}"
+            CommandParameter="{Binding}">
+      <Border x:Name="Row"
+              Background="{DynamicResource Brush.Surface}"
+              BorderBrush="{DynamicResource Brush.Border.Control}"
+              BorderThickness="{StaticResource Border.Thin}"
+              CornerRadius="{StaticResource Radius.Control}"
+              MinHeight="{StaticResource Size.Touch.Default}"
+              Margin="{StaticResource Inset.XS}"
+              Padding="{StaticResource Inset.S}">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <TextBlock Style="{StaticResource Text.Caption}" Text="{Binding Name}" VerticalAlignment="Center" />
+          <TextBlock x:Name="ValueText" Grid.Column="1" Style="{StaticResource Text.Value}" Text="{Binding Value}" TextAlignment="Right" VerticalAlignment="Center" />
+          <TextBlock x:Name="PlaceholderText" Grid.Column="1" Style="{StaticResource Text.Disabled}" Text="{Binding Placeholder}" TextAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
+        </Grid>
+      </Border>
+    </Button>
     <DataTemplate.Triggers>
       <DataTrigger Binding="{Binding Value}" Value="">
         <Setter TargetName="ValueText" Property="Visibility" Value="Collapsed" />
@@ -114,7 +123,17 @@
                   <ColumnDefinition Width="*" />
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource Text.Metric}" Text="{TemplateBinding InputText}" TextAlignment="Right" TextWrapping="NoWrap" VerticalAlignment="Center" />
+                <TextBlock x:Name="InputDisplay" Style="{StaticResource Text.Metric}" Text="{TemplateBinding InputText}" TextAlignment="Right" TextWrapping="NoWrap" VerticalAlignment="Center" />
+                <!-- Textvariante: echtes Textfeld, die Windows-Bildschirmtastatur erscheint bei Touch-Fokus -->
+                <TextBox x:Name="TextEdit" Visibility="Collapsed"
+                         MaxLength="40"
+                         VerticalContentAlignment="Center"
+                         Padding="{StaticResource Inset.S}"
+                         FontSize="{StaticResource Font.Size.Value}"
+                         Foreground="{DynamicResource Brush.Text.Primary}"
+                         Background="Transparent"
+                         BorderBrush="Transparent"
+                         Text="{Binding InputText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBlock x:Name="TimePlaceholder" Style="{StaticResource Text.Metric}" Foreground="{DynamicResource Brush.Text.Disabled}"
                            Text="{res:Loc HM13_TimePlaceholder_Text}" TextAlignment="Right" TextWrapping="NoWrap" VerticalAlignment="Center" Visibility="Collapsed" />
                 <TextBlock Grid.Column="1" Style="{StaticResource Text.Value}" Text="{TemplateBinding Unit}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
@@ -267,6 +286,10 @@
             <!-- Text: Windows-Bildschirmtastatur statt Ziffernblock -->
             <Trigger Property="InputKind" Value="Text">
               <Setter TargetName="Keypad" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="InputDisplay" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="TextEdit" Property="Visibility" Value="Visible" />
+              <Setter TargetName="Root" Property="FocusManager.IsFocusScope" Value="True" />
+              <Setter TargetName="Root" Property="FocusManager.FocusedElement" Value="{Binding ElementName=TextEdit}" />
             </Trigger>
             <!-- Filter: zwei Eingabezeilen, Ziffernblock ohne Vorzeichen und Komma -->
             <Trigger Property="InputKind" Value="Filter">

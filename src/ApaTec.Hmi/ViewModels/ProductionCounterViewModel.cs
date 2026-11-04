@@ -40,13 +40,6 @@ public sealed partial class ProductionCounterViewModel : PopupViewModelBase
     [ObservableProperty]
     private TimeSpan _resetHoldDuration = TimeSpan.FromMilliseconds(1000);
 
-    /// <summary>Haltezustand und Fortschritt (0 bis 1) fuer den Streifen der Haltetaste (HM-07); wird von einem Halteverhalten der Taste gesetzt.</summary>
-    [ObservableProperty]
-    private bool _isResetHolding;
-
-    [ObservableProperty]
-    private double _resetHoldProgress;
-
     /// <summary>false bei ungueltigen Werten: Reset deaktiviert.</summary>
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(ResetCommand))]
@@ -92,13 +85,11 @@ public sealed partial class ProductionCounterViewModel : PopupViewModelBase
         }
     }
 
-    /// <summary>Wird nach Ablauf der Haltedauer ausgeloest (Haltetaste statt Bestaetigungsdialog, S02-2).</summary>
+    /// <summary>Wird nach Ablauf der Haltedauer ausgeloest (Haltetaste <c>HM07_PressBehavior</c> statt Bestaetigungsdialog, S02-2).</summary>
     [RelayCommand(CanExecute = nameof(IsValid))]
     private async Task ResetAsync()
     {
         await _production.ResetCounterAsync();
-        IsResetHolding = false;
-        ResetHoldProgress = 0;
         Refresh();
     }
 }

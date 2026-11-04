@@ -6,10 +6,20 @@ namespace ApaTec.Hmi.Models;
 public sealed record MachineValueLimits(double Minimum, double Maximum);
 
 /// <summary>Anforderung an das Eingabe-Pop-up (<c>DialogKeys.Input</c>, HM-13) der Seiten HS-22 bis HS-26; Ergebnis ist <c>double?</c> (Zahl) bzw. <c>string</c> (Text).</summary>
-public sealed record MachineInputRequest(string Title, double? Value, string Unit, int Decimals, MachineValueLimits? Limits, InputKind Kind, string? Text = null, string? HelpText = null);
+public sealed record MachineInputRequest(string Title, double? Value, string Unit, int Decimals, MachineValueLimits? Limits, InputKind Kind, string? Text = null, string? HelpText = null) : IInputRequest
+{
+    double? IInputRequest.Minimum => Limits?.Minimum;
+
+    double? IInputRequest.Maximum => Limits?.Maximum;
+}
 
 /// <summary>Anforderung an das Bestaetigungs-Pop-up (<c>DialogKeys.Confirmation</c>, HM-14); Ergebnis ist <c>bool</c>.</summary>
-public sealed record MachineConfirmRequest(string Title, string Message, string AcceptLabel, string CancelLabel);
+public sealed record MachineConfirmRequest(string Title, string Message, string AcceptLabel, string CancelLabel) : IConfirmationRequest
+{
+    string? IConfirmationRequest.AcceptLabel => AcceptLabel;
+
+    string? IConfirmationRequest.CancelLabel => CancelLabel;
+}
 
 /// <summary>State-Wert einer Heizzone (HS-22): aus, Zieltemperatur erreicht, nicht bereit/Fehler.</summary>
 public enum HeaterZoneState

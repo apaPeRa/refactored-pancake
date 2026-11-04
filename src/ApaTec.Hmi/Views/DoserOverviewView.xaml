@@ -19,7 +19,8 @@
                                Load="{Binding Load}" IsSelected="{Binding IsSelected}" IsEmptying="{Binding IsEmptying}"
                                CrossScrewEnabled="{Binding CrossScrewEnabled, Mode=TwoWay}" AgitatorEnabled="{Binding AgitatorEnabled, Mode=TwoWay}"
                                RegulationEnabled="{Binding RegulationEnabled, Mode=TwoWay}"
-                               ManualCommand="{Binding ManualCommand}" EmptyCommand="{Binding ToggleEmptyingCommand}" OpenDetailCommand="{Binding OpenDetailCommand}" />
+                               ManualCommand="{Binding ManualCommand}" EmptyCommand="{Binding ToggleEmptyingCommand}" OpenDetailCommand="{Binding OpenDetailCommand}"
+                               EditCommand="{Binding EditFieldCommand}" />
         </DataTemplate>
     </UserControl.Resources>
     <Grid>

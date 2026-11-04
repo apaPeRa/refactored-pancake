@@ -87,7 +87,20 @@ public enum DoserAdjustState
 public sealed record DoserValueLimits(double Minimum, double Maximum, int Decimals, string Unit);
 
 /// <summary>Anforderung an das Eingabe-Pop-up (<c>DialogKeys.Input</c>, HM-13): Titel, vorbelegter Wert, Grenzen und Handbuchtext als Hilfetext (S11-7); Ergebnis ist <c>double?</c>.</summary>
-public sealed record DoserInputRequest(string Title, double Value, DoserValueLimits Limits, string? HelpText);
+public sealed record DoserInputRequest(string Title, double Value, DoserValueLimits Limits, string? HelpText) : IInputRequest
+{
+    double? IInputRequest.Value => Value;
+
+    string IInputRequest.Unit => Limits.Unit;
+
+    int IInputRequest.Decimals => Limits.Decimals;
+
+    double? IInputRequest.Minimum => Limits.Minimum;
+
+    double? IInputRequest.Maximum => Limits.Maximum;
+
+    Controls.InputKind IInputRequest.Kind => Controls.InputKind.Number;
+}
 
 /// <summary>Sollgewicht und letztes Gewicht der Kontrollwaage (Titelzeile von HS-41, Basis fuer "Soll absolut").</summary>
 public sealed record DoserReferenceWeights(double TargetWeight, double LastWeight);

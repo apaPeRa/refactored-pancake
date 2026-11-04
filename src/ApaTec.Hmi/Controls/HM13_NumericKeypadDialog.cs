@@ -27,6 +27,9 @@ public class HM13_NumericKeypadDialog : Control
     public static readonly DependencyProperty SignCommandProperty = DependencyProperty.Register(nameof(SignCommand), typeof(ICommand), typeof(HM13_NumericKeypadDialog), new PropertyMetadata(null));
     public static readonly DependencyProperty DecimalSeparatorCommandProperty = DependencyProperty.Register(nameof(DecimalSeparatorCommand), typeof(ICommand), typeof(HM13_NumericKeypadDialog), new PropertyMetadata(null));
 
+    // Ergaenzung zur Moduldefinition: Antippen einer Filterzeile macht sie zur aktiven Eingabezeile (Parameter: das FilterField).
+    public static readonly DependencyProperty SelectFieldCommandProperty = DependencyProperty.Register(nameof(SelectFieldCommand), typeof(ICommand), typeof(HM13_NumericKeypadDialog), new PropertyMetadata(null));
+
     static HM13_NumericKeypadDialog()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(HM13_NumericKeypadDialog), new FrameworkPropertyMetadata(typeof(HM13_NumericKeypadDialog)));
@@ -70,4 +73,6 @@ public class HM13_NumericKeypadDialog : Control
     public ICommand? SignCommand { get => (ICommand?)GetValue(SignCommandProperty); set => SetValue(SignCommandProperty, value); }
 
     public ICommand? DecimalSeparatorCommand { get => (ICommand?)GetValue(DecimalSeparatorCommandProperty); set => SetValue(DecimalSeparatorCommandProperty, value); }
+
+    public ICommand? SelectFieldCommand { get => (ICommand?)GetValue(SelectFieldCommandProperty); set => SetValue(SelectFieldCommandProperty, value); }
 }

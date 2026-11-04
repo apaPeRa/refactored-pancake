@@ -9,6 +9,8 @@ cd src
 dotnet build ApaTec.Hmi.sln -p:EnableWindowsTargeting=true     # 0 Fehler, 0 Warnungen (Warnungen sind Fehler)
 python3 tools/check_design.py                                   # statische Prüfungen (siehe unten)
 python3 tools/check_modules.py                                  # HM-01..HM-38 gegen Modulliste.md (Klasse, Stil, DesignData, kein Logik-Code)
+python3 tools/check_pages.py                                    # HS-01..HS-43 und Dialoge gegen Seitenregister Navigation.md 5.1 (ViewModel, View, Code-behind, Texte, Literale)
+python3 tools/check_icons.py                                    # jedes verwendete Icon.* in Icons.xaml und Designsystem 6/6.1
 find . -name '*.xaml' -o -name '*.resx' | grep -v -e /obj/ -e /bin/ | xargs xmllint --noout
 ```
 
@@ -23,6 +25,8 @@ src/
 ├─ ApaTec.Hmi.sln
 ├─ tools/check_design.py                 statische Prüfungen (Designsystem, Literale, Ressourcen)
 ├─ tools/check_modules.py                Modulprüfung HM-01 bis HM-38
+├─ tools/check_pages.py                  Seitenprüfung HS-01 bis HS-43 und Dialoge
+├─ tools/check_icons.py                  Symbolprüfung (verwendet, definiert, dokumentiert)
 └─ ApaTec.Hmi/                            net8.0-windows, WPF, Nullable, TreatWarningsAsErrors
    ├─ Program.cs                          Einstieg und Composition Root (Generic Host)
    ├─ App.xaml(.cs)                       bindet Theme, Tokens, Icons, Basisstile; ViewLocator; kein StartupUri
@@ -34,6 +38,7 @@ src/
    │  └─ Dummy/                           Dummy-Implementierungen mit [DummyService]
    ├─ ViewModels/                         PageViewModelBase, PopupViewModelBase, ShellViewModel, FunctionBarItem, Platzhalter-VMs
    ├─ Views/                              <Name>View.xaml (leeres Code-behind); PlaceholderPageView, PlaceholderPopupView
+   │  └─ Dialogs/                         Views der Dialoge ohne HS-Seite (Eingabe, Bestätigung, Filter, Datei/Ergebnis, Sprache, Benutzer, Rezept)
    ├─ Controls/                           wiederverwendbare Module HM<nn>_<Name> (Custom Controls, A-73)
    ├─ Models/                             Datenmodelle der Dienste (UserRole, UserInfo, OperatingMode, MessageClass …)
    └─ DesignData/                         Beispielwerte für den Entwurfsmodus
@@ -108,6 +113,27 @@ Ein Modul besteht aus `Controls/HM<nn>_<Name>.cs` (Custom Control, nur Dependenc
 - **Namenskonflikte** vermeiden: keine Typnamen von WPF (`GroupStyle`, `ProgressBar`, `ToggleButton` …) in `ApaTec.Hmi.Controls` verwenden, wenn das Modul sie unqualifiziert braucht; Klassen tragen die Modulnummer (`HM10_ProgressBar`), Hilfstypen einen fachlichen Namen, der unter allen 38 Modulen eindeutig ist (sonst Doppeldefinition CS0101). Aufzählungsmember, die wie Framework-Typen heißen, vollqualifiziert ansprechen.
 - **Lint und Modulprüfung** laufen nach jeder Änderung an Controls: `check_design.py` (Literale, Verweise, Light/Dark gleiche Schlüssel) und `check_modules.py` (Klasse, `.Styles.xaml` mit Stil für den Typ, `DesignData`).
 
+## Dialoge und Eingabe-Verträge (A-88, A-89)
+
+Dialoge ohne HS-Seite öffnet `IDialogService.ShowAsync<T>(DialogKeys.X, parameter)`; jedes Dialog-ViewModel (`ViewModels/<Name>DialogViewModel.cs`, `[DialogKey]`) hat seine View unter `Views/Dialogs/<Name>DialogView.xaml` und seine Texte in `Resources/Strings/Dialogs.resx`. Gibt es kein ViewModel zum Schlüssel, erscheint die Platzhalteransicht.
+
+| Schlüssel | ViewModel | Parameter | Ergebnis (`DialogResult<T>.Value`) |
+|---|---|---|---|
+| `Input` | `InputDialogViewModel` | `IInputRequest` oder `NavigationParameters` (title, currentValue/value, text, unit, minimum, maximum, decimals, helpText, errorText, inputKind; Schreibweise egal) | `double` (Zahl; Zeit als Minuten seit 00:00) bzw. `string` (Text) |
+| `Confirmation` | `ConfirmationDialogViewModel` | `IConfirmationRequest` oder `NavigationParameters` (title, message/text, confirmText, cancelText) | `bool` (`Accepted` = Ja) |
+| `Filter` | `FilterDialogViewModel` | `SystemDialogParameters.Filter(title, fields)` | `IReadOnlyList<FilterField>` |
+| `FileResult` | `FileResultDialogViewModel` | `SystemDialogParameters.FileSelect(...)` bzw. `.FileResult(...)` | `string` (Dateiname) bzw. keines |
+| `Language` | `LanguageDialogViewModel` | – | `CultureInfo` (Aufrufer ruft `SetCulture`) |
+| `User` | `UserDialogViewModel` | optional `requiredRole` | `UserInfo` (meldet über `IUserSession.SignIn/SignOut` an) |
+| `Recipe` | `RecipeDialogViewModel` | `currentRecipe` | Rezeptname (Aufrufer ruft `IRecipeService.Select`) |
+| `Search`, `ScheduleEntry`, `PostDoserHints` | `SearchPopupViewModel`, `HotGlueScheduleEntryViewModel`, `PostDoserHintsViewModel` | `SearchRequest`, `HotGlueScheduleEntryRequest`, – | `SearchHit`, `HotGlueScheduleResult`, – |
+
+Neue Aufrufer verwenden die Datensätze `InputRequest` und `ConfirmationRequest` (`Models/DialogRequests.cs`) oder lassen ihren Request-Typ `IInputRequest` bzw. `IConfirmationRequest` implementieren. Übernehmen ist im Eingabe-Pop-up gesperrt, solange der Wert fehlt oder außerhalb von Minimum/Maximum liegt.
+
+## Halte- und Totmanntasten (A-90)
+
+`HM07_PressBehavior` (Attached Properties auf `HM07_ActionButton`) meldet dem ViewModel das Drücken und Loslassen: `PressCommand`/`ReleaseCommand` für `TriggerMode="WhilePressed"` (Jog, Nachfüllen), `HoldCompletedCommand` für `TriggerMode="Hold"` (Reset, Geber setzen; `HoldDuration`, `IsHolding`, `HoldProgress` führt das Verhalten selbst). Kein `Command` setzen, wenn die Aktion erst nach der Haltedauer laufen soll. Eigene Zeitmessung im ViewModel entfällt.
+
 ## Hauptfenster und Rahmen (Erweiterungspunkte für HM-01 bis HM-06)
 
 `MainWindow.xaml` ist ein proportionales Grid nach Designsystem 3.2 (Spalten 3\* : 37\*, Zeilen 4\* : 3\* : 34\* : 4\*, Tokens `Size.*`), DataContext ist `ShellViewModel`. Platzhalter-`ContentControl` (Stil `Frame.Placeholder`), die der Rahmen-Agent durch das jeweilige Modul ersetzt:
@@ -133,4 +159,4 @@ Ein Modul besteht aus `Controls/HM<nn>_<Name>.cs` (Custom Control, nur Dependenc
 
 ## Entwurfsentscheidungen und Annahmen
 
-A-81 bis A-87 in `docs/00_Plan/Annahmen.md` (Build-Umgebung, Pakete, Zusatz-Tokens, Architektur, Hauptfenster, Strichstärken-Tokens, Modulprüfung, Integrationsregeln). Der Dienst `IClockService` läuft in der Dummy-Variante mit der Systemzeit; `ISettingsService` hält Thema und Sprache nur im Speicher.
+A-81 bis A-92 in `docs/00_Plan/Annahmen.md` (Build-Umgebung, Pakete, Zusatz-Tokens, Architektur, Hauptfenster, Strichstärken-Tokens, Modulprüfung, Integrationsregeln, Dialog-Verträge, Benutzer-Dummy, Halteverhalten, Control-Ergänzungen, Prüfwerkzeuge). Der Dienst `IClockService` läuft in der Dummy-Variante mit der Systemzeit; `ISettingsService` hält Thema und Sprache nur im Speicher.

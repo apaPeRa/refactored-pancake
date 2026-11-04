@@ -142,6 +142,16 @@ public sealed class HM35_RegulationBlock : Control
         set => SetValue(IncreaseCommandProperty, value);
     }
 
+    /// <summary>Antippen eines Parameterfelds (Eingabe-Pop-up); CommandParameter ist der Feldname (<c>SampleCount</c>, <c>Step</c>, <c>Tolerance</c>, <c>MaxCorrection</c>, <c>CurrentCorrection</c>). Ergaenzung (Integration, A-88).</summary>
+    public static readonly DependencyProperty EditCommandProperty =
+        DependencyProperty.Register(nameof(EditCommand), typeof(ICommand), typeof(HM35_RegulationBlock), new PropertyMetadata(null));
+
+    public ICommand? EditCommand
+    {
+        get => (ICommand?)GetValue(EditCommandProperty);
+        set => SetValue(EditCommandProperty, value);
+    }
+
     /// <summary>Regulierung ein/aus.</summary>
     public static readonly DependencyProperty ToggleCommandProperty =
         DependencyProperty.Register(nameof(ToggleCommand), typeof(ICommand), typeof(HM35_RegulationBlock), new PropertyMetadata(null));

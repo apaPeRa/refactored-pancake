@@ -51,7 +51,16 @@ public sealed record CartonFeederState(
     IReadOnlyList<double> TrackAngles);
 
 /// <summary>Anforderung an das Eingabe-Pop-up (<c>DialogKeys.Input</c>, HM-13) der Zufuehrungsseiten; Ergebnis ist der neue Wert (<c>double</c>).</summary>
-public sealed record FeederInputRequest(string Title, double Value, string Unit, int Decimals, FeederLimits Limits, string? HelpText);
+public sealed record FeederInputRequest(string Title, double Value, string Unit, int Decimals, FeederLimits Limits, string? HelpText) : IInputRequest
+{
+    double? IInputRequest.Value => Value;
+
+    double? IInputRequest.Minimum => Limits.Minimum;
+
+    double? IInputRequest.Maximum => Limits.Maximum;
+
+    Controls.InputKind IInputRequest.Kind => Controls.InputKind.Number;
+}
 
 /// <summary>
 /// Bearbeitbarer Zahlenwert einer Zufuehrungsseite fuer ein HM-12-Eingabefeld: Wert, Grenzen, Texte (aus <c>.resx</c>, vom ViewModel gesetzt),

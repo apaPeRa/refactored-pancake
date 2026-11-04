@@ -69,9 +69,8 @@
                                  AutomationProperties.Name="{res:Loc ProductionCounter_Reset_Automation}"
                                  TriggerMode="Hold"
                                  HoldDuration="{Binding ResetHoldDuration}"
-                                 IsHolding="{Binding IsResetHolding}"
-                                 HoldProgress="{Binding ResetHoldProgress}"
-                                 Command="{Binding ResetCommand}" />
+                                 IsEnabled="{Binding IsValid}"
+                                 c:HM07_PressBehavior.HoldCompletedCommand="{Binding ResetCommand}" />
         </Grid>
     </c:HM14_PopupFrame>
 </UserControl>

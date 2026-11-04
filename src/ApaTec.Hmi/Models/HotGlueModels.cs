@@ -88,7 +88,7 @@ public sealed record HotGlueInputRequest(
     double? Maximum,
     int Decimals,
     InputKind Kind = InputKind.Number,
-    string? HelpText = null);
+    string? HelpText = null) : IInputRequest;
 
 /// <summary>Anforderung an das Zeitplan-Eintrag-Pop-up (<c>DialogKeys.ScheduleEntry</c>, HM-30): Tag, vorhandener Eintrag (null = Neuanlage), alle Eintraege des Tages und Berechtigung.</summary>
 public sealed record HotGlueScheduleEntryRequest(DayOfWeek Day, ScheduleEntry? Existing, IReadOnlyList<ScheduleEntry> DayEntries, bool IsAuthorized);

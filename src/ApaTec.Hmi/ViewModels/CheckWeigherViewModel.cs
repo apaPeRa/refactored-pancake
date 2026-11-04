@@ -228,12 +228,7 @@ public sealed partial class CheckWeigherViewModel : PageViewModelBase
             return;
         }
 
-        var request = new NavigationParameters("title", field.Label)
-            .With("value", field.Value)
-            .With("unit", field.BaseUnit)
-            .With("decimals", field.Decimals)
-            .With("minimum", field.Minimum)
-            .With("maximum", field.Maximum);
+        var request = new InputRequest(field.Label, field.Value, field.BaseUnit, field.Decimals, field.Minimum, field.Maximum);
 
         field.IsEditing = true;
         DialogResult<double> result;
@@ -271,7 +266,7 @@ public sealed partial class CheckWeigherViewModel : PageViewModelBase
             return false;
         }
 
-        var request = new NavigationParameters("title", _loc.GetString(titleKey)).With("text", _loc.GetString(textKey));
+        var request = new ConfirmationRequest(_loc.GetString(titleKey), _loc.GetString(textKey));
         var result = await _dialogs.ShowAsync<bool>(DialogKeys.Confirmation, request);
         return result.Accepted;
     }

@@ -39,6 +39,8 @@
                 <TextBlock x:Name="GlueName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
                            Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM12_ValueInput Grid.Column="1" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0" RequiresPermission="True"
+                                   Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                   IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
                                    NumberValue="{Binding Setpoint, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
                 <c:HM11_ValueDisplay Grid.Column="2" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0"
                                      NumberValue="{Binding Actual, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -70,6 +72,8 @@
                                      IsChecked="{Binding IsMonitored, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                      ToggleCommand="{Binding ToggleMonitorCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM12_ValueInput Grid.Column="3" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0" RequiresPermission="True"
+                                   Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                   IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
                                    NumberValue="{Binding Setpoint, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
                 <c:HM11_ValueDisplay Grid.Column="4" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0"
                                      NumberValue="{Binding Actual, RelativeSource={RelativeSource TemplatedParent}}" />

@@ -353,4 +353,14 @@ public sealed class HM20_DosingCard : Control
         get => (ICommand?)GetValue(OpenWeightCorrectionCommandProperty);
         set => SetValue(OpenWeightCorrectionCommandProperty, value);
     }
+
+    /// <summary>Antippen eines Eingabefelds (Eingabe-Pop-up); CommandParameter ist das <c>DoserField</c>. Ergaenzung (Integration, A-88), null = Felder reagieren nicht.</summary>
+    public static readonly DependencyProperty EditCommandProperty =
+        DependencyProperty.Register(nameof(EditCommand), typeof(ICommand), typeof(HM20_DosingCard), new PropertyMetadata(null));
+
+    public ICommand? EditCommand
+    {
+        get => (ICommand?)GetValue(EditCommandProperty);
+        set => SetValue(EditCommandProperty, value);
+    }
 }

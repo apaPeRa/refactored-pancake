@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels">
+    <!-- Gemeinsame Vorlagen der Listen-Pop-ups (Benutzer, Sprache, Rezept). Auswahl: Haken (Icon.Confirm) und Kontur Border.Thick, nicht nur Farbe. -->
+
+    <Style x:Key="Dialog.ChoiceButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="{StaticResource Inset.XS}" />
+        <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />
+    </Style>
+
+    <DataTemplate x:Key="Dialog.ChoiceItem" DataType="{x:Type vm:DialogChoiceItem}">
+        <Button x:Name="Choice" Style="{StaticResource Dialog.ChoiceButton}"
+                Command="{Binding DataContext.ChooseCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                CommandParameter="{Binding}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Viewbox x:Name="Check" Visibility="Hidden" Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}" VerticalAlignment="Center">
+                    <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                        <Path Data="{StaticResource Icon.Confirm}"
+                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                              StrokeThickness="{StaticResource Size.Icon.Stroke}"
+                              StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                    </Grid>
+                </Viewbox>
+                <TextBlock Grid.Column="1" Text="{Binding Label}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
+            </Grid>
+        </Button>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                <Setter TargetName="Choice" Property="Background" Value="{DynamicResource Brush.Button.Active}" />
+                <Setter TargetName="Choice" Property="Foreground" Value="{DynamicResource Brush.Text.OnActive}" />
+                <Setter TargetName="Check" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

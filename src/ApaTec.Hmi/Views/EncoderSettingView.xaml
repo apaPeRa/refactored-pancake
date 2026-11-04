@@ -4,7 +4,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
-             xmlns:views="clr-namespace:ApaTec.Hmi.Views"
              xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
              xmlns:models="clr-namespace:ApaTec.Hmi.Models"
              xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
@@ -45,9 +44,9 @@
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="{StaticResource Size.Touch.Large}"
                                     Label="{res:Loc HS32_SetEncoder_Label}" TriggerMode="Hold" HoldDuration="{Binding HoldDuration}"
                                     RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanSet}"
-                                    IsHolding="{Binding IsHolding}" HoldProgress="{Binding HoldProgress}"
-                                    views:ManualOperationPressBehavior.PressCommand="{Binding BeginSetCommand}"
-                                    views:ManualOperationPressBehavior.ReleaseCommand="{Binding EndSetCommand}" />
+                                    IsHolding="{Binding IsHolding, Mode=OneWayToSource}"
+                                    controls:HM07_PressBehavior.PressCommand="{Binding BeginSetCommand}"
+                                    controls:HM07_PressBehavior.HoldCompletedCommand="{Binding SetEncoderCommand}" />
 
         <!-- E12 Statustext der Steuerung -->
         <controls:HM27_NoticeBox Grid.Row="2" Grid.ColumnSpan="7" Margin="{StaticResource Inset.S}" Kind="Info"

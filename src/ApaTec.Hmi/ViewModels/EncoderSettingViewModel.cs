@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using ApaTec.Hmi.Controls;
 using ApaTec.Hmi.Models;
 using ApaTec.Hmi.Navigation;
@@ -25,20 +24,15 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
     /// <summary>Haltedauer des langen Druckens in Millisekunden (Dummy, OP-42).</summary>
     public const int HoldMilliseconds = 1000;
 
-    private const double TickMs = 50;
-
     private readonly INavigationService _navigation;
     private readonly IUserSession _session;
     private readonly IEncoderService _encoders;
     private readonly IMessageService _messages;
     private readonly ILocalizationService _localization;
     private readonly SynchronizationContext? _ui = SynchronizationContext.Current;
-    private readonly System.Timers.Timer _holdTimer = new(TickMs);
-    private readonly Stopwatch _holdWatch = new();
 
     private IReadOnlyList<EncoderInfo> _list = Array.Empty<EncoderInfo>();
     private int _index;
-    private bool _isHoldActive;
     private string? _feedback;
     private bool _subscribed;
 
@@ -78,11 +72,9 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
     [ObservableProperty]
     private bool _isAuthorized = true;
 
+    /// <summary>Lauf des langen Drueckens; wird von <c>HM07_PressBehavior</c> an der Taste gesetzt (OneWayToSource) und sperrt das Blaettern.</summary>
     [ObservableProperty]
     private bool _isHolding;
-
-    [ObservableProperty]
-    private double _holdProgress;
 
     [ObservableProperty]
     private int _encoderCount = 1;
@@ -97,7 +89,6 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
         _encoders = encoders;
         _messages = messages;
         _localization = localization;
-        _holdTimer.Elapsed += (_, _) => HandbetriebSupport.Post(_ui, Tick);
     }
 
     /// <summary>Entwurfsmodus: Dummy-Dienste, erster Geber (Bildbeispiel).</summary>
@@ -116,12 +107,11 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
     /// <summary>Taste bedienbar: Geber erreichbar und Not-Aus gedrueckt (sonst deaktiviert, Grund im Warnhinweis).</summary>
     public bool CanSet => IsReachable && IsEmergencyStopPressed;
 
-    public bool CanPage => !_isHoldActive && !IsHolding;
+    public bool CanPage => !IsHolding;
 
     public override void OnNavigatedTo(object? parameter)
     {
         Subscribe();
-        CancelHold();
         _feedback = null;
         Load(parameter is NavigationParameters p ? p.Get<int>(EncoderIndexParameter) : 0);
         if (!CanSet)
@@ -130,20 +120,14 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
         }
     }
 
-    public override void OnNavigatedFrom()
-    {
-        CancelHold();
-        Unsubscribe();
-    }
+    public override void OnNavigatedFrom() => Unsubscribe();
 
+    partial void OnIsHoldingChanged(bool value) => NotifyPaging();
+
+    /// <summary>Beginn des Drueckens auf "Geber setzen": ohne Not-Aus oder Rolle nur Hinweis (bzw. Benutzer-Pop-up); die Taste laeuft dann nicht (HM07_PressBehavior).</summary>
     [RelayCommand]
     private async Task BeginSetAsync()
     {
-        if (_isHoldActive)
-        {
-            return;
-        }
-
         if (!CanSet)
         {
             _messages.ShowHint(_localization.GetString("HS32_NoEmergencyStop_Text"));
@@ -154,19 +138,25 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
         {
             _messages.ShowHint(_localization.Format("Msg_PermissionRequired", RequiredRoleText));
             await _session.RequestRoleAsync(RequiredRole);
+        }
+    }
+
+    /// <summary>Haltedauer erreicht (HM07_PressBehavior, Befehl nach <see cref="HoldDuration"/>): uebernimmt die Motorposition als neuen Nullpunkt.</summary>
+    [RelayCommand]
+    private void SetEncoder()
+    {
+        if (!CanSet || !_session.HasRole(RequiredRole) || _list.Count == 0)
+        {
             return;
         }
 
-        _isHoldActive = true;
-        HoldProgress = 0;
-        IsHolding = true;
-        _holdWatch.Restart();
-        _holdTimer.Start();
-        NotifyPaging();
-    }
+        if (_encoders.SetEncoderZero(_list[_index].Index))
+        {
+            _feedback = _localization.GetString("HS32_EncoderSet_Text");
+        }
 
-    [RelayCommand]
-    private void EndSet() => CancelHold();
+        Refresh();
+    }
 
     [RelayCommand(CanExecute = nameof(CanPrevious))]
     private void PreviousEncoder() => Page(-1);
@@ -185,52 +175,6 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
         {
             _navigation.ReplaceParameter(new NavigationParameters(EncoderIndexParameter, next));
         }
-    }
-
-    private void Tick()
-    {
-        if (!_isHoldActive)
-        {
-            return;
-        }
-
-        if (!CanSet || !_session.HasRole(RequiredRole))
-        {
-            CancelHold();
-            return;
-        }
-
-        HoldProgress = Math.Min(1, _holdWatch.ElapsedMilliseconds / (double)HoldMilliseconds);
-        if (HoldProgress < 1)
-        {
-            return;
-        }
-
-        StopHold();
-        if (_encoders.SetEncoderZero(_list[_index].Index))
-        {
-            _feedback = _localization.GetString("HS32_EncoderSet_Text");
-        }
-
-        Refresh();
-    }
-
-    private void CancelHold()
-    {
-        if (_isHoldActive || IsHolding)
-        {
-            StopHold();
-        }
-    }
-
-    private void StopHold()
-    {
-        _holdTimer.Stop();
-        _holdWatch.Reset();
-        _isHoldActive = false;
-        IsHolding = false;
-        HoldProgress = 0;
-        NotifyPaging();
     }
 
     private void NotifyPaging()
@@ -301,12 +245,6 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
         _session.SessionChanged -= OnExternalChanged;
     }
 
-    private void OnExternalChanged(object? sender, EventArgs e) => HandbetriebSupport.Post(_ui, () =>
-    {
-        Refresh();
-        if (_isHoldActive && (!CanSet || !IsAuthorized))
-        {
-            CancelHold();
-        }
-    });
+    // Verliert die Taste Not-Aus oder Rolle, sperrt sie sich selbst (IsEnabled/IsAuthorized) und die Haltefunktion bricht ab.
+    private void OnExternalChanged(object? sender, EventArgs e) => HandbetriebSupport.Post(_ui, Refresh);
 }

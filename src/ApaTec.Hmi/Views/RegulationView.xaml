@@ -8,13 +8,6 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=vm:RegulationViewModel, IsDesignTimeCreatable=True}">
     <!-- HS-23 Regulierung: zwei Panels 6 : 6 (Hauptdosierer | Nachdosierer), je ein HM-35, ohne Bildlauf. -->
-    <UserControl.Resources>
-        <!-- Lücke HM-35: keine Feldbefehle; der Stil gilt nur in dieser Seite, Parameter ist die Feldbeschriftung. -->
-        <Style TargetType="{x:Type c:HM12_ValueInput}" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
-            <Setter Property="Command" Value="{Binding EditFieldCommand}" />
-            <Setter Property="CommandParameter" Value="{Binding Label, RelativeSource={RelativeSource Self}}" />
-        </Style>
-    </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,7 +21,8 @@
                                 CurrentCorrection="{Binding CurrentCorrection, Mode=TwoWay}" Mean="{Binding Mean}" MeanCount="{Binding MeanCount}"
                                 IsRegulationOn="{Binding IsRegulationOn, Mode=TwoWay}" IsAtLimit="{Binding IsAtLimit, Mode=OneWay}"
                                 IsAuthorized="{Binding IsAuthorized}" ToggleCommand="{Binding ToggleCommand}"
-                                DecreaseCommand="{Binding DecreaseCommand}" IncreaseCommand="{Binding IncreaseCommand}" />
+                                DecreaseCommand="{Binding DecreaseCommand}" IncreaseCommand="{Binding IncreaseCommand}"
+                                EditCommand="{Binding EditFieldCommand}" />
 
         <c:HM35_RegulationBlock Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Top" DataContext="{Binding Post}"
                                 Title="{Binding Title}" SampleCount="{Binding SampleCount, Mode=TwoWay}" Step="{Binding Step, Mode=TwoWay}"
@@ -36,6 +30,7 @@
                                 CurrentCorrection="{Binding CurrentCorrection, Mode=TwoWay}" Mean="{Binding Mean}" MeanCount="{Binding MeanCount}"
                                 IsRegulationOn="{Binding IsRegulationOn, Mode=TwoWay}" IsAtLimit="{Binding IsAtLimit, Mode=OneWay}"
                                 IsAuthorized="{Binding IsAuthorized}" ToggleCommand="{Binding ToggleCommand}"
-                                DecreaseCommand="{Binding DecreaseCommand}" IncreaseCommand="{Binding IncreaseCommand}" />
+                                DecreaseCommand="{Binding DecreaseCommand}" IncreaseCommand="{Binding IncreaseCommand}"
+                                EditCommand="{Binding EditFieldCommand}" />
     </Grid>
 </UserControl>

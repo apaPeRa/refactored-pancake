@@ -13,7 +13,6 @@ namespace ApaTec.Hmi.ViewModels;
 public sealed partial class HotGlueNordsonViewModel : PageViewModelBase
 {
     /// <summary>Dummy-Ersatz fuer das fehlende Loslassen-Signal von HM-07 WhilePressed: Anforderung endet nach dieser Zeit.</summary>
-    private static readonly TimeSpan ManualFillDuration = TimeSpan.FromSeconds(1);
 
     private readonly HotGlueEditContext _context;
     private readonly INavigationService? _navigation;
@@ -201,23 +200,11 @@ public sealed partial class HotGlueNordsonViewModel : PageViewModelBase
     [RelayCommand]
     private Task OpenScheduleAsync() => _navigation?.NavigateToAsync(PageKeys.HotGlueSchedule) ?? Task.CompletedTask;
 
-    /// <summary>Taste "Manuell" (HM-07 WhilePressed): fordert Nachfuellen an, solange die Taste gehalten wird. Das Loslassen meldet HM-07 noch nicht (Luecke), daher endet die Anforderung im Dummy nach <see cref="ManualFillDuration"/>.</summary>
+    /// <summary>Taste "Manuell" (HM-07 WhilePressed, <c>HM07_PressBehavior</c>): fordert Nachfuellen an, solange die Taste gehalten wird.</summary>
     [RelayCommand]
-    private async Task ManualFillAsync()
-    {
-        if (IsManualFillRunning)
-        {
-            return;
-        }
+    private async Task BeginManualFillAsync() => await _context.Service.SetManualFillAsync(true);
 
-        try
-        {
-            await _context.Service.SetManualFillAsync(true);
-            await Task.Delay(ManualFillDuration);
-        }
-        finally
-        {
-            await _context.Service.SetManualFillAsync(false);
-        }
-    }
+    /// <summary>Ende des Drueckens (Loslassen, Finger gleitet aus der Taste, Seite wird verlassen): beendet das Nachfuellen.</summary>
+    [RelayCommand]
+    private async Task EndManualFillAsync() => await _context.Service.SetManualFillAsync(false);
 }

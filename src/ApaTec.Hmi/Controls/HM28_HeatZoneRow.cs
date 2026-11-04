@@ -42,6 +42,13 @@ public sealed class HM28_HeatZoneRow : Control
     public static readonly DependencyProperty ToggleMonitorCommandProperty = DependencyProperty.Register(
         nameof(ToggleMonitorCommand), typeof(ICommand), typeof(HM28_HeatZoneRow), new PropertyMetadata(null));
 
+    // Ergaenzung (Integration, A-88): Antippen des Soll-Felds (HM-12) und Berechtigung; null = Feld reagiert nicht.
+    public static readonly DependencyProperty EditCommandProperty = DependencyProperty.Register(
+        nameof(EditCommand), typeof(ICommand), typeof(HM28_HeatZoneRow), new PropertyMetadata(null));
+
+    public static readonly DependencyProperty IsAuthorizedProperty = DependencyProperty.Register(
+        nameof(IsAuthorized), typeof(bool), typeof(HM28_HeatZoneRow), new PropertyMetadata(true));
+
     static HM28_HeatZoneRow()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(HM28_HeatZoneRow), new FrameworkPropertyMetadata(typeof(HM28_HeatZoneRow)));
@@ -105,5 +112,19 @@ public sealed class HM28_HeatZoneRow : Control
     {
         get => (ICommand?)GetValue(ToggleMonitorCommandProperty);
         set => SetValue(ToggleMonitorCommandProperty, value);
+    }
+
+    /// <summary>Antippen des Soll-Felds (Eingabe-Pop-up); wird vom ViewModel der Zeile bereitgestellt.</summary>
+    public ICommand? EditCommand
+    {
+        get => (ICommand?)GetValue(EditCommandProperty);
+        set => SetValue(EditCommandProperty, value);
+    }
+
+    /// <summary>Berechtigung fuer das Soll-Feld; false = Schloss statt Schluessel.</summary>
+    public bool IsAuthorized
+    {
+        get => (bool)GetValue(IsAuthorizedProperty);
+        set => SetValue(IsAuthorizedProperty, value);
     }
 }

@@ -1,0 +1,45 @@
+<UserControl x:Class="ApaTec.Hmi.Views.Dialogs.UserDialogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:UserDialogViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Views/Dialogs/DialogStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- Benutzer-Pop-up im Pop-up-Rahmen (HM-14): Benutzer und Rolle, Rolle waehlen, Anmelden oder Abmelden; Schliessen verwirft. -->
+    <controls:HM14_PopupFrame Title="{Binding Title}" Kind="Content" WidthRatio="0.4" ShowCloseButton="True" CloseCommand="{Binding CancelCommand}">
+        <StackPanel Margin="{StaticResource Inset.S}">
+            <StackPanel Orientation="Horizontal" Margin="{StaticResource Inset.XS}">
+                <Border Background="{DynamicResource Brush.Sidebar}"
+                        CornerRadius="{StaticResource Radius.Card}"
+                        MinWidth="{StaticResource Size.Touch.Default}" MinHeight="{StaticResource Size.Touch.Default}">
+                    <TextBlock Style="{StaticResource Text.Value}" Foreground="{DynamicResource Brush.Sidebar.Text}" Text="{Binding Initials}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+                <StackPanel Margin="{StaticResource Inset.M}" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource Text.Value}" Text="{Binding UserName}" />
+                    <TextBlock Style="{StaticResource Text.Caption}">
+                        <Run Text="{res:Loc Dialog_User_Role_Label}" />
+                        <Run Text="{Binding CurrentRoleText, Mode=OneWay}" />
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <controls:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{Binding RequiredRoleText}" IsShown="{Binding HasRequiredRole}" />
+            <TextBlock Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc Dialog_User_Choose_Hint}" />
+            <ItemsControl ItemsSource="{Binding Items}" ItemTemplate="{StaticResource Dialog.ChoiceItem}" Focusable="False" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="{StaticResource Inset.XS}">
+                <controls:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc Dialog_User_SignOut_Label}" Command="{Binding SignOutCommand}" />
+                <controls:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc Dialog_User_SignIn_Label}" Icon="{StaticResource Icon.Confirm}" Command="{Binding SignInCommand}" />
+            </StackPanel>
+        </StackPanel>
+    </controls:HM14_PopupFrame>
+</UserControl>

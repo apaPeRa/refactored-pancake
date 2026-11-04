@@ -106,12 +106,7 @@ public sealed partial class MachineSpeedViewModel : PopupViewModelBase
         }
 
         var limits = _speeds.GetLimits(field.Kind);
-        var parameter = new NavigationParameters("title", field.Name)
-            .With("currentValue", field.Value)
-            .With("unit", field.Unit)
-            .With("minimum", limits.Minimum)
-            .With("maximum", limits.Maximum)
-            .With("decimals", 0);
+        var parameter = new InputRequest(field.Name, field.Value, field.Unit, 0, limits.Minimum, limits.Maximum);
         var result = await _dialogs.ShowAsync<double>(DialogKeys.Input, parameter);
         if (!result.Accepted)
         {

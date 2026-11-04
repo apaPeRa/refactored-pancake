@@ -48,4 +48,13 @@ public sealed record ManualActorState(
     bool IsFault);
 
 /// <summary>Anforderung an das Eingabe-Pop-up (<c>DialogKeys.Input</c>, HM-13): Titel, Startwert, Grenzen, Einheit und Hilfetext. Ergebnis: <c>double</c>.</summary>
-public sealed record ManualInputRequest(string Title, double Value, double Minimum, double Maximum, int Decimals, string Unit, string? HelpText);
+public sealed record ManualInputRequest(string Title, double Value, double Minimum, double Maximum, int Decimals, string Unit, string? HelpText) : IInputRequest
+{
+    double? IInputRequest.Value => Value;
+
+    double? IInputRequest.Minimum => Minimum;
+
+    double? IInputRequest.Maximum => Maximum;
+
+    Controls.InputKind IInputRequest.Kind => Controls.InputKind.Number;
+}

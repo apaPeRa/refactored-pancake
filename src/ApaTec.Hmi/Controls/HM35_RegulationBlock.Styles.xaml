@@ -50,35 +50,40 @@
                                      Unit="{res:Loc HM35_Count_Unit}"
                                      RequiresPermission="True"
                                      IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
-                                     NumberValue="{Binding SampleCount, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                     NumberValue="{Binding SampleCount, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="SampleCount" />
               <local:HM12_ValueInput Grid.Row="1" Margin="{StaticResource Inset.XS}"
                                      Label="{res:Loc HM35_Step_Label}"
                                      InputKind="Number" Decimals="1"
                                      Unit="{res:Loc HM35_Percent_Unit}"
                                      RequiresPermission="True"
                                      IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
-                                     NumberValue="{Binding Step, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                     NumberValue="{Binding Step, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="Step" />
               <local:HM12_ValueInput Grid.Row="2" Margin="{StaticResource Inset.XS}"
                                      Label="{res:Loc HM35_Tolerance_Label}"
                                      InputKind="Number" Decimals="1"
                                      Unit="{res:Loc HM35_Gram_Unit}"
                                      RequiresPermission="True"
                                      IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
-                                     NumberValue="{Binding Tolerance, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                     NumberValue="{Binding Tolerance, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="Tolerance" />
               <local:HM12_ValueInput Grid.Row="3" Margin="{StaticResource Inset.XS}"
                                      Label="{res:Loc HM35_MaxCorrection_Label}"
                                      InputKind="Number" Decimals="1"
                                      Unit="{res:Loc HM35_Gram_Unit}"
                                      RequiresPermission="True"
                                      IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
-                                     NumberValue="{Binding MaxCorrection, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                     NumberValue="{Binding MaxCorrection, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="MaxCorrection" />
               <local:HM12_ValueInput Grid.Row="4" Margin="{StaticResource Inset.XS}"
                                      Label="{res:Loc HM35_CurrentCorrection_Label}"
                                      InputKind="Number" Decimals="1"
                                      Unit="{res:Loc HM35_Gram_Unit}"
                                      RequiresPermission="True"
                                      IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
-                                     NumberValue="{Binding CurrentCorrection, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                     NumberValue="{Binding CurrentCorrection, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="CurrentCorrection" />
               </Grid>
               <!-- Rechte Spalte: Mittelwert mit Zaehler, Umschalter, Handeingriff -->
               <Grid Grid.Column="1">

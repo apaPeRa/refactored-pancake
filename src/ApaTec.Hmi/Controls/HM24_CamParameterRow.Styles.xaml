@@ -40,9 +40,11 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
                        Text="{Binding Label, RelativeSource={RelativeSource TemplatedParent}}" />
             <local:HM12_ValueInput x:Name="AngleField" Grid.Row="0" Grid.Column="1" Margin="{StaticResource Inset.XS}"
-                                   NumberValue="{Binding Angle, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="°" Decimals="0" RequiresPermission="True" IsPendingWrite="{Binding IsPendingWrite, RelativeSource={RelativeSource TemplatedParent}}" />
+                                   NumberValue="{Binding Angle, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="°" Decimals="0" RequiresPermission="True" IsPendingWrite="{Binding IsPendingWrite, RelativeSource={RelativeSource TemplatedParent}}"
+                                   IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}" Command="{Binding EditAngleCommand, RelativeSource={RelativeSource TemplatedParent}}" />
             <local:HM12_ValueInput x:Name="TimeField" Grid.Row="0" Grid.Column="2" Margin="{StaticResource Inset.XS}"
-                                   NumberValue="{Binding Time, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="ms" Decimals="0" RequiresPermission="True" IsPendingWrite="{Binding IsPendingWrite, RelativeSource={RelativeSource TemplatedParent}}" />
+                                   NumberValue="{Binding Time, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="ms" Decimals="0" RequiresPermission="True" IsPendingWrite="{Binding IsPendingWrite, RelativeSource={RelativeSource TemplatedParent}}"
+                                   IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}" Command="{Binding EditTimeCommand, RelativeSource={RelativeSource TemplatedParent}}" />
             <local:HM11_ValueDisplay x:Name="ResultField" Grid.Row="0" Grid.Column="3" Margin="{StaticResource Inset.XS}"
                                      NumberValue="{Binding Result, RelativeSource={RelativeSource TemplatedParent}}" Unit="°" Decimals="0" Presentation="Field" />
             <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="{StaticResource Inset.XS}">

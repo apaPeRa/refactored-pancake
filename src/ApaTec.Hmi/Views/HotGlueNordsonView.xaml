@@ -135,8 +135,9 @@
                     <c:HM08_ToggleSwitch Grid.Column="0" Style="{StaticResource HotGlue.Switch}" DataContext="{Binding RefillSystem}"
                                          Label="{res:Loc HS07_Refill_Label}" Icon="{StaticResource Icon.Fill}" />
                     <c:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.S}" Label="{res:Loc HS07_Manual_Label}" Icon="{StaticResource Icon.Manual}"
-                                         TriggerMode="WhilePressed" ClickMode="Press" IsRunning="{Binding IsManualFillRunning}"
-                                         Command="{Binding ManualFillCommand}" />
+                                         TriggerMode="WhilePressed" IsRunning="{Binding IsManualFillRunning}"
+                                         c:HM07_PressBehavior.PressCommand="{Binding BeginManualFillCommand}"
+                                         c:HM07_PressBehavior.ReleaseCommand="{Binding EndManualFillCommand}" />
                 </Grid>
             </Grid>
         </c:HM15_GroupPanel>

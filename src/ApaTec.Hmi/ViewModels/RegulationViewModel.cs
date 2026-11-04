@@ -84,9 +84,9 @@ public sealed partial class RegulationBlockViewModel : ObservableObject
     [RelayCommand(CanExecute = nameof(CanIncrease))]
     private Task IncreaseAsync() => _owner.AdjustAsync(this, 1);
 
-    /// <summary>Parameter: Beschriftung des angetippten Feldes (HM-35 liefert keinen Feldbefehl, siehe Bericht).</summary>
+    /// <summary>Parameter: Name des angetippten Feldes (<see cref="RegulationField"/>), von HM-35 <c>EditCommand</c> geliefert.</summary>
     [RelayCommand]
-    private Task EditFieldAsync(string? label) => _owner.EditFieldAsync(this, label);
+    private Task EditFieldAsync(string? fieldName) => _owner.EditFieldAsync(this, fieldName);
 
     private bool CanDecrease() => CurrentCorrection > -MaxCorrection;
 
@@ -178,12 +178,14 @@ public sealed partial class RegulationViewModel : PageViewModelBase
         block.Apply(await _service.AdjustCorrectionAsync(block.Doser, direction));
     }
 
-    internal async Task EditFieldAsync(RegulationBlockViewModel block, string? label)
+    internal async Task EditFieldAsync(RegulationBlockViewModel block, string? fieldName)
     {
-        if (_dialogs is null || FieldOf(label) is not { } field || !await EnsureAuthorizedAsync())
+        if (_dialogs is null || !Enum.TryParse<RegulationField>(fieldName, out var field) || !await EnsureAuthorizedAsync())
         {
             return;
         }
+
+        var label = _localization.GetString("HM35_" + field + "_Label");
 
         var limits = _service.GetLimits(field);
         var current = field switch
@@ -200,7 +202,7 @@ public sealed partial class RegulationViewModel : PageViewModelBase
             RegulationField.Step => "HS23_Unit_Percent",
             _ => "HS23_Unit_Gram",
         };
-        var title = _localization.Format("HS23_Input_Title", label ?? string.Empty, block.Title);
+        var title = _localization.Format("HS23_Input_Title", label, block.Title);
         var request = new MachineInputRequest(title, current, _localization.GetString(unitKey), field == RegulationField.SampleCount ? 0 : 1, limits, InputKind.Number);
         var result = await _dialogs.ShowAsync<double?>(DialogKeys.Input, request);
         if (!result.Accepted || result.Value is not { } value)
@@ -216,32 +218,6 @@ public sealed partial class RegulationViewModel : PageViewModelBase
 
         var updated = await _service.SetValueAsync(block.Doser, field, value);
         block.Apply(updated with { Mean = block.Mean, MeanCount = block.MeanCount });
-    }
-
-    private RegulationField? FieldOf(string? label)
-    {
-        if (label is null)
-        {
-            return null;
-        }
-
-        var map = new (string Key, RegulationField Field)[]
-        {
-            ("HM35_SampleCount_Label", RegulationField.SampleCount),
-            ("HM35_Step_Label", RegulationField.Step),
-            ("HM35_Tolerance_Label", RegulationField.Tolerance),
-            ("HM35_MaxCorrection_Label", RegulationField.MaxCorrection),
-            ("HM35_CurrentCorrection_Label", RegulationField.CurrentCorrection),
-        };
-        foreach (var (key, field) in map)
-        {
-            if (string.Equals(_localization.GetString(key), label, StringComparison.Ordinal))
-            {
-                return field;
-            }
-        }
-
-        return null;
     }
 
     private async Task<bool> EnsureAuthorizedAsync()

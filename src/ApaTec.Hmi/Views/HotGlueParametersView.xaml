@@ -62,18 +62,12 @@
                 </Grid>
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" PanningMode="VerticalOnly">
                     <ItemsControl ItemsSource="{Binding Zones}" Focusable="False">
-                        <ItemsControl.Resources>
-                            <!-- HM-28 reicht dem Soll-Feld (HM-12) keinen Befehl durch: Befehl und Berechtigung kommen hier aus dem Zonen-ViewModel (Luecke HM-28). -->
-                            <Style TargetType="c:HM12_ValueInput" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
-                                <Setter Property="Command" Value="{Binding EditSetpointCommand}" />
-                                <Setter Property="IsAuthorized" Value="{Binding IsAuthorized}" />
-                            </Style>
-                        </ItemsControl.Resources>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <c:HM28_HeatZoneRow Margin="{StaticResource Inset.XS}" RowKind="Glue" ZoneName="{Binding Name}"
                                                     Setpoint="{Binding Setpoint, Mode=TwoWay}" Actual="{Binding Actual}"
-                                                    IsZoneEnabled="{Binding IsZoneEnabled, Mode=TwoWay}" StateLed="{Binding StateLed}" />
+                                                    IsZoneEnabled="{Binding IsZoneEnabled, Mode=TwoWay}" StateLed="{Binding StateLed}"
+                                                    EditCommand="{Binding EditSetpointCommand}" IsAuthorized="{Binding IsAuthorized}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

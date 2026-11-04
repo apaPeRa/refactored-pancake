@@ -4,7 +4,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
-             xmlns:views="clr-namespace:ApaTec.Hmi.Views"
              xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
              xmlns:models="clr-namespace:ApaTec.Hmi.Models"
              xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
@@ -36,8 +35,8 @@
                                     Label="{Binding JogMinusLabel}" Icon="{StaticResource Icon.Jog.Minus}"
                                     TriggerMode="WhilePressed" RequiresPermission="True"
                                     IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanMove}" IsRunning="{Binding IsJogMinusRunning}"
-                                    views:ManualOperationPressBehavior.PressCommand="{Binding BeginJogMinusCommand}"
-                                    views:ManualOperationPressBehavior.ReleaseCommand="{Binding EndJogMinusCommand}" />
+                                    controls:HM07_PressBehavior.PressCommand="{Binding BeginJogMinusCommand}"
+                                    controls:HM07_PressBehavior.ReleaseCommand="{Binding EndJogMinusCommand}" />
         <!-- E09/E10 Freigabe und Endlage links -->
         <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
             <controls:HM09_StatusLed Label="{res:Loc HS31_Release_Label}" State="{Binding ReleaseMinusState}" StateText="{Binding ReleaseMinusText}" />
@@ -58,8 +57,8 @@
                                     Label="{Binding JogPlusLabel}" Icon="{StaticResource Icon.Jog.Plus}"
                                     TriggerMode="WhilePressed" RequiresPermission="True"
                                     IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanMove}" IsRunning="{Binding IsJogPlusRunning}"
-                                    views:ManualOperationPressBehavior.PressCommand="{Binding BeginJogPlusCommand}"
-                                    views:ManualOperationPressBehavior.ReleaseCommand="{Binding EndJogPlusCommand}" />
+                                    controls:HM07_PressBehavior.PressCommand="{Binding BeginJogPlusCommand}"
+                                    controls:HM07_PressBehavior.ReleaseCommand="{Binding EndJogPlusCommand}" />
 
         <!-- E14 bis E17 Positionierung: nur Servoantriebe im Positioniermodus, sonst faellt die Zeile weg -->
         <Grid Grid.Row="2" Grid.ColumnSpan="12">

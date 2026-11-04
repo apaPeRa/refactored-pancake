@@ -12,6 +12,10 @@ public sealed class DummyUserSession : IUserSession
 
     public bool HasRole(UserRole minimum) => Current.Role >= minimum;
 
+    public void SignIn(UserRole role) => SetRole(role);
+
+    public void SignOut() => SetRole(UserRole.Operator);
+
     public Task<bool> RequestRoleAsync(UserRole minimum)
     {
         if (!HasRole(minimum))
@@ -21,5 +25,14 @@ public sealed class DummyUserSession : IUserSession
         }
 
         return Task.FromResult(true);
+    }
+
+    private void SetRole(UserRole role)
+    {
+        if (Current.Role != role)
+        {
+            Current = Current with { Role = role };
+            SessionChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

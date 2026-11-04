@@ -42,40 +42,18 @@
         <TextBlock Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="4" Style="{StaticResource Text.Caption}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
                    Text="{Binding PositionText}" />
 
-        <!-- Zeilen 2 und 3: Anfang / Ende (HM-24). Luecke HM-24: keine Feldbefehle; der Stil gilt nur in der Zeile und unterscheidet Winkel und Zeit ueber die Einheit. -->
+        <!-- Zeilen 2 und 3: Anfang / Ende (HM-24). Felder ueber EditAngleCommand und EditTimeCommand (HM-24). -->
         <c:HM24_CamParameterRow Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="8" VerticalAlignment="Center"
                                 Label="{res:Loc HS25_Start_Label}" Angle="{Binding StartAngle, Mode=TwoWay}" Time="{Binding StartTime, Mode=TwoWay}"
-                                Result="{Binding StartResult}" IsPendingWrite="{Binding IsStartPending}">
-            <c:HM24_CamParameterRow.Resources>
-                <Style TargetType="{x:Type c:HM12_ValueInput}" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
-                    <Setter Property="Command" Value="{Binding EditStartAngleCommand}" />
-                    <Setter Property="IsAuthorized" Value="{Binding IsAuthorized}" />
-                    <Style.Triggers>
-                        <Trigger Property="Unit" Value="ms">
-                            <Setter Property="Command" Value="{Binding EditStartTimeCommand}" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </c:HM24_CamParameterRow.Resources>
-        </c:HM24_CamParameterRow>
+                                Result="{Binding StartResult}" IsPendingWrite="{Binding IsStartPending}"
+                                IsAuthorized="{Binding IsAuthorized}" EditAngleCommand="{Binding EditStartAngleCommand}" EditTimeCommand="{Binding EditStartTimeCommand}" />
         <c:HM11_ValueDisplay Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" VerticalAlignment="Center" Margin="{StaticResource Inset.XS}"
                              Label="{res:Loc HS25_Position_Label}" NumberValue="{Binding EncoderPosition}" Unit="{res:Loc Unit_Degree}" Decimals="0" />
 
         <c:HM24_CamParameterRow Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" VerticalAlignment="Center"
                                 Label="{res:Loc HS25_End_Label}" Angle="{Binding EndAngle, Mode=TwoWay}" Time="{Binding EndTime, Mode=TwoWay}"
-                                Result="{Binding EndResult}" IsPendingWrite="{Binding IsEndPending}">
-            <c:HM24_CamParameterRow.Resources>
-                <Style TargetType="{x:Type c:HM12_ValueInput}" BasedOn="{StaticResource {x:Type c:HM12_ValueInput}}">
-                    <Setter Property="Command" Value="{Binding EditEndAngleCommand}" />
-                    <Setter Property="IsAuthorized" Value="{Binding IsAuthorized}" />
-                    <Style.Triggers>
-                        <Trigger Property="Unit" Value="ms">
-                            <Setter Property="Command" Value="{Binding EditEndTimeCommand}" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </c:HM24_CamParameterRow.Resources>
-        </c:HM24_CamParameterRow>
+                                Result="{Binding EndResult}" IsPendingWrite="{Binding IsEndPending}"
+                                IsAuthorized="{Binding IsAuthorized}" EditAngleCommand="{Binding EditEndAngleCommand}" EditTimeCommand="{Binding EditEndTimeCommand}" />
         <c:HM09_StatusLed Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="4" VerticalAlignment="Center" Margin="{StaticResource Inset.XS}"
                           Label="{res:Loc HS25_Status_Label}" State="{Binding StatusLed}" StateText="{Binding StatusText}" />
 

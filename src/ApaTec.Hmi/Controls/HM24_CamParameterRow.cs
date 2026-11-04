@@ -62,6 +62,36 @@ public sealed class HM24_CamParameterRow : Control
         set => SetValue(EncoderNameProperty, value);
     }
 
+    /// <summary>Antippen des Winkelfelds (Eingabe-Pop-up). Ergaenzung (Integration, A-88).</summary>
+    public static readonly DependencyProperty EditAngleCommandProperty =
+        DependencyProperty.Register(nameof(EditAngleCommand), typeof(ICommand), typeof(HM24_CamParameterRow), new PropertyMetadata(null));
+
+    public ICommand? EditAngleCommand
+    {
+        get => (ICommand?)GetValue(EditAngleCommandProperty);
+        set => SetValue(EditAngleCommandProperty, value);
+    }
+
+    /// <summary>Antippen des Zeitfelds (Eingabe-Pop-up). Ergaenzung (Integration, A-88).</summary>
+    public static readonly DependencyProperty EditTimeCommandProperty =
+        DependencyProperty.Register(nameof(EditTimeCommand), typeof(ICommand), typeof(HM24_CamParameterRow), new PropertyMetadata(null));
+
+    public ICommand? EditTimeCommand
+    {
+        get => (ICommand?)GetValue(EditTimeCommandProperty);
+        set => SetValue(EditTimeCommandProperty, value);
+    }
+
+    /// <summary>Berechtigung fuer die Felder; false = Schloss statt Schluessel. Ergaenzung (Integration, A-88).</summary>
+    public static readonly DependencyProperty IsAuthorizedProperty =
+        DependencyProperty.Register(nameof(IsAuthorized), typeof(bool), typeof(HM24_CamParameterRow), new PropertyMetadata(true));
+
+    public bool IsAuthorized
+    {
+        get => (bool)GetValue(IsAuthorizedProperty);
+        set => SetValue(IsAuthorizedProperty, value);
+    }
+
     /// <summary>Nicht geschrieben (erst nach Werte schreiben wirksam).</summary>
     public static readonly DependencyProperty IsPendingWriteProperty =
         DependencyProperty.Register(nameof(IsPendingWrite), typeof(bool), typeof(HM24_CamParameterRow), new PropertyMetadata(false));
