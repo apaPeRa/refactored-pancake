@@ -49,7 +49,12 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
+- [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
+- [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
+- [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
+- [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-13)
 
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
 
@@ -61,7 +66,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM14_PopupFrame` (UserControl / `ControlTemplate`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` mit `ContentPresenter`; gehostet in einer Overlay-Schicht des Hauptfensters (`HM14_PopupHost`), geöffnet über `IDialogService`.
 - **Dependency Properties:** `Title`, `Content`, `WidthRatio`, `IsModal`, `ShowCloseButton`; **Command:** `CloseCommand`; `Esc`/Schließen-Kreuz schließt.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Close` (Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

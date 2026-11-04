@@ -25,7 +25,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Absenkphase | eingerückt innerhalb der Heizphase, Kontur gestrichelt (`Border.Dash`) | `Icon.Schedule.Setback` und Text „12:00 absenken“, „13:00 aufheizen“ |
 | Gedrückt | `Brush.Button.Pressed` | Kontur `Border.Medium` |
 | Berechtigung | Plus-Taste | `Icon.Key` bzw. `Icon.Lock` |
-| Ungültig / Überschneidung | Kontur `Border.Thick` `Brush.Status.Error.Fill` | `Icon.Status.Error` und Text (Annahme, nicht beschrieben) |
+| Ungültig / Überschneidung | Kontur `Border.Thick` `Brush.Status.Error.Fg` | `Icon.Status.Error` und Text (Annahme, nicht beschrieben) |
 
 ## Verwendet auf Seiten (IDs)
 - [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr
@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM29_WeekSchedule`), `UniformGrid` mit 7 Spalten und `ItemsControl` je Tag.
 - **Dependency Properties:** `Entries`, `FirstDay`; **Commands:** `AddCommand`, `EditCommand`.
 - Eintragshöhe ≥ `Size.Touch.Default`; scrollt bei vielen Einträgen.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Schedule.Heat`, `Icon.Schedule.Setback`, `Icon.Add` (neu); `Icon.Schedule` (Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.Status.Error`; **neu, hier definiert:** `Icon.Add`, `Icon.Schedule.Heat`, `Icon.Schedule.Setback`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

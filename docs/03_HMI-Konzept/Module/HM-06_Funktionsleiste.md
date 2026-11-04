@@ -59,7 +59,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-40](../Seiten/HS-40_Zuefuehrungen.md) – Zuführungen
+- [HS-40](../Seiten/HS-40_Zufuehrungen.md) – Zuführungen
 - [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 - [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
@@ -75,7 +75,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` mit `ItemsControl` (horizontaler `StackPanel`, Abstand `Space.M`), zwei Bereiche (links, rechts).
 - **Dependency Properties:** `Items`, `TrailingItems`, `CurrentTargetId`.
 - **Inhaltsvorlagen:** `DataTemplate` je Tastenmodell, rendert HM-07, HM-08 oder HM-19.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.More` (Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.More`, `Icon.State.On`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

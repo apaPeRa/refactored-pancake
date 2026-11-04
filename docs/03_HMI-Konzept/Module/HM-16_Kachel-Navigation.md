@@ -33,7 +33,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl
 - [HS-33](../Seiten/HS-33_EA-Uebersicht.md) – EA-Übersicht
 - [HS-35](../Seiten/HS-35_Systemeinstellungen.md) – Systemeinstellungen
-- [HS-40](../Seiten/HS-40_Zuefuehrungen.md) – Zuführungen
+- [HS-40](../Seiten/HS-40_Zufuehrungen.md) – Zuführungen
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
@@ -47,6 +47,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`ItemsControl` mit `UniformGrid`), Kachel `HM16_Tile` als `ControlTemplate`.
 - **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`; **Command:** `NavigateCommand`.
 - Abstand zwischen Kacheln `Size.Touch.Gap`, Beschriftung aus `.resx`, Umbruch automatisch (OP-13).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

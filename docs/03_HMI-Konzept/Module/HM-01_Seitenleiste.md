@@ -1,7 +1,7 @@
 # HM-01 – Seitenleiste
 
 ## Funktion
-Dunkle, neutrale Leiste am linken Rand (Spalte `Size.Sidebar.Width`, volle Höhe), auf allen Seiten außer den Pop-ups. Oben die Benutzerkennung (Kreis `Size.Avatar` mit Initialen, Name, Rolle, Berechtigungssymbol), darunter die Symboltasten Home (Produktion), Einstellungen und Meldungen, ganz unten Zurück (eine Ebene). Sie übernimmt die festen Navigationstasten „Produktion“, „Einstellungen“, „Zurück“ der Referenz-Fußleiste ([RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md)); der Benutzerkreis öffnet das Benutzer-Pop-up (Anmelden/Abmelden) und ersetzt das gelbe Schloss der Referenz (A-35). Zeitformat und Zähler-Punkt: A-47. Alle Symbole tragen eine Kurzbeschriftung (`Font.Size.Caption`) und einen Barrierefreiheitsnamen (OP-21).
+Dunkle, neutrale Leiste am linken Rand (Spalte `Size.Sidebar.Width`, volle Höhe), auf allen Seiten außer den Pop-ups (HS-02, HS-03) und dem Vollbild HS-24 (Bildschirm reinigen, Navigation.md). Oben die Benutzerkennung (Kreis `Size.Avatar` mit Initialen, Name, Rolle, Berechtigungssymbol), darunter die Symboltasten Home (Produktion), Einstellungen und Meldungen, ganz unten Zurück (eine Ebene). Sie übernimmt die festen Navigationstasten „Produktion“, „Einstellungen“, „Zurück“ der Referenz-Fußleiste ([RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md)); der Benutzerkreis öffnet das Benutzer-Pop-up (Anmelden/Abmelden) und ersetzt das gelbe Schloss der Referenz (A-35). Zeitformat und Zähler-Punkt: A-47. Alle Symbole tragen eine Kurzbeschriftung (`Font.Size.Caption`) und einen Barrierefreiheitsnamen (OP-21).
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -29,7 +29,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Aktuelle Seite | `Brush.Sidebar.Selected` Hintergrund | Balken am linken Rand (`Size.SelectionBar`, Form) zusätzlich zum Hintergrund |
 | Gedrückt | Hintergrund `Brush.Sidebar.Selected`, Kontur `Border.Medium` | dickere Kontur; Auslösen beim Loslassen |
 | Deaktiviert (Zurück auf Startseite) | Symbol `Brush.Sidebar.Text.Secondary`, Kontur gestrichelt (`Border.Dash`) | gestrichelte Kontur; Tippen nennt Grund in der Meldezeile (A-28) |
-| Neue Meldungen | Zähler-Punkt am Symbol `Icon.Messages`, `Brush.Status.Warning.Fill` mit `Brush.Status.Warning.On` | Zahl im Punkt (1 bis 99) |
+| Neue Meldungen | Zähler-Punkt am Symbol `Icon.Messages`, `Brush.Status.Warning.Fill` mit `Brush.Status.Warning.On`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | Zahl im Punkt (1 bis 99) |
 | Angemeldet | Kreis `Brush.Sidebar.Selected`, Initialen `Brush.Sidebar.Text`, `Icon.Key` (`Size.Icon.S`) | Name und Rolle als Text; Schlüssel-Symbol |
 | Abgemeldet | neutraler Kreis, `Icon.User` | Text „Nicht angemeldet“ und `Icon.Lock` |
 
@@ -55,7 +55,6 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-21](../Seiten/HS-21_Gewichtskorrektur.md) – Gewichtskorrektur (Nachdosierer)
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
-- [HS-24](../Seiten/HS-24_Bildschirm-reinigen.md) – Bildschirm reinigen
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
 - [HS-26](../Seiten/HS-26_Nockenuebersicht.md) – Nockenübersicht
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
@@ -71,7 +70,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-40](../Seiten/HS-40_Zuefuehrungen.md) – Zuführungen
+- [HS-40](../Seiten/HS-40_Zufuehrungen.md) – Zuführungen
 - [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 - [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
@@ -89,7 +88,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Dependency Properties:** `Initials`, `UserName`, `UserRole`, `IsLoggedIn`, `Items`, `CurrentItemId`, `UnreadMessageCount`, `CanGoBack`.
 - **Commands:** `NavigateCommand`, `BackCommand`, `UserCommand` (Bindung an Navigationsdienst, `INavigationService`).
 - **Layout:** `Grid` mit Zeilen Kennung (Auto), Einträge (`*`), Zurück (Auto); einmal im Hauptfenster (Spalte `Size.Sidebar.Width`).
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Home`, `Icon.Settings`, `Icon.Messages`, `Icon.Back`, `Icon.User`, `Icon.Key`, `Icon.Lock` (alle bereits im Designsystem Abschnitt 6).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.Messages`, `Icon.User`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 
@@ -102,4 +101,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-01-P04 | Touch | jeder Eintrag volle Spaltenbreite × `Size.Touch.Large`, Abstand ≥ `Size.Touch.Gap` | offen |
 | HM-01-P05 | Beschriftung | jedes Symbol hat Kurzbeschriftung und Barrierefreiheitsname aus `.resx` | offen |
 | HM-01-P06 | Kontrast | Name und Rolle ≥ 4,5 : 1 auf `Brush.Sidebar` (7,89 : 1 / 8,88 : 1) | offen |
-| HM-01-P07 | Seitenübergreifend | identisch auf allen Vollseiten, auf Pop-ups (HS-02, HS-03) nicht sichtbar | offen |
+| HM-01-P07 | Seitenübergreifend | identisch auf allen Vollseiten, auf Pop-ups (HS-02, HS-03) und im Vollbild HS-24 nicht sichtbar | offen |

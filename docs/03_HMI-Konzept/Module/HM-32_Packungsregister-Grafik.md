@@ -24,7 +24,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Packung vorhanden | `Brush.Surface.Sunken`, Kontur `Border.Medium` `Brush.Border.Control` | Symbol `Icon.Pack.Present` (gefülltes Quadrat) und Wort „vorhanden“ |
 | Befüllt | `Brush.Status.Info.Subtle` | `Icon.Pack.Filled` und Wort „befüllt“ |
 | In Ordnung | `Brush.Status.Ok.Subtle` | `Icon.Status.Ok` und Wort „OK“ |
-| Schlecht (ausgestoßen) | `Brush.Status.Error.Subtle`, Kontur `Border.Thick` `Brush.Status.Error.Fill` | `Icon.Status.Error` und Wort „schlecht“ |
+| Schlecht (ausgestoßen) | `Brush.Status.Error.Subtle`, Kontur `Border.Thick` `Brush.Status.Error.Fg` | `Icon.Status.Error` und Wort „schlecht“ |
 | Gedrückt | `Brush.Button.Pressed` | Kontur `Border.Medium` |
 
 ## Verwendet auf Seiten (IDs)
@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM32_PackRegisterGraphic`) in einem `ScrollViewer` (horizontal), Stationen als `ItemsControl` mit `Canvas`-Layout; Legende `HM32_Legend`.
 - **Dependency Properties:** `Stations`, `ShowLegend`; **Command:** `ToggleStationCommand`.
 - Stationsfeld mindestens `Size.Touch.Min` × `Size.Touch.Min`.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Pack.Present`, `Icon.Pack.Filled` (neu).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Inactive`, `Icon.Status.Ok`; **neu, hier definiert:** `Icon.Pack.Filled`, `Icon.Pack.Present`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

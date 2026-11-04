@@ -46,7 +46,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM25_MessageList` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM25_MessageList`) auf Basis `ListView`/`ItemsControl` mit virtualisierendem Panel; Zeilenhöhe `Size.Touch.Min`; Spalten per `GridViewColumn` oder `DataTemplate` je Listenart.
 - **Dependency Properties:** `Items`, `ListKind`, `SelectedItem`, `TotalCount`, `IsFiltered`; **Commands:** vier Scrollbefehle.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Scroll.Up`, `Icon.Scroll.Down` (Designsystem); `Icon.Scroll.First`, `Icon.Scroll.Last` (neu).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Info`, `Icon.Status.Ok`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

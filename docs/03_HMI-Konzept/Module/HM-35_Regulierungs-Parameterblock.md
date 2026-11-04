@@ -44,6 +44,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM35_RegulationBlock` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM35_RegulationBlock`), `HM15_GroupPanel` mit `HM12_ValueInput`, `HM11_ValueDisplay`, `HM08_ToggleSwitch`, `HM07_ActionButton`.
 - **Dependency Properties:** siehe Tabelle; **Commands:** `DecreaseCommand`, `IncreaseCommand`, `ToggleCommand`.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.State.Off`, `Icon.State.On`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

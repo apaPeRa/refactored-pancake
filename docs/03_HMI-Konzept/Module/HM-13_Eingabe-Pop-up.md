@@ -27,10 +27,12 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 |---|---|---|
 | Geöffnet | in [HM-14](HM-14_Popup-Rahmen.md): `Brush.Surface`, Eingabezeile `Font.Size.Metric`, Ziffernblock-Tasten `Size.Touch.Large` × `Size.Touch.Default` (`Brush.Button.Normal`) | Titel und Einheit als Text; Grenzen als Caption „Bereich 0 bis 100 %“ |
 | Eingabe gültig | Übernehmen aktiv (`Brush.Button.Active`) | `Icon.Confirm` und Text „Übernehmen“ |
-| Eingabe ungültig | Eingabezeile Kontur `Border.Thick` `Brush.Status.Error.Fill`, Fläche `Brush.Status.Error.Subtle`; Übernehmen deaktiviert (gestrichelt) | `Icon.Status.Error` und Fehlertext |
+| Eingabe ungültig | Eingabezeile Kontur `Border.Thick` `Brush.Status.Error.Fg`, Fläche `Brush.Status.Error.Subtle`; Übernehmen deaktiviert (gestrichelt) | `Icon.Status.Error` und Fehlertext |
 | Taste gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
 | Zeitvariante | Eingabezeile „__:__“, nur Ziffern, Doppelpunkt fest | Platzhalterstruktur hh:mm |
 | Nicht berechtigt | Dialog öffnet nicht | Hinweis „Berechtigung erforderlich: <Rolle>“ in der Meldezeile |
+
+HS-37 (Meldearchiv) steht über RM-06 hier: die Filter-Taste öffnet den Dialog direkt, ohne Eingabefeld [HM-12](HM-12_Eingabefeld-Schluesselsymbol.md). Zur Übersicht der Seiten gehört auch jede Seite, auf der HM-12 liegt.
 
 ## Verwendet auf Seiten (IDs)
 - [HS-03](../Seiten/HS-03_Maschinengeschwindigkeit.md) – Maschinengeschwindigkeit (Pop-up)
@@ -57,6 +59,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-12)
 
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
 
@@ -69,7 +72,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` als Inhalt von `HM14_PopupFrame`; Ergebnis über `IDialogService.ShowInputAsync(InputRequest) : Task<InputResult?>`.
 - **Dependency Properties:** `Title`, `CurrentValue`, `InputText`, `Unit`, `Minimum`, `Maximum`, `Decimals`, `InputKind`, `IsValid`, `ErrorText`; **Commands:** `ApplyCommand`, `CancelCommand`, `DigitCommand`, `BackspaceCommand`, `ClearCommand`, `SignCommand`, `DecimalSeparatorCommand`.
 - **Maße:** Ziffernblock 3 × 4 Tasten `Size.Touch.Large` × `Size.Touch.Default`, Abstand `Space.M`; Dialogbreite höchstens `Size.Popup.WidthRatio` der Fensterbreite.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Confirm`, `Icon.Close`, `Icon.Action.Backspace` (neu: `Icon.Action.Backspace`).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Confirm`, `Icon.Status.Error`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

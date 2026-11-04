@@ -63,7 +63,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-40](../Seiten/HS-40_Zuefuehrungen.md) – Zuführungen
+- [HS-40](../Seiten/HS-40_Zufuehrungen.md) – Zuführungen
 - [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 - [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
@@ -79,7 +79,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl`; einzeilig, Text `TextTrimming=CharacterEllipsis`, vollständiger Text im Tooltip und in HS-38.
 - **Dependency Properties:** `Number`, `Text`, `Class`, `AdditionalCount`; **Command:** `OpenCommand`.
 - **Stil:** `DataTrigger` auf `Class` schaltet Fläche, Symbol und Wort; Wörter aus `.resx` (`Status_Warning_Word` usw.).
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Status.Ok`, `.Warning`, `.Error` (Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Ok`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

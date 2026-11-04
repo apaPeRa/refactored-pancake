@@ -21,16 +21,17 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Aus / inaktiv | `Brush.Status.Inactive.Fill`, Symbol `Icon.Status.Inactive` (leerer Kreis) | leere Form und Wort „Aus“ |
-| Ok / erfüllt | `Brush.Status.Ok.Fill` Fläche, Haken in `Brush.Status.Ok.On` | `Icon.Status.Ok` und Wort „OK“ |
-| Warnung | `Brush.Status.Warning.Fill`, `Brush.Status.Warning.On`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | `Icon.Status.Warning` (Dreieck) und Wort „Warnung“ |
-| Fehler | `Brush.Status.Error.Fill`, `Brush.Status.Error.On` | `Icon.Status.Error` (Kreuz) und Wort „Fehler“ |
-| Unbekannt | `Brush.Status.Inactive.Fill` | Text „---“ |
+| Aus / inaktiv | Symbol `Icon.Status.Inactive` (leerer Kreis) in `Brush.Status.Inactive.Fg`, ohne Fläche | leere Form und Wort „Aus“ |
+| Ok / erfüllt | Kreis `Size.Led` mit Haken in `Brush.Status.Ok.Fg`, ohne Fläche | `Icon.Status.Ok` und Wort „OK“ |
+| Warnung | Dreieck in `Brush.Status.Warning.Fg` (dunkles Bernstein), ohne Fläche | `Icon.Status.Warning` (Dreieck) und Wort „Warnung“ |
+| Fehler | Kreuz in `Brush.Status.Error.Fg`, ohne Fläche | `Icon.Status.Error` (Kreuz) und Wort „Fehler“ |
+| Unbekannt | `Brush.Status.Inactive.Fg` | Text „---“ |
 | Gedrückt | reagiert nicht | kein Hover-/Pressed-Zustand |
 
 ## Verwendet auf Seiten (IDs)
 - [HS-05](../Seiten/HS-05_Zufuehrung-Papier.md) – Zuführung Papier
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
+- [HS-08](../Seiten/HS-08_Heissleim-Parameter.md) – Heißleim Parameter (inkl. Verwendung über Kompositmodul HM-28)
 - [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2
 - [HS-14](../Seiten/HS-14_Einzelgewichte.md) – Einzelgewichte
 - [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer
@@ -53,7 +54,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `ControlTemplate` auf `Control` (`HM09_StatusLed`), Symbol per `Path` aus `Themes/Icons.xaml`.
 - **Dependency Properties:** `Label`, `State`, `StateText`, `ShowStateWord`, `IsCompact`, `Icon`, `Identifier`.
 - **Maße:** LED `Size.Led`, Zeile ≥ `Size.Touch.Min` mit Beschriftung. Nicht fokussierbar (`IsHitTestVisible=False`).
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Status.*` (Designsystem); `Icon.Fill.Hopper` (neu).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Inactive`, `Icon.Status.Ok`, `Icon.Status.Warning`; **neu, hier definiert:** `Icon.Fill.Hopper`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

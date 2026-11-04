@@ -29,6 +29,8 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Berechtigung | Normal | `Icon.Key` bzw. `Icon.Lock` |
 
 ## Verwendet auf Seiten (IDs)
+- [HS-10](../Seiten/HS-10_Zeitschaltuhr.md) – Zeitschaltuhr (inkl. Verwendung über Kompositmodul HM-30)
+- [HS-15](../Seiten/HS-15_Trend.md) – Trend (inkl. Verwendung über Kompositmodul HM-26)
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
 - [HS-29](../Seiten/HS-29_Produktionsstatistik.md) – Produktionsstatistik
@@ -43,7 +45,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM18_SelectorField` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM18_SelectorField`) aus zwei HM07-Tasten und einem Anzeigefeld.
 - **Dependency Properties:** `Label`, `ItemsSource`, `SelectedIndex`, `DisplayText`, `IsCyclic`, `RequiresApply`, `RequiresPermission`, `IsAuthorized`; **Commands:** `PreviousCommand`, `NextCommand`.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Chevron` (Designsystem), `Icon.State.Pending` (neu).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Chevron`, `Icon.Key`, `Icon.Lock`; neu, definiert in anderem Modul: `Icon.State.Pending` (HM-08).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

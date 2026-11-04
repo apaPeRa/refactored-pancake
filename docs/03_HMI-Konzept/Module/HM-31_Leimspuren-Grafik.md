@@ -1,7 +1,7 @@
 # HM-31 – Leimspuren-Grafik
 
 ## Funktion
-Skalierbare Vektorgrafik eines Kartonzuschnitts (Draufsicht) mit Leimspuren (eine lange Spur links, je vier kurze oben und unten), über der 18 Winkelfelder ([HM-12](HM-12_Eingabefeld-Schluesselsymbol.md), ohne Beschriftung) für Anfang/Ende der Spuren in Maschinenwinkel (°) liegen. Vier Reihen: 5, 4, 5, 4 Felder. Die Grafik skaliert mit dem Seitenverhältnis des Zuschnitts (`Viewbox`); die Felder behalten Touch-Größe (mindestens `Size.Touch.Large` × `Size.Touch.Default`). Karton und Leim nutzen die beiden Neutralbraun-Töne (einzige Nicht-Status-Farbe, Designsystem 1.4). Der Maschinenwinkel erscheint daneben als [HM-05](HM-05_Kennzahl-Kachel.md). Zuordnung Anfang/Ende der Felder offen (OP-19).
+Skalierbare Vektorgrafik eines Kartonzuschnitts (Draufsicht) mit Leimspuren (eine lange Spur links, je vier kurze oben und unten), über der 18 Winkelfelder ([HM-12](HM-12_Eingabefeld-Schluesselsymbol.md), ohne Beschriftung) für Anfang/Ende der Spuren in Maschinenwinkel (°) liegen. Vier Reihen: 5, 4, 5, 4 Felder. Die Grafik skaliert mit dem Seitenverhältnis des Zuschnitts (`Viewbox`); die Felder behalten Touch-Größe (mindestens `Size.Touch.Large` × `Size.Touch.Default`). Karton und Leim nutzen die beiden Neutralbraun-Töne (einzige Nicht-Status-Farbe, Designsystem 1.4). Der Maschinenwinkel (140 °) gehört nicht zu dieser Grafik, sondern steht als Anzeigefeld [HM-11](HM-11_Anzeigefeld.md) im Gruppenbereich „Maschinenwinkel“ ([HM-15](HM-15_Gruppenbereich.md)) der Seite (HS-06). Zuordnung Anfang/Ende der Felder offen (OP-19).
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -12,7 +12,6 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Felder (`Fields`) | IReadOnlyList<GlueTrackField> | ° | 18 Felder, je Reihe, Index, Winkel; Reihen 5/4/5/4 |
 | Winkel (`Angle`) | double | ° | Bild Reihe 1: 200, 205, 205, 205, 205; 2: 225 ×4; 3: 300, 310 ×4; 4: 325, 329 ×3 |
 | Zuschnitt (`CutoutGeometry`) | Geometry | – | Vektor |
-| Maschinenwinkel (`MachineAngle`) | double? | ° | 0 bis 360 |
 | Eingabe (`CommitCommand`) | ICommand<GlueTrackChange> | – | – |
 
 ## Zustände und Darstellung
@@ -37,8 +36,9 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## WPF-Umsetzung
 - **Control:** `HM31_GlueTrackGraphic` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM31_GlueTrackGraphic`): `Viewbox` mit `Canvas` für Zuschnitt und Spuren, Felder als `ItemsControl` mit `HM12_ValueInput` in einem `Canvas` (Positionen aus `Fields`).
-- **Dependency Properties:** `Title`, `Fields`, `CutoutGeometry`, `MachineAngle`; **Command:** `CommitCommand`.
+- **Dependency Properties:** `Title`, `Fields`, `CutoutGeometry`; **Command:** `CommitCommand`.
 - Farben nur über `Brush.Graphic.Carton` und `Brush.Graphic.Glue`.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

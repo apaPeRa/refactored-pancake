@@ -45,7 +45,6 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-21](../Seiten/HS-21_Gewichtskorrektur.md) – Gewichtskorrektur (Nachdosierer)
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
-- [HS-24](../Seiten/HS-24_Bildschirm-reinigen.md) – Bildschirm reinigen
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
 - [HS-26](../Seiten/HS-26_Nockenuebersicht.md) – Nockenübersicht
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
@@ -61,7 +60,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-40](../Seiten/HS-40_Zuefuehrungen.md) – Zuführungen
+- [HS-40](../Seiten/HS-40_Zufuehrungen.md) – Zuführungen
 - [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 - [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
@@ -77,6 +76,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`ItemsControl` mit horizontalem `StackPanel`); Segment als `HM04_BreadcrumbSegment` (`ControlTemplate`).
 - **Dependency Properties:** `Segments`, `ObjectSuffix`; **Command:** `NavigateCommand`.
 - **Layout:** Spalte 56* der Brotkrümel-/Kennzahlzeile.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Chevron`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

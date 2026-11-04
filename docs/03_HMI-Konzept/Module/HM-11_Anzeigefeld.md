@@ -36,11 +36,15 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 ## Verwendet auf Seiten (IDs)
 - [HS-01](../Seiten/HS-01_Produktion.md) – Produktion
+- [HS-02](../Seiten/HS-02_Produktionszaehler.md) – Produktionszähler (Pop-up) (inkl. Verwendung über Kompositmodul HM-33)
 - [HS-05](../Seiten/HS-05_Zufuehrung-Papier.md) – Zuführung Papier
 - [HS-06](../Seiten/HS-06_Zufuehrung-Karton.md) – Zuführung Karton
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
 - [HS-08](../Seiten/HS-08_Heissleim-Parameter.md) – Heißleim Parameter
 - [HS-09](../Seiten/HS-09_Heissleim-Druck.md) – Heißleim Druck
+- [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2 (inkl. Verwendung über Kompositmodul HM-20)
+- [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine (inkl. Verwendung über Kompositmodul HM-24)
+- [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer (inkl. Verwendung über Kompositmodul HM-20)
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
@@ -64,7 +68,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM11_ValueDisplay`); Zeile und Feld per `Style`-Trigger auf `Presentation`.
 - **Dependency Properties:** `Label`, `ValueKind`, `NumberValue`, `TextValue`, `TimeValue`, `Unit`, `Decimals`, `Presentation`, `Suffix`, `Counter`, `Emphasis`; **Command:** `ResetCommand`.
 - **Formatierung:** `IValueConverter` für Zahl + Einheit mit `CurrentCulture` und geschütztem Leerzeichen.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Action.Reset` (neu).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Warning`; **neu, hier definiert:** `Icon.Action.Reset`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

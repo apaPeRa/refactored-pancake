@@ -39,6 +39,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM34_DriveStatusRow` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM34_DriveStatusRow`), `Grid` mit festen Spalten.
 - **Dependency Properties:** `DriveName`, `DiagCode`, `CurrentActual`, `CurrentMax`, `CurrentLimit`, `Message`; **Command:** `ResetMaxCommand`.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.Status.Error`; neu, definiert in anderem Modul: `Icon.Action.Reset` (HM-11).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

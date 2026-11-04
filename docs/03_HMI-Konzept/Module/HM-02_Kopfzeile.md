@@ -23,7 +23,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 |---|---|---|
 | Produktion (Normalzustand) | neutral: `Brush.Surface`, Symbol `Icon.Mode.Production` und Wort „Produktion“ in `Brush.Text.Primary`, `Font.Size.Title` | Symbol (Kreispfeile) und Wort „Produktion“ |
 | Andere Betriebsart | `Brush.Surface`, Text `Brush.Text.Primary`, Symbol der Betriebsart | eigenes Symbol und Wort |
-| Service / Warnung | `Brush.Status.Warning.Fill` Fläche, `Brush.Status.Warning.On` | `Icon.Status.Warning` und Wort „Service“ |
+| Service / Warnung | `Brush.Status.Warning.Fill` Fläche, `Brush.Status.Warning.On`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | `Icon.Status.Warning` und Wort „Service“ |
 | Störung | `Brush.Status.Error.Fill` Fläche, `Brush.Status.Error.On` | `Icon.Status.Error` und Wort „Fehler“ |
 | Uhrzeit normal | `Brush.Surface.Sunken`, Uhrzeit `Font.Size.Metric`, Datum `Font.Size.Caption`, `Brush.Text.Primary` / `Secondary` | Ziffern, Format nach `CurrentCulture` |
 | Zeit ungültig | wie normal | Text „--:--:--“ und „--.--.----“ |
@@ -66,7 +66,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-38](../Seiten/HS-38_Meldeanzeige.md) – Meldeanzeige
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
-- [HS-40](../Seiten/HS-40_Zuefuehrungen.md) – Zuführungen
+- [HS-40](../Seiten/HS-40_Zufuehrungen.md) – Zuführungen
 - [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht
 - [HS-42](../Seiten/HS-42_Waagen.md) – Waagen
 - [HS-43](../Seiten/HS-43_Schichtplan.md) – Schichtplan
@@ -85,7 +85,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Dependency Properties:** `LogoSource`, `OperatingMode`, `OperatingModeText`, `Now`, `ShowSeconds`, `IsTimeValid`. Uhr über `IClockService` (Dummy), Taktgeber im ViewModel.
 - **Mindestbreiten:** Betriebsart `Size.Header.Mode.MinWidth`, Uhr `Size.Header.Clock.MinWidth`.
 - **Stil:** `HM02_OperatingModeStyle` per `DataTrigger` auf `OperatingMode`.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Mode.Production` (Designsystem), `Icon.Mode.Setup`, `Icon.Mode.Manual`, `Icon.Mode.Service` (neu).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Mode.Production`, `Icon.Status.Error`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 
@@ -93,7 +93,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HM-02-P01 | Logo | APA-TEC-Logo links; im Dunkelthema Variante mit passendem Kontrast | offen |
-| HM-02-P02 | Betriebsart | „Produktion“ mit Kreispfeil-Symbol, Status Ok (Text und Symbol, nicht nur grün) | offen |
+| HM-02-P02 | Betriebsart | „Produktion“ mit Kreispfeil-Symbol, im Normalzustand neutral (Symbol und Wort) | offen |
 | HM-02-P03 | Uhr | Uhrzeit und Datum rechts, Datum mindestens `Font.Size.Caption` | offen |
 | HM-02-P04 | Service-Variante | Betriebsart „Service“ mit Warnsymbol und Wort | offen |
 | HM-02-P05 | Proportionen | Spalten 12* : 13* : 6* : 4*, Höhe `Size.Header.Height` | offen |

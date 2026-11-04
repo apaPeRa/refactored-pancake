@@ -21,7 +21,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
 | Normal | Füllung `Brush.Progress.Fill`, Bahn `Brush.Surface.Sunken`, Kontur `Border.Thin`, Höhe `Size.Progress.Height`, `Radius.Control` | Zahl „83 %“ im Balken (`Font.Size.Body`, Chip `Brush.Surface`) |
-| Warnung (≥ Schwelle) | Füllung `Brush.Status.Warning.Fill` | `Icon.Status.Warning` und Zahl |
+| Warnung (≥ Schwelle) | Füllung `Brush.Status.Warning.Fill`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | `Icon.Status.Warning` und Zahl |
 | Fehler (≥ Schwelle) | Füllung `Brush.Status.Error.Fill` | `Icon.Status.Error` und Zahl |
 | Wert ungültig | leere Bahn | Text „---“ |
 | Voll (100 %) | Normal | Zahl „100 %“ |
@@ -45,7 +45,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `ControlTemplate` auf `ProgressBar` (`HM10_ProgressBar`), Zahl über `TextBlock` im Template.
 - **Dependency Properties:** `Label`, `Value` (Basis `RangeBase.Value`), `WarningThreshold`, `ErrorThreshold`, `StringFormat`, `LabelPlacement`.
 - **Zeitablauf (HS-24):** `Value` wird vom ViewModel getaktet, keine eigene Animation im Control.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Status.Warning`, `.Error` (Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

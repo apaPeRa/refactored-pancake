@@ -20,16 +20,19 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
 | Warnhinweis | `Brush.Status.Warning.Subtle`, Kontur `Border.Medium` `Brush.Status.Warning.Fg`, Text `Brush.Text.Primary` | `Icon.Status.Warning` und Wort „Warnung“ |
-| Fehler | `Brush.Status.Error.Subtle`, Kontur `Border.Medium` `Brush.Status.Error.Fill` | `Icon.Status.Error` und Wort „Fehler“ |
+| Fehler | `Brush.Status.Error.Subtle`, Kontur `Border.Thick` `Brush.Status.Error.Fg` | `Icon.Status.Error` und Wort „Fehler“ |
 | Info | `Brush.Status.Info.Subtle` | `Icon.Status.Info` und Wort „Info“ |
 | Meldungszeile gefüllt | `Brush.Surface`, Kontur `Border.Thin` | Caption „Meldung:“ und Text |
 | Meldungszeile leer | neutral | Text „–“ |
 
 ## Verwendet auf Seiten (IDs)
+- [HS-11](../Seiten/HS-11_Hauptdosierer-1-und-2.md) – Hauptdosierer 1 & 2 (inkl. Verwendung über Kompositmodul HM-20)
+- [HS-19](../Seiten/HS-19_Nachdosierer.md) – Nachdosierer (inkl. Verwendung über Kompositmodul HM-20)
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-27](../Seiten/HS-27_Waagen-Kalibrieren.md) – Waagen Kalibrieren
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
 - [HS-32](../Seiten/HS-32_Geber-setzen.md) – Geber setzen
+- [HS-41](../Seiten/HS-41_Dosierer-Uebersicht.md) – Dosierer-Übersicht (inkl. Verwendung über Kompositmodul HM-20)
 
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
 
@@ -41,6 +44,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM27_NoticeBox` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM27_NoticeBox`), `TextBlock` mit `TextWrapping`.
 - **Dependency Properties:** `Text`, `Kind`, `Caption`, `Icon`; Stil per `DataTrigger` auf `Kind`.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Info`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

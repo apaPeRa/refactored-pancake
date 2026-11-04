@@ -24,7 +24,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Neuanlage | Zeitfelder leer, Kontrollkästchen Aus, Löschen deaktiviert (gestrichelt) | „__:__“ und `Icon.State.Off` |
 | Bearbeiten Heizphase | Löschen deaktiviert, wenn ChildCount > 0 | Hinweis „Zuerst Absenkphasen löschen“ mit `Icon.Status.Info` |
 | Bearbeiten Absenkphase | Löschen aktiv | Taste „Löschen“ mit `Icon.Delete` |
-| Fehler | Zeitfeld Kontur `Border.Thick` `Brush.Status.Error.Fill`, Übernehmen deaktiviert | `Icon.Status.Error` und Fehlertext |
+| Fehler | Zeitfeld Kontur `Border.Thick` `Brush.Status.Error.Fg`, Übernehmen deaktiviert | `Icon.Status.Error` und Fehlertext |
 | Gültig | Übernehmen aktiv | `Icon.Confirm` |
 
 ## Verwendet auf Seiten (IDs)
@@ -40,7 +40,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM30_ScheduleEntryDialog` (UserControl (Inhalt von HM14_PopupFrame)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` als Inhalt von `HM14_PopupFrame`, geöffnet über `IDialogService`.
 - **Dependency Properties:** `Kind`, `StartActive`, `EndActive`, `StartTime`, `EndTime`, `ChildCount`, `IsNew`, `ErrorText`; **Commands:** `ApplyCommand`, `CancelCommand`, `DeleteCommand`.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Delete`, `Icon.Confirm`, `Icon.Close` (neu bzw. Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Confirm`, `Icon.State.Off`, `Icon.Status.Error`, `Icon.Status.Info`; **neu, hier definiert:** `Icon.Delete`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

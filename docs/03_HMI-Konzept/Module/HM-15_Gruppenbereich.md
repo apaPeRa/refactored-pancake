@@ -25,13 +25,20 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Hervorgehoben | Kontur `Border.Thick` `Brush.Border.Focus` | Text/Symbol „Ausgewählt“, nicht nur Farbe |
 | Überschrift-Variante | ohne Fläche, Linie `Brush.Divider` unter dem Text | Fettschrift und Linie statt Unterstreichung |
 
+Die Überschrift-Variante deckt die Textüberschriften ohne Rahmen ab (HS-07 „Status“, HS-09 „Druckregelung“); RM-15 zählt sie nicht, das Modul führt sie als Variante.
+
 ## Verwendet auf Seiten (IDs)
 - [HS-01](../Seiten/HS-01_Produktion.md) – Produktion
 - [HS-04](../Seiten/HS-04_Einstellungen.md) – Einstellungen
 - [HS-05](../Seiten/HS-05_Zufuehrung-Papier.md) – Zuführung Papier
 - [HS-06](../Seiten/HS-06_Zufuehrung-Karton.md) – Zuführung Karton
 - [HS-07](../Seiten/HS-07_Heissleim-Nordson.md) – Heißleim Nordson
+- [HS-09](../Seiten/HS-09_Heissleim-Druck.md) – Heißleim Druck
+- [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer) (inkl. Verwendung über Kompositmodul HM-21)
 - [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine
+- [HS-17](../Seiten/HS-17_Motorparameter-Schliessmaschine.md) – Motorparameter (Schließmaschine) (inkl. Verwendung über Kompositmodul HM-21)
+- [HS-20](../Seiten/HS-20_Motorparameter.md) – Motorparameter (Nachdosierer) (inkl. Verwendung über Kompositmodul HM-21)
+- [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung (inkl. Verwendung über Kompositmodul HM-35)
 
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Phase 3 (Punkt 4); die Links sind vorläufig.
 
@@ -44,6 +51,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl`/`HeaderedContentControl` mit `ControlTemplate` (`HM15_GroupPanel`).
 - **Dependency Properties:** `Header`, `Subheader`, `GroupStyle`, `IsHighlighted`, `HighlightText`, `Content`.
 - Keine feste Größe; belegt Spalten- und Zeilenanteile im 12-Spalten-Raster der Seite.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): .
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

@@ -43,7 +43,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM17_TitleBar`).
 - **Dependency Properties:** `Title`, `Values`, `DeviationLimit`, `TitleAlignment`; **Command:** `DetailCommand`.
 - Detail-Symbol `Icon.Move` mit Trefferfläche ≥ `Size.Touch.Min`.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Move` (Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Move`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

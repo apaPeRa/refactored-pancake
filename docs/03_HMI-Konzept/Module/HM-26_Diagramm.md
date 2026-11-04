@@ -26,7 +26,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 |---|---|---|
 | Normal | Gitter `Brush.Divider`, Linie `Border.Thick` und Punkte `Brush.Text.Primary`, Balken `Brush.Progress.Fill`, Achsentext `Font.Size.Caption` `Brush.Text.Secondary` | Zahlenwerte an Punkten/Balken |
 | Aktueller Wert | letzter Punkt größer, `Brush.Text.Primary` | größerer Marker und Beschriftung „aktuell“ |
-| Grenze verletzt | Punkt/Balken `Brush.Status.Warning.Fill` | Raute statt Kreis bzw. `Icon.Status.Warning` über dem Balken |
+| Grenze verletzt | Punkt/Balken `Brush.Status.Warning.Fill`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | Raute statt Kreis bzw. `Icon.Status.Warning` über dem Balken |
 | Zu wenig Daten | Achsen leer | Text „Keine Daten“ und `Icon.Status.Inactive` |
 | Wert ungültig | Lücke in der Linie | Text „---“ an der Stelle |
 
@@ -46,6 +46,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM26_Chart`), Zeichnung über `ItemsControl` mit `Canvas`/`Polyline`/`Rectangle` (kein zusätzliches NuGet-Paket); Skalierung im Control per `MultiValueConverter`.
 - **Dependency Properties:** `ChartKind`, `Series`, `YUnit`, `YMinimum`, `YMaximum`, `YStep`, `MaxPoints`, `ShowValueLabels`, `LowerLimit`, `UpperLimit`, `XLabels`, `Title`.
 - Mit `AutomationProperties.Name` und Wertetabelle für Zugänglichkeit.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Inactive`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

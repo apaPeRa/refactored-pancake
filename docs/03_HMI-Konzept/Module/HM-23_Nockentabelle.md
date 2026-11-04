@@ -41,6 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM23_CamTable`) auf Basis von `ItemsControl` (virtualisiert); Zeile `HM23_CamRow`.
 - **Dependency Properties:** `Rows`, `RowsPerPage`, `SelectedNumber`; **Command:** `SelectCommand`.
 - Zahlen mit tabellarischen Ziffern, Zeilenhöhe `Size.Touch.Min` (`Size.Touch.Min`).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Inactive`, `Icon.Status.Ok`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

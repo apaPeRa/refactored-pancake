@@ -14,6 +14,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Soll Prozent (`TargetPercent`) | double | % | 0 bis 100 (Bild 48, 52) |
 | Soll Gewicht (`TargetWeight`) | double | g | Bild 113, 122 (HD absolut), 250 (ND) |
 | Max. Nachgabe (`MaxRefill`), Aktuelle Nachgabe (`CurrentRefill`) | double | g | nur ND (Bild 50, 13) |
+| Nachgabe-Ergebnis (`RefillResult`) | enum RefillResult { None, Dosed, RejectedTooMuch } | – | nur ND; RejectedTooMuch = Fehlmenge einer Packung größer als Max. Nachgabe |
 | Regulierwert (`RegulationValue`) | double | g | Bild 5,30; 0,00; 4,81 |
 | Eichdosierung (`CalibrationWeight`), Umdrehungen (`CalibrationRevolutions`) | double / int | g / – | Bild 137,50 g und 4; 18,50 g und 5 |
 | Schnecke Drehzahl (`ScrewSpeed`) | double | 1/min | Bild 2800 |
@@ -35,6 +36,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Gesperrt | Tasten deaktiviert (gestrichelt), `Brush.Text.Disabled` | `Icon.Lock` und Text „Gesperrt“ |
 | Entleeren läuft | Taste Entleeren im Zustand Läuft (HM-07) | Wort „Läuft“ |
 | Trichter unten leer/Fehler | LED `Brush.Status.Error.Fill` (HM-09) | `Icon.Status.Error` und Wort |
+| Nachgabe verweigert (nIO) | Hinweisfläche `Brush.Status.Warning.Subtle`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` unter „Max. Nachgabe“ (HM-27) | `Icon.Status.Warning` und Text „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ |
 | Auslastung hoch | Balken Warnung (HM-10) | `Icon.Status.Warning` und Zahl |
 | Teilzustände | gemäß Bestandteilen | siehe HM-07 bis HM-12 |
 
@@ -54,7 +56,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM20_DosingCard`), setzt `HM12_ValueInput`, `HM11_ValueDisplay`, `HM09_StatusLed`, `HM08_ToggleSwitch`, `HM10_ProgressBar`, `HM07_ActionButton` ein; Darstellung Compact/Detail per `DataTrigger` auf `CardMode`.
 - **Dependency Properties:** siehe Tabelle; **Commands:** `ManualCommand`, `EmptyCommand`, `CalibrateCommand`, `OpenDetailCommand`, `OpenRegulationCommand`, `OpenMotorCommand`, `OpenWeightCorrectionCommand`.
 - **Wechsel HD1/HD2** auf der Seite über HM-19; das ViewModel tauscht den Datenkontext. Offene Fachfragen: OP-45.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Fill.Hopper` (neu), `Icon.Move` (Designsystem).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.State.On`, `Icon.Status.Error`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 
@@ -66,5 +68,6 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-20-P03 | Hervorhebung | Nachdosierer mit Text/Symbol „Ausgewählt“, nicht nur Farbe | offen |
 | HM-20-P04 | Variante Hauptdosierer | Soll in % mit Soll absolut in g | offen |
 | HM-20-P05 | Variante Nachdosierer | Soll in g, Max./Aktuelle Nachgabe statt Soll absolut | offen |
-| HM-20-P06 | Keine Kopien | Bestandteile sind HM-07 bis HM-12 | offen |
-| HM-20-P07 | Detaildarstellung | Parameter RS-11/RS-19 vollständig: Eichdosierung, Drehzahl, Rührer, Querschnecke | offen |
+| HM-20-P06 | nIO-Logik | Fehlmenge > Max. Nachgabe: Hinweis mit Symbol und Text „nicht dosiert, Packung nIO“ (RS-19-P10) | offen |
+| HM-20-P07 | Keine Kopien | Bestandteile sind HM-07 bis HM-12 | offen |
+| HM-20-P08 | Detaildarstellung | Parameter RS-11/RS-19 vollständig: Eichdosierung, Drehzahl, Rührer, Querschnecke | offen |

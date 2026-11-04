@@ -45,7 +45,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Typ:** `UserControl` (`HM21_MotorParameterCard`), Zeilen als `ItemsControl` aus `HM12_ValueInput` in `HM15_GroupPanel`.
 - **Dependency Properties:** `Title`, `CardKind`, `Position`, `Speed`, `Acceleration`, `Deceleration`, `Jerk`, `DoserName`; **Command:** `CommitCommand`.
 - Zeilenhöhe `Size.Touch.Default`; drei Karten im 12-Spalten-Raster 4 : 4 : 4.
-- **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Motor.Screw`, `Icon.Motor.Closure` (neu).
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.Status.Error`; **neu, hier definiert:** `Icon.Motor.Screw`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 
