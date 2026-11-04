@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-25](../../02_Referenz-Analyse/Module/RM-25_Objekt-Ueberschrift.md) – Objekt-Überschrift: zentrierte Objekt-Überschrift (Waage, Antrieb, EA-Karte)
 
 ## WPF-Umsetzung
-- **Control:** `HM17_TitleBar` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM17_TitleBar` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM17_TitleBar`).
 - **Dependency Properties:** `Title`, `Values`, `DeviationLimit`, `TitleAlignment`; **Command:** `DetailCommand`.
 - Detail-Symbol `Icon.Move` mit Trefferfläche ≥ `Size.Touch.Min`.

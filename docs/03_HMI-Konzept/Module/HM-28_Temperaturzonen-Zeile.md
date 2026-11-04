@@ -39,7 +39,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM28_HeatZoneRow` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM28_HeatZoneRow` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM28_HeatZoneRow`), `Grid` mit festen Spalten, einsetzbar in `ItemsControl`.
 - **Dependency Properties:** `ZoneName`, `RowKind`, `Setpoint`, `Actual`, `IsEnabled`, `IsMonitored`, `StateLed`, `OutputLed`; **Commands:** `ToggleZoneCommand`, `ToggleMonitorCommand`.
 - Zeilenhöhe `Size.Touch.Default` (Heizungen: 12 Zeilen scrollbar).

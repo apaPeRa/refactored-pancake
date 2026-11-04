@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung.
 
 ## WPF-Umsetzung
-- **Control:** `HM38_SearchDialog` (UserControl, Inhalt von `HM14_PopupFrame`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM38_SearchDialog` (UserControl, Inhalt von `HM14_PopupFrame`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl`; Ergebnis über `IDialogService.ShowSearchAsync(SearchRequest) : Task<SearchHit?>`; Filterung im ViewModel (Teilzeichenfolge, `StringComparison.CurrentCultureIgnoreCase`), Liste virtualisierend.
 - **Dependency Properties:** `Title`, `SearchText`, `Items`, `FilteredItems`, `SelectedHit`, `EmptyText`, `Placeholder`; **Commands:** `SelectHitCommand`, `CancelCommand`, `ClearTextCommand`, `ScrollUpCommand`, `ScrollDownCommand`.
 - **Maße:** Trefferzeile ≥ `Size.Touch.Min` hoch, Tasten `Size.Touch.Default`, Dialogbreite höchstens `Size.Popup.WidthRatio`.

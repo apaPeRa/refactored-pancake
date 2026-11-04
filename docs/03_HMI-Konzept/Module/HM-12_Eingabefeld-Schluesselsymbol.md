@@ -72,7 +72,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-05](../../02_Referenz-Analyse/Module/RM-05_Eingabefeld-mit-Schluesselsymbol.md) – Eingabefeld mit Schlüsselsymbol: häufigstes Element der Referenz, auch Dosierer-Parameterfeld
 
 ## WPF-Umsetzung
-- **Control:** `HM12_ValueInput` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM12_ValueInput` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM12_ValueInput`); Pop-up über `IDialogService.ShowInputAsync(...)` aus dem ViewModel, nicht im Control.
 - **Dependency Properties:** `Label`, `NumberValue`, `TextValue`, `InputKind`, `Unit`, `Decimals`, `Minimum`, `Maximum`, `RequiresPermission`, `RequiredRole`, `IsAuthorized`, `Icon`, `Counter`, `CoupledCounter`, `IsPendingWrite`, `ErrorText`; **Command:** `CommitCommand`.
 - **Maße:** Höhe `Size.Touch.Default`, Trefferfläche ≥ `Size.Touch.Min`, Schlüssel `Size.Icon.S`.

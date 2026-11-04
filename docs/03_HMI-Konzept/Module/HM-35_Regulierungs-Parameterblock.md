@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM35_RegulationBlock` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM35_RegulationBlock` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM35_RegulationBlock`), `HM15_GroupPanel` mit `HM12_ValueInput`, `HM11_ValueDisplay`, `HM08_ToggleSwitch`, `HM07_ActionButton`.
 - **Dependency Properties:** siehe Tabelle; **Commands:** `DecreaseCommand`, `IncreaseCommand`, `ToggleCommand`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.State.Off`, `Icon.State.On`, `Icon.Status.Warning`.

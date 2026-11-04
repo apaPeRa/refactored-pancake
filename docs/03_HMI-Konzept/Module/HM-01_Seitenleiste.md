@@ -83,7 +83,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten: feste Tasten Produktion, Einstellungen, Zurück und Schloss-Symbol der Referenz-Fußleiste
 
 ## WPF-Umsetzung
-- **Control:** `HM01_Sidebar` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM01_Sidebar` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl`; Eintrag als `HM01_SidebarButton` (`ControlTemplate` auf `Button`/`RadioButton`).
 - **Dependency Properties:** `Initials`, `UserName`, `UserRole`, `IsLoggedIn`, `Items`, `CurrentItemId`, `UnreadMessageCount`, `CanGoBack`.
 - **Commands:** `NavigateCommand`, `BackCommand`, `UserCommand` (Bindung an Navigationsdienst, `INavigationService`).

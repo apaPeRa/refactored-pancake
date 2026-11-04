@@ -58,7 +58,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-10](../../02_Referenz-Analyse/Module/RM-10_Umschalter-Taste.md) – Umschalter-Taste: Umschalter-Taste, Anwahl-, Ein/Aus-Tasten, Fortlaufend/Einzel
 
 ## WPF-Umsetzung
-- **Control:** `HM08_ToggleSwitch` (ControlTemplate auf `ToggleButton`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM08_ToggleSwitch` (ControlTemplate auf `ToggleButton`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `ControlTemplate` auf `ToggleButton` (Stile `HM08_SwitchStyle`, `HM08_ToggleButtonStyle`); `HM08_ToggleSwitch` als Control mit den Eigenschaften der Tabelle.
 - **Dependency Properties:** `Label`, `IsChecked`, `OnText`, `OffText`, `ToggleStyle`, `ButtonSize`, `Icon`, `IsPending`, `ErrorText`, `RequiresPermission`, `IsAuthorized`; **Command:** `ToggleCommand`.
 - **Maße:** Bahn `Size.Toggle.Width` × `Size.Toggle.Height`, Knopf `Size.Toggle.Knob`, ganze Zeile (≥ `Size.Touch.Default`) antippbar; Knopfbewegung ohne Verzögerung > 100 ms.

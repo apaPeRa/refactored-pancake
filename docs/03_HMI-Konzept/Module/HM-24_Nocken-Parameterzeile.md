@@ -35,7 +35,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM24_CamParameterRow` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM24_CamParameterRow` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM24_CamParameterRow`), `Grid` mit Beschriftung und drei Spalten.
 - **Dependency Properties:** `Label`, `Angle`, `Time`, `Result`, `EncoderName`, `IsPendingWrite`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`; neu, definiert in anderem Modul: `Icon.State.Pending` (HM-08).

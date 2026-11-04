@@ -34,7 +34,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-28](../../02_Referenz-Analyse/Module/RM-28_Leimspuren-Grafik.md) – Leimspuren-Grafik: aufgefalteter Kartonzuschnitt mit 18 Winkelfeldern
 
 ## WPF-Umsetzung
-- **Control:** `HM31_GlueTrackGraphic` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM31_GlueTrackGraphic` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM31_GlueTrackGraphic`): `Viewbox` mit `Canvas` für Zuschnitt und Spuren, Felder als `ItemsControl` mit `HM12_ValueInput` in einem `Canvas` (Positionen aus `Fields`).
 - **Dependency Properties:** `Title`, `Fields`, `CutoutGeometry`; **Command:** `CommitCommand`.
 - Farben nur über `Brush.Graphic.Carton` und `Brush.Graphic.Glue`.

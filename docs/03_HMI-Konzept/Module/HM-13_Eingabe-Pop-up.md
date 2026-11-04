@@ -58,9 +58,7 @@ HS-37 (Meldearchiv) nutzt die Filtervariante: die Filter-Taste öffnet den Dialo
 - [HS-22](../Seiten/HS-22_Heizungen.md) – Heizungen
 - [HS-23](../Seiten/HS-23_Regulierung.md) – Regulierung
 - [HS-25](../Seiten/HS-25_Nocken.md) – Nocken
-- [HS-30](../Seiten/HS-30_Handbetrieb-Auswahl.md) – Handbetrieb Auswahl
 - [HS-31](../Seiten/HS-31_Handbetrieb.md) – Handbetrieb
-- [HS-33](../Seiten/HS-33_EA-Uebersicht.md) – EA-Übersicht
 - [HS-36](../Seiten/HS-36_Service.md) – Service
 - [HS-37](../Seiten/HS-37_Meldearchiv.md) – Meldearchiv
 - [HS-39](../Seiten/HS-39_System-und-Antriebsinfos.md) – System- und Antriebsinfos
@@ -72,7 +70,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM13_NumericKeypadDialog` (UserControl (Inhalt von HM14_PopupFrame)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM13_NumericKeypadDialog` (UserControl (Inhalt von HM14_PopupFrame)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` als Inhalt von `HM14_PopupFrame`; Ergebnis über `IDialogService.ShowInputAsync(InputRequest) : Task<InputResult?>`.
 - **Dependency Properties:** `Title`, `CurrentValue`, `InputText`, `Unit`, `Minimum`, `Maximum`, `Decimals`, `InputKind`, `HelpText`, `FilterFields`, `IsValid`, `ErrorText`; **Commands:** `ApplyCommand`, `CancelCommand`, `DigitCommand`, `BackspaceCommand`, `ClearCommand`, `SignCommand`, `DecimalSeparatorCommand`.
 - **Maße:** Ziffernblock 3 × 4 Tasten `Size.Touch.Large` × `Size.Touch.Default`, Abstand `Space.M`; Dialogbreite höchstens `Size.Popup.WidthRatio` der Fensterbreite.

@@ -49,7 +49,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-08](../../02_Referenz-Analyse/Module/RM-08_Status-LED.md) – Status-LED: Kontrollleuchte einzeln, Liste, Tabellenzelle, Gitterzelle
 
 ## WPF-Umsetzung
-- **Control:** `HM09_StatusLed` (ControlTemplate auf `Control`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM09_StatusLed` (ControlTemplate auf `Control`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `ControlTemplate` auf `Control` (`HM09_StatusLed`), Symbol per `Path` aus `Themes/Icons.xaml`.
 - **Dependency Properties:** `Label`, `State`, `StateText`, `ShowStateWord`, `IsCompact`, `Icon`, `Identifier`.
 - **Maße:** LED `Size.Led`, Zeile ≥ `Size.Touch.Min` mit Beschriftung. Nicht fokussierbar (`IsHitTestVisible=False`).

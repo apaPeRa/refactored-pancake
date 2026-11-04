@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-09](../../02_Referenz-Analyse/Module/RM-09_Fortschrittsbalken.md) – Fortschrittsbalken: Auslastung, Füllstand, Zeitablauf, CPU-Auslastung
 
 ## WPF-Umsetzung
-- **Control:** `HM10_ProgressBar` (ControlTemplate auf `ProgressBar`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM10_ProgressBar` (ControlTemplate auf `ProgressBar`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `ControlTemplate` auf `ProgressBar` (`HM10_ProgressBar`), Zahl über `TextBlock` im Template.
 - **Dependency Properties:** `Label`, `Value` (Basis `RangeBase.Value`), `WarningThreshold`, `ErrorThreshold`, `StringFormat`, `LabelPlacement`.
 - **Zeitablauf (HS-24):** `Value` wird vom ViewModel getaktet, keine eigene Animation im Control.

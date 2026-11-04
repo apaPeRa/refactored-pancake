@@ -37,7 +37,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM29_WeekSchedule` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM29_WeekSchedule` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM29_WeekSchedule`), `UniformGrid` mit 7 Spalten und `ItemsControl` je Tag.
 - **Dependency Properties:** `Entries`, `FirstDay`; **Commands:** `AddCommand`, `EditCommand`.
 - Eintragshöhe ≥ `Size.Touch.Default`; scrollt bei vielen Einträgen.

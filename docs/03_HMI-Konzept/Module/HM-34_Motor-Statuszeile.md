@@ -36,7 +36,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM34_DriveStatusRow` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM34_DriveStatusRow` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM34_DriveStatusRow`), `Grid` mit festen Spalten.
 - **Dependency Properties:** `DriveName`, `DiagCode`, `CurrentActual`, `CurrentMax`, `CurrentLimit`, `Message`; **Command:** `ResetMaxCommand`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.Status.Error`; neu, definiert in anderem Modul: `Icon.Action.Reset` (HM-11).

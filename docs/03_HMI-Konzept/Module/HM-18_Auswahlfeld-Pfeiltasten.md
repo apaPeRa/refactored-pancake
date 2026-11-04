@@ -43,7 +43,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM18_SelectorField` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM18_SelectorField` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM18_SelectorField`) aus zwei HM07-Tasten und einem Anzeigefeld.
 - **Dependency Properties:** `Label`, `ItemsSource`, `SelectedIndex`, `DisplayText`, `IsCyclic`, `RequiresApply`, `AllowDirectEntry`, `RequiresPermission`, `IsAuthorized`; **Commands:** `PreviousCommand`, `NextCommand`, `DirectEntryCommand`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Chevron`, `Icon.Key`, `Icon.Lock`; neu, definiert in anderem Modul: `Icon.State.Pending` (HM-08).

@@ -44,7 +44,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM26_Chart` (UserControl (eigenes Zeichnen mit `Canvas`/`Path`)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM26_Chart` (UserControl (eigenes Zeichnen mit `Canvas`/`Path`)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM26_Chart`), Zeichnung über `ItemsControl` mit `Canvas`/`Polyline`/`Rectangle` (kein zusätzliches NuGet-Paket); Skalierung im Control per `MultiValueConverter`.
 - **Dependency Properties:** `ChartKind`, `Series`, `YUnit`, `YMinimum`, `YMaximum`, `YStep`, `MaxPoints`, `ShowValueLabels`, `LowerLimit`, `UpperLimit`, `XLabels`, `Title`.
 - Mit `AutomationProperties.Name` und Wertetabelle für Zugänglichkeit.

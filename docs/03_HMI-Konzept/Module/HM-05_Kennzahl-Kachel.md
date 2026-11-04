@@ -44,6 +44,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 - [HS-12](../Seiten/HS-12_Motorparameter.md) – Motorparameter (Hauptdosierer)
 - [HS-13](../Seiten/HS-13_Kontrollwaage.md) – Kontrollwaage
 - [HS-14](../Seiten/HS-14_Einzelgewichte.md) – Einzelgewichte
+- [HS-15](../Seiten/HS-15_Trend.md) – Trend
 - [HS-16](../Seiten/HS-16_Schliessmaschine.md) – Schließmaschine
 - [HS-17](../Seiten/HS-17_Motorparameter-Schliessmaschine.md) – Motorparameter (Schließmaschine)
 - [HS-18](../Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md) – Gewichtskorrektur (Schließmaschine)
@@ -74,12 +75,14 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnitten „Verwendete Module“ und den Elemente-Tabellen der HS-Seiten abgeleitet (Stand Konsolidierung nach Phase 3, Punkt 4); „inkl. Verwendung über Kompositmodul“ nennt Seiten, auf denen das Modul nur innerhalb eines Kompositmoduls vorkommt.
 
+HM-05 ist Rahmenmodul (Kennzahlzeile) auf allen Vollseiten außer dem Vollbild HS-24; HS-02 nutzt es als Inhalt (Pop-up), HS-03 nicht. HS-15 zählt mit; die Seitendatei führt HM-05 noch nicht und wird vom Seiten-Agenten angepasst (A-79).
+
 ## Herkunft
 - [DM-08](../../01_Design-Analyse/Module/DM-08_Kennzahl-Kachel.md) – Kennzahl-Kachel: Kennzahlen Geschwindigkeit und Maschinenwinkel in der Rahmenzeile
 - [RM-12](../../02_Referenz-Analyse/Module/RM-12_Kennzahl-Kachel.md) – Kennzahl-Kachel: Kennzahlen der Seiten (Produktion, Zähler, Kontrollwaage, Einzelgewichte)
 
 ## WPF-Umsetzung
-- **Control:** `HM05_MetricTile` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM05_MetricTile` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (Anzeige) mit `ControlTemplate` für den Taster-Modus.
 - **Dependency Properties:** `Icon`, `Label`, `Value`, `Unit`, `StringFormat`, `Index`, `TileSize`, `IsInteractive`; **Command:** `OpenCommand`.
 - **Verwendung im Rahmen:** zwei Instanzen im `Grid` der Brotkrümelzeile (Spalten `10*` und `10*`), Zahlen mit `Typography.NumeralAlignment="Tabular"`.

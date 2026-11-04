@@ -65,7 +65,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-07](../../02_Referenz-Analyse/Module/RM-07_Anzeigefeld.md) – Anzeigefeld: schreibgeschütztes Anzeigefeld mit Varianten
 
 ## WPF-Umsetzung
-- **Control:** `HM11_ValueDisplay` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM11_ValueDisplay` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM11_ValueDisplay`); Zeile und Feld per `Style`-Trigger auf `Presentation`.
 - **Dependency Properties:** `Label`, `ValueKind`, `NumberValue`, `TextValue`, `TimeValue`, `Unit`, `Decimals`, `Presentation`, `Suffix`, `Counter`, `Emphasis`; **Command:** `ResetCommand`.
 - **Formatierung:** `IValueConverter` für Zahl + Einheit mit `CurrentCulture` und geschütztem Leerzeichen.

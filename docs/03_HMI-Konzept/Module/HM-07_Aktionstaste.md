@@ -69,7 +69,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-11](../../02_Referenz-Analyse/Module/RM-11_Aktionstaste.md) – Aktionstaste: Funktions-, Service-, Jog-, Kalibrier- und Seitenlink-Tasten
 
 ## WPF-Umsetzung
-- **Control:** `HM07_ActionButton` (ControlTemplate auf `Button`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM07_ActionButton` (ControlTemplate auf `Button`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `ControlTemplate` für `Button` (Stil `HM07_ActionButtonStyle`) plus `HM07_ActionButton` als `Control` mit den Eigenschaften der Tabelle (Halte-Logik als Attached Behavior, kein Code-behind).
 - **Dependency Properties:** `Label`, `Icon`, `TriggerMode`, `HoldDuration`, `IsRunning`, `RequiresPermission`, `IsAuthorized`; **Command:** `Command`/`CommandParameter`.
 - **Maße:** Höhe `Size.Touch.Default`, Mindestbreite `Size.Button.MinWidth` (in der Leiste `Size.FunctionButton.MinWidth`), Innenabstand `Space.M`.

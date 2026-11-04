@@ -80,8 +80,8 @@ Die Punkte HS-15-P01 bis P08 sind die Entsprechung der Prüfpunkte RS-15-P01 bis
 | HS-15-P12 | Zugänglichkeit | Diagramm hat `AutomationProperties.Name` und eine Wertetabelle als Alternative; Werte sind nicht nur grafisch lesbar | offen |
 | HS-15-P13 | Schriftgröße | Achsen- und Datenbeschriftung mindestens `Font.Size.Caption` (20); Zahlen mit tabellarischen Ziffern | offen |
 | HS-15-P14 | Tokens und Texte | keine Hex-, Pixel- oder Literalwerte; Einheit, „aktuell“, „Keine Daten“ aus `.resx` | offen |
-| HS-15-P16 | Rahmenkennzahlen (HM-05) | Brotkrümelzeile zeigt Geschwindigkeit (1/min) und Maschinenwinkel (°) als HM-05 mit Symbol und Einheit; Geschwindigkeit öffnet HS-03, Winkel ist nur Anzeige | offen |
 | HS-15-P15 | Raster bei 1920 × 1080 | Diagramm füllt den Inhaltsbereich (12 Spalten, volle Höhe) ohne Scrollen; Außenrand `Size.Content.Margin` | offen |
+| HS-15-P16 | Rahmenkennzahlen (HM-05) | Brotkrümelzeile zeigt Geschwindigkeit (1/min) und Maschinenwinkel (°) als HM-05 mit Symbol und Einheit; Geschwindigkeit öffnet HS-03, Winkel ist nur Anzeige | offen |
 
 ## Offene Punkte
 Verweise auf [Offene-Punkte.md](../../00_Plan/Offene-Punkte.md) (Seiten-Index RS-15): OP-32 (Anzahl der Punkte 20/21/50), OP-33 (Seitentitel „Trend KW“), OP-44 (Bild abgeschnitten, Beschriftung am oberen Rand angeschnitten), OP-47 (Skalierung der Y-Achse, Grenzlinien, Statistik). Zusätzlich offen aus der RS-Seite: Live-Aktualisierung und Interaktion (Antippen, Zoom) nicht beschrieben; Bedeutung von −0 und Reihenfolge der X-Achse nur als Annahme (−0 = aktuellster Wert).

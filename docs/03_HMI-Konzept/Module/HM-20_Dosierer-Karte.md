@@ -52,7 +52,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-18](../../02_Referenz-Analyse/Module/RM-18_Dosierer-Seitengeruest.md) – Dosierer-Seitengerüst: Dosierer-Seitengerüst Hauptdosierer 1/2 und Nachdosierer
 
 ## WPF-Umsetzung
-- **Control:** `HM20_DosingCard` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM20_DosingCard` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM20_DosingCard`), setzt `HM12_ValueInput`, `HM11_ValueDisplay`, `HM09_StatusLed`, `HM08_ToggleSwitch`, `HM10_ProgressBar`, `HM07_ActionButton` ein; Darstellung Compact/Detail per `DataTrigger` auf `CardMode`.
 - **Dependency Properties:** siehe Tabelle; **Commands:** `ManualCommand`, `EmptyCommand`, `CalibrateCommand`, `OpenDetailCommand`, `OpenRegulationCommand`, `OpenMotorCommand`, `OpenWeightCorrectionCommand`.
 - **Wechsel HD1/HD2** auf der Seite über HM-19; das ViewModel tauscht den Datenkontext. Offene Fachfragen: OP-45.

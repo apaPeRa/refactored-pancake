@@ -8,10 +8,10 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 
 | Name (Eigenschaft) | C#-Typ | Einheit | Wertebereich |
 |---|---|---|---|
-| Logo (`LogoLight`, `LogoDark`) | ImageSource / DrawingImage | – | je Thema eine Variante, fest |
+| Logo (`LogoLight`, `LogoDark`) | ImageSource / DrawingImage | – | je Thema eine Variante, fest; in M2 Platzhalter (Text „APA-TEC“), die freigestellte Grafik wird in M3 eingesetzt (A-78, OP-66) |
 | Betriebsart (`OperatingMode`) | enum OperatingMode { Production, Setup, Manual, Service, Fault } | – | Bild nur Production; weitere offen (OP-22), Aufzählung erweiterbar |
 | Betriebsart-Text (`OperatingModeText`) | string | – | Ressourcentext, z. B. „Produktion“ |
-| Meldezeile zeigen (`ShowMessageLine`) | bool | – | Standard true; false = Kopfzeile ohne Meldezeile, das Logo-/Betriebsart-/Uhr-Raster bleibt (Vollbild HS-24) |
+| Meldezeile zeigen (`ShowMessageLine`) | bool | – | Standard true; false = Kopfzeile ohne Meldezeile, das Logo-/Betriebsart-/Uhr-Raster bleibt (Vollbild HS-24); im Vollbild ohne Seitenleiste liegt die Kopfzeile über die volle Fensterbreite |
 | Zeit (`Now`) | DateTime | HH:mm:ss | 00:00:00 bis 23:59:59; Design „9:15“ ohne Sekunden, Referenz „13:01:12“ (A-47) |
 | Sekunden zeigen (`ShowSeconds`) | bool | – | Standard true |
 | Zeit gültig (`IsTimeValid`) | bool | – | false zeigt „--:--:--“ |
@@ -81,7 +81,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-01](../../02_Referenz-Analyse/Module/RM-01_Kopfzeile.md) – Kopfzeile: Logo, Uhrzeit, Datum, Wirbel-Symbol und „Service“-Schriftzug; der Seitentitel geht in das letzte Brotkrümel-Segment [HM-04](HM-04_Brotkruemel-Navigation.md) über
 
 ## WPF-Umsetzung
-- **Control:** `HM02_HeaderBar` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM02_HeaderBar` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` mit 4-spaltigem `Grid` (`12* 13* 6* 4*`); enthält [HM-03](HM-03_Meldezeile.md) in Spalte 2.
 - **Dependency Properties:** `LogoSource`, `OperatingMode`, `OperatingModeText`, `Now`, `ShowSeconds`, `IsTimeValid`. Uhr über `IClockService` (Dummy), Taktgeber im ViewModel.
 - **Mindestbreiten:** Betriebsart `Size.Header.Mode.MinWidth`, Uhr `Size.Header.Clock.MinWidth`.

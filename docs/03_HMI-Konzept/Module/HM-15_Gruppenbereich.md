@@ -57,7 +57,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-15](../../02_Referenz-Analyse/Module/RM-15_Gruppenrahmen.md) – Gruppenrahmen: hellgraues Panel mit Überschrift; Textüberschrift ohne Rahmen als Variante
 
 ## WPF-Umsetzung
-- **Control:** `HM15_GroupPanel` (UserControl (`HeaderedContentControl`)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM15_GroupPanel` (UserControl (`HeaderedContentControl`)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl`/`HeaderedContentControl` mit `ControlTemplate` (`HM15_GroupPanel`).
 - **Dependency Properties:** `Header`, `Subheader`, `GroupStyle`, `IsHighlighted`, `HighlightText`, `Content`.
 - Keine feste Größe; belegt Spalten- und Zeilenanteile im 12-Spalten-Raster der Seite.

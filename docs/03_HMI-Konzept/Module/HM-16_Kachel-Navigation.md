@@ -1,7 +1,7 @@
 # HM-16 – Kachel-Navigation
 
 ## Funktion
-Raster aus großen Kacheltasten für Navigation oder Schnellzugriff (Seite Einstellungen 5 × 4, Handbetrieb-Auswahl 4 × 4, EA-Übersicht 4 × 2, Systemeinstellungen 3 × 3; Schnellzugriff auf der Produktionsseite 3 × 2). Kachel: Beschriftung (mehrzeilig, automatischer Umbruch), optionales Symbol über dem Text, Schlüssel-Symbol bei berechtigungspflichtigen Zielen. Ziel ist eine Seite oder eine Aktion; Warnaktionen (Steuerung neu starten) öffnen vorher ein Bestätigungs-Pop-up. Leere Kacheln erscheinen als „Reserviert“ im Zustand deaktiviert (A-29). Kachel ohne Ein/Aus-Zustand. **Abgrenzung zu den Zustandstasten:** HM-16 ist das Raster (Spalten × Zeilen, Zellmaß `Size.Touch.Large`, Abstand `Size.Touch.Gap`) und die Navigationskachel ohne Zustand. Der Tastenblock 3 × 2 auf HS-01 (Automatik, Zuführung Papier und Karton, Leerpakete ausblasen, Abfüllung, Bunker leerfahren) sind **Zustandstasten**: Sie liegen in diesem Raster (Elementart `StateToggle`), jede Zelle ist aber ein [HM-08](HM-08_Zustandstaste-Umschalter.md) (`ToggleStyle = Button`, `ButtonSize = Tile`); Zustand, Wort und Befehl gehören HM-08, HM-16 liefert nur Anordnung und Maße.
+Raster aus großen Kacheltasten für Navigation oder Schnellzugriff (Seite Einstellungen 2 × 4 in der mittleren und 2 × 4 in der rechten Gruppe plus kleine Kachel „Beleuchtung“ links, 16 Plätze, A-36; Handbetrieb-Auswahl 4 × 4, EA-Übersicht 4 × 2, Systemeinstellungen 3 × 3; Schnellzugriff auf der Produktionsseite 3 × 2). Kachel: Beschriftung (mehrzeilig, automatischer Umbruch), optionales Symbol über dem Text, Schlüssel-Symbol bei berechtigungspflichtigen Zielen. Ziel ist eine Seite oder eine Aktion; Warnaktionen (Steuerung neu starten) öffnen vorher ein Bestätigungs-Pop-up. Leere Kacheln erscheinen als „Reserviert“ im Zustand deaktiviert (A-29). Kachel ohne Ein/Aus-Zustand. **Abgrenzung zu den Zustandstasten:** HM-16 ist das Raster (Spalten × Zeilen, Zellmaß `Size.Touch.Large`, Abstand `Size.Touch.Gap`) und die Navigationskachel ohne Zustand. Der Tastenblock 3 × 2 auf HS-01 (Automatik, Zuführung Papier und Karton, Leerpakete ausblasen, Abfüllung, Bunker leerfahren) sind **Zustandstasten**: Sie liegen in diesem Raster (Elementart `StateToggle`), jede Zelle ist aber ein [HM-08](HM-08_Zustandstaste-Umschalter.md) (`ToggleStyle = Button`, `ButtonSize = Tile`); Zustand, Wort und Befehl gehören HM-08, HM-16 liefert nur Anordnung und Maße.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -47,7 +47,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-14](../../02_Referenz-Analyse/Module/RM-14_Kachel-Navigation.md) – Kachel-Navigation: Raster aus Kacheltasten (Einstellungen, Handbetrieb-Auswahl, EA-Übersicht, Systemeinstellungen)
 
 ## WPF-Umsetzung
-- **Control:** `HM16_TileNavigation` (UserControl (Kachel: `ControlTemplate` auf `Button`)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM16_TileNavigation` (UserControl (Kachel: `ControlTemplate` auf `Button`)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`ItemsControl` mit `UniformGrid`), Kachel `HM16_Tile` als `ControlTemplate`.
 - **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`, `ItemKind`, `ShowNavigationIndicator`; **Command:** `NavigateCommand`.
 - Abstand zwischen Kacheln `Size.Touch.Gap`, Beschriftung aus `.resx`, Umbruch automatisch (OP-13).
@@ -62,6 +62,6 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 | HM-16-P02 | DS-01 | 6 Kacheln in 2 Reihen à 3 | offen |
 | HM-16-P03 | Leere Kachel | gleiche Gestalt, Text „Reserviert“, deaktiviert | offen |
 | HM-16-P04 | Beschriftung | automatischer Umbruch, keine Trennstriche („Schließmaschine“) | offen |
-| HM-16-P05 | Raster Referenz | HS-04 5 × 4 (18 beschriftet, 2 leer), HS-30 4 × 4, HS-33 4 × 2, HS-35 3 × 3 | offen |
+| HM-16-P05 | Raster Seiten | HS-04 zwei Raster 2 × 4 plus Kachel „Beleuchtung“ (16 Plätze, A-36), HS-30 4 × 4, HS-33 4 × 2, HS-35 3 × 3 | offen |
 | HM-16-P06 | Touch | Höhe ≥ `Size.Touch.Large` (Small `Size.Touch.Default`), Abstand `Size.Touch.Gap` | offen |
 | HM-16-P07 | Zustandstasten im Raster | HS-01: 6 Zustandstasten (HM-08, Tile) im Raster 3 × 2 mit `Size.Touch.Large` und `Size.Touch.Gap`; kein Ziel, keine Navigation | offen |

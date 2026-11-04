@@ -72,7 +72,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-01](../../02_Referenz-Analyse/Module/RM-01_Kopfzeile.md) – Kopfzeile: Seitentitel und Titelzusatz (Objektkennung wie „HD1“) werden letztes Segment
 
 ## WPF-Umsetzung
-- **Control:** `HM04_Breadcrumb` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM04_Breadcrumb` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`ItemsControl` mit horizontalem `StackPanel`); Segment als `HM04_BreadcrumbSegment` (`ControlTemplate`).
 - **Dependency Properties:** `Segments`, `ObjectSuffix`; **Command:** `NavigateCommand`.
 - **Layout:** Spalte 56* der Brotkrümel-/Kennzahlzeile.

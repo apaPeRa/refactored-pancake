@@ -48,7 +48,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM25_MessageList` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM25_MessageList` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM25_MessageList`) auf Basis `ListView`/`ItemsControl` mit virtualisierendem Panel; Zeilenhöhe `Size.Touch.Min`; Spalten per `GridViewColumn` oder `DataTemplate` je Listenart.
 - **Dependency Properties:** `Items`, `ListKind`, `SelectionMode`, `SelectedItem`, `SelectedItems`, `SortDirection`, `ScrollStyle`, `ShowClassColumn`, `TotalCount`, `IsFiltered`; **Commands:** vier Scrollbefehle.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Scroll.Up`, `Icon.Scroll.Down`, `Icon.Status.Error`, `Icon.Status.Info`, `Icon.Status.Ok`, `Icon.Status.Warning`.

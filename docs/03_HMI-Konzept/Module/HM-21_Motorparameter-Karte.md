@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM21_MotorParameterCard` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM21_MotorParameterCard` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM21_MotorParameterCard`), Zeilen als `ItemsControl` aus `HM12_ValueInput` in `HM15_GroupPanel`.
 - **Dependency Properties:** `Title`, `CardKind`, `Position`, `Speed`, `Acceleration`, `Deceleration`, `Jerk`, `DoserName`; **Command:** `CommitCommand`.
 - Zeilenhöhe `Size.Touch.Default`; drei Karten im 12-Spalten-Raster 4 : 4 : 4.

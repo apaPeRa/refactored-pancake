@@ -37,7 +37,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM32_PackRegisterGraphic` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM32_PackRegisterGraphic` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM32_PackRegisterGraphic`) in einem `ScrollViewer` (horizontal), Stationen als `ItemsControl` mit `Canvas`-Layout; Legende `HM32_Legend`.
 - **Dependency Properties:** `Stations`, `ShowLegend`; **Command:** `ToggleStationCommand`.
 - Stationsfeld mindestens `Size.Touch.Min` × `Size.Touch.Min`.

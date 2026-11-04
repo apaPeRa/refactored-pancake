@@ -8,7 +8,7 @@ Alle Referenz-Seiten und die Zusatzseiten HS-40 bis HS-43 sind in mindestens ein
 
 | Seite | Offene Punkte |
 |---|---|
-| [RS-01](../02_Referenz-Analyse/Seiten/RS-01_Produktion.md) | OP-25, OP-26, OP-27, OP-29, OP-31, OP-34, OP-35, OP-43, OP-50, OP-63, OP-65 |
+| [RS-01](../02_Referenz-Analyse/Seiten/RS-01_Produktion.md) | OP-25, OP-26, OP-27, OP-29, OP-31, OP-34, OP-35, OP-43, OP-50, OP-63, OP-65, OP-66 |
 | [RS-02](../02_Referenz-Analyse/Seiten/RS-02_Produktionszaehler.md) | OP-25, OP-31, OP-34, OP-42, OP-50 |
 | [RS-03](../02_Referenz-Analyse/Seiten/RS-03_Maschinengeschwindigkeit.md) | OP-25, OP-27, OP-28, OP-30, OP-50 |
 | [RS-04](../02_Referenz-Analyse/Seiten/RS-04_Einstellungen.md) | OP-24, OP-26, OP-34, OP-38, OP-51, OP-63 |
@@ -121,3 +121,4 @@ Alle Referenz-Seiten und die Zusatzseiten HS-40 bis HS-43 sind in mindestens ein
 | OP-63 | Rezeptanwahl, Benutzer- und Sprachwahl-Pop-up ohne Modul: Inhalt, Bedienung und Berechtigung sind nicht beschrieben (Bezug OP-01, OP-03, OP-04) | Platzhalter-Pop-ups mit Dummy-Inhalt im Pop-up-Rahmen HM-14 über `IDialogService` (Navigation.md 4.1); kein eigenes HM, bis die Funktion geklärt ist | [HS-01](../03_HMI-Konzept/Seiten/HS-01_Produktion.md), [HS-04](../03_HMI-Konzept/Seiten/HS-04_Einstellungen.md); offen |
 | OP-64 | Gewichtskorrektur (HS-21, RS-21): empfohlen sind 3 bis 8 Stützstellen, die Tabelle bietet 20 Zeilen; Bezug Sollgewicht (250,4 g) zu „Soll“ (250 g) unklar | 20 Zeilen als Liste Nr. 1 bis 20 darstellen, mindestens 3 gültige Paare zur Berechnung; die empfohlene Obergrenze 8 wird als Hinweis, nicht als Sperre geführt; Klärung offen | [HS-21](../03_HMI-Konzept/Seiten/HS-21_Gewichtskorrektur.md), [HS-18](../03_HMI-Konzept/Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md); offen |
 | OP-65 | Symbolnamen: Standardabweichung als `Icon.Stat.Sigma` (HS-01) und `Icon.Stat.StdDev` (HS-13, HS-14) doppelt geführt; Dosierer-Symbole (Gewichtsstück, Waagschale, Schnecke) in den Seiten ohne endgültigen Namen | Beide Namen stehen in Designsystem 6.1 mit gleicher Bedeutung; in M2 auf ein Symbol vereinheitlichen; `Icon.Dosing.Weight` und `Icon.Dosing.Calibration` vorläufig angelegt | [HS-01](../03_HMI-Konzept/Seiten/HS-01_Produktion.md), [HS-13](../03_HMI-Konzept/Seiten/HS-13_Kontrollwaage.md), [HS-11](../03_HMI-Konzept/Seiten/HS-11_Hauptdosierer-1-und-2.md); offen |
+| OP-66 | Logo APA-TEC (HM-02): keine freigestellte Grafik je Thema vorhanden, nur im Design-Screenshot | Platzhalter in M2 (A-78); Grafik in M3 aus dem Design beschaffen oder vom Auftraggeber anfordern | [HM-02](../03_HMI-Konzept/Module/HM-02_Kopfzeile.md); offen |

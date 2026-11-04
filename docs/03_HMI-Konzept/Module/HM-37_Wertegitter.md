@@ -38,7 +38,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM37_ValueGrid` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM37_ValueGrid` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM37_ValueGrid`) mit `UniformGrid` (Zeilen 10, Spalten 5), Zelle `HM37_Cell`.
 - **Dependency Properties:** `Cells`, `LastIndex`, `Mode`, `Capacity`; **Commands:** `StartCommand`, `ToggleModeCommand`.
 - Zellhöhe ≥ `Size.Touch.Min`.

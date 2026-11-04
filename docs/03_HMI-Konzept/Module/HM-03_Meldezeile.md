@@ -75,7 +75,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-02](../../02_Referenz-Analyse/Module/RM-02_Meldezeile.md) – Meldezeile: Meldungsnummer und -text, Antippen öffnet die Meldeanzeige
 
 ## WPF-Umsetzung
-- **Control:** `HM03_MessageLine` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM03_MessageLine` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl`; einzeilig, Text `TextTrimming=CharacterEllipsis`, vollständiger Text im Tooltip und in HS-38.
 - **Dependency Properties:** `Number`, `Text`, `Class`, `AdditionalCount`; **Command:** `OpenCommand`.
 - **Stil:** `DataTrigger` auf `Class` schaltet Fläche, Symbol und Wort; Wörter aus `.resx` (`Status_Warning_Word` usw.).

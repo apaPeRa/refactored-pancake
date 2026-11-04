@@ -37,7 +37,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - Design: keine Entsprechung (Element nur in der Referenz).
 
 ## WPF-Umsetzung
-- **Control:** `HM30_ScheduleEntryDialog` (UserControl (Inhalt von HM14_PopupFrame)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM30_ScheduleEntryDialog` (UserControl (Inhalt von HM14_PopupFrame)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` als Inhalt von `HM14_PopupFrame`, geöffnet über `IDialogService`.
 - **Dependency Properties:** `Kind`, `StartActive`, `EndActive`, `StartTime`, `EndTime`, `ChildCount`, `IsNew`, `ErrorText`; **Commands:** `ApplyCommand`, `CancelCommand`, `DeleteCommand`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Confirm`, `Icon.State.Off`, `Icon.Status.Error`, `Icon.Status.Info`; **neu, hier definiert:** `Icon.Delete`.

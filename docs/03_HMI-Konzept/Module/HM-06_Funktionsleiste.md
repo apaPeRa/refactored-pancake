@@ -71,7 +71,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - [RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md) – Funktionsleiste unten: Leiste unten mit seitenspezifischen Tasten „Navigation unten links“; feste Tasten wandern in HM-01
 
 ## WPF-Umsetzung
-- **Control:** `HM06_FunctionBar` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
+- **Control:** `HM06_FunctionBar` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` mit `ItemsControl` (horizontaler `StackPanel`, Abstand `Space.M`), zwei Bereiche (links, rechts).
 - **Dependency Properties:** `Items`, `TrailingItems`, `CurrentTargetId`.
 - **Inhaltsvorlagen:** `DataTemplate` je Tastenmodell, rendert HM-07, HM-08 oder HM-19.
