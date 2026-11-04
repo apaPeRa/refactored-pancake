@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hm13to19.resx: Texte der Module HM-13 bis HM-19 (Eingabe-Pop-up, Pop-up-Rahmen, Gruppenbereich, Kachel-Navigation, Titelzeile, Auswahlfeld, Blaettertasten).
+     Neutralsprache Deutsch. Schluessel: <Modul>_<Element>_<Eigenschaft>. Wird vom LocalizationService automatisch gefunden. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HM13_Current_Label" xml:space="preserve"><value>Aktuell: </value><comment>HM-13 Zeile aktueller Wert</comment></data>
+  <data name="HM13_TimePlaceholder_Text" xml:space="preserve"><value>__:__</value><comment>HM-13 Zeitvariante: Platzhalterstruktur hh:mm</comment></data>
+  <data name="HM13_Range_Label" xml:space="preserve"><value>Bereich </value><comment>HM-13 Bereichsangabe, Anfang</comment></data>
+  <data name="HM13_RangeTo_Word" xml:space="preserve"><value> bis </value><comment>HM-13 Bereichsangabe, Verbindungswort</comment></data>
+  <data name="HM13_Sign_Label" xml:space="preserve"><value>±</value><comment>HM-13 Taste Vorzeichen</comment></data>
+  <data name="HM13_Sign_Name" xml:space="preserve"><value>Vorzeichen wechseln</value><comment>HM-13 Bedienhilfe Vorzeichen</comment></data>
+  <data name="HM13_Decimal_Label" xml:space="preserve"><value>,</value><comment>HM-13 Taste Dezimaltrenner</comment></data>
+  <data name="HM13_Decimal_Name" xml:space="preserve"><value>Komma</value><comment>HM-13 Bedienhilfe Komma</comment></data>
+  <data name="HM13_Backspace_Label" xml:space="preserve"><value>⌫</value><comment>HM-13 Taste Rücktaste</comment></data>
+  <data name="HM13_Backspace_Name" xml:space="preserve"><value>Rücktaste</value><comment>HM-13 Bedienhilfe Rücktaste</comment></data>
+  <data name="HM13_Clear_Label" xml:space="preserve"><value>C</value><comment>HM-13 Taste Löschen</comment></data>
+  <data name="HM13_Clear_Name" xml:space="preserve"><value>Eingabe löschen</value><comment>HM-13 Bedienhilfe Löschen</comment></data>
+  <data name="HM14_Close_Name" xml:space="preserve"><value>Pop-up schließen</value><comment>HM-14 Bedienhilfe Schließen-Kreuz</comment></data>
+  <data name="HM14_Confirm_Label" xml:space="preserve"><value>Ja</value><comment>HM-14 Bestätigung: Standardtext der Bestätigungstaste</comment></data>
+  <data name="HM15_Highlight_Text" xml:space="preserve"><value>Ausgewählt</value><comment>HM-15 Standardtext der Hervorhebung</comment></data>
+  <data name="HM16_Reserved_Text" xml:space="preserve"><value>Reserviert</value><comment>HM-16 leere Kachel</comment></data>
+  <data name="HM16_Unavailable_Text" xml:space="preserve"><value>Nicht verfügbar</value><comment>HM-16 deaktivierte Kachel mit Grund</comment></data>
+  <data name="HM17_Detail_Name" xml:space="preserve"><value>Details</value><comment>HM-17 Bedienhilfe Detail-Symbol</comment></data>
+  <data name="HM17_Deviation_Text" xml:space="preserve"><value>Abweichung</value><comment>HM-17 Abweichungshinweis</comment></data>
+  <data name="HM18_Previous_Name" xml:space="preserve"><value>Vorheriger Eintrag</value><comment>HM-18 Bedienhilfe Pfeil links</comment></data>
+  <data name="HM18_Next_Name" xml:space="preserve"><value>Nächster Eintrag</value><comment>HM-18 Bedienhilfe Pfeil rechts</comment></data>
+  <data name="HM18_Pending_Text" xml:space="preserve"><value>Nicht übernommen</value><comment>HM-18 ausgewählt, nicht übernommen</comment></data>
+  <data name="HM19_Previous_Name" xml:space="preserve"><value>Zurückblättern</value><comment>HM-19 Bedienhilfe Pfeil zurück</comment></data>
+  <data name="HM19_Next_Name" xml:space="preserve"><value>Vorblättern</value><comment>HM-19 Bedienhilfe Pfeil vor</comment></data>
+  <data name="HM19_Of_Text" xml:space="preserve"><value> von </value><comment>HM-19 Positionsanzeige „n von m“</comment></data>
+  <data name="HM19_RangeDash_Text" xml:space="preserve"><value>–</value><comment>HM-19 Bereichsanzeige „n–m von k“</comment></data>
+</root>

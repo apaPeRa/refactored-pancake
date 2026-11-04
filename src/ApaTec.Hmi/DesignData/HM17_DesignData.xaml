@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM17_DesignData.xaml: Beispielinstanzen fuer den Entwurfsmodus (Designer/Vorschau), Werte aus der Moduldatei. Nicht in die Anwendung eingebunden.
+     Jede Instanz ist x:Shared="False" (eigene Kopie je Verwendung). Theme: Hell. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Theme.Light.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Controls/HM17_TitleBar.Styles.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <x:Array x:Key="HM17.Sample.Values" Type="{x:Type local:TitleValue}">
+    <local:TitleValue Label="Sollgewicht KW" Value="235" Unit="g" />
+    <local:TitleValue Label="Letztes Gewicht KW" Value="238" Unit="g" />
+  </x:Array>
+  <!-- mit Kennwerten und Detail-Symbol (HS-11) -->
+  <local:HM17_TitleBar x:Key="HM17.Sample.WithValues" x:Shared="False" Title="Hauptdosierer 1"
+                       Values="{StaticResource HM17.Sample.Values}" DeviationLimit="5" />
+  <!-- Abweichung -->
+  <local:HM17_TitleBar x:Key="HM17.Sample.Deviation" x:Shared="False" Title="Hauptdosierer 1"
+                       Values="{StaticResource HM17.Sample.Values}" DeviationLimit="2" HasDeviation="True" />
+  <!-- nur Objektname (HS-27) -->
+  <local:HM17_TitleBar x:Key="HM17.Sample.Plain" x:Shared="False" Title="Antrieb Zuführung 2MA1" />
+</ResourceDictionary>

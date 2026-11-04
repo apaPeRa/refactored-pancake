@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
         xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+        xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+        xmlns:nav="clr-namespace:ApaTec.Hmi.Navigation"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=vm:ShellViewModel, IsDesignTimeCreatable=True}"
         Title="{res:Loc App_Title}"
@@ -18,7 +20,7 @@
     <Window.Resources>
         <!-- Header und Inhalt ueberspannen im Vollbild (HS-24, ShowFrame = false) die volle Fensterbreite; der Inhalt auch die Zeilen darunter. -->
         <!-- Lage steht im Stil (nicht lokal am Element), sonst koennten die Trigger sie nicht ueberschreiben. -->
-        <Style x:Key="Shell.HeaderHost" TargetType="ContentControl" BasedOn="{StaticResource Frame.Placeholder}">
+        <Style x:Key="Shell.HeaderHost" TargetType="controls:HM02_HeaderBar" BasedOn="{StaticResource {x:Type controls:HM02_HeaderBar}}">
             <Setter Property="Grid.Column" Value="1" />
             <Setter Property="Grid.Row" Value="0" />
             <Style.Triggers>
@@ -75,19 +77,35 @@
             <RowDefinition Height="{StaticResource Size.FunctionBar.Height}" />
         </Grid.RowDefinitions>
 
-        <!-- Seitenleiste (HM-01), volle Hoehe. Erweiterungspunkt: ContentControl durch <controls:HM01_Sidebar .../> ersetzen. -->
-        <ContentControl x:Name="SidebarHost"
-                        Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"
-                        Style="{StaticResource Frame.Placeholder}"
-                        Background="{DynamicResource Brush.Sidebar}"
-                        Foreground="{DynamicResource Brush.Sidebar.Text.Secondary}"
-                        Tag="{res:Loc Frame_Sidebar_Placeholder}"
-                        Visibility="{Binding ShowFrame, Converter={StaticResource BooleanToVisibility}}" />
+        <!-- Seitenleiste (HM-01), volle Hoehe. Hinter Pop-ups gesperrt (IsFrameInteractive), im Vollbild (HS-24) ausgeblendet. -->
+        <controls:HM01_Sidebar x:Name="SidebarHost"
+                               Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"
+                               Visibility="{Binding ShowFrame, Converter={StaticResource BooleanToVisibility}}"
+                               IsEnabled="{Binding IsFrameInteractive}"
+                               Initials="{Binding UserInitials}"
+                               UserName="{Binding UserName}"
+                               UserRole="{Binding UserRoleText}"
+                               IsLoggedIn="{Binding IsLoggedIn}"
+                               Items="{Binding SidebarItems}"
+                               CurrentItemId="{Binding CurrentSidebarItemId}"
+                               UnreadMessageCount="{Binding UnreadMessageCount}"
+                               CanGoBack="{Binding CanGoBack}"
+                               NavigateCommand="{Binding SidebarNavigateCommand}"
+                               BackCommand="{Binding BackCommand}"
+                               UserCommand="{Binding UserCommand}" />
 
-        <!-- Kopfzeile (HM-02 mit Meldezeile HM-03): Spalten Logo / Meldezeile / Betriebsart / Uhr = Size.Header.Col.* (12* : 13* : 6* : 4*) liegen im Modul. -->
-        <ContentControl x:Name="HeaderHost"
-                        Style="{StaticResource Shell.HeaderHost}"
-                        Tag="{res:Loc Frame_Header_Placeholder}" />
+        <!-- Kopfzeile (HM-02 mit Meldezeile HM-03): Spalten Logo / Meldezeile / Betriebsart / Uhr = Size.Header.Col.* (12* : 13* : 6* : 4*) liegen im Modul. Anzeige, kein Sperrzustand noetig (Scrim). -->
+        <controls:HM02_HeaderBar x:Name="HeaderHost"
+                                 Style="{StaticResource Shell.HeaderHost}"
+                                 OperatingMode="{Binding OperatingMode}"
+                                 OperatingModeText="{Binding OperatingModeText}"
+                                 Now="{Binding Now}"
+                                 ShowMessageLine="{Binding ShowMessageLine}"
+                                 MessageNumber="{Binding MessageNumber}"
+                                 MessageText="{Binding MessageText}"
+                                 MessageClass="{Binding MessageClass}"
+                                 AdditionalMessageCount="{Binding AdditionalMessageCount}"
+                                 MessageCommand="{Binding MessagesCommand}" />
 
         <!-- Brotkruemel (HM-04) und Kennzahlen Geschwindigkeit/Winkel (HM-05): Spalten Size.Crumb.Col.* (56* : 10* : 10*). -->
         <Grid Grid.Column="1" Grid.Row="1"
@@ -97,15 +115,28 @@
                 <ColumnDefinition Width="{StaticResource Size.Crumb.Col.Speed}" />
                 <ColumnDefinition Width="{StaticResource Size.Crumb.Col.Angle}" />
             </Grid.ColumnDefinitions>
-            <ContentControl x:Name="BreadcrumbHost" Grid.Column="0"
-                            Style="{StaticResource Frame.Placeholder}"
-                            Tag="{res:Loc Frame_Breadcrumb_Placeholder}" />
-            <ContentControl x:Name="SpeedHost" Grid.Column="1"
-                            Style="{StaticResource Frame.Placeholder}"
-                            Tag="{res:Loc Frame_Speed_Placeholder}" />
-            <ContentControl x:Name="AngleHost" Grid.Column="2"
-                            Style="{StaticResource Frame.Placeholder}"
-                            Tag="{res:Loc Frame_Angle_Placeholder}" />
+            <controls:HM04_Breadcrumb x:Name="BreadcrumbHost" Grid.Column="0"
+                                      IsEnabled="{Binding IsFrameInteractive}"
+                                      Segments="{Binding Breadcrumb}"
+                                      NavigateCommand="{Binding NavigateToAncestorCommand}" />
+            <!-- Geschwindigkeit: antippbar, oeffnet HS-03 (Navigation.md 3.2); hinter Pop-ups gesperrt -->
+            <controls:HM05_MetricTile x:Name="SpeedHost" Grid.Column="1"
+                                      TileSize="Frame"
+                                      Icon="{StaticResource Icon.Speed}"
+                                      Unit="{res:Loc HM05_Unit_Speed}"
+                                      AutomationProperties.Name="{res:Loc HM05_Speed_Automation}"
+                                      Value="{Binding MachineSpeed}"
+                                      IsInteractive="True"
+                                      IsEnabled="{Binding IsFrameInteractive}"
+                                      OpenCommand="{Binding NavigateCommand}"
+                                      CommandParameter="{x:Static nav:PageKeys.MachineSpeed}" />
+            <!-- Maschinenwinkel: nur Anzeige -->
+            <controls:HM05_MetricTile x:Name="AngleHost" Grid.Column="2"
+                                      TileSize="Frame"
+                                      Icon="{StaticResource Icon.Angle}"
+                                      Unit="{res:Loc HM05_Unit_Angle}"
+                                      AutomationProperties.Name="{res:Loc HM05_Angle_Automation}"
+                                      Value="{Binding MachineAngle}" />
         </Grid>
 
         <!-- Inhaltsbereich: zeigt das aktuelle Seiten-ViewModel; die View kommt per ViewLocator (Namenskonvention). -->
@@ -115,12 +146,13 @@
                         Content="{Binding CurrentPage}"
                         ContentTemplateSelector="{StaticResource ViewLocator}" />
 
-        <!-- Untere Funktionsleiste (HM-06); die Tasten liefert das Seiten-ViewModel (FunctionBarItems). -->
-        <ContentControl x:Name="FunctionBarHost"
-                        Grid.Column="1" Grid.Row="3"
-                        Style="{StaticResource Frame.Placeholder}"
-                        Tag="{res:Loc Frame_FunctionBar_Placeholder}"
-                        Visibility="{Binding ShowFrame, Converter={StaticResource BooleanToVisibility}}" />
+        <!-- Untere Funktionsleiste (HM-06); die Tasten liefert das Seiten-ViewModel (FunctionBarItems). Hinter Pop-ups gesperrt, bleibt sichtbar. -->
+        <controls:HM06_FunctionBar x:Name="FunctionBarHost"
+                                   Grid.Column="1" Grid.Row="3"
+                                   Visibility="{Binding ShowFrame, Converter={StaticResource BooleanToVisibility}}"
+                                   IsEnabled="{Binding IsFrameInteractive}"
+                                   Items="{Binding FunctionBarItems}"
+                                   CurrentTargetId="{Binding CurrentPageKey}" />
 
         <!-- Pop-up-Ebene mit Scrim, Inhalt per ViewLocator. -->
         <ContentControl x:Name="PopupHost"

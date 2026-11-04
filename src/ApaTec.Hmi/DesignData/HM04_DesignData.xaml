@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Entwurfsdaten HM-04 Brotkruemel: DS-03 mit drei Segmenten und Objektkennung, DS-01 mit einem Segment. Nicht Teil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:dd="clr-namespace:ApaTec.Hmi.DesignData">
+
+  <controls:HM04_Breadcrumb x:Key="HM04_Example.ThreeSegments" x:Shared="False"
+                            Segments="{x:Static dd:HM04_DesignData.ThreeSegments}" ObjectSuffix="HD1" />
+  <controls:HM04_Breadcrumb x:Key="HM04_Example.OneSegment" x:Shared="False"
+                            Segments="{x:Static dd:HM04_DesignData.OneSegment}" />
+</ResourceDictionary>

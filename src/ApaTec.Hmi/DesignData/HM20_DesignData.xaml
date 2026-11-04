@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM20_DesignData.xaml: Beispielinstanzen der Dosierer-Karte (HM-20).
+     Beispielinstanzen (x:Shared="False") mit Werten aus den Moduldateien/Bildern (A-50); nur fuer Entwurfsmodus und die spaetere Galerie, nicht Teil der Laufzeitressourcen.
+     Verwendung im Designer: d:DataContext bzw. {StaticResource Schluessel} aus diesem Dictionary. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctl="clr-namespace:ApaTec.Hmi.Controls">
+  <ctl:HM20_DosingCard x:Key="HM20.Sample.Main1" x:Shared="False" Title="Hauptdosierer 1" DoserKind="Main" CardMode="Compact"
+                       TargetPercent="48" TargetWeight="113" RegulationValue="5.3" HopperUpper="On" HopperLower="On" Load="91"
+                       CrossScrewEnabled="True" AgitatorEnabled="True" RegulationEnabled="True" />
+  <ctl:HM20_DosingCard x:Key="HM20.Sample.Main2" x:Shared="False" Title="Hauptdosierer 2" DoserKind="Main" CardMode="Compact"
+                       TargetPercent="52" TargetWeight="122" RegulationValue="0" HopperUpper="On" HopperLower="Error" Load="92"
+                       CrossScrewEnabled="False" AgitatorEnabled="True" RegulationEnabled="False" />
+  <ctl:HM20_DosingCard x:Key="HM20.Sample.Secondary" x:Shared="False" Title="Nachdosierer" DoserKind="Secondary" CardMode="Compact" IsSelected="True"
+                       TargetWeight="250" MaxRefill="50" CurrentRefill="13" RefillResult="Dosed" RegulationValue="4.81"
+                       HopperUpper="Off" HopperLower="On" Load="73" CrossScrewEnabled="True" AgitatorEnabled="False" RegulationEnabled="True" />
+  <ctl:HM20_DosingCard x:Key="HM20.Sample.SecondaryRejected" x:Shared="False" Title="Nachdosierer" DoserKind="Secondary" CardMode="Compact"
+                       TargetWeight="250" MaxRefill="50" CurrentRefill="13" RefillResult="RejectedTooMuch" RegulationValue="4.81"
+                       HopperUpper="On" HopperLower="Warning" Load="73" />
+  <ctl:HM20_DosingCard x:Key="HM20.Sample.MainDetail" x:Shared="False" Title="Hauptdosierer 1" DoserKind="Main" CardMode="Detail"
+                       TargetPercent="48" TargetWeight="113" RegulationValue="5.3" HopperUpper="On" HopperLower="On" Load="91"
+                       CalibrationWeight="137.5" CalibrationRevolutions="4" ScrewSpeed="2800" AgitatorPercent="20" AgitatorRunOn="0" CrossScrewPercent="30"
+                       CrossScrewEnabled="True" AgitatorEnabled="True" RegulationEnabled="True" />
+  <ctl:HM20_DosingCard x:Key="HM20.Sample.SecondaryDetailLocked" x:Shared="False" Title="Nachdosierer" DoserKind="Secondary" CardMode="Detail" IsLocked="True" IsEmptying="True"
+                       TargetWeight="250" MaxRefill="50" CurrentRefill="13" RegulationValue="4.81" HopperUpper="On" HopperLower="On" Load="73"
+                       CalibrationWeight="18.5" CalibrationRevolutions="5" ScrewSpeed="2800" AgitatorPercent="20" AgitatorRunOn="0" CrossScrewPercent="30" />
+</ResourceDictionary>

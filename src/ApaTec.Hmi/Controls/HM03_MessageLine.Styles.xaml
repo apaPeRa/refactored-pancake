@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-03 Meldezeile (HM03_MessageLine): "NNN: Text" einzeilig mit Auslassung, vollstaendiger Text im Tooltip.
+     Klassen mit zweitem Kanal (Symbol + Klassenwort, Farbe nur zusaetzlich): Betrieb = Icon.Status.Ok, Hinweis = Icon.Status.Warning (Kontur Border.Medium),
+     Stoerung = Icon.Status.Error; keine Meldung = neutral mit Text. Weitere Meldungen: Zaehler "+ n". Gedrueckt: Kontur Border.Medium. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:models="clr-namespace:ApaTec.Hmi.Models"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+
+  <Style TargetType="{x:Type local:HM03_MessageLine}">
+    <Setter Property="Command" Value="{Binding OpenCommand, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Focusable" Value="True" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="AutomationProperties.Name" Value="{Binding Text, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM03_MessageLine}">
+          <Grid>
+            <Border x:Name="Face"
+                    Background="{DynamicResource Brush.Surface.Sunken}"
+                    BorderBrush="{DynamicResource Brush.Divider}"
+                    BorderThickness="{StaticResource Border.Thin}"
+                    CornerRadius="{StaticResource Radius.Control}"
+                    Padding="{StaticResource Inset.S}"
+                    TextElement.Foreground="{DynamicResource Brush.Text.Secondary}"
+                    TextElement.FontSize="{StaticResource Font.Size.Body}"
+                    ToolTip="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}">
+              <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Klassensymbol (nur mit Meldung) -->
+                <Viewbox x:Name="ClassIcon" Grid.Column="0" Visibility="Collapsed"
+                         Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}">
+                  <Grid>
+                    <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
+                    <Path x:Name="IconPath"
+                          StrokeThickness="{Binding Source={StaticResource Border.Medium}, Path=Left}"
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                          Stroke="{DynamicResource Brush.Text.Secondary}" />
+                  </Grid>
+                </Viewbox>
+
+                <!-- Klassenwort -->
+                <Grid Grid.Column="1" Margin="{StaticResource Inset.S}">
+                  <TextBlock x:Name="WordOperation" Visibility="Collapsed" TextWrapping="NoWrap"
+                             FontSize="{StaticResource Font.Size.Caption}" FontWeight="{StaticResource Font.Weight.Strong}"
+                             Text="{res:Loc HM03_Class_Operation}" />
+                  <TextBlock x:Name="WordNotice" Visibility="Collapsed" TextWrapping="NoWrap"
+                             FontSize="{StaticResource Font.Size.Caption}" FontWeight="{StaticResource Font.Weight.Strong}"
+                             Text="{res:Loc HM03_Class_Notice}" />
+                  <TextBlock x:Name="WordFault" Visibility="Collapsed" TextWrapping="NoWrap"
+                             FontSize="{StaticResource Font.Size.Caption}" FontWeight="{StaticResource Font.Weight.Strong}"
+                             Text="{res:Loc HM03_Class_Fault}" />
+                </Grid>
+
+                <!-- "NNN: Text" -->
+                <StackPanel x:Name="MessagePanel" Grid.Column="2" Orientation="Horizontal" Visibility="Collapsed">
+                  <TextBlock x:Name="NumberText" TextWrapping="NoWrap" FontWeight="{StaticResource Font.Weight.Strong}"
+                             Typography.NumeralAlignment="Tabular"
+                             Text="{Binding Number, RelativeSource={RelativeSource TemplatedParent}, StringFormat='{}{0:D3}: '}" />
+                  <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                             Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" />
+                </StackPanel>
+
+                <!-- Keine Meldung -->
+                <TextBlock x:Name="NoMessageText" Grid.Column="2" TextWrapping="NoWrap"
+                           Text="{res:Loc HM03_None_Text}" />
+
+                <!-- Weitere Meldungen -->
+                <TextBlock x:Name="AdditionalText" Grid.Column="3" Margin="{StaticResource Inset.S}" TextWrapping="NoWrap"
+                           FontWeight="{StaticResource Font.Weight.Strong}"
+                           Typography.NumeralAlignment="Tabular"
+                           Text="{Binding AdditionalCount, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}+ {0}}" />
+              </Grid>
+            </Border>
+            <Border x:Name="FocusRing"
+                    Visibility="Collapsed"
+                    BorderBrush="{DynamicResource Brush.Border.Focus}"
+                    BorderThickness="{StaticResource Border.Thick}"
+                    CornerRadius="{StaticResource Radius.Control}" />
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="AdditionalCount" Value="0">
+              <Setter TargetName="AdditionalText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Number" Value="{x:Null}">
+              <Setter TargetName="NumberText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+              <Setter TargetName="FocusRing" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <!-- Klassen: Flaeche, Symbol und Wort -->
+            <Trigger Property="Class" Value="Operation">
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Status.Ok.Fill}" />
+              <Setter TargetName="Face" Property="TextElement.Foreground" Value="{DynamicResource Brush.Status.Ok.On}" />
+              <Setter TargetName="IconPath" Property="Stroke" Value="{DynamicResource Brush.Status.Ok.On}" />
+              <Setter TargetName="IconPath" Property="Data" Value="{StaticResource Icon.Status.Ok}" />
+              <Setter TargetName="ClassIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="WordOperation" Property="Visibility" Value="Visible" />
+              <Setter TargetName="MessagePanel" Property="Visibility" Value="Visible" />
+              <Setter TargetName="NoMessageText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Class" Value="Notice">
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Status.Warning.Fill}" />
+              <Setter TargetName="Face" Property="BorderBrush" Value="{DynamicResource Brush.Status.Warning.Fg}" />
+              <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
+              <Setter TargetName="Face" Property="TextElement.Foreground" Value="{DynamicResource Brush.Status.Warning.On}" />
+              <Setter TargetName="IconPath" Property="Stroke" Value="{DynamicResource Brush.Status.Warning.On}" />
+              <Setter TargetName="IconPath" Property="Data" Value="{StaticResource Icon.Status.Warning}" />
+              <Setter TargetName="ClassIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="WordNotice" Property="Visibility" Value="Visible" />
+              <Setter TargetName="MessagePanel" Property="Visibility" Value="Visible" />
+              <Setter TargetName="NoMessageText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Class" Value="Fault">
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Status.Error.Fill}" />
+              <Setter TargetName="Face" Property="TextElement.Foreground" Value="{DynamicResource Brush.Status.Error.On}" />
+              <Setter TargetName="IconPath" Property="Stroke" Value="{DynamicResource Brush.Status.Error.On}" />
+              <Setter TargetName="IconPath" Property="Data" Value="{StaticResource Icon.Status.Error}" />
+              <Setter TargetName="ClassIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="WordFault" Property="Visibility" Value="Visible" />
+              <Setter TargetName="MessagePanel" Property="Visibility" Value="Visible" />
+              <Setter TargetName="NoMessageText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!-- Gedrueckt: dickere Kontur (zweiter Kanal) -->
+            <Trigger Property="IsPressed" Value="True">
+              <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

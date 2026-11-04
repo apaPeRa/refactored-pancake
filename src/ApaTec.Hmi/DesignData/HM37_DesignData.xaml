@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM37_DesignData.xaml: Entwurfsdaten Wertegitter (HM-37): 50 Zellen, 12 erfasste Gewichte, letzter Wert Index 11. Beispielwerte aus der Moduldatei; Beispielinstanz mit x:Shared="False" (jeder Zugriff erzeugt eine neue Instanz). Kein Bestandteil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <x:Array x:Key="HM37_SampleCells" Type="{x:Type local:WeightCell}">
+    <local:WeightCell Weight="235.7" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="235.0" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="236.1" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="234.0" Quality="Bad" IsLast="False" />
+    <local:WeightCell Weight="235.2" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="235.5" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="236.4" Quality="Bad" IsLast="False" />
+    <local:WeightCell Weight="234.8" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="235.3" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="235.9" Quality="Good" IsLast="False" />
+    <local:WeightCell Weight="234.5" Quality="Bad" IsLast="False" />
+    <local:WeightCell Weight="236.0" Quality="Good" IsLast="True" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+    <local:WeightCell Quality="Unknown" />
+  </x:Array>
+  <local:HM37_ValueGrid x:Key="HM37_Sample" x:Shared="False" Cells="{StaticResource HM37_SampleCells}" LastIndex="11" Mode="Single" Capacity="50" />
+  <local:HM37_ValueGrid x:Key="HM37_SampleContinuous" x:Shared="False" Cells="{StaticResource HM37_SampleCells}" LastIndex="11" Mode="Continuous" Capacity="50" />
+</ResourceDictionary>

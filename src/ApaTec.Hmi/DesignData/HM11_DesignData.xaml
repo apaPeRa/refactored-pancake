@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM11_DesignData.xaml: Beispielinstanzen von HM11_ValueDisplay mit den Beispielwerten aus HM-11_Anzeigefeld.md (Entwurfsmodus, Galerie, Vorschau).
+     Jede Ressource ist x:Shared="False" (bei jeder Verwendung eine neue Instanz) und wird per {StaticResource HM11.Sample.<Name>} eingesetzt.
+     Voraussetzung: Die Stile aus Controls/*.Styles.xaml sind in den Anwendungsressourcen (ControlResources.MergeAll). Texte aus Resources/Strings/Basiselemente_HM07_12.resx. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Tank" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Tank}"
+      Unit="{res:Loc HM11_Sample_Unit_C}"
+      NumberValue="150" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Manifold" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Manifold}"
+      Unit="{res:Loc HM11_Sample_Unit_C}"
+      NumberValue="150" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Gun1" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Gun1}"
+      Unit="{res:Loc HM11_Sample_Unit_C}"
+      NumberValue="170" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Hose1" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Hose1}"
+      Unit="{res:Loc HM11_Sample_Unit_C}"
+      NumberValue="160" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Pressure" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Pressure}"
+      Unit="{res:Loc HM11_Sample_Unit_Bar}"
+      NumberValue="0.7"
+      Decimals="1" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.CompressedAir" x:Shared="False"
+      Label="{res:Loc HM11_Sample_CompressedAir}"
+      Icon="{StaticResource Icon.Status.Ok}"
+      ValueKind="Text"
+      Presentation="Row"
+      TextValue="{res:Loc HM11_Sample_Value_Io}" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.BeltScale" x:Shared="False"
+      Label="{res:Loc HM11_Sample_BeltScale}"
+      ValueKind="Text"
+      Presentation="Row"
+      TextValue="{res:Loc HM11_Sample_Value_Ready}" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.FollowMachine" x:Shared="False"
+      Label="{res:Loc HM11_Sample_FollowMachine}"
+      ValueKind="Text"
+      Presentation="Row"
+      TextValue="{res:Loc HM11_Sample_Value_Running}" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Mean" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Mean}"
+      Unit="{res:Loc HM11_Sample_Unit_G}"
+      NumberValue="113"
+      Counter="25" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Negative" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Weight}"
+      Unit="{res:Loc HM11_Sample_Unit_G}"
+      NumberValue="-398.9"
+      Decimals="1"
+      Emphasis="Large" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Limit" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Tank}"
+      Unit="{res:Loc HM11_Sample_Unit_C}"
+      NumberValue="190"
+      IsLimitViolated="True" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Invalid" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Tank}"
+      Unit="{res:Loc HM11_Sample_Unit_C}" />
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Start" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Start}"
+      ValueKind="DateTime">
+    <c:HM11_ValueDisplay.TimeValue>
+      <sys:DateTime>2026-01-06T09:15:00</sys:DateTime>
+    </c:HM11_ValueDisplay.TimeValue>
+  </c:HM11_ValueDisplay>
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.Runtime" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Runtime}"
+      ValueKind="Duration"
+      DurationLayout="Single">
+    <c:HM11_ValueDisplay.TimeValue>
+      <sys:TimeSpan>31.00:01:14</sys:TimeSpan>
+    </c:HM11_ValueDisplay.TimeValue>
+  </c:HM11_ValueDisplay>
+
+  <c:HM11_ValueDisplay x:Key="HM11.Sample.RuntimeParts" x:Shared="False"
+      Label="{res:Loc HM11_Sample_Runtime}"
+      ValueKind="Duration"
+      DurationLayout="Parts">
+    <c:HM11_ValueDisplay.TimeValue>
+      <sys:TimeSpan>31.00:01:14</sys:TimeSpan>
+    </c:HM11_ValueDisplay.TimeValue>
+  </c:HM11_ValueDisplay>
+
+</ResourceDictionary>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM16_DesignData.xaml: Beispielinstanzen fuer den Entwurfsmodus (Designer/Vorschau), Werte aus der Moduldatei. Nicht in die Anwendung eingebunden.
+     Jede Instanz ist x:Shared="False" (eigene Kopie je Verwendung). Theme: Hell. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Theme.Light.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Controls/HM16_TileNavigation.Styles.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <!-- Kacheln wie Einstellungen (HS-04): normal, berechtigungspflichtig, Warnaktion, deaktiviert mit Grund, reserviert -->
+  <x:Array x:Key="HM16.Sample.Items" Type="{x:Type local:TileItem}">
+    <local:TileItem Label="Schließmaschine" Icon="{StaticResource Icon.Settings}" TargetPageId="ClosingMachine" />
+    <local:TileItem Label="Systemeinstellungen" Icon="{StaticResource Icon.Settings}" TargetPageId="SystemSettings" RequiresPermission="True" />
+    <local:TileItem Label="Steuerung neu starten" Icon="{StaticResource Icon.Mode.Production}" IsWarning="True" />
+    <local:TileItem Label="Endkontrollwaage" Icon="{StaticResource Icon.Weight.Scale}" IsDisabled="True" DisabledReason="Nicht verfügbar" />
+    <local:TileItem Label="Handbetrieb" Icon="{StaticResource Icon.Manual}" TargetPageId="ManualOperation" />
+    <local:TileItem IsEmpty="True" />
+  </x:Array>
+  <local:HM16_TileNavigation x:Key="HM16.Sample.Grid" x:Shared="False" Columns="3" Rows="2"
+                             Items="{StaticResource HM16.Sample.Items}" />
+  <!-- kleine Kachel (Beleuchtung) -->
+  <x:Array x:Key="HM16.Sample.SmallItems" Type="{x:Type local:TileItem}">
+    <local:TileItem Label="Beleuchtung" Icon="{StaticResource Icon.Settings}" />
+  </x:Array>
+  <local:HM16_TileNavigation x:Key="HM16.Sample.Small" x:Shared="False" Columns="1" Rows="1" TileSize="Small"
+                             ShowNavigationIndicator="False" Items="{StaticResource HM16.Sample.SmallItems}" />
+</ResourceDictionary>

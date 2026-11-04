@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM15_DesignData.xaml: Beispielinstanzen fuer den Entwurfsmodus (Designer/Vorschau), Werte aus der Moduldatei. Nicht in die Anwendung eingebunden.
+     Jede Instanz ist x:Shared="False" (eigene Kopie je Verwendung). Theme: Hell. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Theme.Light.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Controls/HM15_GroupPanel.Styles.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <local:HM15_GroupPanel x:Key="HM15.Sample.Panel" x:Shared="False" Header="Geschwindigkeit" Subheader="Linienbetrieb">
+    <TextBlock Style="{StaticResource Text.Metric}" Text="112 1/min" />
+  </local:HM15_GroupPanel>
+  <!-- leer: nur die Ueberschrift -->
+  <local:HM15_GroupPanel x:Key="HM15.Sample.Empty" x:Shared="False" Header="EKW" />
+  <!-- Ueberschrift-Variante mit Trennlinie -->
+  <local:HM15_GroupPanel x:Key="HM15.Sample.Heading" x:Shared="False" Header="Aktuelle Temperaturen" GroupStyle="Heading">
+    <TextBlock Style="{StaticResource Text.Value}" Text="165 °C" />
+  </local:HM15_GroupPanel>
+  <!-- hervorgehoben -->
+  <local:HM15_GroupPanel x:Key="HM15.Sample.Highlighted" x:Shared="False" Header="Versorgung" IsHighlighted="True">
+    <TextBlock Style="{StaticResource Text.Value}" Text="Bunker 1" />
+  </local:HM15_GroupPanel>
+</ResourceDictionary>

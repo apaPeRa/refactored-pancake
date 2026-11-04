@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM37_ValueGrid.Styles.xaml: Template des Wertegitters (HM-37), Komposit aus HM-09 (kompakt), HM-08, HM-07. Keine Logik. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <!-- Symbolpfad im 24er-Raster; Strichstaerke aus dem Token Border.Medium -->
+  <Style x:Key="HM37.Icon" TargetType="Path">
+    <Setter Property="Width" Value="{StaticResource Size.Icon.S}" />
+    <Setter Property="Height" Value="{StaticResource Size.Icon.S}" />
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <!-- HM37_Cell: Zelle mit Gewichtsfeld, Status-LED (Symbol und Wort gut/schlecht) und Pfeil fuer den letzten Wert -->
+  <DataTemplate x:Key="HM37_Cell" DataType="{x:Type local:WeightCell}">
+    <Border x:Name="CellFrame"
+            MinHeight="{StaticResource Size.Touch.Min}"
+            Margin="{StaticResource Inset.XS}"
+            Padding="{StaticResource Inset.XS}"
+            Background="{DynamicResource Brush.Surface}"
+            BorderBrush="{DynamicResource Brush.Border.Control}"
+            BorderThickness="{StaticResource Border.Thin}"
+            CornerRadius="{StaticResource Radius.Control}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Path x:Name="LastMarker" Grid.Column="0" Visibility="Collapsed"
+              Style="{StaticResource HM37.Icon}"
+              Data="{StaticResource Icon.Marker.Last}"
+              Stroke="{DynamicResource Brush.Border.Focus}" />
+        <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+          <TextBlock x:Name="WeightText" Style="{StaticResource Text.Value}"
+                     Text="{Binding Weight, StringFormat=N1}" />
+          <TextBlock x:Name="EmptyText" Style="{StaticResource Text.Caption}" Visibility="Collapsed"
+                     Text="{res:Loc HM37_Empty_Text}" />
+        </Grid>
+        <local:HM09_StatusLed x:Name="Led" Grid.Column="2" IsCompact="True" ShowStateWord="True" State="Off" />
+      </Grid>
+    </Border>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding Weight}" Value="{x:Null}">
+        <Setter TargetName="WeightText" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="EmptyText" Property="Visibility" Value="Visible" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Quality}" Value="Good">
+        <Setter TargetName="Led" Property="State" Value="On" />
+        <Setter TargetName="Led" Property="StateText" Value="{res:Loc HM37_Good_Text}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Quality}" Value="Bad">
+        <Setter TargetName="Led" Property="State" Value="Warning" />
+        <Setter TargetName="Led" Property="StateText" Value="{res:Loc HM37_Bad_Text}" />
+        <Setter TargetName="CellFrame" Property="Background" Value="{DynamicResource Brush.Status.Warning.Subtle}" />
+      </DataTrigger>
+      <!-- Letzter Wert: dicke Fokuskontur und Pfeilsymbol -->
+      <DataTrigger Binding="{Binding IsLast}" Value="True">
+        <Setter TargetName="CellFrame" Property="BorderBrush" Value="{DynamicResource Brush.Border.Focus}" />
+        <Setter TargetName="CellFrame" Property="BorderThickness" Value="{StaticResource Border.Thick}" />
+        <Setter TargetName="LastMarker" Property="Visibility" Value="Visible" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+  <Style TargetType="{x:Type local:HM37_ValueGrid}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM37_ValueGrid}">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- Kopf: Umschalter Einzel/Fortlaufend und Start -->
+            <Grid Grid.Row="0" Margin="{StaticResource Inset.XS}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <local:HM08_ToggleSwitch x:Name="ModeSwitch" Grid.Column="0"
+                                       Label="{res:Loc HM37_Mode_Label}"
+                                       OnText="{res:Loc HM37_Continuous_Text}"
+                                       OffText="{res:Loc HM37_Single_Text}"
+                                       ToggleCommand="{TemplateBinding ToggleModeCommand}" />
+              <local:HM07_ActionButton x:Name="StartButton" Grid.Column="1" Margin="{StaticResource Inset.XS}"
+                                       Label="{res:Loc HM37_Start_Label}"
+                                       Command="{TemplateBinding StartCommand}" />
+            </Grid>
+            <!-- Raster 10 Zeilen x 5 Spalten -->
+            <ItemsControl Grid.Row="1" Focusable="False"
+                          ItemsSource="{TemplateBinding Cells}"
+                          ItemTemplate="{StaticResource HM37_Cell}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <UniformGrid Rows="10" Columns="5" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="Mode" Value="Continuous">
+              <Setter TargetName="ModeSwitch" Property="IsChecked" Value="True" />
+              <Setter TargetName="StartButton" Property="IsEnabled" Value="False" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

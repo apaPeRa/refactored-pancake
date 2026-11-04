@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Entwurfsdaten HM-03 Meldezeile: je Klasse eine Beispielinstanz (Hinweis aus dem Design: 014, Sicherung 4F24 Auslaufband ausgelöst.). Nicht Teil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:ApaTec.Hmi.Controls">
+
+  <controls:HM03_MessageLine x:Key="HM03_Example.Notice" x:Shared="False"
+                             Number="14" Text="Sicherung 4F24 Auslaufband ausgelöst." Class="Notice" AdditionalCount="2" />
+  <controls:HM03_MessageLine x:Key="HM03_Example.Operation" x:Shared="False"
+                             Number="450" Text="Maschine läuft im Produktionsbetrieb." Class="Operation" />
+  <controls:HM03_MessageLine x:Key="HM03_Example.Fault" x:Shared="False"
+                             Number="101" Text="Not-Aus betätigt." Class="Fault" AdditionalCount="1" />
+  <controls:HM03_MessageLine x:Key="HM03_Example.None" x:Shared="False" Class="None" />
+</ResourceDictionary>

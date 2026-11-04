@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-11 Anzeigefeld (Wert-Zeile): Stil und ControlTemplate fuer HM11_ValueDisplay (Control). Darstellung Feld (Flaeche, Kontur, Wert rechtsbuendig) oder Zeile (ohne Flaeche);
+     Wert, geschuetztes Leerzeichen, Einheit; Zustaende Normal, Grenzwert verletzt (Warnflaeche mit Symbol und Wort), ruecksetzbar (Symbol), mit Zaehler. Nicht bedienbar ausser Ruecksetzen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <local:HM11_ValueTextConverter x:Key="HM11.ValueText" />
+
+  <Style x:Key="HM11.Icon" TargetType="Path">
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="Width" Value="{StaticResource Size.Icon.S}" />
+    <Setter Property="Height" Value="{StaticResource Size.Icon.S}" />
+    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <!-- Wert: Feld = Value/Strong, Zeile = Body, Emphasis Large = Metric -->
+  <Style x:Key="HM11.Value" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Value}" />
+    <Setter Property="FontWeight" Value="{StaticResource Font.Weight.Strong}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Typography.NumeralAlignment" Value="Tabular" />
+    <Style.Triggers>
+      <DataTrigger Binding="{Binding Presentation, RelativeSource={RelativeSource TemplatedParent}}" Value="Row">
+        <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
+        <Setter Property="FontWeight" Value="{StaticResource Font.Weight.Regular}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Emphasis, RelativeSource={RelativeSource TemplatedParent}}" Value="Large">
+        <Setter Property="FontSize" Value="{StaticResource Font.Size.Metric}" />
+        <Setter Property="FontWeight" Value="{StaticResource Font.Weight.Strong}" />
+      </DataTrigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="HM11.Unit" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
+    <Setter Property="FontWeight" Value="{StaticResource Font.Weight.Regular}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <Style x:Key="HM11.Caption" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Caption}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <!-- Ruecksetz-Taste im Feld (nur sichtbar mit ResetCommand), Trefferflaeche >= Size.Touch.Min -->
+  <Style x:Key="HM11.ResetButton" TargetType="Button">
+    <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border Background="Transparent">
+            <Path Style="{StaticResource HM11.Icon}"
+                  Data="{StaticResource Icon.Action.Reset}"
+                  Stroke="{DynamicResource Brush.Text.Primary}"
+                  HorizontalAlignment="Center" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type local:HM11_ValueDisplay}">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
+    <Setter Property="FontWeight" Value="{StaticResource Font.Weight.Regular}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="AutomationProperties.Name" Value="{Binding Label, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM11_ValueDisplay}">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="LabelText"
+                       Grid.Column="0"
+                       Text="{TemplateBinding Label}"
+                       Foreground="{TemplateBinding Foreground}"
+                       FontFamily="{TemplateBinding FontFamily}"
+                       FontSize="{TemplateBinding FontSize}"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Center"
+                       Margin="{StaticResource Inset.S}" />
+            <Border x:Name="Face"
+                    Grid.Column="1"
+                    MinWidth="{StaticResource Size.Button.MinWidth}"
+                    MinHeight="{StaticResource Size.Field.Height}"
+                    Background="{DynamicResource Brush.Surface}"
+                    BorderBrush="{DynamicResource Brush.Border.Control}"
+                    BorderThickness="{StaticResource Border.Thin}"
+                    CornerRadius="{StaticResource Radius.Control}"
+                    Padding="{StaticResource Inset.S}">
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <!-- Symbol des Status (optional); bei Grenzwertverletzung Warnsymbol und Wort -->
+                <Path x:Name="StatusIcon"
+                      Grid.Row="0" Grid.Column="0"
+                      Style="{StaticResource HM11.Icon}"
+                      Data="{TemplateBinding Icon}"
+                      Stroke="{TemplateBinding Foreground}"
+                      Margin="{StaticResource Inset.XS}" />
+                <TextBlock x:Name="WarningWord"
+                           Grid.Row="0" Grid.Column="1"
+                           Visibility="Collapsed"
+                           Style="{StaticResource HM11.Caption}"
+                           Text="{res:Loc Status_Warning_Word}"
+                           Foreground="{DynamicResource Brush.Status.Warning.Fg}"
+                           Margin="{StaticResource Inset.XS}" />
+                <TextBlock x:Name="SuffixText"
+                           Grid.Row="0" Grid.Column="2"
+                           Style="{StaticResource HM11.Caption}"
+                           Text="{TemplateBinding Suffix}"
+                           Margin="{StaticResource Inset.XS}" />
+                <!-- Wert (einzeln) -->
+                <StackPanel x:Name="SingleValue" Grid.Row="0" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                  <TextBlock x:Name="ValueText" Style="{StaticResource HM11.Value}">
+                    <TextBlock.Text>
+                      <MultiBinding Converter="{StaticResource HM11.ValueText}">
+                        <Binding Path="ValueKind" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="NumberValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TextValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TimeValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="Decimals" RelativeSource="{RelativeSource TemplatedParent}" />
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                  <TextBlock x:Name="UnitText"
+                             Style="{StaticResource HM11.Unit}"
+                             Text="{Binding Unit, RelativeSource={RelativeSource TemplatedParent}, StringFormat='&#160;{0}'}" />
+                </StackPanel>
+                <!-- Wert (Dauer in drei Feldern h, m, s) -->
+                <StackPanel x:Name="PartsValue" Grid.Row="0" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
+                  <TextBlock Style="{StaticResource HM11.Value}" Margin="{StaticResource Inset.XS}">
+                    <TextBlock.Text>
+                      <MultiBinding Converter="{StaticResource HM11.ValueText}" ConverterParameter="Hours">
+                        <Binding Path="ValueKind" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="NumberValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TextValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TimeValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="Decimals" RelativeSource="{RelativeSource TemplatedParent}" />
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                  <TextBlock Style="{StaticResource HM11.Unit}" Text="{res:Loc HM11_Unit_Hour}" />
+                  <TextBlock Style="{StaticResource HM11.Value}" Margin="{StaticResource Inset.XS}">
+                    <TextBlock.Text>
+                      <MultiBinding Converter="{StaticResource HM11.ValueText}" ConverterParameter="Minutes">
+                        <Binding Path="ValueKind" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="NumberValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TextValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TimeValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="Decimals" RelativeSource="{RelativeSource TemplatedParent}" />
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                  <TextBlock Style="{StaticResource HM11.Unit}" Text="{res:Loc HM11_Unit_Minute}" />
+                  <TextBlock Style="{StaticResource HM11.Value}" Margin="{StaticResource Inset.XS}">
+                    <TextBlock.Text>
+                      <MultiBinding Converter="{StaticResource HM11.ValueText}" ConverterParameter="Seconds">
+                        <Binding Path="ValueKind" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="NumberValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TextValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="TimeValue" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="Decimals" RelativeSource="{RelativeSource TemplatedParent}" />
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                  <TextBlock Style="{StaticResource HM11.Unit}" Text="{res:Loc HM11_Unit_Second}" />
+                </StackPanel>
+                <!-- Ruecksetzen (zweiter Kanal Symbol Reset) -->
+                <Button x:Name="ResetButton"
+                        Grid.Row="0" Grid.Column="4"
+                        Style="{StaticResource HM11.ResetButton}"
+                        Command="{Binding ResetCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                <!-- Zaehler (Stueckzahl) unten rechts -->
+                <TextBlock x:Name="CounterText"
+                           Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+                           Style="{StaticResource HM11.Caption}"
+                           HorizontalAlignment="Right">
+                  <Run Text="{Binding Counter, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" /><Run Text="{res:Loc HM11_Counter_Unit}" />
+                </TextBlock>
+              </Grid>
+            </Border>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="Label" Value="">
+              <Setter TargetName="LabelText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Icon" Value="{x:Null}">
+              <Setter TargetName="StatusIcon" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Suffix" Value="">
+              <Setter TargetName="SuffixText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Unit" Value="">
+              <Setter TargetName="UnitText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Counter" Value="{x:Null}">
+              <Setter TargetName="CounterText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="ResetCommand" Value="{x:Null}">
+              <Setter TargetName="ResetButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!-- Dauer in drei Feldern -->
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="ValueKind" Value="Duration" />
+                <Condition Property="DurationLayout" Value="Parts" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="SingleValue" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PartsValue" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <!-- Zeile: ohne Flaeche und Kontur, Wert rechts neben der Beschriftung -->
+            <Trigger Property="Presentation" Value="Row">
+              <Setter TargetName="Face" Property="Background" Value="Transparent" />
+              <Setter TargetName="Face" Property="BorderBrush" Value="Transparent" />
+              <Setter TargetName="Face" Property="MinWidth" Value="0" />
+              <Setter TargetName="Face" Property="MinHeight" Value="0" />
+            </Trigger>
+            <!-- Grenzwert verletzt: Warnflaeche, Kontur 2 px, Symbol und Wort -->
+            <Trigger Property="IsLimitViolated" Value="True">
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Status.Warning.Subtle}" />
+              <Setter TargetName="Face" Property="BorderBrush" Value="{DynamicResource Brush.Status.Warning.Fg}" />
+              <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
+              <Setter TargetName="StatusIcon" Property="Data" Value="{StaticResource Icon.Status.Warning}" />
+              <Setter TargetName="StatusIcon" Property="Stroke" Value="{DynamicResource Brush.Status.Warning.Fg}" />
+              <Setter TargetName="StatusIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="WarningWord" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <!-- Rueckmeldung beim Ruecksetzen: Kontur 2 px waehrend des Drueckens -->
+            <DataTrigger Binding="{Binding IsPressed, ElementName=ResetButton}" Value="True">
+              <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Button.Pressed}" />
+            </DataTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

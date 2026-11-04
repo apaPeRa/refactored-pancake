@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM20_DosingCard.Styles.xaml: Template der Dosierer-Karte (HM-20), Komposit aus HM-15, HM-12, HM-11, HM-09, HM-08, HM-10, HM-07, HM-27.
+     Farben nur DynamicResource Brush.*, Masse StaticResource Size/Space/Inset/Radius/Border, Texte aus Resources/Strings/DosingModules.resx. Keine Logik. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <!-- Symbolpfad im 24er-Raster; Strichstaerke aus dem Token Border.Medium (Thickness, linke Kante) -->
+  <Style x:Key="HM20.IconPath" TargetType="Path">
+    <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+  </Style>
+
+  <Style TargetType="{x:Type local:HM20_DosingCard}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM20_DosingCard}">
+          <Grid>
+            <local:HM15_GroupPanel Header="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
+                                   IsHighlighted="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}"
+                                   HighlightText="{res:Loc HM20_Selected_Text}">
+              <StackPanel>
+                <!-- Gesperrt: Schloss und Wort (zweiter Kanal) -->
+                <StackPanel x:Name="LockedRow" Orientation="Horizontal" Visibility="Collapsed" Margin="{StaticResource Inset.XS}">
+                  <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                    <Path Style="{StaticResource HM20.IconPath}" Data="{StaticResource Icon.Lock}" Stroke="{DynamicResource Brush.Text.Disabled}" />
+                  </Viewbox>
+                  <TextBlock Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.S}" Text="{res:Loc HM20_Locked_Text}" />
+                </StackPanel>
+
+                <StackPanel x:Name="Body">
+                  <!-- Hauptdosierer: Soll in % und Soll absolut in g -->
+                  <StackPanel x:Name="MainSection">
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_TargetPercent_Label}"
+                                           NumberValue="{Binding TargetPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" RequiresPermission="False" />
+                    <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_TargetWeightAbs_Label}"
+                                             NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}}" Unit="g" Decimals="0" Presentation="Row" />
+                  </StackPanel>
+                  <!-- Nachdosierer: Soll in g, Max. Nachgabe, Aktuelle Nachgabe, nIO-Hinweis -->
+                  <StackPanel x:Name="SecondarySection" Visibility="Collapsed">
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_TargetWeight_Label}"
+                                           NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="g" Decimals="0" RequiresPermission="False" />
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_MaxRefill_Label}"
+                                           NumberValue="{Binding MaxRefill, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="g" Decimals="0" RequiresPermission="False" />
+                    <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CurrentRefill_Label}"
+                                             NumberValue="{Binding CurrentRefill, RelativeSource={RelativeSource TemplatedParent}}" Unit="g" Decimals="0" Presentation="Row" />
+                    <!-- Hidden statt Collapsed: die Karte behaelt ihre Hoehe -->
+                    <local:HM27_NoticeBox x:Name="RefillNotice" Margin="{StaticResource Inset.XS}" Visibility="Hidden"
+                                          Kind="Warning" Text="{res:Loc HM20_RefillRejected_Text}" />
+                  </StackPanel>
+
+                  <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Regulation_Label}"
+                                           NumberValue="{Binding RegulationValue, RelativeSource={RelativeSource TemplatedParent}}" Unit="g" Decimals="2" Presentation="Row" />
+
+                  <!-- Fuellstand Trichter oben/unten -->
+                  <Grid Margin="{StaticResource Inset.XS}">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <local:HM09_StatusLed Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_HopperUpper_Label}"
+                                          State="{Binding HopperUpper, RelativeSource={RelativeSource TemplatedParent}}" Icon="{StaticResource Icon.Fill.Hopper}" />
+                    <local:HM09_StatusLed Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_HopperLower_Label}"
+                                          State="{Binding HopperLower, RelativeSource={RelativeSource TemplatedParent}}" Icon="{StaticResource Icon.Fill.Hopper}" />
+                  </Grid>
+
+                  <local:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CrossScrew_Label}" IsChecked="{Binding CrossScrewEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                  <local:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Agitator_Label}" IsChecked="{Binding AgitatorEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                  <local:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_RegulationSwitch_Label}" IsChecked="{Binding RegulationEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+
+                  <local:HM10_ProgressBar Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Load_Label}"
+                                          Value="{Binding Load, RelativeSource={RelativeSource TemplatedParent}}" WarningThreshold="{Binding LoadWarningThreshold, RelativeSource={RelativeSource TemplatedParent}}" StringFormat="N0" />
+
+                  <!-- Tasten Manuell (Totmann) und Entleeren (Dauer, Zustand Laeuft) -->
+                  <Grid Margin="{StaticResource Inset.XS}">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <local:HM07_ActionButton Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Manual_Label}"
+                                             Icon="{StaticResource Icon.Manual}" TriggerMode="WhilePressed" Command="{Binding ManualCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <local:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Empty_Label}"
+                                             Icon="{StaticResource Icon.Empty}" TriggerMode="Continuous" IsRunning="{Binding IsEmptying, RelativeSource={RelativeSource TemplatedParent}}" Command="{Binding EmptyCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </Grid>
+
+                  <!-- Detaildarstellung: alle Parameter und Seitenlinks -->
+                  <StackPanel x:Name="DetailSection" Visibility="Collapsed">
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CalibrationWeight_Label}"
+                                           NumberValue="{Binding CalibrationWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="g" Decimals="2" />
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CalibrationRevolutions_Label}"
+                                           NumberValue="{Binding CalibrationRevolutions, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Decimals="0" />
+                    <local:HM07_ActionButton Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_Calibrate_Label}"
+                                             Icon="{StaticResource Icon.Dosing.Calibration}" Command="{Binding CalibrateCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_ScrewSpeed_Label}"
+                                           NumberValue="{Binding ScrewSpeed, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="1/min" Decimals="0" />
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_AgitatorPercent_Label}"
+                                           NumberValue="{Binding AgitatorPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" />
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_AgitatorRunOn_Label}"
+                                           NumberValue="{Binding AgitatorRunOn, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="s" Decimals="0" />
+                    <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_CrossScrewPercent_Label}"
+                                           NumberValue="{Binding CrossScrewPercent, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" />
+                    <Grid Margin="{StaticResource Inset.XS}">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <local:HM07_ActionButton Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_LinkRegulation_Label}"
+                                               Command="{Binding OpenRegulationCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                      <local:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_LinkMotor_Label}"
+                                               Command="{Binding OpenMotorCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                      <local:HM07_ActionButton Grid.Column="2" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM20_LinkWeightCorrection_Label}"
+                                               Command="{Binding OpenWeightCorrectionCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </Grid>
+                  </StackPanel>
+                </StackPanel>
+              </StackPanel>
+            </local:HM15_GroupPanel>
+
+            <!-- Detail-Symbol oben rechts (nur Kompaktkarte) -->
+            <local:HM07_ActionButton x:Name="DetailButton" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                     Margin="{StaticResource Inset.S}" Icon="{StaticResource Icon.Chevron}"
+                                     AutomationProperties.Name="{res:Loc HM20_OpenDetail_Name}"
+                                     Command="{Binding OpenDetailCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="DoserKind" Value="Secondary">
+              <Setter TargetName="MainSection" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="SecondarySection" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="RefillResult" Value="RejectedTooMuch">
+              <Setter TargetName="RefillNotice" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="CardMode" Value="Detail">
+              <Setter TargetName="DetailSection" Property="Visibility" Value="Visible" />
+              <Setter TargetName="DetailButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="IsLocked" Value="True">
+              <Setter TargetName="LockedRow" Property="Visibility" Value="Visible" />
+              <Setter TargetName="Body" Property="IsEnabled" Value="False" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

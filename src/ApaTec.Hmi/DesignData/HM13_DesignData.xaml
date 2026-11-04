@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM13_DesignData.xaml: Beispielinstanzen fuer den Entwurfsmodus (Designer/Vorschau), Werte aus der Moduldatei. Nicht in die Anwendung eingebunden.
+     Jede Instanz ist x:Shared="False" (eigene Kopie je Verwendung). Theme: Hell. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Theme.Light.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Controls/HM13_NumericKeypadDialog.Styles.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <x:Array x:Key="HM13.Sample.FilterFields" Type="{x:Type local:FilterField}">
+    <local:FilterField Name="Meldenummer" Kind="Number" Value="14" Placeholder="Nummer" IsActive="True" />
+    <local:FilterField Name="Zeit" Kind="DateTime" Value="" Placeholder="__.__.____ __:__:__" />
+  </x:Array>
+
+  <!-- Zahl, gueltig: Uebernehmen aktiv -->
+  <local:HM13_NumericKeypadDialog x:Key="HM13.Sample.Number" x:Shared="False"
+                                  Title="Geschwindigkeit" CurrentValue="55" InputText="62" Unit="%"
+                                  Minimum="0" Maximum="100" Decimals="0" InputKind="Number" IsValid="True" />
+  <!-- Zahl, ungueltig: Fehlertext mit Symbol, Uebernehmen deaktiviert, Hilfetext (HS-31) -->
+  <local:HM13_NumericKeypadDialog x:Key="HM13.Sample.Invalid" x:Shared="False"
+                                  Title="Leimmenge" CurrentValue="55" InputText="120" Unit="%"
+                                  Minimum="0" Maximum="100" Decimals="0" InputKind="Number" IsValid="False"
+                                  ErrorText="Wert außerhalb 0 bis 100 %"
+                                  HelpText="Bereich 0 bis 100 %; 0 entspricht 100 % bzw. Hardwarevorgabe" />
+  <!-- Zeit hh:mm (HM-30) -->
+  <local:HM13_NumericKeypadDialog x:Key="HM13.Sample.Time" x:Shared="False"
+                                  Title="Startzeit" InputText="" InputKind="Time" IsValid="False" />
+  <!-- Text -->
+  <local:HM13_NumericKeypadDialog x:Key="HM13.Sample.Text" x:Shared="False"
+                                  Title="Bezeichnung" InputText="Rezept A" InputKind="Text" IsValid="True" />
+  <!-- Filter (HS-37): Meldenummer und Zeit -->
+  <local:HM13_NumericKeypadDialog x:Key="HM13.Sample.Filter" x:Shared="False"
+                                  Title="Filter" InputKind="Filter" IsValid="True"
+                                  FilterFields="{StaticResource HM13.Sample.FilterFields}" />
+</ResourceDictionary>

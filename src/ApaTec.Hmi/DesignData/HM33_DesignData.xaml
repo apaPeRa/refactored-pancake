@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM33_DesignData.xaml: Entwurfsdaten Zaehlerzeile (HM-33): Aktuell, Historie 1 und eine leere Historienzeile. Beispielwerte aus der Moduldatei; Beispielinstanz mit x:Shared="False" (jeder Zugriff erzeugt eine neue Instanz). Kein Bestandteil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <local:HM33_CounterRow x:Key="HM33_Sample" x:Shared="False" RowName="Aktuell" Count="874183" ResetTime="2025-04-09T14:55:09" IsCurrent="True" />
+  <local:HM33_CounterRow x:Key="HM33_SampleHistory" x:Shared="False" RowName="Historie 1" Count="7636" ResetTime="2025-03-21T07:12:40" />
+  <local:HM33_CounterRow x:Key="HM33_SampleEmpty" x:Shared="False" RowName="Historie 12" Count="0" />
+</ResourceDictionary>

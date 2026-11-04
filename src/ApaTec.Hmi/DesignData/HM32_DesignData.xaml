@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM32_DesignData.xaml: Entwurfsdaten Packungsregister-Grafik (HM-32): Block 6, Drehstern 12, Reihe ab Nr. 40, Spalte 9. Beispielwerte aus der Moduldatei; Beispielinstanz mit x:Shared="False" (jeder Zugriff erzeugt eine neue Instanz). Kein Bestandteil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <x:Array x:Key="HM32_SampleStations" Type="{x:Type local:PackStation}">
+    <local:PackStation Number="1" State="None" X="0" Y="250" />
+    <local:PackStation Number="2" State="Present" X="112" Y="250" />
+    <local:PackStation Number="3" State="Filled" X="224" Y="250" />
+    <local:PackStation Number="4" State="Ok" X="0" Y="322" />
+    <local:PackStation Number="5" State="Bad" X="112" Y="322" />
+    <local:PackStation Number="6" State="None" X="224" Y="322" />
+    <local:PackStation Number="7" State="Present" X="512" Y="28" />
+    <local:PackStation Number="8" State="Filled" X="647" Y="64" />
+    <local:PackStation Number="9" State="Ok" X="746" Y="163" />
+    <local:PackStation Number="10" State="Bad" X="782" Y="298" />
+    <local:PackStation Number="11" State="None" X="746" Y="433" />
+    <local:PackStation Number="12" State="Present" X="647" Y="532" />
+    <local:PackStation Number="13" State="Filled" X="512" Y="568" />
+    <local:PackStation Number="14" State="Ok" X="377" Y="532" />
+    <local:PackStation Number="15" State="Bad" X="278" Y="433" />
+    <local:PackStation Number="16" State="None" X="242" Y="298" />
+    <local:PackStation Number="17" State="Present" X="278" Y="163" />
+    <local:PackStation Number="18" State="Filled" X="377" Y="64" />
+    <local:PackStation Number="40" State="Ok" X="900" Y="324" />
+    <local:PackStation Number="41" State="Bad" X="1012" Y="324" />
+    <local:PackStation Number="42" State="None" X="1124" Y="324" />
+    <local:PackStation Number="43" State="Present" X="1236" Y="324" />
+    <local:PackStation Number="44" State="Filled" X="1348" Y="324" />
+    <local:PackStation Number="45" State="Ok" X="1460" Y="324" />
+    <local:PackStation Number="46" State="Bad" X="1572" Y="324" />
+    <local:PackStation Number="47" State="None" X="1684" Y="324" />
+    <local:PackStation Number="48" State="Present" X="1796" Y="324" />
+    <local:PackStation Number="49" State="Filled" X="1908" Y="324" />
+    <local:PackStation Number="50" State="Ok" X="2020" Y="324" />
+    <local:PackStation Number="51" State="Bad" X="2132" Y="324" />
+    <local:PackStation Number="52" State="None" X="2244" Y="324" />
+    <local:PackStation Number="53" State="Present" X="2356" Y="324" />
+    <local:PackStation Number="54" State="Filled" X="2468" Y="324" />
+    <local:PackStation Number="55" State="Ok" X="2580" Y="324" />
+    <local:PackStation Number="56" State="Bad" X="2692" Y="324" />
+    <local:PackStation Number="57" State="None" X="2804" Y="324" />
+    <local:PackStation Number="58" State="Present" X="2916" Y="324" />
+    <local:PackStation Number="59" State="Filled" X="3028" Y="324" />
+    <local:PackStation Number="60" State="Ok" X="3140" Y="324" />
+    <local:PackStation Number="61" State="Bad" X="3252" Y="324" />
+    <local:PackStation Number="62" State="None" X="3500" Y="0" />
+    <local:PackStation Number="63" State="Present" X="3500" Y="72" />
+    <local:PackStation Number="64" State="Filled" X="3500" Y="144" />
+    <local:PackStation Number="65" State="Ok" X="3500" Y="216" />
+    <local:PackStation Number="66" State="Bad" X="3500" Y="288" />
+    <local:PackStation Number="67" State="None" X="3500" Y="360" />
+    <local:PackStation Number="68" State="Present" X="3500" Y="432" />
+    <local:PackStation Number="69" State="Filled" X="3500" Y="504" />
+    <local:PackStation Number="70" State="Ok" X="3500" Y="576" />
+  </x:Array>
+  <local:HM32_PackRegisterGraphic x:Key="HM32_Sample" x:Shared="False"
+                                  Stations="{StaticResource HM32_SampleStations}"
+                                  ShowLegend="True" LayoutWidth="3640" LayoutHeight="720" />
+</ResourceDictionary>

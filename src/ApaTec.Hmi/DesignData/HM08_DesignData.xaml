@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM08_DesignData.xaml: Beispielinstanzen von HM08_ToggleSwitch mit den Beispielwerten aus HM-08_Zustandstaste-Umschalter.md (Entwurfsmodus, Galerie, Vorschau).
+     Jede Ressource ist x:Shared="False" (bei jeder Verwendung eine neue Instanz) und wird per {StaticResource HM08.Sample.<Name>} eingesetzt.
+     Voraussetzung: Die Stile aus Controls/*.Styles.xaml sind in den Anwendungsressourcen (ControlResources.MergeAll). Texte aus Resources/Strings/Basiselemente_HM07_12.resx. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.PathControl" x:Shared="False"
+      Label="{res:Loc HM08_Sample_PathControl}"
+      IsChecked="True" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Heating" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Heating}"
+      IsChecked="False" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.CrossScrew" x:Shared="False"
+      Label="{res:Loc HM08_Sample_CrossScrew}"
+      IsChecked="True" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Agitator" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Agitator}"
+      IsChecked="False" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Regulation" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Regulation}"
+      IsChecked="True"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.AutomaticProduction" x:Shared="False"
+      Label="{res:Loc HM08_Sample_AutomaticProduction}"
+      IsChecked="{x:Null}"
+      IsAggregate="True" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.AutomaticProductionOn" x:Shared="False"
+      Label="{res:Loc HM08_Sample_AutomaticProduction}"
+      IsChecked="True"
+      IsAggregate="True" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Standby" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Standby}"
+      Icon="{StaticResource Icon.Heating}"
+      ToggleStyle="Button"
+      IsChecked="False" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Pump" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Pump}"
+      Icon="{StaticResource Icon.Pump}"
+      ToggleStyle="Button"
+      IsChecked="True" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Continuous" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Continuous}"
+      IsChecked="True"
+      OnText="{res:Loc HM08_Sample_Continuous_On}"
+      OffText="{res:Loc HM08_Sample_Continuous_Off}" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.SwitchOff" x:Shared="False"
+      Label="{res:Loc HM08_Sample_SwitchOff}"
+      ToggleStyle="Button"
+      IsChecked="True"
+      OnText="{res:Loc HM08_Sample_SwitchOff_On}"
+      OffText="{res:Loc HM08_Sample_SwitchOff_Off}" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.FastMachine" x:Shared="False"
+      Label="{res:Loc HM08_Sample_FastMachine}"
+      ToggleStyle="Button"
+      ButtonSize="Tile"
+      IsChecked="False" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Pending" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Pending}"
+      IsChecked="True"
+      IsPending="True" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Error" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Heating}"
+      IsChecked="True"
+      ErrorText="{res:Loc HM08_Sample_ErrorText}" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Locked" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Regulation}"
+      RequiresPermission="True"
+      IsAuthorized="False" />
+
+  <c:HM08_ToggleSwitch x:Key="HM08.Sample.Disabled" x:Shared="False"
+      Label="{res:Loc HM08_Sample_Standby}"
+      IsChecked="False"
+      IsEnabled="False" />
+
+</ResourceDictionary>

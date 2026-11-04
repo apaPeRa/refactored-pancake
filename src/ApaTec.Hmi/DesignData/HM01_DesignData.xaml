@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Entwurfsdaten HM-01 Seitenleiste: Beispielinstanzen mit den Werten des Designs (Kreis MM, Max Mustermann, Technik, 3 neue Meldungen). Nicht Teil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:models="clr-namespace:ApaTec.Hmi.Models">
+
+  <x:Array x:Key="HM01_Example.Items" Type="models:SidebarItem">
+    <models:SidebarItem Id="Home" Label="Home" IconKey="Icon.Home" />
+    <models:SidebarItem Id="Settings" Label="Einstellungen" IconKey="Icon.Settings" />
+    <models:SidebarItem Id="Messages" Label="Meldungen" IconKey="Icon.Messages" ShowsBadge="True" />
+  </x:Array>
+
+  <!-- Angemeldet, Startseite (Zurueck deaktiviert), 3 neue Meldungen -->
+  <controls:HM01_Sidebar x:Key="HM01_Example.LoggedIn" x:Shared="False"
+                         Initials="MM" UserName="Max Mustermann" UserRole="Technik" IsLoggedIn="True"
+                         Items="{StaticResource HM01_Example.Items}"
+                         CurrentItemId="Home" UnreadMessageCount="3" CanGoBack="False" />
+
+  <!-- Abgemeldet, Einstellungen aktuell, Zurueck moeglich, ab 100 Meldungen "99+" -->
+  <controls:HM01_Sidebar x:Key="HM01_Example.LoggedOut" x:Shared="False"
+                         IsLoggedIn="False"
+                         Items="{StaticResource HM01_Example.Items}"
+                         CurrentItemId="Settings" UnreadMessageCount="120" CanGoBack="True" />
+</ResourceDictionary>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Entwurfsdaten HM-06 Funktionsleiste: HS-07 mit Temperatur, Druck (aktuelle Seite), Zeitplan; leere Leiste. Nicht Teil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels">
+
+  <x:Array x:Key="HM06_Example.Hs07Items" Type="vm:FunctionBarItem">
+    <vm:FunctionBarItem Label="Temperatur" IconKey="Icon.Temperature" TargetId="HotGlueNordson" />
+    <vm:FunctionBarItem Label="Druck" IconKey="Icon.Pressure" TargetId="HotGluePressure" />
+    <vm:FunctionBarItem Label="Zeitplan" IconKey="Icon.Schedule" TargetId="HotGlueSchedule" />
+  </x:Array>
+
+  <controls:HM06_FunctionBar x:Key="HM06_Example.Hs07" x:Shared="False"
+                             Items="{StaticResource HM06_Example.Hs07Items}" CurrentTargetId="HotGluePressure" />
+  <controls:HM06_FunctionBar x:Key="HM06_Example.Empty" x:Shared="False" />
+</ResourceDictionary>

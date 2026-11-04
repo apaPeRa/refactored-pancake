@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-28 Temperaturzonen-Zeile: reine Komposition aus HM-12 (Soll), HM-11 (Ist), HM-08 (Zone ein/aus, Meldung) und HM-09 (State, Out), keine Kopien.
+     Zwei Varianten (Glue: Name, Soll, Ist, Taste; Heating: Name, Heizung, Meldung, Soll, Ist, State, Out). Zeilenhoehe mindestens Size.Touch.Default. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style TargetType="{x:Type c:HM28_HeatZoneRow}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="AutomationProperties.Name" Value="{Binding ZoneName, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:HM28_HeatZoneRow}">
+          <Border x:Name="Frame" MinHeight="{TemplateBinding MinHeight}" Background="{DynamicResource Brush.Surface}"
+                  BorderBrush="{DynamicResource Brush.Border.Control}" BorderThickness="{StaticResource Border.Thin}"
+                  CornerRadius="{StaticResource Radius.Control}" Padding="{StaticResource Inset.S}">
+            <Grid>
+              <!-- Variante Heissleim (HS-08) -->
+              <Grid x:Name="GlueLayout">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="4*" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="GlueName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
+                           Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />
+                <c:HM12_ValueInput Grid.Column="1" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0" RequiresPermission="True"
+                                   NumberValue="{Binding Setpoint, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                <c:HM11_ValueDisplay Grid.Column="2" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0"
+                                     NumberValue="{Binding Actual, RelativeSource={RelativeSource TemplatedParent}}" />
+                <c:HM08_ToggleSwitch Grid.Column="3" Margin="{StaticResource Inset.XS}" ToggleStyle="Button"
+                                     OnText="{res:Loc HM28_Zone_SwitchOff}" OffText="{res:Loc HM28_Zone_SwitchOn}"
+                                     IsChecked="{Binding IsZoneEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     ToggleCommand="{Binding ToggleZoneCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+              </Grid>
+
+              <!-- Variante Heizungen (HS-22) -->
+              <Grid x:Name="HeatingLayout" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="5*" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="HeatingName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
+                           Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />
+                <c:HM08_ToggleSwitch Grid.Column="1" Margin="{StaticResource Inset.XS}" ToggleStyle="Switch"
+                                     AutomationProperties.Name="{res:Loc HM28_Heating_Label}"
+                                     IsChecked="{Binding IsZoneEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     ToggleCommand="{Binding ToggleZoneCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                <c:HM08_ToggleSwitch Grid.Column="2" Margin="{StaticResource Inset.XS}" ToggleStyle="Switch"
+                                     AutomationProperties.Name="{res:Loc HM28_Monitor_Label}"
+                                     IsChecked="{Binding IsMonitored, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     ToggleCommand="{Binding ToggleMonitorCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                <c:HM12_ValueInput Grid.Column="3" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0" RequiresPermission="True"
+                                   NumberValue="{Binding Setpoint, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                <c:HM11_ValueDisplay Grid.Column="4" Margin="{StaticResource Inset.XS}" Unit="°C" Decimals="0"
+                                     NumberValue="{Binding Actual, RelativeSource={RelativeSource TemplatedParent}}" />
+                <c:HM09_StatusLed Grid.Column="5" Margin="{StaticResource Inset.XS}" IsCompact="True" ShowStateWord="True"
+                                  AutomationProperties.Name="{res:Loc HM28_State_Label}"
+                                  State="{Binding StateLed, RelativeSource={RelativeSource TemplatedParent}}" />
+                <c:HM09_StatusLed Grid.Column="6" Margin="{StaticResource Inset.XS}" IsCompact="True" ShowStateWord="True"
+                                  AutomationProperties.Name="{res:Loc HM28_Out_Label}"
+                                  State="{Binding OutputLed, RelativeSource={RelativeSource TemplatedParent}}" />
+              </Grid>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="RowKind" Value="Heating">
+              <Setter TargetName="GlueLayout" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="HeatingLayout" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <!-- Zone abgewaehlt: Namen in Sekundaerfarbe, zweiter Kanal Taste „Einschalten“ bzw. Schalter mit Wort „Aus“ -->
+            <Trigger Property="IsZoneEnabled" Value="False">
+              <Setter TargetName="GlueName" Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+              <Setter TargetName="HeatingName" Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+            </Trigger>
+            <!-- Fehler / nicht bereit: Flaeche Error.Subtle, zweiter Kanal ueber State-LED (Symbol und Wort) -->
+            <Trigger Property="StateLed" Value="Error">
+              <Setter TargetName="Frame" Property="Background" Value="{DynamicResource Brush.Status.Error.Subtle}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

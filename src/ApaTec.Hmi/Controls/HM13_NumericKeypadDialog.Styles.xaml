@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-13 Eingabe-Pop-up (Ziffernblock): Inhalt von HM14_PopupFrame. Titel, aktueller Wert, Eingabezeile (Metric), Ziffernblock 3 x 4 plus Ruecktaste/Loeschen,
+     Grenzen als Caption, Fehler mit Icon.Status.Error und Text, Uebernehmen nur bei gueltigem Wert. Varianten: Zahl, Zeit (hh:mm), Text (ohne Ziffernblock), Filter (zwei Zeilen). -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style x:Key="HM13_IconPath" TargetType="Path">
+    <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+  </Style>
+
+  <!-- Ziffernblock-Taste: Size.Touch.Large x Size.Touch.Default, Abstand Space.M (je Seite Inset.S) -->
+  <Style x:Key="HM13_KeyStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+    <Setter Property="Width" Value="{StaticResource Size.Touch.Large}" />
+    <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Large}" />
+    <Setter Property="Height" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="Margin" Value="{StaticResource Inset.S}" />
+    <Setter Property="Padding" Value="{StaticResource Inset.S}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Value}" />
+    <Setter Property="FontWeight" Value="{StaticResource Font.Weight.Strong}" />
+  </Style>
+
+  <!-- Uebernehmen: aktiv = Brush.Button.Active mit Icon.Confirm; deaktiviert = gestrichelt (Basisvorlage) -->
+  <Style x:Key="HM13_ApplyStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+    <Setter Property="Background" Value="{DynamicResource Brush.Button.Active}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Text.OnActive}" />
+    <Setter Property="Margin" Value="{StaticResource Inset.S}" />
+  </Style>
+  <Style x:Key="HM13_CancelStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+    <Setter Property="Margin" Value="{StaticResource Inset.S}" />
+  </Style>
+
+  <DataTemplate x:Key="HM13_FilterFieldTemplate" DataType="{x:Type local:FilterField}">
+    <Border x:Name="Row"
+            Background="{DynamicResource Brush.Surface}"
+            BorderBrush="{DynamicResource Brush.Border.Control}"
+            BorderThickness="{StaticResource Border.Thin}"
+            CornerRadius="{StaticResource Radius.Control}"
+            MinHeight="{StaticResource Size.Touch.Default}"
+            Margin="{StaticResource Inset.XS}"
+            Padding="{StaticResource Inset.S}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Style="{StaticResource Text.Caption}" Text="{Binding Name}" VerticalAlignment="Center" />
+        <TextBlock x:Name="ValueText" Grid.Column="1" Style="{StaticResource Text.Value}" Text="{Binding Value}" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBlock x:Name="PlaceholderText" Grid.Column="1" Style="{StaticResource Text.Disabled}" Text="{Binding Placeholder}" TextAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed" />
+      </Grid>
+    </Border>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding Value}" Value="">
+        <Setter TargetName="ValueText" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding IsActive}" Value="True">
+        <Setter TargetName="Row" Property="BorderBrush" Value="{DynamicResource Brush.Border.Focus}" />
+        <Setter TargetName="Row" Property="BorderThickness" Value="{StaticResource Border.Thick}" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+  <Style TargetType="{x:Type local:HM13_NumericKeypadDialog}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM13_NumericKeypadDialog}">
+          <Grid x:Name="Root">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Titel (Feldname) und aktueller Wert -->
+            <Grid Grid.Row="0" Margin="{StaticResource Inset.S}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <TextBlock Style="{StaticResource Text.Value}" Text="{TemplateBinding Title}" VerticalAlignment="Center" />
+              <TextBlock x:Name="CurrentLine" Grid.Column="1" Style="{StaticResource Text.Caption}" VerticalAlignment="Center">
+                <Run Text="{res:Loc HM13_Current_Label}" />
+                <Run Text="{Binding CurrentValue, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat={}{0:0.###}}" />
+                <Run Text="{Binding Unit, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat='&#160;{0}'}" />
+              </TextBlock>
+            </Grid>
+
+            <!-- Eingabezeile (Zahl, Zeit, Text): bei Fehler Kontur Border.Thick Error.Fg und Fehlerflaeche -->
+            <Border x:Name="InputBox" Grid.Row="1"
+                    Background="{DynamicResource Brush.Status.Error.Subtle}"
+                    BorderBrush="{DynamicResource Brush.Status.Error.Fg}"
+                    BorderThickness="{StaticResource Border.Thick}"
+                    CornerRadius="{StaticResource Radius.Control}"
+                    MinHeight="{StaticResource Size.Touch.Large}"
+                    Margin="{StaticResource Inset.S}"
+                    Padding="{StaticResource Inset.M}">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource Text.Metric}" Text="{TemplateBinding InputText}" TextAlignment="Right" TextWrapping="NoWrap" VerticalAlignment="Center" />
+                <TextBlock x:Name="TimePlaceholder" Style="{StaticResource Text.Metric}" Foreground="{DynamicResource Brush.Text.Disabled}"
+                           Text="{res:Loc HM13_TimePlaceholder_Text}" TextAlignment="Right" TextWrapping="NoWrap" VerticalAlignment="Center" Visibility="Collapsed" />
+                <TextBlock Grid.Column="1" Style="{StaticResource Text.Value}" Text="{TemplateBinding Unit}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+
+            <!-- Filtervariante: ein Feld je Kriterium, aktive Zeile mit Border.Thick -->
+            <ItemsControl x:Name="FilterList" Grid.Row="1" Visibility="Collapsed"
+                          Margin="{StaticResource Inset.S}"
+                          IsTabStop="False" Focusable="False"
+                          ItemsSource="{TemplateBinding FilterFields}"
+                          ItemTemplate="{StaticResource HM13_FilterFieldTemplate}" />
+
+            <!-- Fehler, Hilfetext, Bereichsangabe -->
+            <StackPanel Grid.Row="2" Margin="{StaticResource Inset.S}">
+              <StackPanel x:Name="ErrorRow" Orientation="Horizontal">
+                <Viewbox Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}" VerticalAlignment="Center">
+                  <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                    <Path Style="{StaticResource HM13_IconPath}" Stroke="{DynamicResource Brush.Status.Error.Fg}" Data="{StaticResource Icon.Status.Error}" />
+                  </Grid>
+                </Viewbox>
+                <TextBlock Style="{StaticResource Text.Body}" Text="{TemplateBinding ErrorText}" Foreground="{DynamicResource Brush.Status.Error.Fg}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
+              </StackPanel>
+              <TextBlock x:Name="HelpLine" Style="{StaticResource Text.Caption}" Text="{TemplateBinding HelpText}" />
+              <TextBlock x:Name="RangeLine" Style="{StaticResource Text.Caption}">
+                <Run Text="{res:Loc HM13_Range_Label}" />
+                <Run Text="{Binding Minimum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat={}{0:0.###}}" />
+                <Run Text="{res:Loc HM13_RangeTo_Word}" />
+                <Run Text="{Binding Maximum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat={}{0:0.###}}" />
+                <Run Text="{Binding Unit, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat='&#160;{0}'}" />
+              </TextBlock>
+            </StackPanel>
+
+            <!-- Ziffernblock: 3 x 4 plus Spalte Ruecktaste/Loeschen -->
+            <Grid x:Name="Keypad" Grid.Row="3" HorizontalAlignment="Center">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="7"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="8"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="9"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="4"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="5"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="6"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="1"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="2"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="3"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DigitCommand}" CommandParameter="0"
+                        Content="{Binding CommandParameter, RelativeSource={RelativeSource Self}}" />
+                <Button x:Name="SignKey" Grid.Row="3" Grid.Column="0" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding SignCommand}"
+                        Content="{res:Loc HM13_Sign_Label}"
+                        AutomationProperties.Name="{res:Loc HM13_Sign_Name}" />
+                <Button x:Name="DecimalKey" Grid.Row="3" Grid.Column="2" Style="{StaticResource HM13_KeyStyle}"
+                        Command="{TemplateBinding DecimalSeparatorCommand}"
+                        Content="{res:Loc HM13_Decimal_Label}"
+                        AutomationProperties.Name="{res:Loc HM13_Decimal_Name}" />
+                <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Style="{StaticResource HM13_KeyStyle}" Height="Auto"
+                        Command="{TemplateBinding BackspaceCommand}"
+                        Content="{res:Loc HM13_Backspace_Label}"
+                        AutomationProperties.Name="{res:Loc HM13_Backspace_Name}" />
+                <Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Style="{StaticResource HM13_KeyStyle}" Height="Auto"
+                        Command="{TemplateBinding ClearCommand}"
+                        Content="{res:Loc HM13_Clear_Label}"
+                        AutomationProperties.Name="{res:Loc HM13_Clear_Name}" />
+            </Grid>
+
+            <!-- Tasten -->
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="{StaticResource Inset.S}">
+              <Button Style="{StaticResource HM13_CancelStyle}"
+                      Command="{TemplateBinding CancelCommand}"
+                      Content="{res:Loc Popup_Cancel_Label}" />
+              <Button Style="{StaticResource HM13_ApplyStyle}"
+                      Command="{TemplateBinding ApplyCommand}"
+                      IsEnabled="{TemplateBinding IsValid}">
+                <StackPanel Orientation="Horizontal">
+                  <Viewbox Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}" VerticalAlignment="Center">
+                    <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                      <Path Style="{StaticResource HM13_IconPath}"
+                            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                            Data="{StaticResource Icon.Confirm}" />
+                    </Grid>
+                  </Viewbox>
+                  <TextBlock Text="{res:Loc Popup_Accept_Label}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
+                </StackPanel>
+              </Button>
+            </StackPanel>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <!-- gueltig: kein Fehlertext -> normale Eingabezeile -->
+            <Trigger Property="ErrorText" Value="{x:Null}">
+              <Setter TargetName="ErrorRow" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="InputBox" Property="Background" Value="{DynamicResource Brush.Surface}" />
+              <Setter TargetName="InputBox" Property="BorderBrush" Value="{DynamicResource Brush.Border.Control}" />
+              <Setter TargetName="InputBox" Property="BorderThickness" Value="{StaticResource Border.Thin}" />
+            </Trigger>
+            <Trigger Property="HelpText" Value="{x:Null}">
+              <Setter TargetName="HelpLine" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="CurrentValue" Value="{x:Null}">
+              <Setter TargetName="CurrentLine" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="Minimum" Value="{x:Null}" />
+                <Condition Property="Maximum" Value="{x:Null}" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="RangeLine" Property="Visibility" Value="Collapsed" />
+            </MultiTrigger>
+            <!-- Zeit: Platzhalterstruktur, nur Ziffern -->
+            <Trigger Property="InputKind" Value="Time">
+              <Setter TargetName="SignKey" Property="Visibility" Value="Hidden" />
+              <Setter TargetName="DecimalKey" Property="Visibility" Value="Hidden" />
+            </Trigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="InputKind" Value="Time" />
+                <Condition Property="InputText" Value="" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="TimePlaceholder" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <!-- Text: Windows-Bildschirmtastatur statt Ziffernblock -->
+            <Trigger Property="InputKind" Value="Text">
+              <Setter TargetName="Keypad" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!-- Filter: zwei Eingabezeilen, Ziffernblock ohne Vorzeichen und Komma -->
+            <Trigger Property="InputKind" Value="Filter">
+              <Setter TargetName="InputBox" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="FilterList" Property="Visibility" Value="Visible" />
+              <Setter TargetName="SignKey" Property="Visibility" Value="Hidden" />
+              <Setter TargetName="DecimalKey" Property="Visibility" Value="Hidden" />
+              <Setter TargetName="CurrentLine" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RangeLine" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

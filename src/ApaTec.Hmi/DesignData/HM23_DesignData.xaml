@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM23_DesignData.xaml: Beispielinstanz der Nockentabelle (HM-23), Nr. 40 bis 59 im Quellwortlaut der Bilder (OP-35).
+     Beispielinstanzen (x:Shared="False") mit Werten aus den Moduldateien/Bildern (A-50); nur fuer Entwurfsmodus und die spaetere Galerie, nicht Teil der Laufzeitressourcen.
+     Verwendung im Designer: d:DataContext bzw. {StaticResource Schluessel} aus diesem Dictionary. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctl="clr-namespace:ApaTec.Hmi.Controls">
+  <ctl:HM23_CamTable x:Key="HM23.Sample.Page1" x:Shared="False" RowsPerPage="11" SelectedNumber="47">
+    <ctl:HM23_CamTable.Rows>
+      <x:Array Type="ctl:CamRow">
+        <ctl:CamRow Number="40" Name="Start Hauptdoserer 1" StartAngle="290" EndAngle="130" IsActive="False" />
+        <ctl:CamRow Number="41" Name="Start Hauptdosierer 2" StartAngle="290" EndAngle="130" IsActive="False" />
+        <ctl:CamRow Number="42" Name="Wiegen Kontrollwaage" StartAngle="40" EndAngle="110" IsActive="False" />
+        <ctl:CamRow Number="43" Name="Wiegen Endkontrollwaage" StartAngle="40" EndAngle="110" IsActive="False" />
+        <ctl:CamRow Number="44" Name="Blasluft Fehlpaket 14KY23" StartAngle="290" EndAngle="20" IsActive="False" />
+        <ctl:CamRow Number="45" Name="Fehlpaketausstoß verriegeln 14KY21" StartAngle="200" EndAngle="140" IsActive="True" />
+        <ctl:CamRow Number="46" Name="Fehlaketausstoß vorne 14B10" StartAngle="10" EndAngle="35" IsActive="False" />
+        <ctl:CamRow Number="47" Name="Fehlpaketausstoß hinten 14B10" StartAngle="120" EndAngle="284" IsActive="True" />
+        <ctl:CamRow Number="48" Name="" StartAngle="0" EndAngle="0" IsActive="False" />
+        <ctl:CamRow Number="49" Name="Start Nachdosierer" StartAngle="260" EndAngle="130" IsActive="False" />
+        <ctl:CamRow Number="50" Name="" StartAngle="0" EndAngle="0" IsActive="False" />
+        <ctl:CamRow Number="51" Name="Tastung Kopfleim 20B61" StartAngle="35" EndAngle="45" IsActive="False" />
+        <ctl:CamRow Number="52" Name="Kopfleim 20KY21" StartAngle="280" EndAngle="325" IsActive="False" />
+        <ctl:CamRow Number="53" Name="Ausstoßer Auslauf vorne 20B71" StartAngle="45" EndAngle="60" IsActive="False" />
+        <ctl:CamRow Number="54" Name="Ausstoßer Auslauf hinten 20B71" StartAngle="120" EndAngle="310" IsActive="True" />
+        <ctl:CamRow Number="55" Name="Paket schließen 20KY22" StartAngle="280" EndAngle="60" IsActive="False" />
+        <ctl:CamRow Number="56" Name="Blasluft Stempel 20KY23" StartAngle="75" EndAngle="130" IsActive="False" />
+        <ctl:CamRow Number="57" Name="Siegelbacken Abheben Vorsiegeln 20KY31" StartAngle="310" EndAngle="140" IsActive="True" />
+        <ctl:CamRow Number="58" Name="Siegelbacken Abheben Hauptsiegeln 20KY32" StartAngle="310" EndAngle="140" IsActive="True" />
+        <ctl:CamRow Number="59" Name="" StartAngle="0" EndAngle="0" IsActive="False" />
+      </x:Array>
+    </ctl:HM23_CamTable.Rows>
+  </ctl:HM23_CamTable>
+</ResourceDictionary>

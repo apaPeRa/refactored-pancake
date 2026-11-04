@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM22_DesignData.xaml: Beispielinstanzen der Gewichtskorrektur-Tabelle (HM-22).
+     Beispielinstanzen (x:Shared="False") mit Werten aus den Moduldateien/Bildern (A-50); nur fuer Entwurfsmodus und die spaetere Galerie, nicht Teil der Laufzeitressourcen.
+     Verwendung im Designer: d:DataContext bzw. {StaticResource Schluessel} aus diesem Dictionary. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctl="clr-namespace:ApaTec.Hmi.Controls">
+  <ctl:HM22_WeightCorrectionTable x:Key="HM22.Sample.Calculated" x:Shared="False" TargetWeight="250.4" ValidPointCount="11" CalculationState="Calculated">
+    <ctl:HM22_WeightCorrectionTable.Points>
+      <x:Array Type="ctl:CorrectionPoint">
+      <ctl:CorrectionPoint Block="1" Nominal="18" Actual="20" />
+      <ctl:CorrectionPoint Block="1" Nominal="22" Actual="24" />
+      <ctl:CorrectionPoint Block="1" Nominal="26" Actual="28" />
+      <ctl:CorrectionPoint Block="1" Nominal="30" Actual="32" />
+      <ctl:CorrectionPoint Block="1" Nominal="34" Actual="36" />
+      <ctl:CorrectionPoint Block="1" Nominal="38" Actual="40" />
+      <ctl:CorrectionPoint Block="1" Nominal="42" Actual="44" />
+      <ctl:CorrectionPoint Block="1" Nominal="46" Actual="48" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="50" Actual="52" />
+      <ctl:CorrectionPoint Block="2" Nominal="54" Actual="56" />
+      <ctl:CorrectionPoint Block="2" Nominal="58" Actual="60" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      </x:Array>
+    </ctl:HM22_WeightCorrectionTable.Points>
+  </ctl:HM22_WeightCorrectionTable>
+  <ctl:HM22_WeightCorrectionTable x:Key="HM22.Sample.TooFewPoints" x:Shared="False" TargetWeight="250.4" ValidPointCount="2" CalculationState="TooFewPoints">
+    <ctl:HM22_WeightCorrectionTable.Points>
+      <x:Array Type="ctl:CorrectionPoint">
+      <ctl:CorrectionPoint Block="1" Nominal="18" Actual="20" />
+      <ctl:CorrectionPoint Block="1" Nominal="22" Actual="24" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      </x:Array>
+    </ctl:HM22_WeightCorrectionTable.Points>
+  </ctl:HM22_WeightCorrectionTable>
+  <ctl:HM22_WeightCorrectionTable x:Key="HM22.Sample.InvalidPair" x:Shared="False" TargetWeight="250.4" ValidPointCount="3" CalculationState="Invalid">
+    <ctl:HM22_WeightCorrectionTable.Points>
+      <x:Array Type="ctl:CorrectionPoint">
+      <ctl:CorrectionPoint Block="1" Nominal="18" Actual="20" />
+      <ctl:CorrectionPoint Block="1" Nominal="22" Actual="24" />
+      <ctl:CorrectionPoint Block="1" Nominal="26" Actual="28" />
+      <ctl:CorrectionPoint Block="1" Nominal="30" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="1" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      <ctl:CorrectionPoint Block="2" Nominal="0" Actual="0" />
+      </x:Array>
+    </ctl:HM22_WeightCorrectionTable.Points>
+  </ctl:HM22_WeightCorrectionTable>
+</ResourceDictionary>

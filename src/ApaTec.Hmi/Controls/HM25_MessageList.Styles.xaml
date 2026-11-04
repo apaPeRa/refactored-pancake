@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-25 Meldungsliste. Zeilenfarbe nach Meldungsklasse immer mit Symbol und Klassenwort (zweiter Kanal), Auswahl mit Rahmen Border.Thick und Haken. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:m="clr-namespace:ApaTec.Hmi.Models"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style x:Key="HM25.Icon" TargetType="Path">
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="StrokeThickness" Value="{Binding Path=Left, Source={StaticResource Border.Medium}}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+  </Style>
+
+  <!-- Klassenzelle: Symbol und Klassenwort -->
+  <DataTemplate x:Key="HM25.ClassCell" DataType="{x:Type m:MessageEntry}">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+      <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+        <Path x:Name="ClassIcon" Style="{StaticResource HM25.Icon}" />
+      </Viewbox>
+      <TextBlock x:Name="ClassWord" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Text.Primary}"
+                 Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                 Visibility="{Binding ShowClassColumn, RelativeSource={RelativeSource AncestorType=c:HM25_MessageList}, Converter={x:Static c:HM25_BoolToVisibility.Instance}}" />
+    </StackPanel>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding Class}" Value="Operation">
+        <Setter TargetName="ClassIcon" Property="Data" Value="{StaticResource Icon.Status.Ok}" />
+        <Setter TargetName="ClassIcon" Property="Stroke" Value="{DynamicResource Brush.Status.Ok.Fg}" />
+        <Setter TargetName="ClassWord" Property="Text" Value="{res:Loc HM25_Class_Operation}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Class}" Value="Notice">
+        <Setter TargetName="ClassIcon" Property="Data" Value="{StaticResource Icon.Status.Warning}" />
+        <Setter TargetName="ClassIcon" Property="Stroke" Value="{DynamicResource Brush.Status.Warning.Fg}" />
+        <Setter TargetName="ClassWord" Property="Text" Value="{res:Loc HM25_Class_Notice}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Class}" Value="Fault">
+        <Setter TargetName="ClassIcon" Property="Data" Value="{StaticResource Icon.Status.Error}" />
+        <Setter TargetName="ClassIcon" Property="Stroke" Value="{DynamicResource Brush.Status.Error.Fg}" />
+        <Setter TargetName="ClassWord" Property="Text" Value="{res:Loc HM25_Class_Fault}" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+  <!-- Zeile Meldearchiv: Klasse, Zeit, Ereignis, Beschreibung -->
+  <DataTemplate x:Key="HM25.Row.Archive" DataType="{x:Type m:MessageEntry}">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" SharedSizeGroup="HM25.Class" />
+        <ColumnDefinition Width="4*" />
+        <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="6*" />
+      </Grid.ColumnDefinitions>
+      <ContentControl Grid.Column="0" Content="{Binding}" ContentTemplate="{StaticResource HM25.ClassCell}" Margin="{StaticResource Inset.S}" />
+      <TextBlock Grid.Column="1" Style="{StaticResource Text.Body}" Text="{Binding Timestamp, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
+      <TextBlock Grid.Column="2" Style="{StaticResource Text.Body}" Text="{Binding Event}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
+      <TextBlock Grid.Column="3" Style="{StaticResource Text.Body}" Text="{Binding Text}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
+    </Grid>
+  </DataTemplate>
+
+  <!-- Zeile Meldeanzeige: Klasse, Nummer, Meldung -->
+  <DataTemplate x:Key="HM25.Row.Live" DataType="{x:Type m:MessageEntry}">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" SharedSizeGroup="HM25.Class" />
+        <ColumnDefinition Width="4*" />
+        <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="6*" />
+      </Grid.ColumnDefinitions>
+      <ContentControl Grid.Column="0" Content="{Binding}" ContentTemplate="{StaticResource HM25.ClassCell}" Margin="{StaticResource Inset.S}" />
+      <TextBlock Grid.Column="1" Style="{StaticResource Text.Value}" Text="{Binding Number, StringFormat='{}{0:000}'}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
+      <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource Text.Body}" Text="{Binding Text}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
+    </Grid>
+  </DataTemplate>
+
+  <!-- Zeile Auswahlliste (Variablenliste) -->
+  <DataTemplate x:Key="HM25.Row.Selection" DataType="{x:Type m:MessageEntry}">
+    <TextBlock Style="{StaticResource Text.Body}" Text="{Binding Text}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
+  </DataTemplate>
+
+  <!-- Zeilencontainer: Flaeche nach Klasse; Auswahl = Rahmen Border.Thick (Form) plus Haken -->
+  <Style x:Key="HM25.ItemStyle" TargetType="ListBoxItem">
+    <Setter Property="Background" Value="{DynamicResource Brush.Surface}" />
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ListBoxItem">
+          <Grid>
+            <Border x:Name="Face" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource Brush.Divider}" BorderThickness="{StaticResource Border.Thin}">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ContentPresenter Grid.Column="0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                <Viewbox x:Name="Check" Grid.Column="1" Visibility="Hidden" Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}" Margin="{StaticResource Inset.S}">
+                  <Path Data="{StaticResource Icon.Confirm}" Style="{StaticResource HM25.Icon}" />
+                </Viewbox>
+              </Grid>
+            </Border>
+            <Border x:Name="SelectionRing" Visibility="Collapsed" BorderBrush="{DynamicResource Brush.Border.Focus}" BorderThickness="{StaticResource Border.Thick}" CornerRadius="{StaticResource Radius.Control}" />
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+              <Setter TargetName="SelectionRing" Property="Visibility" Value="Visible" />
+              <Setter TargetName="Check" Property="Visibility" Value="Visible" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <DataTrigger Binding="{Binding Class}" Value="Operation">
+        <Setter Property="Background" Value="{DynamicResource Brush.Status.Ok.Subtle}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Class}" Value="Notice">
+        <Setter Property="Background" Value="{DynamicResource Brush.Status.Warning.Subtle}" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Class}" Value="Fault">
+        <Setter Property="Background" Value="{DynamicResource Brush.Status.Error.Subtle}" />
+      </DataTrigger>
+    </Style.Triggers>
+  </Style>
+
+  <!-- Rollbalken (Breite Size.Touch.Min), Schieber Brush.Button.Normal, Spur Brush.Surface.Sunken -->
+  <Style x:Key="HM25.ScrollBar.Page" TargetType="RepeatButton">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="RepeatButton">
+          <Border Background="Transparent" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="HM25.ScrollBar.Thumb" TargetType="Thumb">
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Thumb">
+          <Border Background="{DynamicResource Brush.Button.Normal}" BorderBrush="{DynamicResource Brush.Border.Control}"
+                  BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="HM25.ScrollBar" TargetType="ScrollBar">
+    <Setter Property="Width" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ScrollBar">
+          <Border Background="{DynamicResource Brush.Surface.Sunken}" BorderBrush="{DynamicResource Brush.Divider}"
+                  BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}">
+            <Track x:Name="PART_Track" IsDirectionReversed="True">
+              <Track.DecreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource HM25.ScrollBar.Page}" />
+              </Track.DecreaseRepeatButton>
+              <Track.Thumb>
+                <Thumb Style="{StaticResource HM25.ScrollBar.Thumb}" />
+              </Track.Thumb>
+              <Track.IncreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource HM25.ScrollBar.Page}" />
+              </Track.IncreaseRepeatButton>
+            </Track>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- Scrolltaste: schmal statt Button.MinWidth -->
+  <Style x:Key="HM25.ScrollButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+    <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="Padding" Value="{StaticResource Inset.S}" />
+    <Setter Property="Margin" Value="{StaticResource Inset.XS}" />
+  </Style>
+
+  <Style TargetType="{x:Type c:HM25_MessageList}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="AutomationProperties.Name" Value="{res:Loc HM25_List_Name}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:HM25_MessageList}">
+          <Grid Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Filterhinweis: Info.Subtle mit Symbol und Text -->
+            <Border x:Name="FilterHint" Grid.Row="0" Grid.Column="0" Visibility="Collapsed"
+                    Background="{DynamicResource Brush.Status.Info.Subtle}" BorderBrush="{DynamicResource Brush.Status.Info.Fg}"
+                    BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}" Padding="{StaticResource Inset.S}">
+              <StackPanel Orientation="Horizontal">
+                <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                  <Path Data="{StaticResource Icon.Status.Info}" Style="{StaticResource HM25.Icon}" Stroke="{DynamicResource Brush.Status.Info.Fg}" />
+                </Viewbox>
+                <TextBlock Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Text.Primary}" Text="{res:Loc HM25_Filter_Text}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
+              </StackPanel>
+            </Border>
+
+            <!-- Spaltenkopf -->
+            <Grid x:Name="ColumnHeader" Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.XS}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="HM25.Class" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="6*" />
+              </Grid.ColumnDefinitions>
+              <TextBlock x:Name="HeadClass" Grid.Column="0" Style="{StaticResource Text.Caption}" Text="{res:Loc HM25_Column_Class}" Margin="{StaticResource Inset.S}" />
+              <StackPanel x:Name="HeadSort" Grid.Column="1" Orientation="Horizontal" Margin="{StaticResource Inset.S}">
+                <TextBlock x:Name="HeadFirst" Style="{StaticResource Text.Caption}" Text="{res:Loc HM25_Column_Time}" />
+                <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}" Margin="{StaticResource Inset.XS}">
+                  <Path x:Name="SortIcon" Data="{StaticResource Icon.Chevron}" Style="{StaticResource HM25.Icon}" Stroke="{DynamicResource Brush.Text.Secondary}"
+                        RenderTransformOrigin="0.5,0.5" AutomationProperties.Name="{res:Loc HM25_Sort_Descending}">
+                    <Path.RenderTransform>
+                      <RotateTransform Angle="90" />
+                    </Path.RenderTransform>
+                  </Path>
+                </Viewbox>
+              </StackPanel>
+              <TextBlock x:Name="HeadSecond" Grid.Column="2" Style="{StaticResource Text.Caption}" Text="{res:Loc HM25_Column_Event}" Margin="{StaticResource Inset.S}" />
+              <TextBlock x:Name="HeadThird" Grid.Column="3" Style="{StaticResource Text.Caption}" Text="{res:Loc HM25_Column_Description}" Margin="{StaticResource Inset.S}" />
+            </Grid>
+
+            <ListBox x:Name="List" Grid.Row="2" Grid.Column="0"
+                     ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
+                     SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                     ItemTemplate="{StaticResource HM25.Row.Archive}"
+                     ItemContainerStyle="{StaticResource HM25.ItemStyle}"
+                     Background="{DynamicResource Brush.Surface.Sunken}"
+                     BorderBrush="{DynamicResource Brush.Border.Control}" BorderThickness="{StaticResource Border.Thin}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                     ScrollViewer.PanningMode="VerticalOnly"
+                     ScrollViewer.CanContentScroll="True"
+                     VirtualizingPanel.IsVirtualizing="True"
+                     SelectionMode="Single">
+              <ListBox.Resources>
+                <Style TargetType="ScrollBar" BasedOn="{StaticResource HM25.ScrollBar}" />
+              </ListBox.Resources>
+            </ListBox>
+
+            <!-- Leerzustand -->
+            <StackPanel x:Name="EmptyState" Grid.Row="2" Grid.Column="0" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" IsHitTestVisible="False">
+              <Viewbox Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}">
+                <Path Data="{StaticResource Icon.Status.Inactive}" Style="{StaticResource HM25.Icon}" Stroke="{DynamicResource Brush.Text.Secondary}" />
+              </Viewbox>
+              <TextBlock Style="{StaticResource Text.Body}" Foreground="{DynamicResource Brush.Text.Secondary}" Text="{res:Loc HM25_Empty_Text}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Vier Scrolltasten (Anfang, Seite hoch | Seite runter, Ende) -->
+            <Grid x:Name="ScrollButtons" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
+              <StackPanel VerticalAlignment="Top">
+                <Button Style="{StaticResource HM25.ScrollButton}" Command="{TemplateBinding ScrollFirstCommand}" AutomationProperties.Name="{res:Loc HM25_Scroll_First}" ToolTip="{res:Loc HM25_Scroll_First}">
+                  <StackPanel>
+                    <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}"><Path Data="{StaticResource Icon.Scroll.Up}" Style="{StaticResource HM25.Icon}" /></Viewbox>
+                    <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}"><Path Data="{StaticResource Icon.Scroll.Up}" Style="{StaticResource HM25.Icon}" /></Viewbox>
+                  </StackPanel>
+                </Button>
+                <Button Style="{StaticResource HM25.ScrollButton}" Command="{TemplateBinding ScrollPageUpCommand}" AutomationProperties.Name="{res:Loc HM25_Scroll_PageUp}" ToolTip="{res:Loc HM25_Scroll_PageUp}">
+                  <Viewbox Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}"><Path Data="{StaticResource Icon.Scroll.Up}" Style="{StaticResource HM25.Icon}" /></Viewbox>
+                </Button>
+              </StackPanel>
+              <StackPanel VerticalAlignment="Bottom">
+                <Button Style="{StaticResource HM25.ScrollButton}" Command="{TemplateBinding ScrollPageDownCommand}" AutomationProperties.Name="{res:Loc HM25_Scroll_PageDown}" ToolTip="{res:Loc HM25_Scroll_PageDown}">
+                  <Viewbox Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}"><Path Data="{StaticResource Icon.Scroll.Down}" Style="{StaticResource HM25.Icon}" /></Viewbox>
+                </Button>
+                <Button Style="{StaticResource HM25.ScrollButton}" Command="{TemplateBinding ScrollLastCommand}" AutomationProperties.Name="{res:Loc HM25_Scroll_Last}" ToolTip="{res:Loc HM25_Scroll_Last}">
+                  <StackPanel>
+                    <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}"><Path Data="{StaticResource Icon.Scroll.Down}" Style="{StaticResource HM25.Icon}" /></Viewbox>
+                    <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}"><Path Data="{StaticResource Icon.Scroll.Down}" Style="{StaticResource HM25.Icon}" /></Viewbox>
+                  </StackPanel>
+                </Button>
+              </StackPanel>
+            </Grid>
+
+            <!-- Fusszeile: n ausgewaehlt | Positionsbereich | Zaehler -->
+            <Grid Grid.Row="3" Grid.Column="0" Margin="{StaticResource Inset.XS}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <TextBlock x:Name="SelectedCounter" Grid.Column="0" Style="{StaticResource Text.Caption}" Visibility="Collapsed">
+                <Run Text="{Binding SelectedItems.Count, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Run Text="{res:Loc HM25_Selected_Text}" />
+              </TextBlock>
+              <TextBlock x:Name="RangeText" Grid.Column="1" Style="{StaticResource Text.Caption}" Visibility="Collapsed">
+                <Run Text="{Binding RangeStart, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Run Text="{res:Loc HM25_Range_To}" />
+                <Run Text="{Binding RangeEnd, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Run Text="{res:Loc HM25_Counter_Of}" />
+                <Run Text="{Binding TotalCount, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+              </TextBlock>
+              <TextBlock x:Name="CountText" Grid.Column="2" Style="{StaticResource Text.Caption}" HorizontalAlignment="Right">
+                <Run Text="{Binding Items.Count, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Run Text="{res:Loc HM25_Counter_Of}" />
+                <Run Text="{Binding TotalCount, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+              </TextBlock>
+            </Grid>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <!-- Listenart -->
+            <Trigger Property="ListKind" Value="Live">
+              <Setter TargetName="List" Property="ItemTemplate" Value="{StaticResource HM25.Row.Live}" />
+              <Setter TargetName="HeadFirst" Property="Text" Value="{res:Loc HM25_Column_Number}" />
+              <Setter TargetName="HeadSecond" Property="Text" Value="{res:Loc HM25_Column_Message}" />
+              <Setter TargetName="HeadThird" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="ListKind" Value="Selection">
+              <Setter TargetName="List" Property="ItemTemplate" Value="{StaticResource HM25.Row.Selection}" />
+              <Setter TargetName="ColumnHeader" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!-- Auswahlmodus -->
+            <Trigger Property="SelectionMode" Value="Multiple">
+              <Setter TargetName="List" Property="ListBox.SelectionMode" Value="Multiple" />
+              <Setter TargetName="SelectedCounter" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <!-- Sortierrichtung: Pfeil nach oben bei aufsteigend -->
+            <Trigger Property="SortDirection" Value="Ascending">
+              <Setter TargetName="SortIcon" Property="RenderTransform">
+                <Setter.Value>
+                  <RotateTransform Angle="-90" />
+                </Setter.Value>
+              </Setter>
+              <Setter TargetName="SortIcon" Property="AutomationProperties.Name" Value="{res:Loc HM25_Sort_Ascending}" />
+            </Trigger>
+            <!-- Blaetterart -->
+            <Trigger Property="ScrollStyle" Value="Scrollbar">
+              <Setter TargetName="ScrollButtons" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="List" Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+              <Setter TargetName="RangeText" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="RangeEnd" Value="0">
+              <Setter TargetName="RangeText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="TotalCount" Value="0">
+              <Setter TargetName="CountText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!-- Klassenspalte -->
+            <Trigger Property="ShowClassColumn" Value="False">
+              <Setter TargetName="HeadClass" Property="Visibility" Value="Hidden" />
+            </Trigger>
+            <!-- Gefiltert -->
+            <Trigger Property="IsFiltered" Value="True">
+              <Setter TargetName="FilterHint" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <!-- Leer: Text und Symbol -->
+            <DataTrigger Binding="{Binding HasItems, ElementName=List}" Value="False">
+              <Setter TargetName="EmptyState" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM24_DesignData.xaml: Beispielinstanzen der Nocken-Parameterzeile (HM-24), Kopfleim HS-16 und Nocke HS-25.
+     Beispielinstanzen (x:Shared="False") mit Werten aus den Moduldateien/Bildern (A-50); nur fuer Entwurfsmodus und die spaetere Galerie, nicht Teil der Laufzeitressourcen.
+     Verwendung im Designer: d:DataContext bzw. {StaticResource Schluessel} aus diesem Dictionary. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctl="clr-namespace:ApaTec.Hmi.Controls">
+  <ctl:HM24_CamParameterRow x:Key="HM24.Sample.Start" x:Shared="False" Label="Anfang" Angle="330" Time="50" Result="325" EncoderName="Geber 1GF Hauptantrieb" />
+  <ctl:HM24_CamParameterRow x:Key="HM24.Sample.EndPending" x:Shared="False" Label="Ende" Angle="790" Time="50" Result="780" EncoderName="Geber 1GF Hauptantrieb" IsPendingWrite="True" />
+  <ctl:HM24_CamParameterRow x:Key="HM24.Sample.GlueStart" x:Shared="False" Label="Anfang" Angle="280" />
+  <ctl:HM24_CamParameterRow x:Key="HM24.Sample.GlueEnd" x:Shared="False" Label="Ende" Angle="325" />
+  <ctl:HM24_CamParameterRow x:Key="HM24.Sample.GlueDuration" x:Shared="False" Label="Dauer" Time="50" />
+</ResourceDictionary>

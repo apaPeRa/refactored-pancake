@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-30 Zeitplan-Eintrag-Pop-up (Inhalt fuer HM14_PopupFrame): Aktion (HM-18), je Zeit ein Schalter (HM-08) und ein Zeitfeld (HM-12, Zeitvariante),
+     Zaehler der Absenkphasen (HM-11), Hinweis (HM-27) und Tasten Uebernehmen, Abbrechen, Loeschen (HM-07). Keine Kopien der Grundmodule. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style TargetType="{x:Type c:HM30_ScheduleEntryDialog}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:HM30_ScheduleEntryDialog}">
+          <Grid Margin="{StaticResource Inset.M}">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Aktion: Heizphase / Absenkphase -->
+            <c:HM18_SelectorField Grid.Row="0" Grid.ColumnSpan="2" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM30_Action_Label}"
+                                  ItemsSource="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HM30_KindListConverter.Instance}}"
+                                  SelectedIndex="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Converter={x:Static c:HM30_KindIndexConverter.Instance}}"
+                                  DisplayText="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HM30_KindTextConverter.Instance}}"
+                                  PreviousCommand="{TemplateBinding PreviousKindCommand}"
+                                  NextCommand="{TemplateBinding NextKindCommand}" />
+
+            <!-- Startzeit -->
+            <c:HM08_ToggleSwitch Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.XS}" ToggleStyle="Switch" Label="{res:Loc HM30_StartActive_Label}"
+                                 IsChecked="{Binding StartActive, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+            <c:HM12_ValueInput Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.XS}" InputKind="Time" Label="{res:Loc HM30_StartTime_Label}" RequiresPermission="False"
+                               IsEnabled="{Binding StartActive, RelativeSource={RelativeSource TemplatedParent}}"
+                               TextValue="{Binding StartTime, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Converter={x:Static c:HM30_TimeTextConverter.Instance}}"
+                               Command="{TemplateBinding EditStartTimeCommand}" />
+
+            <!-- Endzeit; Fehlertext (z. B. Endzeit vor Startzeit) am Zeitfeld -->
+            <c:HM08_ToggleSwitch Grid.Row="2" Grid.Column="0" Margin="{StaticResource Inset.XS}" ToggleStyle="Switch" Label="{res:Loc HM30_EndActive_Label}"
+                                 IsChecked="{Binding EndActive, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+            <c:HM12_ValueInput Grid.Row="2" Grid.Column="1" Margin="{StaticResource Inset.XS}" InputKind="Time" Label="{res:Loc HM30_EndTime_Label}" RequiresPermission="False"
+                               IsEnabled="{Binding EndActive, RelativeSource={RelativeSource TemplatedParent}}"
+                               ErrorText="{Binding ErrorText, RelativeSource={RelativeSource TemplatedParent}}"
+                               TextValue="{Binding EndTime, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Converter={x:Static c:HM30_TimeTextConverter.Instance}}"
+                               Command="{TemplateBinding EditEndTimeCommand}" />
+
+            <!-- Zaehler untergeordneter Absenkphasen -->
+            <c:HM11_ValueDisplay Grid.Row="3" Grid.ColumnSpan="2" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM30_ChildCount_Label}" Decimals="0"
+                                 NumberValue="{Binding ChildCount, RelativeSource={RelativeSource TemplatedParent}}" />
+
+            <!-- Hinweis: Heizphase erst loeschbar ohne Absenkphasen -->
+            <c:HM27_NoticeBox Grid.Row="4" Grid.ColumnSpan="2" Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc HM30_DeleteHint_Text}">
+              <c:HM27_NoticeBox.IsShown>
+                <MultiBinding Converter="{x:Static c:HM30_ChildHintConverter.Instance}">
+                  <Binding Path="IsNew" RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="Kind" RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="ChildCount" RelativeSource="{RelativeSource TemplatedParent}" />
+                </MultiBinding>
+              </c:HM27_NoticeBox.IsShown>
+            </c:HM27_NoticeBox>
+
+            <!-- Tasten: Loeschen (Papierkorb), Abbrechen (X), Uebernehmen (Haken) -->
+            <Grid Grid.Row="5" Grid.ColumnSpan="2" Margin="{StaticResource Inset.XS}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <c:HM07_ActionButton Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM30_Delete_Label}" Icon="{StaticResource Icon.Delete}"
+                                   Command="{TemplateBinding DeleteCommand}">
+                <c:HM07_ActionButton.IsEnabled>
+                  <MultiBinding Converter="{x:Static c:HM30_CanDeleteConverter.Instance}">
+                    <Binding Path="IsNew" RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="Kind" RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="ChildCount" RelativeSource="{RelativeSource TemplatedParent}" />
+                  </MultiBinding>
+                </c:HM07_ActionButton.IsEnabled>
+              </c:HM07_ActionButton>
+              <c:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc Popup_Cancel_Label}" Icon="{StaticResource Icon.Close}"
+                                   Command="{TemplateBinding CancelCommand}" />
+              <c:HM07_ActionButton Grid.Column="2" Margin="{StaticResource Inset.XS}" Label="{res:Loc Popup_Accept_Label}" Icon="{StaticResource Icon.Confirm}"
+                                   Command="{TemplateBinding ApplyCommand}">
+                <c:HM07_ActionButton.IsEnabled>
+                  <MultiBinding Converter="{x:Static c:HM30_CanApplyConverter.Instance}">
+                    <Binding Path="ErrorText" RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="StartActive" RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="EndActive" RelativeSource="{RelativeSource TemplatedParent}" />
+                  </MultiBinding>
+                </c:HM07_ActionButton.IsEnabled>
+              </c:HM07_ActionButton>
+            </Grid>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM07_DesignData.xaml: Beispielinstanzen von HM07_ActionButton mit den Beispielwerten aus HM-07_Aktionstaste.md (Entwurfsmodus, Galerie, Vorschau).
+     Jede Ressource ist x:Shared="False" (bei jeder Verwendung eine neue Instanz) und wird per {StaticResource HM07.Sample.<Name>} eingesetzt.
+     Voraussetzung: Die Stile aus Controls/*.Styles.xaml sind in den Anwendungsressourcen (ControlResources.MergeAll). Texte aus Resources/Strings/Basiselemente_HM07_12.resx. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.ShiftPlan" x:Shared="False"
+      Label="{res:Loc HM07_Sample_ShiftPlan}"
+      Icon="{StaticResource Icon.Schedule}" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Language" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Language}"
+      Icon="{StaticResource Icon.Language}" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Temperature" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Temperature}"
+      Icon="{StaticResource Icon.Temperature}" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Pressure" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Pressure}"
+      Icon="{StaticResource Icon.Pressure}" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Schedule" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Schedule}"
+      Icon="{StaticResource Icon.Schedule}" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Manual" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Manual}"
+      Icon="{StaticResource Icon.Manual}"
+      TriggerMode="WhilePressed"
+      IsRunning="True" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Empty" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Empty}"
+      Icon="{StaticResource Icon.Empty}"
+      TriggerMode="Continuous" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Reset" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Reset}"
+      Icon="{StaticResource Icon.Action.Reset}"
+      TriggerMode="Hold"
+      IsHolding="True"
+      HoldProgress="0.6" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.SetEncoder" x:Shared="False"
+      Label="{res:Loc HM07_Sample_SetEncoder}"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.SetEncoderLocked" x:Shared="False"
+      Label="{res:Loc HM07_Sample_SetEncoder}"
+      RequiresPermission="True"
+      IsAuthorized="False" />
+
+  <c:HM07_ActionButton x:Key="HM07.Sample.Search" x:Shared="False"
+      Label="{res:Loc HM07_Sample_Search}"
+      IsEnabled="False" />
+
+</ResourceDictionary>

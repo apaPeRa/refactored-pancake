@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-01 Seitenleiste (HM01_Sidebar): Zeilen Kennung (Auto), Eintraege (*), Zurueck (Auto); dunkle, neutrale Flaeche Brush.Sidebar.
+     Benutzerkennung: Kreis Size.Avatar mit Initialen und Schluessel-Symbol (angemeldet) bzw. Benutzer-Symbol, Schloss und Text "Nicht angemeldet" (abgemeldet).
+     Gesperrt hinter Pop-ups: IsEnabled = false (Navigation.md 4.2); alle Eintraege zeigen dann die gestrichelte Kontur. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:models="clr-namespace:ApaTec.Hmi.Models"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+
+  <!-- Benutzerkreis als flache Taste: gedrueckt = Brush.Sidebar.Selected mit Border.Medium -->
+  <Style x:Key="HM01_UserButton" TargetType="Button">
+    <Setter Property="Focusable" Value="True" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Grid>
+            <Border x:Name="Face"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="{StaticResource Border.Thin}"
+                    Padding="{StaticResource Inset.S}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <Border x:Name="FocusRing"
+                    Visibility="Collapsed"
+                    BorderBrush="{DynamicResource Brush.Border.Focus}"
+                    BorderThickness="{StaticResource Border.Thick}" />
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+              <Setter TargetName="FocusRing" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Sidebar.Selected}" />
+              <Setter TargetName="Face" Property="BorderBrush" Value="{DynamicResource Brush.Sidebar.Text}" />
+              <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type local:HM01_Sidebar}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM01_Sidebar}">
+          <ControlTemplate.Resources>
+            <local:HM01_IconKeyConverter x:Key="IconKey" />
+            <local:HM01_CurrentItemConverter x:Key="CurrentItem" />
+            <local:HM01_BadgeCountConverter x:Key="BadgeCount" />
+          </ControlTemplate.Resources>
+          <Border Background="{DynamicResource Brush.Sidebar}"
+                  AutomationProperties.Name="{res:Loc HM01_Sidebar_Automation}">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+
+              <!-- Benutzerkennung (Zeile 1): Kreis, Name, Rolle; Antippen oeffnet das Benutzer-Pop-up -->
+              <Button Grid.Row="0"
+                      Style="{StaticResource HM01_UserButton}"
+                      Command="{TemplateBinding UserCommand}"
+                      AutomationProperties.Name="{res:Loc HM01_User_Automation}">
+                <StackPanel HorizontalAlignment="Center">
+                  <Grid HorizontalAlignment="Center">
+                    <Border Width="{StaticResource Size.Avatar}" Height="{StaticResource Size.Avatar}"
+                            CornerRadius="{StaticResource Radius.Pill}"
+                            Background="{DynamicResource Brush.Sidebar.Selected}">
+                      <Grid>
+                        <TextBlock x:Name="InitialsText"
+                                   Style="{StaticResource Text.Value}"
+                                   Foreground="{DynamicResource Brush.Sidebar.Text}"
+                                   TextWrapping="NoWrap"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Text="{TemplateBinding Initials}" />
+                        <Viewbox x:Name="UserIcon" Visibility="Collapsed"
+                                 Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}">
+                          <Grid>
+                            <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
+                            <Path Style="{StaticResource HM01_IconPath}"
+                                  Data="{StaticResource Icon.User}"
+                                  Stroke="{DynamicResource Brush.Sidebar.Text}" />
+                          </Grid>
+                        </Viewbox>
+                      </Grid>
+                    </Border>
+                    <!-- Berechtigungssymbol: Schluessel (angemeldet) oder Schloss (abgemeldet) -->
+                    <Border HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                            CornerRadius="{StaticResource Radius.Pill}"
+                            Background="{DynamicResource Brush.Sidebar}">
+                      <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                        <Grid>
+                          <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
+                          <Path x:Name="PermissionIcon"
+                                Style="{StaticResource HM01_IconPath}"
+                                Data="{StaticResource Icon.Key}"
+                                Stroke="{DynamicResource Brush.Sidebar.Text}" />
+                        </Grid>
+                      </Viewbox>
+                    </Border>
+                  </Grid>
+                  <TextBlock x:Name="NameText"
+                             Style="{StaticResource Text.Caption}"
+                             Foreground="{DynamicResource Brush.Sidebar.Text}"
+                             TextAlignment="Center" TextTrimming="CharacterEllipsis"
+                             Text="{TemplateBinding UserName}" />
+                  <TextBlock x:Name="RoleText"
+                             Style="{StaticResource Text.Caption}"
+                             Foreground="{DynamicResource Brush.Sidebar.Text.Secondary}"
+                             TextAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                             Text="{TemplateBinding UserRole}" />
+                  <TextBlock x:Name="LoggedOutText" Visibility="Collapsed"
+                             Style="{StaticResource Text.Caption}"
+                             Foreground="{DynamicResource Brush.Sidebar.Text.Secondary}"
+                             TextAlignment="Center"
+                             Text="{res:Loc HM01_User_NotLoggedIn}" />
+                </StackPanel>
+              </Button>
+
+              <!-- Symboltasten Home, Einstellungen, Meldungen (Zeile 2); Abstand zwischen den Tasten Size.Touch.Gap -->
+              <ItemsControl Grid.Row="1" Focusable="False"
+                            ItemsSource="{TemplateBinding Items}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate DataType="{x:Type models:SidebarItem}">
+                    <StackPanel>
+                      <local:HM01_SidebarButton
+                          Icon="{Binding IconKey, Converter={StaticResource IconKey}}"
+                          Label="{Binding Label}"
+                          Command="{Binding NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type local:HM01_Sidebar}}}"
+                          CommandParameter="{Binding Id}">
+                        <local:HM01_SidebarButton.IsCurrent>
+                          <MultiBinding Converter="{StaticResource CurrentItem}">
+                            <Binding Path="Id" />
+                            <Binding Path="CurrentItemId" RelativeSource="{RelativeSource AncestorType={x:Type local:HM01_Sidebar}}" />
+                          </MultiBinding>
+                        </local:HM01_SidebarButton.IsCurrent>
+                        <local:HM01_SidebarButton.BadgeCount>
+                          <MultiBinding Converter="{StaticResource BadgeCount}">
+                            <Binding Path="ShowsBadge" />
+                            <Binding Path="UnreadMessageCount" RelativeSource="{RelativeSource AncestorType={x:Type local:HM01_Sidebar}}" />
+                          </MultiBinding>
+                        </local:HM01_SidebarButton.BadgeCount>
+                      </local:HM01_SidebarButton>
+                      <Border Height="{StaticResource Size.Touch.Gap}" />
+                    </StackPanel>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+
+              <!-- Zurueck (Zeile 3): auf der Startseite gestrichelt, bleibt antippbar (Hinweis in der Meldezeile, A-28) -->
+              <local:HM01_SidebarButton x:Name="BackButton" Grid.Row="2"
+                                        Icon="{StaticResource Icon.Back}"
+                                        Label="{res:Loc HM01_Back_Label}"
+                                        Command="{TemplateBinding BackCommand}">
+                <local:HM01_SidebarButton.Style>
+                  <Style TargetType="{x:Type local:HM01_SidebarButton}" BasedOn="{StaticResource {x:Type local:HM01_SidebarButton}}">
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding CanGoBack, RelativeSource={RelativeSource AncestorType={x:Type local:HM01_Sidebar}}}" Value="False">
+                        <Setter Property="IsDimmed" Value="True" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </local:HM01_SidebarButton.Style>
+              </local:HM01_SidebarButton>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsLoggedIn" Value="False">
+              <Setter TargetName="InitialsText" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="UserIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="PermissionIcon" Property="Data" Value="{StaticResource Icon.Lock}" />
+              <Setter TargetName="NameText" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RoleText" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="LoggedOutText" Property="Visibility" Value="Visible" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

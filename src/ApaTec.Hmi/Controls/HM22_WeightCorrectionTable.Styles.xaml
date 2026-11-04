@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM22_WeightCorrectionTable.Styles.xaml: Template der Gewichtskorrektur-Tabelle (HM-22). Zwei Bloecke zu je 10 Stuetzstellen (CorrectionPoint.Block),
+     Felder HM-12, Tasten HM-07, Hinweise HM-27. Keine Logik, keine Literale. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style x:Key="HM22.IconPath" TargetType="Path">
+    <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+  </Style>
+
+
+  <!-- Stuetzstelle: Haken | SOLL | IST. Standard = gefuellt (Haken), leer = beide 0, ungueltig = nur eines 0 (spaetere Trigger gewinnen). -->
+  <DataTemplate x:Key="HM22.PointTemplate" DataType="{x:Type local:CorrectionPoint}">
+    <Border x:Name="Row" Margin="{StaticResource Inset.XS}" Padding="{StaticResource Inset.XS}" CornerRadius="{StaticResource Radius.Control}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" SharedSizeGroup="HM22Tick" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" SharedSizeGroup="HM22Mark" />
+        </Grid.ColumnDefinitions>
+        <!-- zweiter Kanal: Haken bei gefuellter Zeile -->
+        <Viewbox x:Name="Tick" Grid.Column="0" Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}" Margin="{StaticResource Inset.XS}">
+          <Path Style="{StaticResource HM22.IconPath}" Data="{StaticResource Icon.State.On}" />
+        </Viewbox>
+        <local:HM12_ValueInput x:Name="NominalField" Grid.Column="1" Margin="{StaticResource Inset.XS}" NumberValue="{Binding Nominal, Mode=TwoWay}" Unit="g" Decimals="2" RequiresPermission="False" />
+        <local:HM12_ValueInput x:Name="ActualField" Grid.Column="2" Margin="{StaticResource Inset.XS}" NumberValue="{Binding Actual, Mode=TwoWay}" Unit="g" Decimals="2" RequiresPermission="False" />
+        <!-- zweiter Kanal: Fehlersymbol und Text bei ungueltigem Paar -->
+        <StackPanel x:Name="InvalidMark" Grid.Column="3" Orientation="Horizontal" Visibility="Collapsed" VerticalAlignment="Center">
+          <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+            <Path Style="{StaticResource HM22.IconPath}" Data="{StaticResource Icon.Status.Error}" Stroke="{DynamicResource Brush.Status.Error.Fg}" />
+          </Viewbox>
+          <TextBlock Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Foreground="{DynamicResource Brush.Status.Error.Fg}" Text="{res:Loc HM22_PointInvalid_Text}" />
+        </StackPanel>
+      </Grid>
+    </Border>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding Nominal}" Value="0">
+        <Setter TargetName="Row" Property="Background" Value="{DynamicResource Brush.Status.Error.Subtle}" />
+        <Setter TargetName="InvalidMark" Property="Visibility" Value="Visible" />
+        <Setter TargetName="Tick" Property="Visibility" Value="Hidden" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Actual}" Value="0">
+        <Setter TargetName="Row" Property="Background" Value="{DynamicResource Brush.Status.Error.Subtle}" />
+        <Setter TargetName="InvalidMark" Property="Visibility" Value="Visible" />
+        <Setter TargetName="Tick" Property="Visibility" Value="Hidden" />
+      </DataTrigger>
+      <!-- beide leer: neutral, ohne Haken, ohne Fehler (Wert 0,00 g bleibt unberuecksichtigt) -->
+      <MultiDataTrigger>
+        <MultiDataTrigger.Conditions>
+          <Condition Binding="{Binding Nominal}" Value="0" />
+          <Condition Binding="{Binding Actual}" Value="0" />
+        </MultiDataTrigger.Conditions>
+        <Setter TargetName="Row" Property="Background" Value="{x:Null}" />
+        <Setter TargetName="InvalidMark" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="Tick" Property="Visibility" Value="Hidden" />
+        <Setter TargetName="Row" Property="TextElement.Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+      </MultiDataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+  <Style TargetType="{x:Type local:HM22_WeightCorrectionTable}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM22_WeightCorrectionTable}">
+          <StackPanel>
+            <!-- Kopfzeile: Sollgewicht (mit Schluessel), Tasten ohne Schluessel, Schloss bei gesperrter Tabelle -->
+            <Grid Margin="{StaticResource Inset.XS}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <local:HM12_ValueInput Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_TargetWeight_Label}"
+                                     NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="g" Decimals="1" RequiresPermission="True" />
+              <local:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_Trigger_Label}"
+                                       RequiresPermission="False" Command="{Binding TriggerCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+              <local:HM07_ActionButton Grid.Column="2" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_Adjust_Label}"
+                                       RequiresPermission="False" Command="{Binding AdjustCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+              <StackPanel x:Name="LockedMark" Grid.Column="3" Orientation="Horizontal" Visibility="Collapsed" VerticalAlignment="Center" Margin="{StaticResource Inset.XS}">
+                <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                  <Path Style="{StaticResource HM22.IconPath}" Data="{StaticResource Icon.Lock}" Stroke="{DynamicResource Brush.Text.Disabled}" />
+                </Viewbox>
+                <TextBlock Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HM22_Locked_Text}" />
+              </StackPanel>
+            </Grid>
+
+            <!-- Berechnungsstand: Symbol und Text als zweiter Kanal -->
+            <local:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_ValidPoints_Label}"
+                                     NumberValue="{Binding ValidPointCount, RelativeSource={RelativeSource TemplatedParent}}" Unit="Stk" Decimals="0" Presentation="Row" />
+            <local:HM27_NoticeBox x:Name="TooFewNotice" Margin="{StaticResource Inset.XS}" Visibility="Collapsed"
+                                  Kind="Warning" Text="{res:Loc HM22_TooFew_Text}" />
+            <local:HM27_NoticeBox x:Name="InvalidNotice" Margin="{StaticResource Inset.XS}" Visibility="Collapsed"
+                                  Kind="Error" Text="{res:Loc HM22_Invalid_Text}" />
+            <Border x:Name="CalculatedNotice" Margin="{StaticResource Inset.XS}" Padding="{StaticResource Inset.S}" Visibility="Collapsed"
+                    Background="{DynamicResource Brush.Status.Ok.Subtle}" BorderBrush="{DynamicResource Brush.Status.Ok.Fg}"
+                    BorderThickness="{StaticResource Border.Medium}" CornerRadius="{StaticResource Radius.Control}">
+              <StackPanel Orientation="Horizontal">
+                <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                  <Path Style="{StaticResource HM22.IconPath}" Data="{StaticResource Icon.Status.Ok}" Stroke="{DynamicResource Brush.Status.Ok.Fg}" />
+                </Viewbox>
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HM22_Calculated_Text}" />
+              </StackPanel>
+            </Border>
+
+            <!-- Zwei Bloecke nebeneinander; Zuordnung ueber CorrectionPoint.Block -->
+            <Grid Margin="{StaticResource Inset.XS}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <Grid Grid.Column="0" Margin="{StaticResource Inset.XS}" Grid.IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="{StaticResource Inset.XS}">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="HM22Tick" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="HM22Mark" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Grid.Column="1" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HM22_Nominal_Header}" />
+                  <TextBlock Grid.Column="2" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HM22_Actual_Header}" />
+                </Grid>
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding Points, RelativeSource={RelativeSource TemplatedParent}}" ItemTemplate="{StaticResource HM22.PointTemplate}">
+                  <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding Block}" Value="2">
+                          <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
+              </Grid>
+              <Grid Grid.Column="1" Margin="{StaticResource Inset.XS}" Grid.IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="{StaticResource Inset.XS}">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="HM22Tick" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="HM22Mark" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Grid.Column="1" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HM22_Nominal_Header}" />
+                  <TextBlock Grid.Column="2" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HM22_Actual_Header}" />
+                </Grid>
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding Points, RelativeSource={RelativeSource TemplatedParent}}" ItemTemplate="{StaticResource HM22.PointTemplate}">
+                  <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding Block}" Value="1">
+                          <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
+              </Grid>
+            </Grid>
+          </StackPanel>
+          <ControlTemplate.Triggers>
+            <Trigger Property="CalculationState" Value="TooFewPoints">
+              <Setter TargetName="TooFewNotice" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="CalculationState" Value="Invalid">
+              <Setter TargetName="InvalidNotice" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="CalculationState" Value="Calculated">
+              <Setter TargetName="CalculatedNotice" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="LockedMark" Property="Visibility" Value="Visible" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

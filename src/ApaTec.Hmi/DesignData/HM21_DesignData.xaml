@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM21_DesignData.xaml: Beispielinstanzen der Motorparameter-Karte (HM-21).
+     Beispielinstanzen (x:Shared="False") mit Werten aus den Moduldateien/Bildern (A-50); nur fuer Entwurfsmodus und die spaetere Galerie, nicht Teil der Laufzeitressourcen.
+     Verwendung im Designer: d:DataContext bzw. {StaticResource Schluessel} aus diesem Dictionary. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctl="clr-namespace:ApaTec.Hmi.Controls">
+  <ctl:HM21_MotorParameterCard x:Key="HM21.Sample.ClosureClosed" x:Shared="False" Title="Verschluss Zu" CardKind="ClosureClosed" DoserName="HD1"
+                               Position="0" Speed="80" Acceleration="0" Deceleration="0" Jerk="0" />
+  <ctl:HM21_MotorParameterCard x:Key="HM21.Sample.ClosureOpen" x:Shared="False" Title="Verschluss Auf" CardKind="ClosureOpen" DoserName="HD1"
+                               Position="37" Speed="80" Acceleration="0" Deceleration="0" Jerk="0" />
+  <ctl:HM21_MotorParameterCard x:Key="HM21.Sample.Screw" x:Shared="False" Title="Schnecke" CardKind="Screw" DoserName="HD1"
+                               Acceleration="0" Deceleration="0" Jerk="0" />
+</ResourceDictionary>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM33_CounterRow.Styles.xaml: Template der Zaehlerzeile (HM-33), Komposit aus HM-11 (Zaehler, Zeitpunkt). Keine Logik; Historienlogik im ViewModel. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style TargetType="{x:Type local:HM33_CounterRow}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM33_CounterRow}">
+          <Border x:Name="Row"
+                  Background="{DynamicResource Brush.Surface}"
+                  BorderBrush="{DynamicResource Brush.Divider}"
+                  BorderThickness="{StaticResource Border.Thin}"
+                  Padding="{StaticResource Inset.S}"
+                  TextElement.FontWeight="{StaticResource Font.Weight.Regular}">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+              </Grid.ColumnDefinitions>
+              <TextBlock x:Name="RowLabel" Grid.Column="0" Style="{StaticResource Text.Body}"
+                         VerticalAlignment="Center"
+                         Text="{TemplateBinding RowName}" />
+              <local:HM11_ValueDisplay Grid.Column="1"
+                                       Margin="{StaticResource Inset.XS}"
+                                       ValueKind="Number"
+                                       Decimals="0"
+                                       Unit="{res:Loc HM33_Count_Unit}"
+                                       NumberValue="{Binding Count, RelativeSource={RelativeSource TemplatedParent}}" />
+              <local:HM11_ValueDisplay Grid.Column="2"
+                                       Margin="{StaticResource Inset.XS}"
+                                       ValueKind="DateTime"
+                                       TimeValue="{Binding ResetTime, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <!-- Leer: Beschriftung in Sekundaerfarbe (zweiter Kanal: Zaehler 0 und Platzhalterdatum aus HM-11) -->
+            <Trigger Property="ResetTime" Value="{x:Null}">
+              <Setter TargetName="RowLabel" Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+            </Trigger>
+            <!-- Aktuell: Zeile fett (zweiter Kanal: Beschriftung Aktuell) -->
+            <Trigger Property="IsCurrent" Value="True">
+              <Setter TargetName="Row" Property="TextElement.FontWeight" Value="{StaticResource Font.Weight.Strong}" />
+              <Setter TargetName="RowLabel" Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

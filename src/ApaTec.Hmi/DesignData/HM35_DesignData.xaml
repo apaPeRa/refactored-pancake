@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM35_DesignData.xaml: Entwurfsdaten Regulierungs-Parameterblock (HM-35): Hauptdosierer und Nachdosierer. Beispielwerte aus der Moduldatei; Beispielinstanz mit x:Shared="False" (jeder Zugriff erzeugt eine neue Instanz). Kein Bestandteil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <local:HM35_RegulationBlock x:Key="HM35_SampleMain" x:Shared="False" Title="Hauptdosierer"
+                              SampleCount="10" Step="50.0" Tolerance="1.0" MaxCorrection="75.0" CurrentCorrection="0.0"
+                              Mean="0.0" MeanCount="0" IsRegulationOn="False" />
+  <local:HM35_RegulationBlock x:Key="HM35_SampleSecondary" x:Shared="False" Title="Nachdosierer"
+                              SampleCount="15" Step="50.0" Tolerance="0.2" MaxCorrection="20.0" CurrentCorrection="4.8"
+                              Mean="250.4" MeanCount="11" IsRegulationOn="True" />
+  <local:HM35_RegulationBlock x:Key="HM35_SampleAtLimit" x:Shared="False" Title="Nachdosierer"
+                              SampleCount="15" Step="50.0" Tolerance="0.2" MaxCorrection="20.0" CurrentCorrection="20.0"
+                              Mean="250.4" MeanCount="15" IsRegulationOn="True" IsAtLimit="True" />
+</ResourceDictionary>

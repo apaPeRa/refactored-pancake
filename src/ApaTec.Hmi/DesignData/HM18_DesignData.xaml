@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM18_DesignData.xaml: Beispielinstanzen fuer den Entwurfsmodus (Designer/Vorschau), Werte aus der Moduldatei. Nicht in die Anwendung eingebunden.
+     Jede Instanz ist x:Shared="False" (eigene Kopie je Verwendung). Theme: Hell. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Theme.Light.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Controls/HM18_SelectorField.Styles.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <x:Array x:Key="HM18.Sample.Filters" Type="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String>IIR 5 56ms 8Hz</sys:String>
+    <sys:String>IIR 3 28ms 16Hz</sys:String>
+  </x:Array>
+  <!-- Filtertyp mit Schluessel (HS-27) -->
+  <local:HM18_SelectorField x:Key="HM18.Sample.Filter" x:Shared="False" Label="Filtertyp" DisplayText="IIR 5 56ms 8Hz"
+                            ItemsSource="{StaticResource HM18.Sample.Filters}" SelectedIndex="0"
+                            RequiresPermission="True" IsAuthorized="True" />
+  <!-- Datum, ausgewaehlt und nicht uebernommen -->
+  <local:HM18_SelectorField x:Key="HM18.Sample.Pending" x:Shared="False" Label="Datum" DisplayText="heute"
+                            RequiresApply="True" IsPending="True" />
+  <!-- Nockennummer mit Direkteingabe (HS-25) -->
+  <local:HM18_SelectorField x:Key="HM18.Sample.DirectEntry" x:Shared="False" Label="Nocken" DisplayText="3"
+                            AllowDirectEntry="True" />
+  <!-- gesperrt: Schloss -->
+  <local:HM18_SelectorField x:Key="HM18.Sample.Locked" x:Shared="False" Label="Geber" DisplayText="Geber 1"
+                            RequiresPermission="True" IsAuthorized="False" />
+</ResourceDictionary>

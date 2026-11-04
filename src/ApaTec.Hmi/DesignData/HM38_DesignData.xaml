@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM38_DesignData.xaml: Entwurfsdaten Such-Pop-up (HM-38): Treffer und Kein-Treffer-Zustand. Beispielwerte aus der Moduldatei; Beispielinstanz mit x:Shared="False" (jeder Zugriff erzeugt eine neue Instanz). Kein Bestandteil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <x:Array x:Key="HM38_SampleHits" Type="{x:Type local:SearchHit}">
+    <local:SearchHit Identifier="2MA1" Description="Antrieb Zuführung" Group="Gruppe Förderer" />
+    <local:SearchHit Identifier="2MA2" Description="Antrieb Zuführung 2" Group="Gruppe Förderer" />
+    <local:SearchHit Identifier="0E3" Description="Kühlgerät bereit" Group="EA-Karte 0E" />
+    <local:SearchHit Identifier="0F24A" Description="Sicherungsmodul" Group="EA-Karte 0F" />
+    <local:SearchHit Identifier="3MA1" Description="Antrieb Auslaufband" Group="Gruppe Auslauf" />
+  </x:Array>
+  <x:Array x:Key="HM38_NoHits" Type="{x:Type local:SearchHit}" />
+  <local:HM38_SearchDialog x:Key="HM38_Sample" x:Shared="False" Title="Aktor suchen" SearchText="2MA"
+                           Placeholder="Kennzeichnung eingeben"
+                           Items="{StaticResource HM38_SampleHits}" FilteredItems="{StaticResource HM38_SampleHits}" />
+  <local:HM38_SearchDialog x:Key="HM38_SampleEmpty" x:Shared="False" Title="Betriebsmittel suchen" SearchText="XYZ"
+                           Placeholder="Kennzeichnung eingeben"
+                           Items="{StaticResource HM38_SampleHits}" FilteredItems="{StaticResource HM38_NoHits}" />
+</ResourceDictionary>

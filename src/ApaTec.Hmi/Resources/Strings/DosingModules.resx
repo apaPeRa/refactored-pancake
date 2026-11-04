@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DosingModules.resx: Texte der Module HM-20 bis HM-24 (Dosierer-Karte, Motorparameter-Karte, Gewichtskorrektur-Tabelle, Nockentabelle, Nocken-Parameterzeile).
+     Neutralsprache Deutsch; Schluessel <Modul>_<Element>_<Eigenschaft>. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HM20_Selected_Text" xml:space="preserve"><value>Ausgewählt</value><comment>Dosierer-Karte: Hervorhebung</comment></data>
+  <data name="HM20_Locked_Text" xml:space="preserve"><value>Gesperrt</value><comment>Dosierer-Karte: gesperrt</comment></data>
+  <data name="HM20_TargetPercent_Label" xml:space="preserve"><value>Soll</value><comment>Hauptdosierer: Soll in Prozent</comment></data>
+  <data name="HM20_TargetWeightAbs_Label" xml:space="preserve"><value>Soll absolut</value><comment>Hauptdosierer: Soll absolut in g</comment></data>
+  <data name="HM20_TargetWeight_Label" xml:space="preserve"><value>Soll</value><comment>Nachdosierer: Soll in g</comment></data>
+  <data name="HM20_MaxRefill_Label" xml:space="preserve"><value>Max. Nachgabe</value><comment>Nachdosierer</comment></data>
+  <data name="HM20_CurrentRefill_Label" xml:space="preserve"><value>Aktuelle Nachgabe</value><comment>Nachdosierer</comment></data>
+  <data name="HM20_RefillRejected_Text" xml:space="preserve"><value>Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO</value><comment>nIO-Hinweis (HM-27)</comment></data>
+  <data name="HM20_Regulation_Label" xml:space="preserve"><value>Regulierwert</value><comment>Regulierwert</comment></data>
+  <data name="HM20_HopperUpper_Label" xml:space="preserve"><value>oben</value><comment>Trichter oben</comment></data>
+  <data name="HM20_HopperLower_Label" xml:space="preserve"><value>unten</value><comment>Trichter unten</comment></data>
+  <data name="HM20_CrossScrew_Label" xml:space="preserve"><value>Querschnecke</value><comment>Schalter</comment></data>
+  <data name="HM20_Agitator_Label" xml:space="preserve"><value>Rührer</value><comment>Schalter</comment></data>
+  <data name="HM20_RegulationSwitch_Label" xml:space="preserve"><value>Regulierung</value><comment>Schalter</comment></data>
+  <data name="HM20_Load_Label" xml:space="preserve"><value>Auslastung:</value><comment>Fortschrittsbalken</comment></data>
+  <data name="HM20_Manual_Label" xml:space="preserve"><value>Manuell</value><comment>Taste</comment></data>
+  <data name="HM20_Empty_Label" xml:space="preserve"><value>Entleeren</value><comment>Taste</comment></data>
+  <data name="HM20_OpenDetail_Name" xml:space="preserve"><value>Details öffnen</value><comment>Barrierefreiheitsname des Detail-Symbols</comment></data>
+  <data name="HM20_CalibrationWeight_Label" xml:space="preserve"><value>Eichdosierung</value><comment>Detail: Eichgewicht</comment></data>
+  <data name="HM20_CalibrationRevolutions_Label" xml:space="preserve"><value>Umdrehungen</value><comment>Detail: Eichdosierung Umdrehungen</comment></data>
+  <data name="HM20_Calibrate_Label" xml:space="preserve"><value>Eichdosierung</value><comment>Detail: Taste</comment></data>
+  <data name="HM20_ScrewSpeed_Label" xml:space="preserve"><value>Schnecke Drehzahl</value><comment>Detail</comment></data>
+  <data name="HM20_AgitatorPercent_Label" xml:space="preserve"><value>Rührer</value><comment>Detail</comment></data>
+  <data name="HM20_AgitatorRunOn_Label" xml:space="preserve"><value>Nachlauf Rührer</value><comment>Detail</comment></data>
+  <data name="HM20_CrossScrewPercent_Label" xml:space="preserve"><value>Querschnecke</value><comment>Detail</comment></data>
+  <data name="HM20_LinkRegulation_Label" xml:space="preserve"><value>Regulierung</value><comment>Seitenlink</comment></data>
+  <data name="HM20_LinkMotor_Label" xml:space="preserve"><value>Motorparameter</value><comment>Seitenlink</comment></data>
+  <data name="HM20_LinkWeightCorrection_Label" xml:space="preserve"><value>Gewichtskorrektur</value><comment>Seitenlink</comment></data>
+  <data name="HM21_Position_Label" xml:space="preserve"><value>Position</value><comment>Motorparameter</comment></data>
+  <data name="HM21_Speed_Label" xml:space="preserve"><value>Geschwindigkeit</value><comment>Motorparameter</comment></data>
+  <data name="HM21_Acceleration_Label" xml:space="preserve"><value>Beschleunigung</value><comment>Motorparameter</comment></data>
+  <data name="HM21_Deceleration_Label" xml:space="preserve"><value>Verzögerung</value><comment>Motorparameter</comment></data>
+  <data name="HM21_Jerk_Label" xml:space="preserve"><value>Ruck</value><comment>Motorparameter</comment></data>
+  <data name="HM21_Position_Help" xml:space="preserve"><value>Position des Verschlusses in Grad.</value><comment>Hilfetext (Annahme, Handbuchtext liegt nicht vor)</comment></data>
+  <data name="HM21_Speed_Help" xml:space="preserve"><value>Verfahrgeschwindigkeit in Prozent.</value><comment>Hilfetext (Annahme)</comment></data>
+  <data name="HM21_Acceleration_Help" xml:space="preserve"><value>Beschleunigung der Bewegung in Prozent.</value><comment>Hilfetext (Annahme)</comment></data>
+  <data name="HM21_Deceleration_Help" xml:space="preserve"><value>Verzögerung der Bewegung in Prozent.</value><comment>Hilfetext (Annahme)</comment></data>
+  <data name="HM21_Jerk_Help" xml:space="preserve"><value>Ruck (Änderung der Beschleunigung) in Prozent.</value><comment>Hilfetext (Annahme)</comment></data>
+  <data name="HM22_TargetWeight_Label" xml:space="preserve"><value>Sollgewicht</value><comment>Gewichtskorrektur</comment></data>
+  <data name="HM22_Trigger_Label" xml:space="preserve"><value>Dosierer Auslösen manuell</value><comment>Taste</comment></data>
+  <data name="HM22_Adjust_Label" xml:space="preserve"><value>Gewichtsanpassung</value><comment>Taste</comment></data>
+  <data name="HM22_ValidPoints_Label" xml:space="preserve"><value>Gültige Stützstellen</value><comment>Anzeige</comment></data>
+  <data name="HM22_Nominal_Header" xml:space="preserve"><value>SOLL</value><comment>Spaltenkopf</comment></data>
+  <data name="HM22_Actual_Header" xml:space="preserve"><value>IST</value><comment>Spaltenkopf</comment></data>
+  <data name="HM22_TooFew_Text" xml:space="preserve"><value>Mindestens 3 Stützstellen</value><comment>Hinweis (Warnung)</comment></data>
+  <data name="HM22_Invalid_Text" xml:space="preserve"><value>Soll und Ist erforderlich</value><comment>Hinweis (Fehler), Annahme</comment></data>
+  <data name="HM22_PointInvalid_Text" xml:space="preserve"><value>Soll und Ist erforderlich</value><comment>Ungültiges Paar in der Zeile, Annahme</comment></data>
+  <data name="HM22_Calculated_Text" xml:space="preserve"><value>Kennlinie berechnet</value><comment>Hinweis (Ok)</comment></data>
+  <data name="HM22_Locked_Text" xml:space="preserve"><value>Gesperrt</value><comment>Tabelle gesperrt</comment></data>
+  <data name="HM23_Number_Header" xml:space="preserve"><value>Nr.</value><comment>Spaltenkopf</comment></data>
+  <data name="HM23_Name_Header" xml:space="preserve"><value>Bezeichnung</value><comment>Spaltenkopf</comment></data>
+  <data name="HM23_Start_Header" xml:space="preserve"><value>Start</value><comment>Spaltenkopf</comment></data>
+  <data name="HM23_End_Header" xml:space="preserve"><value>Ende</value><comment>Spaltenkopf</comment></data>
+  <data name="HM23_Status_Header" xml:space="preserve"><value>Status</value><comment>Spaltenkopf</comment></data>
+  <data name="HM23_Active_Text" xml:space="preserve"><value>aktiv</value><comment>Statuswort der Status-LED</comment></data>
+  <data name="HM23_Empty_Name" xml:space="preserve"><value>–</value><comment>Bezeichnung einer leeren Nocke</comment></data>
+  <data name="HM23_Number_Name" xml:space="preserve"><value>Nocke öffnen</value><comment>Barrierefreiheitsname der Nummerntaste</comment></data>
+  <data name="HM24_Pending_Text" xml:space="preserve"><value>Nicht geschrieben</value><comment>Zeile nicht geschrieben</comment></data>
+</root>

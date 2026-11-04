@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-17 Titelzeile (Objektueberschrift): Font.Size.Value strong, Trennlinie Brush.Divider statt Unterstreichung, optional bis zu zwei Kennwerte (Surface.Sunken),
+     Abweichung = Warn-Flaeche + Kontur Border.Medium + Icon.Status.Warning + Text, Detail-Symbol Icon.Move (Trefferflaeche Size.Touch.Min) rechts. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style x:Key="HM17_IconPath" TargetType="Path">
+    <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+  </Style>
+
+  <!-- Detail-Taste: Trefferflaeche mindestens Size.Touch.Min -->
+  <Style x:Key="HM17_DetailButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+    <Setter Property="Width" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="Height" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Min}" />
+    <Setter Property="Margin" Value="{StaticResource Inset.S}" />
+    <Setter Property="Padding" Value="{StaticResource Inset.S}" />
+  </Style>
+
+  <DataTemplate x:Key="HM17_ValueTemplate" DataType="{x:Type local:TitleValue}">
+    <StackPanel Orientation="Horizontal">
+      <!-- Trenner zwischen den Kennwerten: Linie statt Zeichen -->
+      <Rectangle x:Name="Separator" Visibility="Collapsed" VerticalAlignment="Stretch"
+                 Width="{StaticResource Border.Thin.Size}"
+                 Margin="{StaticResource Inset.M}"
+                 Fill="{DynamicResource Brush.Divider}" />
+      <TextBlock Style="{StaticResource Text.Body}" VerticalAlignment="Center" TextWrapping="NoWrap">
+        <TextBlock.Text>
+          <MultiBinding StringFormat="{}{0}: {1}&#160;{2}">
+            <Binding Path="Label" />
+            <Binding Path="Value" />
+            <Binding Path="Unit" />
+          </MultiBinding>
+        </TextBlock.Text>
+      </TextBlock>
+    </StackPanel>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}}" Value="1">
+        <Setter TargetName="Separator" Property="Visibility" Value="Visible" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+  <Style TargetType="{x:Type local:HM17_TitleBar}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM17_TitleBar}">
+          <Border x:Name="Root"
+                  Background="{DynamicResource Brush.Surface.Sunken}"
+                  BorderBrush="Transparent"
+                  BorderThickness="{StaticResource Border.Medium}"
+                  CornerRadius="{StaticResource Radius.Control}">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+
+              <TextBlock x:Name="TitleText" Grid.Row="0" Grid.ColumnSpan="2"
+                         Style="{StaticResource Text.Value}"
+                         Text="{TemplateBinding Title}"
+                         TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Margin="{StaticResource Inset.S}" />
+
+              <Button x:Name="DetailButton" Grid.Row="0" Grid.Column="1"
+                      Style="{StaticResource HM17_DetailButtonStyle}"
+                      Command="{TemplateBinding DetailCommand}"
+                      AutomationProperties.Name="{res:Loc HM17_Detail_Name}">
+                <Viewbox Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}">
+                  <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                    <Path Style="{StaticResource HM17_IconPath}"
+                          Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                          Data="{StaticResource Icon.Move}" />
+                  </Grid>
+                </Viewbox>
+              </Button>
+
+              <!-- Kennwerte und Abweichung -->
+              <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ItemsControl x:Name="ValueList" ItemsSource="{TemplateBinding Values}"
+                              ItemTemplate="{StaticResource HM17_ValueTemplate}"
+                              AlternationCount="2" IsTabStop="False" Focusable="False">
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <StackPanel x:Name="DeviationMark" Orientation="Horizontal" Visibility="Collapsed" Margin="{StaticResource Inset.M}" VerticalAlignment="Center">
+                  <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                    <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                      <Path Style="{StaticResource HM17_IconPath}" Stroke="{DynamicResource Brush.Status.Warning.Fg}" Data="{StaticResource Icon.Status.Warning}" />
+                    </Grid>
+                  </Viewbox>
+                  <TextBlock Style="{StaticResource Text.Body}" Text="{res:Loc HM17_Deviation_Text}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
+                </StackPanel>
+              </StackPanel>
+
+              <!-- Trennlinie statt Unterstreichung -->
+              <Rectangle Grid.Row="2" Grid.ColumnSpan="2"
+                         Height="{StaticResource Border.Thin.Size}"
+                         Fill="{DynamicResource Brush.Divider}" />
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="Values" Value="{x:Null}">
+              <Setter TargetName="Root" Property="Background" Value="Transparent" />
+            </Trigger>
+            <Trigger Property="DetailCommand" Value="{x:Null}">
+              <Setter TargetName="DetailButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="TitleAlignment" Value="Left">
+              <Setter TargetName="TitleText" Property="HorizontalAlignment" Value="Left" />
+              <Setter TargetName="TitleText" Property="TextAlignment" Value="Left" />
+            </Trigger>
+            <Trigger Property="HasDeviation" Value="True">
+              <Setter TargetName="Root" Property="Background" Value="{DynamicResource Brush.Status.Warning.Subtle}" />
+              <Setter TargetName="Root" Property="BorderBrush" Value="{DynamicResource Brush.Status.Warning.Fg}" />
+              <Setter TargetName="DeviationMark" Property="Visibility" Value="Visible" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

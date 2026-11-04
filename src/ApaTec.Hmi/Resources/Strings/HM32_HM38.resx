@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM32_HM38.resx: Texte der Spezialmodule HM-32 bis HM-38 (Packungsregister, Zaehlerzeile, Motor-Statuszeile, Regulierungsblock, EA-Zeile, Wertegitter, Such-Pop-up). Schluessel HMnn_<Element>_<Eigenschaft>. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HM32_StateNone_Text" xml:space="preserve"><value>keine</value><comment>Packungsregister: Zustand keine Packung</comment></data>
+  <data name="HM32_StatePresent_Text" xml:space="preserve"><value>vorhanden</value><comment>Packungsregister: Packung vorhanden</comment></data>
+  <data name="HM32_StateFilled_Text" xml:space="preserve"><value>befüllt</value><comment>Packungsregister: befüllt</comment></data>
+  <data name="HM32_StateOk_Text" xml:space="preserve"><value>OK</value><comment>Packungsregister: in Ordnung</comment></data>
+  <data name="HM32_StateBad_Text" xml:space="preserve"><value>schlecht</value><comment>Packungsregister: schlecht (ausgestoßen)</comment></data>
+  <data name="HM33_Count_Unit" xml:space="preserve"><value>Stk</value><comment>Zählerzeile: Einheit Stück</comment></data>
+  <data name="HM33_Header_DateTime" xml:space="preserve"><value>Datum / Uhrzeit</value><comment>Zählerzeile: Spaltenkopf (für die Seite HS-02)</comment></data>
+  <data name="HM33_RowCurrent_Text" xml:space="preserve"><value>Aktuell</value><comment>Zählerzeile: Zeilenname aktuell (für das ViewModel)</comment></data>
+  <data name="HM33_RowHistory_Text" xml:space="preserve"><value>Historie</value><comment>Zählerzeile: Zeilenname Historie (für das ViewModel)</comment></data>
+  <data name="HM34_DiagCode_Label" xml:space="preserve"><value>Diag Code</value><comment>Motor-Statuszeile</comment></data>
+  <data name="HM34_CurrentActual_Label" xml:space="preserve"><value>Strom Aktuell</value><comment>Motor-Statuszeile</comment></data>
+  <data name="HM34_CurrentMax_Label" xml:space="preserve"><value>Strom Max</value><comment>Motor-Statuszeile</comment></data>
+  <data name="HM34_CurrentLimit_Label" xml:space="preserve"><value>Strom Limit</value><comment>Motor-Statuszeile</comment></data>
+  <data name="HM34_Percent_Unit" xml:space="preserve"><value>%</value><comment>Motor-Statuszeile: Einheit Prozent</comment></data>
+  <data name="HM35_SampleCount_Label" xml:space="preserve"><value>Anzahl Gewichte</value><comment>Regulierungsblock</comment></data>
+  <data name="HM35_Step_Label" xml:space="preserve"><value>Regulierschritt</value><comment>Regulierungsblock</comment></data>
+  <data name="HM35_Tolerance_Label" xml:space="preserve"><value>Toleranz</value><comment>Regulierungsblock</comment></data>
+  <data name="HM35_MaxCorrection_Label" xml:space="preserve"><value>Regulierung max</value><comment>Regulierungsblock</comment></data>
+  <data name="HM35_CurrentCorrection_Label" xml:space="preserve"><value>Regulierung ist</value><comment>Regulierungsblock</comment></data>
+  <data name="HM35_Mean_Label" xml:space="preserve"><value>Mittelwert</value><comment>Regulierungsblock</comment></data>
+  <data name="HM35_MeanCount_Of" xml:space="preserve"><value>von</value><comment>Regulierungsblock: Zähler 11 von 15</comment></data>
+  <data name="HM35_Limit_Text" xml:space="preserve"><value>Maximum erreicht</value><comment>Regulierungsblock: Korrektur am Limit</comment></data>
+  <data name="HM35_Regulation_Label" xml:space="preserve"><value>Regulierung</value><comment>Regulierungsblock: Umschalter</comment></data>
+  <data name="HM35_Decrease_Label" xml:space="preserve"><value>Regulierung −</value><comment>Regulierungsblock: Taste minus</comment></data>
+  <data name="HM35_Increase_Label" xml:space="preserve"><value>Regulierung +</value><comment>Regulierungsblock: Taste plus</comment></data>
+  <data name="HM35_Count_Unit" xml:space="preserve"><value>Stk</value><comment>Regulierungsblock: Einheit Stück</comment></data>
+  <data name="HM35_Percent_Unit" xml:space="preserve"><value>%</value><comment>Regulierungsblock: Einheit Prozent</comment></data>
+  <data name="HM35_Gram_Unit" xml:space="preserve"><value>g</value><comment>Regulierungsblock: Einheit Gramm</comment></data>
+  <data name="HM36_Unknown_Value" xml:space="preserve"><value>---</value><comment>EA-Zeile: Platzhalter unbekannter Wert</comment></data>
+  <data name="HM37_Mode_Label" xml:space="preserve"><value>Betriebsart</value><comment>Wertegitter: Umschalter</comment></data>
+  <data name="HM37_Single_Text" xml:space="preserve"><value>Einzel</value><comment>Wertegitter: Betriebsart Einzel</comment></data>
+  <data name="HM37_Continuous_Text" xml:space="preserve"><value>Fortlaufend</value><comment>Wertegitter: Betriebsart Fortlaufend</comment></data>
+  <data name="HM37_Start_Label" xml:space="preserve"><value>Start</value><comment>Wertegitter: Taste Start</comment></data>
+  <data name="HM37_Good_Text" xml:space="preserve"><value>gut</value><comment>Wertegitter: Gewicht gut</comment></data>
+  <data name="HM37_Bad_Text" xml:space="preserve"><value>schlecht</value><comment>Wertegitter: Gewicht schlecht</comment></data>
+  <data name="HM37_Empty_Text" xml:space="preserve"><value>–</value><comment>Wertegitter: leere Zelle</comment></data>
+  <data name="HM38_Empty_Text" xml:space="preserve"><value>Kein Treffer</value><comment>Such-Pop-up: Leertext</comment></data>
+  <data name="HM38_Placeholder_Text" xml:space="preserve"><value>Kennzeichnung eingeben</value><comment>Such-Pop-up: Standard-Platzhalter (für das ViewModel)</comment></data>
+  <data name="HM38_Cancel_Label" xml:space="preserve"><value>Abbrechen</value><comment>Such-Pop-up: Taste</comment></data>
+  <data name="HM38_Clear_Label" xml:space="preserve"><value>Eingabe löschen</value><comment>Such-Pop-up: Taste Suchtext löschen (Automation)</comment></data>
+  <data name="HM38_ScrollUp_Label" xml:space="preserve"><value>Nach oben</value><comment>Such-Pop-up: Scrolltaste</comment></data>
+  <data name="HM38_ScrollDown_Label" xml:space="preserve"><value>Nach unten</value><comment>Such-Pop-up: Scrolltaste</comment></data>
+</root>

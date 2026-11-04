@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM34_DesignData.xaml: Entwurfsdaten Motor-Statuszeile (HM-34): vier Antriebe mit Meldung, einer ohne. Beispielwerte aus der Moduldatei; Beispielinstanz mit x:Shared="False" (jeder Zugriff erzeugt eine neue Instanz). Kein Bestandteil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <local:HM34_DriveStatusRow x:Key="HM34_Sample1" x:Shared="False" DriveName="Antrieb Zuführung 2MA1" DiagCode="0" CurrentActual="0.0" CurrentMax="-24.4" CurrentLimit="100.0" Message="Motorschutz ausgelöst" />
+  <local:HM34_DriveStatusRow x:Key="HM34_Sample2" x:Shared="False" DriveName="Antrieb Zuführung 2MA2" DiagCode="0" CurrentActual="0.0" CurrentMax="-17.5" CurrentLimit="100.0" Message="Motorschutz ausgelöst" />
+  <local:HM34_DriveStatusRow x:Key="HM34_Sample3" x:Shared="False" DriveName="Antrieb Auslauf 3MA1" DiagCode="0" CurrentActual="0.0" CurrentMax="20.3" CurrentLimit="100.0" Message="Motorschutz ausgelöst" />
+  <local:HM34_DriveStatusRow x:Key="HM34_Sample4" x:Shared="False" DriveName="Antrieb Querschnecke 4MA1" DiagCode="0" CurrentActual="0.0" CurrentMax="-9.6" CurrentLimit="500.0" Message="Motorschutz ausgelöst" />
+  <local:HM34_DriveStatusRow x:Key="HM34_SampleNormal" x:Shared="False" DriveName="Antrieb Zuführung 2MA1" DiagCode="0" CurrentActual="12.5" CurrentMax="20.3" CurrentLimit="100.0" />
+</ResourceDictionary>

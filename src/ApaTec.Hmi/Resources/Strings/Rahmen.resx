@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rahmen.resx: Texte der Rahmenmodule HM-01 bis HM-06 (Seitenleiste, Kopfzeile, Meldezeile, Brotkruemel, Kennzahl-Kachel, Funktionsleiste). Schluessel <Modul>_<Element>_<Eigenschaft>. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+    <data name="HM01_Sidebar_Automation" xml:space="preserve"><value>Seitenleiste</value><comment>Barrierefreiheitsname der Seitenleiste (HM-01)</comment></data>
+  <data name="HM01_Back_Label" xml:space="preserve"><value>Zurück</value><comment>Seitenleiste: Zurück (eine Ebene)</comment></data>
+  <data name="HM01_Back_DisabledReason" xml:space="preserve"><value>Zurück nicht möglich: Sie befinden sich auf der Startseite.</value><comment>Hinweis in der Meldezeile beim Antippen von Zurück auf HS-01 (A-28)</comment></data>
+  <data name="HM01_User_Automation" xml:space="preserve"><value>Benutzer, Anmelden oder Abmelden</value><comment>Barrierefreiheitsname des Benutzerkreises</comment></data>
+  <data name="HM01_User_NotLoggedIn" xml:space="preserve"><value>Nicht angemeldet</value><comment>Seitenleiste: abgemeldet</comment></data>
+  <data name="HM01_Role_Operator" xml:space="preserve"><value>Bediener</value><comment>Rolle Operator</comment></data>
+  <data name="HM01_Role_Technician" xml:space="preserve"><value>Technik</value><comment>Rolle Technician</comment></data>
+  <data name="HM01_Role_Service" xml:space="preserve"><value>Service</value><comment>Rolle Service</comment></data>
+  <data name="HM02_Header_Automation" xml:space="preserve"><value>Kopfzeile</value><comment>Barrierefreiheitsname der Kopfzeile (HM-02)</comment></data>
+  <data name="HM02_Logo_Placeholder" xml:space="preserve"><value>APA-TEC</value><comment>Platzhalter fuer das Logo (A-78, OP-66)</comment></data>
+  <data name="HM02_Mode_Production" xml:space="preserve"><value>Produktion</value><comment>Betriebsart Produktion</comment></data>
+  <data name="HM02_Mode_Setup" xml:space="preserve"><value>Einrichten</value><comment>Betriebsart Einrichten</comment></data>
+  <data name="HM02_Mode_Manual" xml:space="preserve"><value>Handbetrieb</value><comment>Betriebsart Handbetrieb</comment></data>
+  <data name="HM02_Mode_Service" xml:space="preserve"><value>Service</value><comment>Betriebsart Service (Warnstatus, A-48)</comment></data>
+  <data name="HM02_Mode_Fault" xml:space="preserve"><value>Fehler</value><comment>Betriebsart Stoerung</comment></data>
+  <data name="HM02_Time_Invalid" xml:space="preserve"><value>--:--:--</value><comment>Uhrzeit ungueltig</comment></data>
+  <data name="HM02_Date_Invalid" xml:space="preserve"><value>--.--.----</value><comment>Datum ungueltig</comment></data>
+  <data name="HM03_Class_Operation" xml:space="preserve"><value>Betrieb</value><comment>Meldungsklasse Betrieb (Ok)</comment></data>
+  <data name="HM03_Class_Notice" xml:space="preserve"><value>Hinweis</value><comment>Meldungsklasse Hinweis (Warnung)</comment></data>
+  <data name="HM03_Class_Fault" xml:space="preserve"><value>Störung</value><comment>Meldungsklasse Stoerung (Fehler)</comment></data>
+  <data name="HM03_None_Text" xml:space="preserve"><value>Keine Meldung</value><comment>Meldezeile ohne Meldung</comment></data>
+  <data name="HM03_Open_Automation" xml:space="preserve"><value>Meldeanzeige öffnen</value><comment>Barrierefreiheitsname der Meldezeile</comment></data>
+  <data name="HM04_Breadcrumb_Automation" xml:space="preserve"><value>Seitenpfad</value><comment>Barrierefreiheitsname des Brotkruemel-Pfads</comment></data>
+  <data name="HM05_Unit_Speed" xml:space="preserve"><value>1/min</value><comment>Einheit Geschwindigkeit</comment></data>
+  <data name="HM05_Unit_Angle" xml:space="preserve"><value>°</value><comment>Einheit Maschinenwinkel</comment></data>
+  <data name="HM05_Speed_Automation" xml:space="preserve"><value>Geschwindigkeit</value><comment>Barrierefreiheitsname der Kennzahl Geschwindigkeit</comment></data>
+  <data name="HM05_Angle_Automation" xml:space="preserve"><value>Maschinenwinkel</value><comment>Barrierefreiheitsname der Kennzahl Maschinenwinkel</comment></data>
+  <data name="HM06_Bar_Automation" xml:space="preserve"><value>Funktionsleiste</value><comment>Barrierefreiheitsname der Funktionsleiste (HM-06)</comment></data>
+  <data name="HM06_More_Label" xml:space="preserve"><value>Mehr</value><comment>Ueberlauf-Taste der Funktionsleiste</comment></data>
+</root>

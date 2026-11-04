@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM12_DesignData.xaml: Beispielinstanzen von HM12_ValueInput mit den Beispielwerten aus HM-12_Eingabefeld-Schluesselsymbol.md (Entwurfsmodus, Galerie, Vorschau).
+     Jede Ressource ist x:Shared="False" (bei jeder Verwendung eine neue Instanz) und wird per {StaticResource HM12.Sample.<Name>} eingesetzt.
+     Voraussetzung: Die Stile aus Controls/*.Styles.xaml sind in den Anwendungsressourcen (ControlResources.MergeAll). Texte aus Resources/Strings/Basiselemente_HM07_12.resx. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.TargetLevel" x:Shared="False"
+      Label="{res:Loc HM12_Sample_TargetLevel}"
+      Unit="{res:Loc HM11_Sample_Unit_Percent}"
+      NumberValue="50"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.MaxFillTime" x:Shared="False"
+      Label="{res:Loc HM12_Sample_MaxFillTime}"
+      Unit="{res:Loc HM11_Sample_Unit_Sec}"
+      NumberValue="60"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Speed" x:Shared="False"
+      Label="{res:Loc HM12_Sample_Speed}"
+      Icon="{StaticResource Icon.Speed}"
+      Unit="{res:Loc HM11_Sample_Unit_Rpm}"
+      NumberValue="125"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Pressure" x:Shared="False"
+      Label="{res:Loc HM12_Sample_Pressure}"
+      Unit="{res:Loc HM11_Sample_Unit_Bar}"
+      NumberValue="1.7"
+      Decimals="1"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.WithoutKey" x:Shared="False"
+      Label="{res:Loc HM12_Sample_Fast}"
+      Unit="{res:Loc HM11_Sample_Unit_Ms}"
+      NumberValue="20"
+      RequiresPermission="False" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Time" x:Shared="False"
+      Label="{res:Loc HM12_Sample_StartTime}"
+      InputKind="Time"
+      NumberValue="375"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Text" x:Shared="False"
+      Label="{res:Loc HM12_Sample_Designation}"
+      InputKind="Text"
+      TextValue="{res:Loc HM12_Sample_Designation_Value}"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Graphic" x:Shared="False"
+      Unit="{res:Loc HM11_Sample_Unit_Deg}"
+      NumberValue="290"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Counter" x:Shared="False"
+      Label="{res:Loc HM12_Sample_AutoZero}"
+      Unit="{res:Loc HM11_Sample_Unit_G}"
+      NumberValue="235"
+      Decimals="1"
+      Counter="12"
+      CoupledCounter="3"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Editing" x:Shared="False"
+      Label="{res:Loc HM12_Sample_TargetLevel}"
+      Unit="{res:Loc HM11_Sample_Unit_Percent}"
+      NumberValue="50"
+      IsEditing="True"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Error" x:Shared="False"
+      Label="{res:Loc HM12_Sample_TargetLevel}"
+      Unit="{res:Loc HM11_Sample_Unit_Percent}"
+      NumberValue="150"
+      ErrorText="{res:Loc HM12_Sample_ErrorText}"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Locked" x:Shared="False"
+      Label="{res:Loc HM12_Sample_TargetLevel}"
+      Unit="{res:Loc HM11_Sample_Unit_Percent}"
+      NumberValue="50"
+      RequiresPermission="True"
+      IsAuthorized="False" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Pending" x:Shared="False"
+      Label="{res:Loc HM12_Sample_TargetLevel}"
+      Unit="{res:Loc HM11_Sample_Unit_Percent}"
+      NumberValue="55"
+      IsPendingWrite="True"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Disabled" x:Shared="False"
+      Label="{res:Loc HM12_Sample_TargetLevel}"
+      Unit="{res:Loc HM11_Sample_Unit_Percent}"
+      NumberValue="50"
+      IsEnabled="False"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+  <c:HM12_ValueInput x:Key="HM12.Sample.Empty" x:Shared="False"
+      Label="{res:Loc HM12_Sample_TargetLevel}"
+      Unit="{res:Loc HM11_Sample_Unit_Percent}"
+      RequiresPermission="True"
+      IsAuthorized="True" />
+
+</ResourceDictionary>

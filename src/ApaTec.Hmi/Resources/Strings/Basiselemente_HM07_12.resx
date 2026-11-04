@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Basiselemente_HM07_12.resx: Texte der Grundelemente HM-07 bis HM-12 (Aktionstaste, Zustandstaste/Umschalter, Status-LED, Fortschrittsbalken, Anzeigefeld, Eingabefeld).
+     Neutralsprache Deutsch; wird automatisch gefunden (LocalizationService). Schluessel: HMnn_<Element>_<Eigenschaft>; HMnn_Sample_* = Beispieltexte der Entwurfsdaten (DesignData/HMnn_DesignData.xaml).
+     Gemeinsame Woerter (Ein, Aus, OK, Warnung, Fehler) stehen in Strings.resx (State_*_Word, Status_*_Word). Einheiten haben ein geschuetztes Leerzeichen davor. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HM07_Running_Word" xml:space="preserve"><value>Läuft</value><comment>HM-07: Zustandswort Läuft (Dauerfunktion, Gedrückt-Halten)</comment></data>
+  <data name="HM07_Holding_Text" xml:space="preserve"><value>Halten …</value><comment>HM-07: Text während der Haltedauer</comment></data>
+  <data name="HM07_PermissionRequired_Hint" xml:space="preserve"><value>Berechtigung erforderlich</value><comment>HM-07: Tooltip am Schloss-Symbol</comment></data>
+  <data name="HM08_Partial_Word" xml:space="preserve"><value>Teilweise</value><comment>HM-08: Zustandswort Sammelzustand</comment></data>
+  <data name="HM08_Pending_Text" xml:space="preserve"><value>Wird gesetzt</value><comment>HM-08: Text im Zustand Ausstehend</comment></data>
+  <data name="HM08_PermissionRequired_Hint" xml:space="preserve"><value>Berechtigung erforderlich</value><comment>HM-08: Tooltip am Schloss-Symbol</comment></data>
+  <data name="HM09_Unknown_Word" xml:space="preserve"><value>---</value><comment>HM-09: Zustandswort Unbekannt</comment></data>
+  <data name="HM11_Unit_Hour" xml:space="preserve"><value> h</value><comment>HM-11: Einheit Stunden (geschütztes Leerzeichen davor)</comment></data>
+  <data name="HM11_Unit_Minute" xml:space="preserve"><value> m</value><comment>HM-11: Einheit Minuten</comment></data>
+  <data name="HM11_Unit_Second" xml:space="preserve"><value> s</value><comment>HM-11: Einheit Sekunden</comment></data>
+  <data name="HM11_Counter_Unit" xml:space="preserve"><value> Stk</value><comment>HM-11: Einheit des Zählers</comment></data>
+  <data name="HM12_Counter_Unit" xml:space="preserve"><value> Stk</value><comment>HM-12: Einheit der Zähler</comment></data>
+  <data name="HM12_NotWritten_Text" xml:space="preserve"><value>Nicht geschrieben</value><comment>HM-12: Hinweis geänderter, noch nicht geschriebener Wert</comment></data>
+  <data name="HM12_PermissionRequired_Hint" xml:space="preserve"><value>Berechtigung erforderlich</value><comment>HM-12: Tooltip am Schloss-Symbol</comment></data>
+  <data name="HM07_Sample_ShiftPlan" xml:space="preserve"><value>Schichtplan</value></data>
+  <data name="HM07_Sample_Language" xml:space="preserve"><value>Sprache</value></data>
+  <data name="HM07_Sample_Temperature" xml:space="preserve"><value>Temperatur</value></data>
+  <data name="HM07_Sample_Pressure" xml:space="preserve"><value>Druck</value></data>
+  <data name="HM07_Sample_Schedule" xml:space="preserve"><value>Zeitplan</value></data>
+  <data name="HM07_Sample_Manual" xml:space="preserve"><value>Manuell</value></data>
+  <data name="HM07_Sample_Empty" xml:space="preserve"><value>Entleeren</value></data>
+  <data name="HM07_Sample_Reset" xml:space="preserve"><value>Reset</value></data>
+  <data name="HM07_Sample_SetEncoder" xml:space="preserve"><value>Geber setzen</value></data>
+  <data name="HM07_Sample_Search" xml:space="preserve"><value>Suchen</value></data>
+  <data name="HM08_Sample_PathControl" xml:space="preserve"><value>Bahnkontrolle</value></data>
+  <data name="HM08_Sample_Heating" xml:space="preserve"><value>Heizungen</value></data>
+  <data name="HM08_Sample_CrossScrew" xml:space="preserve"><value>Querschnecke</value></data>
+  <data name="HM08_Sample_Agitator" xml:space="preserve"><value>Rührer</value></data>
+  <data name="HM08_Sample_Regulation" xml:space="preserve"><value>Regulierung</value></data>
+  <data name="HM08_Sample_AutomaticProduction" xml:space="preserve"><value>Automatik Produktion</value></data>
+  <data name="HM08_Sample_Standby" xml:space="preserve"><value>Standby</value></data>
+  <data name="HM08_Sample_Pump" xml:space="preserve"><value>Pumpe</value></data>
+  <data name="HM08_Sample_Continuous" xml:space="preserve"><value>Betriebsweise</value></data>
+  <data name="HM08_Sample_Continuous_On" xml:space="preserve"><value>Fortlaufend</value></data>
+  <data name="HM08_Sample_Continuous_Off" xml:space="preserve"><value>Einzel</value></data>
+  <data name="HM08_Sample_SwitchOff" xml:space="preserve"><value>Maschine</value></data>
+  <data name="HM08_Sample_SwitchOff_On" xml:space="preserve"><value>Ausschalten</value></data>
+  <data name="HM08_Sample_SwitchOff_Off" xml:space="preserve"><value>Einschalten</value></data>
+  <data name="HM08_Sample_FastMachine" xml:space="preserve"><value>Maschine schnell</value></data>
+  <data name="HM08_Sample_Pending" xml:space="preserve"><value>Pumpe</value></data>
+  <data name="HM08_Sample_ErrorText" xml:space="preserve"><value>Störung Heizung</value></data>
+  <data name="HM09_Sample_Ready" xml:space="preserve"><value>Bereitschaft</value></data>
+  <data name="HM09_Sample_Temperature" xml:space="preserve"><value>Temperatur</value></data>
+  <data name="HM09_Sample_FillSystem" xml:space="preserve"><value>Füllsystem</value></data>
+  <data name="HM09_Sample_TankLevel" xml:space="preserve"><value>Tankfüllstand</value></data>
+  <data name="HM09_Sample_TankFlap" xml:space="preserve"><value>Tank Klappe</value></data>
+  <data name="HM09_Sample_NoFault" xml:space="preserve"><value>Keine Störung</value></data>
+  <data name="HM09_Sample_NoAlarm" xml:space="preserve"><value>Kein Alarm</value></data>
+  <data name="HM09_Sample_Top" xml:space="preserve"><value>oben</value></data>
+  <data name="HM09_Sample_Bottom" xml:space="preserve"><value>unten</value></data>
+  <data name="HM10_Sample_TankLevel" xml:space="preserve"><value>Füllstand Tank</value></data>
+  <data name="HM10_Sample_Utilisation" xml:space="preserve"><value>Auslastung:</value></data>
+  <data name="HM10_Sample_Processor" xml:space="preserve"><value>Prozessorauslastung:</value></data>
+  <data name="HM11_Sample_Tank" xml:space="preserve"><value>Tank</value></data>
+  <data name="HM11_Sample_Manifold" xml:space="preserve"><value>Verteiler</value></data>
+  <data name="HM11_Sample_Gun1" xml:space="preserve"><value>Pistole 1</value></data>
+  <data name="HM11_Sample_Hose1" xml:space="preserve"><value>Schlauch 1</value></data>
+  <data name="HM11_Sample_Pressure" xml:space="preserve"><value>Aktueller Druck</value></data>
+  <data name="HM11_Sample_CompressedAir" xml:space="preserve"><value>Druckluft</value></data>
+  <data name="HM11_Sample_BeltScale" xml:space="preserve"><value>Bandwaage</value></data>
+  <data name="HM11_Sample_FollowMachine" xml:space="preserve"><value>Folgemaschine</value></data>
+  <data name="HM11_Sample_Mean" xml:space="preserve"><value>Mittelwert</value></data>
+  <data name="HM11_Sample_Weight" xml:space="preserve"><value>Letztes Gewicht</value></data>
+  <data name="HM11_Sample_Start" xml:space="preserve"><value>Systemstart</value></data>
+  <data name="HM11_Sample_Runtime" xml:space="preserve"><value>Laufzeit gesamt</value></data>
+  <data name="HM11_Sample_Value_Io" xml:space="preserve"><value>IO</value></data>
+  <data name="HM11_Sample_Value_Ready" xml:space="preserve"><value>Bereit</value></data>
+  <data name="HM11_Sample_Value_Running" xml:space="preserve"><value>Läuft</value></data>
+  <data name="HM11_Sample_Unit_C" xml:space="preserve"><value>°C</value></data>
+  <data name="HM11_Sample_Unit_Bar" xml:space="preserve"><value>bar</value></data>
+  <data name="HM11_Sample_Unit_G" xml:space="preserve"><value>g</value></data>
+  <data name="HM11_Sample_Unit_Percent" xml:space="preserve"><value>%</value></data>
+  <data name="HM11_Sample_Unit_Sec" xml:space="preserve"><value>s</value></data>
+  <data name="HM11_Sample_Unit_Ms" xml:space="preserve"><value>ms</value></data>
+  <data name="HM11_Sample_Unit_Rpm" xml:space="preserve"><value>1/min</value></data>
+  <data name="HM11_Sample_Unit_Deg" xml:space="preserve"><value>°</value></data>
+  <data name="HM12_Sample_TargetLevel" xml:space="preserve"><value>Ziel Füllstand:</value></data>
+  <data name="HM12_Sample_MaxFillTime" xml:space="preserve"><value>Max Füllzeit:</value></data>
+  <data name="HM12_Sample_Speed" xml:space="preserve"><value>Geschwindigkeit:</value></data>
+  <data name="HM12_Sample_Pressure" xml:space="preserve"><value>Druck:</value></data>
+  <data name="HM12_Sample_Fast" xml:space="preserve"><value>Schnell:</value></data>
+  <data name="HM12_Sample_StartTime" xml:space="preserve"><value>Startzeit:</value></data>
+  <data name="HM12_Sample_Designation" xml:space="preserve"><value>Bezeichnung:</value></data>
+  <data name="HM12_Sample_Designation_Value" xml:space="preserve"><value>Rezept 1</value></data>
+  <data name="HM12_Sample_AutoZero" xml:space="preserve"><value>Automatischer Nullpunkt:</value></data>
+  <data name="HM12_Sample_ErrorText" xml:space="preserve"><value>Wert außerhalb 0 bis 100 %</value></data>
+</root>

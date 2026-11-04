@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM09_DesignData.xaml: Beispielinstanzen von HM09_StatusLed mit den Beispielwerten aus HM-09_Status-LED.md (Entwurfsmodus, Galerie, Vorschau).
+     Jede Ressource ist x:Shared="False" (bei jeder Verwendung eine neue Instanz) und wird per {StaticResource HM09.Sample.<Name>} eingesetzt.
+     Voraussetzung: Die Stile aus Controls/*.Styles.xaml sind in den Anwendungsressourcen (ControlResources.MergeAll). Texte aus Resources/Strings/Basiselemente_HM07_12.resx. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.Ready" x:Shared="False"
+      Label="{res:Loc HM09_Sample_Ready}"
+      State="On" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.Temperature" x:Shared="False"
+      Label="{res:Loc HM09_Sample_Temperature}"
+      State="On" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.FillSystem" x:Shared="False"
+      Label="{res:Loc HM09_Sample_FillSystem}"
+      State="Warning" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.TankLevel" x:Shared="False"
+      Label="{res:Loc HM09_Sample_TankLevel}"
+      Icon="{StaticResource Icon.Fill.Hopper}"
+      State="Error"
+      Identifier="S1_0KDE1_3" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.TankFlap" x:Shared="False"
+      Label="{res:Loc HM09_Sample_TankFlap}"
+      State="Off" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.NoFault" x:Shared="False"
+      Label="{res:Loc HM09_Sample_NoFault}"
+      State="On" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.NoAlarm" x:Shared="False"
+      Label="{res:Loc HM09_Sample_NoAlarm}"
+      State="Unknown" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.Top" x:Shared="False"
+      Label="{res:Loc HM09_Sample_Top}"
+      Icon="{StaticResource Icon.Fill.Hopper}"
+      State="On" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.Bottom" x:Shared="False"
+      Label="{res:Loc HM09_Sample_Bottom}"
+      Icon="{StaticResource Icon.Fill.Hopper}"
+      State="Error" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.CompactOk" x:Shared="False"
+      Label="{res:Loc HM09_Sample_Ready}"
+      State="On"
+      IsCompact="True"
+      ShowStateWord="False" />
+
+  <c:HM09_StatusLed x:Key="HM09.Sample.CompactWarning" x:Shared="False"
+      Label="{res:Loc HM09_Sample_FillSystem}"
+      State="Warning"
+      IsCompact="True"
+      ShowStateWord="True" />
+
+</ResourceDictionary>

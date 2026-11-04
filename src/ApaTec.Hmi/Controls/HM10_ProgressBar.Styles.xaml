@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-10 Fortschrittsbalken: Stil und ControlTemplate fuer HM10_ProgressBar (ProgressBar). Normal neutral; Warnung/Fehler ab Schwelle mit Statusfarbe,
+     Symbol, Wort und Zahl (zweiter Kanal). Ungueltiger Wert: leere Bahn und Platzhaltertext. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <local:HM10_PercentTextConverter x:Key="HM10.PercentText" />
+  <local:HM10_LevelConverter x:Key="HM10.Level" />
+
+  <Style x:Key="HM10.Icon" TargetType="Path">
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="Width" Value="{StaticResource Size.Icon.S}" />
+    <Setter Property="Height" Value="{StaticResource Size.Icon.S}" />
+    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeStartLineCap" Value="Round" />
+    <Setter Property="StrokeEndLineCap" Value="Round" />
+    <Setter Property="StrokeLineJoin" Value="Round" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <Style TargetType="{x:Type local:HM10_ProgressBar}">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
+    <Setter Property="FontWeight" Value="{StaticResource Font.Weight.Regular}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+    <Setter Property="Minimum" Value="0" />
+    <Setter Property="Maximum" Value="100" />
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="AutomationProperties.Name" Value="{Binding Label, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM10_ProgressBar}">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="LabelText"
+                       Grid.Row="0" Grid.Column="0"
+                       Text="{TemplateBinding Label}"
+                       Foreground="{TemplateBinding Foreground}"
+                       FontFamily="{TemplateBinding FontFamily}"
+                       FontSize="{TemplateBinding FontSize}"
+                       VerticalAlignment="Center"
+                       Margin="{StaticResource Inset.XS}" />
+            <!-- Balken: Bahn, Fuellung (PART_Indicator, Breite setzt ProgressBar) und Zahl-Chip -->
+            <Grid x:Name="BarHost" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Height="{StaticResource Size.Progress.Height}">
+              <Border x:Name="PART_Track"
+                      Background="{DynamicResource Brush.Surface.Sunken}"
+                      BorderBrush="{DynamicResource Brush.Border.Control}"
+                      BorderThickness="{StaticResource Border.Thin}"
+                      CornerRadius="{StaticResource Radius.Control}" />
+              <Border x:Name="PART_Indicator"
+                      HorizontalAlignment="Left"
+                      Background="{DynamicResource Brush.Progress.Fill}"
+                      CornerRadius="{StaticResource Radius.Control}" />
+              <Border x:Name="Frame"
+                      IsHitTestVisible="False"
+                      BorderBrush="Transparent"
+                      BorderThickness="{StaticResource Border.Medium}"
+                      CornerRadius="{StaticResource Radius.Control}" />
+              <Border x:Name="Chip"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Background="{DynamicResource Brush.Surface}"
+                      CornerRadius="{StaticResource Radius.Control}"
+                      Padding="{StaticResource Inset.XS}">
+                <StackPanel Orientation="Horizontal">
+                  <Path x:Name="LevelIcon"
+                        Visibility="Collapsed"
+                        Style="{StaticResource HM10.Icon}"
+                        Data="{StaticResource Icon.Status.Warning}"
+                        Stroke="{DynamicResource Brush.Status.Warning.Fg}"
+                        Margin="{StaticResource Inset.XS}" />
+                  <TextBlock x:Name="LevelWord"
+                             Visibility="Collapsed"
+                             Text="{res:Loc Status_Warning_Word}"
+                             Foreground="{DynamicResource Brush.Text.Primary}"
+                             FontSize="{StaticResource Font.Size.Body}"
+                             VerticalAlignment="Center"
+                             Margin="{StaticResource Inset.XS}" />
+                  <TextBlock x:Name="ValueText"
+                             Foreground="{DynamicResource Brush.Text.Primary}"
+                             FontSize="{StaticResource Font.Size.Body}"
+                             VerticalAlignment="Center"
+                             Margin="{StaticResource Inset.XS}">
+                    <TextBlock.Text>
+                      <MultiBinding Converter="{StaticResource HM10.PercentText}">
+                        <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="StringFormat" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="IsValueValid" RelativeSource="{RelativeSource TemplatedParent}" />
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                </StackPanel>
+              </Border>
+            </Grid>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="Label" Value="">
+              <Setter TargetName="LabelText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="LabelPlacement" Value="Left">
+              <Setter TargetName="BarHost" Property="Grid.Row" Value="0" />
+              <Setter TargetName="BarHost" Property="Grid.Column" Value="1" />
+              <Setter TargetName="BarHost" Property="Grid.ColumnSpan" Value="1" />
+            </Trigger>
+            <Trigger Property="IsValueValid" Value="False">
+              <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!-- Warnung ab Schwelle: Fuellung und Kontur in Warnfarbe, Symbol, Wort und Zahl -->
+            <DataTrigger Value="Warning">
+              <DataTrigger.Binding>
+                <MultiBinding Converter="{StaticResource HM10.Level}">
+                  <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                  <Binding Path="WarningThreshold" RelativeSource="{RelativeSource Self}" />
+                  <Binding Path="ErrorThreshold" RelativeSource="{RelativeSource Self}" />
+                  <Binding Path="IsValueValid" RelativeSource="{RelativeSource Self}" />
+                </MultiBinding>
+              </DataTrigger.Binding>
+              <Setter TargetName="PART_Indicator" Property="Background" Value="{DynamicResource Brush.Status.Warning.Fill}" />
+              <Setter TargetName="Frame" Property="BorderBrush" Value="{DynamicResource Brush.Status.Warning.Fg}" />
+              <Setter TargetName="LevelIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="LevelWord" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <!-- Fehler ab Schwelle: Fuellung in Fehlerfarbe, Symbol, Wort und Zahl -->
+            <DataTrigger Value="Error">
+              <DataTrigger.Binding>
+                <MultiBinding Converter="{StaticResource HM10.Level}">
+                  <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                  <Binding Path="WarningThreshold" RelativeSource="{RelativeSource Self}" />
+                  <Binding Path="ErrorThreshold" RelativeSource="{RelativeSource Self}" />
+                  <Binding Path="IsValueValid" RelativeSource="{RelativeSource Self}" />
+                </MultiBinding>
+              </DataTrigger.Binding>
+              <Setter TargetName="PART_Indicator" Property="Background" Value="{DynamicResource Brush.Status.Error.Fill}" />
+              <Setter TargetName="Frame" Property="BorderBrush" Value="{DynamicResource Brush.Status.Error.Fg}" />
+              <Setter TargetName="LevelIcon" Property="Data" Value="{StaticResource Icon.Status.Error}" />
+              <Setter TargetName="LevelIcon" Property="Stroke" Value="{DynamicResource Brush.Status.Error.Fg}" />
+              <Setter TargetName="LevelIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="LevelWord" Property="Text" Value="{res:Loc Status_Error_Word}" />
+              <Setter TargetName="LevelWord" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM36_DesignData.xaml: Entwurfsdaten EA-Zeile (HM-36): digital ein/aus, Reserve, Fehler, unbekannt, analog. Beispielwerte aus der Moduldatei; Beispielinstanz mit x:Shared="False" (jeder Zugriff erzeugt eine neue Instanz). Kein Bestandteil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <local:HM36_IoRow x:Key="HM36_SampleOn" x:Shared="False" Identifier="0E3" Description="KUEHLGERAET BEREIT" IoKind="Digital" State="On" />
+  <local:HM36_IoRow x:Key="HM36_SampleOff" x:Shared="False" Identifier="S1_0KDE1_3" Description="RESERVE" IoKind="Digital" State="Off" IsReserve="True" />
+  <local:HM36_IoRow x:Key="HM36_SampleError" x:Shared="False" Identifier="0F24A_rdy" Description="SICHERUNGS MODUL BEREIT (0F24A)" IoKind="Digital" State="Error" />
+  <local:HM36_IoRow x:Key="HM36_SampleUnknown" x:Shared="False" Identifier="S1_0KDE1_4" Description="KUEHLGERAET BEREIT" IoKind="Digital" State="Unknown" />
+  <local:HM36_IoRow x:Key="HM36_SampleAnalog" x:Shared="False" Identifier="S1_0AI1_1" Description="TEMPERATUR TANK" IoKind="Analog" AnalogValue="150.0" />
+</ResourceDictionary>

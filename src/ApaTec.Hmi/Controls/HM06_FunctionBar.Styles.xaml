@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-06 Funktionsleiste (HM06_FunctionBar): Flaeche Brush.Surface.Sunken, Innenrand Inset.M (Taste 64 + 2 x 16 = Size.FunctionBar.Height), Tasten links mit Space.M Abstand,
+     rechtsbuendige Gruppe fuer die Hauptaktion. Die Leiste bleibt auch leer sichtbar. Gesperrt hinter Pop-ups: IsEnabled = false (gestrichelte Kontur, bleibt sichtbar).
+     Taste der aktuellen Seite bzw. eingeschaltete Zustandstaste: Brush.Button.Active mit Haken (Icon.State.On) und Balken (Border.Thick) unten.
+     Der Standard-Darstellung fuer FunctionBarItem steht hier; HM-07/HM-08/HM-19 koennen sie per ItemTemplate ersetzen (Ueberlauf "Mehr" ab der 6. Taste: nicht realisiert, Seiten liefern hoechstens 5). -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+
+  <Style x:Key="HM06_FunctionButton" TargetType="Button">
+    <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="MinWidth" Value="{StaticResource Size.FunctionButton.MinWidth}" />
+    <Setter Property="Padding" Value="{StaticResource Inset.Button}" />
+    <Setter Property="Focusable" Value="True" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <ControlTemplate.Resources>
+            <local:HM06_IconKeyConverter x:Key="IconKey" />
+            <local:HM06_ActiveConverter x:Key="Active" />
+          </ControlTemplate.Resources>
+          <Grid>
+            <Border x:Name="Face"
+                    Background="{DynamicResource Brush.Button.Normal}"
+                    BorderBrush="{DynamicResource Brush.Border.Control}"
+                    BorderThickness="{StaticResource Border.Thin}"
+                    CornerRadius="{StaticResource Radius.Control}"
+                    Padding="{TemplateBinding Padding}">
+              <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- Haken: nur bei aktiver Taste -->
+                <Viewbox x:Name="CheckBox" Visibility="Collapsed"
+                         Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}"
+                         Margin="{StaticResource Inset.XS}">
+                  <Grid>
+                    <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
+                    <Path Data="{StaticResource Icon.State.On}"
+                          StrokeThickness="{Binding Source={StaticResource Border.Medium}, Path=Left}"
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                          Stroke="{DynamicResource Brush.Text.OnActive}" />
+                  </Grid>
+                </Viewbox>
+                <Viewbox x:Name="ItemIcon"
+                         Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}"
+                         Margin="{StaticResource Inset.XS}">
+                  <Grid>
+                    <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
+                    <Path x:Name="ItemIconPath"
+                          StrokeThickness="{Binding Source={StaticResource Border.Medium}, Path=Left}"
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                          Stroke="{DynamicResource Brush.Text.Primary}"
+                          Data="{Binding IconKey, Converter={StaticResource IconKey}}" />
+                  </Grid>
+                </Viewbox>
+                <TextBlock x:Name="LabelText"
+                           Style="{StaticResource Text.Body}"
+                           TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                           VerticalAlignment="Center"
+                           Margin="{StaticResource Inset.XS}"
+                           Text="{Binding Label}" />
+              </StackPanel>
+            </Border>
+            <!-- Balken unter der Taste der aktuellen Seite (Form als zweiter Kanal) -->
+            <Rectangle x:Name="ActiveBar" Visibility="Collapsed"
+                       VerticalAlignment="Bottom"
+                       Height="{Binding Source={StaticResource Border.Thick}, Path=Left}"
+                       Fill="{DynamicResource Brush.Text.OnActive}" />
+            <Rectangle x:Name="DisabledDash" Visibility="Collapsed"
+                       RadiusX="{StaticResource Radius.Control.Size}" RadiusY="{StaticResource Radius.Control.Size}"
+                       Stroke="{DynamicResource Brush.Border.Control}"
+                       StrokeThickness="{StaticResource Border.Thin.Size}"
+                       StrokeDashArray="{StaticResource Border.Dash}" />
+            <Border x:Name="FocusRing" Visibility="Collapsed"
+                    BorderBrush="{DynamicResource Brush.Border.Focus}"
+                    BorderThickness="{StaticResource Border.Thick}"
+                    CornerRadius="{StaticResource Radius.Control}" />
+          </Grid>
+          <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding IconKey}" Value="">
+              <Setter TargetName="ItemIcon" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+              <Setter TargetName="FocusRing" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <DataTrigger Value="True">
+              <DataTrigger.Binding>
+                <MultiBinding Converter="{StaticResource Active}">
+                  <Binding Path="IsActive" />
+                  <Binding Path="TargetId" />
+                  <Binding Path="CurrentTargetId" RelativeSource="{RelativeSource AncestorType={x:Type local:HM06_FunctionBar}}" />
+                </MultiBinding>
+              </DataTrigger.Binding>
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Button.Active}" />
+              <Setter TargetName="LabelText" Property="Foreground" Value="{DynamicResource Brush.Text.OnActive}" />
+              <Setter TargetName="ItemIconPath" Property="Stroke" Value="{DynamicResource Brush.Text.OnActive}" />
+              <Setter TargetName="CheckBox" Property="Visibility" Value="Visible" />
+              <Setter TargetName="ActiveBar" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Button.Pressed}" />
+              <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Button.Disabled}" />
+              <Setter TargetName="Face" Property="BorderBrush" Value="Transparent" />
+              <Setter TargetName="DisabledDash" Property="Visibility" Value="Visible" />
+              <Setter TargetName="LabelText" Property="Foreground" Value="{DynamicResource Brush.Text.Disabled}" />
+              <Setter TargetName="ItemIconPath" Property="Stroke" Value="{DynamicResource Brush.Text.Disabled}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- Standard-Darstellung einer Taste (FunctionBarItem); Abstand zur naechsten Taste Space.M -->
+  <DataTemplate DataType="{x:Type vm:FunctionBarItem}">
+    <StackPanel Orientation="Horizontal">
+      <Button Style="{StaticResource HM06_FunctionButton}"
+              Command="{Binding Command}"
+              CommandParameter="{Binding CommandParameter}"
+              IsEnabled="{Binding IsEnabled}"
+              AutomationProperties.Name="{Binding Label}" />
+      <Border Width="{StaticResource Space.M}" />
+    </StackPanel>
+  </DataTemplate>
+
+  <Style TargetType="{x:Type local:HM06_FunctionBar}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:HM06_FunctionBar}">
+          <Border Background="{DynamicResource Brush.Surface.Sunken}"
+                  BorderBrush="{DynamicResource Brush.Divider}"
+                  BorderThickness="{StaticResource Border.Thin}"
+                  Padding="{StaticResource Inset.M}"
+                  AutomationProperties.Name="{res:Loc HM06_Bar_Automation}">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <ItemsControl Grid.Column="0" Focusable="False" ItemsSource="{TemplateBinding Items}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+              </ItemsControl>
+              <ItemsControl Grid.Column="1" Focusable="False" HorizontalAlignment="Right" ItemsSource="{TemplateBinding TrailingItems}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+              </ItemsControl>
+            </Grid>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

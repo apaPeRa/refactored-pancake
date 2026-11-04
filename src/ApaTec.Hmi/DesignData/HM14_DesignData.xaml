@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM14_DesignData.xaml: Beispielinstanzen fuer den Entwurfsmodus (Designer/Vorschau), Werte aus der Moduldatei. Nicht in die Anwendung eingebunden.
+     Jede Instanz ist x:Shared="False" (eigene Kopie je Verwendung). Theme: Hell. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ApaTec.Hmi.Controls">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Theme.Light.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Controls/HM14_PopupFrame.Styles.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/DesignData/HM13_DesignData.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <!-- Freier Inhalt mit Eingabe-Pop-up (HS-03) -->
+  <local:HM14_PopupFrame x:Key="HM14.Sample.Content" x:Shared="False"
+                         Title="Maschinengeschwindigkeit" ShowCloseButton="True"
+                         Content="{StaticResource HM13.Sample.Number}" />
+  <!-- Bestaetigung: Warnsymbol, Ja/Abbrechen -->
+  <local:HM14_PopupFrame x:Key="HM14.Sample.Confirmation" x:Shared="False"
+                         Title="Steuerung neu starten" Kind="Confirmation"
+                         Message="Die Steuerung wird neu gestartet. Die Produktion wird unterbrochen." />
+  <!-- Bestaetigung Variante Verwerfen -->
+  <local:HM14_PopupFrame x:Key="HM14.Sample.Discard" x:Shared="False"
+                         Title="Änderungen verwerfen?" Kind="Confirmation"
+                         Message="Nicht übernommene Änderungen gehen verloren."
+                         ConfirmText="Verwerfen" />
+  <!-- Datei/Ergebnis: Auswahl -->
+  <local:HM14_PopupFrame x:Key="HM14.Sample.FileSelect" x:Shared="False"
+                         Title="Export" Kind="FileResult" ShowCloseButton="False"
+                         Message="Meldearchiv exportieren (Format und Ort offen)." />
+  <!-- Datei/Ergebnis: laeuft -->
+  <local:HM14_PopupFrame x:Key="HM14.Sample.FileBusy" x:Shared="False"
+                         Title="Export" Kind="FileResult" IsBusy="True" Progress="40"
+                         Message="Export läuft." />
+  <!-- Datei/Ergebnis: Erfolg -->
+  <local:HM14_PopupFrame x:Key="HM14.Sample.FileSuccess" x:Shared="False"
+                         Title="Export" Kind="FileResult" ResultKind="Success"
+                         Message="Export abgeschlossen" />
+  <!-- Datei/Ergebnis: Fehler -->
+  <local:HM14_PopupFrame x:Key="HM14.Sample.FileError" x:Shared="False"
+                         Title="Import" Kind="FileResult" ResultKind="Error"
+                         Message="Datei unlesbar" />
+</ResourceDictionary>

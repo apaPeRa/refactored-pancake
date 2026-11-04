@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM10_DesignData.xaml: Beispielinstanzen von HM10_ProgressBar mit den Beispielwerten aus HM-10_Fortschrittsbalken.md (Entwurfsmodus, Galerie, Vorschau).
+     Jede Ressource ist x:Shared="False" (bei jeder Verwendung eine neue Instanz) und wird per {StaticResource HM10.Sample.<Name>} eingesetzt.
+     Voraussetzung: Die Stile aus Controls/*.Styles.xaml sind in den Anwendungsressourcen (ControlResources.MergeAll). Texte aus Resources/Strings/Basiselemente_HM07_12.resx. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <c:HM10_ProgressBar x:Key="HM10.Sample.TankLevel" x:Shared="False"
+      Label="{res:Loc HM10_Sample_TankLevel}"
+      Value="83" />
+
+  <c:HM10_ProgressBar x:Key="HM10.Sample.Utilisation" x:Shared="False"
+      Label="{res:Loc HM10_Sample_Utilisation}"
+      Value="92"
+      WarningThreshold="90" />
+
+  <c:HM10_ProgressBar x:Key="HM10.Sample.UtilisationNormal" x:Shared="False"
+      Label="{res:Loc HM10_Sample_Utilisation}"
+      Value="77"
+      WarningThreshold="90" />
+
+  <c:HM10_ProgressBar x:Key="HM10.Sample.UtilisationError" x:Shared="False"
+      Label="{res:Loc HM10_Sample_Utilisation}"
+      Value="98"
+      WarningThreshold="90"
+      ErrorThreshold="95" />
+
+  <c:HM10_ProgressBar x:Key="HM10.Sample.Processor" x:Shared="False"
+      Label="{res:Loc HM10_Sample_Processor}"
+      LabelPlacement="Left"
+      Value="15" />
+
+  <c:HM10_ProgressBar x:Key="HM10.Sample.Full" x:Shared="False"
+      Label="{res:Loc HM10_Sample_TankLevel}"
+      Value="100" />
+
+  <c:HM10_ProgressBar x:Key="HM10.Sample.Invalid" x:Shared="False"
+      Label="{res:Loc HM10_Sample_TankLevel}"
+      Value="0"
+      IsValueValid="False" />
+
+</ResourceDictionary>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Entwurfsdaten HM-05 Kennzahl-Kachel: Geschwindigkeit 112 1/min (antippbar), Maschinenwinkel 245 Grad, Letztes Gewicht mit Index, Betriebsstunden, ungueltiger Wert. Nicht Teil der Laufzeit-Ressourcen. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:ApaTec.Hmi.Controls">
+
+  <controls:HM05_MetricTile x:Key="HM05_Example.Speed" x:Shared="False"
+                            TileSize="Frame" Icon="{StaticResource Icon.Speed}" Value="112" Unit="1/min" StringFormat="N0" IsInteractive="True" />
+  <controls:HM05_MetricTile x:Key="HM05_Example.Angle" x:Shared="False"
+                            TileSize="Frame" Icon="{StaticResource Icon.Angle}" Value="245" Unit="°" StringFormat="N0" />
+  <controls:HM05_MetricTile x:Key="HM05_Example.LastWeight" x:Shared="False"
+                            Icon="{StaticResource Icon.Weight.Last}" Label="Letztes Gewicht" Value="235.1" Unit="g" StringFormat="N1" Index="1" />
+  <controls:HM05_MetricTile x:Key="HM05_Example.OperatingHours" x:Shared="False"
+                            Icon="{StaticResource Icon.Schedule}" Label="Betriebsstunden" TimeValue="12.01:38:12" />
+  <controls:HM05_MetricTile x:Key="HM05_Example.Invalid" x:Shared="False"
+                            Icon="{StaticResource Icon.Speed}" Unit="1/min" />
+</ResourceDictionary>
