@@ -15,7 +15,7 @@
     <Setter Property="Stretch" Value="Uniform" />
     <Setter Property="Width" Value="{StaticResource Size.Icon.S}" />
     <Setter Property="Height" Value="{StaticResource Size.Icon.S}" />
-    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
     <Setter Property="StrokeStartLineCap" Value="Round" />
     <Setter Property="StrokeEndLineCap" Value="Round" />
     <Setter Property="StrokeLineJoin" Value="Round" />

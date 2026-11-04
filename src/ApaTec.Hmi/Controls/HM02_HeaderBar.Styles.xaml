@@ -57,7 +57,7 @@
                       <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
                       <Path x:Name="ModeIcon"
                             Data="{StaticResource Icon.Mode.Production}"
-                            StrokeThickness="{Binding Source={StaticResource Border.Medium}, Path=Left}"
+                            StrokeThickness="{StaticResource Size.Icon.Stroke}"
                             StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
                             Stroke="{DynamicResource Brush.Text.Primary}" />
                     </Grid>

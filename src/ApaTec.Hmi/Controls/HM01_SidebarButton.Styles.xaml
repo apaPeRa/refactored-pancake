@@ -8,7 +8,7 @@
 
   <!-- Symbolstrich im 24er-Raster (Strichstaerke 2 = Border.Medium, runde Enden) -->
   <Style x:Key="HM01_IconPath" TargetType="Path">
-    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
     <Setter Property="StrokeStartLineCap" Value="Round" />
     <Setter Property="StrokeEndLineCap" Value="Round" />
     <Setter Property="StrokeLineJoin" Value="Round" />

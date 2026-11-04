@@ -13,7 +13,7 @@
 
   <Style x:Key="HM17_IconPath" TargetType="Path">
     <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
-    <Setter Property="StrokeThickness" Value="{Binding Source={StaticResource Border.Medium}, Path=Left}" />
+    <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
     <Setter Property="StrokeStartLineCap" Value="Round" />
     <Setter Property="StrokeEndLineCap" Value="Round" />
     <Setter Property="StrokeLineJoin" Value="Round" />

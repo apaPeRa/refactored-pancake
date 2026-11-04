@@ -9,7 +9,7 @@ Exit-Code 0 = alles bestanden. Prueft:
   4. Icons.xaml enthaelt jedes Icon.* aus Designsystem.md Abschnitt 6 und 6.1
   5. jeder StaticResource/DynamicResource-Verweis in XAML hat eine Definition
   6. Code-behind (*.xaml.cs) von Views, Fenstern und App enthaelt nur Konstruktor mit InitializeComponent() (A-73)
-  7. keine Literale (Hex-Farben, Pixelmasse, feste Texte) in Views/ und MainWindow.xaml
+  7. keine Literale (Hex-Farben, Pixelmasse, feste Texte) in Views/, Controls/ und MainWindow.xaml; Stern-Proportionen (Width="3*", "2.5*") sind erlaubt
   8. jeder {res:Loc Schluessel} existiert in Resources/Strings*.resx; fuer alle 43 PageKeys existieren Nav_<Key>_Title/_Crumb
   9. PageKeys.cs enthaelt 43 Schluessel
 """
@@ -147,8 +147,9 @@ print(f"[6] {n_cb} Code-behind-Dateien geprueft")
 lit = [
     (re.compile(r"#[0-9A-Fa-f]{6,8}\b"), "Hex-Farbe"),
     (re.compile(r'\bColor="(?!\{)'), "Color-Literal"),
-    (re.compile(r'\b(?:Width|Height|MinWidth|MinHeight|MaxWidth|MaxHeight|FontSize|StrokeThickness|RadiusX|RadiusY)="\d'), "Pixelmass"),
+    (re.compile(r'\b(?:Width|Height|MinWidth|MinHeight|MaxWidth|MaxHeight|FontSize|StrokeThickness|RadiusX|RadiusY)="(?!\d+(?:\.\d+)?\*")\d'), "Pixelmass"),
     (re.compile(r'\b(?:Margin|Padding|BorderThickness|CornerRadius)="\d'), "Abstand/Radius-Literal"),
+    (re.compile(r'Source=\{StaticResource (?:Border|Space|Size)\.[^}]*\}'), "Thickness-Umweg per Binding (Token Size.Icon.Stroke/Inset.* verwenden)"),
     (re.compile(r'\b(?:Text|Content|Title|ToolTip)="(?!\{)[^"]'), "fester Text"),
 ]
 targets = [p for p in (PROJ / "Views").rglob("*.xaml")] + [PROJ / "MainWindow.xaml"] + [p for p in (PROJ / "Controls").rglob("*.xaml")]

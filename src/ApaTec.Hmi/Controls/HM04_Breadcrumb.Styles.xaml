@@ -105,7 +105,7 @@
                         <Grid>
                           <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
                           <Path Data="{StaticResource Icon.Chevron}"
-                                StrokeThickness="{Binding Source={StaticResource Border.Medium}, Path=Left}"
+                                StrokeThickness="{StaticResource Size.Icon.Stroke}"
                                 StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
                                 Stroke="{DynamicResource Brush.Text.Secondary}" />
                         </Grid>

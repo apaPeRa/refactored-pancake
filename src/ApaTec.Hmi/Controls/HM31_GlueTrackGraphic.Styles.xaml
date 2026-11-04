@@ -66,7 +66,7 @@
                 <Canvas Width="{StaticResource HM31.Canvas.Width}" Height="{StaticResource HM31.Canvas.Height}">
                   <Path Data="{Binding CutoutGeometry, RelativeSource={RelativeSource TemplatedParent}, TargetNullValue={StaticResource HM31.Geometry.Cutout}}"
                         Fill="{DynamicResource Brush.Graphic.Carton}" Stroke="{DynamicResource Brush.Graphic.Outline}"
-                        StrokeThickness="{Binding Path=Left, Source={StaticResource Border.Medium}}" StrokeLineJoin="Round" />
+                        StrokeThickness="{StaticResource Size.Icon.Stroke}" StrokeLineJoin="Round" />
                   <Path Data="{StaticResource HM31.Geometry.GlueLong}" Fill="{DynamicResource Brush.Graphic.Glue}" />
                   <Path Data="{StaticResource HM31.Geometry.GlueTop}" Fill="{DynamicResource Brush.Graphic.Glue}" />
                   <Path Data="{StaticResource HM31.Geometry.GlueBottom}" Fill="{DynamicResource Brush.Graphic.Glue}" />

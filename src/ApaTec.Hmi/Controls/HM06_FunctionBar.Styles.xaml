@@ -40,7 +40,7 @@
                   <Grid>
                     <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
                     <Path Data="{StaticResource Icon.State.On}"
-                          StrokeThickness="{Binding Source={StaticResource Border.Medium}, Path=Left}"
+                          StrokeThickness="{StaticResource Size.Icon.Stroke}"
                           StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
                           Stroke="{DynamicResource Brush.Text.OnActive}" />
                   </Grid>
@@ -51,7 +51,7 @@
                   <Grid>
                     <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
                     <Path x:Name="ItemIconPath"
-                          StrokeThickness="{Binding Source={StaticResource Border.Medium}, Path=Left}"
+                          StrokeThickness="{StaticResource Size.Icon.Stroke}"
                           StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
                           Stroke="{DynamicResource Brush.Text.Primary}"
                           Data="{Binding IconKey, Converter={StaticResource IconKey}}" />
@@ -68,7 +68,7 @@
             <!-- Balken unter der Taste der aktuellen Seite (Form als zweiter Kanal) -->
             <Rectangle x:Name="ActiveBar" Visibility="Collapsed"
                        VerticalAlignment="Bottom"
-                       Height="{Binding Source={StaticResource Border.Thick}, Path=Left}"
+                       Height="{StaticResource Size.Icon.Stroke.Thick}"
                        Fill="{DynamicResource Brush.Text.OnActive}" />
             <Rectangle x:Name="DisabledDash" Visibility="Collapsed"
                        RadiusX="{StaticResource Radius.Control.Size}" RadiusY="{StaticResource Radius.Control.Size}"

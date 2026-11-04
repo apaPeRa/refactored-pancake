@@ -19,7 +19,7 @@
   <Style x:Key="HM25.Icon" TargetType="Path">
     <Setter Property="Stretch" Value="Uniform" />
     <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
-    <Setter Property="StrokeThickness" Value="{Binding Path=Left, Source={StaticResource Border.Medium}}" />
+    <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
     <Setter Property="StrokeStartLineCap" Value="Round" />
     <Setter Property="StrokeEndLineCap" Value="Round" />
     <Setter Property="StrokeLineJoin" Value="Round" />

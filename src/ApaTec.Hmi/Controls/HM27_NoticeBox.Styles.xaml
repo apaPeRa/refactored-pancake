@@ -32,7 +32,7 @@
                        Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
                 <Path x:Name="Glyph" Data="{TemplateBinding Icon}" Stretch="Uniform"
                       Stroke="{DynamicResource Brush.Text.Primary}"
-                      StrokeThickness="{Binding Path=Left, Source={StaticResource Border.Medium}}"
+                      StrokeThickness="{StaticResource Size.Icon.Stroke}"
                       StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
               </Viewbox>
               <Grid Grid.Column="1" VerticalAlignment="Center" Margin="{StaticResource Inset.S}">

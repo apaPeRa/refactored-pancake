@@ -382,6 +382,9 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden hier ergänzt (Na
 | `Size.Icon.S` | Double | 24 | 24 | Schlüssel-/Schlosssymbol im Feld |
 | `Size.Icon.M` | Double | 32 | 32 | Symbol in Taste, Status-LED |
 | `Size.Icon.L` | Double | 48 | 48 | Seitenleiste |
+| `Size.Icon.Stroke` | Double | 2 | 2 | Strichstärke der Symbole und Linien (als Zahl für `StrokeThickness`, Annahme A-86) |
+| `Size.Icon.Stroke.Thick` | Double | 3 | 3 | kräftige Strichstärke (Auswahl-/Fokuskontur, Annahme A-86) |
+| `Inset.Touch.Gap` | Thickness | 16 | 16 | `Size.Touch.Gap` als Thickness für `Margin`/`Padding` (Annahme A-86); weitere Thickness-Varianten `Inset.XS/S/M/L/XL/Button` siehe A-83 |
 | `Size.Sidebar.Width` | GridLength | 3* | 3* | Spalte Seitenleiste (Hauptfenster) |
 | `Size.Header.Height` | GridLength | 4* | 4* | Zeile Kopfzeile |
 | `Size.Crumb.Height` | GridLength | 3* | 3* | Zeile Brotkrümel/Kennzahlen |

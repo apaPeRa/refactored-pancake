@@ -33,6 +33,8 @@
   <sys:Double x:Key="Size.Icon.S">24</sys:Double>
   <sys:Double x:Key="Size.Icon.M">32</sys:Double>
   <sys:Double x:Key="Size.Icon.L">48</sys:Double>
+  <sys:Double x:Key="Size.Icon.Stroke">2</sys:Double>
+  <sys:Double x:Key="Size.Icon.Stroke.Thick">3</sys:Double>
 
   <!-- Rahmen-Grid des Hauptfensters (3.2): Spalten 3* : 37*, Zeilen 4* : 3* : 34* : 4* -->
   <GridLength x:Key="Size.Sidebar.Width">3*</GridLength>
@@ -77,6 +79,7 @@
   <Thickness x:Key="Inset.M">16</Thickness>
   <Thickness x:Key="Inset.L">24</Thickness>
   <Thickness x:Key="Inset.XL">32</Thickness>
+  <Thickness x:Key="Inset.Touch.Gap">16</Thickness>
   <Thickness x:Key="Inset.Button">16,0,16,0</Thickness>
 
   <!-- Radien und Rahmen (4) -->

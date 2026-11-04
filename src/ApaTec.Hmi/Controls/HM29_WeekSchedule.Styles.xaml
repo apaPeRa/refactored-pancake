@@ -17,7 +17,7 @@
   <Style x:Key="HM29.Icon" TargetType="Path">
     <Setter Property="Stretch" Value="Uniform" />
     <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
-    <Setter Property="StrokeThickness" Value="{Binding Path=Left, Source={StaticResource Border.Medium}}" />
+    <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
     <Setter Property="StrokeStartLineCap" Value="Round" />
     <Setter Property="StrokeEndLineCap" Value="Round" />
     <Setter Property="StrokeLineJoin" Value="Round" />
@@ -58,7 +58,7 @@
               </StackPanel>
             </Border>
             <Rectangle x:Name="DashFrame" Visibility="Collapsed" Stroke="{DynamicResource Brush.Border.Control}"
-                       StrokeThickness="{Binding Path=Left, Source={StaticResource Border.Medium}}" StrokeDashArray="{StaticResource Border.Dash}"
+                       StrokeThickness="{StaticResource Size.Icon.Stroke}" StrokeDashArray="{StaticResource Border.Dash}"
                        RadiusX="{StaticResource Radius.Control.Size}" RadiusY="{StaticResource Radius.Control.Size}" />
             <Border x:Name="FocusRing" Visibility="Collapsed" BorderBrush="{DynamicResource Brush.Border.Focus}" BorderThickness="{StaticResource Border.Thick}"
                     CornerRadius="{StaticResource Radius.Control}" />

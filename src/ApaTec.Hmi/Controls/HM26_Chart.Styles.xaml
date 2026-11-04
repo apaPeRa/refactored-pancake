@@ -14,7 +14,7 @@
   <Style x:Key="HM26.Icon" TargetType="Path">
     <Setter Property="Stretch" Value="Uniform" />
     <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
-    <Setter Property="StrokeThickness" Value="{Binding Path=Left, Source={StaticResource Border.Medium}}" />
+    <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
     <Setter Property="StrokeStartLineCap" Value="Round" />
     <Setter Property="StrokeEndLineCap" Value="Round" />
     <Setter Property="StrokeLineJoin" Value="Round" />
@@ -33,7 +33,7 @@
   <!-- Zeichenelemente -->
   <DataTemplate DataType="{x:Type c:HM26_BarMark}">
     <Rectangle x:Name="Bar" Width="{Binding Width}" Height="{Binding Height}" Fill="{DynamicResource Brush.Progress.Fill}"
-               Stroke="{x:Null}" StrokeThickness="{Binding Path=Left, Source={StaticResource Border.Medium}}" />
+               Stroke="{x:Null}" StrokeThickness="{StaticResource Size.Icon.Stroke}" />
     <DataTemplate.Triggers>
       <DataTrigger Binding="{Binding IsViolation}" Value="True">
         <Setter TargetName="Bar" Property="Fill" Value="{DynamicResource Brush.Status.Warning.Fill}" />
@@ -46,7 +46,7 @@
     <Grid Width="{Binding Width}" Height="{Binding Height}">
       <Ellipse x:Name="Dot" Fill="{DynamicResource Brush.Text.Primary}" />
       <Rectangle x:Name="Diamond" Visibility="Collapsed" Fill="{DynamicResource Brush.Status.Warning.Fill}" Stroke="{DynamicResource Brush.Status.Warning.Fg}"
-                 StrokeThickness="{Binding Path=Left, Source={StaticResource Border.Medium}}" RenderTransformOrigin="0.5,0.5">
+                 StrokeThickness="{StaticResource Size.Icon.Stroke}" RenderTransformOrigin="0.5,0.5">
         <Rectangle.RenderTransform>
           <RotateTransform Angle="45" />
         </Rectangle.RenderTransform>
@@ -77,7 +77,7 @@
     <DataTemplate.Triggers>
       <DataTrigger Binding="{Binding IsLimit}" Value="True">
         <Setter TargetName="Rule" Property="Stroke" Value="{DynamicResource Brush.Status.Warning.Fg}" />
-        <Setter TargetName="Rule" Property="StrokeThickness" Value="{Binding Path=Left, Source={StaticResource Border.Medium}}" />
+        <Setter TargetName="Rule" Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
         <Setter TargetName="Rule" Property="StrokeDashArray" Value="{StaticResource Border.Dash}" />
       </DataTrigger>
     </DataTemplate.Triggers>
@@ -133,7 +133,7 @@
             <Grid x:Name="PlotArea" Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.XL}">
                 <ItemsControl ItemsSource="{Binding GridLines}" ItemsPanel="{StaticResource HM26.CanvasPanel}" ItemContainerStyle="{StaticResource HM26.MarkContainer}" Focusable="False" />
                 <Path x:Name="Trend" Data="{Binding LinePath}" Stroke="{DynamicResource Brush.Text.Primary}"
-                      StrokeThickness="{Binding Path=Left, Source={StaticResource Border.Thick}}"
+                      StrokeThickness="{StaticResource Size.Icon.Stroke.Thick}"
                       StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
                 <ItemsControl x:Name="MarkLayer" ItemsSource="{Binding Marks}" ItemsPanel="{StaticResource HM26.CanvasPanel}" ItemContainerStyle="{StaticResource HM26.MarkContainer}" Focusable="False" />
 
