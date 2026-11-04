@@ -90,7 +90,7 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type c:HM26_Chart}">
-          <Grid x:Name="Root">
+          <Grid x:Name="Root" AutomationProperties.HelpText="{Binding Table}">
             <Grid.DataContext>
               <MultiBinding Converter="{x:Static c:HM26_ChartLayoutConverter.Instance}">
                 <Binding Path="Series" RelativeSource="{RelativeSource TemplatedParent}" />
