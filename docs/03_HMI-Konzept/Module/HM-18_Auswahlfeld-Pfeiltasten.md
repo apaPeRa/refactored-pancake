@@ -22,8 +22,8 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal | `Brush.Surface`, Kontur `Border.Thin`, Text `Font.Size.Value`, Pfeiltasten `Brush.Button.Normal` 64 × 64 | Pfeilsymbole `Icon.Chevron` links/rechts und Anzeigetext |
-| Am Listenende | betroffene Pfeiltaste deaktiviert, Kontur gestrichelt | gestrichelte Kontur |
+| Normal | `Brush.Surface`, Kontur `Border.Thin`, Text `Font.Size.Value`, Pfeiltasten `Brush.Button.Normal` `Size.Touch.Default` × `Size.Touch.Default` | Pfeilsymbole `Icon.Chevron` links/rechts und Anzeigetext |
+| Am Listenende | betroffene Pfeiltaste deaktiviert, Kontur gestrichelt (`Border.Dash`) | gestrichelte Kontur |
 | Ausgewählt, nicht übernommen | Normal | `Icon.State.Pending` und Text „Nicht übernommen“ |
 | Gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
 | Berechtigung | Normal | `Icon.Key` bzw. `Icon.Lock` |
@@ -53,5 +53,5 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-18-P01 | Filtertyp | Anzeige „IIR 5 56ms 8Hz“ mit Pfeilen und Schlüssel | offen |
 | HM-18-P02 | Datum | 30 Tage, Pfeil links = früher (Annahme, OP-54) | offen |
 | HM-18-P03 | Listenende | Pfeil deaktiviert statt Fehler | offen |
-| HM-18-P04 | Touch | Pfeiltasten 64 × 64 px | offen |
+| HM-18-P04 | Touch | Pfeiltasten `Size.Touch.Default` × `Size.Touch.Default` | offen |
 | HM-18-P05 | Übernahme | Auswahl erst nach „Filter setzen“ wirksam, ausstehender Zustand mit Text | offen |

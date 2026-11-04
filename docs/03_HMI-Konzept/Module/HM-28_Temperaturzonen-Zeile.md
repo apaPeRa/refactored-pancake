@@ -42,7 +42,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM28_HeatZoneRow` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM28_HeatZoneRow`), `Grid` mit festen Spalten, einsetzbar in `ItemsControl`.
 - **Dependency Properties:** `ZoneName`, `RowKind`, `Setpoint`, `Actual`, `IsEnabled`, `IsMonitored`, `StateLed`, `OutputLed`; **Commands:** `ToggleZoneCommand`, `ToggleMonitorCommand`.
-- Zeilenhöhe 64 px (Heizungen: 12 Zeilen scrollbar).
+- Zeilenhöhe `Size.Touch.Default` (Heizungen: 12 Zeilen scrollbar).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

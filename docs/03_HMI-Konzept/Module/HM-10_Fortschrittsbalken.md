@@ -20,7 +20,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal | Füllung `Brush.Progress.Fill`, Bahn `Brush.Surface.Sunken`, Kontur `Border.Thin`, Höhe 40, `Radius.Control` | Zahl „83 %“ im Balken (`Font.Size.Body`, Chip `Brush.Surface`) |
+| Normal | Füllung `Brush.Progress.Fill`, Bahn `Brush.Surface.Sunken`, Kontur `Border.Thin`, Höhe `Size.Progress.Height`, `Radius.Control` | Zahl „83 %“ im Balken (`Font.Size.Body`, Chip `Brush.Surface`) |
 | Warnung (≥ Schwelle) | Füllung `Brush.Status.Warning.Fill` | `Icon.Status.Warning` und Zahl |
 | Fehler (≥ Schwelle) | Füllung `Brush.Status.Error.Fill` | `Icon.Status.Error` und Zahl |
 | Wert ungültig | leere Bahn | Text „---“ |

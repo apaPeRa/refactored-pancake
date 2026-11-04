@@ -18,7 +18,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Segment | `Brush.Surface.Sunken`, Kontur `Border.Thin` `Brush.Border.Control`, Text `Font.Size.Body` `Brush.Text.Primary`, Höhe 64 | Pfeilform (`Icon.Chevron`) als Trenner |
+| Segment | `Brush.Surface.Sunken`, Kontur `Border.Thin` `Brush.Border.Control`, Text `Font.Size.Body` `Brush.Text.Primary`, Höhe `Size.Touch.Default` | Pfeilform (`Icon.Chevron`) als Trenner |
 | Aktuelles Segment | Text `Font.Weight.Strong`, keine Navigation | Fettschrift und Position am Ende; `AutomationProperties.ItemStatus="current"` |
 | Gedrückt | `Brush.Button.Pressed`, Kontur `Border.Medium` | dickere Kontur |
 | Gekürzt | mittleres Segment „…“ | Text „…“, Tippen zeigt vollständigen Pfad |
@@ -86,5 +86,5 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-04-P01 | Segmentzahl | DS-01: 1, DS-02: 1, DS-03: 3, DS-04: 2, DS-05: 3 (Pfade des Designs) | offen |
 | HM-04-P02 | Aktuell | letztes Segment fett, nicht antippbar | offen |
 | HM-04-P03 | Antippen | Segment springt zur Ebene | offen |
-| HM-04-P04 | Schriftgröße | mindestens 24 px, Segmenthöhe 64 px | offen |
+| HM-04-P04 | Schriftgröße | mindestens `Font.Size.Body`, Segmenthöhe `Size.Touch.Default` | offen |
 | HM-04-P05 | Farbe | keine Bedeutung der Farbe (Entwurfsinkonsistenz blau/lachs entfällt) | offen |

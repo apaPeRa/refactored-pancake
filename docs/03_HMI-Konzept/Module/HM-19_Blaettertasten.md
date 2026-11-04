@@ -20,8 +20,8 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Aktiv | `Brush.Button.Normal`, Kontur `Border.Thin`, Tasten 64 × 64 | Pfeilsymbole und Positionsanzeige „1 von 2“ |
-| Am Rand | Taste deaktiviert, Kontur gestrichelt | gestrichelte Kontur |
+| Aktiv | `Brush.Button.Normal`, Kontur `Border.Thin`, Tasten `Size.Touch.Default` × `Size.Touch.Default` | Pfeilsymbole und Positionsanzeige „1 von 2“ |
+| Am Rand | Taste deaktiviert, Kontur gestrichelt (`Border.Dash`) | gestrichelte Kontur |
 | Gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
 | Einzeltaste | wie Aktiv, eine Taste | Symbol `Icon.Chevron` doppelt |
 
@@ -57,4 +57,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-19-P02 | Positionsanzeige | „n von m“ sichtbar | offen |
 | HM-19-P03 | Rand | Taste deaktiviert, nicht umlaufend | offen |
 | HM-19-P04 | Lage | links in der Funktionsleiste | offen |
-| HM-19-P05 | Touch | Tasten ≥ 64 × 64 px | offen |
+| HM-19-P05 | Touch | Tasten ≥ `Size.Touch.Default` × `Size.Touch.Default` | offen |

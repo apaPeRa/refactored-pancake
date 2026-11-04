@@ -24,7 +24,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal | Gitter `Brush.Divider`, Linie 3 px und Punkte `Brush.Text.Primary`, Balken `Brush.Progress.Fill`, Achsentext `Font.Size.Caption` `Brush.Text.Secondary` | Zahlenwerte an Punkten/Balken |
+| Normal | Gitter `Brush.Divider`, Linie `Border.Thick` und Punkte `Brush.Text.Primary`, Balken `Brush.Progress.Fill`, Achsentext `Font.Size.Caption` `Brush.Text.Secondary` | Zahlenwerte an Punkten/Balken |
 | Aktueller Wert | letzter Punkt größer, `Brush.Text.Primary` | größerer Marker und Beschriftung „aktuell“ |
 | Grenze verletzt | Punkt/Balken `Brush.Status.Warning.Fill` | Raute statt Kreis bzw. `Icon.Status.Warning` über dem Balken |
 | Zu wenig Daten | Achsen leer | Text „Keine Daten“ und `Icon.Status.Inactive` |

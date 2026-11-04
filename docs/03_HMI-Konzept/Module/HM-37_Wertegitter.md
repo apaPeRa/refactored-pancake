@@ -41,7 +41,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM37_ValueGrid` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM37_ValueGrid`) mit `UniformGrid` (Zeilen 10, Spalten 5), Zelle `HM37_Cell`.
 - **Dependency Properties:** `Cells`, `LastIndex`, `Mode`, `Capacity`; **Commands:** `StartCommand`, `ToggleModeCommand`.
-- Zellhöhe ≥ 48 px; bei 10 Zeilen ist die Gitterfläche etwa 560 px hoch.
+- Zellhöhe ≥ `Size.Touch.Min`.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Marker.Last` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.

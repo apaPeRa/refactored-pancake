@@ -1,7 +1,7 @@
 # HM-02 – Kopfzeile (Logo, Betriebsart, Uhr)
 
 ## Funktion
-Rahmenzeile oben im Arbeitsbereich (Zeile 4*, 96 px). Spalten 12* : 13* : 6* : 4*: Logo, Meldezeile ([HM-03](HM-03_Meldezeile.md)), Betriebsart, Uhrzeit/Datum. Das Logo ist eine feste Grafik (APA-TEC GmbH, „Automation and Packaging Technology“) in je einer Variante für Hell- und Dunkelthema. Die Betriebsart zeigt Symbol und Wort. Das unbeschriebene Wirbel-Symbol und der rote Schriftzug „Service“ der Referenz (RS-24, RS-36) werden als Betriebsart „Service“ mit Warnstatus geführt (A-48). Uhrzeit und Datum sind reine Anzeige.
+Rahmenzeile oben im Arbeitsbereich (Zeile `Size.Header.Height`). Spalten 12* : 13* : 6* : 4*: Logo, Meldezeile ([HM-03](HM-03_Meldezeile.md)), Betriebsart, Uhrzeit/Datum. Das Logo ist eine feste Grafik (APA-TEC GmbH, „Automation and Packaging Technology“) in je einer Variante für Hell- und Dunkelthema. Die Betriebsart zeigt Symbol und Wort. Das unbeschriebene Wirbel-Symbol und der rote Schriftzug „Service“ der Referenz (RS-24, RS-36) werden als Betriebsart „Service“ mit Warnstatus geführt (A-48). Uhrzeit und Datum sind reine Anzeige.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -83,7 +83,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM02_HeaderBar` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` mit 4-spaltigem `Grid` (`12* 13* 6* 4*`); enthält [HM-03](HM-03_Meldezeile.md) in Spalte 2.
 - **Dependency Properties:** `LogoSource`, `OperatingMode`, `OperatingModeText`, `Now`, `ShowSeconds`, `IsTimeValid`. Uhr über `IClockService` (Dummy), Taktgeber im ViewModel.
-- **Mindestbreiten:** Betriebsart 288 px, Uhr 192 px.
+- **Mindestbreiten:** Betriebsart `Size.Header.Mode.MinWidth`, Uhr `Size.Header.Clock.MinWidth`.
 - **Stil:** `HM02_OperatingModeStyle` per `DataTrigger` auf `OperatingMode`.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Mode.Production` (Designsystem), `Icon.Mode.Setup`, `Icon.Mode.Manual`, `Icon.Mode.Service` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
@@ -94,7 +94,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 |---|---|---|---|
 | HM-02-P01 | Logo | APA-TEC-Logo links; im Dunkelthema Variante mit passendem Kontrast | offen |
 | HM-02-P02 | Betriebsart | „Produktion“ mit Kreispfeil-Symbol, Status Ok (Text und Symbol, nicht nur grün) | offen |
-| HM-02-P03 | Uhr | Uhrzeit und Datum rechts, Datum mindestens 20 px | offen |
+| HM-02-P03 | Uhr | Uhrzeit und Datum rechts, Datum mindestens `Font.Size.Caption` | offen |
 | HM-02-P04 | Service-Variante | Betriebsart „Service“ mit Warnsymbol und Wort | offen |
-| HM-02-P05 | Proportionen | Spalten 12* : 13* : 6* : 4*, Höhe 96 px bei 1920 × 1080 | offen |
+| HM-02-P05 | Proportionen | Spalten 12* : 13* : 6* : 4*, Höhe `Size.Header.Height` | offen |
 | HM-02-P06 | Seitenübergreifend | identisch auf allen Vollseiten | offen |

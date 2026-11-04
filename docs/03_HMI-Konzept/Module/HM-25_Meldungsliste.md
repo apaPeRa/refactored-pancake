@@ -44,7 +44,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 
 ## WPF-Umsetzung
 - **Control:** `HM25_MessageList` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
-- **Typ:** `UserControl` (`HM25_MessageList`) auf Basis `ListView`/`ItemsControl` mit virtualisierendem Panel; Zeilenhöhe 48 px; Spalten per `GridViewColumn` oder `DataTemplate` je Listenart.
+- **Typ:** `UserControl` (`HM25_MessageList`) auf Basis `ListView`/`ItemsControl` mit virtualisierendem Panel; Zeilenhöhe `Size.Touch.Min`; Spalten per `GridViewColumn` oder `DataTemplate` je Listenart.
 - **Dependency Properties:** `Items`, `ListKind`, `SelectedItem`, `TotalCount`, `IsFiltered`; **Commands:** vier Scrollbefehle.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Scroll.Up`, `Icon.Scroll.Down` (Designsystem); `Icon.Scroll.First`, `Icon.Scroll.Last` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
@@ -55,7 +55,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 |---|---|---|---|
 | HM-25-P01 | Spalten | Archiv: Zeit, Ereignis, Beschreibung; Anzeige: Nummer, Meldung | offen |
 | HM-25-P02 | Klassen | jede Klasse mit Symbol und Wort | offen |
-| HM-25-P03 | Scrollen | vier Tasten ≥ 64 px oder Rollbalken, Wischen | offen |
+| HM-25-P03 | Scrollen | vier Tasten ≥ `Size.Touch.Default` oder Rollbalken, Wischen | offen |
 | HM-25-P04 | Auswahl | markierte Zeile mit Rahmen und Haken | offen |
 | HM-25-P05 | Zähler | „500 von 111427“ als Text | offen |
 | HM-25-P06 | Sortierung | absteigend nach Zeit bzw. Nummer | offen |

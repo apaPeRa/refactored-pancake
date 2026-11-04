@@ -42,7 +42,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM17_TitleBar` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM17_TitleBar`).
 - **Dependency Properties:** `Title`, `Values`, `DeviationLimit`, `TitleAlignment`; **Command:** `DetailCommand`.
-- Detail-Symbol `Icon.Move` mit Trefferfläche ≥ 48 px.
+- Detail-Symbol `Icon.Move` mit Trefferfläche ≥ `Size.Touch.Min`.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Move` (Designsystem).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -53,5 +53,5 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-17-P01 | DS-04 | Text „Sollgewicht KW: 235 g \| Letztes Gewicht KW: 238 g“ über den Karten | offen |
 | HM-17-P02 | Objekt | HS-27, HS-31, HS-32, HS-34 zeigen den Objektnamen und wechseln ihn mit HM-19 | offen |
 | HM-17-P03 | Schreibweise | Wert, geschütztes Leerzeichen, „g“ | offen |
-| HM-17-P04 | Detail-Symbol | rechts in der Zeile, Trefferfläche ≥ 48 px | offen |
+| HM-17-P04 | Detail-Symbol | rechts in der Zeile, Trefferfläche ≥ `Size.Touch.Min` | offen |
 | HM-17-P05 | Keine Unterstreichung | Linie statt Unterstreichung | offen |

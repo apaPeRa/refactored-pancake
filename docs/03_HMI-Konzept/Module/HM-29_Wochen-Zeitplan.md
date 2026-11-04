@@ -22,7 +22,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 |---|---|---|
 | Spalte leer | Kopfzelle `Brush.Surface.Sunken`, Plus-Taste | Tagesname und Plus-Symbol `Icon.Add` |
 | Heizphase | `Brush.Surface`, Kontur `Border.Medium` `Brush.Border.Control` | `Icon.Schedule.Heat` und Text „08:00 ein … 16:00 aus“ |
-| Absenkphase | eingerückt innerhalb der Heizphase, Kontur gestrichelt | `Icon.Schedule.Setback` und Text „12:00 absenken“, „13:00 aufheizen“ |
+| Absenkphase | eingerückt innerhalb der Heizphase, Kontur gestrichelt (`Border.Dash`) | `Icon.Schedule.Setback` und Text „12:00 absenken“, „13:00 aufheizen“ |
 | Gedrückt | `Brush.Button.Pressed` | Kontur `Border.Medium` |
 | Berechtigung | Plus-Taste | `Icon.Key` bzw. `Icon.Lock` |
 | Ungültig / Überschneidung | Kontur `Border.Thick` `Brush.Status.Error.Fill` | `Icon.Status.Error` und Text (Annahme, nicht beschrieben) |
@@ -40,7 +40,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM29_WeekSchedule` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM29_WeekSchedule`), `UniformGrid` mit 7 Spalten und `ItemsControl` je Tag.
 - **Dependency Properties:** `Entries`, `FirstDay`; **Commands:** `AddCommand`, `EditCommand`.
-- Eintragshöhe ≥ 64 px; scrollt bei vielen Einträgen.
+- Eintragshöhe ≥ `Size.Touch.Default`; scrollt bei vielen Einträgen.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Schedule.Heat`, `Icon.Schedule.Setback`, `Icon.Add` (neu); `Icon.Schedule` (Designsystem).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.

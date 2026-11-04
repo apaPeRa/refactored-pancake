@@ -30,12 +30,12 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal | `Brush.Surface`, Kontur `Border.Thin` `Brush.Border.Control`, Wert `Font.Size.Value` `Font.Weight.Strong` `Brush.Text.Primary`, Einheit `Brush.Text.Secondary`, Höhe 64 | Beschriftung, Einheit; `Icon.Key` 24 px oben rechts |
+| Normal | `Brush.Surface`, Kontur `Border.Thin` `Brush.Border.Control`, Wert `Font.Size.Value` `Font.Weight.Strong` `Brush.Text.Primary`, Einheit `Brush.Text.Secondary`, Höhe `Size.Touch.Default` | Beschriftung, Einheit; `Icon.Key` (`Size.Icon.S`) oben rechts |
 | Gedrückt | `Brush.Button.Pressed`, Kontur `Border.Medium` | dickere Kontur |
 | In Bearbeitung | Kontur `Border.Thick` `Brush.Border.Focus` | Rahmen (Form) und geöffnetes Pop-up |
 | Fehler | Kontur `Border.Thick` `Brush.Status.Error.Fill`, Fläche `Brush.Status.Error.Subtle` | `Icon.Status.Error` und Fehlertext („Wert außerhalb 0 bis 100 %“) |
 | Nicht berechtigt | Normal, öffnet kein Pop-up | `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ |
-| Deaktiviert | Kontur gestrichelt, Text `Brush.Text.Disabled` | gestrichelte Kontur; Grund in Meldezeile (A-28) |
+| Deaktiviert | Kontur gestrichelt (`Border.Dash`), Text `Brush.Text.Disabled` | gestrichelte Kontur; Grund in Meldezeile (A-28) |
 | Geändert, nicht geschrieben | Normal | Punkt-Symbol `Icon.State.Pending` und Text „Nicht geschrieben“ |
 | Ohne Schlüssel | Normal | kein Schlüssel-Symbol |
 
@@ -75,7 +75,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM12_ValueInput` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM12_ValueInput`); Pop-up über `IDialogService.ShowInputAsync(...)` aus dem ViewModel, nicht im Control.
 - **Dependency Properties:** `Label`, `NumberValue`, `TextValue`, `InputKind`, `Unit`, `Decimals`, `Minimum`, `Maximum`, `RequiresPermission`, `RequiredRole`, `IsAuthorized`, `Icon`, `Counter`, `CoupledCounter`, `IsPendingWrite`, `ErrorText`; **Command:** `CommitCommand`.
-- **Maße:** Höhe `Size.Touch.Default`, Trefferfläche ≥ 48 px, Schlüssel 24 px.
+- **Maße:** Höhe `Size.Touch.Default`, Trefferfläche ≥ `Size.Touch.Min`, Schlüssel `Size.Icon.S`.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Key`, `Icon.Lock` (Designsystem); `Icon.State.Pending` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -89,4 +89,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-12-P04 | Nicht berechtigt | kein Pop-up, Schloss und Hinweistext | offen |
 | HM-12-P05 | Ungültig | Fehlertext mit Symbol, nicht nur Rotfärbung | offen |
 | HM-12-P06 | Abgrenzung | Anzeigefelder ohne Schlüssel sind HM-11 | offen |
-| HM-12-P07 | Touch | Höhe 64 px, Schlüssel nicht als eigenes Ziel | offen |
+| HM-12-P07 | Touch | Höhe `Size.Touch.Default`, Schlüssel nicht als eigenes Ziel | offen |

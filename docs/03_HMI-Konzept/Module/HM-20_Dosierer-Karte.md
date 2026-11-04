@@ -30,7 +30,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal | `Brush.Surface`, Kontur `Border.Thin`, `Radius.Card`, Innenabstand `Space.M`, Titel `Font.Size.Value`, Detail-Symbol 48 px oben rechts | Titel als Text |
+| Normal | `Brush.Surface`, Kontur `Border.Thin`, `Radius.Card`, Innenabstand `Space.M`, Titel `Font.Size.Value`, Detail-Symbol `Size.Icon.L` oben rechts | Titel als Text |
 | Ausgewählt | Kontur `Border.Thick` `Brush.Border.Focus` | Text „Ausgewählt“ und `Icon.State.On` im Titel |
 | Gesperrt | Tasten deaktiviert (gestrichelt), `Brush.Text.Disabled` | `Icon.Lock` und Text „Gesperrt“ |
 | Entleeren läuft | Taste Entleeren im Zustand Läuft (HM-07) | Wort „Läuft“ |

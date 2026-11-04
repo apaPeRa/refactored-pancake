@@ -1,7 +1,7 @@
 # HM-06 – Funktionsleiste unten
 
 ## Funktion
-Leiste am unteren Rand (Zeile 4*, 96 px, `Brush.Surface.Sunken`) als Container für die seitenspezifischen Tasten ([HM-07](HM-07_Aktionstaste.md), [HM-08](HM-08_Zustandstaste-Umschalter.md)) und die Blättertasten ([HM-19](HM-19_Blaettertasten.md)). Tasten beginnen links mit 16 px Abstand, Breite je Taste mindestens 224 px (`Size.FunctionButton.MinWidth`), höchstens 5 seitenspezifische Tasten, weitere hinter einer Überlauf-Taste „Mehr“ (`Icon.More`); eine rechtsbündige Gruppe nimmt die Hauptaktion der Seite auf. Die Leiste bleibt auch leer sichtbar (Rahmenkonsistenz). Die festen Tasten der Referenz (Produktion, Einstellungen, Zurück) liegen in der Seitenleiste [HM-01](HM-01_Seitenleiste.md).
+Leiste am unteren Rand (Zeile `Size.FunctionBar.Height`, `Brush.Surface.Sunken`) als Container für die seitenspezifischen Tasten ([HM-07](HM-07_Aktionstaste.md), [HM-08](HM-08_Zustandstaste-Umschalter.md)) und die Blättertasten ([HM-19](HM-19_Blaettertasten.md)). Tasten beginnen links mit `Size.Touch.Gap` Abstand, Breite je Taste mindestens `Size.FunctionButton.MinWidth`, höchstens 5 seitenspezifische Tasten, weitere hinter einer Überlauf-Taste „Mehr“ (`Icon.More`); eine rechtsbündige Gruppe nimmt die Hauptaktion der Seite auf. Die Leiste bleibt auch leer sichtbar (Rahmenkonsistenz). Die festen Tasten der Referenz (Produktion, Einstellungen, Zurück) liegen in der Seitenleiste [HM-01](HM-01_Seitenleiste.md).
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -17,9 +17,9 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Mit Tasten | `Brush.Surface.Sunken`, Tasten `Size.Touch.Default` 64 px, Innenrand 16 px | Tastenbeschriftung |
+| Mit Tasten | `Brush.Surface.Sunken`, Tasten `Size.Touch.Default`, Innenrand `Space.M` | Tastenbeschriftung |
 | Leer | `Brush.Surface.Sunken` bleibt sichtbar | keine Platzhalter |
-| Taste der aktuellen Seite | `Brush.Button.Active`, Text `Brush.Text.OnActive` | Haken-Symbol `Icon.State.On` und Balken 4 px unter der Taste |
+| Taste der aktuellen Seite | `Brush.Button.Active`, Text `Brush.Text.OnActive` | Haken-Symbol `Icon.State.On` und Balken (`Border.Thick`) unter der Taste |
 | Überlauf (> 5 Tasten) | Taste „Mehr“ | Text „Mehr“ und `Icon.More` |
 
 ## Verwendet auf Seiten (IDs)
@@ -82,8 +82,8 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## Prüfpunkte
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
-| HM-06-P01 | Lage | unten, volle Breite des Arbeitsbereichs, 96 px hoch | offen |
+| HM-06-P01 | Lage | unten, volle Breite des Arbeitsbereichs, Höhe `Size.FunctionBar.Height` | offen |
 | HM-06-P02 | Tastenzahl | DS-03: 3 (Temperatur, Druck, Zeitplan), DS-01: 1 (Schichtplan), DS-02: 1 (Sprache) | offen |
 | HM-06-P03 | Leer | Leiste bleibt als Fläche sichtbar | offen |
 | HM-06-P04 | Aktuelle Seite | Taste der aktuellen Seite mit Symbol und Balken | offen |
-| HM-06-P05 | Touch | Tasten 64 px hoch, Abstand 16 px | offen |
+| HM-06-P05 | Touch | Tasten `Size.Touch.Default` hoch, Abstand `Size.Touch.Gap` | offen |

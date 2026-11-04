@@ -25,7 +25,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Geöffnet | in [HM-14](HM-14_Popup-Rahmen.md): `Brush.Surface`, Eingabezeile `Font.Size.Metric`, Ziffernblock-Tasten 96 × 64 (`Brush.Button.Normal`) | Titel und Einheit als Text; Grenzen als Caption „Bereich 0 bis 100 %“ |
+| Geöffnet | in [HM-14](HM-14_Popup-Rahmen.md): `Brush.Surface`, Eingabezeile `Font.Size.Metric`, Ziffernblock-Tasten `Size.Touch.Large` × `Size.Touch.Default` (`Brush.Button.Normal`) | Titel und Einheit als Text; Grenzen als Caption „Bereich 0 bis 100 %“ |
 | Eingabe gültig | Übernehmen aktiv (`Brush.Button.Active`) | `Icon.Confirm` und Text „Übernehmen“ |
 | Eingabe ungültig | Eingabezeile Kontur `Border.Thick` `Brush.Status.Error.Fill`, Fläche `Brush.Status.Error.Subtle`; Übernehmen deaktiviert (gestrichelt) | `Icon.Status.Error` und Fehlertext |
 | Taste gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
@@ -68,7 +68,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM13_NumericKeypadDialog` (UserControl (Inhalt von HM14_PopupFrame)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` als Inhalt von `HM14_PopupFrame`; Ergebnis über `IDialogService.ShowInputAsync(InputRequest) : Task<InputResult?>`.
 - **Dependency Properties:** `Title`, `CurrentValue`, `InputText`, `Unit`, `Minimum`, `Maximum`, `Decimals`, `InputKind`, `IsValid`, `ErrorText`; **Commands:** `ApplyCommand`, `CancelCommand`, `DigitCommand`, `BackspaceCommand`, `ClearCommand`, `SignCommand`, `DecimalSeparatorCommand`.
-- **Maße:** Ziffernblock 3 × 4 Tasten, 96 × 64, Abstand `Space.M`; Dialogbreite ca. 640 px (unter 60 % Fensterbreite).
+- **Maße:** Ziffernblock 3 × 4 Tasten `Size.Touch.Large` × `Size.Touch.Default`, Abstand `Space.M`; Dialogbreite höchstens `Size.Popup.WidthRatio` der Fensterbreite.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Confirm`, `Icon.Close`, `Icon.Action.Backspace` (neu: `Icon.Action.Backspace`).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -77,7 +77,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HM-13-P01 | Öffnen | Antippen eines berechtigten HM-12 öffnet den Dialog mit vorbelegtem Wert | offen |
-| HM-13-P02 | Ziffernblock | 0 bis 9, Komma, Vorzeichen, Rücktaste, Löschen; Tasten ≥ 64 px hoch | offen |
+| HM-13-P02 | Ziffernblock | 0 bis 9, Komma, Vorzeichen, Rücktaste, Löschen; Tasten ≥ `Size.Touch.Default` hoch | offen |
 | HM-13-P03 | Grenzen | Min/Max mit Einheit sichtbar | offen |
 | HM-13-P04 | Ungültig | Fehlertext mit Symbol, Übernehmen deaktiviert | offen |
 | HM-13-P05 | Zeit | Zeitvariante hh:mm für HM-30 | offen |

@@ -1,7 +1,7 @@
 # HM-08 – Zustandstaste / Umschalter
 
 ## Funktion
-Ein/Aus-Element für eine Teilfunktion. Eine Funktion, zwei Darstellungen als Parameter: **Schalter** (Bahn 96 × 48 mit Knopf, Beschriftung links, Wort rechts) und **Taste** (Taste 64 px hoch mit Beschriftung, Symbol und Wort). Beide zeigen den Zustand über Position/Symbol und Wort („Ein“/„Aus“), nicht über Grün (A-31). Textumschaltung je Zustand ist möglich („Ausschalten“/„Einschalten“, „Fortlaufend“/„Einzel“). Berechtigungssymbol und Ausstehend-Zustand (Befehl gesendet, Rückmeldung fehlt) sind Parameter.
+Ein/Aus-Element für eine Teilfunktion. Eine Funktion, zwei Darstellungen als Parameter: **Schalter** (Bahn `Size.Toggle.Width` × `Size.Toggle.Height` mit Knopf `Size.Toggle.Knob`, Beschriftung links, Wort rechts) und **Taste** (Taste `Size.Touch.Default` hoch mit Beschriftung, Symbol und Wort). Beide zeigen den Zustand über Position/Symbol und Wort („Ein“/„Aus“), nicht über Grün (A-31). Textumschaltung je Zustand ist möglich („Ausschalten“/„Einschalten“, „Fortlaufend“/„Einzel“). Berechtigungssymbol und Ausstehend-Zustand (Befehl gesendet, Rückmeldung fehlt) sind Parameter.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -27,9 +27,9 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Aus | `Brush.Button.Normal`, Kontur `Border.Thin`, Knopf links | `Icon.State.Off` und Wort „Aus“ |
 | Ein | `Brush.Button.Active`, Text `Brush.Text.OnActive`, Knopf rechts, Bahn gefüllt (neutral, nicht grün) | `Icon.State.On` und Wort „Ein“ |
 | Gedrückt | `Brush.Button.Pressed`, Kontur `Border.Medium` | dickere Kontur |
-| Ausstehend | Zustand wie Soll, Kontur gestrichelt | `Icon.State.Pending` und Text „Wird gesetzt“ |
+| Ausstehend | Zustand wie Soll, Kontur gestrichelt (`Border.Dash`) | `Icon.State.Pending` und Text „Wird gesetzt“ |
 | Fehler | Kontur `Border.Thick` `Brush.Status.Error.Fill`, Fläche `Brush.Status.Error.Subtle` | `Icon.Status.Error` und Fehlertext |
-| Deaktiviert | Kontur gestrichelt, Text `Brush.Text.Disabled` | gestrichelte Kontur; Grund in Meldezeile (A-28) |
+| Deaktiviert | Kontur gestrichelt (`Border.Dash`), Text `Brush.Text.Disabled` | gestrichelte Kontur; Grund in Meldezeile (A-28) |
 | Berechtigung | Normal | `Icon.Key` (berechtigt) bzw. `Icon.Lock` (nicht berechtigt) |
 
 ## Verwendet auf Seiten (IDs)
@@ -55,7 +55,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM08_ToggleSwitch` (ControlTemplate auf `ToggleButton`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `ControlTemplate` auf `ToggleButton` (Stile `HM08_SwitchStyle`, `HM08_ToggleButtonStyle`); `HM08_ToggleSwitch` als Control mit den Eigenschaften der Tabelle.
 - **Dependency Properties:** `Label`, `IsChecked`, `OnText`, `OffText`, `ToggleStyle`, `Icon`, `IsPending`, `ErrorText`, `RequiresPermission`, `IsAuthorized`; **Command:** `ToggleCommand`.
-- **Maße:** Bahn 96 × 48, Knopf 40, ganze Zeile (≥ 64 px) antippbar; Knopfbewegung ohne Verzögerung > 100 ms.
+- **Maße:** Bahn `Size.Toggle.Width` × `Size.Toggle.Height`, Knopf `Size.Toggle.Knob`, ganze Zeile (≥ `Size.Touch.Default`) antippbar; Knopfbewegung ohne Verzögerung > 100 ms.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.State.On`, `Icon.State.Off` (Designsystem); `Icon.State.Pending` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -68,4 +68,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-08-P03 | Beispiele | DS-01 8 Umschalter, DS-04 je Karte 3 (Querschnecke, Rührer, Regulierung), DS-03 Tasten Heizung, Standby, Pumpe, Zeitplan, DS-05 Ein/Aus | offen |
 | HM-08-P04 | Textumschaltung | Fortlaufend/Einzel und Ausschalten/Einschalten ersetzen das Wort | offen |
 | HM-08-P05 | Fehler und Ausstehend | jeweils mit Symbol und Text | offen |
-| HM-08-P06 | Touch | Trefferfläche ≥ 64 px hoch | offen |
+| HM-08-P06 | Touch | Trefferfläche ≥ `Size.Touch.Default` hoch | offen |

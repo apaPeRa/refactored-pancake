@@ -42,7 +42,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM22_WeightCorrectionTable` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM22_WeightCorrectionTable`), zwei `ItemsControl`-Blöcke mit `HM12_ValueInput` je Zelle.
 - **Dependency Properties:** `Points`, `TargetWeight`, `ValidPointCount`, `CalculationState`; **Commands:** `AdjustCommand`, `TriggerCommand`.
-- Zeilenhöhe 48 px; zwei Blöcke nebeneinander.
+- Zeilenhöhe `Size.Touch.Min`; zwei Blöcke nebeneinander.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 

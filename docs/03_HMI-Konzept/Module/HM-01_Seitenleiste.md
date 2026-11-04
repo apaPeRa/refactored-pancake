@@ -1,7 +1,7 @@
 # HM-01 – Seitenleiste
 
 ## Funktion
-Dunkle, neutrale Leiste am linken Rand (Spalte 3* von 40*, 144 px, volle Höhe), auf allen Seiten außer den Pop-ups. Oben die Benutzerkennung (Kreis 64 px mit Initialen, Name, Rolle, Berechtigungssymbol), darunter die Symboltasten Home (Produktion), Einstellungen und Meldungen, ganz unten Zurück (eine Ebene). Sie übernimmt die festen Navigationstasten „Produktion“, „Einstellungen“, „Zurück“ der Referenz-Fußleiste ([RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md)); der Benutzerkreis öffnet das Benutzer-Pop-up (Anmelden/Abmelden) und ersetzt das gelbe Schloss der Referenz (A-35). Zeitformat und Zähler-Punkt: A-47. Alle Symbole tragen eine Kurzbeschriftung (Caption 20 px) und einen Barrierefreiheitsnamen (OP-21).
+Dunkle, neutrale Leiste am linken Rand (Spalte `Size.Sidebar.Width`, volle Höhe), auf allen Seiten außer den Pop-ups. Oben die Benutzerkennung (Kreis `Size.Avatar` mit Initialen, Name, Rolle, Berechtigungssymbol), darunter die Symboltasten Home (Produktion), Einstellungen und Meldungen, ganz unten Zurück (eine Ebene). Sie übernimmt die festen Navigationstasten „Produktion“, „Einstellungen“, „Zurück“ der Referenz-Fußleiste ([RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md)); der Benutzerkreis öffnet das Benutzer-Pop-up (Anmelden/Abmelden) und ersetzt das gelbe Schloss der Referenz (A-35). Zeitformat und Zähler-Punkt: A-47. Alle Symbole tragen eine Kurzbeschriftung (`Font.Size.Caption`) und einen Barrierefreiheitsnamen (OP-21).
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -28,9 +28,9 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Normal | `Brush.Sidebar` Grund, Symbole `Brush.Sidebar.Text`, Caption `Brush.Sidebar.Text.Secondary`, Symbol `Size.Icon.L`, Eintrag volle Spaltenbreite × 96 (`Size.Touch.Large`), Avatar `Size.Avatar` | Symbol und Kurzbeschriftung |
 | Aktuelle Seite | `Brush.Sidebar.Selected` Hintergrund | Balken am linken Rand (`Size.SelectionBar`, Form) zusätzlich zum Hintergrund |
 | Gedrückt | Hintergrund `Brush.Sidebar.Selected`, Kontur `Border.Medium` | dickere Kontur; Auslösen beim Loslassen |
-| Deaktiviert (Zurück auf Startseite) | Symbol `Brush.Sidebar.Text.Secondary`, Kontur gestrichelt | gestrichelte Kontur; Tippen nennt Grund in der Meldezeile (A-28) |
+| Deaktiviert (Zurück auf Startseite) | Symbol `Brush.Sidebar.Text.Secondary`, Kontur gestrichelt (`Border.Dash`) | gestrichelte Kontur; Tippen nennt Grund in der Meldezeile (A-28) |
 | Neue Meldungen | Zähler-Punkt am Symbol `Icon.Messages`, `Brush.Status.Warning.Fill` mit `Brush.Status.Warning.On` | Zahl im Punkt (1 bis 99) |
-| Angemeldet | Kreis `Brush.Sidebar.Selected`, Initialen `Brush.Sidebar.Text`, `Icon.Key` 24 px | Name und Rolle als Text; Schlüssel-Symbol |
+| Angemeldet | Kreis `Brush.Sidebar.Selected`, Initialen `Brush.Sidebar.Text`, `Icon.Key` (`Size.Icon.S`) | Name und Rolle als Text; Schlüssel-Symbol |
 | Abgemeldet | neutraler Kreis, `Icon.User` | Text „Nicht angemeldet“ und `Icon.Lock` |
 
 ## Verwendet auf Seiten (IDs)
@@ -99,7 +99,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-01-P01 | Inhalt | Kreis mit Initialen, Name und Rolle oben | offen |
 | HM-01-P02 | Navigation | 3 Symboltasten oben (Home, Einstellungen, Meldungen), Zurück ganz unten | offen |
 | HM-01-P03 | Aktuelle Seite | Eintrag der aktuellen Seite mit Balken links und hellerem Grund | offen |
-| HM-01-P04 | Touch | jeder Eintrag volle Spaltenbreite × 96 px, Abstand ≥ 16 px | offen |
+| HM-01-P04 | Touch | jeder Eintrag volle Spaltenbreite × `Size.Touch.Large`, Abstand ≥ `Size.Touch.Gap` | offen |
 | HM-01-P05 | Beschriftung | jedes Symbol hat Kurzbeschriftung und Barrierefreiheitsname aus `.resx` | offen |
 | HM-01-P06 | Kontrast | Name und Rolle ≥ 4,5 : 1 auf `Brush.Sidebar` (7,89 : 1 / 8,88 : 1) | offen |
 | HM-01-P07 | Seitenübergreifend | identisch auf allen Vollseiten, auf Pop-ups (HS-02, HS-03) nicht sichtbar | offen |

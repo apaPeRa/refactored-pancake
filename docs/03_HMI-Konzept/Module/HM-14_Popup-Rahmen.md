@@ -1,7 +1,7 @@
 # HM-14 – Pop-up-Rahmen
 
 ## Funktion
-Modaler Rahmen über der Seite für alle Pop-ups (Produktionszähler, Maschinengeschwindigkeit, [Eingabe-Pop-up](HM-13_Eingabe-Pop-up.md), [Zeitplan-Eintrag](HM-30_Zeitplan-Eintrag-Pop-up.md), Bestätigungen). Titelzeile 64 px mit Schließen-Kreuz oben rechts (64 px), freier Inhalt, optionale Taste „Schließen“ unten rechts. Dahinter liegt der Scrim; der Hintergrund ist gesperrt (Annahme der Referenz). Maximale Breite 60 %, kein Schatten.
+Modaler Rahmen über der Seite für alle Pop-ups (Produktionszähler, Maschinengeschwindigkeit, [Eingabe-Pop-up](HM-13_Eingabe-Pop-up.md), [Zeitplan-Eintrag](HM-30_Zeitplan-Eintrag-Pop-up.md), Bestätigungen). Titelzeile (`Size.Popup.TitleHeight`) mit Schließen-Kreuz oben rechts (`Size.Touch.Default`), freier Inhalt, optionale Taste „Schließen“ unten rechts. Dahinter liegt der Scrim; der Hintergrund ist gesperrt (Annahme der Referenz). Maximale Breite 60 %, kein Schatten.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -71,6 +71,6 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-14-P01 | Aufbau | Titelzeile, Schließen-Kreuz oben rechts, Inhalt, Taste „Schließen“ unten rechts | offen |
 | HM-14-P02 | Modal | Scrim dahinter, Seite nicht bedienbar | offen |
 | HM-14-P03 | Breite | höchstens 60 % der Fensterbreite | offen |
-| HM-14-P04 | Touch | Schließen-Kreuz und -Taste ≥ 64 px | offen |
+| HM-14-P04 | Touch | Schließen-Kreuz und -Taste ≥ `Size.Touch.Default` | offen |
 | HM-14-P05 | Kein Schatten | Tiefe nur über Scrim und Kontur | offen |
 | HM-14-P06 | Dokumentierte Pop-ups | HS-02 und HS-03 nutzen den Rahmen | offen |

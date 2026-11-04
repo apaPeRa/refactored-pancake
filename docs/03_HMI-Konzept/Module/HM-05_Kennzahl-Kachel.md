@@ -14,7 +14,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Einheit (`Unit`) | string | – | „1/min“, „°“, „g“, „Stk“, „%“ |
 | Format (`StringFormat`) | string | – | z. B. „N0“, „N1“ |
 | Index (`Index`) | int? | – | optional, 1 bis 99 |
-| Größe (`TileSize`) | enum TileSize { Frame, Content } | – | Frame: Mindestbreite 224 px |
+| Größe (`TileSize`) | enum TileSize { Frame, Content } | – | Frame: Mindestbreite `Size.Metric.MinWidth` |
 | Bedienbar (`IsInteractive`) | bool | – | true öffnet Pop-up |
 | Öffnen (`OpenCommand`) | ICommand | – | Ziel HS-02, HS-03 oder keines |
 
@@ -24,7 +24,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
 | Anzeige | `Brush.Surface`, Kontur `Border.Thin`, Wert `Font.Size.Metric` `Brush.Text.Primary`, Einheit `Font.Size.Caption` `Brush.Text.Secondary`, `Size.Icon.M` | Symbol und Einheit als Text |
-| Bedienbar | wie Anzeige, zusätzlich `Icon.Chevron` rechts | Chevron-Symbol; Höhe 64 px |
+| Bedienbar | wie Anzeige, zusätzlich `Icon.Chevron` rechts | Chevron-Symbol; Höhe `Size.Touch.Default` |
 | Gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
 | Wert ungültig | wie Anzeige | Text „---“ |
 | Mit Index | Zahl `Font.Size.Caption` unten rechts | Zahl als Text |

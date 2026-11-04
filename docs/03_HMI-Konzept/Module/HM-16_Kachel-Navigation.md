@@ -11,7 +11,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Kacheln (`Items`) | IReadOnlyList<TileItem> | – | je Label, Icon, TargetPageId oder Command, IsEmpty, RequiresPermission |
 | Spalten (`Columns`) | int | – | 1 bis 6 (5, 4, 4, 3, 3 in der Referenz) |
 | Zeilen (`Rows`) | int | – | 1 bis 4 |
-| Kachelgröße (`TileSize`) | enum TileSize { Large, Small } | px | Large 96 hoch, Small 64 hoch („Beleuchtung“) |
+| Kachelgröße (`TileSize`) | enum TileSize { Large, Small } | px | Large `Size.Touch.Large` hoch, Small `Size.Touch.Default` hoch („Beleuchtung“) |
 | Leere Kacheln (`EmptyTileMode`) | enum EmptyTileMode { Reserved, Hidden } | – | Reserved Standard (A-29) |
 | Befehl (`NavigateCommand`) | ICommand (Parameter TileItem) | – | Seite oder Aktion |
 
@@ -20,11 +20,11 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal | `Brush.Button.Normal`, Kontur `Border.Thin`, Text `Font.Size.Body` zentriert, `Radius.Control`, Höhe 96 | Beschriftung (und Symbol) |
+| Normal | `Brush.Button.Normal`, Kontur `Border.Thin`, Text `Font.Size.Body` zentriert, `Radius.Control`, Höhe `Size.Touch.Large` | Beschriftung (und Symbol) |
 | Gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
-| Leer / reserviert | Kontur gestrichelt, Text `Brush.Text.Disabled` | gestrichelte Kontur und Text „Reserviert“ |
+| Leer / reserviert | Kontur gestrichelt (`Border.Dash`), Text `Brush.Text.Disabled` | gestrichelte Kontur und Text „Reserviert“ |
 | Deaktiviert | wie leer, mit Beschriftung | gestrichelte Kontur; Grund in Meldezeile (A-28) |
-| Berechtigung | Normal | `Icon.Key` bzw. `Icon.Lock` 24 px oben rechts |
+| Berechtigung | Normal | `Icon.Key` bzw. `Icon.Lock` (`Size.Icon.S`) oben rechts |
 | Warnaktion | Normal | `Icon.Status.Warning` in der Kachel; Bestätigung vor Ausführung |
 
 ## Verwendet auf Seiten (IDs)
@@ -46,7 +46,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM16_TileNavigation` (UserControl (Kachel: `ControlTemplate` auf `Button`)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`ItemsControl` mit `UniformGrid`), Kachel `HM16_Tile` als `ControlTemplate`.
 - **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`; **Command:** `NavigateCommand`.
-- Abstand zwischen Kacheln `Size.Touch.Gap` (16 px), Beschriftung aus `.resx`, Umbruch automatisch (OP-13).
+- Abstand zwischen Kacheln `Size.Touch.Gap`, Beschriftung aus `.resx`, Umbruch automatisch (OP-13).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 
@@ -58,4 +58,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-16-P03 | Leere Kachel | gleiche Gestalt, Text „Reserviert“, deaktiviert | offen |
 | HM-16-P04 | Beschriftung | automatischer Umbruch, keine Trennstriche („Schließmaschine“) | offen |
 | HM-16-P05 | Raster Referenz | HS-04 5 × 4 (18 beschriftet, 2 leer), HS-30 4 × 4, HS-33 4 × 2, HS-35 3 × 3 | offen |
-| HM-16-P06 | Touch | Höhe ≥ 96 px (Small 64 px), Abstand 16 px | offen |
+| HM-16-P06 | Touch | Höhe ≥ `Size.Touch.Large` (Small `Size.Touch.Default`), Abstand `Size.Touch.Gap` | offen |

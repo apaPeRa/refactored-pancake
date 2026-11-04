@@ -40,7 +40,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM32_PackRegisterGraphic` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM32_PackRegisterGraphic`) in einem `ScrollViewer` (horizontal), Stationen als `ItemsControl` mit `Canvas`-Layout; Legende `HM32_Legend`.
 - **Dependency Properties:** `Stations`, `ShowLegend`; **Command:** `ToggleStationCommand`.
-- Stationsfeld mindestens 48 × 48 px.
+- Stationsfeld mindestens `Size.Touch.Min` × `Size.Touch.Min`.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Pack.Present`, `Icon.Pack.Filled` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -52,4 +52,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-32-P02 | Zustände | fünf Zustände mit Symbol und Wort, Legende dazu | offen |
 | HM-32-P03 | Antippen | ändert den Zustand der Station | offen |
 | HM-32-P04 | Bildlauf | horizontales Scrollen | offen |
-| HM-32-P05 | Touch | Stationsfelder ≥ 48 px | offen |
+| HM-32-P05 | Touch | Stationsfelder ≥ `Size.Touch.Min` | offen |

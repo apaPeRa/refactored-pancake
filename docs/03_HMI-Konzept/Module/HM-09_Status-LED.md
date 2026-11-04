@@ -1,7 +1,7 @@
 # HM-09 – Status-LED
 
 ## Funktion
-Runde Anzeige für einen Zustand mit Beschriftung; nur Anzeige, nicht bedienbar. Die zwei Entwurfsvarianten (Ring/flach) und die Farbvarianten der Referenz (grau/grün/rot) werden eine Variante: Kreis 32 px mit Statussymbol in der Statusfarbe und Wort. Anordnung als Parameter: einzeln, in Liste (Statusliste), kompakt in Tabellen/Gittern (ohne Wort, Symbol bleibt). Optionales Fachsymbol (Trichter) und Kennung (SPS-Name) sind möglich.
+Runde Anzeige für einen Zustand mit Beschriftung; nur Anzeige, nicht bedienbar. Die zwei Entwurfsvarianten (Ring/flach) und die Farbvarianten der Referenz (grau/grün/rot) werden eine Variante: Kreis `Size.Led` mit Statussymbol in der Statusfarbe und Wort. Anordnung als Parameter: einzeln, in Liste (Statusliste), kompakt in Tabellen/Gittern (ohne Wort, Symbol bleibt). Optionales Fachsymbol (Trichter) und Kennung (SPS-Name) sind möglich.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -52,7 +52,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM09_StatusLed` (ControlTemplate auf `Control`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `ControlTemplate` auf `Control` (`HM09_StatusLed`), Symbol per `Path` aus `Themes/Icons.xaml`.
 - **Dependency Properties:** `Label`, `State`, `StateText`, `ShowStateWord`, `IsCompact`, `Icon`, `Identifier`.
-- **Maße:** LED 32 px (`Size.Icon.M`), Zeile ≥ 48 px mit Beschriftung. Nicht fokussierbar (`IsHitTestVisible=False`).
+- **Maße:** LED `Size.Led`, Zeile ≥ `Size.Touch.Min` mit Beschriftung. Nicht fokussierbar (`IsHitTestVisible=False`).
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Status.*` (Designsystem); `Icon.Fill.Hopper` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.

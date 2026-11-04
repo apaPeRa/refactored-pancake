@@ -24,12 +24,12 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal | `Brush.Button.Normal`, Kontur `Border.Thin` `Brush.Border.Control`, Text `Brush.Text.Primary`, Höhe 64, `Radius.Control` | Beschriftung |
+| Normal | `Brush.Button.Normal`, Kontur `Border.Thin` `Brush.Border.Control`, Text `Brush.Text.Primary`, Höhe `Size.Touch.Default`, `Radius.Control` | Beschriftung |
 | Gedrückt | `Brush.Button.Pressed`, Kontur `Border.Medium` | dickere Kontur; Auslösen beim Loslassen im Ziel |
 | Halten | wie gedrückt, Fortschrittsstreifen unten in `Brush.Progress.Fill` | Streifen und Text „Halten …“ |
 | Läuft (Dauerfunktion) | `Brush.Button.Active`, Text `Brush.Text.OnActive` | `Icon.State.On` und Wort „Läuft“ |
-| Deaktiviert | Kontur gestrichelt, Text `Brush.Text.Disabled` | gestrichelte Kontur; Tippen nennt Grund in der Meldezeile (A-28) |
-| Berechtigung vorhanden | Normal | `Icon.Key` 24 px oben rechts |
+| Deaktiviert | Kontur gestrichelt (`Border.Dash`), Text `Brush.Text.Disabled` | gestrichelte Kontur; Tippen nennt Grund in der Meldezeile (A-28) |
+| Berechtigung vorhanden | Normal | `Icon.Key` (`Size.Icon.S`) oben rechts |
 | Berechtigung fehlt | Normal, nicht bedienbar | `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ |
 
 ## Verwendet auf Seiten (IDs)
@@ -65,7 +65,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 - **Control:** `HM07_ActionButton` (ControlTemplate auf `Button`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `ControlTemplate` für `Button` (Stil `HM07_ActionButtonStyle`) plus `HM07_ActionButton` als `Control` mit den Eigenschaften der Tabelle (Halte-Logik als Attached Behavior, kein Code-behind).
 - **Dependency Properties:** `Label`, `Icon`, `TriggerMode`, `HoldDuration`, `IsRunning`, `RequiresPermission`, `IsAuthorized`; **Command:** `Command`/`CommandParameter`.
-- **Maße:** Höhe `Size.Touch.Default`, Mindestbreite 160 (in Leiste 224), Innenabstand `Space.M`.
+- **Maße:** Höhe `Size.Touch.Default`, Mindestbreite `Size.Button.MinWidth` (in der Leiste `Size.FunctionButton.MinWidth`), Innenabstand `Space.M`.
 - **Neue Symbole** (`Themes/Icons.xaml`): `Icon.Key`, `Icon.Lock` (Designsystem); `Icon.Action.Reset`, `Icon.Action.Search`, `Icon.Action.Jog` (neu).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -77,5 +77,5 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-07-P02 | Kein Ein/Aus | keine Zustandsanzeige außer Läuft, Deaktiviert und Berechtigung | offen |
 | HM-07-P03 | Halten | Reset löst erst nach Haltedauer aus, Fortschritt sichtbar | offen |
 | HM-07-P04 | Gesperrt | Sperre über gestrichelte Kontur und Schloss, nicht nur hellere Schrift | offen |
-| HM-07-P05 | Touch | Höhe 64 px, Abstand ≥ 16 px | offen |
+| HM-07-P05 | Touch | Höhe `Size.Touch.Default`, Abstand ≥ `Size.Touch.Gap` | offen |
 | HM-07-P06 | Abgrenzung | Tasten mit Zustand sind HM-08 | offen |

@@ -36,7 +36,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 
 ## WPF-Umsetzung
 - **Control:** `HM36_IoRow` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
-- **Typ:** `UserControl` (`HM36_IoRow`), `Grid` LED | Kennung | Klartext, Zeilenhöhe 48 px.
+- **Typ:** `UserControl` (`HM36_IoRow`), `Grid` LED | Kennung | Klartext, Zeilenhöhe `Size.Touch.Min`.
 - **Dependency Properties:** `Identifier`, `Description`, `IoKind`, `State`, `AnalogValue`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.

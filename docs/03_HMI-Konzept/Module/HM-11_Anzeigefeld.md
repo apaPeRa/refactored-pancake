@@ -26,7 +26,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |
 |---|---|---|
-| Normal (Feld) | `Brush.Surface`, Kontur `Border.Thin`, Wert `Font.Size.Value` `Font.Weight.Strong` `Brush.Text.Primary`, Einheit `Brush.Text.Secondary`, Höhe 48 | Beschriftung und Einheit als Text |
+| Normal (Feld) | `Brush.Surface`, Kontur `Border.Thin`, Wert `Font.Size.Value` `Font.Weight.Strong` `Brush.Text.Primary`, Einheit `Brush.Text.Secondary`, Höhe `Size.Field.Height` | Beschriftung und Einheit als Text |
 | Zeile | ohne Fläche, Wert `Font.Size.Body` | Beschriftung links, Wert rechts |
 | Statuswert (Text) | wie Normal, optional Symbol des Status | Zustandswort „IO“, „Bereit“, „Läuft“ |
 | Grenzwert verletzt | Fläche `Brush.Status.Warning.Subtle`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` | `Icon.Status.Warning` und Text |
