@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Beispielinstanzen HM-29 (Wochen-Zeitplan) und HM-30 (Zeitplan-Eintrag-Pop-up) fuer den Entwurfsmodus. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:dd="clr-namespace:ApaTec.Hmi.DesignData">
+  <c:HM29_WeekSchedule x:Key="HM29.Sample.Week" x:Shared="False" FirstDay="Monday" Entries="{x:Static dd:HM29_DesignData.Entries}" />
+</ResourceDictionary>

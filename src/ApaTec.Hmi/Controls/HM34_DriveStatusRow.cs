@@ -64,7 +64,7 @@ public sealed class HM34_DriveStatusRow : Control
 
     /// <summary>Meldung; null = keine Meldung (Normalzustand).</summary>
     public static readonly DependencyProperty MessageProperty =
-        DependencyProperty.Register(nameof(Message), typeof(string?), typeof(HM34_DriveStatusRow), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Message), typeof(string), typeof(HM34_DriveStatusRow), new PropertyMetadata(null));
 
     public string? Message
     {
@@ -84,7 +84,7 @@ public sealed class HM34_DriveStatusRow : Control
 
     /// <summary>Setzt Strom max zurück.</summary>
     public static readonly DependencyProperty ResetMaxCommandProperty =
-        DependencyProperty.Register(nameof(ResetMaxCommand), typeof(ICommand?), typeof(HM34_DriveStatusRow), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ResetMaxCommand), typeof(ICommand), typeof(HM34_DriveStatusRow), new PropertyMetadata(null));
 
     public ICommand? ResetMaxCommand
     {

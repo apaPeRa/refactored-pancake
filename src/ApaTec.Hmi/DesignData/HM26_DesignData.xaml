@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Beispielinstanzen HM-26 fuer den Entwurfsmodus. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:dd="clr-namespace:ApaTec.Hmi.DesignData">
+  <c:HM26_Chart x:Key="HM26.Sample.Trend" x:Shared="False" ChartKind="Line" YUnit="g" YMinimum="234" YMaximum="236.5" YStep="0.5" MaxPoints="21"
+                LowerLimit="234.5" UpperLimit="236.2" ShowValueLabels="True"
+                Series="{x:Static dd:HM26_DesignData.TrendSeries}" XLabels="{x:Static dd:HM26_DesignData.TrendLabels}" />
+  <c:HM26_Chart x:Key="HM26.Sample.Bars" x:Shared="False" ChartKind="Bar" Interval="Hour" YMinimum="0" YMaximum="1800" YStep="200" MaxPoints="24"
+                Series="{x:Static dd:HM26_DesignData.BarSeries}" XLabels="{x:Static dd:HM26_DesignData.BarLabels}" />
+  <c:HM26_Chart x:Key="HM26.Sample.NoData" x:Shared="False" ChartKind="Line" YUnit="g" Series="{x:Static dd:HM26_DesignData.NoSeries}" />
+  <c:HM26_Chart x:Key="HM26.Sample.Loading" x:Shared="False" ChartKind="Bar" IsLoading="True" />
+</ResourceDictionary>

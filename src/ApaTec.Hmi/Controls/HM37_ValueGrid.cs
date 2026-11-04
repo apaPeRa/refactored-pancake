@@ -49,7 +49,7 @@ public sealed class HM37_ValueGrid : Control
 
     /// <summary>Zellen in Anzeigereihenfolge (zeilenweise), höchstens Capacity.</summary>
     public static readonly DependencyProperty CellsProperty =
-        DependencyProperty.Register(nameof(Cells), typeof(IReadOnlyList<WeightCell>?), typeof(HM37_ValueGrid), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Cells), typeof(IReadOnlyList<WeightCell>), typeof(HM37_ValueGrid), new PropertyMetadata(null));
 
     public IReadOnlyList<WeightCell>? Cells
     {
@@ -89,7 +89,7 @@ public sealed class HM37_ValueGrid : Control
 
     /// <summary>Start löscht alle Werte (Modus Einzel).</summary>
     public static readonly DependencyProperty StartCommandProperty =
-        DependencyProperty.Register(nameof(StartCommand), typeof(ICommand?), typeof(HM37_ValueGrid), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(StartCommand), typeof(ICommand), typeof(HM37_ValueGrid), new PropertyMetadata(null));
 
     public ICommand? StartCommand
     {
@@ -99,7 +99,7 @@ public sealed class HM37_ValueGrid : Control
 
     /// <summary>Umschalten Einzel/Fortlaufend.</summary>
     public static readonly DependencyProperty ToggleModeCommandProperty =
-        DependencyProperty.Register(nameof(ToggleModeCommand), typeof(ICommand?), typeof(HM37_ValueGrid), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ToggleModeCommand), typeof(ICommand), typeof(HM37_ValueGrid), new PropertyMetadata(null));
 
     public ICommand? ToggleModeCommand
     {

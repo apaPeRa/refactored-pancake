@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Beispielinstanzen HM-25 fuer den Entwurfsmodus (Werte aus den Bildern der Moduldatei). -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:dd="clr-namespace:ApaTec.Hmi.DesignData">
+  <c:HM25_MessageList x:Key="HM25.Sample.Archive" x:Shared="False" ListKind="Archive" SortDirection="Descending" ShowClassColumn="True"
+                      Items="{x:Static dd:HM25_DesignData.ArchiveItems}" />
+  <c:HM25_MessageList x:Key="HM25.Sample.Live" x:Shared="False" ListKind="Live" SortDirection="Ascending" ScrollStyle="Scrollbar" ShowClassColumn="True"
+                      Items="{x:Static dd:HM25_DesignData.LiveItems}" RangeStart="1" RangeEnd="4" TotalCount="4" />
+  <c:HM25_MessageList x:Key="HM25.Sample.Selection" x:Shared="False" ListKind="Selection" SelectionMode="Multiple" IsFiltered="True"
+                      Items="{x:Static dd:HM25_DesignData.SelectionItems}" SelectedItems="{x:Static dd:HM25_DesignData.SelectedItems}"
+                      TotalCount="{x:Static dd:HM25_DesignData.VariableTotalCount}" />
+</ResourceDictionary>

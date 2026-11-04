@@ -45,7 +45,7 @@ public sealed class HM32_PackRegisterGraphic : Control
 
     /// <summary>Stationen mit Nummer, Zustand und Position im Layout.</summary>
     public static readonly DependencyProperty StationsProperty =
-        DependencyProperty.Register(nameof(Stations), typeof(IReadOnlyList<PackStation>?), typeof(HM32_PackRegisterGraphic), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Stations), typeof(IReadOnlyList<PackStation>), typeof(HM32_PackRegisterGraphic), new PropertyMetadata(null));
 
     public IReadOnlyList<PackStation>? Stations
     {
@@ -65,7 +65,7 @@ public sealed class HM32_PackRegisterGraphic : Control
 
     /// <summary>Antippen eines Felds (Parameter: PackStation), manuelle Zustandsänderung.</summary>
     public static readonly DependencyProperty ToggleStationCommandProperty =
-        DependencyProperty.Register(nameof(ToggleStationCommand), typeof(ICommand?), typeof(HM32_PackRegisterGraphic), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ToggleStationCommand), typeof(ICommand), typeof(HM32_PackRegisterGraphic), new PropertyMetadata(null));
 
     public ICommand? ToggleStationCommand
     {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Beispielinstanzen HM-27 fuer den Entwurfsmodus (Texte aus HS-22, HS-27, HS-31, HS-32). -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls">
+  <c:HM27_NoticeBox x:Key="HM27.Sample.Warning" x:Shared="False" Kind="Warning" Text="Verbrennungsgefahr: Heizungen und Leimgeräte sind heiß." />
+  <c:HM27_NoticeBox x:Key="HM27.Sample.Error" x:Shared="False" Kind="Error" Text="Fehler beim Schreiben der Filterwerte" />
+  <c:HM27_NoticeBox x:Key="HM27.Sample.Info" x:Shared="False" Kind="Info" Text="Die Werte werden erst nach dem Schreiben wirksam." />
+  <c:HM27_NoticeBox x:Key="HM27.Sample.MessageLine" x:Shared="False" Kind="MessageLine" Severity="Error" Caption="Meldung:" Text="Motorschutz ausgelöst" />
+  <c:HM27_NoticeBox x:Key="HM27.Sample.MessageLineEmpty" x:Shared="False" Kind="MessageLine" Severity="None" Caption="Meldung:" Text="" />
+</ResourceDictionary>

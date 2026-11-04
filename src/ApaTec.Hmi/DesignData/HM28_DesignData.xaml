@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Beispielinstanzen HM-28 fuer den Entwurfsmodus (HS-08 Heissleim: Tank 150 C; HS-22 Heizungen). -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls">
+  <c:HM28_HeatZoneRow x:Key="HM28.Sample.Glue" x:Shared="False" RowKind="Glue" ZoneName="Tank" Setpoint="150" Actual="150" IsZoneEnabled="True" />
+  <c:HM28_HeatZoneRow x:Key="HM28.Sample.GlueOff" x:Shared="False" RowKind="Glue" ZoneName="Pistole 2" Setpoint="100" Actual="0" IsZoneEnabled="False" />
+  <c:HM28_HeatZoneRow x:Key="HM28.Sample.Heating" x:Shared="False" RowKind="Heating" ZoneName="6E1 Düse links" Setpoint="150" Actual="148"
+                      IsZoneEnabled="True" IsMonitored="True" StateLed="On" OutputLed="On" />
+  <c:HM28_HeatZoneRow x:Key="HM28.Sample.HeatingError" x:Shared="False" RowKind="Heating" ZoneName="20E4 Düse rechts" Setpoint="170" Actual="96"
+                      IsZoneEnabled="True" IsMonitored="False" StateLed="Error" OutputLed="Off" />
+</ResourceDictionary>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM-31 Leimspuren-Grafik: Vektorgrafik des Kartonzuschnitts (Viewbox + Canvas, Farben Brush.Graphic.*) mit 18 Winkelfeldern (HM-12) darueber.
+     Die Grafik skaliert, die Felder behalten Touch-Groesse (nicht Teil der Viewbox). Reihen 5, 4, 5, 4 aus Fields (Row, Index). -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:m="clr-namespace:ApaTec.Hmi.Models"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <!-- Zeichenraster der Grafik (Einheiten der Zeichenflaeche, keine Pixel) -->
+  <sys:Double x:Key="HM31.Canvas.Width">1000</sys:Double>
+  <sys:Double x:Key="HM31.Canvas.Height">600</sys:Double>
+
+  <!-- Zuschnitt (Draufsicht) mit Falzlinie zwischen oberer und unterer Haelfte -->
+  <Geometry x:Key="HM31.Geometry.Cutout">M20,20 H980 V580 H20 Z M20,300 H980</Geometry>
+  <!-- eine lange Spur links ueber die ganze Hoehe -->
+  <Geometry x:Key="HM31.Geometry.GlueLong">M60,60 H100 V540 H60 Z</Geometry>
+  <!-- je vier kurze Spuren oben und unten -->
+  <Geometry x:Key="HM31.Geometry.GlueTop">M180,130 H320 V160 H180 Z M380,130 H520 V160 H380 Z M580,130 H720 V160 H580 Z M780,130 H920 V160 H780 Z</Geometry>
+  <Geometry x:Key="HM31.Geometry.GlueBottom">M180,440 H320 V470 H180 Z M380,440 H520 V470 H380 Z M580,440 H720 V470 H580 Z M780,440 H920 V470 H780 Z</Geometry>
+
+  <!-- Winkelfeld der Grafik: HM-12 ohne Beschriftung, Touch-Groesse -->
+  <DataTemplate x:Key="HM31.FieldTemplate" DataType="{x:Type m:GlueTrackField}">
+    <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" MinWidth="{StaticResource Size.Touch.Large}" MinHeight="{StaticResource Size.Touch.Default}"
+                       Unit="°" Decimals="0" RequiresPermission="True"
+                       NumberValue="{Binding Angle, Mode=TwoWay}"
+                       ErrorText="{Binding ErrorText}"
+                       ToolTip="{Binding Tooltip}"
+                       CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource AncestorType=c:HM31_GlueTrackGraphic}}" />
+  </DataTemplate>
+
+  <DataTemplate x:Key="HM31.RowTemplate">
+    <ItemsControl Focusable="False" ItemsSource="{Binding}" ItemTemplate="{StaticResource HM31.FieldTemplate}"
+                  HorizontalAlignment="Center" VerticalAlignment="Center">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <UniformGrid Rows="1" />
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+  </DataTemplate>
+
+  <Style TargetType="{x:Type c:HM31_GlueTrackGraphic}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="AutomationProperties.Name" Value="{Binding Title, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type c:HM31_GlueTrackGraphic}">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Style="{StaticResource Text.Title}" Margin="{StaticResource Inset.S}"
+                       Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Grid Grid.Row="1">
+              <!-- Grafik: skaliert mit dem Zuschnitt -->
+              <Viewbox Stretch="Fill">
+                <Canvas Width="{StaticResource HM31.Canvas.Width}" Height="{StaticResource HM31.Canvas.Height}">
+                  <Path Data="{Binding CutoutGeometry, RelativeSource={RelativeSource TemplatedParent}, TargetNullValue={StaticResource HM31.Geometry.Cutout}}"
+                        Fill="{DynamicResource Brush.Graphic.Carton}" Stroke="{DynamicResource Brush.Graphic.Outline}"
+                        StrokeThickness="{Binding Path=Left, Source={StaticResource Border.Medium}}" StrokeLineJoin="Round" />
+                  <Path Data="{StaticResource HM31.Geometry.GlueLong}" Fill="{DynamicResource Brush.Graphic.Glue}" />
+                  <Path Data="{StaticResource HM31.Geometry.GlueTop}" Fill="{DynamicResource Brush.Graphic.Glue}" />
+                  <Path Data="{StaticResource HM31.Geometry.GlueBottom}" Fill="{DynamicResource Brush.Graphic.Glue}" />
+                </Canvas>
+              </Viewbox>
+              <!-- Felder: vier gleich hohe Reihen ueber der Grafik -->
+              <ItemsControl Focusable="False" ItemTemplate="{StaticResource HM31.RowTemplate}"
+                            ItemsSource="{Binding Fields, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HM31_RowsConverter.Instance}}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <UniformGrid Columns="1" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+              </ItemsControl>
+            </Grid>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

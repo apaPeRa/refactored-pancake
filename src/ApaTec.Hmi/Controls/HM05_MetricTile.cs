@@ -5,8 +5,8 @@ using System.Windows.Media;
 
 namespace ApaTec.Hmi.Controls;
 
-/// <summary>Breite der Kennzahl-Kachel: Frame = Rahmenzeile (Mindestbreite <c>Size.Metric.MinWidth</c>), Content = Inhaltsbereich.</summary>
-public enum TileSize
+/// <summary>Breite der Kennzahl-Kachel (HM-05; Enum heisst MetricTileSize, weil HM-16 TileSize belegt): Frame = Rahmenzeile (Mindestbreite <c>Size.Metric.MinWidth</c>), Content = Inhaltsbereich.</summary>
+public enum MetricTileSize
 {
     Content,
     Frame,
@@ -42,7 +42,7 @@ public sealed class HM05_MetricTile : Button
         DependencyProperty.Register(nameof(Index), typeof(int?), typeof(HM05_MetricTile), new PropertyMetadata(null));
 
     public static readonly DependencyProperty TileSizeProperty =
-        DependencyProperty.Register(nameof(TileSize), typeof(TileSize), typeof(HM05_MetricTile), new PropertyMetadata(TileSize.Content));
+        DependencyProperty.Register(nameof(TileSize), typeof(MetricTileSize), typeof(HM05_MetricTile), new PropertyMetadata(MetricTileSize.Content));
 
     /// <summary>true: antippbare Kachel mit Chevron, oeffnet ein Pop-up.</summary>
     public static readonly DependencyProperty IsInteractiveProperty =
@@ -98,9 +98,9 @@ public sealed class HM05_MetricTile : Button
         set => SetValue(IndexProperty, value);
     }
 
-    public TileSize TileSize
+    public MetricTileSize TileSize
     {
-        get => (TileSize)GetValue(TileSizeProperty);
+        get => (MetricTileSize)GetValue(TileSizeProperty);
         set => SetValue(TileSizeProperty, value);
     }
 

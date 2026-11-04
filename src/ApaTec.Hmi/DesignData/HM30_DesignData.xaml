@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Beispielinstanzen HM-30 fuer den Entwurfsmodus: Neuanlage, Heizphase mit Absenkphase, Fehler. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:dd="clr-namespace:ApaTec.Hmi.DesignData">
+  <c:HM30_ScheduleEntryDialog x:Key="HM30.Sample.New" x:Shared="False" IsNew="True" Kind="Heat" StartActive="False" EndActive="False" ChildCount="0" />
+  <c:HM30_ScheduleEntryDialog x:Key="HM30.Sample.EditHeat" x:Shared="False" IsNew="False" Kind="Heat" StartActive="True" EndActive="True" ChildCount="1"
+                              StartTime="{x:Static dd:HM29_DesignData.StartTime}" EndTime="{x:Static dd:HM29_DesignData.EndTime}" />
+  <c:HM30_ScheduleEntryDialog x:Key="HM30.Sample.Error" x:Shared="False" IsNew="False" Kind="Setback" StartActive="True" EndActive="True" ChildCount="0"
+                              StartTime="{x:Static dd:HM29_DesignData.EndTime}" EndTime="{x:Static dd:HM29_DesignData.StartTime}" ErrorText="Endzeit vor Startzeit" />
+</ResourceDictionary>

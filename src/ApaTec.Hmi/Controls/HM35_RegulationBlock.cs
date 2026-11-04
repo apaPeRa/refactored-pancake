@@ -124,7 +124,7 @@ public sealed class HM35_RegulationBlock : Control
 
     /// <summary>Regulierung minus.</summary>
     public static readonly DependencyProperty DecreaseCommandProperty =
-        DependencyProperty.Register(nameof(DecreaseCommand), typeof(ICommand?), typeof(HM35_RegulationBlock), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(DecreaseCommand), typeof(ICommand), typeof(HM35_RegulationBlock), new PropertyMetadata(null));
 
     public ICommand? DecreaseCommand
     {
@@ -134,7 +134,7 @@ public sealed class HM35_RegulationBlock : Control
 
     /// <summary>Regulierung plus.</summary>
     public static readonly DependencyProperty IncreaseCommandProperty =
-        DependencyProperty.Register(nameof(IncreaseCommand), typeof(ICommand?), typeof(HM35_RegulationBlock), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(IncreaseCommand), typeof(ICommand), typeof(HM35_RegulationBlock), new PropertyMetadata(null));
 
     public ICommand? IncreaseCommand
     {
@@ -144,7 +144,7 @@ public sealed class HM35_RegulationBlock : Control
 
     /// <summary>Regulierung ein/aus.</summary>
     public static readonly DependencyProperty ToggleCommandProperty =
-        DependencyProperty.Register(nameof(ToggleCommand), typeof(ICommand?), typeof(HM35_RegulationBlock), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ToggleCommand), typeof(ICommand), typeof(HM35_RegulationBlock), new PropertyMetadata(null));
 
     public ICommand? ToggleCommand
     {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HM25_HM31.resx: Texte der Spezialmodule HM-25 bis HM-31 (Meldungsliste, Diagramm, Hinweis-Textfeld, Temperaturzonen-Zeile, Wochen-Zeitplan, Zeitplan-Eintrag-Pop-up, Leimspuren-Grafik).
+     Neutralsprache Deutsch, Schluessel <Modul>_<Element>_<Eigenschaft>. Wird von LocalizationService automatisch gefunden. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HM25_List_Name" xml:space="preserve"><value>Meldungsliste</value><comment>HM-25: Name für Screenreader</comment></data>
+  <data name="HM25_Column_Time" xml:space="preserve"><value>Zeit</value><comment>HM-25: Spaltenkopf Archiv</comment></data>
+  <data name="HM25_Column_Event" xml:space="preserve"><value>Ereignis</value><comment>HM-25: Spaltenkopf Archiv</comment></data>
+  <data name="HM25_Column_Description" xml:space="preserve"><value>Beschreibung</value><comment>HM-25: Spaltenkopf Archiv</comment></data>
+  <data name="HM25_Column_Number" xml:space="preserve"><value>Nr.</value><comment>HM-25: Spaltenkopf Meldeanzeige</comment></data>
+  <data name="HM25_Column_Message" xml:space="preserve"><value>Meldung</value><comment>HM-25: Spaltenkopf Meldeanzeige</comment></data>
+  <data name="HM25_Column_Class" xml:space="preserve"><value>Klasse</value><comment>HM-25: Spaltenkopf Klassenspalte</comment></data>
+  <data name="HM25_Class_Operation" xml:space="preserve"><value>Betrieb</value><comment>HM-25: Klassenwort Betriebsstatus</comment></data>
+  <data name="HM25_Class_Notice" xml:space="preserve"><value>Hinweis</value><comment>HM-25: Klassenwort Hinweis</comment></data>
+  <data name="HM25_Class_Fault" xml:space="preserve"><value>Störung</value><comment>HM-25: Klassenwort Störung</comment></data>
+  <data name="HM25_Empty_Text" xml:space="preserve"><value>Keine Meldungen</value><comment>HM-25: Leerzustand</comment></data>
+  <data name="HM25_Filter_Text" xml:space="preserve"><value>Filter aktiv</value><comment>HM-25: Filterhinweis</comment></data>
+  <data name="HM25_Scroll_First" xml:space="preserve"><value>Anfang</value><comment>HM-25: Scrolltaste</comment></data>
+  <data name="HM25_Scroll_PageUp" xml:space="preserve"><value>Seite hoch</value><comment>HM-25: Scrolltaste</comment></data>
+  <data name="HM25_Scroll_PageDown" xml:space="preserve"><value>Seite runter</value><comment>HM-25: Scrolltaste</comment></data>
+  <data name="HM25_Scroll_Last" xml:space="preserve"><value>Ende</value><comment>HM-25: Scrolltaste</comment></data>
+  <data name="HM25_Counter_Of" xml:space="preserve"><value> von </value><comment>HM-25: Zähler, z. B. 500 von 111427 (Leerzeichen gehören zum Text)</comment></data>
+  <data name="HM25_Range_To" xml:space="preserve"><value> bis </value><comment>HM-25: Positionsbereich, z. B. 1 bis 12 von 40</comment></data>
+  <data name="HM25_Selected_Text" xml:space="preserve"><value> ausgewählt</value><comment>HM-25: Auswahlzähler, z. B. 3 ausgewählt</comment></data>
+  <data name="HM25_Sort_Ascending" xml:space="preserve"><value>Aufsteigend sortiert</value><comment>HM-25: Sortierrichtung (Name des Symbols)</comment></data>
+  <data name="HM25_Sort_Descending" xml:space="preserve"><value>Absteigend sortiert</value><comment>HM-25: Sortierrichtung (Name des Symbols)</comment></data>
+  <data name="HM26_NoData_Text" xml:space="preserve"><value>Keine Daten</value><comment>HM-26: Zustand zu wenig Daten</comment></data>
+  <data name="HM26_Loading_Text" xml:space="preserve"><value>Lädt …</value><comment>HM-26: Zustand Lädt</comment></data>
+  <data name="HM26_Invalid_Text" xml:space="preserve"><value>---</value><comment>HM-26: ungültiger Wert</comment></data>
+  <data name="HM26_Current_Text" xml:space="preserve"><value>aktuell</value><comment>HM-26: Beschriftung des aktuellen Werts</comment></data>
+  <data name="HM27_Empty_Text" xml:space="preserve"><value>–</value><comment>HM-27: leere Meldungszeile</comment></data>
+  <data name="HM28_Zone_SwitchOff" xml:space="preserve"><value>Ausschalten</value><comment>HM-28: Taste Zone ausschalten (Zone ist an)</comment></data>
+  <data name="HM28_Zone_SwitchOn" xml:space="preserve"><value>Einschalten</value><comment>HM-28: Taste Zone einschalten (Zone ist aus)</comment></data>
+  <data name="HM28_Heating_Label" xml:space="preserve"><value>Heizung</value><comment>HM-28: Schalter Heizung (Name für Screenreader)</comment></data>
+  <data name="HM28_Monitor_Label" xml:space="preserve"><value>Meldung</value><comment>HM-28: Schalter Überwachung (Name für Screenreader)</comment></data>
+  <data name="HM28_State_Label" xml:space="preserve"><value>State</value><comment>HM-28: Status-LED State</comment></data>
+  <data name="HM28_Out_Label" xml:space="preserve"><value>Out</value><comment>HM-28: Status-LED Out</comment></data>
+  <data name="HM29_Schedule_Name" xml:space="preserve"><value>Wochen-Zeitplan</value><comment>HM-29: Name für Screenreader</comment></data>
+  <data name="HM29_Add_Name" xml:space="preserve"><value>Neuer Eintrag</value><comment>HM-29: Plus-Taste</comment></data>
+  <data name="HM29_Invalid_Text" xml:space="preserve"><value>Ungültig</value><comment>HM-29: ungültiger Eintrag oder Überschneidung</comment></data>
+  <data name="HM29_Heat_Start" xml:space="preserve"><value> ein</value><comment>HM-29: Heizphase Start (Leerzeichen gehört zum Text)</comment></data>
+  <data name="HM29_Heat_End" xml:space="preserve"><value> aus</value><comment>HM-29: Heizphase Ende</comment></data>
+  <data name="HM29_Setback_Start" xml:space="preserve"><value> absenken</value><comment>HM-29: Absenkphase Start</comment></data>
+  <data name="HM29_Setback_End" xml:space="preserve"><value> aufheizen</value><comment>HM-29: Absenkphase Ende</comment></data>
+  <data name="HM29_Day_Monday" xml:space="preserve"><value>Montag</value><comment>HM-29: Wochentag</comment></data>
+  <data name="HM29_Day_Tuesday" xml:space="preserve"><value>Dienstag</value><comment>HM-29: Wochentag</comment></data>
+  <data name="HM29_Day_Wednesday" xml:space="preserve"><value>Mittwoch</value><comment>HM-29: Wochentag</comment></data>
+  <data name="HM29_Day_Thursday" xml:space="preserve"><value>Donnerstag</value><comment>HM-29: Wochentag</comment></data>
+  <data name="HM29_Day_Friday" xml:space="preserve"><value>Freitag</value><comment>HM-29: Wochentag</comment></data>
+  <data name="HM29_Day_Saturday" xml:space="preserve"><value>Samstag</value><comment>HM-29: Wochentag</comment></data>
+  <data name="HM29_Day_Sunday" xml:space="preserve"><value>Sonntag</value><comment>HM-29: Wochentag</comment></data>
+  <data name="HM30_Action_Label" xml:space="preserve"><value>Aktion</value><comment>HM-30: Auswahlfeld</comment></data>
+  <data name="HM30_Kind_Heat" xml:space="preserve"><value>Heizphase</value><comment>HM-30: Wert der Aktion</comment></data>
+  <data name="HM30_Kind_Setback" xml:space="preserve"><value>Absenkphase</value><comment>HM-30: Wert der Aktion</comment></data>
+  <data name="HM30_StartActive_Label" xml:space="preserve"><value>Startzeit aktiv</value><comment>HM-30: Kontrollkästchen</comment></data>
+  <data name="HM30_EndActive_Label" xml:space="preserve"><value>Endzeit aktiv</value><comment>HM-30: Kontrollkästchen</comment></data>
+  <data name="HM30_StartTime_Label" xml:space="preserve"><value>Startzeit</value><comment>HM-30: Zeitfeld</comment></data>
+  <data name="HM30_EndTime_Label" xml:space="preserve"><value>Endzeit</value><comment>HM-30: Zeitfeld</comment></data>
+  <data name="HM30_ChildCount_Label" xml:space="preserve"><value>Absenkphasen</value><comment>HM-30: Zähler untergeordneter Absenkphasen</comment></data>
+  <data name="HM30_DeleteHint_Text" xml:space="preserve"><value>Zuerst Absenkphasen löschen</value><comment>HM-30: Hinweis bei Heizphase mit Absenkphasen</comment></data>
+  <data name="HM30_Delete_Label" xml:space="preserve"><value>Löschen</value><comment>HM-30: Taste</comment></data>
+  <data name="HM30_Time_Placeholder" xml:space="preserve"><value>__:__</value><comment>HM-30: leere Zeit</comment></data>
+  <data name="HM31_Title_Text" xml:space="preserve"><value>Leimspuren</value><comment>HM-31: Grafiktitel</comment></data>
+</root>

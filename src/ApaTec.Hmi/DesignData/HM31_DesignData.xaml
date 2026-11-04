@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Beispielinstanz HM-31 fuer den Entwurfsmodus (18 Winkelfelder in den Reihen 5, 4, 5, 4). -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+                    xmlns:dd="clr-namespace:ApaTec.Hmi.DesignData">
+  <c:HM31_GlueTrackGraphic x:Key="HM31.Sample.Graphic" x:Shared="False" Title="Leimspuren" Fields="{x:Static dd:HM31_DesignData.Fields}" />
+</ResourceDictionary>

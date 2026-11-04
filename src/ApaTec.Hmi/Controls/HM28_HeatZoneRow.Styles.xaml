@@ -11,6 +11,11 @@
     <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
+  <!-- Spaltenproportionen (Stern-Anteile) -->
+  <GridLength x:Key="HM28.Star.3">3*</GridLength>
+  <GridLength x:Key="HM28.Star.4">4*</GridLength>
+  <GridLength x:Key="HM28.Star.5">5*</GridLength>
+
   <Style TargetType="{x:Type c:HM28_HeatZoneRow}">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="IsTabStop" Value="False" />
@@ -26,10 +31,10 @@
               <!-- Variante Heissleim (HS-08) -->
               <Grid x:Name="GlueLayout">
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="4*" />
-                  <ColumnDefinition Width="3*" />
-                  <ColumnDefinition Width="3*" />
-                  <ColumnDefinition Width="4*" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.4}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.4}" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="GlueName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
                            Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -46,13 +51,13 @@
               <!-- Variante Heizungen (HS-22) -->
               <Grid x:Name="HeatingLayout" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="5*" />
-                  <ColumnDefinition Width="3*" />
-                  <ColumnDefinition Width="3*" />
-                  <ColumnDefinition Width="3*" />
-                  <ColumnDefinition Width="3*" />
-                  <ColumnDefinition Width="3*" />
-                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.5}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="HeatingName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
                            Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />

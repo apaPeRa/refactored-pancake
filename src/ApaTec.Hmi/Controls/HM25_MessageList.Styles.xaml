@@ -11,6 +11,11 @@
     <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
+  <!-- Spaltenproportionen (Stern-Anteile) -->
+  <GridLength x:Key="HM25.Star.3">3*</GridLength>
+  <GridLength x:Key="HM25.Star.4">4*</GridLength>
+  <GridLength x:Key="HM25.Star.6">6*</GridLength>
+
   <Style x:Key="HM25.Icon" TargetType="Path">
     <Setter Property="Stretch" Value="Uniform" />
     <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
@@ -54,9 +59,9 @@
     <Grid>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="HM25.Class" />
-        <ColumnDefinition Width="4*" />
-        <ColumnDefinition Width="3*" />
-        <ColumnDefinition Width="6*" />
+        <ColumnDefinition Width="{StaticResource HM25.Star.4}" />
+        <ColumnDefinition Width="{StaticResource HM25.Star.3}" />
+        <ColumnDefinition Width="{StaticResource HM25.Star.6}" />
       </Grid.ColumnDefinitions>
       <ContentControl Grid.Column="0" Content="{Binding}" ContentTemplate="{StaticResource HM25.ClassCell}" Margin="{StaticResource Inset.S}" />
       <TextBlock Grid.Column="1" Style="{StaticResource Text.Body}" Text="{Binding Timestamp, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
@@ -70,9 +75,9 @@
     <Grid>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="HM25.Class" />
-        <ColumnDefinition Width="4*" />
-        <ColumnDefinition Width="3*" />
-        <ColumnDefinition Width="6*" />
+        <ColumnDefinition Width="{StaticResource HM25.Star.4}" />
+        <ColumnDefinition Width="{StaticResource HM25.Star.3}" />
+        <ColumnDefinition Width="{StaticResource HM25.Star.6}" />
       </Grid.ColumnDefinitions>
       <ContentControl Grid.Column="0" Content="{Binding}" ContentTemplate="{StaticResource HM25.ClassCell}" Margin="{StaticResource Inset.S}" />
       <TextBlock Grid.Column="1" Style="{StaticResource Text.Value}" Text="{Binding Number, StringFormat='{}{0:000}'}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}" />
@@ -225,9 +230,9 @@
             <Grid x:Name="ColumnHeader" Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.XS}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" SharedSizeGroup="HM25.Class" />
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="{StaticResource HM25.Star.4}" />
+                <ColumnDefinition Width="{StaticResource HM25.Star.3}" />
+                <ColumnDefinition Width="{StaticResource HM25.Star.6}" />
               </Grid.ColumnDefinitions>
               <TextBlock x:Name="HeadClass" Grid.Column="0" Style="{StaticResource Text.Caption}" Text="{res:Loc HM25_Column_Class}" Margin="{StaticResource Inset.S}" />
               <StackPanel x:Name="HeadSort" Grid.Column="1" Orientation="Horizontal" Margin="{StaticResource Inset.S}">

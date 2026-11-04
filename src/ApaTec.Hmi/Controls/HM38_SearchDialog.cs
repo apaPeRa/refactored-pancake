@@ -50,7 +50,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Quelle der Treffer.</summary>
     public static readonly DependencyProperty ItemsProperty =
-        DependencyProperty.Register(nameof(Items), typeof(IReadOnlyList<SearchHit>?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Items), typeof(IReadOnlyList<SearchHit>), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public IReadOnlyList<SearchHit>? Items
     {
@@ -60,7 +60,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Gefilterte Treffer (vom ViewModel berechnet).</summary>
     public static readonly DependencyProperty FilteredItemsProperty =
-        DependencyProperty.Register(nameof(FilteredItems), typeof(IReadOnlyList<SearchHit>?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(FilteredItems), typeof(IReadOnlyList<SearchHit>), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public IReadOnlyList<SearchHit>? FilteredItems
     {
@@ -70,7 +70,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Gewählter Treffer.</summary>
     public static readonly DependencyProperty SelectedHitProperty =
-        DependencyProperty.Register(nameof(SelectedHit), typeof(SearchHit?), typeof(HM38_SearchDialog), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        DependencyProperty.Register(nameof(SelectedHit), typeof(SearchHit), typeof(HM38_SearchDialog), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
     public SearchHit? SelectedHit
     {
@@ -80,7 +80,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Leertext; null = Standardtext Kein Treffer.</summary>
     public static readonly DependencyProperty EmptyTextProperty =
-        DependencyProperty.Register(nameof(EmptyText), typeof(string?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(EmptyText), typeof(string), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public string? EmptyText
     {
@@ -90,7 +90,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Platzhalter der Suchzeile.</summary>
     public static readonly DependencyProperty PlaceholderProperty =
-        DependencyProperty.Register(nameof(Placeholder), typeof(string?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Placeholder), typeof(string), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public string? Placeholder
     {
@@ -100,7 +100,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Treffer antippen (Parameter: SearchHit).</summary>
     public static readonly DependencyProperty SelectHitCommandProperty =
-        DependencyProperty.Register(nameof(SelectHitCommand), typeof(ICommand?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(SelectHitCommand), typeof(ICommand), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public ICommand? SelectHitCommand
     {
@@ -110,7 +110,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Abbrechen ohne Wirkung.</summary>
     public static readonly DependencyProperty CancelCommandProperty =
-        DependencyProperty.Register(nameof(CancelCommand), typeof(ICommand?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(CancelCommand), typeof(ICommand), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public ICommand? CancelCommand
     {
@@ -120,7 +120,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Suchtext löschen.</summary>
     public static readonly DependencyProperty ClearTextCommandProperty =
-        DependencyProperty.Register(nameof(ClearTextCommand), typeof(ICommand?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ClearTextCommand), typeof(ICommand), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public ICommand? ClearTextCommand
     {
@@ -130,7 +130,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Liste nach oben.</summary>
     public static readonly DependencyProperty ScrollUpCommandProperty =
-        DependencyProperty.Register(nameof(ScrollUpCommand), typeof(ICommand?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ScrollUpCommand), typeof(ICommand), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public ICommand? ScrollUpCommand
     {
@@ -140,7 +140,7 @@ public sealed class HM38_SearchDialog : Control
 
     /// <summary>Liste nach unten.</summary>
     public static readonly DependencyProperty ScrollDownCommandProperty =
-        DependencyProperty.Register(nameof(ScrollDownCommand), typeof(ICommand?), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ScrollDownCommand), typeof(ICommand), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 
     public ICommand? ScrollDownCommand
     {
