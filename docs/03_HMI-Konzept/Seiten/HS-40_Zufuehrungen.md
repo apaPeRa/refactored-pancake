@@ -60,7 +60,7 @@ Rückverfolgung zu RS-04: Die Kacheln „Zuführung Papier“ (Nr. 1) und „Zuf
 | HS-40-P07 | Touch-Ziele | Kacheln Höhe mindestens `Size.Touch.Large`, Abstand mindestens `Size.Touch.Gap` (HM-16-P06) | offen |
 | HS-40-P08 | Zweiter Kanal | Kachelzustand Gedrückt über dickere Kontur (`Border.Medium`), Beschriftung als Text; kein Zustand nur über Farbe | offen |
 | HS-40-P09 | Tokens | keine Hex- oder Pixelwerte in der Seite; Farben, Maße, Schriften nur über Tokens aus Designsystem.md | offen |
-| HS-40-P10 | Beschriftung | Kachelbeschriftungen aus `.resx` (`Nav_Feeders_*`), ohne Trennstriche, automatischer Umbruch (OP-13) | offen |
+| HS-40-P10 | Beschriftung | Kachelbeschriftungen aus `.resx` (`HS40_Tile_*`, Annahme A-95: seitenspezifisches Präfix wie `HS04_Tile_*`), ohne Trennstriche, automatischer Umbruch (OP-13) | offen |
 | HS-40-P11 | Zurück | „Zurück“ aus HS-05/06/07 führt (bei Zugang über diese Seite) nach HS-40, von HS-40 nach HS-04 | offen |
 
 ## Offene Punkte

@@ -13,6 +13,8 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.MachineSpeed)]
 public sealed partial class MachineSpeedViewModel : PopupViewModelBase
 {
+    private readonly SynchronizationContext? _uiContext = SynchronizationContext.Current;
+
     private const UserRole FieldRole = UserRole.Technician;
 
     private readonly IMachineSpeedService _speeds;
@@ -76,7 +78,7 @@ public sealed partial class MachineSpeedViewModel : PopupViewModelBase
         _subscribed = false;
     }
 
-    private void OnChanged(object? sender, EventArgs e) => Refresh();
+    private void OnChanged(object? sender, EventArgs e) => UiMarshal.Run(_uiContext, Refresh);
 
     private void Refresh()
     {

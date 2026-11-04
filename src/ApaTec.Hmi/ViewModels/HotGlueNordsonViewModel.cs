@@ -12,7 +12,7 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.HotGlueNordson)]
 public sealed partial class HotGlueNordsonViewModel : PageViewModelBase
 {
-    /// <summary>Dummy-Ersatz fuer das fehlende Loslassen-Signal von HM-07 WhilePressed: Anforderung endet nach dieser Zeit.</summary>
+    private readonly SynchronizationContext? _uiContext = SynchronizationContext.Current;
 
     private readonly HotGlueEditContext _context;
     private readonly INavigationService? _navigation;
@@ -145,7 +145,7 @@ public sealed partial class HotGlueNordsonViewModel : PageViewModelBase
         }
     }
 
-    private void OnServiceChanged(object? sender, EventArgs e) => Refresh();
+    private void OnServiceChanged(object? sender, EventArgs e) => UiMarshal.Run(_uiContext, Refresh);
 
     private void Refresh()
     {

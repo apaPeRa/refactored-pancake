@@ -2,6 +2,7 @@ using ApaTec.Hmi.Controls;
 using ApaTec.Hmi.Navigation;
 using ApaTec.Hmi.Services;
 using ApaTec.Hmi.Services.Dummy;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace ApaTec.Hmi.ViewModels;
@@ -15,29 +16,55 @@ public sealed partial class ScalesViewModel : PageViewModelBase
 {
     private readonly INavigationService? _navigation;
     private readonly IMessageService? _messages;
+    private readonly ILocalizationService _loc;
+    private bool _subscribed;
+
+    [ObservableProperty]
+    private IReadOnlyList<TileItem> _tiles = Array.Empty<TileItem>();
 
     public ScalesViewModel(INavigationService? navigation, IMessageService? messages, ILocalizationService loc)
     {
         _navigation = navigation;
         _messages = messages;
-
-        var reason = loc.GetString("HS42_FinalCheckWeigher_Reason");
-        Tiles = new[]
-        {
-            new TileItem { Label = loc.GetString("Nav_CheckWeigher_Crumb"), TargetPageId = PageKeys.CheckWeigher },
-            new TileItem { Label = loc.GetString("HS42_FinalCheckWeigher_Label"), IsDisabled = true, DisabledReason = reason },
-            new TileItem { Label = loc.GetString("Nav_ScaleCalibration_Crumb"), TargetPageId = PageKeys.ScaleCalibration },
-        };
+        _loc = loc;
+        Tiles = CreateTiles();
     }
+
+    // Beschriftungen und Grund neu aufbauen, wenn die Sprache wechselt (nur solange die Seite offen ist).
+    public override void OnNavigatedTo(object? parameter)
+    {
+        if (!_subscribed)
+        {
+            _subscribed = true;
+            _loc.CultureChanged += OnCultureChanged;
+        }
+
+        Tiles = CreateTiles();
+    }
+
+    public override void OnNavigatedFrom()
+    {
+        if (_subscribed)
+        {
+            _subscribed = false;
+            _loc.CultureChanged -= OnCultureChanged;
+        }
+    }
+
+    private void OnCultureChanged(object? sender, EventArgs e) => Tiles = CreateTiles();
+
+    private IReadOnlyList<TileItem> CreateTiles() => new[]
+    {
+        new TileItem { Label = _loc.GetString("Nav_CheckWeigher_Crumb"), TargetPageId = PageKeys.CheckWeigher },
+        new TileItem { Label = _loc.GetString("HS42_FinalCheckWeigher_Label"), IsDisabled = true, DisabledReason = _loc.GetString("HS42_FinalCheckWeigher_Reason") },
+        new TileItem { Label = _loc.GetString("Nav_ScaleCalibration_Crumb"), TargetPageId = PageKeys.ScaleCalibration },
+    };
 
     /// <summary>Entwurfsmodus (DesignData): keine Navigation, Texte aus den Ressourcen.</summary>
     public ScalesViewModel()
         : this(null, null, LocalizationService.Instance)
     {
     }
-
-    /// <summary>Kacheln in der Reihenfolge des Navigationsbaums (HM-16).</summary>
-    public IReadOnlyList<TileItem> Tiles { get; }
 
     [RelayCommand]
     private async Task OpenTileAsync(TileItem? tile)

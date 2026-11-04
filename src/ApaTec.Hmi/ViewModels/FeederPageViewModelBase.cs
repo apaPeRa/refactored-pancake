@@ -10,6 +10,7 @@ namespace ApaTec.Hmi.ViewModels;
 public abstract class FeederPageViewModelBase : PageViewModelBase
 {
     private readonly List<FeederValueField> _fields = new();
+    private readonly SynchronizationContext? _context = SynchronizationContext.Current;
     private bool _subscribed;
 
     protected FeederPageViewModelBase(IFeederService feeder, IUserSession? session, ILocalizationService localization, FeederValueEditor editor)
@@ -121,7 +122,18 @@ public abstract class FeederPageViewModelBase : PageViewModelBase
         }
     }
 
-    private void OnFeederChanged(object? sender, EventArgs e) => LoadValues();
+    // Dienstereignisse koennen auf einem Hintergrundthread kommen: im Kontext des Erzeugers (UI) lesen.
+    private void OnFeederChanged(object? sender, EventArgs e)
+    {
+        if (_context is null || SynchronizationContext.Current == _context)
+        {
+            LoadValues();
+        }
+        else
+        {
+            _context.Post(_ => LoadValues(), null);
+        }
+    }
 
     private void OnCultureChanged(object? sender, EventArgs e) => RefreshAll();
 

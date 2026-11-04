@@ -104,7 +104,14 @@ public sealed partial class FeederCartonViewModel : FeederPageViewModelBase
         base.OnNavigatedFrom();
     }
 
-    protected override void OnAuthorizationChanged() => IsGlueAuthorized = Editor.IsAuthorized;
+    protected override void OnAuthorizationChanged()
+    {
+        IsGlueAuthorized = Editor.IsAuthorized;
+        foreach (var field in TrackFields)
+        {
+            field.IsAuthorized = Editor.IsAuthorized;
+        }
+    }
 
     protected override void RefreshTexts()
     {
@@ -161,8 +168,10 @@ public sealed partial class FeederCartonViewModel : FeederPageViewModelBase
             Localization.GetString("Unit_Degree"),
             decimals: 0,
             Feeder.GetLimits(FeederValue.CartonTrackAngle),
-            Localization.GetString("HS06_Track_Help"));
+            Localization.GetString("HS06_Track_Help"),
+            editing => field.IsEditing = editing);
         field.ErrorText = result.ErrorText;
+        field.IsAuthorized = Editor.IsAuthorized;
         if (result.Value is { } angle)
         {
             Feeder.SetGlueTrackAngle(FlatIndex(field.Row, field.Index), angle);
@@ -207,6 +216,7 @@ public sealed partial class FeederCartonViewModel : FeederPageViewModelBase
                     Tooltip = TrackName(row, index),
                     Angle = flat < angles.Count ? angles[flat] : null,
                     ErrorText = previous.FirstOrDefault(f => f.Row == row && f.Index == index)?.ErrorText,
+                    IsAuthorized = Editor.IsAuthorized,
                 });
             }
         }

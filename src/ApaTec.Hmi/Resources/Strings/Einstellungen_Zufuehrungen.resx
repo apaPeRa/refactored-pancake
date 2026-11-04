@@ -109,4 +109,7 @@
   <data name="HS06_Track_BottomEnd" xml:space="preserve"><value>Spur U{0} Ende</value><comment>HS-06 Tooltip/Titel Winkelfeld (Annahme, OP-19)</comment></data>
   <data name="HS06_Fn_GlueUnit_Label" xml:space="preserve"><value>Heißleimgerät</value><comment>HS-06 Funktionsleiste: Heissleimgeraet (HS-07)</comment></data>
   <data name="HS06_Fn_GlueUnit_Help" xml:space="preserve"><value>Öffnet die Seite mit Status- und Einstellmöglichkeiten für das Heißleimgerät der Zuführung.</value><comment>HS-06 Hilfetext (T8 Zeile 7)</comment></data>
+  <data name="HS05_SpliceSensor_On" xml:space="preserve"><value>Ein</value><comment>HS-05 Zustandswort Sensor Klebestelle</comment></data>
+  <data name="HS05_SpliceSensor_Off" xml:space="preserve"><value>Aus</value><comment>HS-05 Zustandswort Sensor Klebestelle</comment></data>
+  <data name="HS05_RollEnd_Message" xml:space="preserve"><value>Rollenende: Durchmesser der Rolle hat den Wert Durchmesser Rollenende erreicht</value><comment>HS-05 Meldung Rollenende in der Meldezeile (Klasse Hinweis, Auslegung der Quelle)</comment></data>
 </root>

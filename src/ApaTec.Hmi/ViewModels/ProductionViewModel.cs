@@ -22,6 +22,7 @@ public sealed partial class ProductionViewModel : PageViewModelBase
     private readonly IRecipeService _recipes;
     private readonly INavigationService _navigation;
     private readonly IUserSession _session;
+    private readonly SynchronizationContext? _context = SynchronizationContext.Current;
     private readonly IMessageService _messages;
     private readonly IDialogService _dialogs;
     private readonly ILocalizationService _loc;
@@ -184,7 +185,11 @@ public sealed partial class ProductionViewModel : PageViewModelBase
         _speeds.Changed += OnDataChanged;
         _machine.Changed += OnDataChanged;
         _recipes.Changed += OnDataChanged;
-        _session.SessionChanged += OnDataChanged;
+        if (_session is not null)
+        {
+            _session.SessionChanged += OnDataChanged;
+        }
+
         _loc.CultureChanged += OnCultureChanged;
         BuildTexts();
         Refresh();
@@ -207,7 +212,18 @@ public sealed partial class ProductionViewModel : PageViewModelBase
         _loc.CultureChanged -= OnCultureChanged;
     }
 
-    private void OnDataChanged(object? sender, EventArgs e) => Refresh();
+    // Dienstereignisse koennen auf einem Hintergrundthread kommen: im Kontext des Erzeugers (UI) aktualisieren.
+    private void OnDataChanged(object? sender, EventArgs e)
+    {
+        if (_context is null || SynchronizationContext.Current == _context)
+        {
+            Refresh();
+        }
+        else
+        {
+            _context.Post(_ => Refresh(), null);
+        }
+    }
 
     private void OnCultureChanged(object? sender, EventArgs e)
     {

@@ -11,6 +11,8 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.HotGlueSchedule)]
 public sealed partial class HotGlueScheduleViewModel : PageViewModelBase
 {
+    private readonly SynchronizationContext? _uiContext = SynchronizationContext.Current;
+
     private readonly IHotGlueScheduleService _schedule;
     private readonly HotGlueEditContext _context;
 
@@ -64,7 +66,7 @@ public sealed partial class HotGlueScheduleViewModel : PageViewModelBase
         }
     }
 
-    private void OnChanged(object? sender, EventArgs e) => Refresh();
+    private void OnChanged(object? sender, EventArgs e) => UiMarshal.Run(_uiContext, Refresh);
 
     private void Refresh()
     {

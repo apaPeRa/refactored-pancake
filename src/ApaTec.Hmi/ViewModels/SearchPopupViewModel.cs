@@ -47,13 +47,13 @@ public sealed partial class SearchPopupViewModel : PopupViewModelBase
     public SearchPopupViewModel(IDialogService? dialogs)
     {
         _dialogs = dialogs;
-        Title = "Aktor suchen";
-        Placeholder = "Kennzeichnung eingeben";
+        Title = LocalizationService.Instance.GetString("Dialog_Design_Search_Title");
+        Placeholder = LocalizationService.Instance.GetString("Dialog_Design_Search_Placeholder");
         Items = new[]
         {
-            new SearchHit { Identifier = "2MA1", Description = "Antrieb Zuführung 2MA1", Group = "GR2 Zuführung Papier" },
-            new SearchHit { Identifier = "2MA2", Description = "Antrieb Zuführung 2MA2", Group = "GR2 Zuführung Papier" },
-            new SearchHit { Identifier = "20MA1", Description = "Antrieb Schließmaschine 20MA1", Group = "GR20 Schließmaschine" },
+            new SearchHit { Identifier = "2MA1", Description = LocalizationService.Instance.GetString("Dialog_Design_Search_Hit1"), Group = LocalizationService.Instance.GetString("Dialog_Design_Search_Group2") },
+            new SearchHit { Identifier = "2MA2", Description = LocalizationService.Instance.GetString("Dialog_Design_Search_Hit2"), Group = LocalizationService.Instance.GetString("Dialog_Design_Search_Group2") },
+            new SearchHit { Identifier = "20MA1", Description = LocalizationService.Instance.GetString("Dialog_Design_Search_Hit3"), Group = LocalizationService.Instance.GetString("Dialog_Design_Search_Group20") },
         };
         ApplyFilter();
     }

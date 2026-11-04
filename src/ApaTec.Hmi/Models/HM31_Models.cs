@@ -7,6 +7,8 @@ public sealed class GlueTrackField : ObservableObject
 {
     private double? _angle;
     private string? _errorText;
+    private bool _isAuthorized = true;
+    private bool _isEditing;
 
     public int Row { get; init; }
 
@@ -25,6 +27,20 @@ public sealed class GlueTrackField : ObservableObject
     {
         get => _errorText;
         set => SetProperty(ref _errorText, value);
+    }
+
+    /// <summary>false: Rolle reicht nicht, das Feld zeigt das Schloss statt des Schluessels (HM-12).</summary>
+    public bool IsAuthorized
+    {
+        get => _isAuthorized;
+        set => SetProperty(ref _isAuthorized, value);
+    }
+
+    /// <summary>true, solange das Eingabe-Pop-up fuer das Feld offen ist (Fokusrahmen).</summary>
+    public bool IsEditing
+    {
+        get => _isEditing;
+        set => SetProperty(ref _isEditing, value);
     }
 }
 

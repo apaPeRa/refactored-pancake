@@ -142,7 +142,7 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
     }
 
     /// <summary>Haltedauer erreicht (HM07_PressBehavior, Befehl nach <see cref="HoldDuration"/>): uebernimmt die Motorposition als neuen Nullpunkt.</summary>
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanSetEncoder))]
     private void SetEncoder()
     {
         if (!CanSet || !_session.HasRole(RequiredRole) || _list.Count == 0)
@@ -157,6 +157,9 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
 
         Refresh();
     }
+
+    // Gesperrt (CanExecute) statt IsEnabled=false: die Taste bleibt antippbar, BeginSet nennt den Grund; das Halten startet nicht (HM07_PressBehavior).
+    private bool CanSetEncoder() => CanSet && _session.HasRole(RequiredRole) && _list.Count > 0;
 
     [RelayCommand(CanExecute = nameof(CanPrevious))]
     private void PreviousEncoder() => Page(-1);
@@ -217,6 +220,7 @@ public sealed partial class EncoderSettingViewModel : PageViewModelBase
         IsEmergencyStopPressed = _encoders.IsEmergencyStopPressed;
         OnPropertyChanged(nameof(ShowStatusText));
         OnPropertyChanged(nameof(CanSet));
+        SetEncoderCommand.NotifyCanExecuteChanged();
     }
 
     private void AuthorizeAndStop() => IsAuthorized = _session.HasRole(RequiredRole);

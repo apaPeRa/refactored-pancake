@@ -130,7 +130,10 @@ public sealed partial class CheckWeigherViewModel : PageViewModelBase
     public override void OnNavigatedTo(object? parameter)
     {
         _context = SynchronizationContext.Current;
+        // Doppelabo-Schutz: OnNavigatedTo laeuft auch beim Blaettern (ReplaceParameter).
+        _scales.Changed -= OnServiceChanged;
         _scales.Changed += OnServiceChanged;
+        _session.SessionChanged -= OnServiceChanged;
         _session.SessionChanged += OnServiceChanged;
         Refresh();
     }

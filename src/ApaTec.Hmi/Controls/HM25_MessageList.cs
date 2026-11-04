@@ -33,6 +33,10 @@ public sealed class HM25_MessageList : Control
     public static readonly DependencyProperty ShowClassColumnProperty = DependencyProperty.Register(
         nameof(ShowClassColumn), typeof(bool), typeof(HM25_MessageList), new PropertyMetadata(false));
 
+    /// <summary>Text hinter dem Zaehler "n von m" (z. B. " Variablen" auf HS-36); von der Seite ueberschreibbar, Vorgabe leer.</summary>
+    public static readonly DependencyProperty CountCaptionProperty = DependencyProperty.Register(
+        nameof(CountCaption), typeof(string), typeof(HM25_MessageList), new PropertyMetadata(string.Empty));
+
     public static readonly DependencyProperty TotalCountProperty = DependencyProperty.Register(
         nameof(TotalCount), typeof(int), typeof(HM25_MessageList), new PropertyMetadata(0));
 
@@ -109,6 +113,12 @@ public sealed class HM25_MessageList : Control
     {
         get => (bool)GetValue(ShowClassColumnProperty);
         set => SetValue(ShowClassColumnProperty, value);
+    }
+
+    public string CountCaption
+    {
+        get => (string)GetValue(CountCaptionProperty);
+        set => SetValue(CountCaptionProperty, value);
     }
 
     public int TotalCount

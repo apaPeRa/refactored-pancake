@@ -43,7 +43,7 @@
         <controls:HM07_ActionButton Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}"
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="{StaticResource Size.Touch.Large}"
                                     Label="{res:Loc HS32_SetEncoder_Label}" TriggerMode="Hold" HoldDuration="{Binding HoldDuration}"
-                                    RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanSet}"
+                                    RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
                                     IsHolding="{Binding IsHolding, Mode=OneWayToSource}"
                                     controls:HM07_PressBehavior.PressCommand="{Binding BeginSetCommand}"
                                     controls:HM07_PressBehavior.HoldCompletedCommand="{Binding SetEncoderCommand}" />

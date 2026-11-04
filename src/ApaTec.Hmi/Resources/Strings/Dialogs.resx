@@ -26,4 +26,22 @@
   <data name="Dialog_User_Choose_Hint" xml:space="preserve"><value>Rolle wählen</value><comment>Benutzer-Pop-up: Hinweis über der Rollenliste</comment></data>
   <data name="Dialog_User_SignIn_Label" xml:space="preserve"><value>Anmelden</value><comment>Benutzer-Pop-up: Taste Anmelden</comment></data>
   <data name="Dialog_User_SignOut_Label" xml:space="preserve"><value>Abmelden</value><comment>Benutzer-Pop-up: Taste Abmelden</comment></data>
+  <data name="Dialog_Design_Input_Field" xml:space="preserve"><value>Wert</value><comment>Entwurfsmodus (Designkonstruktor): Feldname Eingabe</comment></data>
+  <data name="Dialog_Design_Input_Unit" xml:space="preserve"><value>mm</value><comment>Entwurfsmodus (Designkonstruktor): Einheit Eingabe</comment></data>
+  <data name="Dialog_Design_Confirm_Title" xml:space="preserve"><value>Bestätigung</value><comment>Entwurfsmodus (Designkonstruktor): Titel Bestätigung</comment></data>
+  <data name="Dialog_Design_Confirm_Message" xml:space="preserve"><value>Soll die Aktion ausgeführt werden?</value><comment>Entwurfsmodus (Designkonstruktor): Text Bestätigung</comment></data>
+  <data name="Dialog_Design_File_Title" xml:space="preserve"><value>Datei</value><comment>Entwurfsmodus (Designkonstruktor): Titel Datei</comment></data>
+  <data name="Dialog_Design_File_Name" xml:space="preserve"><value>Export.csv</value><comment>Entwurfsmodus (Designkonstruktor): Dateiname</comment></data>
+  <data name="Dialog_Design_Filter_Title" xml:space="preserve"><value>Meldungen filtern</value><comment>Entwurfsmodus (Designkonstruktor): Titel Filter</comment></data>
+  <data name="Dialog_Design_Filter_Number" xml:space="preserve"><value>Meldenummer</value><comment>Entwurfsmodus (Designkonstruktor): Filterfeld Zahl</comment></data>
+  <data name="Dialog_Design_Filter_NumberMask" xml:space="preserve"><value>___</value><comment>Entwurfsmodus (Designkonstruktor): Maske Zahl</comment></data>
+  <data name="Dialog_Design_Filter_Time" xml:space="preserve"><value>Zeit</value><comment>Entwurfsmodus (Designkonstruktor): Filterfeld Zeit</comment></data>
+  <data name="Dialog_Design_Filter_TimeMask" xml:space="preserve"><value>__.__.____ __:__:__</value><comment>Entwurfsmodus (Designkonstruktor): Maske Datum und Zeit</comment></data>
+  <data name="Dialog_Design_Search_Title" xml:space="preserve"><value>Aktor suchen</value><comment>Entwurfsmodus (Designkonstruktor): Titel Suche</comment></data>
+  <data name="Dialog_Design_Search_Placeholder" xml:space="preserve"><value>Kennzeichnung eingeben</value><comment>Entwurfsmodus (Designkonstruktor): Platzhalter Suche</comment></data>
+  <data name="Dialog_Design_Search_Hit1" xml:space="preserve"><value>Antrieb Zuführung 2MA1</value><comment>Entwurfsmodus (Designkonstruktor): Beispieltreffer 1</comment></data>
+  <data name="Dialog_Design_Search_Hit2" xml:space="preserve"><value>Antrieb Zuführung 2MA2</value><comment>Entwurfsmodus (Designkonstruktor): Beispieltreffer 2</comment></data>
+  <data name="Dialog_Design_Search_Hit3" xml:space="preserve"><value>Antrieb Schließmaschine 20MA1</value><comment>Entwurfsmodus (Designkonstruktor): Beispieltreffer 3</comment></data>
+  <data name="Dialog_Design_Search_Group2" xml:space="preserve"><value>GR2 Zuführung Papier</value><comment>Entwurfsmodus (Designkonstruktor): Beispielgruppe</comment></data>
+  <data name="Dialog_Design_Search_Group20" xml:space="preserve"><value>GR20 Schließmaschine</value><comment>Entwurfsmodus (Designkonstruktor): Beispielgruppe</comment></data>
 </root>

@@ -1,3 +1,4 @@
+using ApaTec.Hmi.Services;
 using ApaTec.Hmi.Models;
 using ApaTec.Hmi.Navigation;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -22,8 +23,8 @@ public sealed partial class ConfirmationDialogViewModel : PopupViewModelBase
 
     public ConfirmationDialogViewModel()
     {
-        Title = "Bestätigung";
-        Message = "Soll die Aktion ausgeführt werden?";
+        Title = LocalizationService.Instance.GetString("Dialog_Design_Confirm_Title");
+        Message = LocalizationService.Instance.GetString("Dialog_Design_Confirm_Message");
     }
 
     public override void OnOpened(object? parameter)

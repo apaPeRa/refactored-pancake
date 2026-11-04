@@ -34,8 +34,8 @@ public sealed partial class FileResultDialogViewModel : PopupViewModelBase
 
     public FileResultDialogViewModel()
     {
-        Title = "Datei";
-        FileName = "Export.csv";
+        Title = LocalizationService.Instance.GetString("Dialog_Design_File_Title");
+        FileName = LocalizationService.Instance.GetString("Dialog_Design_File_Name");
     }
 
     public override void OnOpened(object? parameter)

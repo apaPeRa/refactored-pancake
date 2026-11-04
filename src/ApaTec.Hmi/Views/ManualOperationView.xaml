@@ -34,7 +34,7 @@
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="{StaticResource Size.Touch.Large}"
                                     Label="{Binding JogMinusLabel}" Icon="{StaticResource Icon.Jog.Minus}"
                                     TriggerMode="WhilePressed" RequiresPermission="True"
-                                    IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanMove}" IsRunning="{Binding IsJogMinusRunning}"
+                                    IsAuthorized="{Binding IsAuthorized}" IsRunning="{Binding IsJogMinusRunning}"
                                     controls:HM07_PressBehavior.PressCommand="{Binding BeginJogMinusCommand}"
                                     controls:HM07_PressBehavior.ReleaseCommand="{Binding EndJogMinusCommand}" />
         <!-- E09/E10 Freigabe und Endlage links -->
@@ -56,7 +56,7 @@
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="{StaticResource Size.Touch.Large}"
                                     Label="{Binding JogPlusLabel}" Icon="{StaticResource Icon.Jog.Plus}"
                                     TriggerMode="WhilePressed" RequiresPermission="True"
-                                    IsAuthorized="{Binding IsAuthorized}" IsEnabled="{Binding CanMove}" IsRunning="{Binding IsJogPlusRunning}"
+                                    IsAuthorized="{Binding IsAuthorized}" IsRunning="{Binding IsJogPlusRunning}"
                                     controls:HM07_PressBehavior.PressCommand="{Binding BeginJogPlusCommand}"
                                     controls:HM07_PressBehavior.ReleaseCommand="{Binding EndJogPlusCommand}" />
 

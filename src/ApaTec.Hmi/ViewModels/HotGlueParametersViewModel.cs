@@ -11,6 +11,8 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.HotGlueParameters)]
 public sealed partial class HotGlueParametersViewModel : PageViewModelBase
 {
+    private readonly SynchronizationContext? _uiContext = SynchronizationContext.Current;
+
     private readonly HotGlueEditContext _context;
 
     [ObservableProperty]
@@ -74,7 +76,7 @@ public sealed partial class HotGlueParametersViewModel : PageViewModelBase
         }
     }
 
-    private void OnChanged(object? sender, EventArgs e) => Refresh();
+    private void OnChanged(object? sender, EventArgs e) => UiMarshal.Run(_uiContext, Refresh);
 
     private void Refresh()
     {

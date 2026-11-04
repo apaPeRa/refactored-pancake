@@ -10,6 +10,8 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.HotGluePressure)]
 public sealed partial class HotGluePressureViewModel : PageViewModelBase
 {
+    private readonly SynchronizationContext? _uiContext = SynchronizationContext.Current;
+
     private readonly HotGlueEditContext _context;
 
     [ObservableProperty]
@@ -88,7 +90,7 @@ public sealed partial class HotGluePressureViewModel : PageViewModelBase
     private HotGlueFieldViewModel Field(HotGlueParameter parameter, string keyPrefix, string unitKey) =>
         new(parameter, _context, keyPrefix + "_Label", unitKey, keyPrefix + "_Caption");
 
-    private void OnChanged(object? sender, EventArgs e) => Refresh();
+    private void OnChanged(object? sender, EventArgs e) => UiMarshal.Run(_uiContext, Refresh);
 
     private void Refresh()
     {

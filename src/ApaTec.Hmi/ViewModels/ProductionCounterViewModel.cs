@@ -11,6 +11,8 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.ProductionCounter)]
 public sealed partial class ProductionCounterViewModel : PopupViewModelBase
 {
+    private readonly SynchronizationContext? _uiContext = SynchronizationContext.Current;
+
     private readonly IProductionService _production;
     private readonly ILocalizationService _loc;
     private bool _subscribed;
@@ -64,7 +66,7 @@ public sealed partial class ProductionCounterViewModel : PopupViewModelBase
         _subscribed = false;
     }
 
-    private void OnChanged(object? sender, EventArgs e) => Refresh();
+    private void OnChanged(object? sender, EventArgs e) => UiMarshal.Run(_uiContext, Refresh);
 
     private void Refresh()
     {

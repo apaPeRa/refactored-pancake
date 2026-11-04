@@ -31,6 +31,8 @@
                        Unit="{res:Loc Unit_Degree}" Decimals="0" RequiresPermission="True"
                        NumberValue="{Binding Angle, Mode=TwoWay}"
                        ErrorText="{Binding ErrorText}"
+                       IsAuthorized="{Binding IsAuthorized}"
+                       IsEditing="{Binding IsEditing}"
                        ToolTip="{Binding Tooltip}"
                        Command="{Binding CommitCommand, RelativeSource={RelativeSource AncestorType=c:HM31_GlueTrackGraphic}}"
                        CommandParameter="{Binding}" />

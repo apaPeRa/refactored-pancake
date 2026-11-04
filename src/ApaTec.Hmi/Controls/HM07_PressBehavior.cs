@@ -13,7 +13,8 @@ namespace ApaTec.Hmi.Controls;
 /// <item><description><b>WhilePressed</b> (Totmann, Jog): <see cref="PressCommandProperty"/> beim Druecken, <see cref="ReleaseCommandProperty"/> beim Ende des Drueckens.</description></item>
 /// <item><description><b>Hold</b> (langes Druecken, Reset, Geber setzen): zusaetzlich laeuft ueber <see cref="HM07_ActionButton.HoldDuration"/> der Fortschritt
 /// (<see cref="HM07_ActionButton.IsHolding"/>, <see cref="HM07_ActionButton.HoldProgress"/> von 0 bis 1); am Ende der Haltedauer wird <see cref="HoldCompletedCommandProperty"/> einmal ausgefuehrt.
-/// Ohne Berechtigung (<see cref="HM07_ActionButton.RequiresPermission"/> und nicht <see cref="HM07_ActionButton.IsAuthorized"/>) laeuft kein Halten.</description></item>
+/// Ohne Berechtigung (<see cref="HM07_ActionButton.RequiresPermission"/> und nicht <see cref="HM07_ActionButton.IsAuthorized"/>) oder bei gesperrtem <c>HoldCompletedCommand.CanExecute</c> laeuft kein Halten;
+/// der <c>PressCommand</c> laeuft trotzdem, damit das ViewModel den Grund meldet bzw. die Anmeldung anfordert.</description></item>
 /// </list>
 /// Keine Fachlogik: das Verhalten meldet nur dem ViewModel; der Fortschritt laeuft ueber eine WPF-Animation.
 /// </summary>
@@ -87,7 +88,7 @@ public static class HM07_PressBehavior
 
             button.SetValue(WasPressedProperty, true);
             Run(GetPressCommand(button));
-            if (button is HM07_ActionButton { TriggerMode: ActionTriggerMode.Hold } holdButton && CanHold(holdButton))
+            if (button is HM07_ActionButton { TriggerMode: ActionTriggerMode.Hold } holdButton && CanHold(holdButton) && CanComplete(holdButton))
             {
                 StartHold(holdButton);
             }
@@ -134,6 +135,9 @@ public static class HM07_PressBehavior
             EndPress(button);
         }
     }
+
+    // Das ViewModel kann ein Halten ueber CanExecute des Befehls "Haltedauer erreicht" sperren (Zustand statt IsEnabled=false); der Grund kommt dann aus dem PressCommand.
+    private static bool CanComplete(HM07_ActionButton button) => GetHoldCompletedCommand(button) is not { } command || command.CanExecute(null);
 
     private static bool CanHold(HM07_ActionButton button) => button.IsEnabled && (!button.RequiresPermission || button.IsAuthorized);
 

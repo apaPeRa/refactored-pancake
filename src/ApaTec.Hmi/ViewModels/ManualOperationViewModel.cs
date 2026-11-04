@@ -426,7 +426,8 @@ public sealed partial class ManualOperationViewModel : PageViewModelBase, IBread
         var hasMessage = !string.IsNullOrEmpty(state?.Message);
         MessageText = hasMessage ? state!.Message! : L("HS31_Message_Empty");
         MessageKind = hasMessage && state!.IsFault ? NoticeKind.Error : NoticeKind.MessageLine;
-        if (_jogging is not null && !CanMove)
+        // Aktorstoerung oder Verlust von Handbetrieb/Erreichbarkeit beenden die Bewegung (HS-31-P16).
+        if (_jogging is not null && (!CanMove || state?.IsFault == true))
         {
             StopJog();
         }

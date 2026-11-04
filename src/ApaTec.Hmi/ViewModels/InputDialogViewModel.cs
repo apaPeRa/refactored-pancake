@@ -64,9 +64,9 @@ public sealed partial class InputDialogViewModel : PopupViewModelBase
     public InputDialogViewModel()
         : this(LocalizationService.Instance)
     {
-        FieldTitle = "Wert";
+        FieldTitle = LocalizationService.Instance.GetString("Dialog_Design_Input_Field");
         CurrentValue = 12.5;
-        Unit = "mm";
+        Unit = LocalizationService.Instance.GetString("Dialog_Design_Input_Unit");
         Decimals = 1;
         Minimum = 0;
         Maximum = 100;

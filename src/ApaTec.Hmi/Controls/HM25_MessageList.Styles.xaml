@@ -336,6 +336,7 @@
                 <Run Text="{Binding Items.Count, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
                 <Run Text="{res:Loc HM25_Counter_Of}" />
                 <Run Text="{Binding TotalCount, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Run Text="{Binding CountCaption, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
               </TextBlock>
             </Grid>
           </Grid>

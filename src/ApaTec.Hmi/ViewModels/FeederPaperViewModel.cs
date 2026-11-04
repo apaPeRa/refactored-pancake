@@ -33,6 +33,11 @@ public sealed partial class FeederPaperViewModel : FeederPageViewModelBase
     [ObservableProperty]
     private LedState _spliceSensorState;
 
+    [ObservableProperty]
+    private string _spliceSensorText = string.Empty;
+
+    private readonly IMessageService? _messages;
+
     /// <summary>Entwurfsmodus: Beispielwerte aus dem Dummy-Dienst, keine Navigation und keine Pop-ups.</summary>
     public FeederPaperViewModel()
         : this(new DummyFeederService(), null, null, null, LocalizationService.Instance)
@@ -42,6 +47,7 @@ public sealed partial class FeederPaperViewModel : FeederPageViewModelBase
     public FeederPaperViewModel(IFeederService feeder, IDialogService? dialogs, IUserSession? session, IMessageService? messages, ILocalizationService localization)
         : base(feeder, session, localization, new FeederValueEditor(dialogs, session, messages, localization))
     {
+        _messages = messages;
         DiameterRollEnd = CreateField(FeederValue.PaperDiameterRollEnd, "HS05_DiameterRollEnd_Label", "Feeder_Unit_Percent", "HS05_DiameterRollEnd_Label", "HS05_DiameterRollEnd_Help");
         BrakeStandstill = CreateField(FeederValue.PaperBrakeStandstill, "HS05_BrakeStandstill_Label", "Feeder_Unit_Percent", "HS05_BrakeStandstill_Label", "HS05_BrakeStandstill_Help");
         DiameterMax = CreateField(FeederValue.PaperDiameterMax, "HS05_DiameterMax_Label", "Feeder_Unit_Percent", "HS05_DiameterMax_Label", "HS05_DiameterMax_Help");
@@ -86,9 +92,17 @@ public sealed partial class FeederPaperViewModel : FeederPageViewModelBase
         CouplingStopPosition.Value = state.CouplingStopPosition;
         RollDiameter = state.RollDiameter;
         BrakePressure = state.BrakePressure;
-        IsRollEndReached = state.RollDiameter <= state.DiameterRollEnd;
+        var rollEnd = state.RollDiameter <= state.DiameterRollEnd;
+        if (rollEnd && !IsRollEndReached)
+        {
+            // Meldung "Rollenende" in der Meldezeile (einmal beim Erreichen der Grenze).
+            _messages?.ShowHint(Localization.GetString("HS05_RollEnd_Message"));
+        }
+
+        IsRollEndReached = rollEnd;
         SpliceDetectedState = state.SpliceDetected ? LedState.On : LedState.Off;
         SpliceSensorState = state.SpliceSensor ? LedState.On : LedState.Off;
+        SpliceSensorText = Localization.GetString(state.SpliceSensor ? "HS05_SpliceSensor_On" : "HS05_SpliceSensor_Off");
         SpliceDetectedText = Localization.GetString(state.SpliceDetected ? "HS05_SpliceDetected_On" : "HS05_SpliceDetected_Off");
     }
 }

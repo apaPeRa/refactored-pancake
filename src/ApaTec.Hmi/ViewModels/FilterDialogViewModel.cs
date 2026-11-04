@@ -38,11 +38,11 @@ public sealed partial class FilterDialogViewModel : PopupViewModelBase
     public FilterDialogViewModel()
         : this(LocalizationService.Instance)
     {
-        Title = "Meldungen filtern";
+        Title = LocalizationService.Instance.GetString("Dialog_Design_Filter_Title");
         Load(new[]
         {
-            new FilterField { Name = "Meldenummer", Kind = FilterFieldKind.Number, Placeholder = "___" },
-            new FilterField { Name = "Zeit", Kind = FilterFieldKind.DateTime, Placeholder = "__.__.____ __:__:__" },
+            new FilterField { Name = LocalizationService.Instance.GetString("Dialog_Design_Filter_Number"), Kind = FilterFieldKind.Number, Placeholder = LocalizationService.Instance.GetString("Dialog_Design_Filter_NumberMask") },
+            new FilterField { Name = LocalizationService.Instance.GetString("Dialog_Design_Filter_Time"), Kind = FilterFieldKind.DateTime, Placeholder = LocalizationService.Instance.GetString("Dialog_Design_Filter_TimeMask") },
         });
     }
 

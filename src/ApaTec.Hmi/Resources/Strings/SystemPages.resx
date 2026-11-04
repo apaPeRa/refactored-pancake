@@ -65,4 +65,5 @@
   <data name="HS39_Status_Label" xml:space="preserve"><value>Status / Diag Code</value></data>
   <data name="HS39_Build_Label" xml:space="preserve"><value>HMI Applikation Build</value></data>
   <data name="HS39_Limit_Title" xml:space="preserve"><value>Strom Limit {0}</value></data>
+  <data name="HS36_Count_Caption" xml:space="preserve"><value> Variablen</value><comment>HS-36: Text hinter dem Zähler "n von m Variablen" (Leerzeichen gehört zum Text)</comment></data>
 </root>

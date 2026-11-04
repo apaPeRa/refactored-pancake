@@ -3,7 +3,7 @@ using ApaTec.Hmi.Models;
 
 namespace ApaTec.Hmi.Services.Dummy;
 
-/// <summary>Dummy der Waagenkalibrierung (HS-27): Beispielwerte aus RS-27_01, Zustandsfolge Start, Entlastet, Belastet, Bestaetigung. Keine Maschinenanbindung.</summary>
+/// <summary>Dummy der Waagenkalibrierung (HS-27; Reset quittiert auch einen Waagenfehler): Beispielwerte aus RS-27_01, Zustandsfolge Start, Entlastet, Belastet, Bestaetigung. Keine Maschinenanbindung.</summary>
 [DummyService]
 public sealed class DummyScaleCalibrationService : IScaleCalibrationService
 {
@@ -48,7 +48,7 @@ public sealed class DummyScaleCalibrationService : IScaleCalibrationService
         Task.FromResult(Update(scaleIndex, s => s.Step == CalibrationStep.AwaitLoaded ? s with { Step = CalibrationStep.Completed, Weight = 500 } : null, ScaleOperationResult.NotAllowed));
 
     public Task<ScaleOperationResult> ResetAsync(int scaleIndex) =>
-        Task.FromResult(Update(scaleIndex, s => s with { Step = CalibrationStep.Idle }, ScaleOperationResult.NotAllowed));
+        Task.FromResult(Update(scaleIndex, s => s with { Step = CalibrationStep.Idle, IsFaulted = false }, ScaleOperationResult.NotAllowed));
 
     // Wendet die Aenderung an; liefert die Funktion null, gilt der Befehl als abgelehnt (Ergebnis <paramref name="rejected"/>).
     private ScaleOperationResult Update(int scaleIndex, Func<ScaleSnapshot, ScaleSnapshot?> change, ScaleOperationResult rejected)

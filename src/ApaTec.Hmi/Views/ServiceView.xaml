@@ -26,7 +26,7 @@
                                       Label="{res:Loc HS36_Filter_Label}" InputKind="Text" RequiresPermission="False"
                                       TextValue="{Binding FilterText}" Command="{Binding EditFilterCommand}" />
             <controls:HM25_MessageList Grid.Row="1" ListKind="Selection" SelectionMode="Multiple" ScrollStyle="Scrollbar"
-                                       Items="{Binding Variables}" SelectedItems="{Binding SelectedVariables}" TotalCount="{Binding TotalCount}" />
+                                       Items="{Binding Variables}" SelectedItems="{Binding SelectedVariables}" TotalCount="{Binding TotalCount}" CountCaption="{res:Loc HS36_Count_Caption}" />
         </Grid>
 
         <StackPanel Grid.Column="2">

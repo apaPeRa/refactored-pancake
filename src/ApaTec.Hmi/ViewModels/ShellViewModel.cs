@@ -23,6 +23,7 @@ public sealed partial class ShellViewModel : ObservableObject
     private readonly IMachineStatusService _machine;
     private readonly IMessageService _messages;
     private readonly ILocalizationService _localization;
+    private readonly SynchronizationContext? _context = SynchronizationContext.Current;
 
     // ---- Inhalt und Pop-up ----
     [ObservableProperty]
@@ -133,10 +134,10 @@ public sealed partial class ShellViewModel : ObservableObject
 
         _navigation.Navigated += (_, _) => RefreshFromNavigation();
         _navigation.PopupStackChanged += (_, _) => RefreshPopup();
-        _session.SessionChanged += (_, _) => RefreshUser();
+        _session.SessionChanged += (_, _) => PostToUi(RefreshUser);
         _clock.Tick += (_, _) => Now = _clock.Now;
-        _machine.Changed += (_, _) => RefreshMachine();
-        _messages.Changed += (_, _) => RefreshMessages();
+        _machine.Changed += (_, _) => PostToUi(RefreshMachine);
+        _messages.Changed += (_, _) => PostToUi(RefreshMessages);
         _localization.CultureChanged += (_, _) => RefreshTexts();
 
         Now = _clock.Now;
@@ -146,6 +147,19 @@ public sealed partial class ShellViewModel : ObservableObject
         RefreshFromNavigation();
         RefreshPopup();
         RefreshTexts();
+    }
+
+    // Dienstereignisse koennen auf einem Hintergrundthread kommen (Timer, Maschinenanbindung): im Kontext des Fensters ausfuehren.
+    private void PostToUi(Action action)
+    {
+        if (_context is null || SynchronizationContext.Current == _context)
+        {
+            action();
+        }
+        else
+        {
+            _context.Post(_ => action(), null);
+        }
     }
 
     /// <summary>Entwurfsmodus: leerer Rahmen mit Beispielwerten, ohne Dienste.</summary>

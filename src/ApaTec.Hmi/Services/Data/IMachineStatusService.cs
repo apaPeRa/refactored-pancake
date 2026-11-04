@@ -13,6 +13,12 @@ public interface IMachineStatusService
     /// <summary>Maschinenwinkel in Grad (0 bis 360).</summary>
     double Angle { get; }
 
+    /// <summary>
+    /// Setzt die in der Kopfzeile angezeigte Betriebsart (Dummy; die echte Maschine meldet sie). HS-36 setzt beim Betreten
+    /// <see cref="Models.OperatingMode.Service"/> und stellt beim Verlassen die vorherige Betriebsart wieder her.
+    /// </summary>
+    void SetOperatingMode(OperatingMode mode);
+
     /// <summary>Wenn sich ein Wert aendert (ggf. nicht im UI-Thread).</summary>
     event EventHandler? Changed;
 }

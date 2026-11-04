@@ -23,6 +23,11 @@ public sealed partial class SingleWeightsViewModel : PageViewModelBase
     private readonly FunctionBarItem _startItem;
     private SynchronizationContext? _context;
     private bool _isModeChanging;
+    private bool _wasConnected = true;
+
+    /// <summary>Verbindungsstatus der Kontrollwaage; ohne Verbindung nennt die Meldezeile den Grund, Start und Umschalten sind wirkungslos.</summary>
+    [ObservableProperty]
+    private bool _isConnected = true;
 
     public SingleWeightsViewModel(
         IScaleService scales,
@@ -80,6 +85,8 @@ public sealed partial class SingleWeightsViewModel : PageViewModelBase
     public override void OnNavigatedTo(object? parameter)
     {
         _context = SynchronizationContext.Current;
+        // Doppelabo-Schutz: OnNavigatedTo laeuft auch beim Blaettern (ReplaceParameter).
+        _scales.Changed -= OnServiceChanged;
         _scales.Changed += OnServiceChanged;
         Refresh();
     }
@@ -103,6 +110,13 @@ public sealed partial class SingleWeightsViewModel : PageViewModelBase
 
     private void Refresh()
     {
+        IsConnected = _scales.GetCheckWeigher().IsConnected;
+        if (!IsConnected && _wasConnected)
+        {
+            _messages?.ShowHint(_loc.GetString("HS13_Offline_Hint"));
+        }
+
+        _wasConnected = IsConnected;
         var series = _scales.GetSingleWeights();
         Capacity = series.Capacity;
         Mean = series.Mean;
@@ -135,6 +149,12 @@ public sealed partial class SingleWeightsViewModel : PageViewModelBase
     [RelayCommand]
     private async Task ToggleModeAsync()
     {
+        if (!IsConnected)
+        {
+            _messages?.ShowHint(_loc.GetString("HS13_Offline_Hint"));
+            return;
+        }
+
         var target = Mode != SamplingMode.Continuous;
         _isModeChanging = true;
         _modeItem.IsEnabled = false;
@@ -162,6 +182,12 @@ public sealed partial class SingleWeightsViewModel : PageViewModelBase
     [RelayCommand]
     private async Task StartAsync()
     {
+        if (!IsConnected)
+        {
+            _messages?.ShowHint(_loc.GetString("HS13_Offline_Hint"));
+            return;
+        }
+
         if (Mode == SamplingMode.Single && HasValues && _dialogs is not null)
         {
             var request = new ConfirmationRequest(_loc.GetString("HS14_Start_Title"), _loc.GetString("HS14_Start_Text"));

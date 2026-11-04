@@ -78,7 +78,7 @@
                           State="{Binding SpliceDetectedState}" StateText="{Binding SpliceDetectedText}"
                           AutomationProperties.HelpText="{res:Loc HS05_SpliceDetected_Help}" />
         <c:HM09_StatusLed Grid.Row="2" Margin="{StaticResource Inset.S}" Label="{res:Loc HS05_SpliceSensor_Label}"
-                          State="{Binding SpliceSensorState}"
+                          State="{Binding SpliceSensorState}" StateText="{Binding SpliceSensorText}"
                           AutomationProperties.HelpText="{res:Loc HS05_SpliceSensor_Help}" />
       </Grid>
     </c:HM15_GroupPanel>

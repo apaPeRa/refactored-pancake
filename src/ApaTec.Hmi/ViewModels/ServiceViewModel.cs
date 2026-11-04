@@ -20,6 +20,8 @@ public sealed partial class ServiceViewModel : PageViewModelBase
     private readonly IDialogService _dialogs;
     private readonly ILocalizationService _text;
     private readonly IMessageService _messages;
+    private readonly IMachineStatusService? _machine;
+    private OperatingMode _previousMode = OperatingMode.Production;
     private readonly HashSet<string> _selectedNames = new(StringComparer.Ordinal);
     private IReadOnlyList<MessageEntry> _entries = Array.Empty<MessageEntry>();
     private string? _markedName;
@@ -40,8 +42,9 @@ public sealed partial class ServiceViewModel : PageViewModelBase
     [NotifyPropertyChangedFor(nameof(HintText), nameof(HasHint))]
     private bool _isBusy;
 
-    public ServiceViewModel(IServiceDataService service, IDialogService dialogs, IMessageService messages, ILocalizationService text)
+    public ServiceViewModel(IServiceDataService service, IDialogService dialogs, IMessageService messages, ILocalizationService text, IMachineStatusService? machine = null)
     {
+        _machine = machine;
         _service = service;
         _dialogs = dialogs;
         _messages = messages;
@@ -100,6 +103,24 @@ public sealed partial class ServiceViewModel : PageViewModelBase
         if (await _service.RunWagoAsync())
         {
             _messages.ShowHint(_text.GetString("HS36_Wago_Hint"));
+        }
+    }
+
+    // Betriebsart "Service" in der Kopfzeile (HS-36-P09, A-48): beim Betreten setzen, beim Verlassen die vorherige wiederherstellen.
+    public override void OnNavigatedTo(object? parameter)
+    {
+        if (_machine is not null && _machine.OperatingMode != OperatingMode.Service)
+        {
+            _previousMode = _machine.OperatingMode;
+            _machine.SetOperatingMode(OperatingMode.Service);
+        }
+    }
+
+    public override void OnNavigatedFrom()
+    {
+        if (_machine is not null && _machine.OperatingMode == OperatingMode.Service)
+        {
+            _machine.SetOperatingMode(_previousMode);
         }
     }
 
