@@ -100,4 +100,4 @@ Kein Modul fehlt.
 - OP-28: Wertebereiche und Standardwerte aller Parameter fehlen (Bildwerte nur Beispiele); Dummy-Grenzen.
 - OP-30: Eingabe-Pop-up ist in der Referenz nicht beschrieben (Modulannahme).
 - OP-45: Fachliche Zusammenhänge unklar: Bezug des Regulierschritts in % (Sollgewicht oder Abweichung), Schrittweite von „Regulierung −/+“, ob „Regulierung ist“ manuell eingebbar sein soll (Referenz zeigt ein Eingabefeld mit Schlüssel, beschreibt aber einen aktuellen Korrekturwert).
-- Annahme dieser Seite (Nummerierung für den Verwalter): H-4 Die Tasten „Regulierung −/+“ ändern den Korrekturwert je Tippen um eine konfigurierbare Dummy-Schrittweite ohne Wiederholfunktion.
+- Annahme dieser Seite (Nummerierung für den Verwalter): H-4 Die Tasten „Regulierung −/+“ ändern den Korrekturwert je Tippen um eine konfigurierbare Dummy-Schrittweite ohne Wiederholfunktion; am Limit „Maximum erreicht“ (HM-35) ist die Taste in Richtung des Limits deaktiviert (Ergänzung, im Handbuch nicht beschrieben).

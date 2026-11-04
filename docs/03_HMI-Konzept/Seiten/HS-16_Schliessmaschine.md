@@ -37,7 +37,7 @@ Innenaufbau der Gruppen (Maße als Tokens, keine Pixelpositionen):
 
 **Funktionsleiste unten (HM-06):** drei seitenspezifische Tasten, links beginnend: „Heißleimgerät“, „Motorparameter“, „Gewichtskorrektur“ (höchstens 5 erlaubt, Navigation.md Abschnitt 3.3).
 
-Bildabgleich: Das Referenzbild zeigt links das Auslaufband und rechts übereinander Kopfleim und Rüttlung. Das neue Layout ordnet die drei Gruppen nebeneinander an (Raster 4 : 4 : 4 des Designs DS-02), damit alle 64-px-Touch-Ziele mit 16 px Abstand ohne Scrollen in die Inhaltshöhe passen; Reihenfolge der Inhalte und Zeilen bleiben unverändert.
+Bildabgleich: Das Referenzbild zeigt links das Auslaufband und rechts übereinander Kopfleim und Rüttlung. Das neue Layout ordnet die drei Gruppen nebeneinander an (Raster 4 : 4 : 4 des Designs DS-02), damit alle Touch-Ziele (`Size.Touch.Default`) mit Abstand `Size.Touch.Gap` ohne Scrollen in die Inhaltshöhe passen; Reihenfolge der Inhalte und Zeilen bleiben unverändert.
 
 ## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 Spalte „Herkunft“ = Rückverfolgung auf [RS-16](../../02_Referenz-Analyse/Seiten/RS-16_Schliessmaschine.md). Einheiten und Beispielwerte stammen aus dem Bild; Wertebereiche und Standardwerte sind im Handbuch nicht angegeben (OP-28), im neuen HMI konfigurierbare Dummy-Grenzen.
@@ -103,7 +103,7 @@ Spalte „Herkunft“ = Rückverfolgung auf [RS-16](../../02_Referenz-Analyse/Se
 
 **Dauer und Taktung (E08, E09).** Das Ventil wird getaktet, wenn die Nocke bei reduzierter Maschinengeschwindigkeit länger als die Dauer braucht; die Heißleimmenge sinkt. Das ist Steuerungsverhalten, die Seite zeigt nur den Hinweistext E09 (keine eigene Anzeige des Taktbetriebs, da im Handbuch keine beschrieben ist).
 
-**Berechtigungen.** Die Schlüsselsymbole (`Icon.Key`, 24 px oben rechts im Element, Farbe `Brush.Text.Primary`, nicht gelb) kennzeichnen berechtigungspflichtige Eingaben: E02, E04, E06, E07, E08, E11, E12, E13 (6 Felder und 2 Umschalter). Rollen und Stufen sind Dummy (OP-04, OP-25). Ohne ausreichende Rolle: Symbol `Icon.Lock`, Tippen öffnet kein Eingabe-Pop-up, die Meldezeile zeigt „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up zur Anmeldung öffnet (Navigation.md 4.1); nach der Anmeldung wird die Eingabe fortgesetzt.
+**Berechtigungen.** Die Schlüsselsymbole (`Icon.Key`, `Size.Icon.S` oben rechts im Element, Farbe `Brush.Text.Primary`, nicht gelb) kennzeichnen berechtigungspflichtige Eingaben: E02, E04, E06, E07, E08, E11, E12, E13 (6 Felder und 2 Umschalter). Rollen und Stufen sind Dummy (OP-04, OP-25). Ohne ausreichende Rolle: Symbol `Icon.Lock`, Tippen öffnet kein Eingabe-Pop-up, die Meldezeile zeigt „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up zur Anmeldung öffnet (Navigation.md 4.1); nach der Anmeldung wird die Eingabe fortgesetzt.
 
 **Sperrzustände.** Ist eine Bedienung im aktuellen Betriebszustand nicht zulässig (Dummy, OP-31), erscheinen die Elemente deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`, Symbol `Icon.Block`); Tippen nennt den Grund in der Meldezeile (A-28). Die Navigationstasten der Funktionsleiste bleiben bedienbar.
 

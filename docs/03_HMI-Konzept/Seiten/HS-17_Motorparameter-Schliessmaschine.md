@@ -29,6 +29,7 @@ K = Schlüsselsymbol (Icon.Key, oben rechts im Feld)
 
 - Die Schneckenkarte hat drei Zeilen und oben das Symbol `Icon.Motor.Screw` neben der Überschrift (aus HM-21); darunter bleibt die Karte leer (Inhaltshöhe).
 - Das Referenzbild ordnet „Schnecke“ mittig unter den beiden Verschlusskarten an; das neue Layout stellt die drei Karten nebeneinander (HM-21: Raster 4 : 4 : 4), damit der Aufbau auf HS-12, HS-17 und HS-20 identisch ist.
+- Die HM-21-Eigenschaft `DoserName` ist „Schließmaschine“ (kein Dosierer-Zusatz wie „HD1“).
 - Alle 13 Felder zeigen den Wert in `Font.Size.Value` `Font.Weight.Strong` (nicht rot) mit der Einheit hinter dem Wert.
 - Funktionsleiste: **leer, aber sichtbar** (Navigation.md Abschnitt 3.3, „Ohne eigene Tasten“). Die Taste „»“ des Referenzbilds entfällt (Begründung unten).
 
