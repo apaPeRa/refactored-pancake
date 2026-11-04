@@ -8,6 +8,7 @@ Neue Maschinen-HMI der APA-TEC GmbH: C# / WPF / .NET 8, MVVM, Zielauflösung 192
 cd src
 dotnet build ApaTec.Hmi.sln -p:EnableWindowsTargeting=true     # 0 Fehler, 0 Warnungen (Warnungen sind Fehler)
 python3 tools/check_design.py                                   # statische Prüfungen (siehe unten)
+python3 tools/check_modules.py                                  # HM-01..HM-38 gegen Modulliste.md (Klasse, Stil, DesignData, kein Logik-Code)
 find . -name '*.xaml' -o -name '*.resx' | grep -v -e /obj/ -e /bin/ | xargs xmllint --noout
 ```
 
@@ -20,7 +21,8 @@ WPF läuft nur unter Windows; in der Cloud wird nur kompiliert und statisch gepr
 ```
 src/
 ├─ ApaTec.Hmi.sln
-├─ tools/check_design.py                 statische Prüfungen
+├─ tools/check_design.py                 statische Prüfungen (Designsystem, Literale, Ressourcen)
+├─ tools/check_modules.py                Modulprüfung HM-01 bis HM-38
 └─ ApaTec.Hmi/                            net8.0-windows, WPF, Nullable, TreatWarningsAsErrors
    ├─ Program.cs                          Einstieg und Composition Root (Generic Host)
    ├─ App.xaml(.cs)                       bindet Theme, Tokens, Icons, Basisstile; ViewLocator; kein StartupUri
@@ -80,7 +82,7 @@ navigation.GoToAncestor(PageKeys.HotGlueNordson);                               
 
 - **Farben** nur als `{DynamicResource Brush.…}` (sonst wirkt die Themenumschaltung nicht). **Maße, Schriften, Radien, Rahmen** als `{StaticResource Space.M}`, `Size.Touch.Default`, `Font.Size.Body`, `Radius.Control`, `Border.Thin` usw.; für `Margin`/`Padding` die Thickness-Tokens `Inset.XS/S/M/L/XL`, `Size.Content.Margin`. Textstile: `Text.Body`, `Text.Caption`, `Text.Value`, `Text.Title`, `Text.Metric`, `Text.Disabled`.
 - **Symbole** als `Geometry`: `<Path Data="{StaticResource Icon.Home}" Stroke="{DynamicResource Brush.Text.Primary}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round">` innerhalb einer `Viewbox` der Größe `Size.Icon.S/M/L` (Raster 24 × 24). Die Geometrien sind Platzhalter (Verfeinerung in M3).
-- **Verbot von Literalen:** keine Hex-Farben, `Color=`, Pixelmaße (`Width`, `Height`, `Margin`, `Padding`, `FontSize`, `CornerRadius`, `BorderThickness` mit Zahl) und festen Texte in Views und Controls; Stern-Proportionen im Grid sind erlaubt. Fehlt ein Token, wird es in `Tokens.xaml` bzw. den Theme-Dateien ergänzt und in `Annahmen.md` vermerkt (Abstimmung über den Verwalter).
+- **Verbot von Literalen:** keine Hex-Farben, `Color=`, Pixelmaße (`Width`, `Height`, `Margin`, `Padding`, `FontSize`, `CornerRadius`, `BorderThickness` mit Zahl) und festen Texte in Views und Controls; Stern-Proportionen (`Width="3*"`, `"2.5*"`) sind erlaubt und werden vom Lint nicht gemeldet. Strichstärken von Symbolen und Linien: `StrokeThickness="{StaticResource Size.Icon.Stroke}"` (2) bzw. `Size.Icon.Stroke.Thick` (3); der frühere Umweg `{Binding Source={StaticResource Border.Medium}, Path=Left}` ist verboten (Lint). Fehlt ein Token, wird es in `Tokens.xaml` bzw. den Theme-Dateien ergänzt und in `Annahmen.md` vermerkt (Abstimmung über den Verwalter).
 - **Zustände** nie nur über Farbe (Symbol, Text, Kontur; Designsystem 5). Touch-Ziele mindestens 48 px, Standard 64 px, Abstand mindestens 16 px.
 - **Texte:** `Text="{res:Loc Schlüssel}"` mit `xmlns:res="clr-namespace:ApaTec.Hmi.Resources"`; im ViewModel `ILocalizationService.GetString(key)`.
 - **Thema zur Laufzeit:** `IThemeService.SetTheme(ThemeMode.Dark)` tauscht das erste `MergedDictionary` (Theme) aus; deshalb steht das Theme in `App.xaml` immer an erster Stelle.
@@ -93,7 +95,18 @@ navigation.GoToAncestor(PageKeys.HotGlueNordson);                               
 
 ### Controls einbinden
 
-Ein Modul besteht aus `Controls/HM<nn>_<Name>.cs` (Custom Control, nur Dependency Properties; im statischen Konstruktor `DefaultStyleKeyProperty.OverrideMetadata`) und dem Template-Stil in **`Controls/HM<nn>_<Name>.Styles.xaml`** (ein `ResourceDictionary` mit implizitem Stil für den Control-Typ). Alle Dateien `Controls/*.Styles.xaml` werden beim Start von `ControlResources.MergeAll` automatisch in die Anwendungsressourcen eingebunden; eine Sammeldatei gibt es nicht. UserControls für Komposita liegen ohne `.Styles` im Namen unter `Controls/` und werden direkt per Typ verwendet.
+Ein Modul besteht aus `Controls/HM<nn>_<Name>.cs` (Custom Control, nur Dependency Properties; im statischen Konstruktor `DefaultStyleKeyProperty.OverrideMetadata`) und dem Template-Stil in **`Controls/HM<nn>_<Name>.Styles.xaml`** (ein `ResourceDictionary` mit implizitem Stil für den Control-Typ). Alle Dateien `Controls/*.Styles.xaml` (38 Module, HM-01 und HM-16 ff. teils mit Zusatzdateien) werden beim Start von `ControlResources.MergeAll` automatisch in die Anwendungsressourcen eingebunden; eine Sammeldatei gibt es nicht. UserControls für Komposita liegen ohne `.Styles` im Namen unter `Controls/` und werden direkt per Typ verwendet.
+
+### Konventionen aus den Modulpaketen (HM-01 bis HM-38)
+
+- **Typen-Dateien:** Aufzählungen und kleine Datenklassen eines Moduls (`PagerStyle`, `TileItem`, `PopupKind` …) liegen in `Controls/HM<nn>_<Name>.Types.cs`, Konverter in `HM<nn>_Converters.cs` bzw. `HM<nn>_<Zweck>Converter.cs`; alles im Namespace `ApaTec.Hmi.Controls`. Datenmodelle, die auch Dienste brauchen (`MessageEntry`, `MessageClass`), stehen in `Models/`.
+- **Converter** sind `public sealed` (`IValueConverter`/`IMultiValueConverter`), ohne Zustand, mit Modulpräfix und werden im `.Styles.xaml` als Ressource `HM<nn>.<Zweck>` angelegt. Symbole per Token-Name: `HM06_IconKeyConverter` löst `Icon.*` über `Application.Current.TryFindResource` auf. Konverter und Typen sind keine „Logik“ im Sinne der Code-behind-Regel (A-73); `async`, Datei-, Netzwerk- und Thread-Zugriffe sind in `Controls/*.cs` verboten (`check_modules.py`).
+- **Ressourcenschlüssel** im Stil-Dictionary tragen das Modulpräfix (`HM25.Row.Archive`, `HM07.Icon`); nie dieselbe Schlüsselbezeichnung in zwei Dictionaries, weil die Dictionaries in einem gemeinsamen `Application.Resources` landen und der spätere gewinnt. Sternbreiten, die als `GridLength` wiederverwendet werden, als `HM28.Star.3` o. Ä. ablegen.
+- **`typeof` mit Nullable:** Dependency Properties vom Typ `T?` registrieren den Typ ohne `?` (`typeof(Brush)`, nicht `typeof(Brush?)`) – sonst CS8639; Wertetypen als `double?`/`int?` sind erlaubt.
+- **Entwurfsdaten:** `DesignData/HM<nn>_DesignData.xaml` ist ein `ResourceDictionary` mit Beispielinstanzen (`x:Shared="False"`, Schlüssel `HM<nn>.Sample.<Fall>`) mit Werten aus den Moduldateien und Bildern; es wird **nicht** in die Laufzeitressourcen eingebunden (nur Designer/Galerie). Brauchen Beispiele Objektlisten, liegt daneben `HM<nn>_DesignData.cs` (statische Klasse im Namespace `ApaTec.Hmi.DesignData`).
+- **Texte** der Module in den sechs Paketdateien `Resources/Strings/*.resx`, Schlüssel `HM<nn>_<Element>_<Eigenschaft>`; ein Schlüssel darf in nur einer Datei stehen. Bezeichner, die Controls als Voreinstellung zeigen, kommen aus `{res:Loc …}` im Template, nicht aus C#.
+- **Namenskonflikte** vermeiden: keine Typnamen von WPF (`GroupStyle`, `ProgressBar`, `ToggleButton` …) in `ApaTec.Hmi.Controls` verwenden, wenn das Modul sie unqualifiziert braucht; Klassen tragen die Modulnummer (`HM10_ProgressBar`), Hilfstypen einen fachlichen Namen, der unter allen 38 Modulen eindeutig ist (sonst Doppeldefinition CS0101). Aufzählungsmember, die wie Framework-Typen heißen, vollqualifiziert ansprechen.
+- **Lint und Modulprüfung** laufen nach jeder Änderung an Controls: `check_design.py` (Literale, Verweise, Light/Dark gleiche Schlüssel) und `check_modules.py` (Klasse, `.Styles.xaml` mit Stil für den Typ, `DesignData`).
 
 ## Hauptfenster und Rahmen (Erweiterungspunkte für HM-01 bis HM-06)
 
@@ -120,4 +133,4 @@ Ein Modul besteht aus `Controls/HM<nn>_<Name>.cs` (Custom Control, nur Dependenc
 
 ## Entwurfsentscheidungen und Annahmen
 
-A-81 bis A-85 in `docs/00_Plan/Annahmen.md` (Build-Umgebung, Pakete, Zusatz-Tokens, Architektur, Hauptfenster). Der Dienst `IClockService` läuft in der Dummy-Variante mit der Systemzeit; `ISettingsService` hält Thema und Sprache nur im Speicher.
+A-81 bis A-87 in `docs/00_Plan/Annahmen.md` (Build-Umgebung, Pakete, Zusatz-Tokens, Architektur, Hauptfenster, Strichstärken-Tokens, Modulprüfung, Integrationsregeln). Der Dienst `IClockService` läuft in der Dummy-Variante mit der Systemzeit; `ISettingsService` hält Thema und Sprache nur im Speicher.
