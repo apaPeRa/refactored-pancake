@@ -23,7 +23,7 @@ Beschreibung des Bildes (von oben nach unten):
    - **Balkenanzeige „Auslastung:“** mit „73 %“ mittig; Balken grün gefüllt bis ca. 73 %, Rest grau.
    - **Untere Schaltflächenreihe der Arbeitsfläche (fünf Tasten):** „Rührer“ (grün, Schlüsselsymbol), „Manuell“ (grau, Schlüsselsymbol), „Entleeren“ (grau, Schlüsselsymbol), „Eichdosierung“ (grau, Schlüsselsymbol), „Regulierung aktiv“ (grün, ohne Schlüsselsymbol).
 3. **Meldezeile** (rot, volle Breite): „*450* Palettierung nicht bereit“.
-4. **Funktionsleiste unten** (hellgrau), von links nach rechts: Tasten „Gewichts-korrektur“, „Motor-parameter“, „Regulierung“ (alle grau, nebeneinander ganz links, ohne Symbol bei „Gewichtskorrektur“ und „Regulierung“; „Motor-parameter“ mit Zahnrad-Symbol); gelbes Schloss-Symbol (mittig); „Produktion“ (Haus-Symbol), „Einstellungen“ (Zahnrad-Symbol), „Zurück“ (Pfeil-Symbol). Keine Pfeiltasten zur Seitenumschaltung (es gibt nur einen Nachdosierer).
+4. **Funktionsleiste unten** (hellgrau), von links nach rechts: Tasten „Gewichts-korrektur“, „Motor-parameter“, „Regulierung“ (alle drei grau, nebeneinander ganz links, ohne Symbol); gelbes Schloss-Symbol (mittig); „Produktion“ (Haus-Symbol), „Einstellungen“ (Zahnrad-Symbol), „Zurück“ (Pfeil-Symbol). Keine Pfeiltasten zur Seitenumschaltung (es gibt nur einen Nachdosierer).
 
 Hinweis: Anordnung im Screenshot ist Referenz für den Funktionsumfang; Layout des neuen HMI folgt dem Design (Agent.md, Abschnitt 2).
 

@@ -17,7 +17,7 @@ Beschreibung des Bildes (von oben nach unten):
 
 1. **Kopfzeile:** Logo „APA-TEC GmbH – AUTOMATION AND PACKAGING TECHNOLOGY“ links; unterstrichener fetter Titel „Gewichtskorrektur“; Spiral-Symbol; Uhrzeit „13:03:35“ und Datum „12.05.2025“.
 2. **Arbeitsfläche** auf blauem Hintergrund:
-   - **Linke Hälfte: zwei Tabellenblöcke nebeneinander** mit jeweils den Spaltenköpfen „SOLL“ und „IST“ (fett, schwarz) und je **10 Zeilen** Eingabefeldern (weiße Felder, rote Schrift, Einheit „g“, zwei Nachkommastellen). Insgesamt also 20 Wertepaare (20 Stützstellen-Zeilen), 40 Felder. Im Screenshot: linker Block Zeile 1 „18,00 g“ / „20,00 g“, Zeile 2 „22,00 g“ / „24,00 g“, Zeilen 3–10 je „0,00 g“ / „0,00 g“; rechter Block alle 10 Zeilen „0,00 g“ / „0,00 g“.
+   - **Linke zwei Drittel: zwei Tabellenblöcke nebeneinander** mit jeweils den Spaltenköpfen „SOLL“ und „IST“ (fett, schwarz) und je **10 Zeilen** Eingabefeldern (weiße Felder, rote Schrift, Einheit „g“, zwei Nachkommastellen). Insgesamt also 20 Wertepaare (20 Stützstellen-Zeilen), 40 Felder. Im Screenshot: linker Block Zeile 1 „18,00 g“ / „20,00 g“, Zeile 2 „22,00 g“ / „24,00 g“, Zeilen 3–10 je „0,00 g“ / „0,00 g“; rechter Block alle 10 Zeilen „0,00 g“ / „0,00 g“.
    - **Rechte Spalte:** Taste „Gewichtsanpassung“ (grau, oben); darunter Taste „Dosierer Auslösen manuell“ (grau); darunter Eingabefeld „Sollgewicht:“ (fette Beschriftung) mit Wert „250,4 g“ (rote Schrift, gelbes Schlüsselsymbol oben rechts im Feld).
 3. **Meldezeile** (rot): „*450* Palettierung nicht bereit“.
 4. **Funktionsleiste unten:** mittig gelbes Schloss-Symbol; rechts „Produktion“ (Haus-Symbol), „Einstellungen“ (Zahnrad-Symbol), „Zurück“ (Pfeil-Symbol). Keine Tasten links (keine Pfeiltasten, keine Seitenlinks).
