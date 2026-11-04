@@ -59,7 +59,7 @@ Spalte „Herkunft“ = Rückverfolgung auf RS-05 (T5/T6/T7 Zeile, Bild, Rahmene
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
 | Auswurf | Eingabefeld mit Schlüssel, Einheit Stk., Beispiel 3 Stk. | „Anzahl der Packungen, die bei Erkennung eines Klebestreifens ausgeworfen werden. Die Packungen werden um die erkannte Klebestelle herum als schlecht markiert. Bei einem Wert von 3 werden die betroffene Packung als schlecht markiert und je eine Packung davor und danach.“ | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) | RS-05 T6 Zeile 1; Bild Gruppe Klebestelle links |
-| Klebestelle erkannt | Status-LED mit Beschriftung und Zustandswort (Aus: Symbol `Icon.Status.Inactive`, Wort „Nicht erkannt“; Ein: Symbol `Icon.Status.Ok`, Wort „Erkannt“) | „Zeigt an, ob im letzten Takt eine Klebestelle erkannt wurde.“ | [HM-09](../Module/HM-09_Status-LED.md) | RS-05 T6 Zeile 2; Bild runde LED (grau = Aus) |
+| Klebestelle erkannt | Status-LED mit Beschriftung und Zustandswort (Aus: Symbol `Icon.Status.Inactive`, Wort „Nicht erkannt“; Ein: Symbol `Icon.Status.Ok`, Wort „Erkannt“; Zustandswörter und Haken-Symbol für ein Ereignis sind Annahme, die Quelle zeigt nur grau = Aus, OP-27) | „Zeigt an, ob im letzten Takt eine Klebestelle erkannt wurde.“ | [HM-09](../Module/HM-09_Status-LED.md) | RS-05 T6 Zeile 2; Bild runde LED (grau = Aus) |
 | Sensor Klebestelle | Status-LED mit Beschriftung und Zustandswort (Aus „Aus“, Ein „Ein“) | „Zeigt den aktuellen Status des Eingangs für den Klebestellensensor an.“ | [HM-09](../Module/HM-09_Status-LED.md) | RS-05 T6 Zeile 3; Bild runde LED (grau = Aus) |
 | Gruppenrahmen „Klebestelle“ | Gruppenbereich (Panel) | gliedert die drei Elemente | [HM-15](../Module/HM-15_Gruppenbereich.md) | RS-05 Rahmenelemente |
 
@@ -77,7 +77,7 @@ Spalte „Herkunft“ = Rückverfolgung auf RS-05 (T5/T6/T7 Zeile, Bild, Rahmene
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
 | Logo, Uhrzeit, Datum | Kopfzeile | Anzeige | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-05 Rahmenelemente „Logo, Titel, Spiralsymbol, Uhrzeit und Datum“ |
-| Spiralsymbol (Referenz) | Symbol | wird als Betriebsart geführt (A-48) | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-05 Rahmenelemente (OP-26) |
+| Spiralsymbol (Referenz) | Symbol | wird als Betriebsart „Service“ mit Warnstatus geführt (`Icon.Mode.Service`, Wort „Service“; A-48, HM-02); im Normalzustand zeigt HM-02 neutral „Produktion“ | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-05 Rahmenelemente (OP-26) |
 | Titel „Zuführung Papier“ | Text | entfällt als eigenes Element; letztes Segment des Brotkrümels („Papier“) | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | RS-05 Bild Titel |
 | Meldezeile | Anzeige und Taste | Beispielmeldung „\*450\* Palettierung nicht bereit“; Antippen öffnet HS-38; hier erscheint auch die Meldung „Rollenende“ | [HM-03](../Module/HM-03_Meldezeile.md) | RS-05 Rahmenelemente „Meldezeile (rot)“ |
 | Seitenleiste mit Benutzerkreis, Home, Einstellungen, Meldungen, Zurück | Navigation | ersetzt Schloss und die Tasten „Produktion“, „Einstellungen“, „Zurück“ der Fußleiste (A-35) | [HM-01](../Module/HM-01_Seitenleiste.md) | RS-05 Rahmenelemente „Schloss-Symbol und Tasten“ |
@@ -144,7 +144,7 @@ Summe: 13 Datenzeilen aus T5/T6/T7 (8 + 3 + 2): 9 Eingabefelder mit Schlüssel (
 
 ## Offene Punkte
 - OP-25: Berechtigungsstufen und Bedeutung des Schlüsselsymbols (Dummy-Rollen).
-- OP-26: Bedeutung von Spiralsymbol und Schloss der Referenz (hier Betriebsart und Benutzerkreis).
+- OP-26: Bedeutung von Spiralsymbol und Schloss der Referenz (hier Betriebsart „Service“ nach A-48 und Benutzerkreis).
 - OP-27: Farbbedeutung (rote Schrift der Eingabewerte, LED-Zustand „an“), Verlauf der Bremskennlinie.
 - OP-28: Wertebereiche, Standardwerte und Plausibilitätsregeln (Max größer Min usw.) fehlen.
 - OP-30: Eingabe-Pop-up (Tastenfeld, Bestätigung, Bereichsprüfung) undokumentiert.

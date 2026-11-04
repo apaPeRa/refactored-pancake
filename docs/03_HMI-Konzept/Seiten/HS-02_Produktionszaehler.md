@@ -6,7 +6,9 @@
 Wortgetreu (Referenz): „Zeigt den Gesamtzähler mit allen produzierten Packungen an und die Betriebsstunden der Maschine. Zusätzlich kann eine manuelle Historie der Produktion geführt werden.“ Die Zeilen „Aktuell“ und „Historie 1 bis 12“ zeigen die ausgebrachten Packungen seit dem Reset-Zeitpunkt, der in der Spalte „Datum / Uhrzeit“ steht. Der Reset (Taste halten) schiebt alle Einträge um eine Zeile nach unten.
 
 ## Aufbau (Bereiche, Layout)
-Modaler Rahmen [HM-14](../Module/HM-14_Popup-Rahmen.md) mittig über dem Inhaltsbereich, Breitenanteil `Size.Popup.WidthRatio` (höchstens 60 % der Fensterbreite), Kontur `Border.Medium`, `Radius.Card`, Scrim `Brush.Scrim`, kein Schatten. Die Referenz ist hochformatig mit 13 Zeilen untereinander; im Querformat des neuen HMI wird der Inhalt in zwei Spalten geteilt, damit das Pop-up ohne Scrollen in den Inhaltsbereich passt.
+Modaler Rahmen [HM-14](../Module/HM-14_Popup-Rahmen.md) mittig über dem Inhaltsbereich, Breitenanteil `Size.Popup.WidthRatio` (höchstens 60 % der Fensterbreite), Kontur `Border.Medium`, `Radius.Card`, Scrim `Brush.Scrim`, kein Schatten. Die Referenz ist hochformatig mit 13 Zeilen untereinander; im Querformat des neuen HMI wird der Inhalt in zwei Spalten geteilt, damit das Pop-up ohne Scrollen in den Inhaltsbereich passt (S02-1).
+
+**Höhenbilanz** (Inhaltshöhe 768 bei 1920 × 1080, Pop-up darf diese Höhe nicht überschreiten): Titelzeile `Size.Popup.TitleHeight` (64) + Innenabstand `Space.M` (16) + Spaltenkopf (Zeile Body, 32) + 13 Zählerzeilen à 40 (Zeilenhöhe Value 36 + `Space.XS` 4 = 520) + Abstand `Space.M` (16) + Tastenzeile `Size.Touch.Default` (64) + Innenabstand `Space.M` (16) = **728 von 768**, Reserve 40. Die Zählerzeilen sind reine Anzeige ohne Touch-Funktion; deshalb ist für sie eine Zeilenhöhe unter `Size.Touch.Min` zulässig (S02-5), nur Reset, Schließen und Kreuz sind bedienbar und haben ≥ `Size.Touch.Default`. Die Summenfelder rechts (2 × Kennzahl `Size.Touch.Default` plus Abstand) sind niedriger als die Tabelle.
 
 ```
 +--------------------------------------------------------------+
@@ -38,7 +40,7 @@ Spalte „Herkunft“: Zeile der Referenz (Tabelle „Elemente“ und Bild RS-02
 | Spalte Datum / Uhrzeit | Spaltenüberschrift | zeigt den Reset-Zeitpunkt je Zähler | [HM-33](../Module/HM-33_Zaehlerzeile.md) | RS-02 „Spalte Datum / Uhrzeit“ |
 | Aktuell | Zählerzeile, nur Anzeige; Beschriftung und Wert in `Font.Weight.Strong` | „Die Felder Aktuell und Historie 1 bis 12 zeigen die ausgebrachten Packungen seit dem Reset-Zeitpunkt, welcher in der Spalte Datum / Uhrzeit angezeigt wird, an.“ Beispiel 874183, 09.04.2025 14:55:09 (Format TT.MM.JJJJ hh:mm:ss) | [HM-33](../Module/HM-33_Zaehlerzeile.md) (`IsCurrent`) mit [HM-11](../Module/HM-11_Anzeigefeld.md) | RS-02 Zeile „Aktuell“ |
 | Historie 1 bis Historie 12 (12 Zeilen) | Zählerzeile, nur Anzeige | wie „Aktuell“; Beispiele 7 / 28.03.2025 14:08:02, 7636, 773682, 1, 4622, 225070. Leere Historie: Zähler „0“ und Zeitpunkt „--.--.---- --:--:--“ (Zeilen 7 bis 12 im Bild) | [HM-33](../Module/HM-33_Zaehlerzeile.md) | RS-02 Zeilen „Historie 1 … Historie 12“ |
-| Gesamte Produktion | Kennzahl, nur Anzeige (Beschriftung „Gesamte Produktion“, Einheit Stk) | „zeigt den Gesamtzähler an. Das sind alle Packungen, welche seit der Inbetriebnahme der Maschine produziert wurden.“ Beispiel 1885201 | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (Größe `Content`) | RS-02 „Gesamte Produktion“ |
+| Gesamte Produktion | Kennzahl, nur Anzeige (Beschriftung „Gesamte Produktion“, Einheit Stk, S02-3) | „zeigt den Gesamtzähler an. Das sind alle Packungen, welche seit der Inbetriebnahme der Maschine produziert wurden.“ Beispiel 1885201 | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (Größe `Content`) | RS-02 „Gesamte Produktion“ |
 | Betriebsstunden | Kennzahl, nur Anzeige, Zeitwert hhh:mm:ss | „zeigt die gesamte Zeit an, welche die Maschine bisher produziert hat.“ Beispiel 289:38:12 | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) (`TimeValue`) | RS-02 „Betriebsstunden“ |
 | Reset | Aktionstaste, Haltetaste (`TriggerMode` Hold) | „Ein Reset wird ausgeführt, wenn die Taste Reset für eine kurze Zeit gehalten wird. Der Reset wurde erfolgreich ausgeführt, wenn alle Einträge um eine Spalte nach unten rutschen.“ Fortschrittsstreifen und Text „Halten …“ während des Haltens; Haltedauer Dummy (OP-42) | [HM-07](../Module/HM-07_Aktionstaste.md) | RS-02 „Reset“ |
 | Schließen | Taste im Pop-up-Rahmen | „Mit Schließen wird das Pop-Up geschlossen.“ | [HM-14](../Module/HM-14_Popup-Rahmen.md) (`ShowCloseButton`) | RS-02 „Schließen“ |
@@ -49,8 +51,8 @@ Spalte „Herkunft“: Zeile der Referenz (Tabelle „Elemente“ und Bild RS-02
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Öffnen:** Antippen der Kennzahl „Aktuelle Produktion“ auf [HS-01](HS-01_Produktion.md). Das Pop-up zeigt beim Öffnen die aktuellen Werte; Zähler aktualisieren sich bei offenem Pop-up.
 - **Modal:** Scrim; Seitenleiste, Funktionsleiste, Brotkrümel und Seiteninhalt gesperrt; Meldezeile nur Anzeige (Navigation.md 4.2). Ein Antippen außerhalb schließt nicht. Pop-up steht nicht im Verlauf; „Zurück“ der Seitenleiste ist gesperrt.
-- **Reset:** nur durch Halten der Taste über die Haltedauer; ein kurzes Antippen löst nichts aus und zeigt den Fortschrittsstreifen nur während des Haltens. Wird vor Ablauf losgelassen, bricht die Aktion ohne Wirkung ab. Nach erfolgreichem Reset rutschen alle Einträge um eine Zeile nach unten (Aktuell wird zu Historie 1, Historie 12 fällt weg), „Aktuell“ beginnt bei 0 mit neuem Reset-Zeitpunkt (Schluss aus dem Handbuchtext, RS-02 Offene Punkte). Die Haltetaste ersetzt einen Bestätigungsdialog (Annahme 14).
-- **Berechtigung:** Die Referenz beschreibt keine Berechtigung für „Reset“ (OP-25). Die Taste trägt kein Schlüsselsymbol und ist für jeden angemeldeten Benutzer bedienbar (Annahme 14); Navigation.md 4.1 sieht das Schlüsselsymbol „je nach Seite“ vor. Wird eine Rolle gefordert, erscheint `Icon.Key` oben rechts in der Taste und bei fehlender Rolle das Benutzer-Pop-up.
+- **Reset:** nur durch Halten der Taste über die Haltedauer; ein kurzes Antippen löst nichts aus und zeigt den Fortschrittsstreifen nur während des Haltens. Wird vor Ablauf losgelassen, bricht die Aktion ohne Wirkung ab. Nach erfolgreichem Reset rutschen alle Einträge um eine Zeile nach unten (Aktuell wird zu Historie 1, Historie 12 fällt weg), „Aktuell“ beginnt bei 0 mit neuem Reset-Zeitpunkt (Schluss aus dem Handbuchtext, RS-02 Offene Punkte). Die Haltetaste ersetzt einen Bestätigungsdialog (S02-2).
+- **Berechtigung:** Die Referenz beschreibt keine Berechtigung für „Reset“ (OP-25). Die Taste trägt kein Schlüsselsymbol und ist für jeden angemeldeten Benutzer bedienbar (S02-2); Navigation.md 4.1 sieht das Schlüsselsymbol „je nach Seite“ vor. Wird eine Rolle gefordert, erscheint `Icon.Key` oben rechts in der Taste und bei fehlender Rolle das Benutzer-Pop-up.
 - **Leere Historie:** Zähler „0“ und Platzhalterzeitpunkt, Text in `Brush.Text.Secondary`.
 - **Ungültige Werte:** Zähler zeigen „---“, Reset ist deaktiviert (gestrichelte Kontur), Grund per Tippen in der Meldezeile.
 - **Historie:** reine Anzeige; Eintragen, Ändern und Löschen einzelner Historienzeilen ist nicht beschrieben und nicht vorgesehen (OP-50).
@@ -70,11 +72,22 @@ Spalte „Herkunft“: Zeile der Referenz (Tabelle „Elemente“ und Bild RS-02
 | HS-02-P08 | Öffnen (RS-02-P08) | Antippen der Kennzahl „Aktuelle Produktion“ in HS-01 öffnet das Pop-up | offen |
 | HS-02-P09 | Bild RS-02_01 (RS-02-P09) | Titel, 13 Zeilen, beide Summenfelder und die Tasten „Reset“ und „Schließen“ sind vorhanden | offen |
 | HS-02-P10 | Modal | Scrim vorhanden, Seitenleiste, Funktionsleiste und Brotkrümel gesperrt, kein Eintrag im Verlauf | offen |
-| HS-02-P11 | Passt ohne Scrollen | alle 13 Zeilen, beide Summenfelder und die Tastenzeile sind bei 1920 × 1080 sichtbar; Breite ≤ `Size.Popup.WidthRatio` | offen |
+| HS-02-P11 | Passt ohne Scrollen | Höhenbilanz 64 + 16 + 32 + 13 × 40 + 16 + 64 + 16 = 728 ≤ 768 (Inhaltshöhe bei 1920 × 1080); alle 13 Zeilen, beide Summenfelder und die Tastenzeile sichtbar; Breite ≤ `Size.Popup.WidthRatio` | offen |
 | HS-02-P12 | Touch-Ziele | „Reset“, „Schließen“ und Kreuz mit Trefferfläche ≥ `Size.Touch.Default`, Abstand ≥ `Size.Touch.Gap` | offen |
 | HS-02-P13 | Zweiter Kanal | „Aktuell“ durch Beschriftung und Fettschrift gekennzeichnet; Halten durch Fortschrittsstreifen und Text; leere Zeilen durch Platzhaltertext; nichts nur über Farbe | offen |
 | HS-02-P14 | Tokens und Lokalisierung | keine Hex- oder Pixelwerte; Texte aus `.resx`; Datum und Zahlen nach `CurrentCulture` | offen |
 
+## Annahmen dieser Seite
+Lokale Kennungen; der Sammeleintrag in `Annahmen.md` verweist auf diesen Abschnitt.
+
+| ID | Annahme |
+|---|---|
+| S02-1 | Zweispaltiges Layout (Tabelle links, Summenfelder rechts) statt des hochformatigen Fensters der Referenz; Pop-up-Breite höchstens `Size.Popup.WidthRatio`. |
+| S02-2 | „Reset“ ohne Schlüsselsymbol und ohne Bestätigungsdialog; die Haltetaste genügt (OP-25, OP-31). Wird später eine Rolle gefordert, kommt `Icon.Key` hinzu. |
+| S02-3 | Die Summenfelder tragen die Einheit „Stk“ (die Referenz zeigt keine Einheit). |
+| S02-4 | Nach dem Reset rutschen alle Einträge eine Zeile nach unten, „Historie 12“ fällt weg, „Aktuell“ beginnt bei 0 mit neuem Zeitpunkt (Schluss aus dem Handbuchtext). |
+| S02-5 | Zählerzeilen (reine Anzeige) dürfen niedriger als `Size.Touch.Min` sein (Zeilenhöhe Value plus `Space.XS`). |
+
 ## Offene Punkte
 - Haltedauer von „Reset“: OP-42 (Dummy-Wert in HM-07); Berechtigung und Rückfrage für Reset: OP-25 und OP-31; Historie manuell oder automatisch geführt, Format des Eintrags und doppelte Zeitstempel (Historie 4 und 5 im Bild): OP-50; Schreibweise „Spalte“ statt „Zeile“ im Handbuch: OP-34.
-- Neu (für Offene-Punkte.md vorgeschlagen): Zeilenverhalten nach Reset („Historie 12“ fällt weg); zweispaltiges Layout statt hochformatigem Fenster der Referenz.
+- Neue offene Punkte dieser Seite: (a) Verhalten der Zeilen nach Reset („Historie 12“ fällt weg, Zähler „Aktuell“ beginnt bei 0); (b) Einheit „Stk“ der Summenfelder; (c) zweispaltiges Layout statt des hochformatigen Fensters der Referenz.

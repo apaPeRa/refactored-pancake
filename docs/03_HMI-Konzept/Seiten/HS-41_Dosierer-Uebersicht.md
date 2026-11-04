@@ -23,9 +23,7 @@ Innenaufbau jeder Karte (Innenabstand `Space.M`, `Radius.Card`, Fläche `Brush.S
 | Hauptdosierer 1  [<>]| Hauptdosierer 2  [<>]| Nachdosierer [<>]|  Kopf + Detail-Symbol
 | Soll 48 % entspr 113g| Soll ...             | Soll ...       |
 | Regulierwert 5,30 g  |                      | (Hinweis nIO)  |
-| Füllstand Trichter   |                      |                |
-|   oben:  (LED+Wort)  |                      |                |
-|   unten: (LED+Wort)  |                      |                |
+| Füllstand: oben (LED+Wort) unten (LED+Wort) |    |                |
 | Querschnecke [Ein]   |                      |                |
 | Rührer       [Ein]   |                      |                |
 | Regulierung  [Ein]   |                      |                |
@@ -36,7 +34,29 @@ Innenaufbau jeder Karte (Innenabstand `Space.M`, `Radius.Card`, Fläche `Brush.S
 +--------------------------------------------------------------+
 ```
 
-Die drei Karten sind identisch aufgebaut (Variante Hauptdosierer bzw. Nachdosierer nur bei Soll, Regulierwert-Hinweis und Detailziel). Hinweis zur Höhe: Die Zeilenhöhen (Titel, Soll, Regulierwert, 2 LED-Zeilen, 3 Schalterzeilen, Auslastung, Tastenzeile) summieren sich auf nahezu die gesamte Kartenhöhe; die Hinweiszeile nIO (nur Nachdosierer) und das Kürzen von Beschriftungen müssen im Layouttest geprüft werden (HS-41-P19).
+Die drei Karten sind identisch aufgebaut (Variante Hauptdosierer bzw. Nachdosierer nur bei Soll, Hinweiszeile und Detailziel).
+
+**Höhenbilanz (1920 × 1080, Maße aus den Tokens des Designsystems):**
+
+| Posten | Rechnung | Höhe (px) |
+|---|---|---|
+| Inhaltsbereich | 34\* der Rahmenzeilen (Designsystem 3.2) | 816 |
+| minus Außenrand `Space.L` oben und unten | 2 × 24 | 768 |
+| minus Titelzeile (`Size.Touch.Default`) und Abstand `Space.M` | 64 + 16 | 688 (Kartenhöhe) |
+| minus Innenabstand der Karte `Space.M` oben und unten | 2 × 16 | **656 verfügbar** |
+| Kopf (Titel `Font.Size.Value`, Detail-Symbol Trefferbereich `Size.Touch.Min`) | | 48 |
+| Zeile „Soll … entspricht …“ (`Font.Size.Body`, Zeilenhöhe) | | 32 |
+| Zeile „Regulierwert“ | | 32 |
+| Zeile Füllstand Trichter: Beschriftung, LED „oben“ und LED „unten“ nebeneinander in einer Zeile (LED 32 in Zeile ≥ 48) | | 48 |
+| 3 Schalterzeilen (je `Size.Touch.Default`) mit 2 Abständen `Size.Touch.Gap` | 3 × 64 + 2 × 16 | 224 |
+| Zeile Auslastung: Beschriftung links, Balken (`Size.Progress.Height`) | | 40 |
+| Tastenzeile „Manuell“, „Entleeren“ (`Size.Touch.Default`) | | 64 |
+| 6 Abstände zwischen den 7 Blöcken (`Space.M`) | 6 × 16 | 96 |
+| **Summe Normalfall** | 48+32+32+48+224+40+64+96 | **584** |
+| Fehlerfall Nachdosierer: Hinweis ersetzt die Zeile „Regulierwert“ (Warnfläche, Caption, 2 Zeilen mit Kontur und Innenabstand ca. 64 statt 32) | 584 + 32 | **616** |
+| Reserve | 656 − 616 | 40 |
+
+Damit passt der Karteninhalt ohne Scrollen, auch im Fehlerfall. Die Rechnung gilt für die Werte der Tokens in Designsystem.md Abschnitt 3 und 7; Änderungen an `Size.*` sind erneut zu rechnen (HS-41-P19). Bei 4 von 12 Spalten ist die Karte rund 560 breit (innen rund 528); die Füllstandzeile (Beschriftung, 2 × LED mit Wort) und die zwei Tasten (je mindestens `Size.Button.MinWidth`) passen nebeneinander. Der Abstand zwischen den Touch-Zielen beträgt überall mindestens `Size.Touch.Gap`.
 
 ## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)
 Herkunft: DS = Design [DS-04](../../01_Design-Analyse/Seiten/DS-04_Dosierer.md), RS-11/RS-19 = Referenzseiten mit Tabelle (T14/T15/T16 bzw. T27/T28/T29).
@@ -70,7 +90,7 @@ Je Karte [HM-20](../Module/HM-20_Dosierer-Karte.md) (Darstellung Kompakt; `Doser
 | „Auslastung:“ Balken „92 %“ | Fortschrittsbalken | Anteil der verfügbaren Zeit, den der Dosiervorgang benötigt (DS-04; RS-11 T14 Nr. 12, RS-19 T27 Nr. 13); neutrale Füllung, Zahl im Balken; Warnung (Statusfarbe, `Icon.Status.Warning`) ab Schwelle (Annahme 90 %, HM-10, OP-27) | [HM-10](../Module/HM-10_Fortschrittsbalken.md) |
 | Taste „Manuell“ | Aktionstaste (Antippen, mit Schlüsselsymbol) | fordert einen Dosiervorgang an (DS-04; RS-11 T15 Nr. 4, RS-19 T28 Nr. 3); `Icon.Manual` optional | [HM-07](../Module/HM-07_Aktionstaste.md) |
 | Taste „Entleeren“ | Aktionstaste (Dauerfunktion, mit Schlüsselsymbol) | Dosierer fördert kontinuierlich, bis abgebrochen wird (DS-04; RS-11 T15 Nr. 5, RS-19 T28 Nr. 4); Zustand „Läuft“ mit Wort; `Icon.Empty` optional | [HM-07](../Module/HM-07_Aktionstaste.md) |
-| Hinweiszeile „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ (nur Nachdosierer, nur wenn `RefillResult` = RejectedTooMuch) | Hinweis-Textfeld (Warnung) | macht die nIO-Logik sichtbar (RS-19 T27 Nr. 4 „Max. Nachgabe“; HM-20-P06); im Design nicht abgebildet | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) |
+| Hinweiszeile „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ (nur Nachdosierer, nur im Fehlerfall `RefillResult` = RejectedTooMuch; ersetzt dann die Zeile „Regulierwert“, sonst nicht sichtbar) | Hinweis-Textfeld (Warnung) | macht die nIO-Logik sichtbar (RS-19 T27 Nr. 4 „Max. Nachgabe“, HM-20-P06); im Design nicht abgebildet. HM-20 definiert die Hinweiszeile bisher in der Detaildarstellung; die Kompaktkarte braucht sie zusätzlich (Meldung an den Querschnitts-Agenten) | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) |
 | Hervorhebung der Karte „Nachdosierer“ (hellblau im Design) | Kartenzustand „Ausgewählt“ | Kontur `Border.Thick` `Brush.Border.Focus`, zweiter Kanal: Text „Ausgewählt“ und `Icon.State.On` im Titel; Bedeutung „ausgewählt/aktiv“ ist Annahme (DS-04, OP-18), Datenquelle `IsSelected` (Dummy) | [HM-20](../Module/HM-20_Dosierer-Karte.md), [HM-15](../Module/HM-15_Gruppenbereich.md) (`IsHighlighted`, `HighlightText`) |
 | Heller dargestellte Tasten „Manuell“/„Entleeren“ bei Hauptdosierer 2 | Zustand „Deaktiviert“ | im Design abgeblendet; wird als „durch Betriebszustand nicht bedienbar“ gelesen (OP-18): gestrichelte Kontur, `Brush.Text.Disabled`, Grund per Antippen als Info-Text in der Meldezeile (A-28) | [HM-07](../Module/HM-07_Aktionstaste.md) |
 
@@ -89,7 +109,7 @@ Diese Elemente von RS-11/RS-19 sind bewusst nur auf den Detailseiten, weil das D
 ## Verwendete Module (IDs)
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md) (enthält [HM-03](../Module/HM-03_Meldezeile.md)), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Inhalt: [HM-17](../Module/HM-17_Titelzeile.md), [HM-20](../Module/HM-20_Dosierer-Karte.md) (3 ×; setzt ein: [HM-07](../Module/HM-07_Aktionstaste.md), [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md), [HM-09](../Module/HM-09_Status-LED.md), [HM-10](../Module/HM-10_Fortschrittsbalken.md), [HM-11](../Module/HM-11_Anzeigefeld.md)), [HM-27](../Module/HM-27_Hinweis-Textfeld.md) (Hinweis nIO), [HM-15](../Module/HM-15_Gruppenbereich.md) (nur für Hervorhebungsdarstellung „Ausgewählt“)
-- In der Modulliste für HS-41 mitgeführt, aber in dieser Übersicht nicht eingesetzt: [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md), [HM-19](../Module/HM-19_Blaettertasten.md) (Werteingabe und Blättern liegen auf HS-11/HS-19, Annahme 1)
+- Nicht verwendet: HS-41 nutzt [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md) und [HM-19](../Module/HM-19_Blaettertasten.md) nicht (Werteingabe und Blättern liegen auf HS-11/HS-19, Annahme 1)
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Navigation:** Detail-Symbol einer Karte öffnet HS-11 (HD 1/HD 2, `doserIndex` 1/2) bzw. HS-19; Brotkrümel „Einstellung“ → HS-04; Seitenleiste „Zurück“ folgt dem Verlauf (normal HS-04). Rückweg aus HS-11 und HS-19 ist HS-41 (Verlauf). Navigation ändert keinen Maschinenzustand.
@@ -99,7 +119,7 @@ Diese Elemente von RS-11/RS-19 sind bewusst nur auf den Detailseiten, weil das D
 - **Sperrzustände:** Deaktivierte Tasten und Schalter (z. B. „Manuell“/„Entleeren“ bei Hauptdosierer 2 im Design): gestrichelte Kontur, Text `Brush.Text.Disabled`, Grund als Info-Text in der Meldezeile (A-28). Gesperrt durch Berechtigung: `Icon.Lock` und Text „Berechtigung erforderlich: <Rolle>“.
 - **Trichter-LEDs:** Ok (Haken, Wort „OK“), Fehler (Kreuz, Wort „Fehler“, z. B. unterer Sensor meldet leer, HM-20), Aus/Unbekannt „---“ (HM-09). Die Zuordnung Sensorzustand → LED-Zustand ist Dummy (OP-27).
 - **Auslastung:** 92 % im Design gelb; im Konzept neutrale Füllung bis zur Schwelle, darüber Warnfläche mit `Icon.Status.Warning` und Zahl (Schwelle Annahme 90 %, OP-27).
-- **Nachgabe verweigert (nur Nachdosierer):** Hinweiszeile HM-27 (Warnung) mit Text „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ (HM-20-P06, RS-19 T27 Nr. 4).
+- **Nachgabe verweigert (nur Nachdosierer, nur im Fehlerfall):** Hinweiszeile HM-27 (Warnung) statt der Zeile „Regulierwert“ mit Text „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ (HM-20-P06, RS-19 T27 Nr. 4).
 - **Fehlerfälle:** gestörte Funktion eines Schalters zeigt Fehlerzustand (Kontur `Border.Thick` `Brush.Status.Error.Fg`, Fehlertext, HM-08); Dosierer ohne Daten: Werte „---“.
 - **Pop-ups:** keine eigenen. Eingabe-Pop-up und Zählerwerte-Eingabe liegen auf HS-11/HS-19. Bei offenem Pop-up Seite gesperrt, Meldezeile nur Anzeige (Navigation.md 4.2).
 - **Seitenleiste:** „Einstellungen“ ist hervorgehoben.
@@ -123,11 +143,11 @@ Grundlage: DS-04-P01 bis P12 (Design) und die Referenzfunktionen RS-11/RS-19 (Ze
 | HS-41-P12 | Funktionsleiste (DS-04-P11) | leer, aber sichtbar | offen |
 | HS-41-P13 | Rahmenwerte (DS-04-P12) | Rahmen wie die übrigen Seiten (Dummywerte 112 1/min, 245°, 9:15, 06.01.2026) | offen |
 | HS-41-P14 | Rückverfolgung RS-11/RS-19 | alle Zeilen aus der Rückverfolgungstabelle sind auf HS-11/HS-19/HS-12/HS-20/HS-21/HS-23 vorhanden; Übersicht zeigt Soll, Regulierung Ist, Füllstand oben/unten, Querschnecke, Rührer, Regulierung aktiv, Auslastung, Manuell, Entleeren | offen |
-| HS-41-P15 | nIO-Hinweis | Nachdosierer zeigt bei `RefillResult` = RejectedTooMuch Hinweis mit `Icon.Status.Warning` und Text „… nicht dosiert, Packung nIO“ (HM-20-P06) | offen |
+| HS-41-P15 | nIO-Hinweis | Nur im Fehlerfall zeigt der Nachdosierer anstelle der Zeile „Regulierwert“ bei `RefillResult` = RejectedTooMuch Hinweis mit `Icon.Status.Warning` und Text „… nicht dosiert, Packung nIO“ (HM-20-P06) | offen |
 | HS-41-P16 | Berechtigung | Schlüsselsymbol an Querschnecke, Rührer, Manuell, Entleeren; keines an Regulierung; ohne Rolle öffnet Antippen das Benutzer-Pop-up (Dummy) | offen |
 | HS-41-P17 | Deaktivierter Zustand | deaktivierte Tasten gestrichelt und `Brush.Text.Disabled`; Antippen zeigt den Grund in der Meldezeile (A-28) | offen |
 | HS-41-P18 | Touch-Ziele und Abstände | alle Tasten, Schalterzeilen und das Detail-Symbol Trefferbereich mindestens `Size.Touch.Min`, Tasten und Schalterzeilen `Size.Touch.Default`; Abstand mindestens `Size.Touch.Gap` | offen |
-| HS-41-P19 | Layout ohne Überlauf | Karteninhalt passt ohne Scrollen in die Kartenhöhe bei 1920 × 1080, auch mit sichtbarer nIO-Hinweiszeile; Beschriftungen automatisch umbrechend | offen |
+| HS-41-P19 | Layout ohne Überlauf | Höhenbilanz: Karteninhalt 584 (Normalfall) bzw. 616 (nIO-Hinweis ersetzt „Regulierwert“) bei verfügbaren 656 bei 1920 × 1080, ohne Scrollen; Rechnung neu prüfen, wenn `Size.*`-Tokens geändert werden; Beschriftungen automatisch umbrechend | offen |
 | HS-41-P20 | Zweiter Kanal | Ein/Aus (Symbol und Wort), LED (Symbol und Wort), Warnung Auslastung (Symbol und Zahl), Ausgewählt (Text und Symbol), Deaktiviert (gestrichelt) – keine Information nur über Farbe | offen |
 | HS-41-P21 | Tokens | keine Hex-, Pixel- oder Literalwerte; blaue Titelzeile und hellblaue Karte des Entwurfs durch Tokens `Brush.Surface.Sunken`/`Brush.Surface`/`Brush.Border.Focus` ersetzt; Rot/Grün nur als Status | offen |
 | HS-41-P22 | Hell/Dunkel | beide Themen: Text auf Karten mindestens 4,5 : 1 (Designsystem Abschnitt 1) | offen |

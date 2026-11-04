@@ -1,7 +1,7 @@
 # HM-18 – Auswahlfeld mit Pfeiltasten
 
 ## Funktion
-Feld mit Pfeiltasten (◄ ►) zum Durchschalten einer Auswahl, mit oder ohne Schlüsselsymbol: Filtertyp (HS-27), Geber (HS-25), Datum der letzten 30 Tage (HS-29, Datumsnavigation von [HM-26](HM-26_Diagramm.md)), Nockennummer (HS-25). Übernahme je Seite sofort oder erst nach Bestätigung („Filter setzen“). Die Pfeile sind eigene 64-px-Tasten; das Feld selbst ist Anzeige.
+Feld mit Pfeiltasten (◄ ►) zum Durchschalten einer Auswahl, mit oder ohne Schlüsselsymbol: Filtertyp (HS-27), Geber (HS-25), Datum der letzten 30 Tage (HS-29, Datumsnavigation von [HM-26](HM-26_Diagramm.md)), Nockennummer (HS-25). Übernahme je Seite sofort oder erst nach Bestätigung („Filter setzen“). Die Pfeile sind eigene 64-px-Tasten; das Feld selbst ist Anzeige. **Variante Direkteingabe** (`AllowDirectEntry`): Antippen der Anzeige öffnet das Eingabe-Pop-up [HM-13](HM-13_Eingabe-Pop-up.md) mit der Nummer (Wertebereich 1 bis Anzahl); die Pfeile bleiben (HS-25, Nockennummer; Annahme).
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -15,6 +15,8 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Umlaufend (`IsCyclic`) | bool | – | Standard false (Listenende nicht beschrieben) |
 | Übernahme erforderlich (`RequiresApply`) | bool | – | Standard false |
 | Schlüssel (`RequiresPermission`), Berechtigt (`IsAuthorized`) | bool | – | – |
+| Direkteingabe (`AllowDirectEntry`) | bool | – | Standard false; true = Antippen der Anzeige öffnet HM-13 |
+| Direkteingabe-Befehl (`DirectEntryCommand`) | ICommand<int?> | – | Ergebnis des Pop-ups setzt `SelectedIndex` |
 | Zurück (`PreviousCommand`), Vor (`NextCommand`) | ICommand | – | – |
 
 ## Zustände und Darstellung
@@ -44,7 +46,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## WPF-Umsetzung
 - **Control:** `HM18_SelectorField` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM18_SelectorField`) aus zwei HM07-Tasten und einem Anzeigefeld.
-- **Dependency Properties:** `Label`, `ItemsSource`, `SelectedIndex`, `DisplayText`, `IsCyclic`, `RequiresApply`, `RequiresPermission`, `IsAuthorized`; **Commands:** `PreviousCommand`, `NextCommand`.
+- **Dependency Properties:** `Label`, `ItemsSource`, `SelectedIndex`, `DisplayText`, `IsCyclic`, `RequiresApply`, `AllowDirectEntry`, `RequiresPermission`, `IsAuthorized`; **Commands:** `PreviousCommand`, `NextCommand`, `DirectEntryCommand`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Chevron`, `Icon.Key`, `Icon.Lock`; neu, definiert in anderem Modul: `Icon.State.Pending` (HM-08).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -57,3 +59,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-18-P03 | Listenende | Pfeil deaktiviert statt Fehler | offen |
 | HM-18-P04 | Touch | Pfeiltasten `Size.Touch.Default` × `Size.Touch.Default` | offen |
 | HM-18-P05 | Übernahme | Auswahl erst nach „Filter setzen“ wirksam, ausstehender Zustand mit Text | offen |
+| HM-18-P06 | Direkteingabe | Mit `AllowDirectEntry` öffnet Antippen der Nockennummer das Eingabe-Pop-up (Bereich 1 bis Anzahl); ungültige Nummer wird abgewiesen, Pfeile funktionieren weiter (HS-25) | offen |

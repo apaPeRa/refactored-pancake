@@ -2,7 +2,7 @@
 
 - Quelle: [RS-10](../../02_Referenz-Analyse/Seiten/RS-10_Zeitschaltuhr.md) (Handbuch Kapitel 10, ohne Tabellen; Bilder [RS-10_01](../../02_Referenz-Analyse/Medien/RS-10_01.png) bis [RS-10_06](../../02_Referenz-Analyse/Medien/RS-10_06.png)). Es gibt keine Design-Seite; Aufbau und Optik sind aus dem [Designsystem](../Designsystem.md), den Modulen und der Schwesterseite [HS-07](HS-07_Heissleim-Nordson.md) (Design [DS-03](../../01_Design-Analyse/Seiten/DS-03_Heissleim.md), Funktionsleisten-Taste „Zeitplan“) abgeleitet.
 - Navigationspfad: Einstellung › Zuführungen › Heißleim › Zeitplan (Brotkrümel laut [Navigation.md](../Navigation.md), Abschnitt 2). Zugang: Funktionsleiste „Zeitplan“ in [HS-07](HS-07_Heissleim-Nordson.md) (abgeleitet, A-14, OP-36), nicht die Zustandstaste „Zeitschaltuhr“ im Arbeitsbereich von HS-07 (diese aktiviert nur den Zeitplan, OP-14). Zurück-Ziel: HS-07. PageKey `HotGlueSchedule`, Route `settings/feeders/hotglue/schedule`, Mindestrolle: jeder angemeldete Benutzer.
-- Seitentitel (Ressource `Nav_HotGlueSchedule_Title`): „Zeitschaltuhr Zuführung“ (Bildtitel der Referenz, so in Navigation.md Abschnitt 2 festgelegt); der Kapitelname lautet „Zeitschaltuhr“ (OP-33). Im Inhaltsbereich steht kein eigener Titel, das letzte Brotkrümel-Segment „Zeitplan“ (Beschriftung des Designs) ersetzt ihn.
+- Seitentitel (Ressource `Nav_HotGlueSchedule_Title`): „Zeitschaltuhr“ (Kapitelname, gewinnt nach OP-33; der Bildtitel „Zeitschaltuhr Zuführung“ ist nur ein Hinweis). Im Inhaltsbereich steht kein eigener Titel, das letzte Brotkrümel-Segment „Zeitplan“ (Beschriftung des Designs) ersetzt ihn.
 
 ## Zweck
 
@@ -37,7 +37,7 @@ Funktionsleiste: leer                                    ((K) = Schlüsselsymbol
 |---|---|---|
 | Hinweiszeile | volle Inhaltsbreite, Höhe nach Text | Hinweis zur Geltung des Zeitplans (Wortlaut des Handbuchs) |
 | Wochenraster | 7 gleich breite Spalten Montag bis Sonntag (Reihenfolge wie Referenz, erster Wochentag Montag); je Spalte oben die Kopfzelle mit Tagesname und Plus-Taste, darunter die Einträge des Tages von oben nach unten in Zeitreihenfolge | Phasen; eine Heizphase ist eine Karte mit Startzeile und Stoppzeile, eine enthaltene Absenkphase eine eingerückte Karte dazwischen (Schachtelung, [HM-29](../Module/HM-29_Wochen-Zeitplan.md)); die Spalte scrollt vertikal (Wischen), wenn die Einträge nicht passen (Annahme, Anzahl Einträge je Tag nicht genannt, OP-46) |
-| Pop-up „Eintrag“ | modal über dem Inhaltsbereich, höchstens 60 % der Breite ([HM-14](../Module/HM-14_Popup-Rahmen.md)); Inhalt von oben: Titelzeile, Auswahl Aktion, Zeile Startzeit, Zeile Endzeit, Zeile Unterelemente, unten Tastenreihe (Löschen links, Abbrechen und Übernehmen rechts) | Anlegen, Bearbeiten, Löschen einer Phase ([HM-30](../Module/HM-30_Zeitplan-Eintrag-Pop-up.md)) |
+| Pop-up „Eintrag“ | modal über dem Inhaltsbereich, höchstens 60 % der Breite ([HM-14](../Module/HM-14_Popup-Rahmen.md)); Inhalt von oben: Titelzeile, Auswahl Aktion, Zeile Startzeit, Zeile Endzeit, Zeile Unterelemente, unten Tastenreihe in der Reihenfolge des Referenzbilds RS-10_03 (Übernehmen, Abbrechen, Eintrag löschen) | Anlegen, Bearbeiten, Löschen einer Phase ([HM-30](../Module/HM-30_Zeitplan-Eintrag-Pop-up.md)) |
 
 Beispieleinträge sind Dummy-Werte aus den Bildern der Referenz (RS-10_02: 06:30 ein / 14:40 aus bei Montag bis Mittwoch; RS-10_04: Mittwoch Heizphase 08:00 bis 16:00 mit Absenkphase 12:00 bis 13:00; Beispielzeiten sind keine Standardwerte, OP-46). Im Auslieferungszustand sind alle Spalten leer (RS-10_01).
 
@@ -49,7 +49,7 @@ Pop-up beim Bearbeiten einer Heizphase  (bei Neuanlage entfallen Zähler und Lö
 |  Startzeit:   [Ein/Aus: Zeit aktiv]   [ 08:00 ]                |
 |  Endzeit:     [Ein/Aus: Zeit aktiv]   [ 16:00 ]                |
 |  Absenkphasen (Unterelemente):  0                              |
-|  [Löschen]                         [Abbrechen]  [Übernehmen]   |
+|  [Übernehmen]  [Abbrechen]  [Löschen]                   |
 +----------------------------------------------------------------+
 ```
 
@@ -72,7 +72,7 @@ Spalte „Herkunft“ stellt die Rückverfolgung zu RS-10 her. Alle Zeilen der A
 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
-| Hinweis zur Geltung | Hinweis-Textfeld (Art Info) | „Der Zeitplan wird unabhängig von der SPS ausgeführt, solange das Gerät eingeschaltet ist. Abschalten des Geräts oder des Hauptschalters der Maschine unterbricht den Zeitplan.“ | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | RS-10 Zweck, Zustände „Ausführung“ (RS-10-P13) |
+| Hinweis zur Geltung | Hinweis-Textfeld (Art Info) | Text sinngemäß (umformuliert, nicht wortgetreu; Original siehe Zweck): Der Zeitplan läuft unabhängig von der SPS, solange das Gerät eingeschaltet ist; Abschalten des Geräts oder des Hauptschalters der Maschine unterbricht ihn. | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | RS-10 Zweck, Zustände „Ausführung“ (RS-10-P13) |
 | Spalten Montag bis Sonntag | Tagesspalten (7), Tagesname ohne Unterstreichung | Zeitplan je Wochentag; Phasen erscheinen als Einträge in der Spalte | [HM-29](../Module/HM-29_Wochen-Zeitplan.md) | RS-10 „Spalten Montag bis Sonntag“ |
 | Plus-Taste je Tag | Taste mit Plus-Symbol und Schlüsselsymbol (Kopfzelle der Spalte) | „Soll eine neue Phase hinzugefügt werden kann zwischen zwei Aktionen gewählt werden, Heißphase und Absenkphase (StandBy).“ Öffnet das Pop-up „Neuer Eintrag“ | [HM-29](../Module/HM-29_Wochen-Zeitplan.md) (Plus, `AddCommand`), Pop-up [HM-30](../Module/HM-30_Zeitplan-Eintrag-Pop-up.md) | RS-10 „Plus-Taste je Tag“ (RS-10_06, RS-10_03) |
 | Schlüsselsymbol je Tag | Symbol an der Plus-Taste (`Icon.Key` bzw. `Icon.Lock`) | kennzeichnet die berechtigungspflichtige Eingabe (Bedeutung im Handbuch nicht erklärt, OP-25) | [HM-29](../Module/HM-29_Wochen-Zeitplan.md) (Berechtigung der Plus-Taste) | RS-10 „Schlüsselsymbol je Tag“ |
@@ -85,22 +85,22 @@ Alle antippbaren Bereiche (Plus-Taste, Heizphase, Absenkphase) öffnen „ein Po
 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
-| Titel | Titelzeile des Pop-ups mit Schließen-Kreuz | „Neuer Eintrag“ bei Neuanlage; beim Bearbeiten der Typ „Heizphase“ bzw. „Absenkphase“ (Bilder RS-10_04, RS-10_05). Die Tabelle der Referenz nennt den Titel „Neuer Eintrag:“ auch beim Bearbeiten; Abweichung siehe Annahmen | [HM-14](../Module/HM-14_Popup-Rahmen.md) | RS-10 Pop-up „Titel“ |
-| Aktion | Auswahlfeld mit Pfeiltasten (Heizphase, Absenkphase); in der Referenz Dropdown | Auswahl „Heizphase“ oder „Absenkphase“ (Handbuch: „Heißphase und Absenkphase (StandBy)“, gleichbedeutend, OP-34). Genau zwei Einträge; beim Bearbeiten eines vorhandenen Eintrags nicht änderbar (Annahme) | [HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md) (über HM-30) | RS-10 Pop-up „Aktion“ (RS-10_06) |
+| Titel | Titelzeile des Pop-ups mit Schließen-Kreuz | immer „Neuer Eintrag“, auch beim Bearbeiten (Bilder RS-10_04 und RS-10_05 zeigen „Neuer Eintrag:“; die Phasenart steht im Auswahlfeld „Aktion“) | [HM-14](../Module/HM-14_Popup-Rahmen.md) | RS-10 Pop-up „Titel“ |
+| Aktion | Auswahlfeld mit Pfeiltasten (Heizphase, Absenkphase); in der Referenz Dropdown | Auswahl „Heizphase“ oder „Absenkphase“ (Handbuch: „Heißphase und Absenkphase (StandBy)“, gleichbedeutend, OP-34). Genau zwei Einträge; beim Bearbeiten eines vorhandenen Eintrags grau gesperrt (so im Bild RS-10_04/_05) | [HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md) (über HM-30) | RS-10 Pop-up „Aktion“ (RS-10_06) |
 | Zeit aktiv (Start) | Umschalter („Kontrollkästchen“ der Referenz), Wort „Ein“/„Aus“ | aktiviert die Startzeit; „Um eine Phase anzulegen, muss eine Startzeit oder Stoppzeit angelegt werden. Beide Zeiten können festgelegt werden.“ | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) (über HM-30) | RS-10 Pop-up „Zeit aktiv“ |
 | Zeit aktiv (Ende) | Umschalter, Wort „Ein“/„Aus“ | aktiviert die Stoppzeit (Beschriftung „Endzeit“, im Handbuchtext „Stoppzeit“, OP-34) | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) (über HM-30) | RS-10 Pop-up „Zeit aktiv“ |
 | Startzeit | Zeiteingabefeld hh:mm (Dummy 08:00; leer „__:__“) | Startzeit der Phase; Antippen öffnet das Eingabe-Pop-up in der Zeitvariante (zweite Pop-up-Ebene) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (Eingabeart Zeit), Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-10 Pop-up „Startzeit“ |
 | Endzeit / Stoppzeit | Zeiteingabefeld hh:mm (Dummy 16:00) | Stoppzeit der Phase; wie Startzeit | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (Eingabeart Zeit), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-10 Pop-up „Stoppzeit / Endzeit“ |
 | Unterelemente | Zähler der untergeordneten Absenkphasen, nur Anzeige (Symbol Baumstruktur, Zahl) | „Innerhalb einer Heizphase können Absenkphase enthalten sein.“ Bei Heizphase mit enthaltener Absenkphase „1“; bei Neuanlage nicht vorhanden | [HM-30](../Module/HM-30_Zeitplan-Eintrag-Pop-up.md) (Zähler, Darstellung wie [HM-11](../Module/HM-11_Anzeigefeld.md) mit Zähler) | RS-10 Pop-up „Unterelemente“ (RS-10_04) |
-| Übernehmen | Taste mit Haken-Symbol (`Icon.Confirm`) und Beschriftung | übernimmt/speichert den Eintrag; nur bei gültigen Zeiten aktiv | [HM-07](../Module/HM-07_Aktionstaste.md) (im Pop-up, über HM-30) | RS-10 Pop-up „Übernehmen“ |
-| Abbrechen | Taste mit X-Symbol und Beschriftung | schließt das Pop-up ohne Änderung | [HM-07](../Module/HM-07_Aktionstaste.md) (im Pop-up, über HM-30) | RS-10 Pop-up „Abbrechen“ |
-| Eintrag löschen | Taste mit Papierkorb-Symbol (`Icon.Delete`) und Beschriftung | löscht den Eintrag. „Um eine Heizphase zu löschen, müssen alle untergeordnete Absenkphasen gelöscht sein.“ Ausgegraut (gestrichelte Kontur, Hinweis „Zuerst Absenkphasen löschen“) bei Unterelemente > 0; bei Absenkphase aktiv („Diese Phase kann direkt gelöscht werden“); bei Neuanlage nicht vorhanden | [HM-07](../Module/HM-07_Aktionstaste.md) (im Pop-up, über HM-30) | RS-10 Pop-up „Eintrag löschen“ (RS-10_04 bis RS-10_06) |
+| Übernehmen (1. Taste) | Taste mit Haken-Symbol (`Icon.Confirm`) und Beschriftung | übernimmt/speichert den Eintrag; nur bei gültigen Zeiten aktiv | [HM-07](../Module/HM-07_Aktionstaste.md) (im Pop-up, über HM-30) | RS-10 Pop-up „Übernehmen“ |
+| Abbrechen (2. Taste) | Taste mit X-Symbol und Beschriftung | schließt das Pop-up ohne Änderung | [HM-07](../Module/HM-07_Aktionstaste.md) (im Pop-up, über HM-30) | RS-10 Pop-up „Abbrechen“ |
+| Eintrag löschen (3. Taste) | Taste mit Papierkorb-Symbol (`Icon.Delete`) und Beschriftung | löscht den Eintrag. „Um eine Heizphase zu löschen, müssen alle untergeordnete Absenkphasen gelöscht sein.“ Ausgegraut (gestrichelte Kontur, Hinweis „Zuerst Absenkphasen löschen“) bei Unterelemente > 0; bei Absenkphase aktiv („Diese Phase kann direkt gelöscht werden“); bei Neuanlage nicht vorhanden | [HM-07](../Module/HM-07_Aktionstaste.md) (im Pop-up, über HM-30) | RS-10 Pop-up „Eintrag löschen“ (RS-10_04 bis RS-10_06) |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-07](../Module/HM-07_Aktionstaste.md) (Pop-up-Tasten), [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) (über HM-30), [HM-11](../Module/HM-11_Anzeigefeld.md) (Zähler, über HM-30), [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md) (Zeitfelder, über HM-30), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) (Zeitvariante), [HM-14](../Module/HM-14_Popup-Rahmen.md) (trägt HM-30 und HM-13), [HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md) (über HM-30), [HM-27](../Module/HM-27_Hinweis-Textfeld.md), [HM-29](../Module/HM-29_Wochen-Zeitplan.md), [HM-30](../Module/HM-30_Zeitplan-Eintrag-Pop-up.md).
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Ausführung:** Der Zeitplan läuft unabhängig von der SPS, solange das Gerät eingeschaltet ist; Abschalten des Geräts oder des Hauptschalters der Maschine unterbricht ihn. Ob der Zeitplan aktiv ist, steht an der Zustandstaste „Zeitschaltuhr“ in [HS-07](HS-07_Heissleim-Nordson.md); auf HS-10 wird der Aktivierungszustand nicht angezeigt (die Referenz zeigt ihn dort nicht, offen in OP-14).
 - **Phase anlegen:** Plus-Taste des Tages antippen, Aktion wählen (Heizphase oder Absenkphase), Start- und/oder Endzeit aktivieren und eingeben, „Übernehmen“. Mindestens eine Zeit (Start oder Stopp) ist nötig, beide sind möglich. Ohne aktive Zeit ist „Übernehmen“ deaktiviert (gestrichelte Kontur) und ein Fehlertext mit `Icon.Status.Error` nennt den Grund (Annahme, [HM-30](../Module/HM-30_Zeitplan-Eintrag-Pop-up.md)).
@@ -121,7 +121,7 @@ Alle antippbaren Bereiche (Plus-Taste, Heizphase, Absenkphase) öffnen „ein Po
 | HS-10-P03 | Pop-up-Struktur (RS-10-P03) | Plus-Taste, Heizphase und Absenkphase öffnen ein Pop-up derselben Struktur | offen |
 | HS-10-P04 | Aktion wählen (RS-10-P04) | Auswahl mit genau „Heizphase“ und „Absenkphase“ | offen |
 | HS-10-P05 | Zeiten (RS-10-P05) | Startzeit und Endzeit (Format hh:mm) je mit Umschalter „Zeit aktiv“; ohne aktive Zeit ist „Übernehmen“ gesperrt | offen |
-| HS-10-P06 | Pop-up-Tasten (RS-10-P06) | Übernehmen (Haken), Abbrechen (X), Eintrag löschen (Papierkorb) mit Symbol und Text; Papierkorb bei Neuanlage nicht vorhanden | offen |
+| HS-10-P06 | Pop-up-Tasten (RS-10-P06) | Übernehmen (Haken), Abbrechen (X), Eintrag löschen (Papierkorb) in dieser Reihenfolge mit Symbol und Text; Papierkorb bei Neuanlage nicht vorhanden | offen |
 | HS-10-P07 | Unterelemente (RS-10-P07) | Zähler der untergeordneten Absenkphasen im Pop-up (Beispiel 0 oder 1); bei Neuanlage nicht vorhanden | offen |
 | HS-10-P08 | Heizphase löschen (RS-10-P08) | bei Unterelemente > 0 ist „Eintrag löschen“ gesperrt (gestrichelt, mit Hinweis); nach Löschen aller Absenkphasen möglich | offen |
 | HS-10-P09 | Absenkphase löschen (RS-10-P09) | Absenkphase direkt löschbar | offen |
@@ -132,7 +132,7 @@ Alle antippbaren Bereiche (Plus-Taste, Heizphase, Absenkphase) öffnen „ein Po
 | HS-10-P14 | Brotkrümel (RS-10-P14) | „Einstellung › Zuführungen › Heißleim › Zeitplan“ (Abweichung vom Referenzpfad ist in Navigation.md begründet); drei Segmente antippbar | offen |
 | HS-10-P15 | Rückweg (RS-10-P15) | „Zurück“, „Home“, „Einstellungen“ und Benutzerkreis in der Seitenleiste; „Zurück“ führt zu HS-07 | offen |
 | HS-10-P16 | Quellbezug (RS-10-P16) | RS-10 mit den sechs Bildern RS-10_01 bis RS-10_06 im Kopf der Seite verlinkt; jede Zeile der Referenz-Elemente steht in der Elemente-Tabelle | offen |
-| HS-10-P17 | Zustände des Pop-ups | Neuanlage, Bearbeiten Heizphase und Bearbeiten Absenkphase unterscheiden sich wie in RS-10_06, RS-10_04, RS-10_05 | offen |
+| HS-10-P17 | Zustände des Pop-ups | Neuanlage, Bearbeiten Heizphase und Bearbeiten Absenkphase (Titel jeweils „Neuer Eintrag“, Aktion gesperrt) unterscheiden sich wie in RS-10_06, RS-10_04, RS-10_05 | offen |
 | HS-10-P18 | Modal und Stapel (Navigation 4.2) | Pop-up sperrt Seite, Seitenleiste und Brotkrümel; Zeiteingabe öffnet HM-13 als zweite Ebene; Schließen nur über Tasten oder Kreuz | offen |
 | HS-10-P19 | Aufteilung | Hinweiszeile oben, darunter 7 gleich breite Spalten; keine festen Pixelpositionen; Funktionsleiste leer, aber sichtbar | offen |
 | HS-10-P20 | Zweiter Kanal (Designsystem 5) | Phasenart, Ein/Aus der Zeitaktivierung, gesperrte Taste, Fehler und Schlüssel/Schloss mit Symbol oder Text zusätzlich zur Farbe | offen |

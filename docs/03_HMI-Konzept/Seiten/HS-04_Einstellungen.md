@@ -31,7 +31,7 @@ Funktionsleiste: [Sprache]
 ```
 
 - **Linke Gruppe (4 Spalten):** Gruppenbereich mit Überschrift „Anwählen/Schnelle Einstellungen“ (Rechtschreibung korrigiert, Unterstreichung entfällt). Darin oben links die kleine Kachel „Beleuchtung“ (Höhe `Size.Touch.Default`); darunter bleibt die Fläche frei (Platz für weitere Schnellzugriffe, nichts erfunden).
-- **Mittlere und rechte Gruppe (je 4 Spalten):** je ein Gruppenbereich ohne Überschrift (das Design hat keine Gruppenbeschriftung) mit einem Kachelraster 2 Spalten × 4 Zeilen, Kachelhöhe `Size.Touch.Large`, Abstand `Size.Touch.Gap`. Zeilenhöhen und Spaltenbreiten sind Stern-Anteile; die Kachelbreite ist mindestens `Size.Button.MinWidth`. Die Gruppen haben für die Barrierefreiheit die Namen „Anlage“ (Mitte) und „System“ (rechts), ohne sichtbare Überschrift.
+- **Mittlere und rechte Gruppe (je 4 Spalten):** je ein Gruppenbereich ohne Überschrift (das Design hat keine Gruppenbeschriftung) mit einem Kachelraster 2 Spalten × 4 Zeilen, Kachelhöhe `Size.Touch.Large`, Abstand `Size.Touch.Gap`. Zeilenhöhen und Spaltenbreiten sind Stern-Anteile; die Kachelbreite ist mindestens `Size.Button.MinWidth`. Die Gruppen haben für die Barrierefreiheit die Namen „Anlage“ (Mitte) und „System“ (rechts), ohne sichtbare Überschrift (Annahme, nicht aus Design oder Referenz).
 - **Kachelbeschriftung:** Wörter ohne Trennstrich, automatischer Umbruch (OP-13, Designsystem 11): „Schließmaschine“, „Packungsregister“, „Nockenschaltwerk“, „Systemeinstellungen“. Layouts planen +40 % Textbreite ein.
 - **Reihenfolge der Tab-/Fokus-Navigation:** links nach rechts, oben nach unten (Beleuchtung, Mitte Zeile 1 bis 4, rechts Zeile 1 bis 4, Funktionsleiste).
 - **Funktionsleiste:** links die Taste „Sprache“, sonst leer (Navigation.md 3.3).
@@ -66,7 +66,7 @@ Spalte „Herkunft“ = Rückverfolgung: RS-04 Teil A (Rahmen), Teil B (Funktion
 | Seitenleiste: Taste „Zurück“ | Verlaufstaste | oberster Verlaufseintrag, sonst HS-01 | [HM-01](../Module/HM-01_Seitenleiste.md) | RS-04 Teil A „Taste Zurück“ |
 | Logo APA·TEC | Grafik | Anzeige | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-04 Teil A „Logo“ |
 | Seitentitel „Einstellungen“ | Text | entfällt als eigenes Element; der Seitenname steht als letztes Segment des Brotkrümels („Einstellung“) | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | RS-04 Teil A „Seitentitel“; DS-02 Brotkrümel |
-| Spiralsymbol (Referenz) | Symbol | wird als Betriebsart (Normalzustand „Produktion“) geführt (A-48) | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-04 Teil A „Spiralsymbol“ (OP-26) |
+| Spiralsymbol (Referenz) | Symbol | wird als Betriebsart „Service“ mit Warnstatus geführt (`Icon.Mode.Service`, Warnfläche, Wort „Service“; A-48, HM-02); im Normalzustand zeigt HM-02 neutral „Produktion“ (DS-01) | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-04 Teil A „Spiralsymbol“ (OP-26) |
 | Uhrzeit und Datum | Anzeige | aktuelle Uhrzeit und Datum | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-04 Teil A „Uhrzeit und Datum“ |
 | Meldezeile | Anzeige und Taste | zeigt die anstehende Meldung („NNN: Text“, Symbol, Schweregradwort); Antippen öffnet HS-38 | [HM-03](../Module/HM-03_Meldezeile.md) | RS-04 Teil A „Meldezeile (rot)“; DS-02 Rahmen |
 | Brotkrümel „Einstellung“ | Navigation | ein Segment, zugleich letztes Segment (nur Anzeige) | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | DS-02 „Brotkrümel“ |
@@ -191,7 +191,7 @@ Kein fehlendes Modul: Sprachwahl-, Benutzer- und Bestätigungs-Pop-up haben kein
 - OP-21: Antippbarkeit von Brotkrümel und Kennzahlen; Beschriftung der Seitenleisten-Symbole.
 - OP-22: identische Rahmenwerte (Dummy).
 - OP-24: Endkontrollwaage (kein Kapitel; nur deaktivierte Kachel in HS-42).
-- OP-26: Bedeutung von Spiralsymbol und Schloss der Referenz (hier: Betriebsart und Benutzerkreis).
+- OP-26: Bedeutung von Spiralsymbol und Schloss der Referenz (hier: Betriebsart „Service“ nach A-48 und Benutzerkreis).
 - OP-34: Beschriftungsabweichungen („EA Übersicht“ gegenüber „EA-Übersicht“).
 - OP-38: Navigationspfade der Kacheln nur durch die Referenz-Übersicht belegt.
 - OP-51: RS-04: leere Spalte „Abschnitt“, Berechtigungsabhängigkeit der Kacheln.

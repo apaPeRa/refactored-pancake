@@ -62,13 +62,13 @@ Spalte „Herkunft“ weist die Rückverfolgung nach RS-27 aus (T37 = Steuerelem
 | Kennzahlen Geschwindigkeit, Maschinenwinkel | Kennzahl-Kachel im Rahmen | Rahmenelemente des Designs, in der Referenz-Seite nicht vorhanden | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) | Design-Rahmen (nicht RS) |
 | Schloss-Symbol, Tasten „Produktion“, „Einstellungen“, „Zurück“ | Seitenleiste | Schloss wird zum Benutzerkreis (Anmeldestatus), Produktion = Home, Einstellungen, Zurück (Verlauf) | [HM-01](../Module/HM-01_Seitenleiste.md) | Bild, untere Leiste (RM-03) |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-07](../Module/HM-07_Aktionstaste.md), [HM-11](../Module/HM-11_Anzeigefeld.md), [HM-15](../Module/HM-15_Gruppenbereich.md), [HM-17](../Module/HM-17_Titelzeile.md), [HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md), [HM-19](../Module/HM-19_Blaettertasten.md), [HM-27](../Module/HM-27_Hinweis-Textfeld.md).
 
 Die Modulliste führt für HS-27 zusätzlich [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) und [HM-14](../Module/HM-14_Popup-Rahmen.md). In diesem Konzept werden sie nicht gebraucht: Der Filtertyp ist ein Auswahlfeld mit Schlüssel ([HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md) trägt `RequiresPermission`), die Seite hat keinen Zahlenwert zum Eingeben und kein Pop-up. Das Kalibriergewicht wird von der Steuerung gefordert, nicht eingegeben.
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 **Waagenwahl.** „«“ und „»“ ändern nur den Parameter `scaleIndex` (`ReplaceParameter`, kein Verlaufseintrag, [Navigation.md](../Navigation.md) 5.3). Titelzeile, Gewichtsanzeige, Filter, Statusanzeige und die Objektkennung im letzten Brotkrümelsegment wechseln mit. Positionsanzeige „n von m“; an Anfang und Ende ist die jeweilige Taste deaktiviert (gestrichelte Kontur, Annahme aus HM-19, Umlauf offen, OP-41). Während ein Kalibriervorgang läuft, sind „«“ und „»“ gesperrt (Annahme K27-4); Tippen nennt den Grund in der Meldezeile (A-28).
 
@@ -86,7 +86,7 @@ Die Modulliste führt für HS-27 zusätzlich [HM-12](../Module/HM-12_Eingabefeld
 
 **Navigation.** „Zurück“ (Seitenleiste) führt im Verlauf zurück, Ziel HS-42. Brotkrümel-Segmente „Einstellung“ und „Waagen“ springen zu HS-04 bzw. HS-42. Die Navigation löst keine Aktion an der Maschine aus.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|

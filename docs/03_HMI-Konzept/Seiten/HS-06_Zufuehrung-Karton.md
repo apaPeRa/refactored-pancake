@@ -10,19 +10,19 @@ Konfliktregel (Agent.md Abschnitt 2): Funktion und Umfang folgen der Referenz (a
 Rahmen nach [Designsystem](../Designsystem.md) Abschnitt 3.2. Der Inhaltsbereich (Außenrand `Size.Content.Margin`, Gutter `Space.M`) hat nach DS-05 zwei Spalten im 12-Spalten-Raster, **5 : 7**:
 
 - **Linke Spalte (5 Spalten): Bedienbereich**, von oben nach unten in fünf Zeilen (Höhe nach Inhalt, Abstand `Space.M`):
-  1. Gruppe „Karton“ (HM-15 Panel) mit der Zustandstaste „Heißleimauftrag“ Ein/Aus (volle Gruppenbreite, `Size.Touch.Default` hoch, Schlüsselsymbol).
+  1. Gruppe „Karton“ (HM-15 Panel) mit der Zustandstaste „Ein / Aus“ (volle Gruppenbreite, `Size.Touch.Default` hoch, Schlüsselsymbol).
   2. Zwischenüberschrift „Einstellungen Leimspuren“ (HM-15, Variante Überschrift, Text mit Trennlinie `Brush.Divider`, ohne Unterstreichung und ohne weiße Schrift auf Grau des Entwurfs).
   3. Zwei Gruppen nebeneinander (je 1\* : 1\*): „Maschinenwinkel“ (Anzeigefeld) und „Leim kalt“ (Eingabefeld).
   4. Gruppe „Kompensation“ mit den zwei Eingabefeldern „Ein:“ und „Aus:“ nebeneinander (je 1\* : 1\*).
   5. Gruppe „Anwahl Spülen“ mit fünf Zustandstasten in zwei Reihen (3 + 2), Reihenfolge zeilenweise 3Y25, 3Y26, 3Y27 / 3Y28, 3Y29.
-- **Rechte Spalte (7 Spalten): Leimspuren-Grafik** über die volle Inhaltshöhe. Der Kartonzuschnitt skaliert mit seinem Seitenverhältnis (`Viewbox`, begrenzt durch die Höhe); die 18 Winkelfelder behalten Touch-Größe. Titel „Leimspuren“ gehört zur Grafik.
+- **Rechte Spalte (7 Spalten): Leimspuren-Grafik** über die volle Inhaltshöhe. Der Kartonzuschnitt skaliert mit seinem Seitenverhältnis (`Viewbox`, begrenzt durch die Höhe); die 18 Winkelfelder behalten Touch-Größe (Höhe `Size.Touch.Default`, Breite mindestens `Size.Touch.Min` und Wertbreite; Positionen aus dem Raster der Grafik). Titel „Leimspuren“ gehört zur Grafik.
 - **Funktionsleiste:** links die Taste „Heißleimgerät“, sonst leer.
 
 ```
 Inhaltsbereich (12 Spalten, 5 : 7)
 +-----------------------------+----------------------------------------------+
 | Karton (HM-15)              | Leimspuren (HM-31)                           |
-|  [ Heißleimauftrag  Ein/Aus ⚿]|  [200⚿][205⚿][205⚿]  [205⚿][205⚿]  (Reihe 1)|
+|  [ Ein / Aus ⚿]       |  [200⚿][205⚿][205⚿]  [205⚿][205⚿]  (Reihe 1)|
 | Einstellungen Leimspuren    |   |      [225⚿][225⚿]  [225⚿][225⚿]  (Reihe 2)|
 | +------------+------------+ |   |  lange Spur links, 4 kurze Spuren oben  |
 | |Maschinenw. |Leim kalt   | |                                              |
@@ -49,7 +49,7 @@ Spalte „Herkunft“ = Rückverfolgung: RS-06 (Zeile aus T8, Bild) und DS-05 (E
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
 | Gruppe „Karton“ mit Text „Karton“ | Gruppenbereich (Panel) | Bereichstitel, trägt die Ein/Aus-Taste | [HM-15](../Module/HM-15_Gruppenbereich.md) | DS-05 „Text Karton“ |
-| Taste Ein / Aus („Heißleimauftrag“) | Zustandstaste mit Schlüssel (Darstellung Taste; Zustandswörter „Ein“ und „Aus“, Symbole `Icon.State.On` und `Icon.State.Off`; Bild grün „EIN“, Aus-Zustand nicht abgebildet) | „Erlaubt das Abwählen vom Heißleimauftrag.“ Schaltet den Heißleimauftrag ein (Ein) oder abgewählt (Aus). Beschriftung „Heißleimauftrag“ nach der Funktion der Referenz; Design nennt sie „Ein / Aus“ (Annahme, OP-15) | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | RS-06 T8 Zeile 6 „Taste Ein / Aus“; DS-05 „Taste Ein / Aus (grün)“ |
+| Taste Ein / Aus | Zustandstaste mit Schlüssel (Darstellung Taste; Zustandswörter „Ein“ und „Aus“, Symbole `Icon.State.On` und `Icon.State.Off`; Bild grün „EIN“, Aus-Zustand nicht abgebildet) | „Erlaubt das Abwählen vom Heißleimauftrag.“ Schaltet den Heißleimauftrag ein (Ein) oder abgewählt (Aus). Beschriftung „Ein / Aus“ wie in RS-06 und DS-05, Gruppenüberschrift „Karton“; Funktion laut Referenz: Heißleimauftrag abwählen (OP-15) | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | RS-06 T8 Zeile 6 „Taste Ein / Aus“; DS-05 „Taste Ein / Aus (grün)“ |
 | Zwischenüberschrift „Einstellungen Leimspuren“ | Text | gliedert die Einstellungen des unteren linken Bereichs | [HM-15](../Module/HM-15_Gruppenbereich.md) | DS-05 „Text Einstellungen Leimspuren“ |
 | Maschinenwinkel | Anzeigefeld ohne Schlüssel in Gruppe „Maschinenwinkel“, Einheit °, Beispiel 140 ° | „Zeigt den aktuellen Maschinenwinkel an. Dieser wird für die Einstellung der Leimspuren benötigt.“ Gleiche Quelle wie die Kennzahl „Maschinenwinkel“ im Rahmen, steht hier bewusst neben den Eingabefeldern (A-58) | [HM-11](../Module/HM-11_Anzeigefeld.md), [HM-15](../Module/HM-15_Gruppenbereich.md) | RS-06 T8 Zeile 1; Bild Gruppe „Maschinenwinkel“ |
 | Kompensation Ein | Eingabefeld mit Schlüssel, Beschriftung „Ein:“, Einheit ms, Beispiel 20 ms | „Zeit in Millisekunden, welche die Leimventile zum Ein- bzw. Ausschalten benötigen. Die Ein- und Ausschaltzeitpunkte werden um diesen Betrag verschoben, um einen gleichmäßigen Leimauftrag unabhängig von der Maschinengeschwindigkeit zu gewährleisten.“ (Beschreibung gilt für beide Felder) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-15](../Module/HM-15_Gruppenbereich.md) | RS-06 T8 Zeile 3; Bild Gruppe „Kompensation“ |
@@ -80,7 +80,7 @@ Summe 5 + 4 + 5 + 4 = 18 Felder (RS-06-P02, DS-05-P04). Alle sind Eingabefelder 
 |---|---|---|---|---|
 | Taste „Heißleimgerät“ | Aktionstaste (Navigation) in der Funktionsleiste, links | „Öffnet die Seite mit Status- und Einstellmöglichkeiten für das Heißleimgerät der Zuführung.“ Ziel HS-07 (zweiter Zugang, Navigation.md 3.3); das Design zeigt die Leiste leer, die Referenz gewinnt bei der Funktion | [HM-07](../Module/HM-07_Aktionstaste.md), [HM-06](../Module/HM-06_Funktionsleiste.md) | RS-06 T8 Zeile 7 „Heißleimgerät“; DS-05 „Funktionsleiste (leer)“ |
 | Seitenleiste mit Benutzerkreis, Home, Einstellungen, Meldungen, Zurück | Navigation | ersetzt Schloss und die Tasten „Produktion“, „Einstellungen“, „Zurück“ (A-35) | [HM-01](../Module/HM-01_Seitenleiste.md) | RS-06 Rahmenelemente „Fußleiste“; DS-05 Rahmen |
-| Logo, Betriebsart (Spiralsymbol der Referenz), Uhrzeit, Datum | Kopfzeile | Anzeige | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-06 „Seitenkopf“; DS-05 Rahmen |
+| Logo, Betriebsart „Service“ mit Warnstatus (Spiralsymbol der Referenz, A-48; Normalzustand neutral „Produktion“), Uhrzeit, Datum | Kopfzeile | Anzeige | [HM-02](../Module/HM-02_Kopfzeile.md) | RS-06 „Seitenkopf“; DS-05 Rahmen |
 | Meldezeile | Anzeige und Taste | Beispielmeldung „\*450\* Palettierung nicht bereit“ bzw. „014: Sicherung 4F24 Auslaufband ausgelöst.“; Antippen öffnet HS-38 | [HM-03](../Module/HM-03_Meldezeile.md) | RS-06 „Meldezeile (rot)“ |
 | Brotkrümel „Einstellung › Zuführungen › Karton“ | Navigation | drei Segmente, letztes nur Anzeige; ersetzt den Seitentitel „Zuführung Karton“ | [HM-04](../Module/HM-04_Brotkruemel-Navigation.md) | DS-05 „Brotkrümel mit 3 Segmenten“; RS-06 Bild Titel |
 | Kennzahlen Geschwindigkeit und Maschinenwinkel | Anzeige | Rahmen | [HM-05](../Module/HM-05_Kennzahl-Kachel.md) | DS-05 Rahmen |
@@ -129,7 +129,7 @@ Summe 5 + 4 + 5 + 4 = 18 Felder (RS-06-P02, DS-05-P04). Alle sind Eingabefelder 
 | HS-06-P07 | Taste Ein / Aus (RS-06-P07, DS-05-P02) | große Zustandstaste mit Schlüsselsymbol, Zustand über Symbol und Wort „Ein“/„Aus“ (nicht grün); Funktion: Heißleimauftrag abwählen | offen |
 | HS-06-P08 | Taste „Heißleimgerät“ (RS-06-P08) | links in der Funktionsleiste, öffnet HS-07; Link lösbar | offen |
 | HS-06-P09 | Grafik Leimspuren (RS-06-P09, DS-05-P03, DS-05-P07) | Titel „Leimspuren“; Kartonzuschnitt mit Klappen oben und unten und Verschlusslasche rechts; 1 lange Spur links, je 4 kurze Spuren oben und unten | offen |
-| HS-06-P10 | Layout rechte/linke Spalte (RS-06-P10) | Bedienbereich links (Karton Ein/Aus, Maschinenwinkel, Leim kalt, Kompensation, Anwahl Spülen), Grafik rechts; Aufteilung 5 : 7; Reihenfolge der Referenz-Spalte bleibt als Lesefolge erkennbar | offen |
+| HS-06-P10 | Layout linke/rechte Spalte (RS-06-P10) | Bedienbereich links (Karton Ein/Aus, Maschinenwinkel, Leim kalt, Kompensation, Anwahl Spülen), Grafik rechts; Aufteilung 5 : 7; Reihenfolge links gegenüber der Referenz-Spalte (Maschinenwinkel, Kompensation, Leim kalt, Anwahl Spülen, EIN) bewusst nach DS-05 geändert: Ein / Aus zuerst, dann Maschinenwinkel und Leim kalt, Kompensation, Anwahl Spülen; alle Elemente vorhanden | offen |
 | HS-06-P11 | Navigation, Rahmen, Meldezeile (RS-06-P11, DS-05-P01, DS-05-P09) | Brotkrümel „Einstellung › Zuführungen › Karton“; Seitenleiste mit Benutzerkreis (Schloss), Home, Einstellungen, Meldungen, Zurück; Meldezeile; Rahmenwerte wie DS-01 | offen |
 | HS-06-P12 | Links (RS-06-P12) | Links auf RS-06, DS-05, Navigation.md, HS-07 und alle HM lösen auf | offen |
 | HS-06-P13 | Leimspuren-Einstellungen (RS-06-P13) | alle 18 Winkelfelder (je Spur Anfang und Ende), Kompensation Ein/Aus, Leim kalt, 5 Spülventile und Ein/Aus-Taste vorhanden | offen |
@@ -137,13 +137,13 @@ Summe 5 + 4 + 5 + 4 = 18 Felder (RS-06-P02, DS-05-P04). Alle sind Eingabefelder 
 | HS-06-P15 | Eingabe-Pop-up | Antippen jedes Eingabefelds öffnet HM-13 mit Titel, Wert, Grenzen; Anzeigefeld Maschinenwinkel öffnet nichts | offen |
 | HS-06-P16 | Berechtigung | Schlüsselsymbol an Ein/Aus-Taste und 21 Eingabefeldern; ohne Rolle Schloss und Hinweis „Berechtigung erforderlich: <Rolle>“ | offen |
 | HS-06-P17 | Zurück-Verhalten | Zurück auf HS-06 führt nach HS-40; nach „Heißleimgerät“ führt Zurück von HS-07 nach HS-06 | offen |
-| HS-06-P18 | Touch-Ziele (Designsystem) | alle Tasten und Felder mindestens `Size.Touch.Min`, Standard `Size.Touch.Default`; Felder in der Grafik mindestens `Size.Touch.Large` × `Size.Touch.Default`; Abstand zwischen Touch-Zielen (auch zwischen den 18 Winkelfeldern) mindestens `Size.Touch.Gap` bei 1920 × 1080 | offen |
+| HS-06-P18 | Touch-Ziele (Designsystem) | alle Tasten und Felder mindestens `Size.Touch.Min`, Standard `Size.Touch.Default`; Felder in der Grafik: Höhe `Size.Touch.Default`, Breite mindestens `Size.Touch.Min` und so breit wie der Wert samt Einheit erfordert (Wertbreite); Positionen und Abstände ergeben sich aus dem Raster der Grafik (Skalierung mit `Viewbox`), der Abstand zwischen zwei Feldern bleibt bei 1920 × 1080 mindestens `Size.Touch.Gap` | offen |
 | HS-06-P19 | Zweiter Kanal (Designsystem) | Ein/Aus und Spülanwahl über Symbol und Wort, Schloss/Schlüssel, Fehler mit Symbol und Text; keine rote Wertschrift, keine grüne Taste | offen |
 | HS-06-P20 | Tokens und Grafikfarben (Designsystem) | Karton und Leim nur mit `Brush.Graphic.Carton`, `Brush.Graphic.Glue`, `Brush.Graphic.Outline`; keine Hex-, Pixel- oder Literaltexte; Kontraste der Grafik mindestens 3 : 1 | offen |
 | HS-06-P21 | Hell-/Dunkelthema und Skalierung | beide Themen ohne Layoutänderung; die Grafik skaliert mit dem Seitenverhältnis des Zuschnitts, die Felder behalten Touch-Größe; kein Scrollen bei 1920 × 1080 | offen |
 
 ## Offene Punkte
-- OP-15: Zuordnung DS-05 zu RS-06 (Design „Ein / Aus“ unter „Karton“, Referenz „Heißleimauftrag abwählen“; hier Beschriftung „Heißleimauftrag“ in der Gruppe „Karton“).
+- OP-15: Zuordnung DS-05 zu RS-06 (Design „Ein / Aus“ unter „Karton“, Referenz „Heißleimauftrag abwählen“; hier Beschriftung „Ein / Aus“ in der Gruppe „Karton“, Funktion als Hilfetext).
 - OP-19: Einheit und Bedeutung der 18 Leimspurwerte; Zuordnung der Felder zu Anfang und Ende der Spuren (hier Annahme).
 - OP-20: Zwischenseite „Zuführungen“ (HS-40, A-33).
 - OP-25, OP-04: Berechtigungsstufen, Schlüsselsymbol.

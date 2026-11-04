@@ -1,7 +1,7 @@
 # HM-01 – Seitenleiste
 
 ## Funktion
-Dunkle, neutrale Leiste am linken Rand (Spalte `Size.Sidebar.Width`, volle Höhe), auf allen Seiten außer den Pop-ups (HS-02, HS-03) und dem Vollbild HS-24 (Bildschirm reinigen, Navigation.md). Oben die Benutzerkennung (Kreis `Size.Avatar` mit Initialen, Name, Rolle, Berechtigungssymbol), darunter die Symboltasten Home (Produktion), Einstellungen und Meldungen, ganz unten Zurück (eine Ebene). Sie übernimmt die festen Navigationstasten „Produktion“, „Einstellungen“, „Zurück“ der Referenz-Fußleiste ([RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md)); der Benutzerkreis öffnet das Benutzer-Pop-up (Anmelden/Abmelden) und ersetzt das gelbe Schloss der Referenz (A-35). Zeitformat und Zähler-Punkt: A-47. Alle Symbole tragen eine Kurzbeschriftung (`Font.Size.Caption`) und einen Barrierefreiheitsnamen (OP-21).
+Dunkle, neutrale Leiste am linken Rand (Spalte `Size.Sidebar.Width`, volle Höhe), auf allen Vollseiten; bei den Pop-ups (HS-02, HS-03) bleibt sie als Teil der Hintergrundseite sichtbar, ist aber hinter dem Scrim gesperrt (Navigation.md 3.1, 4.2); im Vollbild HS-24 ist sie ausgeblendet (Bildschirm reinigen, Navigation.md). Oben die Benutzerkennung (Kreis `Size.Avatar` mit Initialen, Name, Rolle, Berechtigungssymbol), darunter die Symboltasten Home (Produktion), Einstellungen und Meldungen, ganz unten Zurück (eine Ebene). Sie übernimmt die festen Navigationstasten „Produktion“, „Einstellungen“, „Zurück“ der Referenz-Fußleiste ([RM-03](../../02_Referenz-Analyse/Module/RM-03_Funktionsleiste-unten.md)); der Benutzerkreis öffnet das Benutzer-Pop-up (Anmelden/Abmelden) und ersetzt das gelbe Schloss der Referenz (A-35). Zeitformat und Zähler-Punkt: A-47. Alle Symbole tragen eine Kurzbeschriftung (`Font.Size.Caption`) und einen Barrierefreiheitsnamen (OP-21).
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -101,4 +101,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-01-P04 | Touch | jeder Eintrag volle Spaltenbreite × `Size.Touch.Large`, Abstand ≥ `Size.Touch.Gap` | offen |
 | HM-01-P05 | Beschriftung | jedes Symbol hat Kurzbeschriftung und Barrierefreiheitsname aus `.resx` | offen |
 | HM-01-P06 | Kontrast | Name und Rolle ≥ 4,5 : 1 auf `Brush.Sidebar` (7,89 : 1 / 8,88 : 1) | offen |
-| HM-01-P07 | Seitenübergreifend | identisch auf allen Vollseiten, auf Pop-ups (HS-02, HS-03) und im Vollbild HS-24 nicht sichtbar | offen |
+| HM-01-P07 | Seitenübergreifend | identisch auf allen Vollseiten; hinter Pop-ups (HS-02, HS-03) sichtbar, aber gesperrt (Scrim); im Vollbild HS-24 nicht sichtbar | offen |

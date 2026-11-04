@@ -59,28 +59,26 @@ Die Spalte „Herkunft (RS-32)“ ist die Rückverfolgung zur Referenzseite (Ele
 | E11 Taste „Geber setzen“ | Taste mit Schlüsselsymbol (langes Drücken) | Speichert die aktuelle Motorposition als neuen Nullpunkt (Geberposition); löst erst nach der Haltedauer aus, mit Fortschrittsstreifen und Text „Halten …“ | [HM-07](../Module/HM-07_Aktionstaste.md) (Auslösung Halten, Schlüssel) | Taste „Geber setzen“; T42 „Geber setzen“; Hinweis-Textfeld (langes Drücken) |
 | E12 Statustext „Messer beginnt Schneidbewegung.“ | Anzeige (Text) | Von der Steuerung gelieferte Textzeile, in der Referenz ohne Handbuchbeschreibung (Bildbeispiel); Darstellung als Info-Zeile | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) (Art Info) | Text unter der LED (im Handbuch nicht beschrieben) |
 | E13 Hinweis-Textfeld Not-Aus | Hinweis-Textfeld mit Warnzeichen | Wortlaut des Handbuchs (siehe unten) als dauerhafter Warnhinweis mit `Icon.Status.Warning` und Wort „Warnung“ | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) (Art Warnung) | Hinweis-Textfeld (⚠) |
-| E14 „Meldung:“ mit Text | Statusanzeige | Systemhinweise oder Fehler; Bild: leer („–“). Getrennt von der globalen Meldezeile E04 | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) (Art Meldungszeile) | Meldung; T42 „Meldung“ |
+| E14 „Meldung:“ mit Text | Statusanzeige | Systemhinweise oder Fehler; Bild: leer („–“). Getrennt von der globalen Meldezeile E04 | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) (Art `MessageLine`; bei Störungstext Art `Error` mit Caption „Meldung:“) | Meldung; T42 „Meldung“ |
 | E15 Tasten „<<“ und „>>“ | Blättertasten | Wechseln zwischen den Gebern (`encoderIndex`); Paar mit Positionsanzeige „n von m“; am Rand deaktiviert | [HM-19](../Module/HM-19_Blaettertasten.md) | Tasten „<<“ / „>>“; T42 „Navigationstasten“ |
 | E16 Funktionsleiste unten | Container | Leer, aber sichtbar; keine Taste „Suchen“ | [HM-06](../Module/HM-06_Funktionsleiste.md) | Untere Funktionsleiste (ohne „Suchen“) |
-| E17 Bestätigungs-Pop-up | Pop-up (modal) | Optionale Rückfrage vor dem Setzen; vorerst nicht aktiv (siehe Zustände) | [HM-14](../Module/HM-14_Popup-Rahmen.md) (Bestätigungsvariante) | – (Ergänzung A-40, OP-31) |
 
-**Wortlaut des Hinweis-Textfelds (Handbuch, E13):** „Zum Setzen eines Gebers muss mindestens ein Not-Aus-Taster gedrückt sein. Anschließend ist die Achse manuell in die Referenzposition bringen. Mit langem Drücken der Taste „Geber setzen“ wird der aktuelle Wert des Motors als neue Geberposition übernommen.“ Der Quellsatz „… in die Referenzposition bringen“ ist fehlerhaft; die `.resx` führt „… in die Referenzposition zu bringen“ (Quellfehler OP-35, Korrektur ohne inhaltliche Änderung).
+**Wortlaut des Hinweis-Textfelds (Handbuch, E13):** „Zum Setzen eines Gebers muss mindestens ein Not-Aus-Taster gedrückt sein. Anschließend ist die Achse manuell in die Referenzposition bringen. Mit langem Drücken der Taste „Geber setzen“ wird der aktuelle Wert des Motors als neue Geberposition übernommen.“ Der Quellsatz „… in die Referenzposition bringen“ ist fehlerhaft. Die Seite zeigt den Quellwortlaut; ob die `.resx` ihn korrigiert („… zu bringen“), ist eine offene Entscheidung (OP-35).
 
 ## Verwendete Module (IDs)
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-07](../Module/HM-07_Aktionstaste.md) Aktionstaste, [HM-09](../Module/HM-09_Status-LED.md) Status-LED, [HM-11](../Module/HM-11_Anzeigefeld.md) Anzeigefeld, [HM-17](../Module/HM-17_Titelzeile.md) Titelzeile, [HM-19](../Module/HM-19_Blaettertasten.md) Blättertasten, [HM-27](../Module/HM-27_Hinweis-Textfeld.md) Hinweis-Textfeld
-- Pop-up: [HM-14](../Module/HM-14_Popup-Rahmen.md) Pop-up-Rahmen (Bestätigung)
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Ablauf nach Handbuch:** (1) mindestens ein Not-Aus-Taster gedrückt, (2) Achse manuell in die Referenzposition bringen (außerhalb dieser Seite), (3) Taste „Geber setzen“ lange drücken; der aktuelle Motorwert wird als neue Geberposition übernommen. Danach zeigt „Geber Position“ den Motorwert, „Positions Offset“ ergibt sich neu (Motor minus Geber).
 - **Voraussetzung Not-Aus (Annahme, die Referenz beschreibt das Verhalten ohne Not-Aus nicht):** Die Taste „Geber setzen“ ist nur bedienbar, wenn die Steuerung „Not-Aus gedrückt“ meldet. Sonst ist sie deaktiviert (gestrichelte Kontur, Text deaktiviert, `Icon.Block`); Tippen nennt den Grund „Not-Aus-Taster nicht gedrückt“ in der Meldezeile (A-28). Meldet die Steuerung keinen Not-Aus-Zustand, bleibt die Taste deaktiviert (sicherer Zustand).
 - **Langes Drücken:** Die Taste löst erst nach der Haltedauer aus (Dummy 1000 ms, konfigurierbar, OP-42); während des Haltens läuft der Fortschrittsstreifen, der Text lautet „Halten …“. Loslassen vor Ablauf bricht ab, es wird nichts gesetzt. Seitenwechsel, Blättern, Verlust von Not-Aus oder Rollenverlust während des Haltens brechen ebenfalls ab. Rückmeldung nach dem Setzen: Eintrag „Geber gesetzt“ in „Meldung:“ (Text Annahme, OP-42).
-- **Bestätigung:** Vor dem Setzen erscheint keine zusätzliche Rückfrage, weil das lange Drücken die Absicht bestätigt (Handbuch). Ob ein Bestätigungs-Pop-up (E17) ergänzt wird, ist eine Entscheidung zu OP-31; bis dahin entfällt es.
+- **Bestätigung:** Vor dem Setzen erscheint keine zusätzliche Rückfrage, weil das lange Drücken die Absicht bestätigt (Handbuch). Ein Bestätigungs-Pop-up ist nicht vorgesehen; ob es ergänzt wird, ist Entscheidung zu OP-31.
 - **Berechtigung:** Schlüsselsymbol (`Icon.Key`) an E11; fehlt die Rolle, steht `Icon.Lock`, Tippen öffnet das Benutzer-Pop-up (Navigation.md 4.1) und die Meldezeile nennt „Berechtigung erforderlich: <Rolle>“. Die Stufe nennt die Quelle nicht (OP-25, OP-04): Dummy-Rolle.
 - **Achse nicht initialisiert:** Die Referenz beschreibt nur den OK-Zustand. Annahme: LED „Nicht initialisiert“ mit `Icon.Status.Warning` und Wort; die Taste „Geber setzen“ bleibt bedienbar.
-- **Statustext E12 und Meldung E14:** Texte kommen aus der Steuerung (im Handbuch nicht aufgelistet); fehlt ein Text, steht „–“. Störungen erscheinen in E14 mit `Icon.Status.Error` und Wort „Fehler“.
+- **Statustext E12 und Meldung E14:** Texte kommen aus der Steuerung (im Handbuch nicht aufgelistet); fehlt ein Text, steht „–“. Störungen erscheinen in E14 als HM-27 Art `Error` mit Caption „Meldung:“, `Icon.Status.Error` und Wort „Fehler“; Normaltext als Art `MessageLine` (je Zeitpunkt genau eine Art).
 - **Blättern:** « und » ersetzen nur den Parameter `encoderIndex` (kein Verlaufseintrag, A-42); Titelzeile und Werte wechseln, der Brotkrümel bleibt. Reihenfolge und Liste der Geber kommen aus der Konfiguration (OP-41). Während „Geber setzen“ gehalten wird, sind die Blättertasten gesperrt.
 - **Fehlerfälle:** Ist der Geber nicht erreichbar, zeigen die Felder „---“, die LED „Unbekannt“, die Taste ist deaktiviert.
 - **Zurück:** Seitenleiste „Zurück“ → HS-04 (Verlauf); Brotkrümel-Segment „Einstellung“ → HS-04.
@@ -113,8 +111,8 @@ Die Spalte „Herkunft (RS-32)“ ist die Rückverfolgung zur Referenzseite (Ele
 
 - OP-25 / OP-04 (Schlüsselsymbol, Berechtigungsstufe): Dummy-Rolle.
 - OP-28 (Wertebereiche) und OP-29 (Einheiten): Positionsfelder ohne Einheit und Wertebereich; Anzeige mit drei Nachkommastellen nach dem Bild.
-- OP-31 (Sperrzustände, Rückfragen): Verhalten ohne gedrückten Not-Aus und mögliche Bestätigung (E17) sind Annahmen.
-- OP-35 (Quellfehler): Satzfehler im Hinweis-Textfeld; Wortlaut zitiert, `.resx` korrigiert.
+- OP-31 (Sperrzustände, Rückfragen): Verhalten ohne gedrückten Not-Aus und eine mögliche Bestätigung sind Annahmen.
+- OP-35 (Quellfehler): Satzfehler im Hinweis-Textfeld; Wortlaut zitiert, Korrektur in der `.resx` ist offene Entscheidung.
 - OP-37 (Zugang Geber setzen): im Handbuch nur als Eintrag in RS-04 beschrieben; Kachel nach A-36.
 - OP-39 (fehlende Zustände): Zustand „Achse nicht initialisiert“ nicht beschrieben (Annahme: Warnung).
 - OP-41 (geräteabhängige Elemente): Anzahl und Reihenfolge der Geber.

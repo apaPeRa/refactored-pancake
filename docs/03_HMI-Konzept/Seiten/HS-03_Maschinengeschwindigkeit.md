@@ -3,10 +3,10 @@
 - Navigationspfad: **Produktion** (Brotkrümel der Hintergrundseite bleibt stehen; Pop-up-Titel „Maschinengeschwindigkeit“, Pfad der Referenz „Produktion › Maschinengeschwindigkeit“). Zugang: [HS-01](HS-01_Produktion.md), Kennzahl „Geschwindigkeit Soll“ (Symbol und Chevron); Rahmenkennzahl „Geschwindigkeit“ auf jeder Seite (A-38). Zurück-Ziel: die aufrufende Seite über „Schließen“ oder Kreuz. Seitenschlüssel `MachineSpeed` / `production/speed`, Typ Pop-up.
 
 ## Zweck
-Wortgetreu (Referenz): „Das Pop-up erlaubt das Einstellen der verschiedenen Geschwindigkeiten der Maschine. Geöffnet wird das Pop-up durch einen Klick auf das rote Tacho-Symbol auf der Produktions-Seite.“ Im neuen HMI ersetzt das Antippen der Kennzahl „Geschwindigkeit Soll“ (Symbol `Icon.Speed` mit Chevron, nicht mehr rot) bzw. der Rahmenkennzahl „Geschwindigkeit“ den Klick auf das rote Symbol. Fünf Geschwindigkeiten: Maximum, Schnell, Langsam, Tippen, Minimum.
+Wortgetreu (Referenz): „Das Pop-Up erlaubt das Einstellen der verschiedenen Geschwindigkeiten der Maschine. Geöffnet wird das Pop-Up durch einen Klick auf das rote Tacho-Symbol auf der Produktions-Seite.“ Im neuen HMI ersetzt das Antippen der Kennzahl „Geschwindigkeit Soll“ (Symbol `Icon.Speed` mit Chevron, nicht mehr rot) bzw. der Rahmenkennzahl „Geschwindigkeit“ den Klick auf das rote Symbol. Fünf Geschwindigkeiten: Maximum, Schnell, Langsam, Tippen, Minimum.
 
 ## Aufbau (Bereiche, Layout)
-Modaler Rahmen [HM-14](../Module/HM-14_Popup-Rahmen.md) mittig über dem Inhaltsbereich, schmaler Breitenanteil (`WidthRatio` 0,4 statt des Standards 0,6, höchstens `Size.Popup.WidthRatio`), Kontur `Border.Medium`, `Radius.Card`, Scrim `Brush.Scrim`, kein Schatten.
+Modaler Rahmen [HM-14](../Module/HM-14_Popup-Rahmen.md) mittig über dem Inhaltsbereich, schmaler Breitenanteil (`WidthRatio` 0,4 statt des Standards 0,6, höchstens `Size.Popup.WidthRatio`; S03-4), Kontur `Border.Medium`, `Radius.Card`, Scrim `Brush.Scrim`, kein Schatten.
 
 ```
 +--------------------------------------+
@@ -49,10 +49,10 @@ Die rote Schrift der Eingabewerte in der Referenz entfällt; Rot ist nur Fehler 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 - **Öffnen:** Antippen von „Geschwindigkeit Soll“ auf [HS-01](HS-01_Produktion.md) oder der Rahmenkennzahl „Geschwindigkeit“ (A-38). Beim Öffnen stehen die gespeicherten Werte in den Feldern.
 - **Modal:** Scrim; Seitenleiste, Funktionsleiste, Brotkrümel und Seiteninhalt gesperrt; Meldezeile nur Anzeige. Ein Antippen außerhalb schließt nicht. Das Pop-up steht nicht im Verlauf.
-- **Eingabe:** Antippen eines Felds öffnet das Eingabe-Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) mit vorbelegtem Wert, Einheit „1/min“ und den Grenzen. „Übernehmen“ schreibt den Wert und aktualisiert das Feld; „Abbrechen“ verwirft. Das Eingabe-Pop-up liegt über dem Pop-up (Tiefe 2, Annahme 13).
+- **Eingabe:** Antippen eines Felds öffnet das Eingabe-Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) mit vorbelegtem Wert, Einheit „1/min“ und den Grenzen. „Übernehmen“ schreibt den Wert und aktualisiert das Feld; „Abbrechen“ verwirft. Das Eingabe-Pop-up liegt über dem Pop-up (Tiefe 2, S03-1).
 - **Zuordnung Schnell und Langsam:** Die wirksame Sollgeschwindigkeit ist „Schnell“, wenn die Zustandstaste „Schnell“ auf HS-01 „Ein“ ist, sonst „Langsam“. Die Kennzahl „Geschwindigkeit Soll“ auf HS-01 zeigt den wirksamen Wert und folgt Änderungen im Pop-up.
-- **Grenzen:** Die Maschinengeschwindigkeit bleibt zwischen Minimum und Maximum. Plausibilitätsregel als Dummy: Minimum ≤ Tippen ≤ Langsam und Schnell ≤ Maximum (Annahme 15, OP-28); ein Wert außerhalb gibt im Eingabe-Pop-up den Fehlerzustand mit `Icon.Status.Error` und Text (z. B. „Wert außerhalb 10 bis 125 1/min“), „Übernehmen“ bleibt deaktiviert. Ob „Schnell“ und „Langsam“ gleich sein dürfen (Bild: beide 50), ist nicht beschrieben; hier erlaubt.
-- **Berechtigung:** Maximum, Tippen und Minimum tragen das Schlüsselsymbol (Berechtigung vorhanden und Anmeldung erforderlich) bzw. das Schloss (Berechtigung fehlt); Schnell und Langsam sind ohne Schlüssel frei bedienbar. Rolle je Feld ist nicht dokumentiert (OP-25, Dummy). Fehlt die Rolle, öffnet das Antippen kein Eingabe-Pop-up; es erscheint „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up (Navigation.md 4.1, Annahme 16). Nach der Anmeldung wird das Eingabe-Pop-up geöffnet.
+- **Grenzen:** Die Maschinengeschwindigkeit bleibt zwischen Minimum und Maximum. Plausibilitätsregel als Dummy: Minimum ≤ Tippen ≤ Langsam und Schnell ≤ Maximum (S03-2, OP-28); ein Wert außerhalb gibt im Eingabe-Pop-up den Fehlerzustand mit `Icon.Status.Error` und Text (z. B. „Wert außerhalb 10 bis 125 1/min“), „Übernehmen“ bleibt deaktiviert. Ob „Schnell“ und „Langsam“ gleich sein dürfen (Bild: beide 50), ist nicht beschrieben; hier erlaubt.
+- **Berechtigung:** Maximum, Tippen und Minimum tragen das Schlüsselsymbol (Berechtigung vorhanden und Anmeldung erforderlich) bzw. das Schloss (Berechtigung fehlt); Schnell und Langsam sind ohne Schlüssel frei bedienbar. Rolle je Feld ist nicht dokumentiert (OP-25, Dummy). Fehlt die Rolle, öffnet das Antippen kein Eingabe-Pop-up; es erscheint „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up (Navigation.md 4.1, S03-3). Nach der Anmeldung wird das Eingabe-Pop-up geöffnet.
 - **Fehlerfälle:** Ungültiger Wert siehe Grenzen; Schreibfehler der Maschine: Feld im Fehlerzustand mit Text, Wert bleibt der zuletzt gültige. Geänderte Werte wirken sofort nach „Übernehmen“; ein zusätzliches „Werte schreiben“ gibt es nicht.
 - **Schließen:** „Schließen“ oder Kreuz zurück zur aufrufenden Seite. Nicht übernommene Eingaben sind verworfen. Systemseitiger Wechsel (z. B. Abmeldung) schließt ohne Übernehmen.
 
@@ -75,6 +75,16 @@ Die rote Schrift der Eingabewerte in der Referenz entfällt; Rot ist nur Fehler 
 | HS-03-P14 | Zweiter Kanal | Berechtigung über Symbol, Fehler über Symbol und Text, nicht nur über Farbe; Breite ≤ `Size.Popup.WidthRatio` | offen |
 | HS-03-P15 | Tokens und Lokalisierung | keine Hex- oder Pixelwerte; Texte und Einheit aus `.resx`; Zahlenformat nach `CurrentCulture` | offen |
 
+## Annahmen dieser Seite
+Lokale Kennungen; der Sammeleintrag in `Annahmen.md` verweist auf diesen Abschnitt.
+
+| ID | Annahme |
+|---|---|
+| S03-1 | Das Eingabe-Pop-up (HM-13) liegt über HS-03 (Stapeltiefe 2); Navigation.md 4.2 Nr. 1 nennt diese Stapelung nicht ausdrücklich, sie wird als zulässig behandelt. |
+| S03-2 | Plausibilität (Dummy, OP-28): Minimum ≤ Tippen ≤ Langsam und Schnell ≤ Maximum; „Schnell“ gleich „Langsam“ ist erlaubt (Bild: beide 50). |
+| S03-3 | Ein Feld mit Schlüssel ohne Rolle zeigt „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up (Navigation.md 4.1); nach der Anmeldung öffnet das Eingabe-Pop-up. Das Verhalten „nur Hinweis“ aus HM-12 ist damit überholt. |
+| S03-4 | Pop-up-Breite 0,4 des Fensters (fünf Zeilen, schmaler Inhalt). |
+
 ## Offene Punkte
 - Berechtigungsstufen und Bedeutung des Schlüssels: OP-25; Farbbedeutung der roten Werte: OP-27 (Rot entfällt); Wertebereiche, Standardwerte, Plausibilität, Fehlermeldungen: OP-28; Art der Werteingabe (Eingabe-Pop-up): OP-30; weitere Lücken (Schnell gleich Langsam): OP-50.
-- Neu (für Offene-Punkte.md vorgeschlagen): Plausibilitätsregel Minimum ≤ Tippen ≤ Langsam und Schnell ≤ Maximum ist Annahme; Stapelung Eingabe-Pop-up über HS-03 (Navigation.md 4.2 Nr. 1 nennt sie nicht ausdrücklich).
+- Neue offene Punkte dieser Seite: (a) Plausibilitätsregel Minimum ≤ Tippen ≤ Langsam und Schnell ≤ Maximum ist angenommen (S03-2); (b) Stapelung Eingabe-Pop-up über HS-03 (S03-1).

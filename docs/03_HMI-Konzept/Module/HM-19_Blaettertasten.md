@@ -1,7 +1,7 @@
 # HM-19 – Blättertasten
 
 ## Funktion
-Paar Pfeiltasten in der Funktionsleiste ([HM-06](HM-06_Funktionsleiste.md)) oder, bei Listen und Zeilen (z. B. Antriebe in [HM-34](HM-34_Motor-Statuszeile.md), EA-Karten), im Inhaltsbereich, das innerhalb derselben Seitenform zwischen gleichartigen Objekten blättert (Hauptdosierer 1/2, Nocken, Waagen, Aktoren, Geber, EA-Karten). Eine Positionsanzeige „n von m“ ist zweiter Kanal und ersetzt das Raten der Wirkung (Wirkung am Rand im Handbuch nicht beschrieben, Annahme: Taste deaktiviert). Variante „einzelne Taste“ (»), die zur nächsten Seite wechselt.
+Paar Pfeiltasten in der Funktionsleiste ([HM-06](HM-06_Funktionsleiste.md)) oder, bei Listen und Zeilen (z. B. Antriebe in [HM-34](HM-34_Motor-Statuszeile.md), EA-Karten), im Inhaltsbereich, das innerhalb derselben Seitenform zwischen gleichartigen Objekten blättert (Hauptdosierer 1/2, Nocken, Waagen, Aktoren, Geber, EA-Karten). Eine Positionsanzeige „n von m“ ist zweiter Kanal und ersetzt das Raten der Wirkung (Wirkung am Rand im Handbuch nicht beschrieben, Annahme: Taste deaktiviert). Variante „einzelne Taste“ (»), die zur nächsten Seite wechselt. Anordnung (`Placement`): in der Funktionsleiste (Standard), als Paar im Inhaltsbereich (HS-32, Paar links neben dem Meldungsfeld „Meldung:“) oder, optional, eine Taste links und eine rechts neben dem zugehörigen Feld (`Flanking`); die Positionsanzeige „n von m“ bleibt in jeder Anordnung.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -12,6 +12,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Aktueller Index (`CurrentIndex`) | int | – | 0 bis Count − 1 |
 | Objektname (`CurrentLabel`) | string? | – | z. B. „Hauptdosierer 1“ |
 | Darstellung (`PagerStyle`) | enum PagerStyle { Pair, Single } | – | Pair Standard |
+| Anordnung (`Placement`) | enum PagerPlacement { FunctionBar, Inline, Flanking } | – | FunctionBar Standard; Inline = Paar im Inhaltsbereich; Flanking = Tasten links und rechts neben einem Feld (optional) |
 | Umlaufend (`IsCyclic`) | bool | – | Standard false |
 | Zurück (`PreviousCommand`), Vor (`NextCommand`) | ICommand | – | – |
 
@@ -48,7 +49,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## WPF-Umsetzung
 - **Control:** `HM19_PagerButtons` (UserControl), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`HM19_PagerButtons`) aus zwei Tasten im Stil von HM07.
-- **Dependency Properties:** `Count`, `CurrentIndex`, `CurrentLabel`, `PagerStyle`, `IsCyclic`; **Commands:** `PreviousCommand`, `NextCommand`.
+- **Dependency Properties:** `Count`, `CurrentIndex`, `CurrentLabel`, `PagerStyle`, `Placement`, `IsCyclic`; **Commands:** `PreviousCommand`, `NextCommand`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Chevron`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
@@ -56,8 +57,8 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## Prüfpunkte
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
-| HM-19-P01 | Seiten | HS-11, 12, 20, 25, 26, 27, 31, 32, 34 | offen |
+| HM-19-P01 | Seiten | HS-11, 12, 25, 26, 27, 31, 32, 34, 39 (nicht HS-19, HS-20, HS-41) | offen |
 | HM-19-P02 | Positionsanzeige | „n von m“ sichtbar | offen |
 | HM-19-P03 | Rand | Taste deaktiviert, nicht umlaufend | offen |
-| HM-19-P04 | Lage | links in der Funktionsleiste (HM-06) oder im Inhaltsbereich | offen |
+| HM-19-P04 | Lage | links in der Funktionsleiste (HM-06) oder im Inhaltsbereich; `Flanking` optional links und rechts neben einem Feld | offen |
 | HM-19-P05 | Touch | Tasten ≥ `Size.Touch.Default` × `Size.Touch.Default` | offen |

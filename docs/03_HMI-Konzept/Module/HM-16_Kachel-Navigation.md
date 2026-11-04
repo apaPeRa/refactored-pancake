@@ -1,7 +1,7 @@
 # HM-16 – Kachel-Navigation
 
 ## Funktion
-Raster aus großen Kacheltasten für Navigation oder Schnellzugriff (Seite Einstellungen 5 × 4, Handbetrieb-Auswahl 4 × 4, EA-Übersicht 4 × 2, Systemeinstellungen 3 × 3; Schnellzugriff auf der Produktionsseite 3 × 2). Kachel: Beschriftung (mehrzeilig, automatischer Umbruch), optionales Symbol über dem Text, Schlüssel-Symbol bei berechtigungspflichtigen Zielen. Ziel ist eine Seite oder eine Aktion; Warnaktionen (Steuerung neu starten) öffnen vorher ein Bestätigungs-Pop-up. Leere Kacheln erscheinen als „Reserviert“ im Zustand deaktiviert (A-29). Kachel ohne Ein/Aus-Zustand.
+Raster aus großen Kacheltasten für Navigation oder Schnellzugriff (Seite Einstellungen 5 × 4, Handbetrieb-Auswahl 4 × 4, EA-Übersicht 4 × 2, Systemeinstellungen 3 × 3; Schnellzugriff auf der Produktionsseite 3 × 2). Kachel: Beschriftung (mehrzeilig, automatischer Umbruch), optionales Symbol über dem Text, Schlüssel-Symbol bei berechtigungspflichtigen Zielen. Ziel ist eine Seite oder eine Aktion; Warnaktionen (Steuerung neu starten) öffnen vorher ein Bestätigungs-Pop-up. Leere Kacheln erscheinen als „Reserviert“ im Zustand deaktiviert (A-29). Kachel ohne Ein/Aus-Zustand. **Abgrenzung zu den Zustandstasten:** HM-16 ist das Raster (Spalten × Zeilen, Zellmaß `Size.Touch.Large`, Abstand `Size.Touch.Gap`) und die Navigationskachel ohne Zustand. Der Tastenblock 3 × 2 auf HS-01 (Automatik, Zuführung Papier und Karton, Leerpakete ausblasen, Abfüllung, Bunker leerfahren) sind **Zustandstasten**: Sie liegen in diesem Raster (Elementart `StateToggle`), jede Zelle ist aber ein [HM-08](HM-08_Zustandstaste-Umschalter.md) (`ToggleStyle = Button`, `ButtonSize = Tile`); Zustand, Wort und Befehl gehören HM-08, HM-16 liefert nur Anordnung und Maße.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -13,7 +13,9 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Zeilen (`Rows`) | int | – | 1 bis 4 |
 | Kachelgröße (`TileSize`) | enum TileSize { Large, Small } | px | Large `Size.Touch.Large` hoch, Small `Size.Touch.Default` hoch („Beleuchtung“) |
 | Leere Kacheln (`EmptyTileMode`) | enum EmptyTileMode { Reserved, Hidden } | – | Reserved Standard (A-29) |
-| Befehl (`NavigateCommand`) | ICommand (Parameter TileItem) | – | Seite oder Aktion |
+| Item-Felder deaktiviert (`TileItem.IsDisabled`, `DisabledReason`) | bool, string? | – | deaktivierte Kachel mit Beschriftung und Grund (Meldezeile bei Tippen), z. B. Endkontrollwaage in HS-42 mit `Icon.Block` und Text „Nicht verfügbar“ |
+| Elementart (`ItemKind`) | enum TileItemKind { Navigation, StateToggle } | – | Navigation Standard (Kachel-Taste ohne Zustand); StateToggle = jede Zelle ist ein HM-08 in Tastenform, Kachelhöhe |
+| Befehl (`NavigateCommand`) | ICommand (Parameter TileItem) | – | Seite oder Aktion (nur ItemKind Navigation) |
 
 ## Zustände und Darstellung
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
@@ -25,6 +27,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Leer / reserviert | Kontur gestrichelt (`Border.Dash`), Text `Brush.Text.Disabled` | gestrichelte Kontur und Text „Reserviert“ |
 | Deaktiviert | wie leer, mit Beschriftung | gestrichelte Kontur; Grund in Meldezeile (A-28) |
 | Berechtigung | Normal | `Icon.Key` bzw. `Icon.Lock` (`Size.Icon.S`) oben rechts |
+| Deaktiviert mit Grund | gestrichelte Kontur, Beschriftung `Brush.Text.Disabled`, `Icon.Block` | Text „Nicht verfügbar“ und Grund in der Meldezeile beim Tippen (HS-42) |
 | Warnaktion | Normal | `Icon.Status.Warning` in der Kachel; Bestätigung vor Ausführung |
 
 ## Verwendet auf Seiten (IDs)
@@ -45,9 +48,9 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## WPF-Umsetzung
 - **Control:** `HM16_TileNavigation` (UserControl (Kachel: `ControlTemplate` auf `Button`)), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` (`ItemsControl` mit `UniformGrid`), Kachel `HM16_Tile` als `ControlTemplate`.
-- **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`; **Command:** `NavigateCommand`.
+- **Dependency Properties:** `Items`, `Columns`, `Rows`, `TileSize`, `EmptyTileMode`, `ItemKind`; **Command:** `NavigateCommand`.
 - Abstand zwischen Kacheln `Size.Touch.Gap`, Beschriftung aus `.resx`, Umbruch automatisch (OP-13).
-- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.Status.Warning`.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Block`, `Icon.Key`, `Icon.Lock`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 
@@ -60,3 +63,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-16-P04 | Beschriftung | automatischer Umbruch, keine Trennstriche („Schließmaschine“) | offen |
 | HM-16-P05 | Raster Referenz | HS-04 5 × 4 (18 beschriftet, 2 leer), HS-30 4 × 4, HS-33 4 × 2, HS-35 3 × 3 | offen |
 | HM-16-P06 | Touch | Höhe ≥ `Size.Touch.Large` (Small `Size.Touch.Default`), Abstand `Size.Touch.Gap` | offen |
+| HM-16-P07 | Zustandstasten im Raster | HS-01: 6 Zustandstasten (HM-08, Tile) im Raster 3 × 2 mit `Size.Touch.Large` und `Size.Touch.Gap`; kein Ziel, keine Navigation | offen |

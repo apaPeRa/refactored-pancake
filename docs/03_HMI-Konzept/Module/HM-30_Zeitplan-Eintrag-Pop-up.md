@@ -47,7 +47,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## Prüfpunkte
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
-| HM-30-P01 | Titel | „Neuer Eintrag“ bzw. „Absenkphase“ | offen |
+| HM-30-P01 | Titel | „Neuer Eintrag“ beim Anlegen und, gemäß den Bildern RS-10_04/05, auch beim Bearbeiten (Aktion als graues Auswahlfeld); „Absenkphase“ nur als Wert des Auswahlfelds | offen |
 | HM-30-P02 | Felder | Aktion, 2 Kontrollkästchen, Startzeit, Endzeit, Zähler | offen |
 | HM-30-P03 | Tasten | Übernehmen (Haken), Abbrechen (X), Löschen (Papierkorb) | offen |
 | HM-30-P04 | Löschregel | Heizphase erst löschbar ohne Absenkphasen | offen |

@@ -2,7 +2,7 @@
 
 - Quelle: [RS-09](../../02_Referenz-Analyse/Seiten/RS-09_Heissleim-Druck.md) (Handbuch Kapitel 9, Tabellen T12 „Druckregelung“ und T13 „Gerätelimits“, Bild [RS-09_01](../../02_Referenz-Analyse/Medien/RS-09_01.png)). Es gibt keine Design-Seite; Aufbau und Optik sind aus dem [Designsystem](../Designsystem.md), den Modulen und der Schwesterseite [HS-07](HS-07_Heissleim-Nordson.md) (Design [DS-03](../../01_Design-Analyse/Seiten/DS-03_Heissleim.md)) abgeleitet.
 - Navigationspfad: Einstellung › Zuführungen › Heißleim › Druck (Brotkrümel laut [Navigation.md](../Navigation.md), Abschnitt 2). Zugang: Funktionsleiste „Druck“ in [HS-07](HS-07_Heissleim-Nordson.md) (abgeleitet, A-14, OP-36). Zurück-Ziel: HS-07. PageKey `HotGluePressure`, Route `settings/feeders/hotglue/pressure`, Mindestrolle: jeder angemeldete Benutzer.
-- Seitentitel (Ressource `Nav_HotGluePressure_Title`): „Heißleim Zuführung Druck“ (Bildtitel der Referenz, so in Navigation.md Abschnitt 2 festgelegt); der Kapitelname lautet „Heißleim Druck“ (OP-33). Im Inhaltsbereich steht kein eigener Titel, das letzte Brotkrümel-Segment „Druck“ ersetzt ihn.
+- Seitentitel (Ressource `Nav_HotGluePressure_Title`): „Heißleim Druck“ (Kapitelname, gewinnt nach OP-33; der Bildtitel „Heißleim Zuführung Druck“ ist nur ein Hinweis). Im Inhaltsbereich steht kein eigener Titel, das letzte Brotkrümel-Segment „Druck“ ersetzt ihn.
 
 ## Zweck
 
@@ -74,11 +74,11 @@ Spalte „Herkunft“ stellt die Rückverfolgung zu RS-09 her. Alle fünf Zeilen
 
 Die Schreibweisen der Handbuchtexte („Maschinentakte“) werden unverändert in die `.resx` übernommen und dort nach Klärung korrigiert (OP-35). Alle Zahlen erscheinen mit geschütztem Leerzeichen vor der Einheit (`1,7 bar`, `120 1/min`).
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-11](../Module/HM-11_Anzeigefeld.md), [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md) (trägt HM-13), [HM-15](../Module/HM-15_Gruppenbereich.md).
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Druckregelung:** erfolgt „basierend auf der Fördergeschwindigkeit und den definierten Druckgrenzen“ (Handbuch). Der Verlauf zwischen oberem und unterem Druck zwischen den beiden Geschwindigkeiten ist nicht beschrieben (OP-46) und wird nicht dargestellt.
 - **Gerätelimits:** Wird das obere Drucklimit überschritten, erfolgt eine Abschaltung; bei Unterschreitung des unteren Drucklimits „kann eine Störung ausgelöst werden“; Überdruck Delta und Unterdruck Delta sind Toleranzen, nach denen eine Überdruck- bzw. Unterdruckmeldung erfolgt. Diese Ereignisse erscheinen als Meldung in der Meldezeile ([HM-03](../Module/HM-03_Meldezeile.md)); eigene Statusanzeigen auf der Seite gibt es nicht (Referenz und Handbuch beschreiben keine). Meldungstexte sind nicht beschrieben.

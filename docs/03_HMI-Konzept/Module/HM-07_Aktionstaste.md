@@ -1,7 +1,7 @@
 # HM-07 – Aktionstaste (Funktionstaste)
 
 ## Funktion
-Taste mit Beschriftung (und optionalem Symbol), die genau eine Aktion auslöst oder zu einer Seite führt; sie hat **keinen** Ein/Aus-Zustand (Zustandstasten: [HM-08](HM-08_Zustandstaste-Umschalter.md)). Auslöseverhalten als Parameter: Antippen, Halten (Haltetaste, z. B. Reset, Jog) oder Dauerfunktion bis Abbruch (z. B. Entleeren). Mit oder ohne Schlüssel-/Schloss-Symbol für berechtigungspflichtige Aktionen. Einheitlich für Funktionsleiste, Dosiererkarten und Seiten.
+Taste mit Beschriftung (und optionalem Symbol), die genau eine Aktion auslöst oder zu einer Seite führt; sie hat **keinen** Ein/Aus-Zustand (Zustandstasten: [HM-08](HM-08_Zustandstaste-Umschalter.md)). Auslöseverhalten als Parameter: Antippen, Halten (Haltetaste, z. B. Reset, Jog) oder Dauerfunktion bis Abbruch (z. B. Entleeren) oder **Gedrückt-Halten (`WhilePressed`, Totmann)**: Die Aktion läuft nur, solange die Taste gedrückt ist (Jog+/Jog− in HS-31 und „Manuell“ in HS-07, Annahme, OP-57). `Hold` wartet eine Haltedauer ab und löst dann einmal aus; `WhilePressed` löst sofort aus und beendet die Aktion beim Loslassen. Mit oder ohne Schlüssel-/Schloss-Symbol für berechtigungspflichtige Aktionen. Einheitlich für Funktionsleiste, Dosiererkarten und Seiten.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -12,9 +12,10 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Symbol (`Icon`) | Geometry? | – | optional, links |
 | Befehl (`Command`) | ICommand | – | Aktion oder Navigation |
 | Befehlsparameter (`CommandParameter`) | object? | – | z. B. Seiten-ID |
-| Auslösung (`TriggerMode`) | enum ActionTriggerMode { Tap, Hold, Continuous } | – | Standard Tap |
+| Auslösung (`TriggerMode`) | enum ActionTriggerMode { Tap, Hold, Continuous, WhilePressed } | – | Standard Tap; WhilePressed = Totmann (Aktion nur während des Drückens) |
 | Haltedauer (`HoldDuration`) | TimeSpan | ms | 200 bis 5000, Standard 1000 (Dummy, OP-42) |
-| Läuft (`IsRunning`) | bool | – | nur bei Continuous |
+| Läuft (`IsRunning`) | bool | – | bei Continuous und WhilePressed |
+| Abbruch beim Verlassen (`CancelOnLeave`) | bool | – | Standard true bei WhilePressed: Finger gleitet aus der Taste, Seitenwechsel, Rollenverlust oder Störung beenden die Aktion |
 | Berechtigung erforderlich (`RequiresPermission`) | bool | – | Schlüssel-Symbol |
 | Berechtigt (`IsAuthorized`) | bool | – | false zeigt Schloss |
 | Bedienbar (`IsEnabled`) | bool | – | false im ungeeigneten Betriebszustand |
@@ -28,9 +29,10 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Gedrückt | `Brush.Button.Pressed`, Kontur `Border.Medium` | dickere Kontur; Auslösen beim Loslassen im Ziel |
 | Halten | wie gedrückt, Fortschrittsstreifen unten in `Brush.Progress.Fill` | Streifen und Text „Halten …“ |
 | Läuft (Dauerfunktion) | `Brush.Button.Active`, Text `Brush.Text.OnActive` | `Icon.State.On` und Wort „Läuft“ |
+| Gehalten (WhilePressed) | `Brush.Button.Active`, Text `Brush.Text.OnActive`, solange gedrückt | `Icon.State.On` und Wort „Läuft“; endet beim Loslassen sofort |
 | Deaktiviert | Kontur gestrichelt (`Border.Dash`), Text `Brush.Text.Disabled` | gestrichelte Kontur; Tippen nennt Grund in der Meldezeile (A-28) |
 | Berechtigung vorhanden | Normal | `Icon.Key` (`Size.Icon.S`) oben rechts |
-| Berechtigung fehlt | Normal, nicht bedienbar | `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ |
+| Berechtigung fehlt | Normal, nicht bedienbar | `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“; Tippen öffnet zusätzlich das Benutzer-Pop-up (Navigation.md 4.1), nach der Anmeldung läuft die Aktion weiter |
 
 ## Verwendet auf Seiten (IDs)
 - [HS-01](../Seiten/HS-01_Produktion.md) – Produktion
@@ -88,3 +90,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-07-P04 | Gesperrt | Sperre über gestrichelte Kontur und Schloss, nicht nur hellere Schrift | offen |
 | HM-07-P05 | Touch | Höhe `Size.Touch.Default`, Abstand ≥ `Size.Touch.Gap` | offen |
 | HM-07-P06 | Abgrenzung | Tasten mit Zustand sind HM-08 | offen |
+| HM-07-P07 | Totmann | Modus `WhilePressed`: Aktion läuft nur während des Drückens und endet beim Loslassen, beim Gleiten aus der Taste und beim Seitenwechsel; Zustand „Läuft“ mit Symbol und Wort (HS-31 Jog, HS-07 „Manuell“) | offen |

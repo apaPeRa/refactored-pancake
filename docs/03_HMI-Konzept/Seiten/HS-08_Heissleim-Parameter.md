@@ -61,7 +61,7 @@ Spalte „Herkunft“ stellt die Rückverfolgung zu RS-08 her. Alle vier Zeilen 
 | Element | Typ | Funktion | verwendetes Modul | Herkunft |
 |---|---|---|---|---|
 | Panel „Globale Einstellungen“ | Gruppenbereich (Panel mit Überschrift) | bündelt die vier Felder | [HM-15](../Module/HM-15_Gruppenbereich.md) | RS-08 „Oberer Bereich (blauer Hintergrund)“ |
-| Globale Standby Temperatur Delta | Eingabefeld mit Schlüsselsymbol, Einheit °C (Dummy 56 °C, Standardwert laut RS-07) | „Wert um den alle Temperaturen reduziert werden, wenn das Heißleimgerät in Standby versetzt wird.“ (Caption, Wortlaut der Referenz; Beschriftung im Bild „Globale StandBy Temperatur Delta“.) Der Wert ist die Absenkung der Standby-Taste in HS-07 | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-08 T11 Zeile 1 |
+| Globale StandBy Temperatur Delta | Eingabefeld mit Schlüsselsymbol, Einheit °C (Dummy 56 °C, Standardwert laut RS-07) | „Wert um den alle Temperaturen reduziert werden, wenn das Heißleimgerät in Standby versetzt wird.“ (Caption, Wortlaut der Referenz; Handbuch-Tabelle „Globale Standby Temperatur Delta“, Bild „Globale StandBy Temperatur Delta“; die Schreibweise des Bildes wird als Beschriftung übernommen, einheitliche Schreibweise in `.resx`, OP-34.) Der Wert ist die Absenkung der Standby-Taste in HS-07 | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-08 T11 Zeile 1 |
 | Bereitschaft Verzögerung | Eingabefeld mit Schlüsselsymbol, Einheit s (Dummy 0 s) | „Sind alle Bedingungen für einen Betrieb erfüllt, wird erst nach Ablauf der Zeit das Bereitsignal gesendet.“ (Caption) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-08 T11 Zeile 2 |
 | Übertemperatur Delta | Eingabefeld mit Schlüsselsymbol, Einheit °C (Dummy 15 °C) | „Ist eine Temperatur um diesen Betrag höher als die angegebene Solltemperatur wird die Bereitschaft zurückgenommen.“ (Caption) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-08 T11 Zeile 3 |
 | Untertemperatur Delta | Eingabefeld mit Schlüsselsymbol, Einheit °C (Dummy 25 °C) | „Ist eine Temperatur um diesen Betrag niedriger als die angegebene Solltemperatur wird die Bereitschaft zurückgenommen.“ (Caption) | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-08 T11 Zeile 4 |
@@ -85,11 +85,11 @@ Wortgetreu (Handbuch): „Alle vorhandenen Zonen des Heißleimgeräts werden hie
 
 Die Zonenliste ist konfigurationsabhängig (Anzahl und Namen, OP-41): Standard sind die sechs Zonen des Bildes; weitere Zonen werden in derselben Liste ergänzt (Scrollen bei Überlauf, Annahme).
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) (über HM-28), [HM-11](../Module/HM-11_Anzeigefeld.md), [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md) (trägt HM-13), [HM-15](../Module/HM-15_Gruppenbereich.md), [HM-28](../Module/HM-28_Temperaturzonen-Zeile.md).
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Statustaste je Zone:** schaltet die Zone ab bzw. wieder an („abgewählt“). Aktive Zone: Taste „Ausschalten“, `Icon.State.On` und Wort „Ein“. Abgewählte Zone: Taste „Einschalten“, `Icon.State.Off` und Wort „Aus“, Text der Zeile in `Brush.Text.Secondary`, Ist „0 °C“ ([HM-28](../Module/HM-28_Temperaturzonen-Zeile.md)). Die Farben der Referenz (grün = aktiv, rot = abgewählt) entfallen; der Zustand ist über Symbol, Wort und Tastentext lesbar. Das Verhalten bei Standby und bei ausgeschalteten Heizungen ist nicht beschrieben (OP-46).
 - **Zone mit Fehler oder nicht bereit** (Annahme, [HM-28](../Module/HM-28_Temperaturzonen-Zeile.md)): Zeile mit `Brush.Status.Error.Subtle`, `Icon.Status.Error` und Wort „Fehler“.

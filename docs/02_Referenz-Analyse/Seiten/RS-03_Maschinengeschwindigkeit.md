@@ -3,7 +3,7 @@
 - Navigationspfad: Produktion › Maschinengeschwindigkeit (Pop-up, Klick auf das rote Tacho-Symbol auf [RS-01](RS-01_Produktion.md)). Schließen über Taste „Schließen“ (bzw. Fenster-Kreuz im Bild).
 
 ## Zweck
-Wortgetreu: „Das Pop-up erlaubt das Einstellen der verschiedenen Geschwindigkeiten der Maschine. Geöffnet wird das Pop-up durch einen Klick auf das rote Tacho-Symbol auf der Produktions-Seite.“
+Wortgetreu: „Das Pop-Up erlaubt das Einstellen der verschiedenen Geschwindigkeiten der Maschine. Geöffnet wird das Pop-Up durch einen Klick auf das rote Tacho-Symbol auf der Produktions-Seite.“
 
 ## Aufbau (Bereiche, Layout)
 Bild: ![RS-03_01](../Medien/RS-03_01.png) – kleines Pop-up-Fenster (grauer Hintergrund) mit Titelleiste „Maschinengeschwindigkeit“ und Schließen-Kreuz oben rechts. Fünf Zeilen, links fette Beschriftung mit Doppelpunkt, rechts je ein weißes Eingabefeld mit roter Schrift und Einheit „1/min“:

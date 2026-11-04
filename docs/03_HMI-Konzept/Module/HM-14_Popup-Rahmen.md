@@ -1,20 +1,25 @@
 # HM-14 – Pop-up-Rahmen
 
 ## Funktion
-Modaler Rahmen über der Seite für alle Pop-ups (Produktionszähler, Maschinengeschwindigkeit, [Eingabe-Pop-up](HM-13_Eingabe-Pop-up.md), [Zeitplan-Eintrag](HM-30_Zeitplan-Eintrag-Pop-up.md), Bestätigungen). Titelzeile (`Size.Popup.TitleHeight`) mit Schließen-Kreuz oben rechts (`Size.Touch.Default`), freier Inhalt, optionale Taste „Schließen“ unten rechts. Dahinter liegt der Scrim; der Hintergrund ist gesperrt (Annahme der Referenz). Maximale Breite 60 %, kein Schatten.
+Modaler Rahmen über der Seite für alle Pop-ups (Produktionszähler, Maschinengeschwindigkeit, [Eingabe-Pop-up](HM-13_Eingabe-Pop-up.md), [Zeitplan-Eintrag](HM-30_Zeitplan-Eintrag-Pop-up.md), [Such-Pop-up](HM-38_Such-Pop-up.md), Bestätigungen, Datei- und Ergebnis-Pop-up). Drei Arten (`Kind`): freier Inhalt, **Bestätigung** (Warntext, zwei Tasten, z. B. „Ja“/„Abbrechen“ oder „Verwerfen“/„Abbrechen“; Fokus zunächst auf „Abbrechen“; Beispiele: Steuerung neu starten, Liste leeren, Änderungen verwerfen?, Nullpunkt setzen, Start löschen) und **Datei-/Ergebnis-Pop-up** (HS-36, HS-37: Dateiauswahl für Export und Import, danach Fortschritt und Ergebnis mit Erfolg oder Fehler, Taste „Schließen“; Dateiformat und Ort offen, OP-49). Höchstens zwei Pop-ups gestapelt (A-40). Titelzeile (`Size.Popup.TitleHeight`) mit Schließen-Kreuz oben rechts (`Size.Touch.Default`), freier Inhalt, optionale Taste „Schließen“ unten rechts. Dahinter liegt der Scrim; der Hintergrund ist gesperrt (Annahme der Referenz). Maximale Breite 60 %, kein Schatten.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
 
 | Name (Eigenschaft) | C#-Typ | Einheit | Wertebereich |
 |---|---|---|---|
-| Titel (`Title`) | string | – | z. B. „Produktionszähler“, „Maschinengeschwindigkeit“ |
+| Titel (`Title`) | string | – | z. B. „Produktionszähler“, „Maschinengeschwindigkeit“, „Änderungen verwerfen?“ |
 | Inhalt (`Content`) | object | – | frei |
 | Breitenanteil (`WidthRatio`) | double | – | 0,3 bis 0,6, Standard 0,6 |
 | Modal (`IsModal`) | bool | – | Standard true |
 | Schließen-Taste zeigen (`ShowCloseButton`) | bool | – | Standard true |
 | Schließen (`CloseCommand`) | ICommand | – | – |
 | Ergebnis (`DialogResult`) | bool? | – | true = übernommen |
+| Art (`Kind`) | enum PopupKind { Content, Confirmation, FileResult } | – | Content Standard |
+| Meldungstext (`Message`) | string? | – | Bestätigung und Ergebnis: Warn- bzw. Ergebnistext |
+| Tastentexte (`ConfirmText`, `CancelText`) | string | – | Standard „Ja“ und „Abbrechen“; Variante „Verwerfen“ |
+| Fortschritt (`Progress`) | double? | % | nur FileResult: 0 bis 100, null = unbestimmt |
+| Ergebnisart (`ResultKind`) | enum ResultKind { None, Success, Error } | – | nur FileResult |
 
 ## Zustände und Darstellung
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
@@ -25,7 +30,10 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Schließen gedrückt | `Brush.Button.Pressed`, `Border.Medium` | dickere Kontur |
 | Geschlossen | nicht sichtbar | Scrim verschwindet |
 | Fokus | Fokus bleibt im Pop-up | Fokusrahmen `Border.Thick` `Brush.Border.Focus` |
-| Bestätigungsvariante | Titel mit `Icon.Status.Warning` | Symbol und Text (z. B. Steuerung neu starten) |
+| Bestätigungsvariante | Titel mit `Icon.Status.Warning`, Tasten „Ja“/„Abbrechen“ (Fokus auf „Abbrechen“), kein Schließen durch Antippen außerhalb | Symbol und Text (z. B. Steuerung neu starten) |
+| Datei-/Ergebnis-Pop-up: Auswahl | Dateiauswahl (Format, Ort offen), Tasten „Übernehmen“/„Abbrechen“ | Titel und Text |
+| Datei-/Ergebnis-Pop-up: Läuft | Fortschrittsbalken ([HM-10](HM-10_Fortschrittsbalken.md)) im Inhalt, Tasten deaktiviert (gestrichelt) | Prozentzahl als Text |
+| Datei-/Ergebnis-Pop-up: Erfolg / Fehler | Erfolg `Icon.Status.Ok`, Fehler `Icon.Status.Error` mit `Brush.Status.Error.Subtle`, Taste „Schließen“ | Symbol und Text („Export abgeschlossen“, „Datei unlesbar“) |
 
 ## Verwendet auf Seiten (IDs)
 - [HS-01](../Seiten/HS-01_Produktion.md) – Produktion
@@ -65,8 +73,8 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## WPF-Umsetzung
 - **Control:** `HM14_PopupFrame` (UserControl / `ControlTemplate`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `UserControl` mit `ContentPresenter`; gehostet in einer Overlay-Schicht des Hauptfensters (`HM14_PopupHost`), geöffnet über `IDialogService`.
-- **Dependency Properties:** `Title`, `Content`, `WidthRatio`, `IsModal`, `ShowCloseButton`; **Command:** `CloseCommand`; `Esc`/Schließen-Kreuz schließt.
-- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Warning`.
+- **Dependency Properties:** `Title`, `Content`, `WidthRatio`, `IsModal`, `ShowCloseButton`, `Kind`, `Message`, `ConfirmText`, `CancelText`, `Progress`, `ResultKind`; **Commands:** `CloseCommand`, `ConfirmCommand`, `CancelCommand`; `Esc`/Schließen-Kreuz schließt.
+- **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Warning`, `Icon.Status.Ok`, `Icon.Status.Error`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
 
@@ -79,3 +87,6 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-14-P04 | Touch | Schließen-Kreuz und -Taste ≥ `Size.Touch.Default` | offen |
 | HM-14-P05 | Kein Schatten | Tiefe nur über Scrim und Kontur | offen |
 | HM-14-P06 | Dokumentierte Pop-ups | HS-02 und HS-03 nutzen den Rahmen | offen |
+| HM-14-P07 | Bestätigung | Warnsymbol im Titel, „Ja“/„Abbrechen“ (oder „Verwerfen“/„Abbrechen“), Fokus auf „Abbrechen“, Antippen außerhalb schließt nicht (HS-13, HS-14, HS-25, HS-35, HS-37) | offen |
+| HM-14-P08 | Datei/Ergebnis | Auswahl, Fortschritt und Ergebnis mit Symbol und Text, Fehler nicht nur in Rot (HS-36, HS-37) | offen |
+| HM-14-P09 | Stapeltiefe | höchstens zwei Pop-ups gleichzeitig (z. B. Eingabe-Pop-up über HS-03) | offen |

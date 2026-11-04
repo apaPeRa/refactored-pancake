@@ -2,7 +2,7 @@
 
 - Quelle: [RS-07](../../02_Referenz-Analyse/Seiten/RS-07_Heissleim-Nordson.md) (Handbuch Kapitel 7, Tabellen T9 und T10, Bild [RS-07_01](../../02_Referenz-Analyse/Medien/RS-07_01.png)) und [DS-03](../../01_Design-Analyse/Seiten/DS-03_Heissleim.md) (Screenshot `src_Data/Design/Seite_Heissleim.png`). Funktion und Fachlogik folgen der Referenz, Layout, Navigation und Optik dem Design.
 - Navigationspfad: Einstellung › Zuführungen › Heißleim (Brotkrümel laut [Navigation.md](../Navigation.md), Abschnitt 2). Zugang: [HS-40](HS-40_Zufuehrungen.md) Kachel „Heißleim“; zweiter Zugang über die Taste „Heißleimgerät“ in [HS-06](HS-06_Zufuehrung-Karton.md) und [HS-16](HS-16_Schliessmaschine.md). PageKey `HotGlueNordson`, Route `settings/feeders/hotglue`, Mindestrolle: jeder angemeldete Benutzer.
-- Seitentitel (Ressource `Nav_HotGlueNordson_Title`): „Heißleim Nordson“ (Kapitelname, Bildtitel der Referenz: „Heißleim Zuführung“). Im Inhaltsbereich steht kein eigener Titel; das letzte Brotkrümel-Segment „Heißleim“ ersetzt den Seitentitel der Referenz-Kopfzeile ([HM-04](../Module/HM-04_Brotkruemel-Navigation.md)).
+- Seitentitel (Ressource `Nav_HotGlueNordson_Title`): „Heißleim Nordson“ (Kapitelname, gewinnt nach OP-33; der Bildtitel „Heißleim Zuführung“ ist nur ein Hinweis). Im Inhaltsbereich steht kein eigener Titel; das letzte Brotkrümel-Segment „Heißleim“ ersetzt den Seitentitel der Referenz-Kopfzeile ([HM-04](../Module/HM-04_Brotkruemel-Navigation.md)).
 
 ## Zweck
 
@@ -24,9 +24,9 @@ Inhaltsbereich (12 Spalten)
 |  ungen]| | (Überschrift)    | Temperaturen     | | [==== 83 % ===]  |
 | [Stand-| |  (OK) Bereitsch. |  Tank    Verteil.| |                  |
 |  by]   | |  (OK) Temperatur |  Pistole Schlauch| | Ziel Füllstand   |
-| [Pumpe]| |  (OK) Füllsystem |   (2 x 2 Felder, | |   [ 50 %   (K) ] |
-|  Absenk| |  (OK) Tankfüllst.|    weitere Zonen | | Max Füllzeit     |
-|  ung   | |  (OK) Tank Klappe|    darunter)     | |   [ 60 s   (K) ] |
+| Absenk.| |  (OK) Füllsystem |   (2 x 2 Felder, | |   [ 50 %   (K) ] |
+| [Pumpe]| |  (OK) Tankfüllst.|    weitere Zonen | | Max Füllzeit     |
+|        | |  (OK) Tank Klappe|    darunter)     | |   [ 60 s   (K) ] |
 |        | |  (OK) Keine Stör.|                  | |                  |
 |        | |  (OK) Kein Alarm |                  | |                  |
 |        | |  [Hinweis HM-27] |                  | |                  |
@@ -39,7 +39,7 @@ Funktionsleiste:  [Temperatur]  [Druck]  [Zeitplan]        ((K) = Schlüsselsymb
 
 | Bereich | Spalten / Zeilen | Inhalt |
 |---|---|---|
-| Linke Tastenspalte | 2 von 12 Spalten, volle Inhaltshöhe; Zeilen: drei Zustandstasten oben (Heizungen, Standby, Pumpe) mit der Anzeige „Absenkung“ unter „Standby“, flexibler Leerraum (`*`), eine Zustandstaste unten (Zeitschaltuhr) | Schalter des Geräts; Abstand zwischen den Tasten mindestens `Size.Touch.Gap` |
+| Linke Tastenspalte | 2 von 12 Spalten, volle Inhaltshöhe; Zeilen: drei Zustandstasten oben (Heizungen, Standby, Pumpe) mit der Zusatzanzeige „Absenkung“ unter „Standby“ (Seitenannahme SA-07-1, nicht in RS-07/DS-03), flexibler Leerraum (`*`), eine Zustandstaste unten (Zeitschaltuhr) | Schalter des Geräts; Abstand zwischen den Tasten mindestens `Size.Touch.Gap` |
 | Mitte-Panel | 7 von 12 Spalten; [HM-15](../Module/HM-15_Gruppenbereich.md) als Panel (`Brush.Surface.Sunken`), innen zwei Überschrift-Gruppen nebeneinander: **Status** (ca. 3 Spalten des Panels) und **Aktuelle Temperaturen** (ca. 4 Spalten des Panels) | Status-LED-Liste (7 Zeilen), Hinweis zur Betriebsbereitschaft; 2 × 2 Temperaturfelder, weitere Zonen darunter |
 | Rechtes Panel | 3 von 12 Spalten; HM-15 als Panel; Zeilen: Füllstandsbalken, Ziel Füllstand, Max Füllzeit, flexibler Leerraum (`*`), untere Tastenreihe mit zwei gleich breiten Tasten (Füllsystem, Manuell) | Füllsystem überwachen und einstellen |
 | Funktionsleiste | Rahmen (HM-06), links beginnend, drei Tasten | Navigation zu HS-08, HS-09, HS-10 |
@@ -70,7 +70,7 @@ Spalte „Herkunft“ stellt die Rückverfolgung zur Quelle her (RS = Referenz, 
 |---|---|---|---|---|
 | Taste „Heizungen“ | Zustandstaste (Ein/Aus) | „Schaltet alle Heizungen des Geräts, der Schläuche und der Düse ein oder aus.“ Zustand über Symbol und Wort „Ein“/„Aus“, nicht über Farbe | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) (Darstellung Taste) | RS-07 T9 Zeile 1; DS-03 Taste „Heizung“ |
 | Taste „Standby“ | Zustandstaste (Ein/Aus) | „Reduziert alle eingestellten Temperaturen um 56 °C (Standardwert).“ Der Wert ist die „Globale StandBy Temperatur Delta“ aus [HS-08](HS-08_Heissleim-Parameter.md) | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | RS-07 T9 Zeile 2; DS-03 Taste „Standby“ |
-| Anzeige „Absenkung“ unter „Standby“ | Anzeige (Zeile, nicht antippbar) | zeigt den wirksamen Absenkwert in °C (Dummy 56 °C), gelesen aus HS-08; macht Einheit und Standardwert der Referenz sichtbar | [HM-11](../Module/HM-11_Anzeigefeld.md) (Darstellung Zeile, Einheit °C) | RS-07 T9 Zeile 2 (Einheit °C, Standardwert 56 °C) |
+| Anzeige „Absenkung“ unter „Standby“ (ergänzt, Annahme SA-07-1) | Anzeige (Zeile, nicht antippbar) | **Annahme, kein Element von RS-07 oder DS-03; kann ersatzlos entfallen.** Zeigt den wirksamen Absenkwert in °C (Dummy 56 °C), gelesen aus HS-08; macht Einheit und Standardwert der Referenz sichtbar | [HM-11](../Module/HM-11_Anzeigefeld.md) (Darstellung Zeile, Einheit °C) | keine Zeile in RS-07/DS-03; nur abgeleitet aus RS-07 T9 Zeile 2 (Einheit °C, Standardwert 56 °C) |
 | Taste „Pumpe“ | Zustandstaste (Ein/Aus) | „Schaltet die Förderpumpe ein oder aus.“ | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | RS-07 T9 Zeile 3; DS-03 Taste „Pumpe“ |
 | Taste „Zeitschaltuhr“ | Zustandstaste (Ein/Aus), unten in der Spalte | „Aktiviert den internen Zeitplan des Nordson-Geräts.“ Schaltet nur den Zeitplan ein oder aus, öffnet keine Seite (der Zeitplan selbst wird in HS-10 gepflegt) | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | RS-07 T9 Zeile 4; DS-03 Taste „Zeitplan“ (grün, links unten) |
 
@@ -86,7 +86,7 @@ Spalte „Herkunft“ stellt die Rückverfolgung zur Quelle her (RS = Referenz, 
 | LED „Tank Klappe“ | Status-LED (Liste) | wie oben | [HM-09](../Module/HM-09_Status-LED.md) | RS-07 LED 5; DS-03 LED 5 |
 | LED „Keine Störung“ | Status-LED (Liste) | wie oben; positiv formuliert, „OK“ = keine Störung | [HM-09](../Module/HM-09_Status-LED.md) | RS-07 LED 6; DS-03 LED 6 |
 | LED „Kein Alarm“ | Status-LED (Liste) | wie oben; positiv formuliert, „OK“ = kein Alarm | [HM-09](../Module/HM-09_Status-LED.md) | RS-07 LED 7; DS-03 LED 7 |
-| Hinweis zur Betriebsbereitschaft | Hinweis-Textfeld (Art Info) | Text: „Alle Zustände müssen „OK“ zeigen, damit das Gerät betriebsbereit ist.“ (Handbuch: „Alle LEDs müssen grün sein, damit das Gerät betriebsbereit ist.“) Der Hinweis nennt das Kriterium in Worten, damit es nicht nur an der Farbe hängt | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | RS-07 Fließtext „Linker Anzeigebereich“ (RS-07-P06) |
+| Hinweis zur Betriebsbereitschaft | Hinweis-Textfeld (Art Info) | Text sinngemäß: Alle Zustände müssen OK zeigen, damit das Gerät betriebsbereit ist (Handbuch wortgetreu: „Alle LEDs müssen grün sein, damit das Gerät betriebsbereit ist.“, umformuliert, weil Zustand nicht nur über Farbe gelesen werden soll) Der Hinweis nennt das Kriterium in Worten, damit es nicht nur an der Farbe hängt | [HM-27](../Module/HM-27_Hinweis-Textfeld.md) | RS-07 Fließtext „Linker Anzeigebereich“ (RS-07-P06) |
 | Überschrift „Aktuelle Temperaturen“ | Gruppenüberschrift | Gruppentitel der Temperaturfelder | [HM-15](../Module/HM-15_Gruppenbereich.md) (Variante Überschrift) | RS-07 Linker Anzeigebereich; DS-03 „Aktuelle Temperaturen:“ |
 | Anzeige „Tank“ | Anzeigefeld (Feld, °C) | Ist-Temperatur Tank (Dummy 150 °C) | [HM-11](../Module/HM-11_Anzeigefeld.md) | RS-07 Anzeige „Tank“; DS-03 Wertfeld |
 | Anzeige „Verteiler“ | Anzeigefeld (Feld, °C) | Ist-Temperatur Verteiler (Dummy 150 °C) | [HM-11](../Module/HM-11_Anzeigefeld.md) | RS-07 Anzeige „Verteiler“; DS-03 Wertfeld |
@@ -102,19 +102,19 @@ Spalte „Herkunft“ stellt die Rückverfolgung zur Quelle her (RS = Referenz, 
 | Ziel Füllstand | Eingabefeld mit Schlüsselsymbol, Einheit % | „Nur mit Nachfüllsystem. Fällt der Füllstand, des internen Tank, unter dieses Level wird Granulat vom Nachfüllsystem angefordert.“ (Text als Caption unter dem Feld, Wortlaut der Referenz). Dummy 50 %. Antippen öffnet das Eingabe-Pop-up | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-07 T10 Zeile 2; DS-03 „Ziel Füllstand:“ |
 | Max Füllzeit | Eingabefeld mit Schlüsselsymbol, Einheit s | „Wird der Ziel Füllstand nicht innerhalb der angegebenen Zeit erreicht, führt das zu einer Störung am Heißleimgerät.“ (Caption, Wortlaut der Referenz). Dummy 60 s | [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), Pop-up [HM-13](../Module/HM-13_Eingabe-Pop-up.md) | RS-07 T10 Zeile 3; DS-03 „Max Füllzeit:“ |
 | Taste „Füllsystem“ | Zustandstaste (Ein/Aus) | „Aktiviert die Verwendung eines Nachfüllsystems.“ Zustand über Symbol und Wort | [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md) | RS-07 T10 Zeile 4; DS-03 Taste „Füllsystem“ |
-| Taste „Manuell“ | Aktionstaste, Haltetaste | Handbuch: „Fordert das Nachfüllen des Tanks an, solange die Taste betätigt wird.“ (Schreibweise „Manuel“ im Handbuch, Beschriftung im Bild „Manuell“.) Aktiv nur während der Berührung; kein Ein/Aus-Zustand | [HM-07](../Module/HM-07_Aktionstaste.md) (Auslösung Halten, ohne Verzögerung) | RS-07 T10 Zeile 5; DS-03 Taste „Manuell“ (rot) |
+| Taste „Manuell“ | Aktionstaste, Auslösung WhilePressed | Handbuch: „Fordert das Nachfüllen des Tanks an, solange die Taste betätigt wird.“ (Schreibweise „Manuel“ im Handbuch, Beschriftung im Bild „Manuell“.) Aktiv nur während der Berührung; kein Ein/Aus-Zustand | [HM-07](../Module/HM-07_Aktionstaste.md) (Auslösemodus `WhilePressed`: aktiv, solange berührt; in der Moduldatei noch nicht enthalten, siehe Bericht) | RS-07 T10 Zeile 5; DS-03 Taste „Manuell“ (rot) |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-07](../Module/HM-07_Aktionstaste.md), [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md), [HM-09](../Module/HM-09_Status-LED.md), [HM-10](../Module/HM-10_Fortschrittsbalken.md), [HM-11](../Module/HM-11_Anzeigefeld.md), [HM-12](../Module/HM-12_Eingabefeld-Schluesselsymbol.md), [HM-13](../Module/HM-13_Eingabe-Pop-up.md), [HM-14](../Module/HM-14_Popup-Rahmen.md) (trägt HM-13), [HM-15](../Module/HM-15_Gruppenbereich.md), [HM-27](../Module/HM-27_Hinweis-Textfeld.md).
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 - **Zustandstasten** (Heizungen, Standby, Pumpe, Zeitschaltuhr, Füllsystem; [HM-08](../Module/HM-08_Zustandstaste-Umschalter.md)): Aus = `Brush.Button.Normal`, `Icon.State.Off` und Wort „Aus“; Ein = `Brush.Button.Active`, `Icon.State.On` und Wort „Ein“, neutral und nicht grün (Designsystem Abschnitt 5, A-31). Die Farben des Entwurfs und der Referenz (grün, hellgrün, rot) entfallen (OP-14). Nach dem Antippen zeigt die Taste „Ausstehend“ (gestrichelte Kontur, `Icon.State.Pending`, Text „Wird gesetzt“), bis das Gerät den Zustand zurückmeldet; kommt keine Rückmeldung, wechselt die Taste in den Fehlerzustand mit Symbol und Text.
 - **Heizungen:** schaltet Geräte-, Schlauch- und Düsenheizungen gemeinsam. **Standby:** alle Solltemperaturen werden um den Wert „Globale StandBy Temperatur Delta“ ([HS-08](HS-08_Heissleim-Parameter.md)) reduziert. **Zeitschaltuhr:** aktiviert nur den Zeitplan des Geräts; er läuft unabhängig von der SPS, solange das Gerät eingeschaltet ist (Handbuch RS-10). Wechselwirkungen zwischen Heizungen, Standby und Pumpe sind nicht beschrieben und werden nicht erfunden (OP-46).
 - **Betriebsbereitschaft:** Das Gerät ist betriebsbereit, wenn alle sieben LEDs „OK“ zeigen (Handbuch). Jede LED zeigt Zustand als Kreis mit Haken und Wort „OK“, bei Abweichung als Kreuz mit Wort „Fehler“, bei fehlender Kommunikation als „---“ ([HM-09](../Module/HM-09_Status-LED.md)). Die Einzelbedeutung der LEDs ist nicht beschrieben (OP-46).
 - **Füllsystem:** „Ziel Füllstand“ und „Max Füllzeit“ sind nur mit Nachfüllsystem relevant. Wird der Ziel Füllstand nicht innerhalb der Max Füllzeit erreicht, entsteht eine Störung am Heißleimgerät: Annahme: die LED „Keine Störung“ wechselt auf „Fehler“, die Meldezeile zeigt die Meldung (die genaue Zuordnung nennt die Quelle nicht).
-- **Taste „Manuell“:** fordert Nachfüllen nur an, solange sie berührt wird; sie löst beim Berühren aus und endet beim Loslassen (Ausnahme von der Regel „Auslösen beim Loslassen im Ziel“ des Designsystems, weil die Haltedauer die Funktion ist). Zweiter Kanal während der Berührung: Wort „Läuft“ mit `Icon.State.On` ([HM-07](../Module/HM-07_Aktionstaste.md), Zustand Läuft). Eine Sperre bei ausgeschaltetem Füllsystem ist nicht belegt und wird nicht angenommen.
+- **Taste „Manuell“:** fordert Nachfüllen nur an, solange sie berührt wird; dazu nutzt sie den Auslösemodus `WhilePressed` von [HM-07](../Module/HM-07_Aktionstaste.md) (aktiv ab Berühren, Ende beim Loslassen); die genaue Darstellung und der zweite Kanal während der Berührung (Wort „Läuft“ mit `Icon.State.On`) sind dort festgelegt bzw. nachzuziehen. Eine Sperre bei ausgeschaltetem Füllsystem ist nicht belegt und wird nicht angenommen.
 - **Eingabe:** Antippen von „Ziel Füllstand“ oder „Max Füllzeit“ öffnet das Eingabe-Pop-up ([HM-13](../Module/HM-13_Eingabe-Pop-up.md) im [HM-14](../Module/HM-14_Popup-Rahmen.md)) mit vorbelegtem Wert; „Übernehmen“ ist nur bei gültigem Wert aktiv, „Abbrechen“ verwirft. Wertebereiche sind Dummy-Grenzen (OP-28).
 - **Berechtigungen:** Die zwei Eingabefelder tragen das Schlüsselsymbol (`Icon.Key`, Rolle vorhanden) bzw. `Icon.Lock` (Rolle fehlt, Hinweis „Berechtigung erforderlich: <Rolle>“; das Benutzer-Pop-up öffnet über den Benutzerkreis). Die Tasten tragen in Referenz und Design kein Schlüsselsymbol. Rollenzuordnung ist Dummy (OP-04, OP-25).
 - **Sperrzustände:** Tasten und Felder, die der Betriebszustand sperrt, sind deaktiviert (gestrichelte Kontur, `Brush.Text.Disabled`); Tippen nennt den Grund in der Meldezeile (A-28). Konkrete Sperrregeln fehlen in der Quelle.
@@ -127,17 +127,17 @@ Spalte „Herkunft“ stellt die Rückverfolgung zur Quelle her (RS = Referenz, 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HS-07-P01 | Taste „Heizungen“ (RS-07-P01) | Zustandstaste in der linken Spalte; schaltet alle Heizungen von Gerät, Schläuchen und Düse ein/aus; Ein/Aus mit Symbol und Wort | offen |
-| HS-07-P02 | Taste „Standby“ und Standardwert (RS-07-P02) | Zustandstaste; Beschreibung „reduziert alle Temperaturen um 56 °C“; Anzeige „Absenkung“ in °C darunter, Wert aus HS-08 | offen |
+| HS-07-P02 | Taste „Standby“ und Standardwert (RS-07-P02) | Zustandstaste; Beschreibung „reduziert alle Temperaturen um 56 °C“; optionale Zusatzanzeige „Absenkung“ (Annahme SA-07-1) in °C darunter, Wert aus HS-08 | offen |
 | HS-07-P03 | Taste „Pumpe“ (RS-07-P03) | Zustandstaste; schaltet die Förderpumpe ein/aus | offen |
 | HS-07-P04 | Taste „Zeitschaltuhr“ (RS-07-P04, DS-03-P02) | Zustandstaste unten in der linken Spalte; aktiviert nur den internen Zeitplan, öffnet keine Seite | offen |
 | HS-07-P05 | Status-LEDs (RS-07-P05, DS-03-P03) | sieben LEDs in der Reihenfolge Bereitschaft, Temperatur, Füllsystem, Tankfüllstand, Tank Klappe, Keine Störung, Kein Alarm; jede mit Symbol, Wort und Beschriftung | offen |
-| HS-07-P06 | Betriebsbereitschaft (RS-07-P06) | Hinweis „Alle Zustände müssen „OK“ zeigen …“ in Textform sichtbar; Zustand nie nur über Farbe | offen |
+| HS-07-P06 | Betriebsbereitschaft (RS-07-P06) | Hinweis (sinngemäß „Alle Zustände müssen OK zeigen …“) in Textform sichtbar; Zustand nie nur über Farbe | offen |
 | HS-07-P07 | Aktuelle Temperaturen (RS-07-P07, DS-03-P04) | vier nicht editierbare Felder Tank, Verteiler, Pistole 1, Schlauch 1 mit Einheit °C und Beispielwerten 150/150/170/160 °C; weitere Zonen konfigurationsabhängig | offen |
 | HS-07-P08 | Füllstand Tank (RS-07-P08, DS-03-P05) | Balken mit Prozentwert im Balken (Beispiel 83 %); Füllung neutral | offen |
 | HS-07-P09 | Ziel Füllstand (RS-07-P09, DS-03-P06) | Eingabefeld % mit Schlüsselsymbol; Caption „Nur mit Nachfüllsystem …“ | offen |
 | HS-07-P10 | Max Füllzeit (RS-07-P10, DS-03-P06) | Eingabefeld s mit Schlüsselsymbol; Caption zur Störung bei Nichterreichen des Ziel Füllstands | offen |
 | HS-07-P11 | Taste „Füllsystem“ (RS-07-P11) | Zustandstaste; aktiviert die Verwendung eines Nachfüllsystems | offen |
-| HS-07-P12 | Taste „Manuell“ (RS-07-P12) | Aktionstaste; fordert Nachfüllen nur an, solange sie berührt wird; während der Berührung Wort „Läuft“ | offen |
+| HS-07-P12 | Taste „Manuell“ (RS-07-P12) | Aktionstaste; fordert Nachfüllen nur an, solange sie berührt wird; Auslösemodus `WhilePressed` aus HM-07, zweiter Kanal während der Berührung (Wort und Symbol) | offen |
 | HS-07-P13 | Navigation zu HS-08/09/10 (RS-07-P13, DS-03-P08) | Funktionsleiste zeigt „Temperatur“, „Druck“, „Zeitplan“ und öffnet HS-08, HS-09, HS-10 | offen |
 | HS-07-P14 | Brotkrümel (RS-07-P14, DS-03-P01) | „Einstellung › Zuführungen › Heißleim“; die ersten beiden Segmente führen zu HS-04 und HS-40 (Abweichung vom Referenzpfad „… › Zuführung Karton › Heißleimgerät“ ist in Navigation.md begründet) | offen |
 | HS-07-P15 | Rahmen (RS-07-P15, DS-03-P09) | Seitenleiste, Kopfzeile, Meldezeile, Kennzahlen und Funktionsleiste vorhanden; „Produktion“, „Einstellungen“, „Zurück“ in der Seitenleiste | offen |

@@ -54,13 +54,13 @@ Die Referenz hat keine Tabelle; Herkunft sind der Funktionssatz („Mit den Pfei
 | Schloss-Symbol, Tasten „Produktion“, „Einstellungen“, „Zurück“ | Seitenleiste | Schloss wird zum Benutzerkreis; Home, Einstellungen, Zurück (Verlauf) | [HM-01](../Module/HM-01_Seitenleiste.md) | Elemente-Zeile „… untere Leiste (Produktion, Einstellungen, Zurück, Schloss)“ |
 | Funktionsleiste (leer) | Funktionsleiste ohne Tasten | bleibt als Fläche sichtbar; keine Tasten „<<“ / „>>“ | [HM-06](../Module/HM-06_Funktionsleiste.md) | Bild, untere Leiste; RS-29-P08 |
 
-## Verwendete Module
+## Verwendete Module (IDs)
 
 [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md), [HM-18](../Module/HM-18_Auswahlfeld-Pfeiltasten.md), [HM-26](../Module/HM-26_Diagramm.md).
 
 Die Modulliste nennt für HS-29 außerdem [HM-07](../Module/HM-07_Aktionstaste.md) (über das Kompositmodul HM-18, Pfeiltasten); auf der Seite selbst gibt es keine weitere Aktionstaste.
 
-## Zustände und Interaktion
+## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 
 **Tageswahl.** Die Pfeiltasten ändern nur den Parameter `dayOffset` (`ReplaceParameter`, kein Verlaufseintrag, [Navigation.md](../Navigation.md) 5.3). Abrufbar sind genau die letzten 30 Tage: `dayOffset` 0 (heute) bis 29, also heute und die 29 Vortage (Annahme K29-4: „heute“ ist eingeschlossen, OP-54). Am Rand ist die betroffene Pfeiltaste deaktiviert (gestrichelte Kontur, kein Pressed; Antippen nennt den Grund in der Meldezeile, A-28). Das Datumsfeld und das Diagramm wechseln mit dem Tag; bis die Daten des neuen Tages vorliegen, zeigt das Diagramm den Text „Lädt …“ (Annahme K29-3).
 
@@ -76,7 +76,7 @@ Die Modulliste nennt für HS-29 außerdem [HM-07](../Module/HM-07_Aktionstaste.m
 
 **Navigation.** „Zurück“ (Seitenleiste) führt im Verlauf zu HS-04, unabhängig vom gewählten Tag. Die Navigation löst keine Aktion an der Maschine aus.
 
-## Prüfpunkte
+## Prüfpunkte (Tabelle: ID | Prüfung | erwartetes Ergebnis | Status)
 
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|

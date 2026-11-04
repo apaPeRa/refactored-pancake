@@ -62,7 +62,7 @@ Die Spalte „Herkunft (RS-33)“ ist die Rückverfolgung zur Referenzseite.
 
 - Rahmen: [HM-01](../Module/HM-01_Seitenleiste.md), [HM-02](../Module/HM-02_Kopfzeile.md), [HM-03](../Module/HM-03_Meldezeile.md), [HM-04](../Module/HM-04_Brotkruemel-Navigation.md), [HM-05](../Module/HM-05_Kennzahl-Kachel.md), [HM-06](../Module/HM-06_Funktionsleiste.md)
 - Seite: [HM-16](../Module/HM-16_Kachel-Navigation.md) Kachel-Navigation, [HM-07](../Module/HM-07_Aktionstaste.md) Aktionstaste
-- Such-Pop-up: [HM-14](../Module/HM-14_Popup-Rahmen.md) Pop-up-Rahmen, [HM-13](../Module/HM-13_Eingabe-Pop-up.md) Eingabe-Pop-up (Variante Text). Die Trefferliste hat kein eigenes Modul (Modulwunsch im Bericht).
+- Such-Pop-up: [HM-14](../Module/HM-14_Popup-Rahmen.md) Pop-up-Rahmen, [HM-13](../Module/HM-13_Eingabe-Pop-up.md) Eingabe-Pop-up (Variante Text). Das Such-Pop-up ist die in HS-30 definierte Variante „Suche“ von HM-13: Texteingabezeile plus Trefferliste, hier mit Zeilen aus Kennzeichnung, Klartext und Karte.
 
 ## Zustände und Interaktion (inkl. Pop-ups, Berechtigungen, Fehlerfälle)
 

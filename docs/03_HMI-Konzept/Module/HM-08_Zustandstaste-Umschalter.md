@@ -1,7 +1,7 @@
 # HM-08 – Zustandstaste / Umschalter
 
 ## Funktion
-Ein/Aus-Element für eine Teilfunktion. Eine Funktion, zwei Darstellungen als Parameter: **Schalter** (Bahn `Size.Toggle.Width` × `Size.Toggle.Height` mit Knopf `Size.Toggle.Knob`, Beschriftung links, Wort rechts) und **Taste** (Taste `Size.Touch.Default` hoch mit Beschriftung, Symbol und Wort). Beide zeigen den Zustand über Position/Symbol und Wort („Ein“/„Aus“), nicht über Grün (A-31). Textumschaltung je Zustand ist möglich („Ausschalten“/„Einschalten“, „Fortlaufend“/„Einzel“). Berechtigungssymbol und Ausstehend-Zustand (Befehl gesendet, Rückmeldung fehlt) sind Parameter.
+Ein/Aus-Element für eine Teilfunktion. Eine Funktion, zwei Darstellungen als Parameter: **Schalter** (Bahn `Size.Toggle.Width` × `Size.Toggle.Height` mit Knopf `Size.Toggle.Knob`, Beschriftung links, Wort rechts) und **Taste** (Taste `Size.Touch.Default` hoch mit Beschriftung, Symbol und Wort). Die Taste gibt es zusätzlich in **Kachelhöhe** (`ButtonSize = Tile`: `Size.Touch.Large` hoch, füllt eine Rasterzelle, zweizeilige Beschriftung), z. B. der Tastenblock 3 × 2 auf HS-01; die Rasteranordnung liefert [HM-16](HM-16_Kachel-Navigation.md) (Elementart `StateToggle`), der Zustand bleibt in diesem Modul. Beide zeigen den Zustand über Position/Symbol und Wort („Ein“/„Aus“), nicht über Grün (A-31). Textumschaltung je Zustand ist möglich („Ausschalten“/„Einschalten“, „Fortlaufend“/„Einzel“). Berechtigungssymbol und Ausstehend-Zustand (Befehl gesendet, Rückmeldung fehlt) sind Parameter.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -14,6 +14,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Text teilweise (`PartialText`) | string | – | Standard „Teilweise“ |
 | Text Ein (`OnText`), Text Aus (`OffText`) | string | – | Standard „Ein“/„Aus“; Varianten „Einschalten“/„Ausschalten“, „Fortlaufend“/„Einzel“ |
 | Darstellung (`ToggleStyle`) | enum ToggleStyle { Switch, Button } | – | Switch Standard |
+| Tastengröße (`ButtonSize`) | enum ToggleButtonSize { Default, Tile } | – | nur bei Button: Default = `Size.Touch.Default` hoch, Tile = `Size.Touch.Large` hoch (Kachelhöhe, HS-01) |
 | Symbol (`Icon`) | Geometry? | – | optional |
 | Befehl (`ToggleCommand`) | ICommand<bool> | – | Sollzustand |
 | Ausstehend (`IsPending`) | bool | – | Befehl gesendet, Istzustand noch offen |
@@ -59,7 +60,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 ## WPF-Umsetzung
 - **Control:** `HM08_ToggleSwitch` (ControlTemplate auf `ToggleButton`), Ordner `src/.../Controls/`, kein Code-behind außer `InitializeComponent`.
 - **Typ:** `ControlTemplate` auf `ToggleButton` (Stile `HM08_SwitchStyle`, `HM08_ToggleButtonStyle`); `HM08_ToggleSwitch` als Control mit den Eigenschaften der Tabelle.
-- **Dependency Properties:** `Label`, `IsChecked`, `OnText`, `OffText`, `ToggleStyle`, `Icon`, `IsPending`, `ErrorText`, `RequiresPermission`, `IsAuthorized`; **Command:** `ToggleCommand`.
+- **Dependency Properties:** `Label`, `IsChecked`, `OnText`, `OffText`, `ToggleStyle`, `ButtonSize`, `Icon`, `IsPending`, `ErrorText`, `RequiresPermission`, `IsAuthorized`; **Command:** `ToggleCommand`.
 - **Maße:** Bahn `Size.Toggle.Width` × `Size.Toggle.Height`, Knopf `Size.Toggle.Knob`, ganze Zeile (≥ `Size.Touch.Default`) antippbar; Knopfbewegung ohne Verzögerung > 100 ms.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.State.Off`, `Icon.State.On`, `Icon.Status.Error`; **neu, hier definiert:** `Icon.State.Partial`, `Icon.State.Pending`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
@@ -75,3 +76,4 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-08-P05 | Fehler und Ausstehend | jeweils mit Symbol und Text | offen |
 | HM-08-P06 | Sammelzustand | Automatik Produktion (HS-01) zeigt „Teilweise“ mit Symbol, solange mindestens eine Funktion abgewählt ist, sonst „Ein“ (RS-01-P09) | offen |
 | HM-08-P07 | Touch | Trefferfläche ≥ `Size.Touch.Default` hoch | offen |
+| HM-08-P08 | Kachelhöhe | `ButtonSize = Tile`: Taste `Size.Touch.Large` hoch, Zustand weiterhin mit Symbol und Wort, zweizeilige Beschriftung bricht um (HS-01 Tastenblock) | offen |

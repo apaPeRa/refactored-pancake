@@ -1,7 +1,7 @@
 # HM-20 – Dosierer-Karte / Dosierer-Seitengerüst
 
 ## Funktion
-Karte für einen Schneckendosierer. Eine Funktion, zwei Darstellungen als Parameter: **Kompakt** (Karte der Übersicht mit Soll, Regulierwert, Füllstand Trichter oben/unten, drei Schaltern, Auslastung, Tasten Manuell/Entleeren, Detail-Symbol) und **Detail** (Seitengerüst mit allen Parametern: Eichdosierung, Schnecke Drehzahl, Rührer, Nachlauf Rührer, Querschnecke, Seitenlinks). Variante Hauptdosierer (Soll in %, Soll absolut in g) und Nachdosierer (Soll in g, Max. Nachgabe, Aktuelle Nachgabe). Die Karte setzt nur die Module [HM-12](HM-12_Eingabefeld-Schluesselsymbol.md), [HM-11](HM-11_Anzeigefeld.md), [HM-09](HM-09_Status-LED.md), [HM-08](HM-08_Zustandstaste-Umschalter.md), [HM-10](HM-10_Fortschrittsbalken.md) und [HM-07](HM-07_Aktionstaste.md) zusammen (keine Kopien, Verweise in WPF-Umsetzung).
+Karte für einen Schneckendosierer. Eine Funktion, zwei Darstellungen als Parameter: **Kompakt** (Karte der Übersicht mit Soll, Regulierwert, Füllstand Trichter oben/unten, drei Schaltern, Auslastung, Tasten Manuell/Entleeren, Detail-Symbol) und **Detail** (Seitengerüst mit allen Parametern: Eichdosierung, Schnecke Drehzahl, Rührer, Nachlauf Rührer, Querschnecke, Seitenlinks). Variante Hauptdosierer (Soll in %, Soll absolut in g) und Nachdosierer (Soll in g, Max. Nachgabe, Aktuelle Nachgabe). Die Karte setzt nur die Module [HM-12](HM-12_Eingabefeld-Schluesselsymbol.md), [HM-11](HM-11_Anzeigefeld.md), [HM-09](HM-09_Status-LED.md), [HM-08](HM-08_Zustandstaste-Umschalter.md), [HM-10](HM-10_Fortschrittsbalken.md) und [HM-07](HM-07_Aktionstaste.md) zusammen, dazu [HM-27](HM-27_Hinweis-Textfeld.md) für den nIO-Hinweis und [HM-15](HM-15_Gruppenbereich.md) für die Hervorhebung „Ausgewählt“ (keine Kopien, Verweise in WPF-Umsetzung). Die Kompaktkarte des Nachdosierers zeigt die nIO-Hinweiszeile (HM-27) nur im Fehlerfall `RefillResult = RejectedTooMuch`; im Normalfall entfällt die Zeile und die Karte behält ihre Höhe.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -35,7 +35,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Ausgewählt | Kontur `Border.Thick` `Brush.Border.Focus` | Text „Ausgewählt“ und `Icon.State.On` im Titel |
 | Gesperrt | Tasten deaktiviert (gestrichelt), `Brush.Text.Disabled` | `Icon.Lock` und Text „Gesperrt“ |
 | Entleeren läuft | Taste Entleeren im Zustand Läuft (HM-07) | Wort „Läuft“ |
-| Trichter unten leer/Fehler | LED `Brush.Status.Error.Fill` (HM-09) | `Icon.Status.Error` und Wort |
+| Trichter unten leer/Fehler | LED `Brush.Status.Error.Fg` (wie HM-09) | `Icon.Status.Error` und Wort |
 | Nachgabe verweigert (nIO) | Hinweisfläche `Brush.Status.Warning.Subtle`, Kontur `Border.Medium` `Brush.Status.Warning.Fg` unter „Max. Nachgabe“ (HM-27) | `Icon.Status.Warning` und Text „Fehlmenge größer als Max. Nachgabe: nicht dosiert, Packung nIO“ |
 | Auslastung hoch | Balken Warnung (HM-10) | `Icon.Status.Warning` und Zahl |
 | Teilzustände | gemäß Bestandteilen | siehe HM-07 bis HM-12 |

@@ -1,7 +1,7 @@
 # HM-17 – Titelzeile (Objektüberschrift)
 
 ## Funktion
-Überschrift für das Objekt, das die Seite gerade zeigt (Waage „16KW1 Kontrollwaage“, Antrieb „Antrieb Zuführung 2MA1“, EA-Karte „S1_0KDE1“), gewechselt mit den Blättertasten [HM-19](HM-19_Blaettertasten.md). Optional zeigt die Zeile bis zu zwei Kennwerte (Sollgewicht KW, Letztes Gewicht KW) und ein Detail-Symbol (vier Pfeile in Rahmen, Funktion offen, OP-17). Abgrenzung: Seitentitel ist das letzte Segment von [HM-04](HM-04_Brotkruemel-Navigation.md); diese Zeile benennt das Objekt innerhalb der Seite.
+Überschrift für das Objekt, das die Seite gerade zeigt (Dosierer „Hauptdosierer 1“ auf HS-11 und HS-12, Waage „16KW1 Kontrollwaage“, Antrieb „Antrieb Zuführung 2MA1“, EA-Karte „S1_0KDE1“), gewechselt mit den Blättertasten [HM-19](HM-19_Blaettertasten.md). Optional zeigt die Zeile bis zu zwei Kennwerte (Sollgewicht KW, Letztes Gewicht KW) und ein Detail-Symbol (vier Pfeile in Rahmen, Funktion offen, OP-17). Abgrenzung: Seitentitel ist das letzte Segment von [HM-04](HM-04_Brotkruemel-Navigation.md); diese Zeile benennt das Objekt innerhalb der Seite.
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -51,7 +51,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | ID | Prüfung | erwartetes Ergebnis | Status |
 |---|---|---|---|
 | HM-17-P01 | DS-04 | Text „Sollgewicht KW: 235 g \| Letztes Gewicht KW: 238 g“ über den Karten | offen |
-| HM-17-P02 | Objekt | HS-27, HS-31, HS-32, HS-34 zeigen den Objektnamen und wechseln ihn mit HM-19 | offen |
+| HM-17-P02 | Objekt | HS-11, HS-12, HS-27, HS-31, HS-32, HS-34 und HS-41 zeigen den Objektnamen und wechseln ihn mit HM-19 | offen |
 | HM-17-P03 | Schreibweise | Wert, geschütztes Leerzeichen, „g“ | offen |
 | HM-17-P04 | Detail-Symbol | rechts in der Zeile, Trefferfläche ≥ `Size.Touch.Min` | offen |
 | HM-17-P05 | Keine Unterstreichung | Linie statt Unterstreichung | offen |

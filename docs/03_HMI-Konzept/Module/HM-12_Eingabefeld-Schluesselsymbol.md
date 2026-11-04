@@ -1,7 +1,7 @@
 # HM-12 – Eingabefeld mit Schlüsselsymbol
 
 ## Funktion
-Feld zur Eingabe eines Einstellwerts mit Beschriftung. Das Schlüsselsymbol kennzeichnet ein berechtigungspflichtiges Feld (A-08). Antippen öffnet das Eingabe-Pop-up [HM-13](HM-13_Eingabe-Pop-up.md) mit vorbelegtem Wert und den Grenzen (A-20). Der Wert steht nicht in Rot, sondern in `Font.Weight.Strong` (Rot nur für Fehler). Varianten als Parameter: mit/ohne Beschriftung (in Grafiken), mit/ohne Schlüssel (RS-03 „Schnell“, „Langsam“), Zahl, Zeit (hh:mm), Text (Bezeichnung), mit Symbol vor dem Feld, mit Zusatzzähler und gekoppeltem Zähler (RS-13).
+Feld zur Eingabe eines Einstellwerts mit Beschriftung. Das Schlüsselsymbol kennzeichnet ein berechtigungspflichtiges Feld (A-08). Antippen öffnet das Eingabe-Pop-up [HM-13](HM-13_Eingabe-Pop-up.md) mit vorbelegtem Wert und den Grenzen (A-20). Fehlt die Berechtigung, öffnet das Eingabe-Pop-up nicht: Die Meldezeile zeigt „Berechtigung erforderlich: <Rolle>“ und das Benutzer-Pop-up öffnet sich (Navigation.md 4.1); nach der Anmeldung wird die Eingabe fortgesetzt. Der Wert steht nicht in Rot, sondern in `Font.Weight.Strong` (Rot nur für Fehler). Varianten als Parameter: mit/ohne Beschriftung (in Grafiken), mit/ohne Schlüssel (RS-03 „Schnell“, „Langsam“), Zahl, Zeit (hh:mm), Text (Bezeichnung), mit Symbol vor dem Feld, mit Zusatzzähler und gekoppeltem Zähler (RS-13).
 
 ## Parameter / Daten (Name, Typ, Einheit, Wertebereich)
 Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-technische Grenzen und Beispielwerte aus den Bildern (A-50). Die Eigenschaftsnamen sind die Dependency Properties des Controls.
@@ -34,7 +34,7 @@ Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text,
 | Gedrückt | `Brush.Button.Pressed`, Kontur `Border.Medium` | dickere Kontur |
 | In Bearbeitung | Kontur `Border.Thick` `Brush.Border.Focus` | Rahmen (Form) und geöffnetes Pop-up |
 | Fehler | Kontur `Border.Thick` `Brush.Status.Error.Fg`, Fläche `Brush.Status.Error.Subtle` | `Icon.Status.Error` und Fehlertext („Wert außerhalb 0 bis 100 %“) |
-| Nicht berechtigt | Normal, öffnet kein Pop-up | `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ |
+| Nicht berechtigt | Normal, öffnet kein Eingabe-Pop-up | `Icon.Lock` und Hinweis „Berechtigung erforderlich: <Rolle>“ in der Meldezeile; Tippen öffnet das Benutzer-Pop-up (Navigation.md 4.1) |
 | Deaktiviert | Kontur gestrichelt (`Border.Dash`), Text `Brush.Text.Disabled` | gestrichelte Kontur; Grund in Meldezeile (A-28) |
 | Geändert, nicht geschrieben | Normal | Punkt-Symbol `Icon.State.Pending` und Text „Nicht geschrieben“ |
 | Ohne Schlüssel | Normal | kein Schlüssel-Symbol |
@@ -88,7 +88,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die HS-Dateien entstehen in Ph
 | HM-12-P01 | DS-03 | „Ziel Füllstand: 50 %“ und „Max Füllzeit: 60 s“ mit Schlüsselsymbol | offen |
 | HM-12-P02 | DS-05 | 18 Felder ohne Beschriftung in HM-31 | offen |
 | HM-12-P03 | Wert nicht rot | Eingabewert in Textfarbe, Fehler nur im Fehlerzustand | offen |
-| HM-12-P04 | Nicht berechtigt | kein Pop-up, Schloss und Hinweistext | offen |
+| HM-12-P04 | Nicht berechtigt | kein Eingabe-Pop-up; Schloss, Hinweistext in der Meldezeile und Benutzer-Pop-up (Navigation.md 4.1); nach Anmeldung läuft die Eingabe weiter | offen |
 | HM-12-P05 | Ungültig | Fehlertext mit Symbol, nicht nur Rotfärbung | offen |
 | HM-12-P06 | Abgrenzung | Anzeigefelder ohne Schlüssel sind HM-11 | offen |
 | HM-12-P07 | Touch | Höhe `Size.Touch.Default`, Schlüssel nicht als eigenes Ziel | offen |
