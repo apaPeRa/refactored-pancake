@@ -106,3 +106,14 @@ Jede Seite und jedes Modul hat Prüfpunkte. Nach jedem Arbeitsschritt wird gegen
 - Meilenstein 1: Vollständigkeit (jede Seite und jedes Element der Quelle ist erfasst), Zahlen und Bezeichnungen stimmen mit der Quelle überein, alle Querverweise lösen auf, keine doppelten Module.
 - Meilenstein 2: siehe Abschnitt 7.
 - Das Ergebnis steht im jeweiligen `Pruefbericht_M*.md`. Fehler werden behoben, nicht nur notiert.
+
+## 9. Orchestrierung mit Subagenten
+
+Die Hauptsession ist nur **Verwalter**: Sie liest `Task.md` und `Fortschritt.md`, vergibt **jeweils eine** Aufgabe an einen Ausführungs-Subagenten, nimmt dessen Ergebnis entgegen und entscheidet über den nächsten Schritt. Sie schreibt selbst keine Inhalte.
+
+- **Ausführungs-Agent:** bekommt genau eine Aufgabe (z. B. eine Seite oder ein Modul, bei großen Seitenmengen ein Paket aus wenigen zusammengehörigen Seiten), die Quellen, die Vorlage aus Abschnitt 5 und die ID-Vergabe. Er schreibt die Dateien und meldet, was er erstellt hat und welche Annahmen er getroffen hat.
+- **Prüf-Agent:** ein **separater** Subagent, der die Arbeit nicht gesehen hat. Er prüft das Ergebnis unabhängig gegen die Quelle (Abschnitt 8) und meldet Befunde mit Datei und Fundstelle. Er ändert nichts.
+- **Rückkopplung:** Befunde gehen an den Verwalter. Dieser lässt sie vom Ausführungs-Agenten beheben und danach erneut prüfen, bis die Prüfung bestanden ist. Erst dann wird abgehakt und committet.
+- **Parallelisierung:** Unabhängige Aufgaben (z. B. verschiedene Referenzseiten) dürfen parallel laufen, solange sie keine gemeinsamen Dateien schreiben. Zusammenführende Schritte (`HM-xx`, `Konzept.md`, `Rueckverfolgung.md`) laufen nacheinander.
+- **Meilensteinabschluss:** Ein zusätzlicher Prüf-Agent macht eine Gesamtprüfung (Vollständigkeit, Querverweise, Konsistenz) und schreibt den `Pruefbericht_M*.md`.
+- **Meilenstein 3** ist lokal. In der Cloud wird er nur vorbereitet: Alles, was sich ohne Windows erledigen lässt, wird erledigt, der Rest bleibt offen und steht in `Pruefbericht_M3.md` und `Offene-Punkte.md` als Übergabeliste.
