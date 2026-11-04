@@ -55,6 +55,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM20_DosingCard` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM20_DosingCard`), setzt `HM12_ValueInput`, `HM11_ValueDisplay`, `HM09_StatusLed`, `HM08_ToggleSwitch`, `HM10_ProgressBar`, `HM07_ActionButton` ein; Darstellung Compact/Detail per `DataTrigger` auf `CardMode`.
 - **Dependency Properties:** siehe Tabelle; **Commands:** `ManualCommand`, `EmptyCommand`, `CalibrateCommand`, `OpenDetailCommand`, `OpenRegulationCommand`, `OpenMotorCommand`, `OpenWeightCorrectionCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** **Abweichung:** Detail-Gerüst nicht verwendet, Seiten HS-11/HS-19 komponieren die Grundmodule. `CardMode.Detail` bleibt als Parameter im Control erhalten (nicht gestrichen), wird aber von keiner Seite benutzt (A-93). Einheiten (%, g, 1/min, s) kommen aus den Ressourcen (`Unit_*`).
 - **Wechsel HD1/HD2** auf der Seite über HM-19; das ViewModel tauscht den Datenkontext. Offene Fachfragen: OP-45.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.State.On`, `Icon.Status.Error`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

@@ -42,6 +42,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM22_WeightCorrectionTable` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM22_WeightCorrectionTable`), zwei `ItemsControl`-Blöcke mit `HM12_ValueInput` je Zelle.
 - **Dependency Properties:** `Points`, `TargetWeight`, `ValidPointCount`, `CalculationState`; **Commands:** `AdjustCommand`, `TriggerCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Zeilenhöhe der Stützstellen explizit `MinHeight = Size.Touch.Min`. Einheiten (g, Stk) aus den Ressourcen.
 - Zeilenhöhe `Size.Touch.Min`; zwei Blöcke nebeneinander.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.State.On`, `Icon.Status.Error`, `Icon.Status.Ok`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

@@ -50,13 +50,13 @@
                 BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}" Padding="{StaticResource Inset.S}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*" />
                     <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="1" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_Heating}" />
                 <TextBlock Grid.Column="2" Style="{StaticResource Text.Caption}" Margin="{StaticResource Inset.XS}" Text="{res:Loc HS22_Header_Monitor}" />
@@ -80,6 +80,7 @@
                                             StateLed="{Binding StateLed}" OutputLed="{Binding OutputLed}"
                                             ToggleZoneCommand="{Binding ToggleZoneCommand}"
                                             ToggleMonitorCommand="{Binding ToggleMonitorCommand}"
+                                            IsZonePending="{Binding IsZonePending}" IsMonitorPending="{Binding IsMonitorPending}" RequiresPermission="True"
                                             EditCommand="{Binding EditSetpointCommand}" IsAuthorized="{Binding IsAuthorized}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

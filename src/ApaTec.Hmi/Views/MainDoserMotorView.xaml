@@ -22,12 +22,12 @@
         <c:HM17_TitleBar Grid.Row="0" Grid.ColumnSpan="3" Margin="{StaticResource Inset.S}" Title="{Binding DoserTitle}" Values="{Binding PositionValues}" />
         <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
                                    CardKind="ClosureClosed" Title="{res:Loc Dosing_Motor_Closed_Header}" DoserName="{Binding DoserName}"
-                                   Position="{Binding ClosedPosition, Mode=TwoWay}" Speed="{Binding ClosedSpeed, Mode=TwoWay}" Acceleration="{Binding ClosedAcceleration, Mode=TwoWay}" Deceleration="{Binding ClosedDeceleration, Mode=TwoWay}" Jerk="{Binding ClosedJerk, Mode=TwoWay}" EditCommand="{Binding EditClosedCommand}" />
+                                   Position="{Binding ClosedPosition, Mode=TwoWay}" Speed="{Binding ClosedSpeed, Mode=TwoWay}" Acceleration="{Binding ClosedAcceleration, Mode=TwoWay}" Deceleration="{Binding ClosedDeceleration, Mode=TwoWay}" Jerk="{Binding ClosedJerk, Mode=TwoWay}" EditCommand="{Binding EditClosedCommand}" IsAuthorized="{Binding IsAuthorized}" ErrorField="{Binding ErrorField}" ErrorText="{Binding ErrorText}" />
         <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
                                    CardKind="ClosureOpen" Title="{res:Loc Dosing_Motor_Open_Header}" DoserName="{Binding DoserName}"
-                                   Position="{Binding OpenPosition, Mode=TwoWay}" Speed="{Binding OpenSpeed, Mode=TwoWay}" Acceleration="{Binding OpenAcceleration, Mode=TwoWay}" Deceleration="{Binding OpenDeceleration, Mode=TwoWay}" Jerk="{Binding OpenJerk, Mode=TwoWay}" EditCommand="{Binding EditOpenCommand}" />
+                                   Position="{Binding OpenPosition, Mode=TwoWay}" Speed="{Binding OpenSpeed, Mode=TwoWay}" Acceleration="{Binding OpenAcceleration, Mode=TwoWay}" Deceleration="{Binding OpenDeceleration, Mode=TwoWay}" Jerk="{Binding OpenJerk, Mode=TwoWay}" EditCommand="{Binding EditOpenCommand}" IsAuthorized="{Binding IsAuthorized}" ErrorField="{Binding ErrorField}" ErrorText="{Binding ErrorText}" />
         <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
                                    CardKind="Screw" Title="{res:Loc Dosing_Motor_Screw_Header}" DoserName="{Binding DoserName}"
-                                   Acceleration="{Binding ScrewAcceleration, Mode=TwoWay}" Deceleration="{Binding ScrewDeceleration, Mode=TwoWay}" Jerk="{Binding ScrewJerk, Mode=TwoWay}" EditCommand="{Binding EditScrewCommand}" />
+                                   Acceleration="{Binding ScrewAcceleration, Mode=TwoWay}" Deceleration="{Binding ScrewDeceleration, Mode=TwoWay}" Jerk="{Binding ScrewJerk, Mode=TwoWay}" EditCommand="{Binding EditScrewCommand}" IsAuthorized="{Binding IsAuthorized}" ErrorField="{Binding ErrorField}" ErrorText="{Binding ErrorText}" />
     </Grid>
 </UserControl>

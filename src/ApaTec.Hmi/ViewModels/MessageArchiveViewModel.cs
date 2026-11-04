@@ -114,27 +114,14 @@ public sealed partial class MessageArchiveViewModel : PageViewModelBase
 
         var title = _text.GetString("HS37_Export_Title");
         var suggested = _text.GetString("HS37_File_SuggestedName");
-        var file = await _dialogs.ShowAsync<string>(DialogKeys.FileResult, SystemDialogParameters.FileSelect(title, suggested));
-        if (!file.Accepted)
-        {
-            return;
-        }
-
-        FileOperationResult result;
-        IsBusy = true;
-        try
-        {
-            result = await _archive.ExportAsync(_filter, string.IsNullOrWhiteSpace(file.Value) ? suggested : file.Value);
-        }
-        finally
-        {
-            IsBusy = false;
-        }
-
-        var message = result.Success
-            ? _text.Format("HS37_Result_ExportOk", result.Count)
-            : result.ErrorText ?? _text.GetString("HS37_Result_Failed");
-        await _dialogs.ShowAsync<object>(DialogKeys.FileResult, SystemDialogParameters.FileResult(title, result.Success, message));
+        var request = new FileOperationRequest(
+            file => _archive.ExportAsync(_filter, string.IsNullOrWhiteSpace(file) ? suggested : file),
+            result => result.Success
+                ? _text.Format("HS37_Result_ExportOk", result.Count)
+                : result.ErrorText ?? _text.GetString("HS37_Result_Failed"),
+            busy => IsBusy = busy);
+        // Auswahl, Laeuft und Ergebnis in einem Datei-Pop-up.
+        await _dialogs.ShowAsync<string>(DialogKeys.FileResult, SystemDialogParameters.FileRun(title, suggested, request));
     }
 
     [RelayCommand(CanExecute = nameof(CanRun))]

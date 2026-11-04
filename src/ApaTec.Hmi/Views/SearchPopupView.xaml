@@ -10,15 +10,15 @@
              xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=vm:SearchPopupViewModel, IsDesignTimeCreatable=True}">
-    <!-- Such-Pop-up (HM-38) im Pop-up-Rahmen (HM-14): Abbrechen im Dialog, Kreuz oben rechts; Antippen ausserhalb schliesst nicht. -->
-    <controls:HM14_PopupFrame Title="{Binding Title}" Kind="Content" ShowCloseButton="False" CloseCommand="{Binding CancelCommand}">
+    <!-- Such-Pop-up (HM-38) im Pop-up-Rahmen (HM-14): Kreuz oben rechts und Taste Schliessen; Antippen der Suchzeile oeffnet die Texteingabe (HM-13); Antippen ausserhalb schliesst nicht. -->
+    <controls:HM14_PopupFrame Title="{Binding Title}" Kind="Content" ShowCloseButton="True" CloseCommand="{Binding CancelCommand}">
         <controls:HM38_SearchDialog MinWidth="{StaticResource Size.Metric.MinWidth}"
                                     SearchText="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Placeholder="{Binding Placeholder}"
                                     Items="{Binding Items}" FilteredItems="{Binding FilteredItems}"
                                     SelectedHit="{Binding SelectedHit, Mode=TwoWay}"
                                     SelectHitCommand="{Binding SelectHitCommand}" CancelCommand="{Binding CancelCommand}"
-                                    ClearTextCommand="{Binding ClearTextCommand}"
+                                    ClearTextCommand="{Binding ClearTextCommand}" EditTextCommand="{Binding EditTextCommand}"
                                     ScrollUpCommand="{Binding ScrollUpCommand}" ScrollDownCommand="{Binding ScrollDownCommand}" />
     </controls:HM14_PopupFrame>
 </UserControl>

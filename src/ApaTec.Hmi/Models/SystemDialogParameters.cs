@@ -24,6 +24,8 @@ public static class SystemDialogParameters
     public const string FileMode = "fileMode";
     public const string FileName = "fileName";
     public const string Success = "success";
+    public const string FileOperation = "fileOperation";
+    public const string FileAutoStart = "fileAutoStart";
 
     public const string FileModeSelect = "select";
     public const string FileModeResult = "result";
@@ -44,6 +46,20 @@ public static class SystemDialogParameters
     public static NavigationParameters FileSelect(string title, string suggestedFileName) =>
         new NavigationParameters(Title, title).With(FileMode, FileModeSelect).With(FileName, suggestedFileName);
 
+    /// <summary>Dateiauswahl, bei der das Pop-up den Vorgang selbst ausfuehrt: Auswahl, dann Laeuft (Fortschritt), dann Ergebnis in <b>einem</b> Pop-up.</summary>
+    public static NavigationParameters FileRun(string title, string suggestedFileName, FileOperationRequest operation) =>
+        FileSelect(title, suggestedFileName).With(FileOperation, operation);
+
+    /// <summary>Wie <see cref="FileRun"/>, aber der Vorgang startet sofort mit dem gewaehlten Dateinamen (nach Auswahl und Bestaetigung): Laeuft, dann Ergebnis.</summary>
+    public static NavigationParameters FileRunNow(string title, string fileName, FileOperationRequest operation) =>
+        FileSelect(title, fileName).With(FileOperation, operation).With(FileAutoStart, true);
+
     public static NavigationParameters FileResult(string title, bool success, string message) =>
         new NavigationParameters(Title, title).With(FileMode, FileModeResult).With(Success, success).With(Message, message);
 }
+
+/// <summary>
+/// Vorgang fuer das Datei-Pop-up: <see cref="Run"/> bekommt den gewaehlten Dateinamen, <see cref="Format"/> bildet den Ergebnistext.
+/// <see cref="Busy"/> meldet dem aufrufenden ViewModel, dass der Vorgang laeuft (Tasten der Seite sperren).
+/// </summary>
+public sealed record FileOperationRequest(Func<string, Task<FileOperationResult>> Run, Func<FileOperationResult, string> Format, Action<bool>? Busy = null);

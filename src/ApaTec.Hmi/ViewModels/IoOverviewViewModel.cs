@@ -20,9 +20,11 @@ public sealed partial class IoOverviewViewModel : PageViewModelBase
     private readonly IDialogService _dialogs;
     private readonly IEquipmentSearchService _search;
     private readonly ILocalizationService _localization;
+    private readonly IMessageService? _messages;
 
-    public IoOverviewViewModel(INavigationService navigation, IDialogService dialogs, IIoService io, IEquipmentSearchService search, ILocalizationService localization)
+    public IoOverviewViewModel(INavigationService navigation, IDialogService dialogs, IIoService io, IEquipmentSearchService search, ILocalizationService localization, IMessageService? messages = null)
     {
+        _messages = messages;
         _navigation = navigation;
         _dialogs = dialogs;
         _search = search;
@@ -58,7 +60,13 @@ public sealed partial class IoOverviewViewModel : PageViewModelBase
     [RelayCommand]
     private async Task OpenCardGroupAsync(TileItem? tile)
     {
-        if (tile is null || tile.IsEmpty || tile.TargetPageId is not { } cardGroup)
+        if (tile is { IsEmpty: true })
+        {
+            _messages?.ShowHint(_localization.GetString("HS33_Empty_Hint"));
+            return;
+        }
+
+        if (tile is null || tile.TargetPageId is not { } cardGroup)
         {
             return;
         }

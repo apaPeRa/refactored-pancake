@@ -37,6 +37,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM31_GlueTrackGraphic` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM31_GlueTrackGraphic`): `Viewbox` mit `Canvas` für Zuschnitt und Spuren, Felder als `ItemsControl` mit `HM12_ValueInput` in einem `Canvas` (Positionen aus `Fields`).
 - **Dependency Properties:** `Title`, `Fields`, `CutoutGeometry`; **Command:** `CommitCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Die Grafik nutzt bewusst `Viewbox Stretch="Fill"` (kein Uniform): Die vier Reihen der Winkelfelder liegen in einem Grid über der Grafik und verteilen sich auf dieselbe Fläche; mit Uniform würden Grafik und Felder gegeneinander verrutschen. Der Zuschnitt ist schematisch (nicht maßstäblich), die Verzerrung ist hinnehmbar. Einheit ° aus den Ressourcen.
 - Farben nur über `Brush.Graphic.Carton` und `Brush.Graphic.Glue`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

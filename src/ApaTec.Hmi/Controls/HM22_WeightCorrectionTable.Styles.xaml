@@ -22,7 +22,7 @@
 
   <!-- Stuetzstelle: Haken | SOLL | IST. Standard = gefuellt (Haken), leer = beide 0, ungueltig = nur eines 0 (spaetere Trigger gewinnen). -->
   <DataTemplate x:Key="HM22.PointTemplate" DataType="{x:Type local:CorrectionPoint}">
-    <Border x:Name="Row" Margin="{StaticResource Inset.XS}" Padding="{StaticResource Inset.XS}" CornerRadius="{StaticResource Radius.Control}">
+    <Border x:Name="Row" MinHeight="{StaticResource Size.Touch.Min}" Margin="{StaticResource Inset.XS}" Padding="{StaticResource Inset.XS}" CornerRadius="{StaticResource Radius.Control}">
       <Grid>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="Auto" SharedSizeGroup="HM22Tick" />
@@ -86,7 +86,7 @@
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
               <local:HM12_ValueInput Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_TargetWeight_Label}"
-                                     NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditTargetWeightCommand, RelativeSource={RelativeSource TemplatedParent}}" Unit="{res:Loc Unit_Gram}" Decimals="1" RequiresPermission="True" />
+                                     NumberValue="{Binding TargetWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditTargetWeightCommand, RelativeSource={RelativeSource TemplatedParent}}" Unit="{res:Loc Unit_Gram}" Decimals="1" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}" />
               <local:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_Trigger_Label}"
                                        RequiresPermission="False" Command="{Binding TriggerCommand, RelativeSource={RelativeSource TemplatedParent}}" />
               <local:HM07_ActionButton Grid.Column="2" Margin="{StaticResource Inset.XS}" Label="{res:Loc HM22_Adjust_Label}"

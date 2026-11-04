@@ -31,6 +31,9 @@ public abstract partial class PopupViewModelBase : ObservableObject
     /// <summary>Ob Uebernehmen/Ja zulaessig ist (z. B. gueltiger Eingabewert).</summary>
     protected virtual bool CanAccept() => true;
 
+    /// <summary>Haken fuer Pop-ups, die beim Uebernehmen nicht schliessen, sondern weiterarbeiten (z. B. Vorgang ausfuehren und Ergebnis zeigen). true = Uebernehmen ist behandelt, nicht schliessen.</summary>
+    protected virtual bool HandleAccept() => false;
+
     /// <summary>Schliesst das Pop-up.</summary>
     protected void Close(bool accepted, object? result = null)
     {
@@ -53,7 +56,13 @@ public abstract partial class PopupViewModelBase : ObservableObject
     internal void Dismiss() => Close(false);
 
     [RelayCommand(CanExecute = nameof(CanAccept))]
-    private void Accept() => Close(true, GetResult());
+    private void Accept()
+    {
+        if (!HandleAccept())
+        {
+            Close(true, GetResult());
+        }
+    }
 
     [RelayCommand]
     private void Cancel() => Close(false);

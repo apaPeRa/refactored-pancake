@@ -12,6 +12,19 @@ public enum ClosingField
     Shaker1,
     Shaker2,
     TargetWeight,
+    ClosedPosition,
+    ClosedSpeed,
+    ClosedAcceleration,
+    ClosedDeceleration,
+    ClosedJerk,
+    OpenPosition,
+    OpenSpeed,
+    OpenAcceleration,
+    OpenDeceleration,
+    OpenJerk,
+    ScrewAcceleration,
+    ScrewDeceleration,
+    ScrewJerk,
 }
 
 /// <summary>Dummy-Grenzen und Darstellung eines Felds (Wertebereiche fehlen in der Quelle, OP-28).</summary>

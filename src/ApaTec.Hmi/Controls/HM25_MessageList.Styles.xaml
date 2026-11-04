@@ -32,8 +32,7 @@
         <Path x:Name="ClassIcon" Style="{StaticResource HM25.Icon}" />
       </Viewbox>
       <TextBlock x:Name="ClassWord" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Text.Primary}"
-                 Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
-                 Visibility="{Binding ShowClassColumn, RelativeSource={RelativeSource AncestorType=c:HM25_MessageList}, Converter={x:Static c:HM25_BoolToVisibility.Instance}}" />
+                 Margin="{StaticResource Inset.S}" VerticalAlignment="Center" />
     </StackPanel>
     <DataTemplate.Triggers>
       <DataTrigger Binding="{Binding Class}" Value="Operation">
@@ -126,6 +125,19 @@
       </Setter.Value>
     </Setter>
     <Style.Triggers>
+      <!-- Archiv und Meldeanzeige sind nie auswaehlbar (SelectionMode None wird erzwungen); ebenso ohne Auswahlmodus -->
+      <DataTrigger Binding="{Binding ListKind, RelativeSource={RelativeSource AncestorType={x:Type c:HM25_MessageList}}}" Value="Archive">
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding ListKind, RelativeSource={RelativeSource AncestorType={x:Type c:HM25_MessageList}}}" Value="Live">
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding SelectionMode, RelativeSource={RelativeSource AncestorType={x:Type c:HM25_MessageList}}}" Value="None">
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+      </DataTrigger>
       <DataTrigger Binding="{Binding Class}" Value="Operation">
         <Setter Property="Background" Value="{DynamicResource Brush.Status.Ok.Subtle}" />
       </DataTrigger>
@@ -365,10 +377,7 @@
             <Trigger Property="TotalCount" Value="0">
               <Setter TargetName="CountText" Property="Visibility" Value="Collapsed" />
             </Trigger>
-            <!-- Klassenspalte -->
-            <Trigger Property="ShowClassColumn" Value="False">
-              <Setter TargetName="HeadClass" Property="Visibility" Value="Hidden" />
-            </Trigger>
+            <!-- Klassenspalte: Symbol und Klassenwort sind der zweite Kanal und immer sichtbar (ShowClassColumn ohne Wirkung) -->
             <!-- Gefiltert -->
             <Trigger Property="IsFiltered" Value="True">
               <Setter TargetName="FilterHint" Property="Visibility" Value="Visible" />

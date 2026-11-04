@@ -55,6 +55,7 @@ public sealed class DummyClosingMachineService : IClosingMachineService
         ClosingField.Shaker1 => new ClosingValueLimits(0, 100, 0, "%"),
         ClosingField.Shaker2 => new ClosingValueLimits(0, 100, 0, "%"),
         ClosingField.TargetWeight => new ClosingValueLimits(0, 1000, 1, "g"),
+        ClosingField.ClosedPosition or ClosingField.OpenPosition => new ClosingValueLimits(0, 360, 0, "°"),
         _ => new ClosingValueLimits(0, 100, 0, string.Empty),
     };
 

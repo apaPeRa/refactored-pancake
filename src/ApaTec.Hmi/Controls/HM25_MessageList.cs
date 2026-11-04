@@ -104,6 +104,7 @@ public sealed class HM25_MessageList : Control
         set => SetValue(ScrollStyleProperty, value);
     }
 
+    /// <summary>Ohne Wirkung: Symbol und Klassenwort sind der zweite Kanal und werden in jeder Zeile gezeigt. Bleibt aus Kompatibilitaet mit den Seiten erhalten.</summary>
     public bool ShowClassColumn
     {
         get => (bool)GetValue(ShowClassColumnProperty);

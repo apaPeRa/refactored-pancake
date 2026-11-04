@@ -19,6 +19,10 @@
         <ScrollViewer Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalScrollBarVisibility="Auto">
             <c:HM22_WeightCorrectionTable Points="{Binding Points}"
                                           TargetWeight="{Binding TargetWeight, Mode=TwoWay}"
+                                          IsAuthorized="{Binding IsAuthorized}"
+                                          EditTargetWeightCommand="{Binding EditTargetWeightCommand}"
+                                          EditNominalCommand="{Binding EditNominalCommand}"
+                                          EditActualCommand="{Binding EditActualCommand}"
                                           ValidPointCount="{Binding ValidPointCount}"
                                           CalculationState="{Binding CalculationState}"
                                           TriggerCommand="{Binding TriggerCommand}"

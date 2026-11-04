@@ -12,9 +12,10 @@
   </ResourceDictionary.MergedDictionaries>
 
   <!-- Spaltenproportionen (Stern-Anteile) -->
+  <!-- Heizungen 3:2:2:2:1:1:1 (HS-22), Heissleim 2:2:2:2 (HS-08) -->
+  <GridLength x:Key="HM28.Star.1">1*</GridLength>
+  <GridLength x:Key="HM28.Star.2">2*</GridLength>
   <GridLength x:Key="HM28.Star.3">3*</GridLength>
-  <GridLength x:Key="HM28.Star.4">4*</GridLength>
-  <GridLength x:Key="HM28.Star.5">5*</GridLength>
 
   <Style TargetType="{x:Type c:HM28_HeatZoneRow}">
     <Setter Property="Focusable" Value="False" />
@@ -31,10 +32,10 @@
               <!-- Variante Heissleim (HS-08) -->
               <Grid x:Name="GlueLayout">
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="{StaticResource HM28.Star.4}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.4}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.2}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.2}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.2}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.2}" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="GlueName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
                            Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -53,22 +54,28 @@
               <!-- Variante Heizungen (HS-22) -->
               <Grid x:Name="HeatingLayout" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="{StaticResource HM28.Star.5}" />
                   <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
-                  <ColumnDefinition Width="{StaticResource HM28.Star.3}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.2}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.2}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.2}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.1}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.1}" />
+                  <ColumnDefinition Width="{StaticResource HM28.Star.1}" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="HeatingName" Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center" Margin="{StaticResource Inset.S}"
                            Text="{Binding ZoneName, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM08_ToggleSwitch Grid.Column="1" Margin="{StaticResource Inset.XS}" ToggleStyle="Switch"
                                      AutomationProperties.Name="{res:Loc HM28_Heating_Label}"
+                                     RequiresPermission="{Binding RequiresPermission, RelativeSource={RelativeSource TemplatedParent}}"
+                                     IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
+                                     IsPending="{Binding IsZonePending, RelativeSource={RelativeSource TemplatedParent}}"
                                      IsChecked="{Binding IsZoneEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                      ToggleCommand="{Binding ToggleZoneCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM08_ToggleSwitch Grid.Column="2" Margin="{StaticResource Inset.XS}" ToggleStyle="Switch"
                                      AutomationProperties.Name="{res:Loc HM28_Monitor_Label}"
+                                     RequiresPermission="{Binding RequiresPermission, RelativeSource={RelativeSource TemplatedParent}}"
+                                     IsAuthorized="{Binding IsAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
+                                     IsPending="{Binding IsMonitorPending, RelativeSource={RelativeSource TemplatedParent}}"
                                      IsChecked="{Binding IsMonitored, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                      ToggleCommand="{Binding ToggleMonitorCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM12_ValueInput Grid.Column="3" Margin="{StaticResource Inset.XS}" Unit="{res:Loc Unit_Celsius}" Decimals="0" RequiresPermission="True"

@@ -61,6 +61,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM08_ToggleSwitch` (ControlTemplate auf `ToggleButton`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `ControlTemplate` auf `ToggleButton` (Stile `HM08_SwitchStyle`, `HM08_ToggleButtonStyle`); `HM08_ToggleSwitch` als Control mit den Eigenschaften der Tabelle.
 - **Dependency Properties:** `Label`, `IsChecked`, `OnText`, `OffText`, `ToggleStyle`, `ButtonSize`, `Icon`, `IsPending`, `ErrorText`, `RequiresPermission`, `IsAuthorized`; **Command:** `ToggleCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Im Sammelzustand „Teilweise“ (`IsChecked = null`) zeigt die Taste Tooltip und `AutomationProperties.HelpText` aus der neuen Eigenschaft `PartialTooltip` (Standardtext `HM08_Partial_Hint`; das ViewModel nennt darin die abgewählten Funktionen). Auf Touch meldet das Antippen den Zustand über `ToggleCommand`.
 - **Maße:** Bahn `Size.Toggle.Width` × `Size.Toggle.Height`, Knopf `Size.Toggle.Knob`, ganze Zeile (≥ `Size.Touch.Default`) antippbar; Knopfbewegung ohne Verzögerung > 100 ms.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.State.Off`, `Icon.State.On`, `Icon.Status.Error`; **neu, hier definiert:** `Icon.State.Partial`, `Icon.State.Pending`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

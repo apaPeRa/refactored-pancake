@@ -75,6 +75,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM04_Breadcrumb` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`ItemsControl` mit horizontalem `StackPanel`); Segment als `HM04_BreadcrumbSegment` (`ControlTemplate`).
 - **Dependency Properties:** `Segments`, `ObjectSuffix`; **Command:** `NavigateCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Das Kürzen bei mehr als 5 Segmenten leistet das Control (`HM04_CollapseConverter`): erstes Segment, Taste „…“ (`HM04_CollapsedSegment`, Pop-up mit den verdeckten, antippbaren Segmenten) und die letzten drei Segmente.
 - **Layout:** Spalte 56* der Brotkrümel-/Kennzahlzeile.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Chevron`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

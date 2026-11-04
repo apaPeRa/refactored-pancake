@@ -11,7 +11,7 @@ namespace ApaTec.Hmi.Controls;
 
 /// <summary>
 /// HM-12 Eingabefeld mit Schluesselsymbol: antippbares Feld fuer einen Einstellwert. Nur Dependency Properties (A-73); das Antippen loest den von
-/// <see cref="ButtonBase.Command"/> gebundenen Befehl des ViewModels aus (Eingabe-Pop-up bzw. Benutzer-Pop-up), die Uebernahme meldet <see cref="CommitCommand"/>.
+/// <see cref="ButtonBase.Command"/> gebundenen Befehl des ViewModels aus (Eingabe-Pop-up bzw. Benutzer-Pop-up); die Uebernahme laeuft im ViewModel (kein eigener Commit-Befehl am Control).
 /// Darstellung in <c>HM12_ValueInput.Styles.xaml</c>. Als Custom Control auf <see cref="Button"/> (statt UserControl) umgesetzt, damit kein Code-behind entsteht.
 /// </summary>
 public class HM12_ValueInput : Button
@@ -63,9 +63,6 @@ public class HM12_ValueInput : Button
 
     public static readonly DependencyProperty ErrorTextProperty = DependencyProperty.Register(
         nameof(ErrorText), typeof(string), typeof(HM12_ValueInput), new PropertyMetadata(null));
-
-    public static readonly DependencyProperty CommitCommandProperty = DependencyProperty.Register(
-        nameof(CommitCommand), typeof(ICommand), typeof(HM12_ValueInput), new PropertyMetadata(null));
 
     // Ergaenzung zur Moduldefinition: Zustand "In Bearbeitung" (Eingabe-Pop-up offen), setzt das ViewModel.
     public static readonly DependencyProperty IsEditingProperty = DependencyProperty.Register(
@@ -171,12 +168,6 @@ public class HM12_ValueInput : Button
     {
         get => (string?)GetValue(ErrorTextProperty);
         set => SetValue(ErrorTextProperty, value);
-    }
-
-    public ICommand? CommitCommand
-    {
-        get => (ICommand?)GetValue(CommitCommandProperty);
-        set => SetValue(CommitCommandProperty, value);
     }
 
     public bool IsEditing

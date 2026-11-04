@@ -106,6 +106,7 @@
                 <Binding Path="YUnit" RelativeSource="{RelativeSource TemplatedParent}" />
                 <Binding Path="ActualWidth" ElementName="PlotArea" />
                 <Binding Path="ActualHeight" ElementName="PlotArea" />
+                <Binding Path="Interval" RelativeSource="{RelativeSource TemplatedParent}" />
               </MultiBinding>
             </Grid.DataContext>
             <Grid.RowDefinitions>

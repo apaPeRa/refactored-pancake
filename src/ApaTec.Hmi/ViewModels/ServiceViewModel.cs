@@ -113,43 +113,41 @@ public sealed partial class ServiceViewModel : PageViewModelBase
     private Task ExportListAsync() =>
         RunFileOperationAsync("HS36_ExportList_Title", null, "HS36_Result_ExportOk", file => _service.ExportSelectionAsync(_selectedNames.ToList(), file));
 
-    // Ablauf: Dateiauswahl, optional Bestaetigung, Vorgang (Tasten gesperrt), Ergebnis. Pop-ups laufen nacheinander, nie gestapelt.
+    // Ablauf: Dateiauswahl, optional Bestaetigung, dann Vorgang (Laeuft) und Ergebnis in einem Datei-Pop-up (Tasten der Seite gesperrt).
     private async Task RunFileOperationAsync(string titleKey, string? confirmKey, string okKey, Func<string, Task<FileOperationResult>> operation)
     {
         var title = _text.GetString(titleKey);
         var suggested = _text.GetString("HS36_File_SuggestedName");
+        var request = new FileOperationRequest(
+            file => operation(string.IsNullOrWhiteSpace(file) ? suggested : file),
+            result => result.Success
+                ? _text.Format(okKey, result.Count)
+                : result.ErrorText ?? _text.GetString("HS36_Result_Failed"),
+            busy => IsBusy = busy);
+
+        if (confirmKey is null)
+        {
+            await _dialogs.ShowAsync<string>(DialogKeys.FileResult, SystemDialogParameters.FileRun(title, suggested, request));
+            return;
+        }
+
         var file = await _dialogs.ShowAsync<string>(DialogKeys.FileResult, SystemDialogParameters.FileSelect(title, suggested));
         if (!file.Accepted)
         {
             return;
         }
 
-        if (confirmKey is not null)
+        var answer = await _dialogs.ShowAsync<bool>(
+            DialogKeys.Confirmation,
+            SystemDialogParameters.Confirmation(title, _text.GetString(confirmKey), _text.GetString("HM14_Confirm_Label"), _text.GetString("Popup_Cancel_Label")));
+        if (!answer.Accepted)
         {
-            var answer = await _dialogs.ShowAsync<bool>(
-                DialogKeys.Confirmation,
-                SystemDialogParameters.Confirmation(title, _text.GetString(confirmKey), _text.GetString("HM14_Confirm_Label"), _text.GetString("Popup_Cancel_Label")));
-            if (!answer.Accepted)
-            {
-                return;
-            }
+            return;
         }
 
-        FileOperationResult result;
-        IsBusy = true;
-        try
-        {
-            result = await operation(string.IsNullOrWhiteSpace(file.Value) ? suggested : file.Value);
-        }
-        finally
-        {
-            IsBusy = false;
-        }
-
-        var message = result.Success
-            ? _text.Format(okKey, result.Count)
-            : result.ErrorText ?? _text.GetString("HS36_Result_Failed");
-        await _dialogs.ShowAsync<object>(DialogKeys.FileResult, SystemDialogParameters.FileResult(title, result.Success, message));
+        await _dialogs.ShowAsync<string>(
+            DialogKeys.FileResult,
+            SystemDialogParameters.FileRunNow(title, string.IsNullOrWhiteSpace(file.Value) ? suggested : file.Value, request));
     }
 
     private void Reload()

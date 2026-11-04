@@ -48,6 +48,14 @@ public abstract partial class DoserMotorPageViewModelBase : DosingPageViewModelB
     [ObservableProperty]
     private double _screwJerk;
 
+    /// <summary>Feld der Karte, dessen letzte Eingabe abgelehnt wurde (HM-21 <c>ErrorField</c>).</summary>
+    [ObservableProperty]
+    private string? _errorField;
+
+    /// <summary>Fehlertext der abgelehnten Eingabe (HM-12 Zustand Fehler).</summary>
+    [ObservableProperty]
+    private string? _errorText;
+
     protected DoserMotorPageViewModelBase(
         IDoserService service,
         INavigationService? navigation,
@@ -86,6 +94,13 @@ public abstract partial class DoserMotorPageViewModelBase : DosingPageViewModelB
         OnPropertyChanged(nameof(DoserName));
     }
 
+    public override void OnNavigatedTo(object? parameter)
+    {
+        ErrorField = null;
+        ErrorText = null;
+        base.OnNavigatedTo(parameter);
+    }
+
     /// <summary>Antippen eines Felds der Karte Verschluss Zu; Parameter = Position, Speed, Acceleration, Deceleration, Jerk.</summary>
     [RelayCommand]
     private Task EditClosedAsync(string? name) => EditAsync("Closed", name);
@@ -112,10 +127,23 @@ public abstract partial class DoserMotorPageViewModelBase : DosingPageViewModelB
         var limits = Service.GetLimits(field);
         if (v < limits.Minimum || v > limits.Maximum)
         {
+            // Eingabe ausserhalb der Grenzen: nicht stumm verwerfen, sondern Fehlertext am Feld zeigen.
+            ErrorField = name;
+            ErrorText = Localization.Format("Dosing_OutOfRange_Text", limits.Minimum, limits.Maximum, limits.Unit);
             return;
         }
 
-        await Service.SetValueAsync(CurrentId, field, v);
+        try
+        {
+            await Service.SetValueAsync(CurrentId, field, v);
+            ErrorField = null;
+            ErrorText = null;
+        }
+        catch (Exception)
+        {
+            ErrorField = name;
+            ErrorText = Localization.GetString("Dosing_WriteFailed_Text");
+        }
     }
 
     private double CurrentValue(DoserField field) => field switch

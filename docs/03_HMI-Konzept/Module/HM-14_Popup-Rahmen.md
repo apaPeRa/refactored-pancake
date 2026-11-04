@@ -77,6 +77,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM14_PopupFrame` (UserControl / `ControlTemplate`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` mit `ContentPresenter`; gehostet in einer Overlay-Schicht des Hauptfensters (`HM14_PopupHost`), geöffnet über `IDialogService`.
 - **Dependency Properties:** `Title`, `Content`, `WidthRatio`, `IsModal`, `ShowCloseButton`, `Kind`, `Message`, `ConfirmText`, `CancelText`, `Progress`, `ResultKind`; **Commands:** `CloseCommand`, `ConfirmCommand`, `CancelCommand`; `Esc`/Schließen-Kreuz schließt.
+- **Ergänzung (Behebung der Prüfbefunde M2):** `Esc` schließt das Pop-up wie das Kreuz (`KeyBinding` auf `CloseCommand`, solange der Fokus im Rahmen liegt).
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Warning`, `Icon.Status.Ok`, `Icon.Status.Error`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.

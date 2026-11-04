@@ -129,6 +129,16 @@ public sealed class HM38_SearchDialog : Control
     }
 
     /// <summary>Liste nach oben.</summary>
+    /// <summary>Antippen der Suchzeile (Bildschirmtastatur ueber HM-13, Eingabeart Text); null = direkte Eingabe im Textfeld.</summary>
+    public static readonly DependencyProperty EditTextCommandProperty =
+        DependencyProperty.Register(nameof(EditTextCommand), typeof(ICommand), typeof(HM38_SearchDialog), new PropertyMetadata(null));
+
+    public ICommand? EditTextCommand
+    {
+        get => (ICommand?)GetValue(EditTextCommandProperty);
+        set => SetValue(EditTextCommandProperty, value);
+    }
+
     public static readonly DependencyProperty ScrollUpCommandProperty =
         DependencyProperty.Register(nameof(ScrollUpCommand), typeof(ICommand), typeof(HM38_SearchDialog), new PropertyMetadata(null));
 

@@ -36,8 +36,17 @@ public sealed partial class SearchPopupViewModel : PopupViewModelBase
     [ObservableProperty]
     private SearchHit? _selectedHit;
 
+    private readonly IDialogService? _dialogs;
+
+    /// <summary>Entwurfsmodus und Tests: ohne Dialogdienst (die Texteingabe ueber HM-13 entfaellt).</summary>
     public SearchPopupViewModel()
+        : this(null)
     {
+    }
+
+    public SearchPopupViewModel(IDialogService? dialogs)
+    {
+        _dialogs = dialogs;
         Title = "Aktor suchen";
         Placeholder = "Kennzeichnung eingeben";
         Items = new[]
@@ -74,6 +83,22 @@ public sealed partial class SearchPopupViewModel : PopupViewModelBase
 
         SelectedHit = hit;
         Close(true, hit);
+    }
+
+    /// <summary>Antippen der Suchzeile: Bildschirmtastatur ueber das Eingabe-Pop-up HM-13, Eingabeart Text (HM-38).</summary>
+    [RelayCommand]
+    private async Task EditTextAsync()
+    {
+        if (_dialogs is null)
+        {
+            return;
+        }
+
+        var result = await _dialogs.ShowAsync<string>(DialogKeys.Input, new InputRequest(Title, null, Kind: InputKind.Text, Text: SearchText));
+        if (result.Accepted && result.Value is { } text)
+        {
+            SearchText = text;
+        }
     }
 
     [RelayCommand]

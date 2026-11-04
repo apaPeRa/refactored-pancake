@@ -42,3 +42,28 @@ public sealed class HM06_FunctionBar : Control
         set => SetValue(CurrentTargetIdProperty, value);
     }
 }
+
+/// <summary>Beschriftung und Symbol einer festen Taste der Leiste (Ueberlauf-Taste "Mehr"); als Datenkontext der Tastenvorlage, Texte per <c>{res:Loc}</c>. Nur Dependency Properties.</summary>
+public sealed class HM06_ButtonInfo : Freezable
+{
+    public static readonly DependencyProperty LabelProperty =
+        DependencyProperty.Register(nameof(Label), typeof(string), typeof(HM06_ButtonInfo), new PropertyMetadata(string.Empty));
+
+    public static readonly DependencyProperty IconKeyProperty =
+        DependencyProperty.Register(nameof(IconKey), typeof(string), typeof(HM06_ButtonInfo), new PropertyMetadata(string.Empty));
+
+    public string Label
+    {
+        get => (string)GetValue(LabelProperty);
+        set => SetValue(LabelProperty, value);
+    }
+
+    /// <summary>Token-Name des Symbols, z. B. <c>Icon.More</c>.</summary>
+    public string IconKey
+    {
+        get => (string)GetValue(IconKeyProperty);
+        set => SetValue(IconKeyProperty, value);
+    }
+
+    protected override Freezable CreateInstanceCore() => new HM06_ButtonInfo();
+}

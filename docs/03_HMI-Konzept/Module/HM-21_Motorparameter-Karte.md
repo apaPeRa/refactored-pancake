@@ -16,7 +16,7 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Verzögerung (`Deceleration`) | double | % | Bild 0 |
 | Ruck (`Jerk`) | double | % | Bild 0 |
 | Dosierer (`DoserName`) | string | – | z. B. „HD1“, „ND“, „Schließmaschine“ |
-| Eingabe (`CommitCommand`) | ICommand<MotorParameterChange> | – | je Zeile Name und Wert |
+| Eingabe (`EditCommand`) | ICommand | – | Parameter = Feldname (Position, Speed, …) |
 
 ## Zustände und Darstellung
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
@@ -43,7 +43,8 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 ## WPF-Umsetzung
 - **Control:** `HM21_MotorParameterCard` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM21_MotorParameterCard`), Zeilen als `ItemsControl` aus `HM12_ValueInput` in `HM15_GroupPanel`.
-- **Dependency Properties:** `Title`, `CardKind`, `Position`, `Speed`, `Acceleration`, `Deceleration`, `Jerk`, `DoserName`; **Command:** `CommitCommand`.
+- **Dependency Properties:** `Title`, `CardKind`, `Position`, `Speed`, `Acceleration`, `Deceleration`, `Jerk`, `DoserName`; **Command:** `EditCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** `CommitCommand` entfällt; das ViewModel schreibt bei Änderung der Werte (`ClosingMotorViewModel`). Einheiten aus den Ressourcen (`Unit_Degree`, `Unit_Percent`).
 - Zeilenhöhe `Size.Touch.Default`; drei Karten im 12-Spalten-Raster 4 : 4 : 4.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Lock`, `Icon.Status.Error`; **neu, hier definiert:** `Icon.Motor.Screw`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

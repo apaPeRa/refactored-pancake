@@ -44,6 +44,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM38_SearchDialog` (UserControl, Inhalt von `HM14_PopupFrame`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl`; Ergebnis über `IDialogService.ShowSearchAsync(SearchRequest) : Task<SearchHit?>`; Filterung im ViewModel (Teilzeichenfolge, `StringComparison.CurrentCultureIgnoreCase`), Liste virtualisierend.
 - **Dependency Properties:** `Title`, `SearchText`, `Items`, `FilteredItems`, `SelectedHit`, `EmptyText`, `Placeholder`; **Commands:** `SelectHitCommand`, `CancelCommand`, `ClearTextCommand`, `ScrollUpCommand`, `ScrollDownCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Antippen der Suchzeile öffnet über `EditTextCommand` das Eingabe-Pop-up HM-13 in der Eingabeart Text (Bildschirmtastatur); das Textfeld bleibt für Hardware-Tastaturen. `SearchPopupView` zeigt das Kreuz oben rechts und die Taste Schließen (`ShowCloseButton = True`).
 - **Maße:** Trefferzeile ≥ `Size.Touch.Min` hoch, Tasten `Size.Touch.Default`, Dialogbreite höchstens `Size.Popup.WidthRatio`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Scroll.Up`, `Icon.Scroll.Down`, `Icon.Status.Info`, `Icon.Close`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

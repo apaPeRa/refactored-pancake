@@ -60,6 +60,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM15_GroupPanel` (UserControl (`HeaderedContentControl`)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl`/`HeaderedContentControl` mit `ControlTemplate` (`HM15_GroupPanel`).
 - **Dependency Properties:** `Header`, `Subheader`, `GroupStyle`, `IsHighlighted`, `HighlightText`, `Content`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Das Ausgewählt-Symbol ist `Icon.State.On` (Haken).
 - Keine feste Größe; belegt Spalten- und Zeilenanteile im 12-Spalten-Raster der Seite.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): .
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

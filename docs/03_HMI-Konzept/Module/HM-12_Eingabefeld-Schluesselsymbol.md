@@ -23,7 +23,6 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Gekoppelter Zähler (`CoupledCounter`) | int? | Stk | RS-13 Übergewicht, Untergewicht |
 | Wert geändert (`IsPendingWrite`) | bool | – | Wert erst nach „Werte schreiben“ wirksam (RS-25) |
 | Fehlertext (`ErrorText`) | string? | – | bei ungültiger Eingabe |
-| Befehl (`CommitCommand`) | ICommand<double?> | – | nach Übernehmen im Pop-up |
 
 ## Zustände und Darstellung
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
@@ -74,7 +73,8 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 ## WPF-Umsetzung
 - **Control:** `HM12_ValueInput` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM12_ValueInput`); Pop-up über `IDialogService.ShowInputAsync(...)` aus dem ViewModel, nicht im Control.
-- **Dependency Properties:** `Label`, `NumberValue`, `TextValue`, `InputKind`, `Unit`, `Decimals`, `Minimum`, `Maximum`, `RequiresPermission`, `RequiredRole`, `IsAuthorized`, `Icon`, `Counter`, `CoupledCounter`, `IsPendingWrite`, `ErrorText`; **Command:** `CommitCommand`.
+- **Dependency Properties:** `Label`, `NumberValue`, `TextValue`, `InputKind`, `Unit`, `Decimals`, `Minimum`, `Maximum`, `RequiresPermission`, `RequiredRole`, `IsAuthorized`, `Icon`, `Counter`, `CoupledCounter`, `IsPendingWrite`, `ErrorText`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** `CommitCommand` entfällt (kein Auslöser am Control; die Übernahme läuft im ViewModel). `Minimum` und `Maximum` bleiben als Informationsgrenzen für das ViewModel bzw. das Eingabe-Pop-up (HM-13) erhalten; das Control rechnet damit nicht. Zahlenformat nach `CultureInfo.CurrentCulture` (Dezimalkomma).
 - **Maße:** Höhe `Size.Touch.Default`, Trefferfläche ≥ `Size.Touch.Min`, Schlüssel `Size.Icon.S`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.Speed`, `Icon.Status.Error`; neu, definiert in anderem Modul: `Icon.State.Pending` (HM-08).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

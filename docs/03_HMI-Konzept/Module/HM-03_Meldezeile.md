@@ -78,6 +78,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM03_MessageLine` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl`; einzeilig, Text `TextTrimming=CharacterEllipsis`, vollständiger Text im Tooltip und in HS-38.
 - **Dependency Properties:** `Number`, `Text`, `Class`, `AdditionalCount`; **Command:** `OpenCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Darstellung einzeilig: Nummer in einer `Auto`-Spalte, Text in der Stern-Spalte mit `TextTrimming="CharacterEllipsis"`; der Volltext steht als Tooltip an der Fläche.
 - **Stil:** `DataTrigger` auf `Class` schaltet Fläche, Symbol und Wort; Wörter aus `.resx` (`Status_Warning_Word` usw.).
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Ok`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

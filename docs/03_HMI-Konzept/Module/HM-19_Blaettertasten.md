@@ -50,6 +50,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM19_PagerButtons` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM19_PagerButtons`) aus zwei Tasten im Stil von HM07.
 - **Dependency Properties:** `Count`, `CurrentIndex`, `CurrentLabel`, `PagerStyle`, `Placement`, `CenterContent`, `Orientation`, `PositionMode`, `RangeStart`, `RangeEnd`, `IsCyclic`; **Commands:** `PreviousCommand`, `NextCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** `Placement = Flanking`: Tasten links und rechts um `CenterContent` (DockPanel, Mitte füllt, ohne Positionsanzeige); `IsCyclic`: die Pfeiltasten werden am Rand nicht nach `CurrentIndex`/`Count` gesperrt (`HM19_EdgeEnabledConverter`), das Umlaufen leistet der Befehl im ViewModel; ohne `IsCyclic` sperrt der Rand zusätzlich zu `CanExecute` (Count ≤ 1 = unbekannt, frei). Neu `PagerStyle.PreviousOnly` und `NextOnly` (einzelne Pfeiltaste für die Funktionsleiste HM-06).
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Chevron`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.

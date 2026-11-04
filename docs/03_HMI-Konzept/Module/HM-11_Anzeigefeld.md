@@ -68,6 +68,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM11_ValueDisplay` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM11_ValueDisplay`); Zeile und Feld per `Style`-Trigger auf `Presentation`.
 - **Dependency Properties:** `Label`, `ValueKind`, `NumberValue`, `TextValue`, `TimeValue`, `Unit`, `Decimals`, `Presentation`, `Suffix`, `Counter`, `Emphasis`; **Command:** `ResetCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Zahlen und Datum werden nach `CultureInfo.CurrentCulture` formatiert (Dezimalkomma), nicht nach der Binding-Kultur.
 - **Formatierung:** `IValueConverter` für Zahl + Einheit mit `CurrentCulture` und geschütztem Leerzeichen.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Warning`; **neu, hier definiert:** `Icon.Action.Reset`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

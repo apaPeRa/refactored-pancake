@@ -11,6 +11,7 @@
              d:DataContext="{d:DesignInstance Type=vm:ClosingMachineViewModel, IsDesignTimeCreatable=True}">
     <!-- HS-16 Schliessmaschine: drei Gruppen im Raster 4 : 4 : 4 (Auslaufband | Kopfleim | Ruettlung), Inhaltshoehe, oben buendig. Nur Module HM-07/08/12/15/24/27. -->
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="Closing.BoolToVisibility" />
         <Style x:Key="Closing.IconPath" TargetType="Path">
             <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
             <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
@@ -29,7 +30,10 @@
 
         <!-- Auslaufband (E01, E02) -->
         <c:HM15_GroupPanel Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
-                           Header="{res:Loc HS16_Conveyor_Header}" IsEnabled="{Binding IsEditingAllowed}">
+                           Header="{res:Loc HS16_Conveyor_Header}">
+            <StackPanel>
+            <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Warning" Text="{res:Loc HS16_Blocked_Hint}"
+                              Visibility="{Binding IsBlocked, Converter={StaticResource Closing.BoolToVisibility}}" />
             <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
                                Label="{res:Loc HS16_Conveyor_Speed_Label}"
                                NumberValue="{Binding ConveyorSpeed.Value}" Unit="%" Decimals="0"
@@ -37,16 +41,19 @@
                                ErrorText="{Binding ConveyorSpeed.ErrorText}" IsEditing="{Binding ConveyorSpeed.IsEditing}"
                                RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
                                Command="{Binding EditValueCommand}" CommandParameter="{x:Static m:ClosingField.ConveyorSpeed}" />
+            </StackPanel>
         </c:HM15_GroupPanel>
 
         <!-- Kopfleim (E03 bis E09) -->
         <c:HM15_GroupPanel Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
-                           Header="{res:Loc HS16_HeadGlue_Header}" IsEnabled="{Binding IsEditingAllowed}">
+                           Header="{res:Loc HS16_HeadGlue_Header}">
             <StackPanel>
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Warning" Text="{res:Loc HS16_Blocked_Hint}"
+                                  Visibility="{Binding IsBlocked, Converter={StaticResource Closing.BoolToVisibility}}" />
                 <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" ToggleStyle="Button"
                                      Label="{res:Loc HS16_HeadGlue_Toggle_Label}"
                                      IsChecked="{Binding HeadGlueEnabled, Mode=OneWay}" IsPending="{Binding IsHeadGluePending}"
-                                     RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                     RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" ErrorText="{Binding HeadGlueErrorText}"
                                      ToggleCommand="{Binding ToggleHeadGlueCommand}" />
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -59,9 +66,12 @@
                         <Path Style="{StaticResource Closing.IconPath}" Data="{StaticResource Icon.Glue.Nozzle}" />
                     </Viewbox>
                     <StackPanel Grid.Column="1">
-                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_Start_Label}" Angle="{Binding HeadGlueStart.Value, Mode=TwoWay}" />
-                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_End_Label}" Angle="{Binding HeadGlueEnd.Value, Mode=TwoWay}" />
-                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_Duration_Label}" Time="{Binding HeadGlueDuration.Value, Mode=TwoWay}" />
+                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_Start_Label}" Angle="{Binding HeadGlueStart.Value, Mode=TwoWay}"
+                                                ErrorText="{Binding HeadGlueStart.ErrorText}" IsAuthorized="{Binding IsAuthorized}" EditAngleCommand="{Binding EditHeadGlueStartCommand}" />
+                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_End_Label}" Angle="{Binding HeadGlueEnd.Value, Mode=TwoWay}"
+                                                ErrorText="{Binding HeadGlueEnd.ErrorText}" IsAuthorized="{Binding IsAuthorized}" EditAngleCommand="{Binding EditHeadGlueEndCommand}" />
+                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_Duration_Label}" Time="{Binding HeadGlueDuration.Value, Mode=TwoWay}"
+                                                ErrorText="{Binding HeadGlueDuration.ErrorText}" IsAuthorized="{Binding IsAuthorized}" EditTimeCommand="{Binding EditHeadGlueDurationCommand}" />
                     </StackPanel>
                 </Grid>
                 <!-- E09 Hinweis Taktung -->
@@ -71,12 +81,14 @@
 
         <!-- Ruettlung (E10 bis E14) -->
         <c:HM15_GroupPanel Grid.Column="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
-                           Header="{res:Loc HS16_Shaker_Header}" IsEnabled="{Binding IsEditingAllowed}">
+                           Header="{res:Loc HS16_Shaker_Header}">
             <StackPanel>
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Warning" Text="{res:Loc HS16_Blocked_Hint}"
+                                  Visibility="{Binding IsBlocked, Converter={StaticResource Closing.BoolToVisibility}}" />
                 <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" ToggleStyle="Button"
                                      Label="{res:Loc HS16_Shaker_Toggle_Label}"
                                      IsChecked="{Binding ShakerEnabled, Mode=OneWay}" IsPending="{Binding IsShakerPending}"
-                                     RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                     RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" ErrorText="{Binding ShakerErrorText}"
                                      ToggleCommand="{Binding ToggleShakerCommand}" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
                                    Label="{res:Loc HS16_Shaker1_Label}"

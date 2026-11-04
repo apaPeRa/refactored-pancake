@@ -21,10 +21,12 @@ public sealed partial class ManualSelectionViewModel : PageViewModelBase
     private readonly IManualOperationService _manual;
     private readonly IEquipmentSearchService _search;
     private readonly ILocalizationService _localization;
+    private readonly IMessageService? _messages;
 
     public ManualSelectionViewModel(
-        INavigationService navigation, IDialogService dialogs, IManualOperationService manual, IEquipmentSearchService search, ILocalizationService localization)
+        INavigationService navigation, IDialogService dialogs, IManualOperationService manual, IEquipmentSearchService search, ILocalizationService localization, IMessageService? messages = null)
     {
+        _messages = messages;
         _navigation = navigation;
         _dialogs = dialogs;
         _manual = manual;
@@ -61,7 +63,13 @@ public sealed partial class ManualSelectionViewModel : PageViewModelBase
     [RelayCommand]
     private async Task OpenGroupAsync(TileItem? tile)
     {
-        if (tile is null || tile.IsEmpty || tile.TargetPageId is not { } groupId)
+        if (tile is { IsEmpty: true })
+        {
+            _messages?.ShowHint(_localization.GetString("HS30_Empty_Hint"));
+            return;
+        }
+
+        if (tile is null || tile.TargetPageId is not { } groupId)
         {
             return;
         }

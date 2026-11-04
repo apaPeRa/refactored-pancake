@@ -73,6 +73,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM13_NumericKeypadDialog` (UserControl (Inhalt von HM14_PopupFrame)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` als Inhalt von `HM14_PopupFrame`; Ergebnis über `IDialogService.ShowInputAsync(InputRequest) : Task<InputResult?>`.
 - **Dependency Properties:** `Title`, `CurrentValue`, `InputText`, `Unit`, `Minimum`, `Maximum`, `Decimals`, `InputKind`, `HelpText`, `FilterFields`, `IsValid`, `ErrorText`; **Commands:** `ApplyCommand`, `CancelCommand`, `DigitCommand`, `BackspaceCommand`, `ClearCommand`, `SignCommand`, `DecimalSeparatorCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Zeitvariante: Bereichszeile als „hh:mm bis hh:mm“ (`HM13_MinutesToTimeConverter`), ohne Grenzen ausgeblendet. Zahleneingabe höchstens 12 Zeichen (Vorzeichen, Ziffern, Komma; `InputDialogViewModel.MaxNumberLength`).
 - **Maße:** Ziffernblock 3 × 4 Tasten `Size.Touch.Large` × `Size.Touch.Default`, Abstand `Space.M`; Dialogbreite höchstens `Size.Popup.WidthRatio` der Fensterbreite.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Confirm`, `Icon.Status.Error`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

@@ -57,6 +57,7 @@ public sealed partial class SystemSettingsViewModel : PageViewModelBase
             new TileItem { Label = _text.GetString("HS35_Tile_SystemInfo_Label"), TargetPageId = PageKeys.SystemInfo },
         };
 
+        UpdateAuthorization();
         FunctionBarItems.Add(new FunctionBarItem
         {
             Label = _text.GetString("HS35_LampTest_Label"),
@@ -70,6 +71,30 @@ public sealed partial class SystemSettingsViewModel : PageViewModelBase
         : this(new DummySystemControlService(), null!, null!, new DummyUserSession(), new DummyMessageService(), LocalizationService.Instance)
     {
     }
+
+    public override void OnNavigatedTo(object? parameter)
+    {
+        _session.SessionChanged -= OnSessionChanged;
+        _session.SessionChanged += OnSessionChanged;
+        UpdateAuthorization();
+    }
+
+    public override void OnNavigatedFrom() => _session.SessionChanged -= OnSessionChanged;
+
+    // Kacheln ohne ausreichende Rolle tragen das Schloss statt des Schluessels (HS-35-P14).
+    private void UpdateAuthorization()
+    {
+        var authorized = _session.HasRole(ActionRole);
+        foreach (var tile in SystemActionTiles.Concat(UtilityTiles).Concat(NavigationTiles))
+        {
+            if (tile.RequiresPermission)
+            {
+                tile.IsAuthorized = authorized;
+            }
+        }
+    }
+
+    private void OnSessionChanged(object? sender, EventArgs e) => UpdateAuthorization();
 
     /// <summary>Zeile 1: Bedienung beenden, Steuerung neu starten, Steuerung ausschalten (Warnaktionen).</summary>
     public IReadOnlyList<TileItem> SystemActionTiles { get; }
@@ -91,7 +116,12 @@ public sealed partial class SystemSettingsViewModel : PageViewModelBase
 
         if (tile.TargetPageId is not null)
         {
-            // Rollenpruefung des Seitenzugangs (Service: Technik) uebernimmt der Navigationsdienst.
+            // Rollenpruefung des Seitenzugangs (Service: Technik) uebernimmt der Navigationsdienst; der Grund erscheint vorab in der Meldezeile.
+            if (!tile.IsAuthorized)
+            {
+                _messages.ShowHint(_text.Format("Msg_PermissionRequired", _text.GetString($"Role_{ActionRole}")));
+            }
+
             await _navigation.NavigateToAsync(tile.TargetPageId);
             return;
         }

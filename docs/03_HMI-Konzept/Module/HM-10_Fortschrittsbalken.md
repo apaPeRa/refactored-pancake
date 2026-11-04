@@ -44,6 +44,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM10_ProgressBar` (ControlTemplate auf `ProgressBar`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `ControlTemplate` auf `ProgressBar` (`HM10_ProgressBar`), Zahl über `TextBlock` im Template.
 - **Dependency Properties:** `Label`, `Value` (Basis `RangeBase.Value`), `WarningThreshold`, `ErrorThreshold`, `StringFormat`, `LabelPlacement`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Zahlenformat nach `CultureInfo.CurrentCulture` (Dezimalkomma), nicht nach der Binding-Kultur.
 - **Zeitablauf (HS-24):** `Value` wird vom ViewModel getaktet, keine eigene Animation im Control.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

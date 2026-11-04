@@ -122,7 +122,17 @@ public sealed partial class PostDoserWeightCorrectionViewModel : DosingPageViewM
 
     /// <summary>"Dosierer Ausloesen manuell": dosiert eine Probe mit dem Sollgewicht.</summary>
     [RelayCommand]
-    private async Task TriggerAsync() => await Service.TriggerWeightSampleAsync();
+    private async Task TriggerAsync()
+    {
+        // Im aktuellen Betriebszustand nicht zulaessig: Grund in der Meldezeile (A-28), keine Aktion.
+        if (!Service.GetDoser(DoserId.Post).ActionsAllowed)
+        {
+            Interaction.ShowBlockedHint();
+            return;
+        }
+
+        await Service.TriggerWeightSampleAsync();
+    }
 
     /// <summary>"Gewichtsanpassung": berechnet die Korrekturkennlinie; unter 3 gueltigen Stuetzstellen oder bei ungueltigen Zeilen nicht.</summary>
     [RelayCommand]

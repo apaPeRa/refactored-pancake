@@ -7,6 +7,7 @@
                     xmlns:ctl="clr-namespace:ApaTec.Hmi.Controls">
   <ctl:HM24_CamParameterRow x:Key="HM24.Sample.Start" x:Shared="False" Label="Anfang" Angle="330" Time="50" Result="325" EncoderName="Geber 1GF Hauptantrieb" />
   <ctl:HM24_CamParameterRow x:Key="HM24.Sample.EndPending" x:Shared="False" Label="Ende" Angle="790" Time="50" Result="780" EncoderName="Geber 1GF Hauptantrieb" IsPendingWrite="True" />
+  <ctl:HM24_CamParameterRow x:Key="HM24.Sample.Error" x:Shared="False" Label="Ende" Angle="790" Time="50" Result="780" ErrorText="Wert außerhalb des Bereichs" />
   <ctl:HM24_CamParameterRow x:Key="HM24.Sample.GlueStart" x:Shared="False" Label="Anfang" Angle="280" />
   <ctl:HM24_CamParameterRow x:Key="HM24.Sample.GlueEnd" x:Shared="False" Label="Ende" Angle="325" />
   <ctl:HM24_CamParameterRow x:Key="HM24.Sample.GlueDuration" x:Shared="False" Label="Dauer" Time="50" />

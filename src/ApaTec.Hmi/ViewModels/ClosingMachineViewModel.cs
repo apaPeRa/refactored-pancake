@@ -41,7 +41,15 @@ public sealed partial class ClosingMachineViewModel : PageViewModelBase
     private bool _isAuthorized;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsBlocked))]
     private bool _isEditingAllowed = true;
+
+    /// <summary>Fehlertext am Umschalter Kopfleim (Zustand Fehler, HM-08).</summary>
+    [ObservableProperty]
+    private string? _headGlueErrorText;
+
+    [ObservableProperty]
+    private string? _shakerErrorText;
 
     /// <summary>Entwurfsmodus: Dummy-Dienste, keine Navigation.</summary>
     public ClosingMachineViewModel()
@@ -81,6 +89,9 @@ public sealed partial class ClosingMachineViewModel : PageViewModelBase
         FunctionBarItems.Add(CreateBarItem("HS16_FunctionBar_WeightCorrection", "Icon.Weight.Scale", PageKeys.ClosingWeightCorrection));
     }
 
+    /// <summary>true im gesperrten Betriebszustand (Eingaben nicht zulaessig): Hinweisfeld statt deaktivierter Gruppen; Antippen nennt den Grund in der Meldezeile.</summary>
+    public bool IsBlocked => !IsEditingAllowed;
+
     /// <summary>E02 Sollgeschwindigkeit des Auslaufbands in %.</summary>
     public ClosingEditableValue ConveyorSpeed { get; }
 
@@ -107,6 +118,7 @@ public sealed partial class ClosingMachineViewModel : PageViewModelBase
         Reload();
         if (_user is not null)
         {
+            _user.SessionChanged -= OnSessionChanged;
             _user.SessionChanged += OnSessionChanged;
         }
 
@@ -164,6 +176,16 @@ public sealed partial class ClosingMachineViewModel : PageViewModelBase
         }
     }
 
+    // Eingaben der Nockenzeilen (HM-24): Anfang/Ende in Grad, Dauer in ms.
+    [RelayCommand]
+    private Task EditHeadGlueStartAsync() => EditValueAsync(ClosingField.HeadGlueStart);
+
+    [RelayCommand]
+    private Task EditHeadGlueEndAsync() => EditValueAsync(ClosingField.HeadGlueEnd);
+
+    [RelayCommand]
+    private Task EditHeadGlueDurationAsync() => EditValueAsync(ClosingField.HeadGlueDuration);
+
     [RelayCommand]
     private async Task ToggleHeadGlueAsync()
     {
@@ -173,11 +195,24 @@ public sealed partial class ClosingMachineViewModel : PageViewModelBase
             return;
         }
 
+        var previous = HeadGlueEnabled;
         IsHeadGluePending = true;
-        HeadGlueEnabled = !HeadGlueEnabled;
-        await PersistAsync();
-        IsHeadGluePending = false;
-        OnPropertyChanged(nameof(HeadGlueEnabled));
+        HeadGlueEnabled = !previous;
+        try
+        {
+            await PersistAsync();
+            HeadGlueErrorText = null;
+        }
+        catch (Exception)
+        {
+            HeadGlueEnabled = previous;
+            HeadGlueErrorText = _localization.GetString("HS16_Error_Write");
+        }
+        finally
+        {
+            IsHeadGluePending = false;
+            OnPropertyChanged(nameof(HeadGlueEnabled));
+        }
     }
 
     [RelayCommand]
@@ -189,11 +224,24 @@ public sealed partial class ClosingMachineViewModel : PageViewModelBase
             return;
         }
 
+        var previous = ShakerEnabled;
         IsShakerPending = true;
-        ShakerEnabled = !ShakerEnabled;
-        await PersistAsync();
-        IsShakerPending = false;
-        OnPropertyChanged(nameof(ShakerEnabled));
+        ShakerEnabled = !previous;
+        try
+        {
+            await PersistAsync();
+            ShakerErrorText = null;
+        }
+        catch (Exception)
+        {
+            ShakerEnabled = previous;
+            ShakerErrorText = _localization.GetString("HS16_Error_Write");
+        }
+        finally
+        {
+            IsShakerPending = false;
+            OnPropertyChanged(nameof(ShakerEnabled));
+        }
     }
 
     private FunctionBarItem CreateBarItem(string labelKey, string iconKey, string targetKey) => new()
@@ -246,9 +294,18 @@ public sealed partial class ClosingMachineViewModel : PageViewModelBase
             return;
         }
 
+        var previous = item.Value;
         item.ErrorText = null;
         item.Value = value;
-        await PersistAsync();
+        try
+        {
+            await PersistAsync();
+        }
+        catch (Exception)
+        {
+            item.Value = previous;
+            item.ErrorText = _localization.GetString("HS16_Error_Write");
+        }
     }
 
     private Task PersistAsync() => _service.SetSettingsAsync(new ClosingMachineSettings(

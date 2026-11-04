@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Windows.Media;
 
 namespace ApaTec.Hmi.Controls;
@@ -24,8 +25,12 @@ public enum TileItemKind
 }
 
 /// <summary>Eine Kachel des Rasters.</summary>
-public sealed class TileItem
+public sealed class TileItem : INotifyPropertyChanged
 {
+    private bool _isAuthorized = true;
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
     /// <summary>Beschriftung (mehrzeilig, automatischer Umbruch).</summary>
     public string Label { get; set; } = string.Empty;
 
@@ -38,8 +43,25 @@ public sealed class TileItem
     /// <summary>Leere Kachel („Reserviert“, deaktiviert).</summary>
     public bool IsEmpty { get; set; }
 
-    /// <summary>Berechtigungspflichtiges Ziel (Schluessel-Symbol).</summary>
+    /// <summary>Hilfetext (Beschreibung der Kachel) fuer <c>AutomationProperties.HelpText</c>.</summary>
+    public string? HelpText { get; set; }
+
+    /// <summary>Berechtigungspflichtiges Ziel (Schluessel-Symbol; ohne Rolle <see cref="IsAuthorized"/> = false: Schloss <c>Icon.Lock</c>).</summary>
     public bool RequiresPermission { get; set; }
+
+    /// <summary>false, wenn die aktuelle Rolle fuer die Kachel nicht reicht (Schloss statt Schluessel, HS-35-P14).</summary>
+    public bool IsAuthorized
+    {
+        get => _isAuthorized;
+        set
+        {
+            if (_isAuthorized != value)
+            {
+                _isAuthorized = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsAuthorized)));
+            }
+        }
+    }
 
     /// <summary>Deaktiviert mit Grund (bleibt antippbar, damit die Meldezeile den Grund zeigt).</summary>
     public bool IsDisabled { get; set; }

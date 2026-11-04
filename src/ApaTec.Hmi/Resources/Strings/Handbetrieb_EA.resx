@@ -72,4 +72,6 @@
   <data name="HS34_Position_Format" xml:space="preserve"><value>{0} von {1}</value><comment>Positionsangabe n von m</comment></data>
   <data name="HS34_ScrollUp_Label" xml:space="preserve"><value>Hoch</value><comment>Signalliste nach oben</comment></data>
   <data name="HS34_ScrollDown_Label" xml:space="preserve"><value>Runter</value><comment>Signalliste nach unten</comment></data>
+  <data name="HS30_Empty_Hint" xml:space="preserve"><value>Keine Gruppe belegt</value><comment>HS-30 Hinweis in der Meldezeile beim Antippen einer reservierten Kachel</comment></data>
+  <data name="HS33_Empty_Hint" xml:space="preserve"><value>Keine Kartengruppe belegt</value><comment>HS-33 Hinweis in der Meldezeile beim Antippen einer reservierten Kachel</comment></data>
 </root>

@@ -73,6 +73,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM07_ActionButton` (ControlTemplate auf `Button`), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `ControlTemplate` für `Button` (Stil `HM07_ActionButtonStyle`) plus `HM07_ActionButton` als `Control` mit den Eigenschaften der Tabelle (Halte-Logik als Attached Behavior, kein Code-behind).
 - **Dependency Properties:** `Label`, `Icon`, `TriggerMode`, `HoldDuration`, `IsRunning`, `RequiresPermission`, `IsAuthorized`; **Command:** `Command`/`CommandParameter`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Modus Hold löst das gewöhnliche `Command` nicht aus (`OnClick` überspringt es); die Aktion läuft über `HM07_PressBehavior.HoldCompletedCommand`. `CancelOnLeave` wirkt im Modus Hold: bei `false` bricht das Verlassen der Taste das Halten nicht ab, solange der Finger gedrückt bleibt (Maus erfasst); der Totmann (WhilePressed) bricht immer ab (A-90).
 - **Maße:** Höhe `Size.Touch.Default`, Mindestbreite `Size.Button.MinWidth` (in der Leiste `Size.FunctionButton.MinWidth`), Innenabstand `Space.M`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Key`, `Icon.Lock`, `Icon.State.On`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

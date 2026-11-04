@@ -44,6 +44,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM17_TitleBar` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM17_TitleBar`).
 - **Dependency Properties:** `Title`, `Values`, `DeviationLimit`, `TitleAlignment`; **Command:** `DetailCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Der Zustand Abweichung entsteht, wenn `HasDeviation` gesetzt ist oder `DeviationLimit` und zwei Kennwerte vorliegen und der Betrag der Differenz (zweiter Kennwert minus erster, Anzeigetext nach `CurrentCulture`) die Grenze übersteigt (`HM17_DeviationConverter`).
 - Detail-Symbol `Icon.Move` mit Trefferfläche ≥ `Size.Touch.Min`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Move`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

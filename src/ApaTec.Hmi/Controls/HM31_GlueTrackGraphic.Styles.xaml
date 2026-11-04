@@ -33,8 +33,7 @@
                        ErrorText="{Binding ErrorText}"
                        ToolTip="{Binding Tooltip}"
                        Command="{Binding CommitCommand, RelativeSource={RelativeSource AncestorType=c:HM31_GlueTrackGraphic}}"
-                       CommandParameter="{Binding}"
-                       CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource AncestorType=c:HM31_GlueTrackGraphic}}" />
+                       CommandParameter="{Binding}" />
   </DataTemplate>
 
   <DataTemplate x:Key="HM31.RowTemplate">

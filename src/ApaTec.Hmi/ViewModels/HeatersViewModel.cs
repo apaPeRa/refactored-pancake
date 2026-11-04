@@ -46,6 +46,13 @@ public sealed partial class HeaterZoneViewModel : ObservableObject
     [ObservableProperty]
     private bool _isAuthorized = true;
 
+    /// <summary>Befehl "Heizung ein/aus" gesendet, Rueckmeldung steht aus (Zustand "Ausstehend", HM-08).</summary>
+    [ObservableProperty]
+    private bool _isZonePending;
+
+    [ObservableProperty]
+    private bool _isMonitorPending;
+
     internal void Apply(HeaterZoneInfo info)
     {
         IsZoneEnabled = info.IsEnabled;
@@ -138,9 +145,17 @@ public sealed partial class HeatersViewModel : PageViewModelBase
             return;
         }
 
-        if (!await _service.SetZoneEnabledAsync(zone.Index, desired))
+        zone.IsZonePending = true;
+        try
         {
-            zone.IsZoneEnabled = !desired;
+            if (!await _service.SetZoneEnabledAsync(zone.Index, desired))
+            {
+                zone.IsZoneEnabled = !desired;
+            }
+        }
+        finally
+        {
+            zone.IsZonePending = false;
         }
     }
 
@@ -153,9 +168,17 @@ public sealed partial class HeatersViewModel : PageViewModelBase
             return;
         }
 
-        if (!await _service.SetMonitoredAsync(zone.Index, desired))
+        zone.IsMonitorPending = true;
+        try
         {
-            zone.IsMonitored = !desired;
+            if (!await _service.SetMonitoredAsync(zone.Index, desired))
+            {
+                zone.IsMonitored = !desired;
+            }
+        }
+        finally
+        {
+            zone.IsMonitorPending = false;
         }
     }
 

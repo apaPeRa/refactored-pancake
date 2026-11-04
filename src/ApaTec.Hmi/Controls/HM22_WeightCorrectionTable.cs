@@ -55,6 +55,16 @@ public sealed class HM22_WeightCorrectionTable : Control
         set => SetValue(TargetWeightProperty, value);
     }
 
+    /// <summary>false, wenn die Rolle fuer das Sollgewicht nicht reicht (Schloss am Eingabefeld, HM-12).</summary>
+    public static readonly DependencyProperty IsAuthorizedProperty =
+        DependencyProperty.Register(nameof(IsAuthorized), typeof(bool), typeof(HM22_WeightCorrectionTable), new PropertyMetadata(true));
+
+    public bool IsAuthorized
+    {
+        get => (bool)GetValue(IsAuthorizedProperty);
+        set => SetValue(IsAuthorizedProperty, value);
+    }
+
     /// <summary>Gueltige Stuetzstellen (vom ViewModel berechnet).</summary>
     public static readonly DependencyProperty ValidPointCountProperty =
         DependencyProperty.Register(nameof(ValidPointCount), typeof(int), typeof(HM22_WeightCorrectionTable), new PropertyMetadata(0));

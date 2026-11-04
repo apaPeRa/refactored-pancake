@@ -149,20 +149,20 @@ public sealed partial class SettingsViewModel : PageViewModelBase
         };
         PlantTiles = new[]
         {
-            Tile("HS04_Tile_Feeders_Label", PageKeys.Feeders),
-            Tile("HS04_Tile_ClosingMachine_Label", PageKeys.ClosingMachine),
-            Tile("HS04_Tile_Dosers_Label", PageKeys.DoserOverview),
-            Tile("HS04_Tile_Heaters_Label", PageKeys.Heaters),
-            Tile("HS04_Tile_Regulation_Label", PageKeys.Regulation),
-            Tile("HS04_Tile_EncoderSetting_Label", PageKeys.EncoderSetting),
-            Tile("HS04_Tile_Scales_Label", PageKeys.Scales),
-            Tile("HS04_Tile_PackRegister_Label", PageKeys.PackRegister),
+            Tile("HS04_Tile_Feeders_Label", PageKeys.Feeders, "HS04_Tile_Feeders_Help"),
+            Tile("HS04_Tile_ClosingMachine_Label", PageKeys.ClosingMachine, "HS04_Tile_ClosingMachine_Help"),
+            Tile("HS04_Tile_Dosers_Label", PageKeys.DoserOverview, "HS04_Tile_Dosers_Help"),
+            Tile("HS04_Tile_Heaters_Label", PageKeys.Heaters, "HS04_Tile_Heaters_Help"),
+            Tile("HS04_Tile_Regulation_Label", PageKeys.Regulation, "HS04_Tile_Regulation_Help"),
+            Tile("HS04_Tile_EncoderSetting_Label", PageKeys.EncoderSetting, "HS04_Tile_EncoderSetting_Help"),
+            Tile("HS04_Tile_Scales_Label", PageKeys.Scales, "HS04_Tile_Scales_Help"),
+            Tile("HS04_Tile_PackRegister_Label", PageKeys.PackRegister, "HS04_Tile_PackRegister_Help"),
         };
         SystemTiles = new[]
         {
-            Tile("HS04_Tile_Cams_Label", PageKeys.Cams),
-            Tile("HS04_Tile_ManualOperation_Label", PageKeys.ManualSelection),
-            Tile("HS04_Tile_Statistics_Label", PageKeys.ProductionStatistics),
+            Tile("HS04_Tile_Cams_Label", PageKeys.Cams, "HS04_Tile_Cams_Help"),
+            Tile("HS04_Tile_ManualOperation_Label", PageKeys.ManualSelection, "HS04_Tile_ManualOperation_Help"),
+            Tile("HS04_Tile_Statistics_Label", PageKeys.ProductionStatistics, "HS04_Tile_Statistics_Help"),
             new TileItem
             {
                 Label = _localization.GetString("HS04_Tile_Devices_Label"),
@@ -174,13 +174,14 @@ public sealed partial class SettingsViewModel : PageViewModelBase
                 IsEmpty = true,
                 DisabledReason = _localization.GetString("HS04_Tile_Reserved_Reason"),
             },
-            Tile("HS04_Tile_IoOverview_Label", PageKeys.IoOverview),
-            Tile("HS04_Tile_ScreenCleaning_Label", PageKeys.ScreenCleaning),
-            Tile("HS04_Tile_SystemSettings_Label", PageKeys.SystemSettings),
+            Tile("HS04_Tile_IoOverview_Label", PageKeys.IoOverview, "HS04_Tile_IoOverview_Help"),
+            Tile("HS04_Tile_ScreenCleaning_Label", PageKeys.ScreenCleaning, "HS04_Tile_ScreenCleaning_Help"),
+            Tile("HS04_Tile_SystemSettings_Label", PageKeys.SystemSettings, "HS04_Tile_SystemSettings_Help"),
         };
     }
 
-    private TileItem Tile(string labelKey, string target) => new() { Label = _localization.GetString(labelKey), TargetPageId = target };
+    private TileItem Tile(string labelKey, string target, string helpKey) =>
+        new() { Label = _localization.GetString(labelKey), TargetPageId = target, HelpText = _localization.GetString(helpKey) };
 
     private void OnCultureChanged(object? sender, EventArgs e) => RefreshTexts();
 }

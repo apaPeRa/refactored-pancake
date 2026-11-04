@@ -78,6 +78,7 @@ public sealed class HM26_ChartLayoutConverter : IMultiValueConverter
         var unit = values[10] as string;
         var w = values[11] is double dw && !double.IsNaN(dw) ? dw : 0d;
         var h = values[12] is double dh && !double.IsNaN(dh) ? dh : 0d;
+        var interval = values.Length > 13 && values[13] is ChartInterval ci ? ci : ChartInterval.None;
 
         var points = series.Skip(Math.Max(0, series.Count - maxPoints)).ToList();
         var table = BuildTable(points, unit);
@@ -122,7 +123,10 @@ public sealed class HM26_ChartLayoutConverter : IMultiValueConverter
         // Positionen
         var n = points.Count;
         var labelCount = xLabels?.Count ?? 0;
-        var slots = Math.Max(Math.Max(n, labelCount), kind == ChartKind.Line ? maxPoints : 1);
+        // Intervall der Balken: Stunde = 24 Plaetze, Halbstunde = 48 Plaetze je Tag; die Beschriftung der X-Achse wird bei Halbstunde auf jeden zweiten Platz ausgeduennt.
+        var intervalSlots = kind == ChartKind.Bar ? interval switch { ChartInterval.Hour => 24, ChartInterval.HalfHour => 48, _ => 1 } : 1;
+        var labelEvery = kind == ChartKind.Bar && interval == ChartInterval.HalfHour ? 2 : 1;
+        var slots = Math.Max(Math.Max(Math.Max(n, labelCount), intervalSlots), kind == ChartKind.Line ? maxPoints : 1);
         double CenterOf(int slot) => kind == ChartKind.Line
             ? (slots > 1 ? pad + (slot * usable / (slots - 1)) : w / 2)
             : pad + ((slot + 0.5) * usable / slots);
@@ -229,7 +233,7 @@ public sealed class HM26_ChartLayoutConverter : IMultiValueConverter
         if (xLabels is not null)
         {
             var offset = kind == ChartKind.Line ? slots - xLabels.Count : 0;
-            for (var j = 0; j < xLabels.Count; j++)
+            for (var j = 0; j < xLabels.Count; j += labelEvery)
             {
                 xTicks.Add(new HM26_TextMark(CenterOf(j + offset) - (labelW / 2), 0, labelW, lineH, xLabels[j]));
             }

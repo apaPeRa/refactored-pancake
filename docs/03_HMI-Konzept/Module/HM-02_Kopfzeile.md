@@ -84,6 +84,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM02_HeaderBar` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` mit 4-spaltigem `Grid` (`12* 13* 6* 4*`); enthält [HM-03](HM-03_Meldezeile.md) in Spalte 2.
 - **Dependency Properties:** `LogoSource`, `OperatingMode`, `OperatingModeText`, `Now`, `ShowSeconds`, `IsTimeValid`. Uhr über `IClockService` (Dummy), Taktgeber im ViewModel.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Uhrzeit und Datum folgen `CultureInfo.CurrentCulture` (Konverter `HM02_ClockFormatConverter`, Standardformate `T`, `t`, `d`; de-DE: HH:mm:ss, HH:mm, dd.MM.yyyy). Die App-Kultur de-DE wird in `Program.cs` gesetzt (Threads und `FrameworkElement.Language`).
 - **Mindestbreiten:** Betriebsart `Size.Header.Mode.MinWidth`, Uhr `Size.Header.Clock.MinWidth`.
 - **Stil:** `HM02_OperatingModeStyle` per `DataTrigger` auf `OperatingMode`.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Mode.Production`, `Icon.Status.Error`, `Icon.Status.Warning`.

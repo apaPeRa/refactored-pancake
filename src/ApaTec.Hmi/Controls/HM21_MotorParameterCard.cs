@@ -100,16 +100,6 @@ public sealed class HM21_MotorParameterCard : Control
         set => SetValue(DoserNameProperty, value);
     }
 
-    /// <summary>Uebernahme eines geaenderten Werts.</summary>
-    public static readonly DependencyProperty CommitCommandProperty =
-        DependencyProperty.Register(nameof(CommitCommand), typeof(ICommand), typeof(HM21_MotorParameterCard), new PropertyMetadata(null));
-
-    public ICommand? CommitCommand
-    {
-        get => (ICommand?)GetValue(CommitCommandProperty);
-        set => SetValue(CommitCommandProperty, value);
-    }
-
     /// <summary>Antippen eines Felds (oeffnet das Eingabe-Pop-up im ViewModel); <c>CommandParameter</c> = Feldname (Position, Speed, Acceleration, Deceleration, Jerk).</summary>
     public static readonly DependencyProperty EditCommandProperty =
         DependencyProperty.Register(nameof(EditCommand), typeof(ICommand), typeof(HM21_MotorParameterCard), new PropertyMetadata(null));
@@ -118,5 +108,35 @@ public sealed class HM21_MotorParameterCard : Control
     {
         get => (ICommand?)GetValue(EditCommandProperty);
         set => SetValue(EditCommandProperty, value);
+    }
+
+    /// <summary>false, wenn die Rolle fuer die Eingabe nicht reicht (Schloss an den Zeilen, HM-12).</summary>
+    public static readonly DependencyProperty IsAuthorizedProperty =
+        DependencyProperty.Register(nameof(IsAuthorized), typeof(bool), typeof(HM21_MotorParameterCard), new PropertyMetadata(true));
+
+    public bool IsAuthorized
+    {
+        get => (bool)GetValue(IsAuthorizedProperty);
+        set => SetValue(IsAuthorizedProperty, value);
+    }
+
+    /// <summary>Feld (Position, Speed, Acceleration, Deceleration, Jerk), an dem <see cref="ErrorText"/> angezeigt wird.</summary>
+    public static readonly DependencyProperty ErrorFieldProperty =
+        DependencyProperty.Register(nameof(ErrorField), typeof(string), typeof(HM21_MotorParameterCard), new PropertyMetadata(null));
+
+    public string? ErrorField
+    {
+        get => (string?)GetValue(ErrorFieldProperty);
+        set => SetValue(ErrorFieldProperty, value);
+    }
+
+    /// <summary>Fehlertext der letzten abgelehnten Eingabe am Feld <see cref="ErrorField"/>.</summary>
+    public static readonly DependencyProperty ErrorTextProperty =
+        DependencyProperty.Register(nameof(ErrorText), typeof(string), typeof(HM21_MotorParameterCard), new PropertyMetadata(null));
+
+    public string? ErrorText
+    {
+        get => (string?)GetValue(ErrorTextProperty);
+        set => SetValue(ErrorTextProperty, value);
     }
 }

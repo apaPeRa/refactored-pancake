@@ -17,6 +17,7 @@
         <controls:HM27_NoticeBox Grid.Row="0" Margin="{StaticResource Inset.S}" Kind="Info"
                                  Text="{res:Loc HS38_NewMessage_Text}" IsShown="{Binding HasNewMessage}" />
         <controls:HM25_MessageList Grid.Row="1" ListKind="Live" SortDirection="Ascending" ScrollStyle="Scrollbar" ShowClassColumn="True"
-                                   Items="{Binding Messages}" TotalCount="{Binding MessageCount}" />
+                                   Items="{Binding Messages}" TotalCount="{Binding MessageCount}"
+                                   RangeStart="{Binding RangeStart}" RangeEnd="{Binding RangeEnd}" />
     </Grid>
 </UserControl>

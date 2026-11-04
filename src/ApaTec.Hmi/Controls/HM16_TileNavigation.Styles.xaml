@@ -38,6 +38,7 @@
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="AutomationProperties.Name" Value="{Binding Label}" />
+    <Setter Property="AutomationProperties.HelpText" Value="{Binding HelpText}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="Button">
@@ -66,6 +67,13 @@
                          Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
                   <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
                     <Path Style="{StaticResource HM16_IconPath}" Stroke="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" Data="{StaticResource Icon.Key}" />
+                  </Grid>
+                </Viewbox>
+                <!-- Berechtigung fehlt: Schloss oben rechts -->
+                <Viewbox x:Name="LockIcon" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top"
+                         Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                  <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
+                    <Path Style="{StaticResource HM16_IconPath}" Stroke="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" Data="{StaticResource Icon.Lock}" />
                   </Grid>
                 </Viewbox>
                 <!-- Warnaktion: Warnsymbol oben links -->
@@ -119,9 +127,20 @@
             <DataTrigger Binding="{Binding Icon}" Value="{x:Null}">
               <Setter TargetName="IconBox" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RequiresPermission}" Value="True">
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding RequiresPermission}" Value="True" />
+                <Condition Binding="{Binding IsAuthorized}" Value="True" />
+              </MultiDataTrigger.Conditions>
               <Setter TargetName="KeyIcon" Property="Visibility" Value="Visible" />
-            </DataTrigger>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding RequiresPermission}" Value="True" />
+                <Condition Binding="{Binding IsAuthorized}" Value="False" />
+              </MultiDataTrigger.Conditions>
+              <Setter TargetName="LockIcon" Property="Visibility" Value="Visible" />
+            </MultiDataTrigger>
             <DataTrigger Binding="{Binding IsWarning}" Value="True">
               <Setter TargetName="WarningIcon" Property="Visibility" Value="Visible" />
             </DataTrigger>
@@ -131,6 +150,7 @@
               <Setter TargetName="IconBox" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="Chevron" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="KeyIcon" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="LockIcon" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="ReservedText" Property="Visibility" Value="Visible" />
               <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Button.Disabled}" />
               <Setter TargetName="Face" Property="BorderBrush" Value="Transparent" />
@@ -153,10 +173,7 @@
       </Setter.Value>
     </Setter>
     <Style.Triggers>
-      <!-- Leere Kachel: nicht bedienbar -->
-      <DataTrigger Binding="{Binding IsEmpty}" Value="True">
-        <Setter Property="IsEnabled" Value="False" />
-      </DataTrigger>
+      <!-- Leere Kachel: Darstellung "Reserviert", bleibt antippbar (Grund in der Meldezeile, A-28) -->
       <!-- kleine Kachel -->
       <DataTrigger Binding="{Binding TileSize, RelativeSource={RelativeSource AncestorType={x:Type local:HM16_TileNavigation}}}" Value="Small">
         <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />

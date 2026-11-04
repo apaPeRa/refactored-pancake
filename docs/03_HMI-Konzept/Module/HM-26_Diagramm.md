@@ -47,6 +47,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM26_Chart` (UserControl (eigenes Zeichnen mit `Canvas`/`Path`)), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM26_Chart`), Zeichnung über `ItemsControl` mit `Canvas`/`Polyline`/`Rectangle` (kein zusätzliches NuGet-Paket); Skalierung im Control per `MultiValueConverter`.
 - **Dependency Properties:** `ChartKind`, `Series`, `YUnit`, `YMinimum`, `YMaximum`, `YStep`, `MaxPoints`, `ShowValueLabels`, `LowerLimit`, `UpperLimit`, `XLabels`, `Title`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** `Interval` wirkt auf die Balkenanzeige: Stunde = 24, Halbstunde = 48 Plätze je Tag; bei Halbstunde zeigt die X-Achse nur jede zweite Beschriftung.
 - Mit `AutomationProperties.Name` und Wertetabelle für Zugänglichkeit.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Inactive`, `Icon.Status.Warning`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

@@ -49,6 +49,16 @@ public sealed class HM28_HeatZoneRow : Control
     public static readonly DependencyProperty IsAuthorizedProperty = DependencyProperty.Register(
         nameof(IsAuthorized), typeof(bool), typeof(HM28_HeatZoneRow), new PropertyMetadata(true));
 
+    // Heizungen (HS-22): Schluessel/Schloss und Zustand "Ausstehend" der beiden Zustandstasten.
+    public static readonly DependencyProperty RequiresPermissionProperty = DependencyProperty.Register(
+        nameof(RequiresPermission), typeof(bool), typeof(HM28_HeatZoneRow), new PropertyMetadata(true));
+
+    public static readonly DependencyProperty IsZonePendingProperty = DependencyProperty.Register(
+        nameof(IsZonePending), typeof(bool), typeof(HM28_HeatZoneRow), new PropertyMetadata(false));
+
+    public static readonly DependencyProperty IsMonitorPendingProperty = DependencyProperty.Register(
+        nameof(IsMonitorPending), typeof(bool), typeof(HM28_HeatZoneRow), new PropertyMetadata(false));
+
     static HM28_HeatZoneRow()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(HM28_HeatZoneRow), new FrameworkPropertyMetadata(typeof(HM28_HeatZoneRow)));
@@ -126,5 +136,26 @@ public sealed class HM28_HeatZoneRow : Control
     {
         get => (bool)GetValue(IsAuthorizedProperty);
         set => SetValue(IsAuthorizedProperty, value);
+    }
+
+    /// <summary>Heizung und Meldung tragen Schluessel (bzw. Schloss ohne Rolle, <see cref="IsAuthorized"/>).</summary>
+    public bool RequiresPermission
+    {
+        get => (bool)GetValue(RequiresPermissionProperty);
+        set => SetValue(RequiresPermissionProperty, value);
+    }
+
+    /// <summary>Befehl "Heizung ein/aus" ist gesendet, Rueckmeldung steht aus.</summary>
+    public bool IsZonePending
+    {
+        get => (bool)GetValue(IsZonePendingProperty);
+        set => SetValue(IsZonePendingProperty, value);
+    }
+
+    /// <summary>Befehl "Meldung ein/aus" ist gesendet, Rueckmeldung steht aus.</summary>
+    public bool IsMonitorPending
+    {
+        get => (bool)GetValue(IsMonitorPendingProperty);
+        set => SetValue(IsMonitorPendingProperty, value);
     }
 }

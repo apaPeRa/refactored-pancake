@@ -126,7 +126,7 @@
   <local:HM06_PagerSideConverter x:Key="HM06.PagerSide" />
 
   <!-- Datenkontext der Ueberlauf-Taste "Mehr" -->
-  <vm:FunctionBarItem x:Key="HM06.MoreItem" Label="{res:Loc HM06_More_Label}" IconKey="Icon.More" />
+  <local:HM06_ButtonInfo x:Key="HM06.MoreItem" Label="{res:Loc HM06_More_Label}" IconKey="Icon.More" />
 
   <!-- Action: HM-07-Aktionstaste; Taste der aktuellen Seite mit Haken (Form) und Balken, Halten ueber HoldCommand (Fortschrittsstreifen) -->
   <DataTemplate x:Key="HM06.Template.Action" DataType="{x:Type vm:FunctionBarItem}">

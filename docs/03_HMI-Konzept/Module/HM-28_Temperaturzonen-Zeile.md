@@ -42,6 +42,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM28_HeatZoneRow` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM28_HeatZoneRow`), `Grid` mit festen Spalten, einsetzbar in `ItemsControl`.
 - **Dependency Properties:** `ZoneName`, `RowKind`, `Setpoint`, `Actual`, `IsEnabled`, `IsMonitored`, `StateLed`, `OutputLed`; **Commands:** `ToggleZoneCommand`, `ToggleMonitorCommand`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Einheit °C aus den Ressourcen (`Unit_Celsius`).
 - Zeilenhöhe `Size.Touch.Default` (Heizungen: 12 Zeilen scrollbar).
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.State.Off`, `Icon.State.On`, `Icon.Status.Error`, `Icon.Status.Ok`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

@@ -13,5 +13,18 @@
 
   <controls:HM06_FunctionBar x:Key="HM06_Example.Hs07" x:Shared="False"
                              Items="{StaticResource HM06_Example.Hs07Items}" CurrentTargetId="HotGluePressure" />
+  <!-- Ueberlauf: 7 Tasten links (die Tasten 6 und 7 stehen hinter "Mehr"), dazu Zustandstaste, Blaettertasten und eine rechtsbuendige Hauptaktion -->
+  <x:Array x:Key="HM06_Example.OverflowItems" Type="vm:FunctionBarItem">
+    <vm:FunctionBarItem Label="Temperatur" IconKey="Icon.Temperature" TargetId="HotGlueNordson" />
+    <vm:FunctionBarItem Label="Druck" IconKey="Icon.Pressure" TargetId="HotGluePressure" />
+    <vm:FunctionBarItem Label="Zeitplan" IconKey="Icon.Schedule" TargetId="HotGlueSchedule" />
+    <vm:FunctionBarItem Label="Betriebsweise" Kind="State" IsActive="True" />
+    <vm:FunctionBarItem Label="Zurück" Kind="Paging" />
+    <vm:FunctionBarItem Label="Vor" Kind="Paging" />
+    <vm:FunctionBarItem Label="Sechste Taste" />
+    <vm:FunctionBarItem Label="Hauptaktion" IsTrailing="True" />
+  </x:Array>
+  <controls:HM06_FunctionBar x:Key="HM06_Example.Overflow" x:Shared="False"
+                             Items="{StaticResource HM06_Example.OverflowItems}" CurrentTargetId="HotGluePressure" />
   <controls:HM06_FunctionBar x:Key="HM06_Example.Empty" x:Shared="False" />
 </ResourceDictionary>

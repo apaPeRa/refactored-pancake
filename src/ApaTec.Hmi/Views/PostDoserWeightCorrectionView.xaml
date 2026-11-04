@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <c:HM15_GroupPanel Grid.Column="0" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_Correction_Points_Header}">
-            <c:HM22_WeightCorrectionTable Points="{Binding Points}" TargetWeight="{Binding TargetWeight, Mode=TwoWay}"
+            <c:HM22_WeightCorrectionTable Points="{Binding Points}" TargetWeight="{Binding TargetWeight, Mode=TwoWay}" IsAuthorized="{Binding IsAuthorized}"
                                           ValidPointCount="{Binding ValidPointCount}" CalculationState="{Binding CalculationState}"
                                           TriggerCommand="{Binding TriggerCommand}" AdjustCommand="{Binding AdjustCommand}"
                                           EditTargetWeightCommand="{Binding EditTargetWeightCommand}"

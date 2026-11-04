@@ -22,6 +22,12 @@
       <Button Content="Übersicht" />
     </local:HM19_PagerButtons.CenterContent>
   </local:HM19_PagerButtons>
+  <!-- Tasten links und rechts um ein Feld (Flanking), umlaufend -->
+  <local:HM19_PagerButtons x:Key="HM19.Sample.Flanking" x:Shared="False" Count="3" CurrentIndex="0" Placement="Flanking" IsCyclic="True">
+    <local:HM19_PagerButtons.CenterContent>
+      <TextBlock Text="Antrieb Zuführung 2MA1" />
+    </local:HM19_PagerButtons.CenterContent>
+  </local:HM19_PagerButtons>
   <!-- senkrecht mit Bereich 1-12 von 20 -->
   <local:HM19_PagerButtons x:Key="HM19.Sample.Vertical" x:Shared="False" Count="20" Orientation="Vertical"
                            PositionMode="Range" RangeStart="1" RangeEnd="12" />

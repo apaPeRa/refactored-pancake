@@ -103,6 +103,16 @@
                          Background="Transparent"
                          BorderBrush="Transparent"
                          Text="{Binding SearchText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <!-- Antippen der Suchzeile oeffnet die Texteingabe (HM-13, Eingabeart Text); ohne EditTextCommand entfaellt die Flaeche -->
+                <Button x:Name="EditOverlay" Grid.Column="0" Focusable="False"
+                        Command="{TemplateBinding EditTextCommand}"
+                        AutomationProperties.Name="{TemplateBinding Placeholder}">
+                  <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                      <Border Background="Transparent" />
+                    </ControlTemplate>
+                  </Button.Template>
+                </Button>
                 <TextBlock x:Name="PlaceholderText" Grid.Column="0" IsHitTestVisible="False"
                            Style="{StaticResource Text.Body}" VerticalAlignment="Center"
                            Margin="{StaticResource Inset.M}"
@@ -174,6 +184,9 @@
                                      Command="{TemplateBinding CancelCommand}" />
           </Grid>
           <ControlTemplate.Triggers>
+            <Trigger Property="EditTextCommand" Value="{x:Null}">
+              <Setter TargetName="EditOverlay" Property="Visibility" Value="Collapsed" />
+            </Trigger>
             <Trigger SourceName="SearchBox" Property="Text" Value="">
               <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible" />
             </Trigger>

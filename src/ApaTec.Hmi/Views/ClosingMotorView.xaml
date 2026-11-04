@@ -9,31 +9,46 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=vm:ClosingMotorViewModel, IsDesignTimeCreatable=True}">
     <!-- HS-17 Motorparameter (Schliessmaschine): drei Karten HM-21 im Raster 4 : 4 : 4 (Verschluss Zu | Verschluss Auf | Schnecke), oben buendig; Funktionsleiste leer. -->
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="Closing.BoolToVisibility" />
+    </UserControl.Resources>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
             <ColumnDefinition Width="4*" />
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
 
+        <!-- Sperrzustand: Hinweis statt deaktivierter Karten; Antippen eines Felds nennt den Grund in der Meldezeile -->
+        <c:HM27_NoticeBox Grid.Row="0" Grid.ColumnSpan="3" Margin="{StaticResource Inset.S}" Kind="Warning" Text="{res:Loc HS17_Blocked_Hint}"
+                          Visibility="{Binding IsBlocked, Converter={StaticResource Closing.BoolToVisibility}}" />
+
         <!-- E01 bis E06 Verschluss Zu -->
-        <c:HM21_MotorParameterCard Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+        <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
                                    CardKind="ClosureClosed" Title="{res:Loc HS17_Closed_Header}" DoserName="{Binding MachineName}"
                                    Position="{Binding ClosedPosition, Mode=TwoWay}" Speed="{Binding ClosedSpeed, Mode=TwoWay}"
                                    Acceleration="{Binding ClosedAcceleration, Mode=TwoWay}" Deceleration="{Binding ClosedDeceleration, Mode=TwoWay}"
-                                   Jerk="{Binding ClosedJerk, Mode=TwoWay}" CommitCommand="{Binding CommitCommand}" />
+                                   Jerk="{Binding ClosedJerk, Mode=TwoWay}"
+                                   EditCommand="{Binding EditClosedCommand}" IsAuthorized="{Binding IsAuthorized}" ErrorField="{Binding ErrorField}" ErrorText="{Binding ErrorText}" />
 
         <!-- E07 bis E12 Verschluss Auf -->
-        <c:HM21_MotorParameterCard Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+        <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
                                    CardKind="ClosureOpen" Title="{res:Loc HS17_Open_Header}" DoserName="{Binding MachineName}"
                                    Position="{Binding OpenPosition, Mode=TwoWay}" Speed="{Binding OpenSpeed, Mode=TwoWay}"
                                    Acceleration="{Binding OpenAcceleration, Mode=TwoWay}" Deceleration="{Binding OpenDeceleration, Mode=TwoWay}"
-                                   Jerk="{Binding OpenJerk, Mode=TwoWay}" CommitCommand="{Binding CommitCommand}" />
+                                   Jerk="{Binding OpenJerk, Mode=TwoWay}"
+                                   EditCommand="{Binding EditOpenCommand}" IsAuthorized="{Binding IsAuthorized}" ErrorField="{Binding ErrorField}" ErrorText="{Binding ErrorText}" />
 
         <!-- E13 bis E16 Schnecke (Symbol Icon.Motor.Screw aus HM-21) -->
-        <c:HM21_MotorParameterCard Grid.Column="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+        <c:HM21_MotorParameterCard Grid.Row="1" Grid.Column="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
                                    CardKind="Screw" Title="{res:Loc HS17_Screw_Header}" DoserName="{Binding MachineName}"
                                    Acceleration="{Binding ScrewAcceleration, Mode=TwoWay}" Deceleration="{Binding ScrewDeceleration, Mode=TwoWay}"
-                                   Jerk="{Binding ScrewJerk, Mode=TwoWay}" CommitCommand="{Binding CommitCommand}" />
+                                   Jerk="{Binding ScrewJerk, Mode=TwoWay}"
+                                   EditCommand="{Binding EditScrewCommand}" IsAuthorized="{Binding IsAuthorized}" ErrorField="{Binding ErrorField}" ErrorText="{Binding ErrorText}" />
     </Grid>
 </UserControl>

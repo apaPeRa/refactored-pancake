@@ -11,6 +11,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.MessageView)]
 public sealed partial class MessageViewViewModel : PageViewModelBase
 {
+    /// <summary>Sichtbare Zeilen der Liste ohne Blaettern (Annahme, Zeilenhoehe Size.Touch.Min im Arbeitsbereich); Grundlage der Positionsanzeige "n bis m von k" (HM-25).</summary>
+    public const int VisibleRows = 12;
+
     private readonly IActiveMessageService _active;
     private readonly INavigationService _navigation;
     private readonly SynchronizationContext? _sync = SynchronizationContext.Current;
@@ -20,6 +23,14 @@ public sealed partial class MessageViewViewModel : PageViewModelBase
 
     [ObservableProperty]
     private int _messageCount;
+
+    /// <summary>Erste sichtbare Zeile (1-basiert) fuer "n bis m von k", 0 = keine Meldung.</summary>
+    [ObservableProperty]
+    private int _rangeStart;
+
+    /// <summary>Letzte sichtbare Zeile (1-basiert), 0 = keine Positionsanzeige.</summary>
+    [ObservableProperty]
+    private int _rangeEnd;
 
     /// <summary>Hinweis "Neue Meldung" am Listenanfang, wenn waehrend der Anzeige eine Meldung hinzukommt (Annahme S38-5).</summary>
     [ObservableProperty]
@@ -80,5 +91,7 @@ public sealed partial class MessageViewViewModel : PageViewModelBase
 
         Messages = next;
         MessageCount = next.Count;
+        RangeStart = next.Count == 0 ? 0 : 1;
+        RangeEnd = Math.Min(next.Count, VisibleRows);
     }
 }

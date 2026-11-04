@@ -21,9 +21,17 @@ public sealed partial class ClosingWeightCorrectionViewModel : PageViewModelBase
     public const int MinimumPoints = 3;
 
     private readonly IClosingMachineService _service;
+    /// <summary>Dummy-Rolle fuer das Sollgewicht (Schluessel, OP-04, OP-25).</summary>
+    private const UserRole RequiredRole = UserRole.Technician;
+
+    private readonly IUserSession? _user;
+    private readonly IDialogService? _dialogs;
     private readonly IMessageService? _messages;
     private readonly ILocalizationService _localization;
     private bool _isLoading;
+
+    [ObservableProperty]
+    private bool _isAuthorized = true;
 
     [ObservableProperty]
     private double _targetWeight;
@@ -36,13 +44,17 @@ public sealed partial class ClosingWeightCorrectionViewModel : PageViewModelBase
 
     /// <summary>Entwurfsmodus: Dummy-Dienst.</summary>
     public ClosingWeightCorrectionViewModel()
-        : this(new DummyClosingMachineService(), null, LocalizationService.Instance)
+        : this(new DummyClosingMachineService(), null, null, null, LocalizationService.Instance)
     {
     }
 
-    public ClosingWeightCorrectionViewModel(IClosingMachineService service, IMessageService? messages, ILocalizationService localization)
+    public ClosingWeightCorrectionViewModel(
+        IClosingMachineService service, IUserSession? user, IDialogService? dialogs, IMessageService? messages, ILocalizationService localization)
     {
         _service = service;
+        _user = user;
+        _dialogs = dialogs;
+        IsAuthorized = user?.HasRole(RequiredRole) ?? true;
         _messages = messages;
         _localization = localization;
         Load();
@@ -59,7 +71,99 @@ public sealed partial class ClosingWeightCorrectionViewModel : PageViewModelBase
         }
     }
 
-    public override void OnNavigatedTo(object? parameter) => Load();
+    public override void OnNavigatedTo(object? parameter)
+    {
+        Load();
+        IsAuthorized = _user?.HasRole(RequiredRole) ?? true;
+        if (_user is not null)
+        {
+            _user.SessionChanged -= OnSessionChanged;
+            _user.SessionChanged += OnSessionChanged;
+        }
+    }
+
+    public override void OnNavigatedFrom()
+    {
+        if (_user is not null)
+        {
+            _user.SessionChanged -= OnSessionChanged;
+        }
+    }
+
+    private void OnSessionChanged(object? sender, EventArgs e) => IsAuthorized = _user?.HasRole(RequiredRole) ?? true;
+
+    /// <summary>Antippen des Sollgewichts (E01): nur mit Rolle (Schluessel), Eingabe-Pop-up mit Grenzen.</summary>
+    [RelayCommand]
+    private async Task EditTargetWeightAsync()
+    {
+        if (_dialogs is null)
+        {
+            return;
+        }
+
+        if (_user is not null && !_user.HasRole(RequiredRole))
+        {
+            _messages?.ShowHint(_localization.Format("Msg_PermissionRequired", _localization.GetString("HM01_Role_" + RequiredRole)));
+            if (!await _user.RequestRoleAsync(RequiredRole))
+            {
+                return;
+            }
+
+            IsAuthorized = _user.HasRole(RequiredRole);
+        }
+
+        if (await RequestAsync(_localization.GetString("Dosing_Field_CorrectionTargetWeight_Title"), TargetWeight) is { } value)
+        {
+            TargetWeight = value;
+        }
+    }
+
+    [RelayCommand]
+    private Task EditNominalAsync(CorrectionPoint? point) => EditPointAsync(point, nominal: true);
+
+    [RelayCommand]
+    private Task EditActualAsync(CorrectionPoint? point) => EditPointAsync(point, nominal: false);
+
+    private async Task EditPointAsync(CorrectionPoint? point, bool nominal)
+    {
+        if (point is null || _dialogs is null)
+        {
+            return;
+        }
+
+        var column = _localization.GetString(nominal ? "HM22_Nominal_Header" : "HM22_Actual_Header");
+        var title = $"{_localization.GetString("Dosing_Field_CorrectionPointValue_Title")} {Points.IndexOf(point) + 1} – {column}";
+        if (await RequestAsync(title, nominal ? point.Nominal : point.Actual) is { } value)
+        {
+            if (nominal)
+            {
+                point.Nominal = value;
+            }
+            else
+            {
+                point.Actual = value;
+            }
+        }
+    }
+
+    // Eingabe-Pop-up mit den Grenzen des Sollgewichts; Werte ausserhalb nennt die Meldezeile (Ablehnung statt stummem Verwerfen).
+    private async Task<double?> RequestAsync(string title, double current)
+    {
+        var limits = _service.GetLimits(ClosingField.TargetWeight);
+        var result = await _dialogs!.ShowAsync<double?>(DialogKeys.Input, new ClosingInputRequest(title, current, limits));
+        if (!result.Accepted || result.Value is not { } value)
+        {
+            return null;
+        }
+
+        if (value < limits.Minimum || value > limits.Maximum)
+        {
+            _messages?.ShowHint(_localization.Format("HS16_Error_Range", limits.Minimum, limits.Maximum, limits.Unit));
+            return null;
+        }
+
+        return value;
+    }
 
     /// <summary>E02 "Dosierer Ausloesen manuell": eine einzelne Dosierung mit dem Sollgewicht; ausserhalb des zulaessigen Betriebszustands nennt die Meldezeile den Grund (A-28).</summary>
     [RelayCommand]

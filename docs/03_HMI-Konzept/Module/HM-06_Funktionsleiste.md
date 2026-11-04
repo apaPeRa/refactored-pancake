@@ -74,6 +74,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM06_FunctionBar` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` mit `ItemsControl` (horizontaler `StackPanel`, Abstand `Space.M`), zwei Bereiche (links, rechts).
 - **Dependency Properties:** `Items`, `TrailingItems`, `CurrentTargetId`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Umgesetzt: (1) Überlauf-Taste „Mehr“ (`Icon.More`, Text `HM06_More_Label`) ab der 6. Taste links, die weiteren Tasten stehen in einem Pop-up (`HM06_ItemsViewConverter`, Sichten Main/Overflow/Trailing). (2) Vorlage je `FunctionBarItem.Kind`: Action = HM-07 (mit `HoldCommand` Modus Hold samt Haltestreifen; Taste der aktuellen Seite mit Haken und Balken), State = HM-08 (Darstellung Button, Ein/Aus-Wort), Paging = HM-19 (die erste Blättertaste der Leiste ist „zurück“, jede weitere „vor“; `PagerStyle.PreviousOnly`/`NextOnly`). (3) Tasten mit `FunctionBarItem.IsTrailing` stehen rechtsbündig und zählen nicht zu den 5.
 - **Inhaltsvorlagen:** `DataTemplate` je Tastenmodell, rendert HM-07, HM-08 oder HM-19.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.More`, `Icon.State.On`.
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).

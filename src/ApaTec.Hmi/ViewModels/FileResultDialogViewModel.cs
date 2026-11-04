@@ -27,7 +27,10 @@ public sealed partial class FileResultDialogViewModel : PopupViewModelBase
     private ResultKind _resultKind = ResultKind.None;
 
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(AcceptCommand))]
     private bool _isBusy;
+
+    private FileOperationRequest? _operation;
 
     public FileResultDialogViewModel()
     {
@@ -40,12 +43,19 @@ public sealed partial class FileResultDialogViewModel : PopupViewModelBase
         var reader = new DialogParameterReader(parameter);
         Title = reader.GetString(SystemDialogParameters.Title) ?? Title;
         var mode = reader.GetString(SystemDialogParameters.FileMode);
+        _operation = reader.Find(SystemDialogParameters.FileOperation) as FileOperationRequest;
         IsSelectMode = !string.Equals(mode, SystemDialogParameters.FileModeResult, StringComparison.OrdinalIgnoreCase);
         if (IsSelectMode)
         {
             FileName = reader.GetString(SystemDialogParameters.FileName) ?? string.Empty;
             Message = null;
             ResultKind = ResultKind.None;
+            if (_operation is { } operation && reader.Find(SystemDialogParameters.FileAutoStart) is true)
+            {
+                // Vorgang laeuft sofort: Zustand "Laeuft" ohne Auswahlfeld, danach Ergebnis im selben Pop-up.
+                IsSelectMode = false;
+                _ = RunAsync(operation);
+            }
         }
         else
         {
@@ -54,5 +64,44 @@ public sealed partial class FileResultDialogViewModel : PopupViewModelBase
         }
     }
 
-    protected override object? GetResult() => IsSelectMode ? FileName.Trim() : null;
+    protected override bool CanAccept() => !IsBusy;
+
+    // Auswahl mit Vorgang: Laeuft (IsBusy) und danach Ergebnis im selben Pop-up; "Schliessen" beendet es.
+    protected override bool HandleAccept()
+    {
+        if (!IsSelectMode || _operation is not { } operation)
+        {
+            return false;
+        }
+
+        _ = RunAsync(operation);
+        return true;
+    }
+
+    private async Task RunAsync(FileOperationRequest operation)
+    {
+        var file = FileName.Trim();
+        IsBusy = true;
+        operation.Busy?.Invoke(true);
+        FileOperationResult result;
+        try
+        {
+            result = await operation.Run(file);
+        }
+        catch (Exception ex)
+        {
+            result = new FileOperationResult(false, 0, file, ex.Message);
+        }
+        finally
+        {
+            operation.Busy?.Invoke(false);
+            IsBusy = false;
+        }
+
+        Message = operation.Format(result);
+        ResultKind = result.Success ? ResultKind.Success : ResultKind.Error;
+        IsSelectMode = false;
+    }
+
+    protected override object? GetResult() => _operation is not null || IsSelectMode ? FileName.Trim() : null;
 }

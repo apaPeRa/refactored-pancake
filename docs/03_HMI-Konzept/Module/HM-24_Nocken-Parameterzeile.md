@@ -38,6 +38,7 @@ Die HS-IDs entsprechen den RS-Nummern 1:1 (A-46). Die Liste ist aus den Abschnit
 - **Control:** `HM24_CamParameterRow` (UserControl), Ordner `src/.../Controls/`, Code-behind nur Dependency-Property-Deklarationen ohne Logik (Custom Control, A-73).
 - **Typ:** `UserControl` (`HM24_CamParameterRow`), `Grid` mit Beschriftung und drei Spalten.
 - **Dependency Properties:** `Label`, `Angle`, `Time`, `Result`, `EncoderName`, `IsPendingWrite`.
+- **Ergänzung (Behebung der Prüfbefunde M2):** Zustand Fehler über die neue Eigenschaft `ErrorText`: Symbol `Icon.Status.Error` und Text unter der Zeile. Einheiten (°, ms) aus den Ressourcen.
 - **Symbole** (`Themes/Icons.xaml`, Schema `Icon.<Bereich>.<Name>`): Designsystem: `Icon.Status.Error`; neu, definiert in anderem Modul: `Icon.State.Pending` (HM-08).
 - **Namensschema:** Controls heißen nach der HM-ID (A-56).
 - **Texte:** Beschriftungen, Statuswörter und `AutomationProperties.Name` aus `.resx` (Schlüsselschema `<Bereich>_<Element>_<Eigenschaft>`); keine Hex-, Pixel- oder Literaltexte im XAML.
