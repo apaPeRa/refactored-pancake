@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HM-02 Kopfzeile (HM02_HeaderBar): Raster 12* : 13* : 6* : 4* (Size.Header.Col.*) = Logo, Meldezeile (HM-03), Betriebsart, Uhr/Datum.
      Betriebsart mit zweitem Kanal: Symbol + Wort; Service = Warnflaeche mit Kontur Border.Medium und Icon.Status.Warning, Stoerung = Fehlerflaeche mit Icon.Status.Error.
-     Uhr: Ziffern und Datum als Anzeige; ungueltige Zeit als Text (Strich-Platzhalter). Das Format ist kulturunabhaengig (HH:mm:ss, dd.MM.yyyy). -->
+     Uhr: Ziffern und Datum als Anzeige; ungueltige Zeit als Text (Strich-Platzhalter). Das Format folgt CurrentCulture (Standardformate T, t, d; de-DE: HH:mm:ss, HH:mm, dd.MM.yyyy). -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
                     xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+
+  <local:HM02_ClockFormatConverter x:Key="HM02.ClockFormat" />
 
   <Style TargetType="{x:Type local:HM02_HeaderBar}">
     <Setter Property="Focusable" Value="False" />
@@ -77,13 +79,13 @@
                       CornerRadius="{StaticResource Radius.Control}">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                   <TextBlock x:Name="TimeSeconds" Style="{StaticResource Text.Metric}" TextWrapping="NoWrap" HorizontalAlignment="Center"
-                             Text="{Binding Now, RelativeSource={RelativeSource TemplatedParent}, StringFormat=HH:mm:ss}" />
+                             Text="{Binding Now, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HM02.ClockFormat}, ConverterParameter=T}" />
                   <TextBlock x:Name="TimeMinutes" Visibility="Collapsed" Style="{StaticResource Text.Metric}" TextWrapping="NoWrap" HorizontalAlignment="Center"
-                             Text="{Binding Now, RelativeSource={RelativeSource TemplatedParent}, StringFormat=HH:mm}" />
+                             Text="{Binding Now, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HM02.ClockFormat}, ConverterParameter=t}" />
                   <TextBlock x:Name="TimeInvalid" Visibility="Collapsed" Style="{StaticResource Text.Metric}" TextWrapping="NoWrap" HorizontalAlignment="Center"
                              Text="{res:Loc HM02_Time_Invalid}" />
                   <TextBlock x:Name="DateText" Style="{StaticResource Text.Caption}" TextWrapping="NoWrap" HorizontalAlignment="Center"
-                             Text="{Binding Now, RelativeSource={RelativeSource TemplatedParent}, StringFormat=dd.MM.yyyy}" />
+                             Text="{Binding Now, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HM02.ClockFormat}, ConverterParameter=d}" />
                   <TextBlock x:Name="DateInvalid" Visibility="Collapsed" Style="{StaticResource Text.Caption}" TextWrapping="NoWrap" HorizontalAlignment="Center"
                              Text="{res:Loc HM02_Date_Invalid}" />
                 </StackPanel>

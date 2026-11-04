@@ -1,5 +1,7 @@
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using ApaTec.Hmi.Models;
@@ -125,4 +127,14 @@ public sealed class HM02_HeaderBar : Control
         get => (ICommand?)GetValue(MessageCommandProperty);
         set => SetValue(MessageCommandProperty, value);
     }
+}
+
+/// <summary>Uhrzeit bzw. Datum der Kopfzeile nach <see cref="CultureInfo.CurrentCulture"/> (nicht nach der Binding-Kultur); Parameter = Standardformat <c>T</c>, <c>t</c> oder <c>d</c>.</summary>
+[ValueConversion(typeof(DateTime), typeof(string))]
+public sealed class HM02_ClockFormatConverter : IValueConverter
+{
+    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture) =>
+        value is DateTime time ? time.ToString(parameter as string ?? "T", CultureInfo.CurrentCulture) : string.Empty;
+
+    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) => Binding.DoNothing;
 }

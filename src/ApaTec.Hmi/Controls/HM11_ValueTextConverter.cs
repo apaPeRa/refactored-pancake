@@ -25,9 +25,9 @@ public sealed class HM11_ValueTextConverter : IMultiValueConverter
         var decimals = values[4] is int d ? Math.Clamp(d, 0, 3) : 0;
         return kind switch
         {
-            ValueKind.Number => values[1] is double number ? number.ToString("N" + decimals, culture) : Invalid,
+            ValueKind.Number => values[1] is double number ? number.ToString("N" + decimals, CultureInfo.CurrentCulture) : Invalid,
             ValueKind.Text => values[2] is string { Length: > 0 } text ? text : Invalid,
-            ValueKind.DateTime => values[3] is DateTime time ? time.ToString(DatePattern, culture) : DatePlaceholder,
+            ValueKind.DateTime => values[3] is DateTime time ? time.ToString(DatePattern, CultureInfo.CurrentCulture) : DatePlaceholder,
             ValueKind.Duration => FormatDuration(values[3], parameter as string),
             _ => Invalid,
         };

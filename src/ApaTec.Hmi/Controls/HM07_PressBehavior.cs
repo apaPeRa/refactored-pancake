@@ -67,6 +67,7 @@ public static class HM07_PressBehavior
         }
 
         button.IsEnabledChanged += OnIsEnabledChanged;
+        button.LostMouseCapture += OnLostMouseCapture;
         button.Unloaded += OnUnloaded;
     }
 
@@ -79,6 +80,11 @@ public static class HM07_PressBehavior
 
         if (button.IsPressed)
         {
+            if ((bool)button.GetValue(WasPressedProperty))
+            {
+                return; // Finger kehrt in die Taste zurueck (CancelOnLeave false): das Halten laeuft weiter
+            }
+
             button.SetValue(WasPressedProperty, true);
             Run(GetPressCommand(button));
             if (button is HM07_ActionButton { TriggerMode: ActionTriggerMode.Hold } holdButton && CanHold(holdButton))
@@ -86,7 +92,20 @@ public static class HM07_PressBehavior
                 StartHold(holdButton);
             }
         }
-        else
+        else if (!KeepsHoldingOutside(button))
+        {
+            EndPress(button);
+        }
+    }
+
+    // CancelOnLeave false (nur Modus Hold): Haelt der Finger die Taste weiter gedrueckt (Maus bzw. Touch erfasst), bricht das Verlassen der Flaeche das Halten nicht ab;
+    // das Ende kommt mit dem Loslassen (LostMouseCapture). Totmann (WhilePressed) bricht immer ab (A-90).
+    private static bool KeepsHoldingOutside(ButtonBase button) =>
+        button is HM07_ActionButton { TriggerMode: ActionTriggerMode.Hold, CancelOnLeave: false, IsHolding: true } && button.IsMouseCaptured;
+
+    private static void OnLostMouseCapture(object sender, MouseEventArgs e)
+    {
+        if (sender is ButtonBase { IsPressed: false } button)
         {
             EndPress(button);
         }

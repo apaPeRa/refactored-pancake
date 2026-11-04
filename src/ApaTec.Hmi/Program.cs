@@ -13,6 +13,16 @@ public static class Program
     [STAThread]
     public static int Main(string[] args)
     {
+        // App-Kultur de-DE (Dezimalkomma, Datum/Zeit): Standard fuer alle Threads und fuer die Sprache der WPF-Elemente (sonst en-US bei Bindungen mit StringFormat).
+        var culture = System.Globalization.CultureInfo.GetCultureInfo("de-DE");
+        System.Globalization.CultureInfo.CurrentCulture = culture;
+        System.Globalization.CultureInfo.CurrentUICulture = culture;
+        System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
+        System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
+        System.Windows.FrameworkElement.LanguageProperty.OverrideMetadata(
+            typeof(System.Windows.FrameworkElement),
+            new System.Windows.FrameworkPropertyMetadata(System.Windows.Markup.XmlLanguage.GetLanguage(culture.IetfLanguageTag)));
+
         using var host = Host.CreateDefaultBuilder(args)
             .ConfigureServices(services => services.AddApaTecHmi())
             .Build();

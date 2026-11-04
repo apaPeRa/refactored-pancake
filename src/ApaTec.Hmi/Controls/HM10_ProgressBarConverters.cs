@@ -5,7 +5,7 @@ using System.Windows.Data;
 namespace ApaTec.Hmi.Controls;
 
 /// <summary>
-/// Formatiert den Wert von HM-10 mit <c>StringFormat</c> und geschuetztem Leerzeichen vor "%" (z. B. "83 %"). Ungueltiger Wert ergibt "---".
+/// Formatiert (nach CurrentCulture, nicht nach der Binding-Kultur: Dezimalkomma) den Wert von HM-10 mit <c>StringFormat</c> und geschuetztem Leerzeichen vor "%" (z. B. "83 %"). Ungueltiger Wert ergibt "---".
 /// Eingaben: Value, StringFormat, IsValueValid.
 /// </summary>
 public sealed class HM10_PercentTextConverter : IMultiValueConverter
@@ -21,7 +21,7 @@ public sealed class HM10_PercentTextConverter : IMultiValueConverter
         }
 
         var format = values[1] as string;
-        return value.ToString(string.IsNullOrEmpty(format) ? "N0" : format, culture) + Suffix;
+        return value.ToString(string.IsNullOrEmpty(format) ? "N0" : format, CultureInfo.CurrentCulture) + Suffix;
     }
 
     public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture) => throw new NotSupportedException();

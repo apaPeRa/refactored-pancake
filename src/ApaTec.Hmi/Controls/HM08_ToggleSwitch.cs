@@ -36,6 +36,10 @@ public class HM08_ToggleSwitch : ToggleButton
     public static readonly DependencyProperty PartialTextProperty = DependencyProperty.Register(
         nameof(PartialText), typeof(string), typeof(HM08_ToggleSwitch), new PropertyMetadata(string.Empty));
 
+    /// <summary>Hinweistext im Sammelzustand "Teilweise" (Tooltip und Automation); nennt z. B. die abgewaehlten Funktionen. Leer = Standardtext.</summary>
+    public static readonly DependencyProperty PartialTooltipProperty = DependencyProperty.Register(
+        nameof(PartialTooltip), typeof(string), typeof(HM08_ToggleSwitch), new PropertyMetadata(string.Empty));
+
     public static readonly DependencyProperty OnTextProperty = DependencyProperty.Register(
         nameof(OnText), typeof(string), typeof(HM08_ToggleSwitch), new PropertyMetadata(string.Empty));
 
@@ -87,6 +91,12 @@ public class HM08_ToggleSwitch : ToggleButton
     {
         get => (string)GetValue(PartialTextProperty);
         set => SetValue(PartialTextProperty, value);
+    }
+
+    public string PartialTooltip
+    {
+        get => (string)GetValue(PartialTooltipProperty);
+        set => SetValue(PartialTooltipProperty, value);
     }
 
     public string OnText

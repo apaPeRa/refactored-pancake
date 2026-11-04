@@ -34,4 +34,6 @@
   <data name="HM05_Angle_Automation" xml:space="preserve"><value>Maschinenwinkel</value><comment>Barrierefreiheitsname der Kennzahl Maschinenwinkel</comment></data>
   <data name="HM06_Bar_Automation" xml:space="preserve"><value>Funktionsleiste</value><comment>Barrierefreiheitsname der Funktionsleiste (HM-06)</comment></data>
   <data name="HM06_More_Label" xml:space="preserve"><value>Mehr</value><comment>Ueberlauf-Taste der Funktionsleiste</comment></data>
+  <data name="HM04_Collapsed_Text" xml:space="preserve"><value>…</value><comment>HM-04: Taste für gekürzte mittlere Segmente</comment></data>
+  <data name="HM04_Collapsed_Name" xml:space="preserve"><value>Vollständiger Pfad</value><comment>HM-04: Tooltip und Automationsname der Taste für gekürzte Segmente</comment></data>
 </root>

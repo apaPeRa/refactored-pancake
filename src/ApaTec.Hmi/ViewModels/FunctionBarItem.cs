@@ -40,6 +40,14 @@ public sealed partial class FunctionBarItem : ObservableObject
     [ObservableProperty]
     private bool _isEnabled = true;
 
+    /// <summary>Taste gehoert zur rechtsbuendigen Gruppe der Hauptaktion (HM-06 <c>TrailingItems</c>, hoechstens 2); sie zaehlt nicht zu den 5 Tasten links.</summary>
+    [ObservableProperty]
+    private bool _isTrailing;
+
+    /// <summary>Langes Druecken (HM-07 Modus Hold, z. B. Reset): wird nach der Haltedauer einmal ausgefuehrt; <see cref="Command"/> bleibt dann leer.</summary>
+    [ObservableProperty]
+    private ICommand? _holdCommand;
+
     /// <summary>Kennung des Navigationsziels (Seitenschluessel) oder leer.</summary>
     [ObservableProperty]
     private string _targetId = string.Empty;

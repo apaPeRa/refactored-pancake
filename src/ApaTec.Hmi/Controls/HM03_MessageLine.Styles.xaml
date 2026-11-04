@@ -62,14 +62,18 @@
                              Text="{res:Loc HM03_Class_Fault}" />
                 </Grid>
 
-                <!-- "NNN: Text" -->
-                <StackPanel x:Name="MessagePanel" Grid.Column="2" Orientation="Horizontal" Visibility="Collapsed">
-                  <TextBlock x:Name="NumberText" TextWrapping="NoWrap" FontWeight="{StaticResource Font.Weight.Strong}"
+                <!-- "NNN: Text": einzeilig, Nummer Auto, Text in der Stern-Spalte mit Auslassung (Volltext im Tooltip der Flaeche) -->
+                <Grid x:Name="MessagePanel" Grid.Column="2" Visibility="Collapsed">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock x:Name="NumberText" Grid.Column="0" TextWrapping="NoWrap" FontWeight="{StaticResource Font.Weight.Strong}"
                              Typography.NumeralAlignment="Tabular"
                              Text="{Binding Number, RelativeSource={RelativeSource TemplatedParent}, StringFormat='{}{0:D3}: '}" />
-                  <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                  <TextBlock Grid.Column="1" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
                              Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" />
-                </StackPanel>
+                </Grid>
 
                 <!-- Keine Meldung -->
                 <TextBlock x:Name="NoMessageText" Grid.Column="2" TextWrapping="NoWrap"

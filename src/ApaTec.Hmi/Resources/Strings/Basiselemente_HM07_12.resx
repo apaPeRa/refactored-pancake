@@ -93,4 +93,5 @@
   <data name="HM12_Sample_Designation_Value" xml:space="preserve"><value>Rezept 1</value></data>
   <data name="HM12_Sample_AutoZero" xml:space="preserve"><value>Automatischer Nullpunkt:</value></data>
   <data name="HM12_Sample_ErrorText" xml:space="preserve"><value>Wert außerhalb 0 bis 100 %</value></data>
+  <data name="HM08_Partial_Hint" xml:space="preserve"><value>Sammelzustand: nicht alle zugehörigen Funktionen sind eingeschaltet</value><comment>HM-08: Standard-Tooltip und Hilfetext im Zustand Teilweise (PartialTooltip)</comment></data>
 </root>

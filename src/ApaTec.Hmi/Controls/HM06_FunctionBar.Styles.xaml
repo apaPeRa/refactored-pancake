@@ -2,14 +2,15 @@
 <!-- HM-06 Funktionsleiste (HM06_FunctionBar): Flaeche Brush.Surface.Sunken, Innenrand Inset.M (Taste 64 + 2 x 16 = Size.FunctionBar.Height), Tasten links mit Space.M Abstand,
      rechtsbuendige Gruppe fuer die Hauptaktion. Die Leiste bleibt auch leer sichtbar. Gesperrt hinter Pop-ups: IsEnabled = false (gestrichelte Kontur, bleibt sichtbar).
      Taste der aktuellen Seite bzw. eingeschaltete Zustandstaste: Brush.Button.Active mit Haken (Icon.State.On) und Balken (Border.Thick) unten.
-     Der Standard-Darstellung fuer FunctionBarItem steht hier; HM-07/HM-08/HM-19 koennen sie per ItemTemplate ersetzen (Ueberlauf "Mehr" ab der 6. Taste: nicht realisiert, Seiten liefern hoechstens 5). -->
+     Darstellung je FunctionBarItem.Kind: Action = HM-07 (Aktionstaste, mit Halten ueber HoldCommand), State = HM-08 (Zustandstaste, Darstellung Button), Paging = HM-19 (Pfeiltaste vor/zurueck).
+     Ab der 6. Taste links erscheint die Ueberlauf-Taste "Mehr" (Icon.More) mit Pop-up fuer die weiteren Tasten; Tasten mit IsTrailing stehen rechtsbuendig. -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
                     xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
                     xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
 
-  <Style x:Key="HM06_FunctionButton" TargetType="Button">
+  <Style x:Key="HM06_FunctionButton" TargetType="ButtonBase">
     <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
     <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
     <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />
@@ -20,7 +21,7 @@
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
-        <ControlTemplate TargetType="Button">
+        <ControlTemplate TargetType="ButtonBase">
           <ControlTemplate.Resources>
             <local:HM06_IconKeyConverter x:Key="IconKey" />
             <local:HM06_ActiveConverter x:Key="Active" />
@@ -118,16 +119,112 @@
     </Setter>
   </Style>
 
-  <!-- Standard-Darstellung einer Taste (FunctionBarItem); Abstand zur naechsten Taste Space.M -->
-  <DataTemplate DataType="{x:Type vm:FunctionBarItem}">
+  <local:HM06_IconKeyConverter x:Key="HM06.IconKey" />
+  <local:HM06_ActiveConverter x:Key="HM06.Active" />
+  <local:HM06_ItemsViewConverter x:Key="HM06.ItemsView" />
+  <local:HM06_TriggerModeConverter x:Key="HM06.TriggerMode" />
+  <local:HM06_PagerSideConverter x:Key="HM06.PagerSide" />
+
+  <!-- Datenkontext der Ueberlauf-Taste "Mehr" -->
+  <vm:FunctionBarItem x:Key="HM06.MoreItem" Label="{res:Loc HM06_More_Label}" IconKey="Icon.More" />
+
+  <!-- Action: HM-07-Aktionstaste; Taste der aktuellen Seite mit Haken (Form) und Balken, Halten ueber HoldCommand (Fortschrittsstreifen) -->
+  <DataTemplate x:Key="HM06.Template.Action" DataType="{x:Type vm:FunctionBarItem}">
     <StackPanel Orientation="Horizontal">
-      <Button Style="{StaticResource HM06_FunctionButton}"
-              Command="{Binding Command}"
-              CommandParameter="{Binding CommandParameter}"
-              IsEnabled="{Binding IsEnabled}"
-              AutomationProperties.Name="{Binding Label}" />
+      <Grid>
+        <local:HM07_ActionButton x:Name="ActionButton"
+                                 MinWidth="{StaticResource Size.FunctionButton.MinWidth}"
+                                 Label="{Binding Label}"
+                                 Icon="{Binding IconKey, Converter={StaticResource HM06.IconKey}}"
+                                 Command="{Binding Command}"
+                                 CommandParameter="{Binding CommandParameter}"
+                                 TriggerMode="{Binding HoldCommand, Converter={StaticResource HM06.TriggerMode}}"
+                                 local:HM07_PressBehavior.HoldCompletedCommand="{Binding HoldCommand}"
+                                 IsEnabled="{Binding IsEnabled}" />
+        <Rectangle x:Name="ActiveBar" Visibility="Collapsed" IsHitTestVisible="False"
+                   VerticalAlignment="Bottom"
+                   Height="{StaticResource Size.Icon.Stroke.Thick}"
+                   Fill="{DynamicResource Brush.Text.OnActive}" />
+        <Viewbox x:Name="ActiveCheck" Visibility="Collapsed" IsHitTestVisible="False"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}"
+                 Margin="{StaticResource Inset.XS}">
+          <Grid>
+            <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
+            <Path Data="{StaticResource Icon.State.On}"
+                  StrokeThickness="{StaticResource Size.Icon.Stroke}"
+                  StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                  Stroke="{DynamicResource Brush.Text.OnActive}" />
+          </Grid>
+        </Viewbox>
+      </Grid>
       <Border Width="{StaticResource Space.M}" />
     </StackPanel>
+    <DataTemplate.Triggers>
+      <DataTrigger Value="True">
+        <DataTrigger.Binding>
+          <MultiBinding Converter="{StaticResource HM06.Active}">
+            <Binding Path="IsActive" />
+            <Binding Path="TargetId" />
+            <Binding Path="CurrentTargetId" RelativeSource="{RelativeSource AncestorType={x:Type local:HM06_FunctionBar}}" />
+          </MultiBinding>
+        </DataTrigger.Binding>
+        <Setter TargetName="ActionButton" Property="Background" Value="{DynamicResource Brush.Button.Active}" />
+        <Setter TargetName="ActionButton" Property="Foreground" Value="{DynamicResource Brush.Text.OnActive}" />
+        <Setter TargetName="ActiveBar" Property="Visibility" Value="Visible" />
+        <Setter TargetName="ActiveCheck" Property="Visibility" Value="Visible" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
+
+  <!-- State: HM-08-Zustandstaste in der Darstellung Button (Ein/Aus als Wort und Symbol) -->
+  <DataTemplate x:Key="HM06.Template.State" DataType="{x:Type vm:FunctionBarItem}">
+    <StackPanel Orientation="Horizontal">
+      <local:HM08_ToggleSwitch ToggleStyle="Button"
+                               MinWidth="{StaticResource Size.FunctionButton.MinWidth}"
+                               Label="{Binding Label}"
+                               Icon="{Binding IconKey, Converter={StaticResource HM06.IconKey}}"
+                               IsChecked="{Binding IsActive, Mode=TwoWay}"
+                               ToggleCommand="{Binding Command}"
+                               CommandParameter="{Binding CommandParameter}"
+                               IsEnabled="{Binding IsEnabled}" />
+      <Border Width="{StaticResource Space.M}" />
+    </StackPanel>
+  </DataTemplate>
+
+  <!-- Paging: HM-19-Pfeiltaste (die erste Blaettertaste der Leiste blaettert zurueck, jede weitere vor) -->
+  <DataTemplate x:Key="HM06.Template.Paging" DataType="{x:Type vm:FunctionBarItem}">
+    <StackPanel Orientation="Horizontal">
+      <local:HM19_PagerButtons PreviousCommand="{Binding Command}"
+                               NextCommand="{Binding Command}"
+                               IsEnabled="{Binding IsEnabled}">
+        <local:HM19_PagerButtons.PagerStyle>
+          <MultiBinding Converter="{StaticResource HM06.PagerSide}">
+            <Binding />
+            <Binding Path="Items" RelativeSource="{RelativeSource AncestorType={x:Type local:HM06_FunctionBar}}" />
+          </MultiBinding>
+        </local:HM19_PagerButtons.PagerStyle>
+      </local:HM19_PagerButtons>
+      <Border Width="{StaticResource Space.M}" />
+    </StackPanel>
+  </DataTemplate>
+
+  <!-- Eine Taste (FunctionBarItem): Vorlage nach Kind -->
+  <DataTemplate DataType="{x:Type vm:FunctionBarItem}">
+    <ContentControl Content="{Binding}" Focusable="False" IsTabStop="False" ContentTemplate="{StaticResource HM06.Template.Action}">
+      <ContentControl.Style>
+        <Style TargetType="ContentControl">
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Kind}" Value="State">
+              <Setter Property="ContentTemplate" Value="{StaticResource HM06.Template.State}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Kind}" Value="Paging">
+              <Setter Property="ContentTemplate" Value="{StaticResource HM06.Template.Paging}" />
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </ContentControl.Style>
+    </ContentControl>
   </DataTemplate>
 
   <Style TargetType="{x:Type local:HM06_FunctionBar}">
@@ -146,22 +243,72 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
-              <ItemsControl Grid.Column="0" Focusable="False" ItemsSource="{TemplateBinding Items}">
-                <ItemsControl.ItemsPanel>
-                  <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
-                  </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-              </ItemsControl>
-              <ItemsControl Grid.Column="1" Focusable="False" HorizontalAlignment="Right" ItemsSource="{TemplateBinding TrailingItems}">
-                <ItemsControl.ItemsPanel>
-                  <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
-                  </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-              </ItemsControl>
+              <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <ItemsControl Focusable="False" ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HM06.ItemsView}, ConverterParameter=Main}">
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <!-- Ueberlauf ab der 6. Taste: Taste "Mehr" (Text und Icon.More) mit Pop-up -->
+                <StackPanel x:Name="MoreHost" Orientation="Horizontal" Visibility="Collapsed">
+                  <ToggleButton x:Name="MoreButton"
+                                DataContext="{StaticResource HM06.MoreItem}"
+                                AutomationProperties.Name="{Binding Label}"
+                                IsChecked="{Binding IsOpen, ElementName=MorePopup, Mode=TwoWay}">
+                    <ToggleButton.Style>
+                      <Style TargetType="ToggleButton" BasedOn="{StaticResource HM06_FunctionButton}">
+                        <Style.Triggers>
+                          <!-- offenes Pop-up: Antippen der Taste schliesst es nur einmal (kein Wiederoeffnen) -->
+                          <DataTrigger Binding="{Binding IsOpen, ElementName=MorePopup}" Value="True">
+                            <Setter Property="IsHitTestVisible" Value="False" />
+                          </DataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </ToggleButton.Style>
+                  </ToggleButton>
+                  <Border Width="{StaticResource Space.M}" />
+                  <Popup x:Name="MorePopup" PlacementTarget="{Binding ElementName=MoreButton}" Placement="Top" StaysOpen="False" AllowsTransparency="False">
+                    <Border Background="{DynamicResource Brush.Surface.Sunken}"
+                            BorderBrush="{DynamicResource Brush.Border.Control}"
+                            BorderThickness="{StaticResource Border.Thin}"
+                            Padding="{StaticResource Inset.M}">
+                      <ItemsControl x:Name="OverflowItems" Focusable="False" ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HM06.ItemsView}, ConverterParameter=Overflow}">
+                        <ItemsControl.ItemsPanel>
+                          <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                          </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                      </ItemsControl>
+                    </Border>
+                  </Popup>
+                </StackPanel>
+              </StackPanel>
+              <!-- Rechtsbuendige Gruppe: Tasten mit IsTrailing und die Sammlung TrailingItems -->
+              <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <ItemsControl Focusable="False" ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource HM06.ItemsView}, ConverterParameter=Trailing}">
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <ItemsControl Focusable="False" ItemsSource="{TemplateBinding TrailingItems}">
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+                </ItemsControl>
+              </StackPanel>
             </Grid>
           </Border>
+          <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding HasItems, ElementName=OverflowItems}" Value="True">
+              <Setter TargetName="MoreHost" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+          </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

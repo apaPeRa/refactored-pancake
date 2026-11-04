@@ -55,6 +55,17 @@ public class HM07_ActionButton : Button
         DefaultStyleKeyProperty.OverrideMetadata(typeof(HM07_ActionButton), new FrameworkPropertyMetadata(typeof(HM07_ActionButton)));
     }
 
+    /// <summary>Im Modus Hold loest das Antippen keinen <see cref="ButtonBase.Command"/> aus; die Aktion laeuft erst nach der Haltedauer (<c>HM07_PressBehavior.HoldCompletedCommand</c>).</summary>
+    protected override void OnClick()
+    {
+        if (TriggerMode == ActionTriggerMode.Hold)
+        {
+            return;
+        }
+
+        base.OnClick();
+    }
+
     public string Label
     {
         get => (string)GetValue(LabelProperty);

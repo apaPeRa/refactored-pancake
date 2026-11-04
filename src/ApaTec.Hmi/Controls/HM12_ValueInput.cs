@@ -213,8 +213,8 @@ public sealed class HM12_ValueTextConverter : IMultiValueConverter
         var decimals = values[3] is int d ? Math.Clamp(d, 0, 3) : 0;
         return kind switch
         {
-            InputKind.Number => values[1] is double number ? number.ToString("N" + decimals, culture) : Invalid,
-            InputKind.Time => values[1] is double minutes ? TimeSpan.FromMinutes(minutes).ToString(@"hh\:mm", culture) : values[2] is string { Length: > 0 } timeText ? timeText : Invalid,
+            InputKind.Number => values[1] is double number ? number.ToString("N" + decimals, CultureInfo.CurrentCulture) : Invalid,
+            InputKind.Time => values[1] is double minutes ? TimeSpan.FromMinutes(minutes).ToString(@"hh\:mm", CultureInfo.CurrentCulture) : values[2] is string { Length: > 0 } timeText ? timeText : Invalid,
             InputKind.Text => values[2] is string { Length: > 0 } text ? text : Invalid,
             _ => Invalid,
         };

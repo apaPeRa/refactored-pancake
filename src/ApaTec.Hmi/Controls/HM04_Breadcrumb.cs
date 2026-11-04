@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using ApaTec.Hmi.Navigation;
 
@@ -42,4 +45,39 @@ public sealed class HM04_Breadcrumb : Control
         get => (ICommand?)GetValue(NavigateCommandProperty);
         set => SetValue(NavigateCommandProperty, value);
     }
+}
+
+/// <summary>Zusammengefasste mittlere Segmente des Brotkruemel-Pfads (Anzeige "…", HM-04); die verdeckten Segmente stehen im Pop-up hinter der Taste.</summary>
+public sealed record HM04_CollapsedSegment(IReadOnlyList<BreadcrumbItem> HiddenSegments, ICommand? NavigateCommand);
+
+/// <summary>
+/// Kuerzt den Pfad bei mehr als <see cref="MaxSegments"/> Segmenten: erstes Segment, "…" (<see cref="HM04_CollapsedSegment"/>) und die letzten drei Segmente.
+/// </summary>
+public sealed class HM04_CollapseConverter : IMultiValueConverter
+{
+    /// <summary>Hoechstzahl sichtbarer Segmente (inklusive der Taste "…").</summary>
+    public const int MaxSegments = 5;
+
+    /// <summary>values[0] = Segmente, values[1] = Navigationsbefehl des Controls.</summary>
+    public object? Convert(object?[] values, Type targetType, object? parameter, CultureInfo culture)
+    {
+        if (values.Length == 0 || values[0] is not IEnumerable items)
+        {
+            return null;
+        }
+
+        var all = items.OfType<BreadcrumbItem>().ToList();
+        if (all.Count <= MaxSegments)
+        {
+            return all;
+        }
+
+        var command = values.Length > 1 ? values[1] as ICommand : null;
+        var tail = MaxSegments - 2;
+        var result = new List<object> { all[0], new HM04_CollapsedSegment(all.GetRange(1, all.Count - 1 - tail), command) };
+        result.AddRange(all.GetRange(all.Count - tail, tail));
+        return result;
+    }
+
+    public object[] ConvertBack(object? value, Type[] targetTypes, object? parameter, CultureInfo culture) => throw new NotSupportedException();
 }

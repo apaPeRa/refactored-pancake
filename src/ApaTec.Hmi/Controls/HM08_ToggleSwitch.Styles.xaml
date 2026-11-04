@@ -79,6 +79,7 @@
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="AutomationProperties.Name" Value="{Binding Label, RelativeSource={RelativeSource Self}}" />
     <Setter Property="Command" Value="{Binding ToggleCommand, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="PartialTooltip" Value="{res:Loc HM08_Partial_Hint}" />
     <Setter Property="CommandParameter" Value="{Binding IsChecked, RelativeSource={RelativeSource Self}}" />
     <Setter Property="Template">
       <Setter.Value>
@@ -221,6 +222,8 @@
             </MultiTrigger>
             <!-- Teilweise (Sammelzustand): Knopf Mitte, Kontur 2 px, Symbol Strich im Kreis und Wort -->
             <Trigger Property="IsChecked" Value="{x:Null}">
+              <Setter Property="ToolTip" Value="{Binding PartialTooltip, RelativeSource={RelativeSource Self}}" />
+              <Setter Property="AutomationProperties.HelpText" Value="{Binding PartialTooltip, RelativeSource={RelativeSource Self}}" />
               <Setter TargetName="Track" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
               <Setter TargetName="Knob" Property="HorizontalAlignment" Value="Center" />
               <Setter TargetName="StateIcon" Property="Data" Value="{StaticResource Icon.State.Partial}" />

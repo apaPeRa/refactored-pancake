@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HM-04 Brotkruemel-Navigation (HM04_Breadcrumb): Segmente Hoehe Size.Touch.Default auf Brush.Surface.Sunken, Kontur Border.Thin, Trenner Icon.Chevron (Pfeilform).
      Aktuelles Segment (letztes): Fettschrift, nicht antippbar. Gedrueckt: Brush.Button.Pressed mit Border.Medium. Nicht navigierbar/gesperrt: gestrichelte Kontur.
-     Gesperrt hinter Pop-ups: IsEnabled = false (Navigation.md 4.2). Kuerzen auf "..." bei mehr als fuenf Segmenten liefert der Navigationsdienst. -->
+     Gesperrt hinter Pop-ups: IsEnabled = false (Navigation.md 4.2). Mehr als fuenf Segmente kuerzt das Control (HM04_CollapseConverter): erstes Segment, Taste "…" mit Pop-up der verdeckten Segmente, letzte drei Segmente. -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
                     xmlns:nav="clr-namespace:ApaTec.Hmi.Navigation"
                     xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
 
-  <Style x:Key="HM04_SegmentButton" TargetType="Button">
+  <local:HM04_CollapseConverter x:Key="HM04.Collapse" />
+
+  <Style x:Key="HM04_SegmentButton" TargetType="ButtonBase">
     <Setter Property="FontFamily" Value="{StaticResource Font.Family.Default}" />
     <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
     <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
@@ -19,7 +21,7 @@
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
-        <ControlTemplate TargetType="Button">
+        <ControlTemplate TargetType="ButtonBase">
           <Grid>
             <Border x:Name="Face"
                     Background="{DynamicResource Brush.Surface.Sunken}"
@@ -67,13 +69,19 @@
           <Border Padding="{StaticResource Inset.Button}"
                   AutomationProperties.Name="{res:Loc HM04_Breadcrumb_Automation}">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-              <ItemsControl Focusable="False" ItemsSource="{TemplateBinding Segments}">
+              <ItemsControl Focusable="False">
+                <ItemsControl.ItemsSource>
+                  <MultiBinding Converter="{StaticResource HM04.Collapse}">
+                    <Binding Path="Segments" RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="NavigateCommand" RelativeSource="{RelativeSource TemplatedParent}" />
+                  </MultiBinding>
+                </ItemsControl.ItemsSource>
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
                   </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
+                <ItemsControl.Resources>
                   <DataTemplate DataType="{x:Type nav:BreadcrumbItem}">
                     <StackPanel Orientation="Horizontal">
                       <!-- Antippbares Segment -->
@@ -119,7 +127,46 @@
                       </DataTrigger>
                     </DataTemplate.Triggers>
                   </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                  <!-- Gekuerzte mittlere Segmente: Taste "…", Antippen oeffnet den vollstaendigen Pfad -->
+                  <DataTemplate DataType="{x:Type local:HM04_CollapsedSegment}">
+                    <StackPanel Orientation="Horizontal">
+                      <ToggleButton x:Name="MoreButton"
+                                    Style="{StaticResource HM04_SegmentButton}"
+                                    Content="{res:Loc HM04_Collapsed_Text}"
+                                    AutomationProperties.Name="{res:Loc HM04_Collapsed_Name}"
+                                    ToolTip="{res:Loc HM04_Collapsed_Name}"
+                                    IsChecked="{Binding IsOpen, ElementName=MorePopup, Mode=TwoWay}" />
+                      <Popup x:Name="MorePopup" PlacementTarget="{Binding ElementName=MoreButton}" Placement="Bottom" StaysOpen="False">
+                        <Border Background="{DynamicResource Brush.Surface.Sunken}"
+                                BorderBrush="{DynamicResource Brush.Border.Control}"
+                                BorderThickness="{StaticResource Border.Thin}"
+                                Padding="{StaticResource Inset.S}">
+                          <ItemsControl Focusable="False" ItemsSource="{Binding HiddenSegments}">
+                            <ItemsControl.ItemTemplate>
+                              <DataTemplate DataType="{x:Type nav:BreadcrumbItem}">
+                                <Button Style="{StaticResource HM04_SegmentButton}"
+                                        Margin="{StaticResource Inset.XS}"
+                                        Content="{Binding DisplayText}"
+                                        IsEnabled="{Binding IsNavigable}"
+                                        Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                        CommandParameter="{Binding Key}" />
+                              </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                          </ItemsControl>
+                        </Border>
+                      </Popup>
+                      <Viewbox Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}" Margin="{StaticResource Inset.S}">
+                        <Grid>
+                          <Path Data="M0,0 H24 V24 H0 Z" Fill="Transparent" />
+                          <Path Data="{StaticResource Icon.Chevron}"
+                                StrokeThickness="{StaticResource Size.Icon.Stroke}"
+                                StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                                Stroke="{DynamicResource Brush.Text.Secondary}" />
+                        </Grid>
+                      </Viewbox>
+                    </StackPanel>
+                  </DataTemplate>
+                </ItemsControl.Resources>
               </ItemsControl>
               <!-- Objektkennung (z. B. HD1) am letzten Segment -->
               <TextBlock x:Name="SuffixText"
