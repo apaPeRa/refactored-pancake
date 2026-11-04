@@ -94,4 +94,33 @@ public sealed class HM22_WeightCorrectionTable : Control
         get => (ICommand?)GetValue(TriggerCommandProperty);
         set => SetValue(TriggerCommandProperty, value);
     }
+    /// <summary>Antippen des Felds Sollgewicht (oeffnet das Eingabe-Pop-up im ViewModel).</summary>
+    public static readonly DependencyProperty EditTargetWeightCommandProperty =
+        DependencyProperty.Register(nameof(EditTargetWeightCommand), typeof(ICommand), typeof(HM22_WeightCorrectionTable), new PropertyMetadata(null));
+
+    public ICommand? EditTargetWeightCommand
+    {
+        get => (ICommand?)GetValue(EditTargetWeightCommandProperty);
+        set => SetValue(EditTargetWeightCommandProperty, value);
+    }
+
+    /// <summary>Antippen eines SOLL-Felds; <c>CommandParameter</c> = <see cref="CorrectionPoint"/> der Zeile.</summary>
+    public static readonly DependencyProperty EditNominalCommandProperty =
+        DependencyProperty.Register(nameof(EditNominalCommand), typeof(ICommand), typeof(HM22_WeightCorrectionTable), new PropertyMetadata(null));
+
+    public ICommand? EditNominalCommand
+    {
+        get => (ICommand?)GetValue(EditNominalCommandProperty);
+        set => SetValue(EditNominalCommandProperty, value);
+    }
+
+    /// <summary>Antippen eines IST-Felds; <c>CommandParameter</c> = <see cref="CorrectionPoint"/> der Zeile.</summary>
+    public static readonly DependencyProperty EditActualCommandProperty =
+        DependencyProperty.Register(nameof(EditActualCommand), typeof(ICommand), typeof(HM22_WeightCorrectionTable), new PropertyMetadata(null));
+
+    public ICommand? EditActualCommand
+    {
+        get => (ICommand?)GetValue(EditActualCommandProperty);
+        set => SetValue(EditActualCommandProperty, value);
+    }
 }

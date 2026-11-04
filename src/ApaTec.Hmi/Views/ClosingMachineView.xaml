@@ -1,0 +1,100 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ClosingMachineView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:m="clr-namespace:ApaTec.Hmi.Models"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ClosingMachineViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-16 Schliessmaschine: drei Gruppen im Raster 4 : 4 : 4 (Auslaufband | Kopfleim | Ruettlung), Inhaltshoehe, oben buendig. Nur Module HM-07/08/12/15/24/27. -->
+    <UserControl.Resources>
+        <Style x:Key="Closing.IconPath" TargetType="Path">
+            <Setter Property="Stroke" Value="{DynamicResource Brush.Text.Primary}" />
+            <Setter Property="StrokeThickness" Value="{StaticResource Size.Icon.Stroke}" />
+            <Setter Property="StrokeStartLineCap" Value="Round" />
+            <Setter Property="StrokeEndLineCap" Value="Round" />
+            <Setter Property="StrokeLineJoin" Value="Round" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Auslaufband (E01, E02) -->
+        <c:HM15_GroupPanel Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+                           Header="{res:Loc HS16_Conveyor_Header}" IsEnabled="{Binding IsEditingAllowed}">
+            <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
+                               Label="{res:Loc HS16_Conveyor_Speed_Label}"
+                               NumberValue="{Binding ConveyorSpeed.Value}" Unit="%" Decimals="0"
+                               Minimum="{Binding ConveyorSpeed.Minimum}" Maximum="{Binding ConveyorSpeed.Maximum}"
+                               ErrorText="{Binding ConveyorSpeed.ErrorText}" IsEditing="{Binding ConveyorSpeed.IsEditing}"
+                               RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                               Command="{Binding EditValueCommand}" CommandParameter="{x:Static m:ClosingField.ConveyorSpeed}" />
+        </c:HM15_GroupPanel>
+
+        <!-- Kopfleim (E03 bis E09) -->
+        <c:HM15_GroupPanel Grid.Column="1" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+                           Header="{res:Loc HS16_HeadGlue_Header}" IsEnabled="{Binding IsEditingAllowed}">
+            <StackPanel>
+                <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" ToggleStyle="Button"
+                                     Label="{res:Loc HS16_HeadGlue_Toggle_Label}"
+                                     IsChecked="{Binding HeadGlueEnabled, Mode=OneWay}" IsPending="{Binding IsHeadGluePending}"
+                                     RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                     ToggleCommand="{Binding ToggleHeadGlueCommand}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- E05 Piktogramm der Kopfleimdueen (nur Anzeige) -->
+                    <Viewbox Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+                             Width="{StaticResource Size.Icon.L}" Height="{StaticResource Size.Icon.L}">
+                        <Path Style="{StaticResource Closing.IconPath}" Data="{StaticResource Icon.Glue.Nozzle}" />
+                    </Viewbox>
+                    <StackPanel Grid.Column="1">
+                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_Start_Label}" Angle="{Binding HeadGlueStart.Value, Mode=TwoWay}" />
+                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_End_Label}" Angle="{Binding HeadGlueEnd.Value, Mode=TwoWay}" />
+                        <c:HM24_CamParameterRow Label="{res:Loc HS16_HeadGlue_Duration_Label}" Time="{Binding HeadGlueDuration.Value, Mode=TwoWay}" />
+                    </StackPanel>
+                </Grid>
+                <!-- E09 Hinweis Taktung -->
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc HS16_HeadGlue_Hint}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+
+        <!-- Ruettlung (E10 bis E14) -->
+        <c:HM15_GroupPanel Grid.Column="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Top"
+                           Header="{res:Loc HS16_Shaker_Header}" IsEnabled="{Binding IsEditingAllowed}">
+            <StackPanel>
+                <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" ToggleStyle="Button"
+                                     Label="{res:Loc HS16_Shaker_Toggle_Label}"
+                                     IsChecked="{Binding ShakerEnabled, Mode=OneWay}" IsPending="{Binding IsShakerPending}"
+                                     RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                     ToggleCommand="{Binding ToggleShakerCommand}" />
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
+                                   Label="{res:Loc HS16_Shaker1_Label}"
+                                   NumberValue="{Binding Shaker1.Value}" Unit="%" Decimals="0"
+                                   Minimum="{Binding Shaker1.Minimum}" Maximum="{Binding Shaker1.Maximum}"
+                                   ErrorText="{Binding Shaker1.ErrorText}" IsEditing="{Binding Shaker1.IsEditing}"
+                                   RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                   Command="{Binding EditValueCommand}" CommandParameter="{x:Static m:ClosingField.Shaker1}" />
+                <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
+                                   Label="{res:Loc HS16_Shaker2_Label}"
+                                   NumberValue="{Binding Shaker2.Value}" Unit="%" Decimals="0"
+                                   Minimum="{Binding Shaker2.Minimum}" Maximum="{Binding Shaker2.Maximum}"
+                                   ErrorText="{Binding Shaker2.ErrorText}" IsEditing="{Binding Shaker2.IsEditing}"
+                                   RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
+                                   Command="{Binding EditValueCommand}" CommandParameter="{x:Static m:ClosingField.Shaker2}" />
+                <!-- E14 Hinweis Ruettlung -->
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{Binding ShakerHintText}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>

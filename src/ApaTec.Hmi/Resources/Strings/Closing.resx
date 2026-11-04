@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Closing.resx: Texte der Seiten HS-16 Schließmaschine, HS-17 Motorparameter (Schließmaschine) und HS-18 Gewichtskorrektur (Schließmaschine). Schlüssel HS16_/HS17_/HS18_<Element>_<Eigenschaft>; Neutralsprache Deutsch. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS16_Conveyor_Header" xml:space="preserve"><value>Auslaufband</value><comment>HS-16 Gruppe E01</comment></data>
+  <data name="HS16_Conveyor_Speed_Label" xml:space="preserve"><value>Geschwindigkeit:</value><comment>HS-16 E02</comment></data>
+  <data name="HS16_HeadGlue_Header" xml:space="preserve"><value>Kopfleim</value><comment>HS-16 Gruppe E03</comment></data>
+  <data name="HS16_HeadGlue_Toggle_Label" xml:space="preserve"><value>Kopfleim</value><comment>HS-16 E04 Umschalter</comment></data>
+  <data name="HS16_HeadGlue_Start_Label" xml:space="preserve"><value>Anfang:</value><comment>HS-16 E06</comment></data>
+  <data name="HS16_HeadGlue_End_Label" xml:space="preserve"><value>Ende:</value><comment>HS-16 E07</comment></data>
+  <data name="HS16_HeadGlue_Duration_Label" xml:space="preserve"><value>Dauer:</value><comment>HS-16 E08</comment></data>
+  <data name="HS16_HeadGlue_Hint" xml:space="preserve"><value>Benötigt die Nocke länger, aufgrund einer reduzierten Maschinengeschwindigkeit, wird das Ventil getaktet. Damit wird die Menge an Heißleim reduziert.</value><comment>HS-16 E09 (Handbuchtext T23)</comment></data>
+  <data name="HS16_Shaker_Header" xml:space="preserve"><value>Rüttlung</value><comment>HS-16 Gruppe E10</comment></data>
+  <data name="HS16_Shaker_Toggle_Label" xml:space="preserve"><value>Rüttlung</value><comment>HS-16 E11 Umschalter</comment></data>
+  <data name="HS16_Shaker1_Label" xml:space="preserve"><value>Rüttlung 1:</value><comment>HS-16 E12</comment></data>
+  <data name="HS16_Shaker2_Label" xml:space="preserve"><value>Rüttlung 2:</value><comment>HS-16 E13</comment></data>
+  <data name="HS16_Shaker_Hint_On" xml:space="preserve"><value>Schaltet beide Rüttlungen ab.</value><comment>HS-16 E14 (Handbuchtext T24)</comment></data>
+  <data name="HS16_Shaker_Hint_Off" xml:space="preserve"><value>Beide Rüttlungen sind abgeschaltet.</value><comment>HS-16 E14 im Zustand Aus</comment></data>
+  <data name="HS16_FunctionBar_GlueDevice" xml:space="preserve"><value>Heißleimgerät</value><comment>HS-16 E15</comment></data>
+  <data name="HS16_FunctionBar_Motor" xml:space="preserve"><value>Motorparameter</value><comment>HS-16 E16</comment></data>
+  <data name="HS16_FunctionBar_WeightCorrection" xml:space="preserve"><value>Gewichtskorrektur</value><comment>HS-16 E17</comment></data>
+  <data name="HS16_Field_ConveyorSpeed" xml:space="preserve"><value>Auslaufband – Geschwindigkeit</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS16_Field_HeadGlueStart" xml:space="preserve"><value>Kopfleim – Anfang</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS16_Field_HeadGlueEnd" xml:space="preserve"><value>Kopfleim – Ende</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS16_Field_HeadGlueDuration" xml:space="preserve"><value>Kopfleim – Dauer</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS16_Field_Shaker1" xml:space="preserve"><value>Rüttlung 1</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS16_Field_Shaker2" xml:space="preserve"><value>Rüttlung 2</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS16_Error_Range" xml:space="preserve"><value>Wert außerhalb {0} bis {1} {2}</value><comment>Fehlertext Wertebereich (Grenzen Dummy, OP-28)</comment></data>
+  <data name="HS16_Blocked_Hint" xml:space="preserve"><value>Änderungen sind im aktuellen Betriebszustand nicht zulässig.</value><comment>Grund für gesperrte Eingaben in der Meldezeile (A-28)</comment></data>
+  <data name="HS17_Closed_Header" xml:space="preserve"><value>Verschluss Zu</value><comment>HS-17 Karte E01</comment></data>
+  <data name="HS17_Open_Header" xml:space="preserve"><value>Verschluss Auf</value><comment>HS-17 Karte E07</comment></data>
+  <data name="HS17_Screw_Header" xml:space="preserve"><value>Schnecke</value><comment>HS-17 Karte E13</comment></data>
+  <data name="HS17_Machine_Name" xml:space="preserve"><value>Schließmaschine</value><comment>HS-17 DoserName der Karten (S17-3)</comment></data>
+  <data name="HS18_Flow_Header" xml:space="preserve"><value>Ablauf Dosierkorrektur</value><comment>HS-18 Gruppe Ablauf</comment></data>
+  <data name="HS18_Step1_Text" xml:space="preserve"><value>1  Dosiergewicht einstellen (Sollgewicht)</value><comment>HS-18 E07 Schritt 1</comment></data>
+  <data name="HS18_Step2_Text" xml:space="preserve"><value>2  Manuelle Auslösung des Dosierers, Probe auffangen und wiegen</value><comment>HS-18 E07 Schritt 2</comment></data>
+  <data name="HS18_Step3_Text" xml:space="preserve"><value>3  Soll links, gemessenes Ist daneben eintragen</value><comment>HS-18 E07 Schritt 3</comment></data>
+  <data name="HS18_Step4_Text" xml:space="preserve"><value>4  Gewichtsanpassung berechnen</value><comment>HS-18 E07 Schritt 4</comment></data>
+  <data name="HS18_Notice1_Text" xml:space="preserve"><value>Es sollten mindestens drei, besser fünf bis acht Stützstellen gleichmäßig über den gesamten Gewichtsbereich verteilt eingetragen werden.</value><comment>HS-18 E09 (Handbuch Hinweis 1)</comment></data>
+  <data name="HS18_Notice2_Text" xml:space="preserve"><value>Die Werte sollten unter reproduzierbaren Bedingungen aufgenommen werden (z. B. gleiche Produkttemperatur, gleiche Füllhöhe).</value><comment>HS-18 E10 (Handbuch Hinweis 2)</comment></data>
+  <data name="HS18_Notice3_Text" xml:space="preserve"><value>Tragen Sie nur gültige Messwerte ein – leere Felder bleiben unberücksichtigt.</value><comment>HS-18 E11 (Handbuch Hinweis 3)</comment></data>
+  <data name="HS18_Notice4_Text" xml:space="preserve"><value>Diese Korrektur ist insbesondere bei nichtlinearer Dosiercharakteristik hilfreich (z. B. bei fein rieselnden oder klebrigen Produkten).</value><comment>HS-18 E12 (Handbuch Hinweis 4)</comment></data>
+  <data name="HS18_Field_TargetWeight" xml:space="preserve"><value>Sollgewicht</value><comment>Titel des Eingabe-Pop-ups</comment></data>
+  <data name="HS18_Dosing_Hint" xml:space="preserve"><value>Dosierung nicht möglich: Betriebszustand nicht zulässig.</value><comment>Grund fuer gesperrte manuelle Ausloesung in der Meldezeile (A-28)</comment></data>
+</root>

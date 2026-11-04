@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HS29_Produktionsstatistik.resx: Texte der Seite HS-29 Produktionsstatistik. Neutralsprache Deutsch. Schluessel: HS29_<Element>_<Eigenschaft>. Wird vom LocalizationService automatisch gefunden. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS29_Today_Text" xml:space="preserve"><value>heute</value><comment>HS-29 Datumsfeld fuer den aktuellen Tag</comment></data>
+  <data name="HS29_Earlier_Hint" xml:space="preserve"><value>Der älteste abrufbare Tag ist erreicht.</value><comment>HS-29 Grund fuer deaktivierte linke Pfeiltaste</comment></data>
+  <data name="HS29_Later_Hint" xml:space="preserve"><value>Der aktuelle Tag ist erreicht.</value><comment>HS-29 Grund fuer deaktivierte rechte Pfeiltaste</comment></data>
+</root>

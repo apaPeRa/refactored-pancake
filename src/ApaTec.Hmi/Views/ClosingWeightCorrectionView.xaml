@@ -1,0 +1,42 @@
+<UserControl x:Class="ApaTec.Hmi.Views.ClosingWeightCorrectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:ApaTec.Hmi.Controls"
+             xmlns:vm="clr-namespace:ApaTec.Hmi.ViewModels"
+             xmlns:res="clr-namespace:ApaTec.Hmi.Resources"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ClosingWeightCorrectionViewModel, IsDesignTimeCreatable=True}">
+    <!-- HS-18 Gewichtskorrektur (Schliessmaschine): links 8 Spalten HM-22 (Stuetzstellen 2 x 10, Sollgewicht, Tasten, Ergebniszeile), rechts 4 Spalten Ablauf (HM-15) mit vier Hinweisen (HM-27). Funktionsleiste leer. -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- E01 bis E06, E08: Tabelle, Sollgewicht, Tasten, Ergebnis -->
+        <ScrollViewer Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalScrollBarVisibility="Auto">
+            <c:HM22_WeightCorrectionTable Points="{Binding Points}"
+                                          TargetWeight="{Binding TargetWeight, Mode=TwoWay}"
+                                          ValidPointCount="{Binding ValidPointCount}"
+                                          CalculationState="{Binding CalculationState}"
+                                          TriggerCommand="{Binding TriggerCommand}"
+                                          AdjustCommand="{Binding AdjustCommand}" />
+        </ScrollViewer>
+
+        <!-- E07 Ablauf, E09 bis E12 Hinweise -->
+        <c:HM15_GroupPanel Grid.Column="1" Margin="{StaticResource Inset.S}" Header="{res:Loc HS18_Flow_Header}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc HS18_Step1_Text}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc HS18_Step2_Text}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc HS18_Step3_Text}" />
+                <TextBlock Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}" TextWrapping="Wrap" Text="{res:Loc HS18_Step4_Text}" />
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc HS18_Notice1_Text}" />
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc HS18_Notice2_Text}" />
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc HS18_Notice3_Text}" />
+                <c:HM27_NoticeBox Margin="{StaticResource Inset.XS}" Kind="Info" Text="{res:Loc HS18_Notice4_Text}" />
+            </StackPanel>
+        </c:HM15_GroupPanel>
+    </Grid>
+</UserControl>

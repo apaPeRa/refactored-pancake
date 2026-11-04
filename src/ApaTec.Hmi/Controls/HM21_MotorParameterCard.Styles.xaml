@@ -30,16 +30,16 @@
                 <!-- Verschluss: Position und Geschwindigkeit (bei Schnecke ausgeblendet) -->
                 <StackPanel x:Name="ClosureRows">
                   <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM21_Position_Label}" ToolTip="{res:Loc HM21_Position_Help}"
-                                         NumberValue="{Binding Position, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="°" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                         NumberValue="{Binding Position, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="Position" Unit="°" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                   <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM21_Speed_Label}" ToolTip="{res:Loc HM21_Speed_Help}"
-                                         NumberValue="{Binding Speed, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                         NumberValue="{Binding Speed, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="Speed" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                 </StackPanel>
                 <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM21_Acceleration_Label}" ToolTip="{res:Loc HM21_Acceleration_Help}"
-                                       NumberValue="{Binding Acceleration, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                       NumberValue="{Binding Acceleration, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="Acceleration" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                 <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM21_Deceleration_Label}" ToolTip="{res:Loc HM21_Deceleration_Help}"
-                                       NumberValue="{Binding Deceleration, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                       NumberValue="{Binding Deceleration, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="Deceleration" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
                 <local:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc HM21_Jerk_Label}" ToolTip="{res:Loc HM21_Jerk_Help}"
-                                       NumberValue="{Binding Jerk, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
+                                       NumberValue="{Binding Jerk, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Command="{Binding EditCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="Jerk" Unit="%" Decimals="0" CommitCommand="{Binding CommitCommand, RelativeSource={RelativeSource TemplatedParent}}" />
               </StackPanel>
             </local:HM15_GroupPanel>
             <!-- Schnecken-Symbol neben der Ueberschrift (nur Kartenart Schnecke) -->

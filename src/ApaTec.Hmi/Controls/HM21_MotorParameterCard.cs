@@ -109,4 +109,14 @@ public sealed class HM21_MotorParameterCard : Control
         get => (ICommand?)GetValue(CommitCommandProperty);
         set => SetValue(CommitCommandProperty, value);
     }
+
+    /// <summary>Antippen eines Felds (oeffnet das Eingabe-Pop-up im ViewModel); <c>CommandParameter</c> = Feldname (Position, Speed, Acceleration, Deceleration, Jerk).</summary>
+    public static readonly DependencyProperty EditCommandProperty =
+        DependencyProperty.Register(nameof(EditCommand), typeof(ICommand), typeof(HM21_MotorParameterCard), new PropertyMetadata(null));
+
+    public ICommand? EditCommand
+    {
+        get => (ICommand?)GetValue(EditCommandProperty);
+        set => SetValue(EditCommandProperty, value);
+    }
 }

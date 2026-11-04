@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HS28_Packungsregister.resx: Texte der Seite HS-28 Packungsregister. Neutralsprache Deutsch. Schluessel: HS28_<Element>_<Eigenschaft>. Wird vom LocalizationService automatisch gefunden. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS28_Dependency_Text" xml:space="preserve"><value>Bestimmte Maschinenfunktionen (z. B. Blaslüfte) arbeiten nur korrekt, wenn im Packungsregister eine Packung vorhanden ist.</value><comment>HS-28 Abhaengigkeitshinweis, Wortlaut Handbuch</comment></data>
+  <data name="HS28_OkMeaning_Text" xml:space="preserve"><value>Gut: Die Packung wurde von der Endkontrollwaage (EKW) als in Ordnung bewertet.</value><comment>HS-28 Bedeutung des Zustands Gut (HS-28-P07), Text unter der Legende</comment></data>
+  <data name="HS28_NoData_Text" xml:space="preserve"><value>Keine Daten: Keine Verbindung zur Steuerung oder keine Stationsdaten.</value><comment>HS-28 Zustand ohne Daten (K28-4)</comment></data>
+  <data name="HS28_ToggleFailed_Text" xml:space="preserve"><value>Der Zustand der Station {0} konnte nicht geändert werden.</value><comment>HS-28 Fehlschlag der manuellen Aenderung, {0} = Stationsnummer</comment></data>
+</root>

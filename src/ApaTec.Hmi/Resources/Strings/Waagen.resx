@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Waagen.resx: Texte der Seiten HS-13 Kontrollwaage, HS-14 Einzelgewichte, HS-15 Trend und HS-42 Waagen. Neutralsprache Deutsch.
+     Schluessel: HS<nn>_<Element>_<Eigenschaft>. Wird vom LocalizationService automatisch gefunden. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS13_Group_Weight_Label" xml:space="preserve"><value>Gewicht</value><comment>HS-13 Gruppe</comment></data>
+  <data name="HS13_Group_Statistics_Label" xml:space="preserve"><value>Statistik</value><comment>HS-13 Gruppe</comment></data>
+  <data name="HS13_Group_WeighParams_Label" xml:space="preserve"><value>Wägeparameter</value><comment>HS-13 Gruppe</comment></data>
+  <data name="HS13_Group_Limits_Label" xml:space="preserve"><value>Grenzwerte und Ausschuss</value><comment>HS-13 Gruppe</comment></data>
+  <data name="HS13_Group_Counters_Label" xml:space="preserve"><value>Zähler</value><comment>HS-13 Gruppe</comment></data>
+  <data name="HS13_Net_Label" xml:space="preserve"><value>Netto</value><comment>HS-13 Kachel</comment></data>
+  <data name="HS13_Gross_Label" xml:space="preserve"><value>Brutto</value><comment>HS-13 Kachel</comment></data>
+  <data name="HS13_Live_Label" xml:space="preserve"><value>Live</value><comment>HS-13 Kachel</comment></data>
+  <data name="HS13_SetZero_Label" xml:space="preserve"><value>Nullpunkt setzen</value><comment>HS-13 Taste</comment></data>
+  <data name="HS13_Mean_Label" xml:space="preserve"><value>Mittelwert</value><comment>HS-13 Kachel</comment></data>
+  <data name="HS13_StdDev_Label" xml:space="preserve"><value>Standardabweichung</value><comment>HS-13 Kachel</comment></data>
+  <data name="HS13_Performance_Label" xml:space="preserve"><value>Leistung Ist</value><comment>HS-13 Kachel</comment></data>
+  <data name="HS13_TargetWeight_Label" xml:space="preserve"><value>Sollgewicht</value><comment>HS-13 Eingabefeld</comment></data>
+  <data name="HS13_Tare_Label" xml:space="preserve"><value>Tara</value><comment>HS-13 Eingabefeld</comment></data>
+  <data name="HS13_AutoZero_Label" xml:space="preserve"><value>Automatischer Nullpunkt</value><comment>HS-13 Eingabefeld</comment></data>
+  <data name="HS13_OverWeight_Label" xml:space="preserve"><value>Übergewicht</value><comment>HS-13 Eingabefeld</comment></data>
+  <data name="HS13_Under1_Label" xml:space="preserve"><value>Untergewicht TU 1</value><comment>HS-13 Eingabefeld</comment></data>
+  <data name="HS13_Under2_Label" xml:space="preserve"><value>Untergewicht TU 2</value><comment>HS-13 Eingabefeld</comment></data>
+  <data name="HS13_Good_Label" xml:space="preserve"><value>Gut-Packungen</value><comment>HS-13 Zählkachel (wie Quelle)</comment></data>
+  <data name="HS13_Under1Percent_Label" xml:space="preserve"><value>T1 %</value><comment>HS-13 Kachel (Einheit offen, OP-29)</comment></data>
+  <data name="HS13_Bad_Label" xml:space="preserve"><value>Schlecht Packungen</value><comment>HS-13 Zählkachel (wie Quelle)</comment></data>
+  <data name="HS13_ClearCounters_Label" xml:space="preserve"><value>Zähler löschen</value><comment>HS-13 Taste</comment></data>
+  <data name="HS13_Unit_Gram" xml:space="preserve"><value>g</value><comment>HS-13 Einheit Gramm</comment></data>
+  <data name="HS13_Unit_Piece" xml:space="preserve"><value>Stk</value><comment>HS-13 Einheit Stück</comment></data>
+  <data name="HS13_Unit_PerMin" xml:space="preserve"><value>1/min</value><comment>HS-13 Einheit Packungen pro Minute</comment></data>
+  <data name="HS13_AutoZero_UnitOff" xml:space="preserve"><value>Stk (Aus)</value><comment>HS-13 Automatischer Nullpunkt = 0: Funktion deaktiviert, Wort Aus als zweiter Kanal (S13-7)</comment></data>
+  <data name="HS13_SetZero_Title" xml:space="preserve"><value>Nullpunkt setzen</value><comment>HS-13 Bestätigungs-Pop-up Titel (S13-1)</comment></data>
+  <data name="HS13_SetZero_Text" xml:space="preserve"><value>Die Waage muss unbelastet und sauber sein.</value><comment>HS-13 Bestätigungs-Pop-up Text</comment></data>
+  <data name="HS13_ClearCounters_Title" xml:space="preserve"><value>Zähler löschen</value><comment>HS-13 Bestätigungs-Pop-up Titel (S13-1)</comment></data>
+  <data name="HS13_ClearCounters_Text" xml:space="preserve"><value>Alle Zähler dieser Seite auf 0 setzen?</value><comment>HS-13 Bestätigungs-Pop-up Text</comment></data>
+  <data name="HS13_Error_OutOfRange" xml:space="preserve"><value>Wert außerhalb {0} bis {1}</value><comment>HS-13 Fehlertext unter dem Eingabefeld; {0} Minimum, {1} Maximum</comment></data>
+  <data name="HS13_Offline_Hint" xml:space="preserve"><value>Waage nicht erreichbar</value><comment>HS-13 Hinweis in der Meldezeile bei Kommunikationsausfall</comment></data>
+  <data name="HS13_Trend_Label" xml:space="preserve"><value>Trend</value><comment>HS-13 Funktionsleiste</comment></data>
+  <data name="HS13_SingleWeights_Label" xml:space="preserve"><value>Einzelgewichte</value><comment>HS-13 Funktionsleiste</comment></data>
+  <data name="HS14_StdDev_Label" xml:space="preserve"><value>Standardabweichung</value><comment>HS-14 Kachel</comment></data>
+  <data name="HS14_Mean_Label" xml:space="preserve"><value>Mittelwert</value><comment>HS-14 Kachel</comment></data>
+  <data name="HS14_Count_Label" xml:space="preserve"><value>Anzahl</value><comment>HS-14 Kachel</comment></data>
+  <data name="HS14_Unit_Gram" xml:space="preserve"><value>g</value><comment>HS-14 Einheit Gramm</comment></data>
+  <data name="HS14_Grid_Name" xml:space="preserve"><value>Einzelgewichte</value><comment>HS-14 Bedienhilfe Wertegitter</comment></data>
+  <data name="HS14_Mode_Format" xml:space="preserve"><value>Messmodus: {0}</value><comment>HS-14 Funktionsleiste Umschalter; {0} = Zustandswort (S14-5)</comment></data>
+  <data name="HS14_Mode_Single" xml:space="preserve"><value>Einzel</value><comment>HS-14 Zustandswort</comment></data>
+  <data name="HS14_Mode_Continuous" xml:space="preserve"><value>Fortlaufend</value><comment>HS-14 Zustandswort</comment></data>
+  <data name="HS14_Mode_Pending" xml:space="preserve"><value>Wird gesetzt</value><comment>HS-14 Umschalter ausstehend</comment></data>
+  <data name="HS14_Mode_Error" xml:space="preserve"><value>Umschalten fehlgeschlagen</value><comment>HS-14 Umschalter Fehlertext</comment></data>
+  <data name="HS14_Start_Label" xml:space="preserve"><value>Start</value><comment>HS-14 Funktionsleiste</comment></data>
+  <data name="HS14_Start_Title" xml:space="preserve"><value>Start</value><comment>HS-14 Bestätigungs-Pop-up Titel (S14-2)</comment></data>
+  <data name="HS14_Start_Text" xml:space="preserve"><value>Alle bisherigen Werte werden gelöscht.</value><comment>HS-14 Bestätigungs-Pop-up Text</comment></data>
+  <data name="HS14_Offline_Hint" xml:space="preserve"><value>Waage nicht erreichbar</value><comment>HS-14 Hinweis in der Meldezeile bei Kommunikationsausfall</comment></data>
+  <data name="HS15_Chart_Name" xml:space="preserve"><value>Verlauf der letzten gewogenen Gewichte</value><comment>HS-15 Bedienhilfe Diagramm</comment></data>
+  <data name="HS15_Unit_Gram" xml:space="preserve"><value>g</value><comment>HS-15 Einheit der Y-Achse</comment></data>
+  <data name="HS15_XAxis_Format" xml:space="preserve"><value>−{0}</value><comment>HS-15 X-Achse: Position relativ zur letzten Messung (Minuszeichen U+2212)</comment></data>
+  <data name="HS42_FinalCheckWeigher_Label" xml:space="preserve"><value>Endkontrollwaage</value><comment>HS-42 deaktivierte Kachel (OP-24)</comment></data>
+  <data name="HS42_FinalCheckWeigher_Reason" xml:space="preserve"><value>Endkontrollwaage nicht verfügbar</value><comment>HS-42 Info-Text in der Meldezeile (Platzhalter, Wortlaut offen)</comment></data>
+</root>

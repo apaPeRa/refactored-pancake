@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HS27_Waagenkalibrierung.resx: Texte der Seite HS-27 Waagen kalibrieren. Neutralsprache Deutsch. Schluessel: HS27_<Element>_<Eigenschaft>. Wird vom LocalizationService automatisch gefunden. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HS27_Weight_Unit" xml:space="preserve"><value>g</value><comment>HS-27 Einheit der Gewichtsanzeige</comment></data>
+  <data name="HS27_Filter_Label" xml:space="preserve"><value>Filtertyp</value><comment>HS-27 Beschriftung Auswahlfeld Filtertyp</comment></data>
+  <data name="HS27_FilterSet_Label" xml:space="preserve"><value>Filter setzen</value><comment>HS-27 Taste</comment></data>
+  <data name="HS27_ZeroSet_Label" xml:space="preserve"><value>Nullpunkt setzen</value><comment>HS-27 Taste</comment></data>
+  <data name="HS27_ZeroSet_Hint" xml:space="preserve"><value>Nur bei unbelasteter Waage</value><comment>HS-27 Hinweis unter der Taste Nullpunkt setzen (K27-6)</comment></data>
+  <data name="HS27_CalStart_Label" xml:space="preserve"><value>Start Kalibrierung</value><comment>HS-27 Taste</comment></data>
+  <data name="HS27_Unloaded_Label" xml:space="preserve"><value>Entlastet</value><comment>HS-27 Taste</comment></data>
+  <data name="HS27_Loaded_Label" xml:space="preserve"><value>Belastet</value><comment>HS-27 Taste</comment></data>
+  <data name="HS27_Reset_Label" xml:space="preserve"><value>Reset</value><comment>HS-27 Taste</comment></data>
+  <data name="HS27_Group_Header" xml:space="preserve"><value>Ablauf Kalibrierung</value><comment>HS-27 Gruppenueberschrift (K27-1)</comment></data>
+  <data name="HS27_Step1_Text" xml:space="preserve"><value>Waage gründlich reinigen. Sie muss korrekt eingebaut und befestigt sein.</value><comment>HS-27 Kalibrierschritt 1, Wortlaut Handbuch</comment></data>
+  <data name="HS27_Step2_Text" xml:space="preserve"><value>Taste „Start Kalibrierung“ drücken.</value><comment>HS-27 Kalibrierschritt 2, Wortlaut Handbuch</comment></data>
+  <data name="HS27_Step3_Text" xml:space="preserve"><value>Sobald das System dazu auffordert und das Gewicht stabil ist, Taste „Entlastet“ drücken.</value><comment>HS-27 Kalibrierschritt 3, Wortlaut Handbuch</comment></data>
+  <data name="HS27_Step4_Text" xml:space="preserve"><value>Gefordertes Kalibriergewicht auf die Waage stellen. Achten Sie darauf, dass das Gewicht freisteht und nicht anliegt. Nach Beruhigung der Anzeige: Taste „Belastet“ drücken.</value><comment>HS-27 Kalibrierschritt 4, Wortlaut Handbuch</comment></data>
+  <data name="HS27_Step5_Text" xml:space="preserve"><value>Nach erfolgreicher Kalibrierung erscheint eine Bestätigung. Prüfen Sie anschließend den Nullpunkt und ein Prüfgewicht (z. B. 500 g) auf Korrektheit.</value><comment>HS-27 Kalibrierschritt 5, Wortlaut Handbuch</comment></data>
+  <data name="HS27_Step6_Text" xml:space="preserve"><value>Bei Abbruch: Taste „Reset“ drücken.</value><comment>HS-27 Kalibrierschritt 6, Wortlaut Handbuch</comment></data>
+  <data name="HS27_Step7_Text" xml:space="preserve"><value>Falls das Gewicht weiterhin nicht korrekt ist, reinigen Sie die Waage erneut und wiederholen Sie den Vorgang.</value><comment>HS-27 Kalibrierschritt 7, Wortlaut Handbuch</comment></data>
+  <data name="HS27_Step_Caption" xml:space="preserve"><value>{0}.</value><comment>HS-27 Schrittnummer, {0} = Nummer</comment></data>
+  <data name="HS27_StepCurrent_Caption" xml:space="preserve"><value>{0}. aktuell</value><comment>HS-27 Schrittnummer mit Markierung des erwarteten Schritts (K27-3)</comment></data>
+  <data name="HS27_Prev_Label" xml:space="preserve"><value>«</value><comment>HS-27 Blaettertaste zur vorherigen Waage</comment></data>
+  <data name="HS27_Next_Label" xml:space="preserve"><value>»</value><comment>HS-27 Blaettertaste zur naechsten Waage</comment></data>
+  <data name="HS27_Position_Text" xml:space="preserve"><value>Waage {0} von {1}</value><comment>HS-27 Positionsanzeige, {0} = Nummer, {1} = Anzahl</comment></data>
+  <data name="HS27_Status_Idle" xml:space="preserve"><value>Keine Meldung zur Waage.</value><comment>HS-27 Statusanzeige im Ruhezustand</comment></data>
+  <data name="HS27_Status_FilterWriteFailed" xml:space="preserve"><value>Fehler beim schreiben der Filterwerte</value><comment>HS-27 Quellwortlaut des Bildes, Schreibung offen (OP-35, K27-5)</comment></data>
+  <data name="HS27_Status_FilterWritten" xml:space="preserve"><value>Filter gespeichert.</value><comment>HS-27 Bestaetigung nach Filter setzen</comment></data>
+  <data name="HS27_Status_ZeroSet" xml:space="preserve"><value>Nullpunkt gesetzt.</value><comment>HS-27 Bestaetigung nach Nullpunkt setzen</comment></data>
+  <data name="HS27_Status_AwaitUnloaded" xml:space="preserve"><value>Waage entlasten und Anzeige beruhigen lassen, dann „Entlastet“ drücken.</value><comment>HS-27 Aufforderung der Steuerung (OP-48)</comment></data>
+  <data name="HS27_Status_AwaitLoaded" xml:space="preserve"><value>Kalibriergewicht auflegen und Anzeige beruhigen lassen, dann „Belastet“ drücken.</value><comment>HS-27 Aufforderung der Steuerung (OP-48)</comment></data>
+  <data name="HS27_Status_Completed" xml:space="preserve"><value>Kalibrierung erfolgreich. Nullpunkt und ein Prüfgewicht (z. B. 500 g) prüfen.</value><comment>HS-27 Bestaetigung (K27-3, OP-48)</comment></data>
+  <data name="HS27_Status_ScaleFault" xml:space="preserve"><value>Störung der Waage. Reset drücken, um den Fehler zu quittieren.</value><comment>HS-27 Ausfall der gewaehlten Waage</comment></data>
+  <data name="HS27_Status_NotAllowed" xml:space="preserve"><value>Befehl im aktuellen Schritt nicht möglich.</value><comment>HS-27 abgelehnter Befehl</comment></data>
+  <data name="HS27_Pager_Locked_Hint" xml:space="preserve"><value>Blättern ist während der Kalibrierung gesperrt.</value><comment>HS-27 Grund fuer gesperrte Blaettertasten (K27-4)</comment></data>
+</root>
