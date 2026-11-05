@@ -286,3 +286,55 @@ Hoch und mittel: keine.
 ## 10 Endurteil
 
 **BESTANDEN.** Build ohne Fehler und Warnungen, alle Prüfskripte grün, Code-behind leer, keine Hex-/Pixel-Literale, alle 17 geprüften Fixes behoben und im Code belegt, 43 HS und 38 HM mit Dateien rückverfolgt. Es bleiben sechs Befunde niedriger Schwere (B-01 bis B-06) und die Liste „offen für Meilenstein 3“ (M3-01 bis M3-26), die verbindlich nach Meilenstein 3 übergeht.
+
+## 11 Nachprüfung nach Gesamtprüfung
+
+Gegenstand: Änderungen nach dem Endurteil aus Abschnitt 10 (Commit `0ed32a0`): Async-Navigations-API (`INavigationService.GoBackAsync`, `GoToAncestorAsync`, `GoHomeAsync`, `GoToSettingsAsync`, `NavigationService`, `ShellViewModel`), `StartupOptions.cs` und `Program.cs` (`--page`, `--dialog`, `--theme`, `--culture`, `--role`, `--designdata`), Einheiten-Ressourcen in `ClosingMachineView`, `PostDoserView`, `MainDosersView`, `src/tools/windows/{Build-And-Run.ps1, Capture-Pages.ps1, README.md}`, `M3_Abnahmematrix.md`, `Pruefbericht_M3.md`, `Fortschritt.md`, `Annahmen.md`, `Offene-Punkte.md`. Prüfer: unabhängiger Prüf-Agent, 2026-11-05. Methode: Build in einer Kopie im Scratchpad, Skripte, statische Lektüre (PowerShell nicht ausführbar), keine Änderung am Repository außer diesem Abschnitt.
+
+**Ergebnis: BESTANDEN.** 0 hoch, 0 mittel, 6 niedrig bzw. Hinweis (N-01 bis N-06). Die Befunde B-02, B-04, B-05 und B-06 aus Abschnitt 8 sind wie beschrieben behoben, B-01 bleibt dokumentierte Abweichung, B-03 ist für `Fortschritt.md` erledigt (`Task.md` und Prüfpunktstatus bleiben beim Verwalter).
+
+### 11.1 Automatische Prüfungen
+
+| Prüfung | Ergebnis |
+|---|---|
+| `dotnet build ApaTec.Hmi.sln -p:EnableWindowsTargeting=true --no-incremental` (Kopie) | 0 Fehler, 0 Warnungen |
+| `check_design.py` | BESTANDEN (609 Loc-Schlüssel in XAML, alle in den Ressourcen; 57 Code-behind-Dateien; PageKeys 43) |
+| `check_modules.py` | 38/38 Module OK |
+| `check_pages.py` | 43/43 Seiten, 10/10 Dialoge OK |
+| `check_icons.py` | BESTANDEN (68 Symbole, 65 verwendet, 3 Reserve) |
+| `xmllint --noout` über alle `.xaml` | ohne Meldung |
+| `git diff f168526 -- src_Data` | leer, `src_Data` unverändert |
+| Links in M3-Dokumenten, `Fortschritt.md`, `Offene-Punkte.md`, beiden READMEs (Skript) | alle gültig; einziger nicht auflösender Verweis `../Module/DM-xx_Name.md` in `Annahmen.md` ist die schon vor der Änderung vorhandene Vorlagenzeile (kein Befund) |
+
+### 11.2 Code-Review Navigation und Startparameter
+
+- `GoBackAsync`, `GoToAncestorAsync`, `GoHomeAsync`, `GoToSettingsAsync` laufen über dieselben Kernmethoden (`GoBackCore`, `HomeCore`, `SettingsCore`, `NavigateCore`) wie die synchronen Wege; `GuardAsync` fragt `CanLeaveAsync` nur bei `HasLeaveGuard` und nur ohne offenes Pop-up und prüft nach dem Warten erneut auf offenes Pop-up und unveränderte aktuelle Seite (`ReferenceEquals`). Der Fall „Seite wurde währenddessen gewechselt“ liefert `false`, kein Doppelwechsel.
+- Deadlock/Wiederholeintritt: Keine blockierende Wartestelle (kein `.Result`/`.Wait()`), die Rückfrage ist ein Pop-up auf dem Popup-Stapel; während sie offen ist, sperren `CanGoBack`/`IsModalOpen` die Navigationswege, und die `[RelayCommand]`-Async-Befehle im `ShellViewModel` laufen nicht gleichzeitig mit sich selbst. Ein Schließen der Rückfrage durch Dismiss liefert `Accepted = false` (`CamsViewModel.ConfirmDiscardAsync`), die wartende Navigation endet mit `false`.
+- Aufrufer migriert: `ShellViewModel` (Home, Settings, Back, Seitenleiste, Brotkrümel) nutzt nur noch die Async-Varianten; verbleibende synchrone Aufrufer sind `Program.cs` (`GoHome()` beim Start, keine Seite vorhanden, daher ohne Rückfrage) und `ScreenCleaningViewModel` (`GoBack()`, Seite ohne Leave-Guard). Der Rückgabewert `false` während einer laufenden Rückfrage ist in `INavigationService` und im Kommentar bei `Guard` eindeutig dokumentiert, Konzept.md und README ziehen nach.
+- `StartupOptions`: Nullfälle (leerer Wert, fehlendes `=`, Anführungszeichen, falsche Groß-/Kleinschreibung) erzeugen Warnung oder Standard, keine Ausnahme; Argumente ohne `--` und die des Generic Hosts bleiben unberührt. `--page` und `--dialog` lösen nur gegen `PageCatalog.All` + `PageRegistry` bzw. `DialogKeys` + `PostDoserHints` auf (case-insensitiv), Unbekanntes erzeugt `[Start]`-Warnung (Debug und Standardfehler). `OpenRequestedAsync` fängt jede Ausnahme und meldet sie als Warnung. Der Direktstart läuft nach `Loaded`, ist also nach dem Aufbau des Hauptfensters (Dispatcher-Schleife läuft; Rollenabfrage bei `--page=Service` ohne `--role` öffnet das Benutzer-Pop-up). Alle Dialog-ViewModels sind bei `null`-Parameter ohne Ausnahme (`OnOpened`).
+- Kein Code-behind: `StartupOptions.cs`, `Program.cs` und `ShellViewModel` sind code-behind-frei; die 57 `*.xaml.cs` enthalten weiter nur `InitializeComponent()` (`check_design`). Die 20 Einheitenstellen in HS-11/16/19 verwenden `{res:Loc Unit_*}`; alle vier Schlüssel (`Unit_Percent`, `Unit_Gram`, `Unit_Second`, `Unit_RevPerMin`) sind in `Strings.resx` definiert; außerhalb von `DesignData/` bleiben keine festen Einheitentexte.
+
+### 11.3 PowerShell-Skripte (statisch, nicht ausgeführt)
+
+Syntax, Variablen, Hashtable-/Array-Behandlung (`$wanted += , $hit`), `Add-Type`-Signaturen, Pfade (`$PSScriptRoot\..\..\..` = Repository-Wurzel, Ausgabe `src\ApaTec.Hmi\bin\<Konfiguration>\net8.0-windows\ApaTec.Hmi.exe`, `docs\04_Pruefung\Screenshots_M3`), `ValidateSet`, Fehlerbehandlung (`$ErrorActionPreference = 'Stop'`, `try/finally` mit `CloseMainWindow`/`Kill` des gestarteten Prozesses, Exit-Codes 1 und 2) sind stimmig. Die Auflösungs- und Skalierungswarnung (Bildschirm ≠ 1920 × 1080, DPI ≠ 100 %, Client ≠ 1920 × 1080, Rückfrage außer mit `-Force`) ist vorhanden. Die Seitentabelle in `Capture-Pages.ps1` stimmt in allen 43 Zeilen (HS-Nummer, PageKey, Art, Rolle) mit `PageCatalog.cs` überein. Es gibt keine Löschbefehle (nur `New-Item -Force` für den Screenshot-Ordner und Überschreiben der eigenen PNG-Dateien), keinen Netzwerkzugriff außer dem dokumentierten `dotnet restore`, keine Registry-/Systemänderung (nur `SetProcessDPIAware` im eigenen Prozess).
+
+### 11.4 Dokumente
+
+- `M3_Abnahmematrix.md`: 43 Seitenzeilen (Schlüssel und Startaufruf `--page=`/`--dialog=` stimmen mit `PageKeys.cs`/`PageCatalog.cs` überein, HS-02/HS-03 als `--dialog`, HS-36 mit `--role=technician`), 38 Modulzeilen HM-01 bis HM-38, 10 Dialoge (+ Zeile für HS-02/HS-03), 15 Querschnittspunkte. Alle Dateilinks gültig, alle genannten Prüfpunkt-IDs (`Pnn`) existieren in den HS-/HM-Dateien, alle M3-Bezüge M3-01 bis M3-26 vorhanden. Summen L/T/K stimmen mit den Zeilen überein (Seiten 54/41/52, Module 23/11/9).
+- `Pruefbericht_M3.md`: die 26 Punkte M3-01 bis M3-26 entsprechen dem Gegenstand nach Abschnitt 7 dieses Berichts (M3-07 „ab der 6. Taste“ = „mehr als 5 Tasten“); Entscheidungsliste: alle genannten OP-Nummern existieren (`Offene-Punkte.md` OP-01 bis OP-66 lückenlos); Ergebnisfelder leer, Status „vorbereitet“, kein vorweggenommenes Ergebnis.
+- `Annahmen.md`: A-01 bis A-100, 100 Einträge, eindeutig, aufsteigend, einzige Lücke A-94 als „bewusst nicht vergeben“ eingetragen; A-99 und A-100 passen zum Code. Alle in `docs/`, `src/`, `Task.md`, `Agent.md` genannten A-Nummern sind definiert (A-101 kommt nur als Ankündigung „ab A-101“ vor). `Fortschritt.md`: neueste Einträge oben, Endurteil-Wortlaut deckt sich mit Abschnitt 1 („BESTANDEN mit Auflagen“). `Offene-Punkte.md`: Abschnitt „Übergabe an Meilenstein 3“ verweist auf existierende Dateien, OP-Bezüge gültig.
+
+### 11.5 Befunde
+
+| Nr | Datei:Zeile | Problem | Soll | Schwere |
+|---|---|---|---|---|
+| N-01 | `src/tools/windows/Capture-Pages.ps1`:68 | `Add-Type -TypeDefinition` ohne Existenzprüfung des Typs `HmiNative`; beim zweiten Lauf in derselben PowerShell-Sitzung bricht das Skript wegen `$ErrorActionPreference = 'Stop'` mit „Typ existiert bereits“ ab | `if (-not ([System.Management.Automation.PSTypeName]'HmiNative').Type) { Add-Type … }` (oder Hinweis im README: pro Aufruf neue Sitzung) | niedrig |
+| N-02 | `src/tools/windows/Build-And-Run.ps1`:99–101 | Bei `-SkipRestore` wird die Argumentliste ersetzt und `--no-restore` entfällt (Zeile 101), obwohl die Beschreibung „Offline-Betrieb“ nennt; mit `-Clean -SkipRestore` geht zudem `--no-incremental` verloren. Die Logik wirkt umgekehrt zum Namen | `-SkipRestore` ⇒ `--no-restore`; Standard ohne `--no-restore` oder Restore explizit; `--no-incremental` unabhängig anhängen | niedrig |
+| N-03 | `src/ApaTec.Hmi/Program.cs`:283–285 | Nur `Input` erhält per `--dialog` einen Beispielparameter; `Confirmation`, `Search`, `Filter`, `FileResult`, `ScheduleEntry`, `Recipe` öffnen ohne Text/Trefferliste/Felder. Die Aufnahmen mit `-IncludeDialogs` zeigen daher leere Dialoge, die Matrixzeilen 2.1 („Texte“, „Trefferliste“, „Zeitfelder“) lassen sich so nur teilweise prüfen. Im Risikoabschnitt von `Pruefbericht_M3.md` nur allgemein erwähnt | Beispielparameter für diese Dialoge ergänzen oder in der Matrix 2.1 vermerken, dass sie über die Seiten (HS-10, HS-25, HS-36/37, HM-38) geprüft werden | niedrig |
+| N-04 | `src/ApaTec.Hmi/StartupOptions.cs`:69–72 | `--culture` ohne Wert liefert über `CultureInfo.GetCultureInfo("")` die Invariante Kultur ohne Warnung (Dezimalpunkt statt -komma); unbekannte Parameternamen (`--pagee=…`) werden ohne Warnung ignoriert (die Beschreibung nennt nur fehlerhafte Werte) | Leerwert bei `--culture` wie bei `--page` als Warnung behandeln; optional Warnung für unbekannte Namen unter Ausschluss der Host-Parameter | niedrig |
+| N-05 | `src/ApaTec.Hmi/Navigation/NavigationService.cs`:162, 174, 203 | `GoToAncestor()` und `GoToSettings()` (synchron) haben keinen Aufrufer mehr (Semantik ist dokumentiert, daher nicht falsch, aber toter Umfang); `Guard` startet `_ = GuardAsync(navigate)` ohne Beobachtung von Ausnahmen aus `CanLeaveAsync`; `GoHome` während eines offenen Pop-ups umgeht den Leave-Guard (wie vor der Änderung, Sidebar ist dann gesperrt) | Hinweis: bei Gelegenheit sync-Varianten streichen oder Ausnahme in `Guard` abfangen; kein Handlungsbedarf für die Abnahme | Hinweis |
+| N-06 | `docs/04_Pruefung/M3_Abnahmematrix.md`:9 | Summe B (L) weicht von `Pruefbericht_M2.md` 6.1 ab (Seiten 54 statt 52, Module 23 statt 21; einzelne Seiten HS-01, 02, 28, 31, 32, 37, HM-25, HM-38); die Abweichung ist im Abschnitt 1 der Matrix offen begründet („im Zweifel gilt die Prüfpunkt-Datei“) | keine Änderung nötig; bei Abnahme die Prüfpunkt-Dateien als maßgeblich verwenden | Hinweis |
+
+### 11.6 Urteil
+
+**BESTANDEN.** Build 0/0, vier Prüfskripte und `xmllint` grün, `src_Data` unverändert, die Async-Navigation ist logisch geschlossen (keine Blockade, Wiederholeintritt abgesichert, Aufrufer migriert), die Startparameter fangen Fehler als Warnung ab und lösen nur registrierte Schlüssel auf, die Skripte sind statisch stimmig und ohne gefährliche Aktionen, M3-Dokumente, Plandateien und Nummernkreise (A, OP, M3, HS, HM) sind konsistent. N-01 bis N-04 sind vor oder bei der ersten Windows-Ausführung in Meilenstein 3 zu beheben; N-05 und N-06 sind Hinweise.
