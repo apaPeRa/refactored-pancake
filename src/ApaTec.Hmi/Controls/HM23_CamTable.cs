@@ -6,22 +6,47 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace ApaTec.Hmi.Controls;
 
 /// <summary>Zeile der Nockentabelle.</summary>
-public sealed partial class CamRow : ObservableObject
+public sealed class CamRow : ObservableObject
 {
-    [ObservableProperty]
     private int number;
 
-    [ObservableProperty]
+    public int Number
+    {
+        get => number;
+        set => SetProperty(ref number, value);
+    }
+
     private string name = string.Empty;
 
-    [ObservableProperty]
+    public string Name
+    {
+        get => name;
+        set => SetProperty(ref name, value);
+    }
+
     private double startAngle;
 
-    [ObservableProperty]
+    public double StartAngle
+    {
+        get => startAngle;
+        set => SetProperty(ref startAngle, value);
+    }
+
     private double endAngle;
 
-    [ObservableProperty]
+    public double EndAngle
+    {
+        get => endAngle;
+        set => SetProperty(ref endAngle, value);
+    }
+
     private bool isActive;
+
+    public bool IsActive
+    {
+        get => isActive;
+        set => SetProperty(ref isActive, value);
+    }
 }
 
 /// <summary>HM-23 Nockentabelle: Nummer, Bezeichnung, Start, Ende, Status.</summary>

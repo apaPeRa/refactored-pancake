@@ -15,16 +15,31 @@ public enum CalculationState
 }
 
 /// <summary>Stuetzstelle der Dosierkorrektur: SOLL und IST in g (0 = leer); Block 1 oder 2 der Tabelle.</summary>
-public sealed partial class CorrectionPoint : ObservableObject
+public sealed class CorrectionPoint : ObservableObject
 {
-    [ObservableProperty]
     private double nominal;
 
-    [ObservableProperty]
+    public double Nominal
+    {
+        get => nominal;
+        set => SetProperty(ref nominal, value);
+    }
+
     private double actual;
 
-    [ObservableProperty]
+    public double Actual
+    {
+        get => actual;
+        set => SetProperty(ref actual, value);
+    }
+
     private int block = 1;
+
+    public int Block
+    {
+        get => block;
+        set => SetProperty(ref block, value);
+    }
 }
 
 /// <summary>HM-22 Gewichtskorrektur-Tabelle: 2 Bloecke mit je 10 Stuetzstellen SOLL/IST, Sollgewicht und Tasten.</summary>
