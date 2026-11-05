@@ -65,6 +65,7 @@ $TargetHeight = 1080
 # --- Win32 und DPI-Bewusstsein ---------------------------------------------------------------------
 Add-Type -AssemblyName System.Drawing
 Add-Type -AssemblyName System.Windows.Forms
+if (-not ([System.Management.Automation.PSTypeName]'HmiNative').Type) {
 Add-Type -TypeDefinition @'
 using System;
 using System.Runtime.InteropServices;
@@ -82,6 +83,7 @@ public static class HmiNative
     [DllImport("user32.dll")] public static extern bool PrintWindow(IntPtr hWnd, IntPtr hdc, uint flags);
 }
 '@
+}
 [void][HmiNative]::SetProcessDPIAware()
 
 # --- Seitentabelle (aus Navigation/PageCatalog.cs, Navigation.md 5.1) --------------------------------------

@@ -29,6 +29,9 @@ public sealed class StartupOptions
     /// <summary>Hinweise zu nicht erkannten Parametern.</summary>
     public List<string> Warnings { get; } = new();
 
+    // Namen, die der Generic Host selbst auswertet (Konfiguration ueber die Befehlszeile); sie sind keine Fehler dieser Anwendung.
+    private static readonly string[] HostParameterPrefixes = { "environment", "contentroot", "applicationname", "urls", "hostbuilder", "logging", "console", "detailederrors", "shutdown", "startup" };
+
     public static StartupOptions Parse(IEnumerable<string> args)
     {
         var options = new StartupOptions();
@@ -67,6 +70,12 @@ public sealed class StartupOptions
 
                     break;
                 case "culture":
+                    if (value.Length == 0)
+                    {
+                        options.Warnings.Add($"Parameter '{arg}' ohne Wert (Kultur, z. B. de-DE); Standardkultur bleibt.");
+                        break;
+                    }
+
                     try
                     {
                         options.Culture = CultureInfo.GetCultureInfo(value);
@@ -97,6 +106,13 @@ public sealed class StartupOptions
                     break;
                 case "designdata":
                     options.DesignData = separator < 0 || !string.Equals(value, "false", StringComparison.OrdinalIgnoreCase);
+                    break;
+                default:
+                    if (!HostParameterPrefixes.Any(prefix => name.StartsWith(prefix, StringComparison.Ordinal)))
+                    {
+                        options.Warnings.Add($"Unbekannter Parameter '{arg}' (erlaubt: --page, --dialog, --theme, --culture, --role, --designdata).");
+                    }
+
                     break;
             }
         }

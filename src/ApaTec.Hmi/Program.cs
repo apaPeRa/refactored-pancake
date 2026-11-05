@@ -1,4 +1,5 @@
 using ApaTec.Hmi.Controls;
+using ApaTec.Hmi.Models;
 using ApaTec.Hmi.Navigation;
 using ApaTec.Hmi.Services;
 using ApaTec.Hmi.ViewModels;
@@ -162,10 +163,44 @@ public static class Program
         return false;
     }
 
-    // Beispielwerte fuer Dialoge, die ohne Parameter leer wirken wuerden.
-    private static object? SampleParameter(string dialogKey) => dialogKey == DialogKeys.Input
-        ? new NavigationParameters("title", "Beispielwert").With("currentValue", 50.0).With("unit", "%").With("minimum", 0.0).With("maximum", 100.0).With("decimals", 0)
-        : null;
+    // Beispielwerte fuer Dialoge, die ohne Parameter leer wirken wuerden. Texte kommen aus den Ressourcen (Dialogs.resx, Dialog_Design_*), keine Literale.
+    // Recipe, Language und User beziehen ihre Inhalte aus Diensten und oeffnen auch ohne Parameter gefuellt.
+    private static object? SampleParameter(string dialogKey)
+    {
+        var loc = LocalizationService.Instance;
+        switch (dialogKey)
+        {
+            case DialogKeys.Input:
+                return new NavigationParameters("title", loc.GetString("Dialog_Design_Input_Field")).With("currentValue", 50.0).With("unit", loc.GetString("Unit_Percent")).With("minimum", 0.0).With("maximum", 100.0).With("decimals", 0);
+            case DialogKeys.Confirmation:
+                return new NavigationParameters(SystemDialogParameters.Title, loc.GetString("Dialog_Design_Confirm_Title")).With(SystemDialogParameters.Message, loc.GetString("Dialog_Design_Confirm_Message"));
+            case DialogKeys.Search:
+                var group2 = loc.GetString("Dialog_Design_Search_Group2");
+                return new SearchRequest(
+                    loc.GetString("Dialog_Design_Search_Title"),
+                    loc.GetString("Dialog_Design_Search_Placeholder"),
+                    new[]
+                    {
+                        new SearchHit { Identifier = "2MA1", Description = loc.GetString("Dialog_Design_Search_Hit1"), Group = group2 },
+                        new SearchHit { Identifier = "2MA2", Description = loc.GetString("Dialog_Design_Search_Hit2"), Group = group2 },
+                        new SearchHit { Identifier = "20MA1", Description = loc.GetString("Dialog_Design_Search_Hit3"), Group = loc.GetString("Dialog_Design_Search_Group20") },
+                    });
+            case DialogKeys.Filter:
+                return SystemDialogParameters.Filter(
+                    loc.GetString("Dialog_Design_Filter_Title"),
+                    new[]
+                    {
+                        new FilterField { Name = loc.GetString("Dialog_Design_Filter_Number"), Kind = FilterFieldKind.Number, Placeholder = loc.GetString("Dialog_Design_Filter_NumberMask") },
+                        new FilterField { Name = loc.GetString("Dialog_Design_Filter_Time"), Kind = FilterFieldKind.DateTime, Placeholder = loc.GetString("Dialog_Design_Filter_TimeMask") },
+                    });
+            case DialogKeys.FileResult:
+                return SystemDialogParameters.FileSelect(loc.GetString("Dialog_Design_File_Title"), loc.GetString("Dialog_Design_File_Name"));
+            case DialogKeys.ScheduleEntry:
+                return new HotGlueScheduleEntryRequest(DayOfWeek.Monday, null, Array.Empty<ScheduleEntry>(), true);
+            default:
+                return null;
+        }
+    }
 
     private static void Warn(string text)
     {

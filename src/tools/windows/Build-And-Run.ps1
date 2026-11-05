@@ -96,9 +96,9 @@ try {
     }
 
     Write-Step ("dotnet build -c {0}" -f $Configuration)
+    # Der Restore laeuft oben bereits (ausser bei -SkipRestore); beim Build entfaellt er in beiden Faellen.
     $buildArgs = @('build', $solution, '-c', $Configuration, '--no-restore')
     if ($Clean) { $buildArgs += '--no-incremental' }
-    if ($SkipRestore) { $buildArgs = @('build', $solution, '-c', $Configuration) }
     & dotnet @buildArgs
     if ($LASTEXITCODE -ne 0) { Fail 'Build fehlgeschlagen (Meldungen oben; in Meilenstein 3 unter Windows korrigieren).' }
 }
