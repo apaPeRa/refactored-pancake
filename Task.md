@@ -41,10 +41,10 @@ Erstellt aus Design und Referenz mehrere Markdown-Dateien, die das Design erklä
 
 Erstellt ein WPF-Projekt in `src/` aus dem Konzept von Meilenstein 1 Phase 3. Fokus: Design der Seiten und Module in XAML. Code im Hintergrund ist zu vermeiden (MVVM, siehe `Agent.md` Abschnitt 7).
 
-- [ ] Lösungs- und Projektstruktur, Designsystem als `ResourceDictionary` (Farben, Typografie, Größen, Hell/Dunkel), Hauptfenster 1920 × 1080 mit Rahmen (Seitenleiste, Kopfzeile, Brotkrümel, untere Leiste) und Navigationsdienst
-- [ ] Alle Module `HM-xx` als wiederverwendbare Controls mit Dummy-Daten im Entwurfsmodus
-- [ ] Alle Seiten `HS-xx` als Views mit ViewModels und Dummy-Daten
-- [ ] Gegen die Definitionen prüfen (`Agent.md` Abschnitt 7 und 8), `Pruefbericht_M2.md` schreiben, Befunde beheben, Commit und Push
+- [x] Lösungs- und Projektstruktur, Designsystem als `ResourceDictionary` (Farben, Typografie, Größen, Hell/Dunkel), Hauptfenster 1920 × 1080 mit Rahmen (Seitenleiste, Kopfzeile, Brotkrümel, untere Leiste) und Navigationsdienst
+- [x] Alle Module `HM-xx` als wiederverwendbare Controls mit Dummy-Daten im Entwurfsmodus
+- [x] Alle Seiten `HS-xx` als Views mit ViewModels und Dummy-Daten
+- [x] Gegen die Definitionen prüfen (`Agent.md` Abschnitt 7 und 8), `Pruefbericht_M2.md` schreiben, Befunde beheben, Commit und Push
 
 ## Meilenstein 3 – Lokale Finalisierung (Windows)
 
