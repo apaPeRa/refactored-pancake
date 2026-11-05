@@ -18,6 +18,21 @@ WPF läuft nur unter Windows; in der Cloud wird nur kompiliert und statisch gepr
 
 `tools/check_design.py` prüft: XML wohlgeformt, `Theme.Light.xaml` und `Theme.Dark.xaml` mit denselben Schlüsseln und den Hex-Werten aus Designsystem 10.1, alle Tokens aus 10.2/10.3, alle 68 Symbole aus Abschnitt 6/6.1, alle `StaticResource`/`DynamicResource`-Verweise definiert, leeres Code-behind, keine Literale in `Views/`, `Controls/` und `MainWindow.xaml`, alle `{res:Loc …}`-Schlüssel vorhanden, 43 Seitenschlüssel samt Titel- und Brotkrümeltexten.
 
+## Startparameter (Meilenstein 3, A-99)
+
+Die Anwendung versteht Startparameter für den Direktstart auf einer Seite und für den Bildabgleich (`StartupOptions.cs`, Auswertung in `Program.cs`; kein Code-behind). Groß-/Kleinschreibung ist gleichgültig, unbekannte oder fehlerhafte Werte erzeugen eine Warnung (Ausgabefenster, Standardfehlerausgabe) und werden ignoriert.
+
+| Parameter | Wirkung |
+|---|---|
+| `--page=<PageKey>` | Start auf der Seite: HS-01 erscheint, danach navigiert `INavigationService.NavigateToAsync` dorthin (nach dem Laden des Fensters, „Zurück“ führt nach HS-01). Alle Schlüssel aus `PageKeys.cs`; die Seiten haben keine Pflichtparameter und starten mit ihrem Standardparameter (`null`). Fehlt die Rolle (HS-36: Technik), erscheint das Benutzer-Pop-up |
+| `--dialog=<DialogKey>` | öffnet Dialog bzw. Pop-up über `IDialogService`: `Input` (mit Beispielwert 50 %), `Search`, `User`, `Language`, `Recipe`, `Confirmation`, `ScheduleEntry`, `Filter`, `FileResult`, `PostDoserHints`; die Pop-up-Seiten `ProductionCounter` (HS-02) und `MachineSpeed` (HS-03) gehen über den Navigationsdienst. Dialoge ohne Parameter zeigen ihre Standardinhalte |
+| `--theme=light\|dark` | Thema beim Start (`ISettingsService.Theme`, `IThemeService.SetTheme`) |
+| `--culture=de-DE` | Kultur für Zahlen/Datum und Texte (`ILocalizationService.SetCulture`); derzeit hat nur `de-DE` Ressourcen |
+| `--role=operator\|technician\|service` | Rolle der Dummy-Sitzung (`IUserSession.SignIn`; Standard Bediener, A-96) |
+| `--designdata` | reserviert für Dummy-Zustandsvarianten; derzeit ohne Wirkung (zur Laufzeit gibt es keine Varianten; `DesignData/` dient dem Designer) |
+
+Beispiele: `dotnet run --project src/ApaTec.Hmi -- --page=HotGlueNordson --theme=dark`, `ApaTec.Hmi.exe --page=Service --role=technician`, `ApaTec.Hmi.exe --dialog=Input`. Die Windows-Skripte `tools/windows/Build-And-Run.ps1` (Voraussetzungen prüfen, Release-Build, Start) und `tools/windows/Capture-Pages.ps1` (Screenshots je Seite und Thema) sind in [tools/windows/README.md](tools/windows/README.md) beschrieben; Seitenabnahme: [M3_Abnahmematrix.md](../docs/04_Pruefung/M3_Abnahmematrix.md).
+
 ## Struktur
 
 ```
@@ -27,8 +42,10 @@ src/
 ├─ tools/check_modules.py                Modulprüfung HM-01 bis HM-38
 ├─ tools/check_pages.py                  Seitenprüfung HS-01 bis HS-43 und Dialoge
 ├─ tools/check_icons.py                  Symbolprüfung (verwendet, definiert, dokumentiert)
+├─ tools/windows/                        Windows-Werkzeuge für Meilenstein 3 (Build-And-Run.ps1, Capture-Pages.ps1, README.md)
 └─ ApaTec.Hmi/                            net8.0-windows, WPF, Nullable, TreatWarningsAsErrors
-   ├─ Program.cs                          Einstieg und Composition Root (Generic Host)
+   ├─ Program.cs                          Einstieg und Composition Root (Generic Host), wertet die Startparameter aus
+   ├─ StartupOptions.cs                   Startparameter (--page, --dialog, --theme, --culture, --role, --designdata)
    ├─ App.xaml(.cs)                       bindet Theme, Tokens, Icons, Basisstile; ViewLocator; kein StartupUri
    ├─ MainWindow.xaml(.cs)                Hauptfenster 1920 × 1080 mit Rahmen-Grid (leeres Code-behind)
    ├─ Themes/                             Tokens.xaml, Theme.Light.xaml, Theme.Dark.xaml, Icons.xaml, Controls.Base.xaml
@@ -78,9 +95,10 @@ navigation.ReplaceParameter(new NavigationParameters("doserIndex", 1));         
 navigation.GoToAncestor(PageKeys.HotGlueNordson);                                  // Brotkrümel-Segment
 ```
 
+- **Verwerfen-Rückfrage (A-100):** `GoBack()`, `GoToAncestor()`, `GoHome()`, `GoToSettings()` liefern `true` nur, wenn sofort navigiert wurde; braucht die Seite eine Rückfrage (`HasLeaveGuard`), liefern sie `false` und die Navigation folgt nach der Entscheidung. Wer die Entscheidung braucht, ruft `GoBackAsync()`, `GoToAncestorAsync()`, `GoHomeAsync()`, `GoToSettingsAsync()` (der Task endet nach der Entscheidung; `true` = ausgeführt). Der Rahmen (`ShellViewModel`) nutzt die Async-Varianten.
 - `History` ist der Zurück-Stapel nach A-44: nur Vorgängerseiten, **ohne** die aktuelle Seite; Tiefe 20; Sprung auf eine Seite im Stapel kürzt ihn und übernimmt gleichnamige Parameter der aktuellen Seite; HS-24 (Vollbild) wird nie gestapelt.
 - Pop-up-Seiten und Dialoge liegen im Popup-Stapel (Tiefe 2, `PopupStack`, `IsModalOpen`); dahinter ist die Navigation gesperrt (`GoBack`/`NavigateToAsync` liefern `false`).
-- Seiten sind in `OnNavigatedTo(object? parameter)` initialisierbar (auch beim Blättern); `OnNavigatedFrom()` gibt Zustand frei. Funktionsleistentasten befüllt das ViewModel in `FunctionBarItems` (höchstens 5, `FunctionBarItem`).
+- Seiten sind in `OnNavigatedTo(object? parameter)` initialisierbar (auch beim Blättern); `OnNavigatedFrom()` gibt Zustand frei. Funktionsleistentasten befüllt das ViewModel in `FunctionBarItems` (höchstens 5, `FunctionBarItem`). `FunctionBarItem.IsTrailing` (rechtsbündige Gruppe, HM-06) setzt derzeit keine Seite: Navigation.md 3.3 kennt keine rechtsbündige Hauptaktion, die Funktion bleibt für spätere Seiten erhalten (A-100).
 - ViewModels kennen keine Views und keine Fenster; Navigation nur über den Dienst.
 
 ### Designsystem verwenden
@@ -89,6 +107,7 @@ navigation.GoToAncestor(PageKeys.HotGlueNordson);                               
 - **Symbole** als `Geometry`: `<Path Data="{StaticResource Icon.Home}" Stroke="{DynamicResource Brush.Text.Primary}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round">` innerhalb einer `Viewbox` der Größe `Size.Icon.S/M/L` (Raster 24 × 24). Die Geometrien sind Platzhalter (Verfeinerung in M3).
 - **Verbot von Literalen:** keine Hex-Farben, `Color=`, Pixelmaße (`Width`, `Height`, `Margin`, `Padding`, `FontSize`, `CornerRadius`, `BorderThickness` mit Zahl) und festen Texte in Views und Controls; Stern-Proportionen (`Width="3*"`, `"2.5*"`) sind erlaubt und werden vom Lint nicht gemeldet. Strichstärken von Symbolen und Linien: `StrokeThickness="{StaticResource Size.Icon.Stroke}"` (2) bzw. `Size.Icon.Stroke.Thick` (3); der frühere Umweg `{Binding Source={StaticResource Border.Medium}, Path=Left}` ist verboten (Lint). Fehlt ein Token, wird es in `Tokens.xaml` bzw. den Theme-Dateien ergänzt und in `Annahmen.md` vermerkt (Abstimmung über den Verwalter).
 - **Zustände** nie nur über Farbe (Symbol, Text, Kontur; Designsystem 5). Touch-Ziele mindestens 48 px, Standard 64 px, Abstand mindestens 16 px.
+- **Einheiten:** Einheitensymbole nie fest im XAML, sondern `Unit="{res:Loc Unit_Percent}"` usw. (`Unit_Percent`, `Unit_Gram`, `Unit_Second`, `Unit_Millisecond`, `Unit_Piece`, `Unit_Celsius`, `Unit_RevPerMin`, `Unit_Degree` in `Strings.resx`; seitenspezifische Pakete haben eigene `…_Unit_*`-Schlüssel).
 - **Texte:** `Text="{res:Loc Schlüssel}"` mit `xmlns:res="clr-namespace:ApaTec.Hmi.Resources"`; im ViewModel `ILocalizationService.GetString(key)`.
 - **Thema zur Laufzeit:** `IThemeService.SetTheme(ThemeMode.Dark)` tauscht das erste `MergedDictionary` (Theme) aus; deshalb steht das Theme in `App.xaml` immer an erster Stelle.
 
@@ -159,4 +178,4 @@ Neue Aufrufer verwenden die Datensätze `InputRequest` und `ConfirmationRequest`
 
 ## Entwurfsentscheidungen und Annahmen
 
-A-81 bis A-92 in `docs/00_Plan/Annahmen.md` (Build-Umgebung, Pakete, Zusatz-Tokens, Architektur, Hauptfenster, Strichstärken-Tokens, Modulprüfung, Integrationsregeln, Dialog-Verträge, Benutzer-Dummy, Halteverhalten, Control-Ergänzungen, Prüfwerkzeuge). Der Dienst `IClockService` läuft in der Dummy-Variante mit der Systemzeit; `ISettingsService` hält Thema und Sprache nur im Speicher.
+A-81 bis A-100 (A-94 ist bewusst nicht vergeben) in `docs/00_Plan/Annahmen.md` (Build-Umgebung, Pakete, Zusatz-Tokens, Architektur, Hauptfenster, Strichstärken-Tokens, Modulprüfung, Integrationsregeln, Dialog-Verträge, Benutzer-Dummy, Halteverhalten, Control-Ergänzungen, Prüfwerkzeuge). Der Dienst `IClockService` läuft in der Dummy-Variante mit der Systemzeit; `ISettingsService` hält Thema und Sprache nur im Speicher.

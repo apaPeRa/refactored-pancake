@@ -122,3 +122,40 @@ Alle Referenz-Seiten und die Zusatzseiten HS-40 bis HS-43 sind in mindestens ein
 | OP-64 | Gewichtskorrektur (HS-21, RS-21): empfohlen sind 3 bis 8 Stützstellen, die Tabelle bietet 20 Zeilen; Bezug Sollgewicht (250,4 g) zu „Soll“ (250 g) unklar | 20 Zeilen als Liste Nr. 1 bis 20 darstellen, mindestens 3 gültige Paare zur Berechnung; die empfohlene Obergrenze 8 wird als Hinweis, nicht als Sperre geführt; Klärung offen | [HS-21](../03_HMI-Konzept/Seiten/HS-21_Gewichtskorrektur.md), [HS-18](../03_HMI-Konzept/Seiten/HS-18_Gewichtskorrektur-Schliessmaschine.md); offen |
 | OP-65 | Symbolnamen: Standardabweichung als `Icon.Stat.Sigma` (HS-01) und `Icon.Stat.StdDev` (HS-13, HS-14) doppelt geführt; Dosierer-Symbole (Gewichtsstück, Waagschale, Schnecke) in den Seiten ohne endgültigen Namen | Beide Namen stehen in Designsystem 6.1 mit gleicher Bedeutung; in M2 auf ein Symbol vereinheitlichen; `Icon.Dosing.Weight` und `Icon.Dosing.Calibration` vorläufig angelegt | [HS-01](../03_HMI-Konzept/Seiten/HS-01_Produktion.md), [HS-13](../03_HMI-Konzept/Seiten/HS-13_Kontrollwaage.md), [HS-11](../03_HMI-Konzept/Seiten/HS-11_Hauptdosierer-1-und-2.md); offen |
 | OP-66 | Logo APA-TEC (HM-02): keine freigestellte Grafik je Thema vorhanden, nur im Design-Screenshot | Platzhalter in M2 (A-78); Grafik in M3 aus dem Design beschaffen oder vom Auftraggeber anfordern | [HM-02](../03_HMI-Konzept/Module/HM-02_Kopfzeile.md); offen |
+
+## Übergabe an Meilenstein 3
+
+Stand 2026-11-05. Meilenstein 3 (lokal, Windows) ist in der Cloud nur vorbereitet. Die Durchführung, die Ergebnisse und die Abnahme stehen in [Pruefbericht_M3.md](../04_Pruefung/Pruefbericht_M3.md) (Status „vorbereitet, Durchführung lokal“), die Prüfliste je Seite, Modul und Querschnitt in [M3_Abnahmematrix.md](../04_Pruefung/M3_Abnahmematrix.md), die Werkzeuge in [src/tools/windows/README.md](../../src/tools/windows/README.md). Neue OP-Nummern waren nicht nötig; die Übergabepunkte tragen die Nummern M3-01 bis M3-26 aus [Pruefbericht_M2.md](../04_Pruefung/Pruefbericht_M2.md) Abschnitt 7.
+
+### Technische Punkte aus Meilenstein 2 (M3-01 bis M3-26)
+
+| Bereich | Punkte | Bezug zu OP |
+|---|---|---|
+| Start und Laufzeit | M3-01 bis M3-04 (Build/Start, Seiten und Dialoge ohne Fehler, Designer, Kopfzeile) | – |
+| Layout 1920 × 1080 | M3-05 bis M3-07 (Bildabgleich der 43 Seiten, Skalierung/Vollbild, Funktionsleiste) | OP-07, OP-15, OP-44 |
+| Touch | M3-08, M3-09 | OP-30 |
+| Kontrast, Hell/Dunkel | M3-10, M3-11 | OP-27, OP-43 |
+| Symbole und Logo | M3-12 | OP-65, OP-66 |
+| Fokus und Tastatur | M3-13 | – |
+| Halten und Jog | M3-14 bis M3-16 | OP-42, OP-57, OP-60 |
+| Bildlauf und Wischen | M3-17 | OP-61 (HS-24 Sperre), OP-44 |
+| Sprachumschaltung | M3-18 | OP-03, OP-63 |
+| Berechtigungsabläufe | M3-19, M3-20 | OP-04, OP-25, OP-31 |
+| Dialoge | M3-21, M3-22 | OP-01, OP-30, OP-40, OP-49, OP-63 |
+| Windows-spezifisch | M3-23 bis M3-25 | – |
+| Gesamtdurchlauf, Abnahme | M3-26 | OP-08, OP-21, OP-38 (Navigationsziele, Seitenleiste) |
+
+### Zur Abnahme zu entscheidende Offene Punkte
+
+Die Top-Liste mit aktueller Annahme steht in `Pruefbericht_M3.md` Abschnitt 5 (OP-66, OP-65, OP-03, OP-04/OP-25/OP-31, OP-57/OP-42, OP-60, OP-61, OP-27/OP-43/OP-14, OP-44/OP-13, OP-05/OP-06/OP-12/OP-24, OP-02/OP-01/OP-63, OP-09/OP-10/OP-11, OP-30/OP-28, OP-17/OP-18/OP-45, OP-33/OP-34, OP-56/OP-32, OP-49/OP-40). Alle übrigen OP bleiben mit ihrer Annahme gültig; sie betreffen Fachlogik und Maschinenanbindung und werden bei der Abnahme nur dann neu bewertet, wenn der Bildabgleich einen Widerspruch zeigt.
+
+### Restbefunde aus Meilenstein 2
+
+| Befund | Stand | Verweis |
+|---|---|---|
+| B-01 `HM-20` Detail in HS-11/HS-19 ungenutzt | dokumentierte Abweichung, Entscheidung beim Bildabgleich (OP-17, OP-18, OP-45) | A-100 |
+| B-02 Lücke A-94 | behoben: A-94 als bewusst nicht vergeben eingetragen | A-94, A-100 |
+| B-03 Fortschritt, Task.md, Prüfpunktstatus | `Fortschritt.md` fortgeschrieben; `Task.md` und Prüfpunktstatus schreibt der Verwalter | `Fortschritt.md` |
+| B-04 feste Einheitentexte | behoben (Ressourcen `Unit_*`) | A-100 |
+| B-05 `IsTrailing` ungenutzt | dokumentiert: keine Seite hat laut `Navigation.md` 3.3 eine rechtsbündige Hauptaktion | A-100 |
+| B-06 Rückgabe von `Guard` | behoben: `*Async`-Varianten, synchrone Rückgabe `false` während der Rückfrage | A-100 |

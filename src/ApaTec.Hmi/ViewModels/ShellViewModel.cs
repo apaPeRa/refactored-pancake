@@ -181,17 +181,17 @@ public sealed partial class ShellViewModel : ObservableObject
 
     // ---- Befehle (Seitenleiste, Brotkruemel, Meldezeile, Kennzahl) ----
     [RelayCommand]
-    private void Home() => _navigation.GoHome();
+    private async Task HomeAsync() => await _navigation.GoHomeAsync();
 
     [RelayCommand]
-    private void Settings() => _navigation.GoToSettings();
+    private async Task SettingsAsync() => await _navigation.GoToSettingsAsync();
 
     [RelayCommand]
     private async Task MessagesAsync() => await _navigation.OpenMessagesAsync();
 
     /// <summary>Zurueck; auf der Startseite (nichts im Verlauf) nennt die Meldezeile den Grund (A-28).</summary>
     [RelayCommand]
-    private void Back()
+    private async Task BackAsync()
     {
         if (!CanGoBack)
         {
@@ -199,7 +199,7 @@ public sealed partial class ShellViewModel : ObservableObject
             return;
         }
 
-        _navigation.GoBack();
+        await _navigation.GoBackAsync();
     }
 
     /// <summary>Parameter: Kennung des Seitenleisten-Eintrags (<see cref="SidebarItemIds"/>); bildet die festen Navigationstasten nach Navigation.md 3.1 ab.</summary>
@@ -209,10 +209,10 @@ public sealed partial class ShellViewModel : ObservableObject
         switch (itemId)
         {
             case SidebarItemIds.Home:
-                _navigation.GoHome();
+                await _navigation.GoHomeAsync();
                 break;
             case SidebarItemIds.Settings:
-                _navigation.GoToSettings();
+                await _navigation.GoToSettingsAsync();
                 break;
             case SidebarItemIds.Messages:
                 await _navigation.OpenMessagesAsync();
@@ -225,7 +225,7 @@ public sealed partial class ShellViewModel : ObservableObject
 
     /// <summary>Parameter: Seitenschluessel des Segments (HM-04 <c>NavigateCommand</c>).</summary>
     [RelayCommand]
-    private void NavigateToAncestor(string pageKey) => _navigation.GoToAncestor(pageKey);
+    private async Task NavigateToAncestorAsync(string pageKey) => await _navigation.GoToAncestorAsync(pageKey);
 
     /// <summary>Parameter: Seitenschluessel (HM-01 <c>NavigateCommand</c>, Kacheln, Kennzahl "Geschwindigkeit" mit <see cref="PageKeys.MachineSpeed"/>).</summary>
     [RelayCommand]

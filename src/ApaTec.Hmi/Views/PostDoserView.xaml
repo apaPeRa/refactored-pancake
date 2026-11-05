@@ -20,11 +20,11 @@
         <c:HM15_GroupPanel Grid.Column="0" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_GroupTargets_Header}">
             <StackPanel>
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_Target_Label}" Icon="{StaticResource Icon.Dosing.Weight}"
-                                   NumberValue="{Binding Doser.TargetWeight}" Unit="g" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   NumberValue="{Binding Doser.TargetWeight}" Unit="{res:Loc Unit_Gram}" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
                                    ErrorText="{Binding Doser.Errors[TargetWeight]}"
                                    Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.TargetWeight}" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_MaxRefill_Label}"
-                                   NumberValue="{Binding Doser.MaxRefill}" Unit="g" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   NumberValue="{Binding Doser.MaxRefill}" Unit="{res:Loc Unit_Gram}" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
                                    ErrorText="{Binding Doser.Errors[MaxRefill]}"
                                    Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.MaxRefill}" />
                 <!-- Info; bei Fehlmenge ueber Max. Nachgabe Warnung mit Symbol und Text (S19-8) -->
@@ -43,9 +43,9 @@
                     </c:HM27_NoticeBox.Style>
                 </c:HM27_NoticeBox>
                 <c:HM11_ValueDisplay Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CurrentRefill_Label}"
-                                     NumberValue="{Binding Doser.CurrentRefill}" Unit="g" Decimals="0" Presentation="Row" />
+                                     NumberValue="{Binding Doser.CurrentRefill}" Unit="{res:Loc Unit_Gram}" Decimals="0" Presentation="Row" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_RegulationActual_Label}"
-                                   NumberValue="{Binding Doser.RegulationValue}" Unit="g" Decimals="2" IsAuthorized="{Binding IsAuthorized}"
+                                   NumberValue="{Binding Doser.RegulationValue}" Unit="{res:Loc Unit_Gram}" Decimals="2" IsAuthorized="{Binding IsAuthorized}"
                                    ErrorText="{Binding Doser.Errors[RegulationValue]}"
                                    Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.RegulationValue}" />
                 <c:HM15_GroupPanel GroupStyle="Heading" Margin="{StaticResource Inset.XS}" Header="{res:Loc Dosing_Calibration_Heading}">
@@ -55,7 +55,7 @@
                                            ErrorText="{Binding Doser.Errors[CalibrationRevolutions]}"
                                            Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.CalibrationRevolutions}" />
                         <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CalibrationWeight_Label}" Icon="{StaticResource Icon.Weight.Scale}"
-                                           NumberValue="{Binding Doser.CalibrationWeight}" Unit="g" Decimals="2" IsAuthorized="{Binding IsAuthorized}"
+                                           NumberValue="{Binding Doser.CalibrationWeight}" Unit="{res:Loc Unit_Gram}" Decimals="2" IsAuthorized="{Binding IsAuthorized}"
                                            ErrorText="{Binding Doser.Errors[CalibrationWeight]}"
                                            Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.CalibrationWeight}" />
                     </StackPanel>
@@ -66,21 +66,21 @@
         <c:HM15_GroupPanel Grid.Column="1" Margin="{StaticResource Inset.S}" Header="{res:Loc Dosing_GroupDrives_Header}">
             <StackPanel>
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_ScrewSpeed_Label}" Icon="{StaticResource Icon.Speed}"
-                                   NumberValue="{Binding Doser.ScrewSpeed}" Unit="1/min" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   NumberValue="{Binding Doser.ScrewSpeed}" Unit="{res:Loc Unit_RevPerMin}" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
                                    ErrorText="{Binding Doser.Errors[ScrewSpeed]}"
                                    Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.ScrewSpeed}" />
                 <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_AgitatorSwitch_Label}" IsChecked="{Binding Doser.AgitatorEnabled}" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_AgitatorPercent_Label}" Icon="{StaticResource Icon.Speed}"
-                                   NumberValue="{Binding Doser.AgitatorPercent}" Unit="%" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   NumberValue="{Binding Doser.AgitatorPercent}" Unit="{res:Loc Unit_Percent}" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
                                    ErrorText="{Binding Doser.Errors[AgitatorPercent]}"
                                    Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.AgitatorPercent}" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_AgitatorRunOn_Label}"
-                                   NumberValue="{Binding Doser.AgitatorRunOn}" Unit="s" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   NumberValue="{Binding Doser.AgitatorRunOn}" Unit="{res:Loc Unit_Second}" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
                                    ErrorText="{Binding Doser.Errors[AgitatorRunOn]}"
                                    Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.AgitatorRunOn}" />
                 <c:HM08_ToggleSwitch Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CrossScrewSwitch_Label}" IsChecked="{Binding Doser.CrossScrewEnabled}" RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}" Label="{res:Loc Dosing_CrossScrewPercent_Label}" Icon="{StaticResource Icon.Speed}"
-                                   NumberValue="{Binding Doser.CrossScrewPercent}" Unit="%" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
+                                   NumberValue="{Binding Doser.CrossScrewPercent}" Unit="{res:Loc Unit_Percent}" Decimals="0" IsAuthorized="{Binding IsAuthorized}"
                                    ErrorText="{Binding Doser.Errors[CrossScrewPercent]}"
                                    Command="{Binding Doser.EditFieldCommand}" CommandParameter="{x:Static m:DoserField.CrossScrewPercent}" />
             </StackPanel>

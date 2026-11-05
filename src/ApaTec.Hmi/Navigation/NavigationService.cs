@@ -117,6 +117,8 @@ public sealed class NavigationService : INavigationService
         return Guard(GoBackCore);
     }
 
+    public Task<bool> GoBackAsync() => CanGoBack && Current is not null ? GuardAsync(GoBackCore) : Task.FromResult(false);
+
     private bool GoBackCore()
     {
         if (Current is null)
@@ -147,53 +149,73 @@ public sealed class NavigationService : INavigationService
         return Guard(() => NavigateCore(descriptor, null));
     }
 
-    public void GoHome()
+    public Task<bool> GoToAncestorAsync(string pageKey)
     {
-        Guard(() =>
+        if (IsModalOpen || !_registry.TryGet(pageKey, out var descriptor) || descriptor.Kind == PageKind.Popup)
         {
-            CloseAllPopups();
-            _history.Clear();
-            Show(_registry.Get(PageKeys.Production), null);
-            return true;
-        });
+            return Task.FromResult(false);
+        }
+
+        return GuardAsync(() => NavigateCore(descriptor, null));
+    }
+
+    public void GoHome() => Guard(HomeCore);
+
+    public Task<bool> GoHomeAsync() => GuardAsync(HomeCore);
+
+    private bool HomeCore()
+    {
+        CloseAllPopups();
+        _history.Clear();
+        Show(_registry.Get(PageKeys.Production), null);
+        return true;
     }
 
     public void GoToSettings()
     {
-        if (IsModalOpen)
+        if (!IsModalOpen)
         {
-            return;
+            Guard(SettingsCore);
         }
-
-        Guard(() =>
-        {
-            _history.Clear();
-            _history.Add(new NavigationEntry(PageKeys.Production, null));
-            Show(_registry.Get(PageKeys.Settings), null);
-            return true;
-        });
     }
 
-    // Synchrone Navigationswege (Zurueck, Brotkruemel, Home, Einstellungen) pruefen den Leave-Hook der Seite. Meldet die Seite
-    // Aenderungen (HasLeaveGuard), laeuft die Rueckfrage asynchron; die Navigation wird danach ausgefuehrt, falls die Seite zustimmt.
-    // Rueckgabe: true = ausgefuehrt oder angenommen (Rueckfrage laeuft), false = abgelehnt.
+    public Task<bool> GoToSettingsAsync() => IsModalOpen ? Task.FromResult(false) : GuardAsync(SettingsCore);
+
+    private bool SettingsCore()
+    {
+        _history.Clear();
+        _history.Add(new NavigationEntry(PageKeys.Production, null));
+        Show(_registry.Get(PageKeys.Settings), null);
+        return true;
+    }
+
+    // Leave-Hook (B-06, A-100): Synchrone Wege (GoBack, GoToAncestor, GoHome, GoToSettings) fuehren die Navigation sofort aus, wenn die Seite
+    // keine Rueckfrage braucht (Rueckgabe true). Braucht die Seite eine Rueckfrage (HasLeaveGuard), liefern sie false ("noch nicht ausgefuehrt");
+    // die Navigation laeuft nach der Entscheidung im Hintergrund und meldet sich ueber das Navigated-Ereignis. Wer das Ergebnis braucht,
+    // ruft die *Async-Varianten: Task<bool> ist erst nach der Entscheidung fertig (true = ausgefuehrt, false = abgelehnt/verworfen).
     private bool Guard(Func<bool> navigate)
     {
-        if (CurrentViewModel is not { HasLeaveGuard: true } leaving || IsModalOpen)
+        if (CurrentViewModel is not { HasLeaveGuard: true } || IsModalOpen)
         {
             return navigate();
         }
 
-        _ = GuardAsync(leaving, navigate);
-        return true;
+        _ = GuardAsync(navigate);
+        return false;
     }
 
-    private async Task GuardAsync(PageViewModelBase leaving, Func<bool> navigate)
+    private async Task<bool> GuardAsync(Func<bool> navigate)
     {
-        if (await leaving.CanLeaveAsync() && !IsModalOpen && ReferenceEquals(CurrentViewModel, leaving))
+        var leaving = CurrentViewModel;
+        if (leaving is { HasLeaveGuard: true } && !IsModalOpen)
         {
-            navigate();
+            if (!await leaving.CanLeaveAsync() || IsModalOpen || !ReferenceEquals(CurrentViewModel, leaving))
+            {
+                return false;
+            }
         }
+
+        return navigate();
     }
 
     // Rollenverlust (Navigation.md 5.4, 4.2 Nr. 5): geschuetzte Seite verlassen, Pop-ups ohne Uebernehmen schliessen.

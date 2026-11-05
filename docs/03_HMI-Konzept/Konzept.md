@@ -392,7 +392,7 @@ Vorgaben liegen vollständig in [Navigation](Navigation.md) Abschnitt 5; hier di
 | Element | Inhalt |
 |---|---|
 | `PageRegistry` | statische Liste von 43 `PageDescriptor` (Schlüssel, Route, `HsId`, `PageKind` Page/Popup/Fullscreen, `ParentKey`, ViewModel-Typ, Titel- und Crumb-Ressource, Funktionsleistenart, Mindestrolle, `ShowFrame`), Quelle Tabelle 5.1 der Navigation |
-| `INavigationService` | `Current`, `CurrentParameter`, `History` (Vorgängerseiten ohne aktuelle), `Breadcrumb`, `CanGoBack`; `NavigateToAsync`, `ReplaceParameter` (Blättern ohne Verlaufseintrag), `GoBack`, `GoHome` (Verlauf leer), `GoToSettings` (Verlauf `[HS-01]`), `GoToAncestor`, `OpenMessages`; Ereignis `Navigated` |
+| `INavigationService` | `Current`, `CurrentParameter`, `History` (Vorgängerseiten ohne aktuelle), `Breadcrumb`, `CanGoBack`; `NavigateToAsync`, `ReplaceParameter` (Blättern ohne Verlaufseintrag), `GoBack`, `GoHome` (Verlauf leer), `GoToSettings` (Verlauf `[HS-01]`), `GoToAncestor` (jeweils auch als `*Async`, Task endet nach der Verwerfen-Rückfrage, A-100), `OpenMessages`; Ereignis `Navigated` |
 | Verlauf | Tiefe 20; Sprung auf eine Seite im Verlauf kürzt den Stapel; gleiche Seite erneut wirkungslos; `HS-24` wird nicht gestapelt (A-42, A-44) |
 | `IDialogService` | `IsModalOpen`, `ShowAsync<T>(dialogKey, parameter)`, `CloseTop`, `CloseAll`; erzwingt die modalen Regeln (Abschnitt 5.3) |
 | `IUserSession` | `Current` (Dummy „Max Mustermann“, Technician), `HasRole`, `RequestRoleAsync`, `SessionChanged` |

@@ -46,9 +46,22 @@ public interface INavigationService
     /// <summary>Zurueck zum obersten Stapeleintrag; bei leerem Stapel (nicht HS-01) zum Elternschluessel. false bei offenem Pop-up oder auf HS-01.</summary>
     /// <remarks>
     /// Leave-Hook: Zurueck, Brotkruemel, Home, Einstellungen und <see cref="NavigateToAsync"/> fragen <c>PageViewModelBase.CanLeaveAsync</c> der aktuellen Seite.
-    /// Bei den synchronen Wegen laeuft eine noetige Rueckfrage asynchron (Rueckgabe true = angenommen); Systemwechsel (Rollenverlust, Zeitablauf) fragen nicht.
+    /// Synchrone Wege (<c>GoBack</c>, <c>GoToAncestor</c>): true = sofort ausgefuehrt; false = abgelehnt <b>oder</b> eine Rueckfrage laeuft noch (die Navigation folgt dann nach der Entscheidung,
+    /// Meldung ueber <see cref="Navigated"/>). Wer das Ergebnis der Entscheidung braucht, nutzt die <c>*Async</c>-Varianten (A-100). Systemwechsel (Rollenverlust, Zeitablauf) fragen nicht.
     /// </remarks>
     bool GoBack();
+
+    /// <summary>Wie <see cref="GoBack"/>; der Task endet erst nach der Verwerfen-Rueckfrage (true = ausgefuehrt, false = abgelehnt).</summary>
+    Task<bool> GoBackAsync();
+
+    /// <summary>Wie <see cref="GoToAncestor"/>; der Task endet erst nach der Entscheidung.</summary>
+    Task<bool> GoToAncestorAsync(string pageKey);
+
+    /// <summary>Wie <see cref="GoHome"/>; der Task endet erst nach der Entscheidung (true = Home erreicht).</summary>
+    Task<bool> GoHomeAsync();
+
+    /// <summary>Wie <see cref="GoToSettings"/>; der Task endet erst nach der Entscheidung.</summary>
+    Task<bool> GoToSettingsAsync();
 
     /// <summary>Sprung auf eine Seite im Verlauf oder einen Vorfahren (Brotkruemel-Segment); der Stapel wird bis unterhalb der Zielseite gekuerzt.</summary>
     bool GoToAncestor(string pageKey);

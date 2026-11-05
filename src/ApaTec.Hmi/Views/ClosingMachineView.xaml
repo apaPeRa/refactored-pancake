@@ -36,7 +36,7 @@
                               Visibility="{Binding IsBlocked, Converter={StaticResource Closing.BoolToVisibility}}" />
             <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
                                Label="{res:Loc HS16_Conveyor_Speed_Label}"
-                               NumberValue="{Binding ConveyorSpeed.Value}" Unit="%" Decimals="0"
+                               NumberValue="{Binding ConveyorSpeed.Value}" Unit="{res:Loc Unit_Percent}" Decimals="0"
                                Minimum="{Binding ConveyorSpeed.Minimum}" Maximum="{Binding ConveyorSpeed.Maximum}"
                                ErrorText="{Binding ConveyorSpeed.ErrorText}" IsEditing="{Binding ConveyorSpeed.IsEditing}"
                                RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
@@ -92,14 +92,14 @@
                                      ToggleCommand="{Binding ToggleShakerCommand}" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
                                    Label="{res:Loc HS16_Shaker1_Label}"
-                                   NumberValue="{Binding Shaker1.Value}" Unit="%" Decimals="0"
+                                   NumberValue="{Binding Shaker1.Value}" Unit="{res:Loc Unit_Percent}" Decimals="0"
                                    Minimum="{Binding Shaker1.Minimum}" Maximum="{Binding Shaker1.Maximum}"
                                    ErrorText="{Binding Shaker1.ErrorText}" IsEditing="{Binding Shaker1.IsEditing}"
                                    RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
                                    Command="{Binding EditValueCommand}" CommandParameter="{x:Static m:ClosingField.Shaker1}" />
                 <c:HM12_ValueInput Margin="{StaticResource Inset.XS}"
                                    Label="{res:Loc HS16_Shaker2_Label}"
-                                   NumberValue="{Binding Shaker2.Value}" Unit="%" Decimals="0"
+                                   NumberValue="{Binding Shaker2.Value}" Unit="{res:Loc Unit_Percent}" Decimals="0"
                                    Minimum="{Binding Shaker2.Minimum}" Maximum="{Binding Shaker2.Maximum}"
                                    ErrorText="{Binding Shaker2.ErrorText}" IsEditing="{Binding Shaker2.IsEditing}"
                                    RequiresPermission="True" IsAuthorized="{Binding IsAuthorized}"
