@@ -9,6 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>NU1900</WarningsNotAsErrors>
     <RootNamespace>ApaTec.Hmi</RootNamespace>
     <AssemblyName>ApaTec.Hmi</AssemblyName>
     <NeutralLanguage>de</NeutralLanguage>
