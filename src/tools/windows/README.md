@@ -7,7 +7,7 @@ PowerShell-Skripte für die lokale Finalisierung unter Windows (`Task.md`, Meile
 | Voraussetzung | Wert |
 |---|---|
 | Betriebssystem | Windows 10 oder 11 (x64) |
-| SDK | **.NET 8 SDK** (`dotnet --list-sdks` zeigt `8.0.x`), Download: <https://dotnet.microsoft.com/download/dotnet/8.0>; das SDK enthält das Windows-Desktop-Paket für WPF |
+| SDK | **.NET SDK ab 8** (ein 9er/10er-SDK baut das Projekt ebenfalls, die .NET-8-Desktop-Laufzeit muss installiert sein), Download: <https://dotnet.microsoft.com/download/dotnet/8.0>; das SDK enthält das Windows-Desktop-Paket für WPF |
 | PowerShell | Windows PowerShell 5.1 (vorinstalliert) oder PowerShell 7; bei gesperrter Ausführung einmalig `Set-ExecutionPolicy -Scope Process Bypass` |
 | Netzwerk | nur für den ersten `dotnet restore` (NuGet: `CommunityToolkit.Mvvm`, `Microsoft.Extensions.DependencyInjection`, `Microsoft.Extensions.Hosting`) |
 | Bildschirm für Aufnahmen | **1920 × 1080 bei 100 % Skalierung** (Windows: Einstellungen › System › Anzeige › Skalierung), ein Monitor, Taskleiste darf das Fenster verdecken (PrintWindow nimmt das Fenster unabhängig davon auf) |

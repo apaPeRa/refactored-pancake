@@ -3,7 +3,7 @@
     Baut die WPF-Loesung ApaTec.Hmi unter Windows (Release) und startet sie. Meilenstein 3, Schritt 1.
 
 .DESCRIPTION
-    1. Prueft mit "dotnet --info" und "dotnet --list-sdks", ob ein .NET-8-SDK vorhanden ist.
+    1. Prueft mit "dotnet --info" und "dotnet --list-sdks", ob ein .NET-SDK ab Version 8 vorhanden ist (das Projekt zielt auf net8.0-windows; ein neueres SDK kann es bauen).
     2. dotnet restore, dotnet build -c Release (Warnungen sind Fehler, wie in der Cloud).
     3. Startet src\ApaTec.Hmi\bin\<Konfiguration>\net8.0-windows\ApaTec.Hmi.exe mit den uebergebenen Startparametern.
 
@@ -64,11 +64,11 @@ if (-not (Get-Command dotnet -ErrorAction SilentlyContinue)) {
 if ($LASTEXITCODE -ne 0) { Fail '"dotnet --info" ist fehlgeschlagen.' }
 
 $sdks = @(& dotnet --list-sdks)
-$has8 = $sdks | Where-Object { $_ -match '^8\.' }
+$has8 = $sdks | Where-Object { [int](($_ -split '\.')[0]) -ge 8 }
 if (-not $has8) {
-    Fail ("Kein .NET-8-SDK installiert. Gefunden: " + ($sdks -join '; '))
+    Fail ("Kein .NET-SDK ab Version 8 installiert. Gefunden: " + ($sdks -join '; '))
 }
-Write-Host ("SDK 8 gefunden: " + (($has8 | Select-Object -First 1))) -ForegroundColor Green
+Write-Host ("SDK >= 8 gefunden: " + (($has8 | Select-Object -Last 1)) + " (Zielframework bleibt net8.0-windows, Laufzeit 8 wird benoetigt)") -ForegroundColor Green
 
 # Anzeige-Hinweis fuer den spaeteren Sichtvergleich (nur Information)
 try {
