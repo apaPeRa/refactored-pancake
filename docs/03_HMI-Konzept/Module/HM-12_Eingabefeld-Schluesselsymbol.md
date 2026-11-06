@@ -25,6 +25,8 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Fehlertext (`ErrorText`) | string? | – | bei ungültiger Eingabe |
 
 ## Zustände und Darstellung
+
+**Änderung M3 (A-101, S-03, S-05):** Mindestbreite des Felds `Size.Field.MinWidth` (112 px), Beschriftungsspalte mindestens `Size.Label.MinWidth`, Beschriftung in `Font.Size.Caption`; die Zählerspalte wird nur reserviert, wenn ein Zähler gesetzt ist, damit Eingabe- und Anzeigefelder rechts bündig abschließen. `FieldLabelPlacement` wie HM-11.
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |

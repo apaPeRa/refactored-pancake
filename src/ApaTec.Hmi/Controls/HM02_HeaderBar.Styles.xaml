@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- HM-02 Kopfzeile (HM02_HeaderBar): Spalten Auto : * : Auto : Auto (Size.Header.Col.*, A-102: Meldezeile bekommt den Restplatz) = Logo, Meldezeile (HM-03), Betriebsart, Uhr/Datum.
+<!-- HM-02 Kopfzeile (HM02_HeaderBar): Spalten Auto : * : Auto : Auto (Size.Header.Col.*, A-101: Meldezeile bekommt den Restplatz) = Logo, Meldezeile (HM-03), Betriebsart, Uhr/Datum.
      Betriebsart mit zweitem Kanal: Symbol + Wort; Service = Warnflaeche mit Kontur Border.Medium und Icon.Status.Warning, Stoerung = Fehlerflaeche mit Icon.Status.Error.
      Uhr: Ziffern und Datum als Anzeige; ungueltige Zeit als Text (Strich-Platzhalter). Das Format folgt CurrentCulture (Standardformate T, t, d; de-DE: HH:mm:ss, HH:mm, dd.MM.yyyy). -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"

@@ -107,6 +107,8 @@ Größenstufen für Bedienabstand (Bedienerstand ca. 0,6 bis 0,8 m, 21 bis 24-Zo
 
 Regeln: Textfarbe `Brush.Text.Primary`, Hinweise `Brush.Text.Secondary`. Maximal eine Stufe Gewichtsunterschied je Zeile. Zahlen mit Einheit: Wert, geschütztes Leerzeichen, Einheit (`112 1/min`, `245 °`, `83 %`, `235 g`); das vereinheitlicht „5.30g“, „235g“, „83%“ des Entwurfs. Tabellarische Ziffern (`Typography.NumeralAlignment="Tabular"`) in Messwerten. Textumbruch automatisch statt Trennstrichen (DM-12, OP-13).
 
+**Umbruchregel (A-101, Befund S-02):** Beschriftungen brechen nie innerhalb eines Wortes um. Kacheln und Schalter (HM-08) setzen die Beschriftung in `Font.Size.Caption` über die volle Breite und Zustandssymbol und -wort darunter; Wert- und Eingabefelder (HM-11, HM-12) legen die Beschriftung bei schmalen Spalten über das Feld (`FieldLabelPlacement="Top"`). Reicht der Platz nicht, wird gekürzt (`TextTrimming`) oder die Seite scrollt, aber nicht mitten im Wort umgebrochen.
+
 ## 3. Abstands- und Größenraster
 
 ### 3.1 Basis
@@ -118,7 +120,7 @@ Alle Maße sind Vielfache von 8 px (Ausnahme 4 px für feine Abstände). Die Ma�
 | `Space.XS` | 4 | Symbol zu Text |
 | `Space.S` | 8 | Innenabstand innerhalb eines Elements (Symbol/Text, Zeilenabstand), **nie** Abstand zwischen zwei Touch-Zielen (dort `Size.Touch.Gap` = 16) |
 | `Space.M` | 16 | Standardabstand zwischen Elementen (Gutter), Innenabstand Karte |
-| `Space.L` | 24 | Abstand zwischen Gruppen; der Außenrand des Inhaltsbereichs wird in Seiten und Modulen einheitlich über `Size.Content.Margin` (Wert 24, = `Space.L`) angegeben |
+| `Space.L` | 24 | Abstand zwischen Gruppen; der Außenrand des Inhaltsbereichs wird in Seiten und Modulen einheitlich über `Size.Content.Margin` (Wert 16, = `Space.M`, A-101) angegeben |
 | `Space.XL` | 32 | Abstand zwischen Hauptbereichen |
 | `Size.Touch.Min` | 48 | absolute Untergrenze jedes Touch-Ziels (z. B. Pop-up-Schließen, Tabellenzeile) |
 | `Size.Touch.Default` | 64 | Standardhöhe jeder Taste, Eingabefeld, Umschalterzeile |
@@ -147,14 +149,14 @@ Das Hauptfenster ist ein `Grid` mit Stern-Proportionen. Die Pixelwerte in Klamme
    3*                              37*
 ```
 
-Spalten des Hauptfensters: Seitenleiste **3\*** : Arbeitsbereich **37\*** (Summe 40, 1 Einheit = 48 px, Seitenleiste 144 px = 7,5 %). Zeilen des Arbeitsbereichs: Kopfzeile **4\*** : Brotkrümel-/Kennzahlzeile **3\*** : Inhalt **34\*** : Funktionsleiste **4\*** (Summe 45, 1 Einheit = 24 px; 96 : 72 : 816 : 96 px). Die Seitenleiste reicht über die volle Höhe.
+Spalten des Hauptfensters: Seitenleiste **3\*** : Arbeitsbereich **37\*** (Summe 40, 1 Einheit = 48 px, Seitenleiste 144 px = 7,5 %). Zeilen des Arbeitsbereichs (geändert durch A-101 nach dem Bildabgleich M3, Befund S-01): Kopfzeile **88 px** : Brotkrümel-/Kennzahlzeile **80 px** : Inhalt **\*** (Rest: 840 px bei 1080, 821 px bei Client-Höhe 1061) : Funktionsleiste **80 px**. Der Inhaltsbereich liegt in einem `ScrollViewer`: Seiten, die höher sind, erhalten die themenkonforme Scrollleiste (`Size.Scrollbar`); Seiten mit eigenem Bildlauf (Listen, Diagramme; `FillsContentArea`) bekommen die begrenzte Höhe. Die Seitenleiste reicht über die volle Höhe.
 
 | Bereich | Anteil | Aufbau |
 |---|---|---|
 | **Seitenleiste** (DM-01, DM-02) | 7,5 % der Breite, volle Höhe | von oben: Benutzerkennung (Kreis 64 px, Name, Rolle, Caption 20 px, bis zu 2 Zeilen); darunter Symboltasten Home, Einstellungen, Meldungen (je volle Spaltenbreite × 96 px = `Size.Touch.Large`, Symbol 48 px, 16 px Abstand = `Size.Touch.Gap`); ganz unten Zurück (gleiche Größe, mindestens 16 px Abstand zur darüberliegenden Taste). Auswahl: Symbol der aktuellen Seite mit 6 px Balken (`Size.SelectionBar`) am linken Rand und hellerem Grund (zweiter Kanal zusätzlich zur Farbe). |
-| **Kopfzeile** | 92,5 % der Breite, 8,9 % der Höhe | Spalten **12\* : 13\* : 6\* : 4\*** (Summe 35): Logo (≈ 35 %), Meldezeile (≈ 37 %), Betriebsart (≈ 17 %), Uhrzeit/Datum (≈ 11 %); abgeleitet aus dem Entwurf (35 : 37,5 : 18 : 9) mit etwas mehr Platz für Uhrzeit und Datum. Mindestbreiten: Uhrzeit 192, Betriebsart 288 px. |
+| **Kopfzeile** | 92,5 % der Breite, 8,9 % der Höhe | Spalten **Auto : \* : Auto : Auto** (A-101): Logo und Betriebsart nach Inhalt, Uhrzeit/Datum nach Inhalt, die Meldezeile erhält den gesamten Rest, damit der Meldetext vollständig lesbar ist. Mindestbreiten: Uhrzeit 192, Betriebsart 288 px; Logo höchstens 340 px. |
 | **Brotkrümel-/Kennzahlzeile** | 6,7 % der Höhe | Spalten **56\* : 10\* : 10\***: Brotkrümel (links, Segmente je 64 px hoch, antippbar als Annahme A-27), Kennzahl Geschwindigkeit, Kennzahl Maschinenwinkel (je ≈ 13 %, Mindestbreite 224 px; Wert 36 px Metric, Symbol 32 px). |
-| **Inhaltsbereich** | 75,6 % der Höhe | Außenrand `Size.Content.Margin` (24 px), 12-Spalten-Raster (3.3). Seitenspezifisch. |
+| **Inhaltsbereich** | Rest der Höhe | Außenrand `Size.Content.Margin` (16 px), 12-Spalten-Raster (3.3), scrollbar. Seitenspezifisch. |
 | **Untere Funktionsleiste** (DM-09, DM-10) | 8,9 % der Höhe | Fläche vertieft, Innenrand 16 px oben/unten, Tasten 64 px hoch (Rest 16 px), links beginnend, 16 px Abstand, Breite je Taste mindestens 224 px (`Size.FunctionButton.MinWidth`), **höchstens 5 seitenspezifische Tasten** (wie Navigation.md); weitere Aktionen hinter einer Überlauf-Taste `Icon.More` („Mehr“, 64 × 64 px) am rechten Rand der Leiste. Auf leeren Seiten bleibt die Leiste sichtbar (Rahmenkonsistenz). |
 
 ### 3.3 Inhaltsbereich: 12-Spalten-Raster
@@ -386,10 +388,16 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden hier ergänzt (Na
 | `Size.Icon.Stroke.Thick` | Double | 3 | 3 | kräftige Strichstärke (Auswahl-/Fokuskontur, Annahme A-86) |
 | `Inset.Touch.Gap` | Thickness | 16 | 16 | `Size.Touch.Gap` als Thickness für `Margin`/`Padding` (Annahme A-86); weitere Thickness-Varianten `Inset.XS/S/M/L/XL/Button` siehe A-83 |
 | `Size.Sidebar.Width` | GridLength | 3* | 3* | Spalte Seitenleiste (Hauptfenster) |
-| `Size.Header.Height` | GridLength | 4* | 4* | Zeile Kopfzeile |
-| `Size.Crumb.Height` | GridLength | 3* | 3* | Zeile Brotkrümel/Kennzahlen |
-| `Size.FunctionBar.Height` | GridLength | 4* | 4* | Zeile untere Funktionsleiste |
-| `Size.Content.Margin` | Thickness | 24 | 24 | Außenrand des Inhaltsbereichs |
+| `Size.Header.Height` | GridLength | 88 | 88 | Zeile Kopfzeile (feste Höhe, A-101) |
+| `Size.Crumb.Height` | GridLength | 80 | 80 | Zeile Brotkrümel/Kennzahlen (feste Höhe, A-101) |
+| `Size.FunctionBar.Height` | GridLength | 80 | 80 | Zeile untere Funktionsleiste (feste Höhe, A-101) |
+| `Size.Content.Margin` | Thickness | 16 | 16 | Außenrand des Inhaltsbereichs (A-101, vorher 24) |
+| `Size.Content.Height` | GridLength | * | * | Zeile Inhaltsbereich: Restfläche, scrollbar (A-101) |
+| `Size.Scrollbar` | Double | 32 | 32 | Breite/Höhe der themenkonformen Scrollleiste (A-101); `Size.Scrollbar.Column` als GridLength |
+| `Size.Field.MinWidth` | Double | 112 | 112 | Mindestbreite Wert-/Eingabefeld (HM-11, HM-12; vorher `Size.Button.MinWidth` 160, A-101) |
+| `Size.Label.MinWidth` | Double | 120 | 120 | Mindestbreite der Beschriftungsspalte in HM-11/HM-12 (A-101) |
+| `Size.Logo.MaxWidth` | Double | 340 | 340 | Höchstbreite der Logo-Grafik (A-101) |
+| `Inset.Panel` | Thickness | 12 | 12 | Innenabstand Gruppenbereich HM-15 (vorher `Inset.M`, A-101); weitere: `Inset.Hair` (2), `Inset.Frame.Tile` / `Inset.Frame.Tile.End` (Kennzahlkacheln und Uhr im Rahmen), `Inset.Button.Permission` (40 links/rechts bei Schloss/Schlüssel in Tasten) |
 | `Size.Button.MinWidth` | Double | 160 | 160 | Mindestbreite Taste |
 | `Size.FunctionButton.MinWidth` | Double | 224 | 224 | Mindestbreite Taste in der Funktionsleiste |
 | `Size.Avatar` | Double | 64 | 64 | Benutzerkreis (DM-01) |
@@ -405,7 +413,7 @@ Weitere Fachsymbole entstehen mit den Modulen HM-xx und werden hier ergänzt (Na
 | `Size.Header.Clock.MinWidth` | Double | 192 | 192 | Uhrzeit/Datum |
 | `Size.Header.Mode.MinWidth` | Double | 288 | 288 | Betriebsart |
 | `Size.Metric.MinWidth` | Double | 224 | 224 | Kennzahl-Kachel |
-| `Size.Header.Columns` | GridLength[] | 12* : 13* : 6* : 4* | 12* : 13* : 6* : 4* | Kopfzeile: Logo, Meldezeile, Betriebsart, Uhr (als vier Tokens `Size.Header.Col.Logo/.Message/.Mode/.Clock`) |
+| `Size.Header.Columns` | GridLength[] | Auto : * : Auto : Auto | Auto : * : Auto : Auto | Kopfzeile: Logo, Meldezeile, Betriebsart, Uhr (als vier Tokens `Size.Header.Col.Logo/.Message/.Mode/.Clock`) |
 | `Size.Crumb.Columns` | GridLength[] | 56* : 10* : 10* | 56* : 10* : 10* | Brotkrümel, Geschwindigkeit, Winkel (Tokens `Size.Crumb.Col.Path/.Speed/.Angle`) |
 | `Space.XS` | Double | 4 | 4 | feiner Abstand |
 | `Space.S` | Double | 8 | 8 | Innenabstand in Elementen (nicht zwischen Touch-Zielen) |

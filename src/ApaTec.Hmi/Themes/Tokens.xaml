@@ -36,7 +36,7 @@
   <sys:Double x:Key="Size.Icon.Stroke">2</sys:Double>
   <sys:Double x:Key="Size.Icon.Stroke.Thick">3</sys:Double>
 
-  <!-- Rahmen-Grid des Hauptfensters (3.2, geaendert durch A-102): Spalten 3* : 37*; Zeilen Kopf 88, Brotkruemel 80, Inhalt *, Funktionsleiste 80 (feste Hoehen statt Sternanteilen) -->
+  <!-- Rahmen-Grid des Hauptfensters (3.2, geaendert durch A-101): Spalten 3* : 37*; Zeilen Kopf 88, Brotkruemel 80, Inhalt *, Funktionsleiste 80 (feste Hoehen statt Sternanteilen) -->
   <GridLength x:Key="Size.Sidebar.Width">3*</GridLength>
   <GridLength x:Key="Size.Workspace.Width">37*</GridLength>
   <GridLength x:Key="Size.Header.Height">88</GridLength>
@@ -52,7 +52,7 @@
   <GridLength x:Key="Size.Crumb.Col.Angle">10*</GridLength>
 
   <Thickness x:Key="Size.Content.Margin">16</Thickness>
-  <!-- Kompakte Dichte und Scrollleiste (A-102) -->
+  <!-- Kompakte Dichte und Scrollleiste (A-101) -->
   <sys:Double x:Key="Size.Scrollbar">32</sys:Double>
   <GridLength x:Key="Size.Scrollbar.Column">32</GridLength>
   <sys:Double x:Key="Size.Field.MinWidth">112</sys:Double>

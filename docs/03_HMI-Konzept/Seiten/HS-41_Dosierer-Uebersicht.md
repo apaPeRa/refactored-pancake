@@ -36,6 +36,8 @@ Innenaufbau jeder Karte (Innenabstand `Space.M`, `Radius.Card`, Fläche `Brush.S
 
 Die drei Karten sind identisch aufgebaut (Variante Hauptdosierer bzw. Nachdosierer nur bei Soll, Hinweiszeile und Detailziel).
 
+> **Hinweis M3 (A-101):** Die Inhaltshöhe beträgt nach dem Bildabgleich nicht mehr 768 px, sondern 840 px bei 1080 px Fensterhöhe (821 px bei Client-Höhe 1061; Kopfzeile 88, Brotkrümel 80, Funktionsleiste 80 px fest, Außenrand 16 px). Der Inhaltsbereich scrollt, wenn die Seite höher ist; die Bilanz unten ist eine Rechnung und wird im Bildabgleich neu gemessen.
+
 **Höhenbilanz (1920 × 1080, Maße aus den Tokens des Designsystems):**
 
 | Posten | Rechnung | Höhe (px) |

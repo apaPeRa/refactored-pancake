@@ -23,6 +23,8 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Größe (`Emphasis`) | enum ValueEmphasis { Normal, Large } | – | Large für große Gewichtsanzeige |
 
 ## Zustände und Darstellung
+
+**Änderung M3 (A-101, S-02, S-03):** Mindestbreite des Felds `Size.Field.MinWidth` (112 px, vorher 160), Mindestbreite der Beschriftungsspalte `Size.Label.MinWidth` (120 px), Beschriftung in `Font.Size.Caption`. Neue Eigenschaft `FieldLabelPlacement` (`Left`, `Top`): bei schmalen Spalten steht die Beschriftung über dem Feld.
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |

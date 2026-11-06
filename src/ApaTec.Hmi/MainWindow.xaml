@@ -31,7 +31,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Inhaltsbereich: Scrollbereich (S-01, A-102). Die Seite bekommt mindestens die sichtbare Hoehe (Stern-Zeilen fuellen sie), ist sie hoeher, erscheint die themenkonforme Scrollleiste. -->
+        <!-- Inhaltsbereich: Scrollbereich (S-01, A-101). Die Seite bekommt mindestens die sichtbare Hoehe (Stern-Zeilen fuellen sie), ist sie hoeher, erscheint die themenkonforme Scrollleiste. -->
         <Style x:Key="Shell.ContentScroll" TargetType="ScrollViewer">
             <Setter Property="Grid.Column" Value="1" />
             <Setter Property="Grid.Row" Value="2" />
@@ -74,7 +74,7 @@
         </Style>
     </Window.Resources>
 
-    <!-- Rahmen-Grid nach Designsystem 3.2: Spalten 3* : 37*; Zeilen Kopf/Brotkruemel/Funktionsleiste in festen Hoehen (Tokens, A-102), Inhalt *. -->
+    <!-- Rahmen-Grid nach Designsystem 3.2: Spalten 3* : 37*; Zeilen Kopf/Brotkruemel/Funktionsleiste in festen Hoehen (Tokens, A-101), Inhalt *. -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{StaticResource Size.Sidebar.Width}" />

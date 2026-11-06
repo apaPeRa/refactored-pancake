@@ -29,7 +29,7 @@ public abstract partial class PageViewModelBase : ObservableObject
     /// <summary>
     /// true, wenn die Seite die sichtbare Hoehe des Inhaltsbereichs exakt ausfuellt und selbst scrollt (Listen, Diagramme, Tabellen mit Bildlauf).
     /// Der Rahmen (MainWindow) gibt solchen Seiten die begrenzte Hoehe; alle anderen Seiten liegen in einem Scrollbereich und erhalten bei Bedarf
-    /// eine themenkonforme Scrollleiste (S-01, A-102).
+    /// eine themenkonforme Scrollleiste (S-01, A-101).
     /// </summary>
     public virtual bool FillsContentArea => false;
 

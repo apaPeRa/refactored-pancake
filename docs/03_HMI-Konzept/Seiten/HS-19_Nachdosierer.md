@@ -33,6 +33,8 @@ Inhaltsbereich (12 Spalten, Gutter Space.M)
 - **Gruppe 2 „Schnecke, Rührer, Querschnecke“:** wie HS-11 (Drehzahl; Rührer mit Umschalter, Sollgeschwindigkeit, Nachlauf; Querschnecke mit Umschalter und Sollgeschwindigkeit).
 - **Gruppe 3 „Status und Bedienung“:** Füllstand oben und unten, Auslastungsbalken, Umschalter „Regulierung aktiv“, Tasten „Manuell“ und „Entleeren“ nebeneinander, Taste „Eichdosierung“, darunter das Hinweis-Textfeld zum Ablauf der Eichdosierung.
 - Zeilenhöhen: Felder, Umschalter und Tasten `Size.Touch.Default`, Abstand zwischen Touch-Zielen `Size.Touch.Gap`.
+> **Hinweis M3 (A-101):** Die Inhaltshöhe beträgt nach dem Bildabgleich nicht mehr 768 px, sondern 840 px bei 1080 px Fensterhöhe (821 px bei Client-Höhe 1061; Kopfzeile 88, Brotkrümel 80, Funktionsleiste 80 px fest, Außenrand 16 px). Der Inhaltsbereich scrollt, wenn die Seite höher ist; die Bilanz unten ist eine Rechnung und wird im Bildabgleich neu gemessen.
+
 - **Höhenbilanz** (Kontrollrechnung bei 1920 × 1080; nutzbare Inhaltshöhe 768 = Inhaltszeile 34\* abzüglich 2 × `Size.Content.Margin`; keine Titelzeile):
 
   | Bereich | Rechnung | Summe |

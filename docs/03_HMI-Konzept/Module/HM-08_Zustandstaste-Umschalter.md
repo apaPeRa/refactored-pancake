@@ -23,6 +23,8 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Bedienbar (`IsEnabled`) | bool | – | false im ungeeigneten Betriebszustand |
 
 ## Zustände und Darstellung
+
+**Änderung M3 (A-101, S-02):** Die Kachel (`ButtonSize=Tile`) ist zweizeilig: Beschriftung oben über die volle Breite in `Font.Size.Caption`, darunter Zustandssymbol und Zustandswort; Beschriftungen brechen nie mitten im Wort. Der Schalter (`ToggleStyle=Switch`) zeigt Knopfstellung und Wort; das Zustandssymbol erscheint dort nur bei Teilweise, Ausstehend und Fehler.
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |

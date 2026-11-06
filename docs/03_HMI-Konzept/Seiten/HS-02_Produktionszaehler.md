@@ -8,6 +8,8 @@ Wortgetreu (Referenz): „Zeigt den Gesamtzähler mit allen produzierten Packung
 ## Aufbau (Bereiche, Layout)
 Modaler Rahmen [HM-14](../Module/HM-14_Popup-Rahmen.md) mittig über dem Inhaltsbereich, Breitenanteil `Size.Popup.WidthRatio` (höchstens 60 % der Fensterbreite), Kontur `Border.Medium`, `Radius.Card`, Scrim `Brush.Scrim`, kein Schatten. Die Referenz ist hochformatig mit 13 Zeilen untereinander; im Querformat des neuen HMI wird der Inhalt in zwei Spalten geteilt, damit das Pop-up ohne Scrollen in den Inhaltsbereich passt (S02-1).
 
+> **Hinweis M3 (A-101):** Die Inhaltshöhe beträgt nach dem Bildabgleich nicht mehr 768 px, sondern 840 px bei 1080 px Fensterhöhe (821 px bei Client-Höhe 1061; Kopfzeile 88, Brotkrümel 80, Funktionsleiste 80 px fest, Außenrand 16 px). Der Inhaltsbereich scrollt, wenn die Seite höher ist; die Bilanz unten ist eine Rechnung und wird im Bildabgleich neu gemessen.
+
 **Höhenbilanz** (Inhaltshöhe 768 bei 1920 × 1080, Pop-up darf diese Höhe nicht überschreiten): Titelzeile `Size.Popup.TitleHeight` (64) + Innenabstand `Space.M` (16) + Spaltenkopf (Zeile Body, 32) + 13 Zählerzeilen à 40 (Zeilenhöhe Value 36 + `Space.XS` 4 = 520) + Abstand `Space.M` (16) + Tastenzeile `Size.Touch.Default` (64) + Innenabstand `Space.M` (16) = **728 von 768**, Reserve 40. Die Zählerzeilen sind reine Anzeige ohne Touch-Funktion; deshalb ist für sie eine Zeilenhöhe unter `Size.Touch.Min` zulässig (S02-5), nur Reset, Schließen und Kreuz sind bedienbar und haben ≥ `Size.Touch.Default`. Die Summenfelder rechts (2 × Kennzahl `Size.Touch.Default` plus Abstand) sind niedriger als die Tabelle.
 
 ```

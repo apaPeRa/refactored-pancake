@@ -5,7 +5,7 @@
 - Vorgehen: alle 43 Hell-Aufnahmen einzeln angesehen; Dunkel-Aufnahmen einzeln für HS-01, 02, 04, 06, 07, 08, 10, 13, 15, 18, 22, 28, 31, 36, 37, 39, 41 (Seiten mit Kontrast-, Scrollleisten- oder Statusfragen). Die übrigen Dunkel-Aufnahmen wurden nicht einzeln geöffnet; sie verwenden dieselben Controls und Seitenstrukturen, ihr Urteil in Abschnitt 3 ist daher vom Hell-Urteil abgeleitet (in der Tabelle mit „(abgeleitet)“ markiert).
 - Kontrast wurde an Stichproben gemessen (Pixel-Auswertung): deaktivierte Zeile „Pistole 2“ 7,6 : 1 (hell) und 7,3 : 1 (dunkel), „Reserviert“ 4,7 : 1, Primärtext über 15 : 1. Es gibt keinen systemischen Kontrastfehler.
 - ID-Hinweis: Die hier vergebenen Befund-IDs S-xx (systemisch) und B-xx (seitenspezifisch) sind neu und nicht identisch mit den Restbefunden B-01 bis B-06 aus `Pruefbericht_M2.md`.
-- Es wurden keine Dateien im Repository außer diesem Bericht angelegt oder geändert.
+- Die Prüfung selbst hat keine Dateien außer diesem Bericht geändert; die Behebung ist in Abschnitt 6 dokumentiert.
 
 ## 1 Zusammenfassung
 
@@ -156,3 +156,71 @@ Legende: **ok** = keine relevanten Abweichungen; **Abweichung** = lesbar und bed
 2. S-02 (HM08-Tile und Beschriftungsspalten) behebt auf einen Schlag HS-01, 07, 16, 31, 39.
 3. S-03 (Feldmindestbreite) und B-32/B-35/B-18/B-15 danach seitenweise nachziehen.
 4. Danach S-08 (Kioskfenster, Neuaufnahme), Aufnahmen aus `Capture-Pages.ps1` ersetzen, M3-Matrix (`M3_Abnahmematrix.md`) mit den hier bestätigten Befunden ausfüllen.
+
+## 6 Behebungsstand (Code, Windows-Neuaufnahme steht aus)
+
+Stand 2026-11-06, Branch `claude/nice-curie-u22ycb`. „behoben (Code, visuell neu zu prüfen)“ heißt: Änderung umgesetzt, Build 0 Fehler/0 Warnungen, `check_design.py`, `check_modules.py`, `check_pages.py`, `check_icons.py` bestanden; ob das Ergebnis auf dem Bildschirm stimmt, ist nur unter Windows prüfbar. Annahmen: [Annahmen.md](../00_Plan/Annahmen.md) A-101. Die Prüfpunkte „Passt ohne Scrollen“ (HS-01-P21, HS-13-P23, HS-16-P20, HS-19-P21, HS-21-P18, HS-41-P19) und die Höhenbilanzen sind neu zu messen.
+
+### 6.1 Systemische Befunde
+
+| ID | Status | Maßnahme / Grund |
+|---|---|---|
+| S-01 | behoben (Code, visuell neu zu prüfen) | Rahmen mit festen Höhen 88/80/80 px, Außenrand 16, Inhalt `*` im `ScrollViewer` mit Scrollleiste; Listen- und Diagrammseiten (`FillsContentArea`) behalten die begrenzte Höhe; Dichte: `Inset.Panel` 12, Caption-Beschriftungen, 48-px-Zeilen in HM-22. Ob bei 1061/1080 nichts mehr scrollen muss, zeigt erst die Neuaufnahme (HS-01, 13, 41 sind sehr dicht). |
+| S-02 | behoben (Code, visuell neu zu prüfen) | HM-08 Kachel zweizeilig, Schalter ohne Zustandssymbol, Beschriftungen in Caption; HM-11/12 mit `Size.Label.MinWidth` und `FieldLabelPlacement`; HM-09 Caption; HS-07, 31, 39 angepasst. Ein Wort, das breiter als die Spalte ist, kann weiterhin brechen (WPF-Verhalten), das wird bei der Neuaufnahme geprüft. |
+| S-03 | behoben (Code, visuell neu zu prüfen) | `Size.Field.MinWidth` 112 statt 160 (HM-11, HM-12); HM-34 und HM-24 neu aufgebaut. Die Tabellen HS-22 und HS-39 sind zusätzlich über B-22 und B-32 behandelt. |
+| S-04 | behoben (Code, visuell neu zu prüfen) | HM-07 reserviert `Inset.Button.Permission`, Symbol rechts mittig. Gleiche Behandlung in HM-08 (Schloss neben der Beschriftung) war schon vorhanden. |
+| S-05 | behoben (Code, visuell neu zu prüfen) | HM-12 reserviert die Zählerspalte nur bei Zähler; gemeinsame Mindestbreite 112 in HM-11 und HM-12. Eine `SharedSizeGroup` je Gruppe wurde nicht eingeführt (würde Seiten ändern); bei sehr langen Werten können Breiten weiter abweichen. |
+| S-06 | offen | Es gibt kein Logo-Asset (OP-66, A-78); ein Logo wird nicht erfunden. Der Teil „Kopfzeile ungünstig aufgeteilt“ ist behoben (Spalten Auto : * : Auto : Auto, Meldezeile erhält den Rest, `LogoSource` mit `Size.Logo.MaxWidth`). Übergabe: Logo-Dateien je Thema bereitstellen und `LogoSource` im MainWindow setzen. |
+| S-07 | behoben (Code, visuell neu zu prüfen) | Kennzahlkacheln `Inset.Frame.Tile` / `.End`, Uhr mit 16 px Außenrand rechts. |
+| S-08 | behoben (Code, visuell neu zu prüfen) | Skript `Capture-Pages.ps1`: Titelleiste und Rahmen werden für die Aufnahme entfernt, Fenster exakt 1920 × 1080 an 0,0, Nachregelung und Warnung. Die Anwendung selbst bleibt ein Fenster mit Rahmen; ein Kioskfenster (`WindowStyle="None"`) ist nicht Teil dieses Pakets und bleibt als Betriebsentscheidung offen. Aufnahmen müssen unter Windows neu erzeugt werden. |
+| S-09 | behoben (Code, visuell neu zu prüfen) | Impliziter `ScrollBar`-Stil in `Controls.Base.xaml` (32 px, Themenfarben), HM-25-Sonderstil entfernt, HM-23 mit sichtbarer Leiste. `PanningMode` ist an den Scrollbereichen des Rahmens und der Pop-ups gesetzt. |
+| S-10 | offen | teilweise: HM-23 zeigt jetzt eine sichtbare Scrollleiste; ganzzahlige Zeilenzahl je Seite bzw. ein einheitliches Pager-Muster (HM-23, HM-25, HM-22) ist eine Layoutentscheidung und wurde nicht umgesetzt. |
+| S-11 | behoben (Code, visuell neu zu prüfen) | Blättertasten waren bereits HM-19-Pfeile mit `Icon.Chevron`; Symbole auf `Size.Icon.L` (48) vergrößert, Innenabstand verkleinert. Das weiße Feld im Grenzfall ist der Deaktiviert-Zustand (`Brush.Button.Disabled` nach Designsystem 10.1, gestrichelte Kontur) und wurde nicht geändert; Wort „Zurück“/„Weiter“ nicht ergänzt. |
+| S-12 | behoben (Code, visuell neu zu prüfen) | Achsenmarke „0“ statt „−0“, Datenbeschriftung ausgedünnt (Abstand nach Spaltenbreite, vom letzten Wert aus), Nullbalken ohne Beschriftung, Hintergrund hinter Beschriftungen; Einheit „g“ über der Achse nicht geändert. |
+| S-13 | behoben (Code, visuell neu zu prüfen) | HM-27: Wortmarker „Info“/„Warnung“ in Caption unter dem Symbol, Text über die volle Restbreite. |
+
+### 6.2 Seitenspezifische Befunde
+
+| ID | Status | Maßnahme / Grund |
+|---|---|---|
+| B-01 | behoben (Code, visuell neu zu prüfen) | S-02 (HM-08 Kachel). |
+| B-02 | behoben (Code, visuell neu zu prüfen) | S-01 (Scrollbereich, Dichte); Prüfpunkt HS-01-P21 neu messen. |
+| B-03 | offen | Logo siehe S-06; Aufbau stimmt mit dem Design überein. |
+| B-04 | behoben (Code, visuell neu zu prüfen) | HM-14: Rand um das Pop-up, Inhalt scrollt bei knapper Höhe. |
+| B-05 | behoben (Code, visuell neu zu prüfen) | S-01. |
+| B-06 | behoben (Code, visuell neu zu prüfen) | S-01 (zweite Reihe „Anwahl Spülen“ per Scroll erreichbar). |
+| B-07 | offen | Die Leimspuren-Grafik (HM-31) ist eine Gestaltungsentscheidung (Kartonzuschnitt, Klappen); Design ist nicht final, keine Annahme ohne Rückfrage. |
+| B-08 | offen | Ursache der 80 px Höhe des Maschinenwinkel-Felds (HM-11, Presentation/Emphasis) ist ohne Rendering nicht eindeutig; bei der Neuaufnahme prüfen. |
+| B-09 | behoben (Code, visuell neu zu prüfen) | HS-07: Tasten als Kacheln (`HotGlue.Switch` mit `ButtonSize=Tile`), Füllsystem und Manuell untereinander. |
+| B-10 | behoben (Code, visuell neu zu prüfen) | HS-07: Temperaturen in einer Spalte, Beschriftungsspalte mindestens 120 px. |
+| B-11 | behoben (Code, visuell neu zu prüfen) | HS-08: Kopf mit Reservespalte in Breite der Scrollleiste (Leiste immer sichtbar), damit die Köpfe über den Feldern stehen. |
+| B-12 | behoben (Code, visuell neu zu prüfen) | HM-28: Zonentaste zeigt „Ein“/„Aus“ statt der Aktion. |
+| B-13 | offen | Eintrag „12:00 abs… / 13:00 aufl…“ (HM-29) nicht untersucht; der Bereich scrollt jetzt selbst, die Kürzung der Einträge bleibt zu prüfen. |
+| B-14 | behoben (Code, visuell neu zu prüfen) | S-01, S-13; HM-20-Detail bleibt separate Entscheidung (Matrix-Befund B-01). |
+| B-15 | behoben (Code, visuell neu zu prüfen) | S-01 (Seite scrollt), S-03, S-04. Zeilenproportionen 4 : 3 : 3 : 4,5 : 3 bleiben, die Höhe richtet sich nach dem Inhalt (Prüfpunkt HS-13-P23 neu messen). |
+| B-16 | behoben (Code, visuell neu zu prüfen) | HM-37 mit `ShowHeader`; HS-14 ohne doppelte Tasten im Raster. |
+| B-17 | behoben (Code, visuell neu zu prüfen) | Zelle des letzten Werts mit reduziertem Innenabstand (`Inset.Hair`), kein Versatz. Der Zellabstand (4 px je Seite) bleibt. |
+| B-18 | behoben (Code, visuell neu zu prüfen) | HS-16: Kopfleim mit Auto-Spalte für das Piktogramm, HM-24 mit Auto-Spalten, Dauer in derselben Spalte wie Anfang/Ende. |
+| B-19 | behoben (Code, visuell neu zu prüfen) | S-01 (rechte Spalte scrollt mit); die Ausrichtung SOLL/IST-Köpfe in HM-22 nicht geändert. |
+| B-20 | behoben (Code, visuell neu zu prüfen) | S-01, S-04, S-13. |
+| B-21 | behoben (Code, visuell neu zu prüfen) | S-01 plus 48-px-Zeilen in HM-22; alle 20 Wertepaare per Scroll erreichbar (Prüfpunkt HS-21-P18 neu messen). |
+| B-22 | behoben (Code, visuell neu zu prüfen) | Köpfe „Zustand“ / „Ausgang“ (übersetzt), Felder 112 px; die Ausrichtung der Köpfe an den Spalten ist unverändert (gleiches Spaltenraster) und visuell zu prüfen. |
+| B-23 | offen | teilweise: S-04 behoben (Schloss überlagert nicht mehr); Zähler „0 von 10“ klein und nicht an Feldern ausgerichtet (HM-35) nicht geändert. |
+| B-24 | offen | teilweise: Beschriftung „Anfang/Ende“ nicht mehr fett (HM-24 Body); Gruppierung mit HM-15, Typ/Geber-Zusammenhang und Feldgrößen sind Layoutentscheidungen. |
+| B-25 | offen | Spaltenköpfe und Leerraum in HM-23 nicht geändert; sichtbare Scrollleiste statt abgeschnittener Zeile 49 (siehe S-10). |
+| B-26 | behoben (Code, visuell neu zu prüfen) | S-04 (Schloss), Scrollleiste; Deaktiviert-Stil ist Designsystem. Leere Fläche unten links nicht gestaltet. |
+| B-27 | offen | Verkleinern der Grafik auf die Breite (Viewbox) würde die Touch-Ziele der Stationen unter 48 px bringen; derzeit horizontaler Bildlauf mit neuer Scrollleiste. Entscheidung nötig. |
+| B-28 | behoben (Code, visuell neu zu prüfen) | S-12. |
+| B-29 | behoben (Code, visuell neu zu prüfen) | HM-09 Beschriftungen in Caption, „Position“ mit Beschriftung über dem Feld. |
+| B-30 | offen | Zeile 10 angeschnitten (S-10), Pfeiltasten gruppenweise: Layoutentscheidung. |
+| B-31 | offen | Brotkrümel „Meldungen“ und 70 px Leerraum über dem Tabellenkopf (HS-38) nicht untersucht. |
+| B-32 | behoben (Code, visuell neu zu prüfen) | HM-34 zweizeilig (Antrieb und Meldung oben, vier Felder mit Beschriftung darüber); IPC „Aktuell“/„Max“ mit Beschriftung über dem Feld. |
+| B-33 | behoben (Code, visuell neu zu prüfen) | HM-17: Trenner über `PreviousData`, leere Titelzeile entfällt. |
+| B-34 | behoben (Code, visuell neu zu prüfen) | HM-20: Kartenkopf in Höhe der Detailtaste, Detailtaste 64 px breit. |
+| B-35 | behoben (Code, visuell neu zu prüfen) | S-01 (Scroll, kompakte Panel-Innenabstände); Auslastung, Manuell, Entleeren per Scroll erreichbar. Die Lücke in der Nachdosierer-Karte (reservierte Hinweisbox, `Hidden`) bleibt. |
+
+### 6.3 Übergabe an die lokale Windows-Session
+
+1. `Build-And-Run.ps1 -NoRun`, danach `Capture-Pages.ps1` (neues Verfahren, Ziel 1920 × 1080 ohne schwarzen Rand) und die Aufnahmen gegen diesen Bericht neu sichten.
+2. Offene Befunde: S-06/B-03 (Logo-Asset), S-10, B-07, B-08, B-13, B-23, B-24, B-25, B-27, B-30, B-31.
+3. Prüfen, ob die Seiten ohne `FillsContentArea` bei Client-Höhe 1080 noch scrollen (HS-01, 13, 19, 41 zuerst); falls ja, Dichte weiter senken oder bewusst scrollen lassen.

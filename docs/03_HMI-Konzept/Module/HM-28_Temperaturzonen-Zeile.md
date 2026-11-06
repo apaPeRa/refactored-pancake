@@ -18,6 +18,8 @@ Wertebereiche und Standardwerte fehlen in der Quelle (OP-28); angegeben sind UI-
 | Befehle (`ToggleZoneCommand`, `ToggleMonitorCommand`) | ICommand<bool> | – | – |
 
 ## Zustände und Darstellung
+
+**Änderung M3 (A-101, B-12, B-22):** Die Zonentaste der Variante Heißleim zeigt das Zustandswort „Ein“/„Aus“ (HM-08) statt der Aktion „Ausschalten“/„Einschalten“. Die Spaltenköpfe der Heizungen heißen „Zustand“ und „Ausgang“ (Handbuch: „State“, „Out“).
 Zustände nie nur über Farbe: jede Zeile nennt den zweiten Kanal (Symbol, Text, Form, Kontur). Tokens aus [Designsystem](../Designsystem.md).
 
 | Zustand | Darstellung (Tokens) | Zweiter Kanal |

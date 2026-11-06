@@ -27,6 +27,8 @@ Inhaltsbereich (12 Spalten)
 
 Die Anordnung weicht vom Referenzbild ab (dort liegt die Karte „Schnecke“ unten mittig): im 4 : 4 : 4-Raster stehen alle drei Karten nebeneinander, die Reihenfolge Zu, Auf, Schnecke bleibt. Jede Karte ist ein Gruppenbereich (HM-15) mit Überschrift in `Font.Size.Value`; Zeilen aus Beschriftung links und Eingabefeld rechts, Höhe `Size.Touch.Default`, Abstand `Size.Touch.Gap`. Die Funktionsleiste bleibt leer, aber sichtbar. Die Blättertaste „»“ des Referenzbildes entfällt: Es gibt nur einen Nachdosierer, das Blättern HD 1 ⇄ HD 2 gilt nur für HS-11 und HS-12 (Navigation.md 3.3, A-44).
 
+> **Hinweis M3 (A-101):** Die Inhaltshöhe beträgt nach dem Bildabgleich nicht mehr 768 px, sondern 840 px bei 1080 px Fensterhöhe (821 px bei Client-Höhe 1061; Kopfzeile 88, Brotkrümel 80, Funktionsleiste 80 px fest, Außenrand 16 px). Der Inhaltsbereich scrollt, wenn die Seite höher ist; die Bilanz unten ist eine Rechnung und wird im Bildabgleich neu gemessen.
+
 **Höhenbilanz** (Kontrollrechnung bei 1920 × 1080; nutzbare Inhaltshöhe 768 = Inhaltszeile 34\* abzüglich 2 × `Size.Content.Margin`; keine Titelzeile): Karte Verschluss (größte) = 5 Zeilen (320) + 4 Abstände (64) + Kopf (52) + Innenabstand (32) = 468; Karte Schnecke = 3 Zeilen (192) + 2 Abstände (32) + Kopf (52) + Innenabstand (32) = 308. Beide liegen unter 768; es wird nicht gescrollt (Prüfpunkt HS-20-P15).
 
 ## Elemente (Tabelle: Element | Typ | Funktion | verwendetes Modul)

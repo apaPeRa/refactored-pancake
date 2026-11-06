@@ -102,7 +102,7 @@
     </Setter>
   </Style>
 
-  <!-- Rollbalken (S-09, A-102): themenkonform, Breite Size.Scrollbar, Schieber mindestens Size.Touch.Default lang; gilt implizit fuer alle ScrollBars -->
+  <!-- Rollbalken (S-09, A-101): themenkonform, Breite Size.Scrollbar, Schieber mindestens Size.Touch.Default lang; gilt implizit fuer alle ScrollBars -->
   <Style x:Key="Scroll.Page" TargetType="RepeatButton">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="IsTabStop" Value="False" />

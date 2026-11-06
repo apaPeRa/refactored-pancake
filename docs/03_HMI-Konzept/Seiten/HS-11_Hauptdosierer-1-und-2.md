@@ -39,6 +39,8 @@ Inhaltsbereich (12 Spalten, Gutter Space.M)
 - **Gruppe 1 „Sollwerte und Eichdosierung“:** drei Zeilen Sollwerte, Zwischenüberschrift „Eichdosierung“ (Linie `Brush.Divider`, keine Unterstreichung), zwei Eichfelder. Ein Hinweis-Textfeld zum Ablauf der Eichdosierung steht unter den beiden Eichfeldern.
 - **Gruppe 2 „Schnecke, Rührer, Querschnecke“:** Drehzahl der Schnecke; Rührer (Umschalter, Sollgeschwindigkeit, Nachlauf); Querschnecke (Umschalter, Sollgeschwindigkeit). Der Umschalter steht jeweils über seinem Feld.
 - **Gruppe 3 „Status und Bedienung“:** die beiden Füllstandsanzeigen, der Auslastungsbalken, der Umschalter „Regulierung aktiv“, die Tasten „Manuell“ und „Entleeren“ (nebeneinander, je mindestens `Size.Button.MinWidth`), die Taste „Eichdosierung“ und die Navigationstaste „Einstellung Regulierung“ (je volle Gruppenbreite). Die Anordnung entspricht [HS-19](../Seiten/HS-19_Nachdosierer.md).
+> **Hinweis M3 (A-101):** Die Inhaltshöhe beträgt nach dem Bildabgleich nicht mehr 768 px, sondern 840 px bei 1080 px Fensterhöhe (821 px bei Client-Höhe 1061; Kopfzeile 88, Brotkrümel 80, Funktionsleiste 80 px fest, Außenrand 16 px). Der Inhaltsbereich scrollt, wenn die Seite höher ist; die Bilanz unten ist eine Rechnung und wird im Bildabgleich neu gemessen.
+
 - Zeilenhöhen: Eingabefelder, Umschalter und Tasten `Size.Touch.Default`, Abstand zwischen Touch-Zielen `Size.Touch.Gap`. Die Höhenbilanz steht unter der Skizze.
 **Höhenbilanz** (Kontrollrechnung bei 1920 × 1080: nutzbare Inhaltshöhe = Inhaltszeile 34\* abzüglich 2 × `Size.Content.Margin`; Werte aus `Size.Touch.Default`, `Size.Touch.Gap`, `Size.Icon.M`, `Space.M`, Typografie des Designsystems):
 
