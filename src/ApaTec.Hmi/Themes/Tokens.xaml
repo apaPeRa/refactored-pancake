@@ -43,10 +43,10 @@
   <GridLength x:Key="Size.Crumb.Height">80</GridLength>
   <GridLength x:Key="Size.Content.Height">*</GridLength>
   <GridLength x:Key="Size.FunctionBar.Height">80</GridLength>
-  <GridLength x:Key="Size.Header.Col.Logo">12*</GridLength>
-  <GridLength x:Key="Size.Header.Col.Message">13*</GridLength>
-  <GridLength x:Key="Size.Header.Col.Mode">6*</GridLength>
-  <GridLength x:Key="Size.Header.Col.Clock">4*</GridLength>
+  <GridLength x:Key="Size.Header.Col.Logo">Auto</GridLength>
+  <GridLength x:Key="Size.Header.Col.Message">*</GridLength>
+  <GridLength x:Key="Size.Header.Col.Mode">Auto</GridLength>
+  <GridLength x:Key="Size.Header.Col.Clock">Auto</GridLength>
   <GridLength x:Key="Size.Crumb.Col.Path">56*</GridLength>
   <GridLength x:Key="Size.Crumb.Col.Speed">10*</GridLength>
   <GridLength x:Key="Size.Crumb.Col.Angle">10*</GridLength>
@@ -72,6 +72,7 @@
   <sys:Double x:Key="Size.Header.Clock.MinWidth">192</sys:Double>
   <sys:Double x:Key="Size.Header.Mode.MinWidth">288</sys:Double>
   <sys:Double x:Key="Size.Metric.MinWidth">224</sys:Double>
+  <sys:Double x:Key="Size.Logo.MaxWidth">340</sys:Double>
 
   <!-- Abstaende (3.1) -->
   <sys:Double x:Key="Space.XS">4</sys:Double>

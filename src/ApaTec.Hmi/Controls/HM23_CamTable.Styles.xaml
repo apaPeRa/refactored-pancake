@@ -91,7 +91,7 @@
     <Setter Property="Background" Value="{x:Null}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
     <Setter Property="ScrollViewer.PanningMode" Value="VerticalOnly" />
     <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
     <Setter Property="Template">

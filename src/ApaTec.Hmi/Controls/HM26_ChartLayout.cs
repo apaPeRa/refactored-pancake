@@ -133,6 +133,8 @@ public sealed class HM26_ChartLayoutConverter : IMultiValueConverter
         var slotW = kind == ChartKind.Line ? (slots > 1 ? usable / (slots - 1) : usable) : usable / slots;
         var labelW = Math.Max(slotW, tickW);
         var dataOffset = kind == ChartKind.Line ? slots - n : 0;
+        // Datenbeschriftung ausduennen (S-12): nur jede k-te Marke, vom letzten Wert aus gezaehlt, damit sich Beschriftungen nicht ueberdecken
+        var labelStride = Math.Max(1, (int)Math.Ceiling(tickW * 1.2d / Math.Max(slotW, 1d)));
 
         // Gitter und Y-Achse
         var gridLines = new List<HM26_GridLine>();
@@ -142,6 +144,11 @@ public sealed class HM26_ChartLayoutConverter : IMultiValueConverter
         for (var i = 0; i <= 50; i++)
         {
             var v = min + (i * tickStep);
+            if (Math.Abs(v) < 1e-9)
+            {
+                v = 0d; // keine Achsenmarke "-0" (S-12)
+            }
+
             if (v > max + (tickStep * 1e-6))
             {
                 break;
@@ -214,7 +221,13 @@ public sealed class HM26_ChartLayoutConverter : IMultiValueConverter
                     }
                 }
 
-                if (showLabels)
+                var labelThisPoint = isCurrent || violation || ((n - 1 - i) % labelStride == 0);
+                if (kind == ChartKind.Bar && Math.Abs(value) < 1e-9)
+                {
+                    labelThisPoint = false; // Nullwerte ohne Beschriftung
+                }
+
+                if (showLabels && labelThisPoint)
                 {
                     marks.Add(new HM26_TextMark(cx - (labelW / 2), labelY, labelW, lineH, valueText));
                 }

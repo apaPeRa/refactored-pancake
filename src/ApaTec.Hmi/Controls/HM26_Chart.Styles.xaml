@@ -62,7 +62,8 @@
 
   <DataTemplate DataType="{x:Type c:HM26_TextMark}">
     <TextBlock Width="{Binding Width}" Height="{Binding Height}" Text="{Binding Text}" TextAlignment="Center" TextWrapping="NoWrap"
-               Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Text.Primary}" />
+               Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.Text.Primary}"
+               Background="{DynamicResource Brush.Surface}" />
   </DataTemplate>
 
   <DataTemplate DataType="{x:Type c:HM26_IconMark}">

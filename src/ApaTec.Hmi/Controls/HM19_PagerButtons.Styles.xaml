@@ -28,7 +28,7 @@
     <Setter Property="Height" Value="{StaticResource Size.Touch.Default}" />
     <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Default}" />
     <Setter Property="Margin" Value="{StaticResource Inset.S}" />
-    <Setter Property="Padding" Value="{StaticResource Inset.S}" />
+    <Setter Property="Padding" Value="{StaticResource Inset.XS}" />
   </Style>
 
   <Style TargetType="{x:Type local:HM19_PagerButtons}">
@@ -50,7 +50,7 @@
                   <Binding Path="IsCyclic" RelativeSource="{RelativeSource TemplatedParent}" />
                 </MultiBinding>
               </Button.IsEnabled>
-              <Viewbox x:Name="PreviousIcon" Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}" RenderTransformOrigin="0.5,0.5">
+              <Viewbox x:Name="PreviousIcon" Width="{StaticResource Size.Icon.L}" Height="{StaticResource Size.Icon.L}" RenderTransformOrigin="0.5,0.5">
                 <Viewbox.RenderTransform>
                   <ScaleTransform ScaleX="-1" />
                 </Viewbox.RenderTransform>
@@ -74,7 +74,7 @@
                   <Binding Path="IsCyclic" RelativeSource="{RelativeSource TemplatedParent}" />
                 </MultiBinding>
               </Button.IsEnabled>
-              <Viewbox x:Name="NextIcon" Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}" RenderTransformOrigin="0.5,0.5">
+              <Viewbox x:Name="NextIcon" Width="{StaticResource Size.Icon.L}" Height="{StaticResource Size.Icon.L}" RenderTransformOrigin="0.5,0.5">
                 <Grid Width="{StaticResource Size.Icon.S}" Height="{StaticResource Size.Icon.S}">
                   <Path x:Name="NextChevron" Style="{StaticResource HM19_IconPath}"
                         Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"

@@ -98,8 +98,9 @@
                            Fill="{DynamicResource Brush.Divider}" />
               </Grid>
 
-              <!-- Inhalt -->
-              <StackPanel Grid.Row="1" Margin="{StaticResource Inset.M}">
+              <!-- Inhalt: bei knapper Hoehe scrollbar, damit Titel und Tasten sichtbar bleiben (B-04) -->
+              <ScrollViewer Grid.Row="1" Focusable="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
+              <StackPanel Margin="{StaticResource Inset.M}">
                 <ContentPresenter x:Name="Body"
                                   Content="{TemplateBinding Content}"
                                   ContentTemplate="{TemplateBinding ContentTemplate}" />
@@ -146,6 +147,7 @@
                              Text="{Binding Progress, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, StringFormat={}{0:0}&#160;%}" />
                 </StackPanel>
               </StackPanel>
+              </ScrollViewer>
 
               <!-- Tasten -->
               <Grid Grid.Row="2">

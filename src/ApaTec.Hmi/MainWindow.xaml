@@ -61,7 +61,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ContentControl">
                         <Grid x:Name="Layer" Background="{DynamicResource Brush.Scrim}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{StaticResource Inset.L}" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="Content" Value="{x:Null}">

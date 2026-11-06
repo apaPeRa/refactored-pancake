@@ -46,7 +46,6 @@
                 <c:HM11_ValueDisplay Grid.Column="2" Margin="{StaticResource Inset.XS}" Unit="{res:Loc Unit_Celsius}" Decimals="0"
                                      NumberValue="{Binding Actual, RelativeSource={RelativeSource TemplatedParent}}" />
                 <c:HM08_ToggleSwitch Grid.Column="3" Margin="{StaticResource Inset.XS}" ToggleStyle="Button"
-                                     OnText="{res:Loc HM28_Zone_SwitchOff}" OffText="{res:Loc HM28_Zone_SwitchOn}"
                                      IsChecked="{Binding IsZoneEnabled, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                      ToggleCommand="{Binding ToggleZoneCommand, RelativeSource={RelativeSource TemplatedParent}}" />
               </Grid>
