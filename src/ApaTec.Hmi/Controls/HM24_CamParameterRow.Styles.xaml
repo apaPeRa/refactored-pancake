@@ -32,12 +32,12 @@
               <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" MinWidth="{StaticResource Size.Label.MinWidth}" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
+            <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
                        Text="{Binding Label, RelativeSource={RelativeSource TemplatedParent}}" />
             <local:HM12_ValueInput x:Name="AngleField" Grid.Row="0" Grid.Column="1" Margin="{StaticResource Inset.XS}"
                                    NumberValue="{Binding Angle, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Unit="{res:Loc Unit_Degree}" Decimals="0" RequiresPermission="True" IsPendingWrite="{Binding IsPendingWrite, RelativeSource={RelativeSource TemplatedParent}}"
@@ -68,13 +68,13 @@
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="Angle" Value="{x:Null}">
-              <Setter TargetName="AngleField" Property="Visibility" Value="Hidden" />
+              <Setter TargetName="AngleField" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="Time" Value="{x:Null}">
-              <Setter TargetName="TimeField" Property="Visibility" Value="Hidden" />
+              <Setter TargetName="TimeField" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="Result" Value="{x:Null}">
-              <Setter TargetName="ResultField" Property="Visibility" Value="Hidden" />
+              <Setter TargetName="ResultField" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="ErrorText" Value="{x:Null}">
               <Setter TargetName="ErrorMark" Property="Visibility" Value="Collapsed" />

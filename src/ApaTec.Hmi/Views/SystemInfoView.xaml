@@ -35,9 +35,9 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <controls:HM11_ValueDisplay Grid.Column="0" Margin="{StaticResource Inset.XS}" Label="{res:Loc HS39_CpuCurrent_Label}"
+                    <controls:HM11_ValueDisplay Grid.Column="0" Margin="{StaticResource Inset.XS}" FieldLabelPlacement="Top" Label="{res:Loc HS39_CpuCurrent_Label}"
                                                 ValueKind="Number" Decimals="0" Unit="{res:Loc HS39_Unit_Percent}" NumberValue="{Binding CpuCurrent}" />
-                    <controls:HM11_ValueDisplay Grid.Column="1" Margin="{StaticResource Inset.XS}" Label="{res:Loc HS39_CpuMax_Label}"
+                    <controls:HM11_ValueDisplay Grid.Column="1" Margin="{StaticResource Inset.XS}" FieldLabelPlacement="Top" Label="{res:Loc HS39_CpuMax_Label}"
                                                 ValueKind="Number" Decimals="0" Unit="{res:Loc HS39_Unit_Percent}" NumberValue="{Binding CpuMax}"
                                                 ResetCommand="{Binding ResetCpuMaxCommand}" />
                 </Grid>

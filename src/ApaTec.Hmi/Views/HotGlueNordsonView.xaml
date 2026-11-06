@@ -73,32 +73,23 @@
                 </c:HM15_GroupPanel>
 
                 <c:HM15_GroupPanel Grid.Column="1" GroupStyle="Heading" Header="{res:Loc HS07_Temps_Heading}" Margin="{StaticResource Inset.S}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <c:HM11_ValueDisplay Grid.Row="0" Grid.Column="0" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                    <!-- Temperaturen untereinander (eine Spalte): Beschriftung und Wert haben so genug Breite (S-02, B-10) -->
+                    <StackPanel>
+                        <c:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
                                              Label="{res:Loc HS07_Temp_Tank}" NumberValue="{Binding TankTemperature}" />
-                        <c:HM11_ValueDisplay Grid.Row="0" Grid.Column="1" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                        <c:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
                                              Label="{res:Loc HS07_Temp_Manifold}" NumberValue="{Binding ManifoldTemperature}" />
-                        <c:HM11_ValueDisplay Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                        <c:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
                                              Label="{res:Loc HS07_Temp_Gun1}" NumberValue="{Binding Gun1Temperature}" />
-                        <c:HM11_ValueDisplay Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                        <c:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
                                              Label="{res:Loc HS07_Temp_Hose1}" NumberValue="{Binding Hose1Temperature}" />
-                        <!-- Weitere Zonen (konfigurationsabhaengig): nur sichtbar, wenn das Geraet sie meldet -->
-                        <c:HM11_ValueDisplay Grid.Row="2" Grid.Column="0" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                        <c:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
                                              Visibility="{Binding ShowGun2, Converter={StaticResource BooleanToVisibility}}"
                                              Label="{res:Loc HS07_Temp_Gun2}" NumberValue="{Binding Gun2Temperature}" />
-                        <c:HM11_ValueDisplay Grid.Row="2" Grid.Column="1" Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
+                        <c:HM11_ValueDisplay Margin="{StaticResource Inset.S}" Decimals="0" Unit="{res:Loc HotGlue_Unit_Celsius}"
                                              Visibility="{Binding ShowHose2, Converter={StaticResource BooleanToVisibility}}"
                                              Label="{res:Loc HS07_Temp_Hose2}" NumberValue="{Binding Hose2Temperature}" />
-                    </Grid>
+                    </StackPanel>
                 </c:HM15_GroupPanel>
             </Grid>
         </c:HM15_GroupPanel>
@@ -127,18 +118,14 @@
                                        Label="{res:Loc HS07_MaxFillTime_Label}" Unit="{res:Loc HotGlue_Unit_Second}" />
                     <TextBlock Style="{StaticResource HotGlue.Caption}" Text="{res:Loc HS07_MaxFillTime_Caption}" />
                 </StackPanel>
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <c:HM08_ToggleSwitch Grid.Column="0" Style="{StaticResource HotGlue.Switch}" DataContext="{Binding RefillSystem}"
+                <StackPanel Grid.Row="4">
+                    <c:HM08_ToggleSwitch Style="{StaticResource HotGlue.Switch}" DataContext="{Binding RefillSystem}"
                                          Label="{res:Loc HS07_Refill_Label}" Icon="{StaticResource Icon.Fill}" />
-                    <c:HM07_ActionButton Grid.Column="1" Margin="{StaticResource Inset.S}" Label="{res:Loc HS07_Manual_Label}" Icon="{StaticResource Icon.Manual}"
+                    <c:HM07_ActionButton Margin="{StaticResource Inset.S}" Label="{res:Loc HS07_Manual_Label}" Icon="{StaticResource Icon.Manual}"
                                          TriggerMode="WhilePressed" IsRunning="{Binding IsManualFillRunning}"
                                          c:HM07_PressBehavior.PressCommand="{Binding BeginManualFillCommand}"
                                          c:HM07_PressBehavior.ReleaseCommand="{Binding EndManualFillCommand}" />
-                </Grid>
+                </StackPanel>
             </Grid>
         </c:HM15_GroupPanel>
     </Grid>

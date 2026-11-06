@@ -57,8 +57,8 @@
                                      ToggleCommand="{Binding ToggleHeadGlueCommand}" />
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- E05 Piktogramm der Kopfleimdueen (nur Anzeige) -->
                     <Viewbox Grid.Column="0" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"

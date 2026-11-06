@@ -34,7 +34,7 @@
   <DataTemplate x:Key="HM17_ValueTemplate" DataType="{x:Type local:TitleValue}">
     <StackPanel Orientation="Horizontal">
       <!-- Trenner zwischen den Kennwerten: Linie statt Zeichen -->
-      <Rectangle x:Name="Separator" Visibility="Collapsed" VerticalAlignment="Stretch"
+      <Rectangle x:Name="Separator" Visibility="Visible" VerticalAlignment="Stretch"
                  Width="{StaticResource Border.Thin.Size}"
                  Margin="{StaticResource Inset.M}"
                  Fill="{DynamicResource Brush.Divider}" />
@@ -49,8 +49,9 @@
       </TextBlock>
     </StackPanel>
     <DataTemplate.Triggers>
-      <DataTrigger Binding="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}}" Value="1">
-        <Setter TargetName="Separator" Property="Visibility" Value="Visible" />
+      <!-- Trenner vor jedem Kennwert ausser dem ersten (B-33) -->
+      <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+        <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
       </DataTrigger>
     </DataTemplate.Triggers>
   </DataTemplate>
@@ -124,6 +125,12 @@
             </Grid>
           </Border>
           <ControlTemplate.Triggers>
+            <Trigger Property="Title" Value="">
+              <Setter TargetName="TitleText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Title" Value="{x:Null}">
+              <Setter TargetName="TitleText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
             <Trigger Property="Values" Value="{x:Null}">
               <Setter TargetName="Root" Property="Background" Value="Transparent" />
             </Trigger>

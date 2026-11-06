@@ -28,9 +28,14 @@
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type local:HM20_DosingCard}">
           <Grid>
-            <local:HM15_GroupPanel Header="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
-                                   IsHighlighted="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}"
+            <local:HM15_GroupPanel IsHighlighted="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}"
                                    HighlightText="{res:Loc HM20_Selected_Text}">
+              <!-- Kartenkopf in Hoehe der Detailtaste, damit die Pfeiltaste (oben rechts) kein Eingabefeld ueberdeckt (B-34) -->
+              <local:HM15_GroupPanel.Header>
+                <Grid MinHeight="{StaticResource Size.Touch.Default}">
+                  <TextBlock VerticalAlignment="Center" Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Grid>
+              </local:HM15_GroupPanel.Header>
               <StackPanel>
                 <!-- Gesperrt: Schloss und Wort (zweiter Kanal) -->
                 <StackPanel x:Name="LockedRow" Orientation="Horizontal" Visibility="Collapsed" Margin="{StaticResource Inset.XS}">
@@ -140,6 +145,7 @@
 
             <!-- Detail-Symbol oben rechts (nur Kompaktkarte) -->
             <local:HM07_ActionButton x:Name="DetailButton" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                     MinWidth="{StaticResource Size.Touch.Default}"
                                      Margin="{StaticResource Inset.S}" Icon="{StaticResource Icon.Chevron}"
                                      AutomationProperties.Name="{res:Loc HM20_OpenDetail_Name}"
                                      Command="{Binding OpenDetailCommand, RelativeSource={RelativeSource TemplatedParent}}" />

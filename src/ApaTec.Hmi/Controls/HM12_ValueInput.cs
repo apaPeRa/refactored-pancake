@@ -16,6 +16,9 @@ namespace ApaTec.Hmi.Controls;
 /// </summary>
 public class HM12_ValueInput : Button
 {
+    public static readonly DependencyProperty FieldLabelPlacementProperty = DependencyProperty.Register(
+        nameof(FieldLabelPlacement), typeof(FieldLabelPlacement), typeof(HM12_ValueInput), new PropertyMetadata(FieldLabelPlacement.Left));
+
     public static readonly DependencyProperty LabelProperty = DependencyProperty.Register(
         nameof(Label), typeof(string), typeof(HM12_ValueInput), new PropertyMetadata(string.Empty));
 
@@ -71,6 +74,12 @@ public class HM12_ValueInput : Button
     static HM12_ValueInput()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(HM12_ValueInput), new FrameworkPropertyMetadata(typeof(HM12_ValueInput)));
+    }
+
+    public FieldLabelPlacement FieldLabelPlacement
+    {
+        get => (FieldLabelPlacement)GetValue(FieldLabelPlacementProperty);
+        set => SetValue(FieldLabelPlacementProperty, value);
     }
 
     public string Label

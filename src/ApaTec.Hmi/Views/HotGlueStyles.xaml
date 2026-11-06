@@ -19,6 +19,7 @@
     <!-- Zustandstaste HM-08 an HotGlueSwitchViewModel -->
     <Style x:Key="HotGlue.Switch" TargetType="c:HM08_ToggleSwitch" BasedOn="{StaticResource {x:Type c:HM08_ToggleSwitch}}">
         <Setter Property="ToggleStyle" Value="Button" />
+        <Setter Property="ButtonSize" Value="Tile" />
         <Setter Property="IsChecked" Value="{Binding IsOn, Mode=TwoWay}" />
         <Setter Property="IsPending" Value="{Binding IsPending}" />
         <Setter Property="ErrorText" Value="{Binding ErrorText}" />

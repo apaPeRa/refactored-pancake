@@ -55,6 +55,7 @@
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto" />
               <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*" MinWidth="{StaticResource Size.Label.MinWidth}" />
@@ -62,7 +63,7 @@
               <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="LabelText"
-                       Grid.Row="0" Grid.Column="0"
+                       Grid.Row="1" Grid.Column="0"
                        Text="{TemplateBinding Label}"
                        Foreground="{TemplateBinding Foreground}"
                        FontFamily="{TemplateBinding FontFamily}"
@@ -71,7 +72,7 @@
                        VerticalAlignment="Center"
                        Margin="{StaticResource Inset.S}" />
             <!-- Feld: Flaeche, Kontur, Symbol, Wert mit Einheit, Schluessel/Schloss -->
-            <Grid Grid.Row="0" Grid.Column="1">
+            <Grid x:Name="FaceHost" Grid.Row="1" Grid.Column="1">
               <Border x:Name="Face"
                       MinWidth="{StaticResource Size.Field.MinWidth}"
                       MinHeight="{TemplateBinding MinHeight}"
@@ -145,7 +146,7 @@
                          StrokeDashArray="{StaticResource Border.Dash}" />
             </Grid>
             <!-- Zaehler (Zusatzzaehler, gekoppelter Zaehler) rechts neben dem Feld -->
-            <StackPanel x:Name="CounterPanel" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="{StaticResource Inset.S}">
+            <StackPanel x:Name="CounterPanel" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="{StaticResource Inset.S}">
               <TextBlock x:Name="CounterText" Style="{StaticResource HM12.Caption}">
                 <Run Text="{Binding Counter, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" /><Run Text="{res:Loc HM12_Counter_Unit}" />
               </TextBlock>
@@ -154,7 +155,7 @@
               </TextBlock>
             </StackPanel>
             <!-- Meldungen unter dem Feld: Fehlertext mit Symbol, Hinweis "Nicht geschrieben" mit Symbol -->
-            <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
               <StackPanel x:Name="ErrorRow" Orientation="Horizontal" Visibility="Collapsed" Margin="{StaticResource Inset.XS}">
                 <Path Style="{StaticResource HM12.Icon}"
                       Data="{StaticResource Icon.Status.Error}"
@@ -177,6 +178,13 @@
           <ControlTemplate.Triggers>
             <Trigger Property="Label" Value="">
               <Setter TargetName="LabelText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <!-- Beschriftung ueber dem Feld (schmale Spalten) -->
+            <Trigger Property="FieldLabelPlacement" Value="Top">
+              <Setter TargetName="LabelText" Property="Grid.Row" Value="0" />
+              <Setter TargetName="LabelText" Property="Grid.ColumnSpan" Value="3" />
+              <Setter TargetName="FaceHost" Property="Grid.Column" Value="0" />
+              <Setter TargetName="FaceHost" Property="Grid.ColumnSpan" Value="2" />
             </Trigger>
             <Trigger Property="Icon" Value="{x:Null}">
               <Setter TargetName="FieldIcon" Property="Visibility" Value="Collapsed" />

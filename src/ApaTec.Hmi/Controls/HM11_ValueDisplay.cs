@@ -28,6 +28,13 @@ public enum ValuePresentation
     Row,
 }
 
+/// <summary>Lage der Beschriftung (HM-11, HM-12): Left = links neben dem Feld, Top = ueber dem Feld (schmale Spalten, S-02/S-03).</summary>
+public enum FieldLabelPlacement
+{
+    Left,
+    Top,
+}
+
 /// <summary>Groesse des Werts (HM-11): Large fuer grosse Gewichtsanzeige.</summary>
 public enum ValueEmphasis
 {
@@ -66,6 +73,9 @@ public class HM11_ValueDisplay : Control
 
     public static readonly DependencyProperty DecimalsProperty = DependencyProperty.Register(
         nameof(Decimals), typeof(int), typeof(HM11_ValueDisplay), new PropertyMetadata(0));
+
+    public static readonly DependencyProperty FieldLabelPlacementProperty = DependencyProperty.Register(
+        nameof(FieldLabelPlacement), typeof(FieldLabelPlacement), typeof(HM11_ValueDisplay), new PropertyMetadata(FieldLabelPlacement.Left));
 
     public static readonly DependencyProperty PresentationProperty = DependencyProperty.Register(
         nameof(Presentation), typeof(ValuePresentation), typeof(HM11_ValueDisplay), new PropertyMetadata(ValuePresentation.Field));
@@ -140,6 +150,12 @@ public class HM11_ValueDisplay : Control
     {
         get => (int)GetValue(DecimalsProperty);
         set => SetValue(DecimalsProperty, value);
+    }
+
+    public FieldLabelPlacement FieldLabelPlacement
+    {
+        get => (FieldLabelPlacement)GetValue(FieldLabelPlacementProperty);
+        set => SetValue(FieldLabelPlacementProperty, value);
     }
 
     public ValuePresentation Presentation

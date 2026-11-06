@@ -37,44 +37,23 @@
                   BorderThickness="{StaticResource Border.Thin}"
                   Padding="{StaticResource Inset.S}">
             <Grid>
+              <!-- zwei Zeilen (S-03, B-32): Antrieb und Meldung oben, darunter vier Felder mit Beschriftung ueber dem Feld -->
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
               </Grid.ColumnDefinitions>
-              <TextBlock Grid.Column="0" Style="{StaticResource Text.Body}" VerticalAlignment="Center"
+              <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Text.Value}" VerticalAlignment="Center"
                          Margin="{StaticResource Inset.XS}"
+                         TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
                          Text="{TemplateBinding DriveName}" />
-              <local:HM11_ValueDisplay Grid.Column="1" Margin="{StaticResource Inset.XS}"
-                                       Label="{res:Loc HM34_DiagCode_Label}"
-                                       ValueKind="Number" Decimals="0"
-                                       NumberValue="{Binding DiagCode, RelativeSource={RelativeSource TemplatedParent}}" />
-              <local:HM11_ValueDisplay Grid.Column="2" Margin="{StaticResource Inset.XS}"
-                                       Label="{res:Loc HM34_CurrentActual_Label}"
-                                       ValueKind="Number" Decimals="1"
-                                       Unit="{res:Loc HM34_Percent_Unit}"
-                                       NumberValue="{Binding CurrentActual, RelativeSource={RelativeSource TemplatedParent}}" />
-              <!-- Strom max: Antippen setzt zurueck (HM-11 mit ResetCommand, Symbol Icon.Action.Reset im Feld) -->
-              <local:HM11_ValueDisplay Grid.Column="3" Margin="{StaticResource Inset.XS}"
-                                       Label="{res:Loc HM34_CurrentMax_Label}"
-                                       ValueKind="Number" Decimals="1"
-                                       Unit="{res:Loc HM34_Percent_Unit}"
-                                       NumberValue="{Binding CurrentMax, RelativeSource={RelativeSource TemplatedParent}}"
-                                       ResetCommand="{TemplateBinding ResetMaxCommand}" />
-              <!-- Strom Limit: Eingabe mit Schluessel (gesperrt: Schloss aus HM-12) -->
-              <local:HM12_ValueInput Grid.Column="4" Margin="{StaticResource Inset.XS}"
-                                     Label="{res:Loc HM34_CurrentLimit_Label}"
-                                     InputKind="Number" Decimals="1"
-                                     Unit="{res:Loc HM34_Percent_Unit}"
-                                     RequiresPermission="True"
-                                     Command="{TemplateBinding LimitCommand}"
-                                     IsAuthorized="{Binding IsLimitAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
-                                     NumberValue="{Binding CurrentLimit, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
               <!-- Meldung: Symbol und Text (zweiter Kanal fuer den Fehlerzustand) -->
-              <StackPanel x:Name="MessagePanel" Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center"
+              <StackPanel x:Name="MessagePanel" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center"
                           Margin="{StaticResource Inset.XS}">
                 <Path Style="{StaticResource HM34.Icon}"
                       Data="{StaticResource Icon.Status.Error}"
@@ -83,6 +62,31 @@
                            VerticalAlignment="Center"
                            Text="{TemplateBinding Message}" />
               </StackPanel>
+              <local:HM11_ValueDisplay Grid.Row="1" Grid.Column="0" Margin="{StaticResource Inset.XS}" FieldLabelPlacement="Top"
+                                       Label="{res:Loc HM34_DiagCode_Label}"
+                                       ValueKind="Number" Decimals="0"
+                                       NumberValue="{Binding DiagCode, RelativeSource={RelativeSource TemplatedParent}}" />
+              <local:HM11_ValueDisplay Grid.Row="1" Grid.Column="1" Margin="{StaticResource Inset.XS}" FieldLabelPlacement="Top"
+                                       Label="{res:Loc HM34_CurrentActual_Label}"
+                                       ValueKind="Number" Decimals="1"
+                                       Unit="{res:Loc HM34_Percent_Unit}"
+                                       NumberValue="{Binding CurrentActual, RelativeSource={RelativeSource TemplatedParent}}" />
+              <!-- Strom max: Antippen setzt zurueck (HM-11 mit ResetCommand, Symbol Icon.Action.Reset im Feld) -->
+              <local:HM11_ValueDisplay Grid.Row="1" Grid.Column="2" Margin="{StaticResource Inset.XS}" FieldLabelPlacement="Top"
+                                       Label="{res:Loc HM34_CurrentMax_Label}"
+                                       ValueKind="Number" Decimals="1"
+                                       Unit="{res:Loc HM34_Percent_Unit}"
+                                       NumberValue="{Binding CurrentMax, RelativeSource={RelativeSource TemplatedParent}}"
+                                       ResetCommand="{TemplateBinding ResetMaxCommand}" />
+              <!-- Strom Limit: Eingabe mit Schluessel (gesperrt: Schloss aus HM-12) -->
+              <local:HM12_ValueInput Grid.Row="1" Grid.Column="3" Margin="{StaticResource Inset.XS}" FieldLabelPlacement="Top"
+                                     Label="{res:Loc HM34_CurrentLimit_Label}"
+                                     InputKind="Number" Decimals="1"
+                                     Unit="{res:Loc HM34_Percent_Unit}"
+                                     RequiresPermission="True"
+                                     Command="{TemplateBinding LimitCommand}"
+                                     IsAuthorized="{Binding IsLimitAuthorized, RelativeSource={RelativeSource TemplatedParent}}"
+                                     NumberValue="{Binding CurrentLimit, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
             </Grid>
           </Border>
           <ControlTemplate.Triggers>

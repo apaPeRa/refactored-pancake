@@ -28,13 +28,19 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
-              <Viewbox x:Name="IconBox" Grid.Column="0" Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}"
-                       Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
+              <!-- Symbol mit Wort in Caption-Schrift darunter; der Text behaelt die volle Restbreite (S-13) -->
+              <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+              <Viewbox x:Name="IconBox" Width="{StaticResource Size.Icon.M}" Height="{StaticResource Size.Icon.M}"
+                       Margin="{StaticResource Inset.XS}" HorizontalAlignment="Center">
                 <Path x:Name="Glyph" Data="{TemplateBinding Icon}" Stretch="Uniform"
                       Stroke="{DynamicResource Brush.Text.Primary}"
                       StrokeThickness="{StaticResource Size.Icon.Stroke}"
                       StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
               </Viewbox>
+              <TextBlock x:Name="Word" Visibility="Collapsed" Style="{StaticResource Text.Caption}"
+                         FontWeight="{StaticResource Font.Weight.Strong}" Foreground="{DynamicResource Brush.Text.Primary}"
+                         HorizontalAlignment="Center" TextWrapping="NoWrap" />
+              </StackPanel>
               <Grid Grid.Column="1" VerticalAlignment="Center" Margin="{StaticResource Inset.S}">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto" />
@@ -46,8 +52,6 @@
                 <TextBlock x:Name="TextPart" Grid.Column="1" Style="{StaticResource Text.Body}" Margin="{StaticResource Inset.XS}"
                            Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" />
               </Grid>
-              <TextBlock x:Name="Word" Grid.Column="2" Visibility="Collapsed" Style="{StaticResource Text.Value}"
-                         Margin="{StaticResource Inset.S}" VerticalAlignment="Center" TextWrapping="NoWrap" />
             </Grid>
           </Border>
           <ControlTemplate.Triggers>
