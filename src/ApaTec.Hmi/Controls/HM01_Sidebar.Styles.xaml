@@ -7,6 +7,13 @@
                     xmlns:local="clr-namespace:ApaTec.Hmi.Controls"
                     xmlns:models="clr-namespace:ApaTec.Hmi.Models"
                     xmlns:res="clr-namespace:ApaTec.Hmi.Resources">
+  <!-- HM01_IconPath liegt in der Button-Datei; die Merge-Reihenfolge (alphabetisch) parst diese Datei sonst zuerst. -->
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Tokens.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Icons.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Themes/Controls.Base.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/ApaTec.Hmi;component/Controls/HM01_SidebarButton.Styles.xaml" />
+  </ResourceDictionary.MergedDictionaries>
 
   <!-- Benutzerkreis als flache Taste: gedrueckt = Brush.Sidebar.Selected mit Border.Medium -->
   <Style x:Key="HM01_UserButton" TargetType="Button">
