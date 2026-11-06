@@ -150,55 +150,7 @@
     </Style.Triggers>
   </Style>
 
-  <!-- Rollbalken (Breite Size.Touch.Min), Schieber Brush.Button.Normal, Spur Brush.Surface.Sunken -->
-  <Style x:Key="HM25.ScrollBar.Page" TargetType="RepeatButton">
-    <Setter Property="Focusable" Value="False" />
-    <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="RepeatButton">
-          <Border Background="Transparent" />
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
-  <Style x:Key="HM25.ScrollBar.Thumb" TargetType="Thumb">
-    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="Thumb">
-          <Border Background="{DynamicResource Brush.Button.Normal}" BorderBrush="{DynamicResource Brush.Border.Control}"
-                  BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}" />
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
-  <Style x:Key="HM25.ScrollBar" TargetType="ScrollBar">
-    <Setter Property="Width" Value="{StaticResource Size.Touch.Min}" />
-    <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Min}" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="ScrollBar">
-          <Border Background="{DynamicResource Brush.Surface.Sunken}" BorderBrush="{DynamicResource Brush.Divider}"
-                  BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}">
-            <Track x:Name="PART_Track" IsDirectionReversed="True">
-              <Track.DecreaseRepeatButton>
-                <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource HM25.ScrollBar.Page}" />
-              </Track.DecreaseRepeatButton>
-              <Track.Thumb>
-                <Thumb Style="{StaticResource HM25.ScrollBar.Thumb}" />
-              </Track.Thumb>
-              <Track.IncreaseRepeatButton>
-                <RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource HM25.ScrollBar.Page}" />
-              </Track.IncreaseRepeatButton>
-            </Track>
-          </Border>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+  <!-- Rollbalken: globaler Stil in Controls.Base.xaml (S-09) -->
 
   <!-- Scrolltaste: schmal statt Button.MinWidth -->
   <Style x:Key="HM25.ScrollButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
@@ -275,9 +227,6 @@
                      ScrollViewer.CanContentScroll="True"
                      VirtualizingPanel.IsVirtualizing="True"
                      SelectionMode="Single">
-              <ListBox.Resources>
-                <Style TargetType="ScrollBar" BasedOn="{StaticResource HM25.ScrollBar}" />
-              </ListBox.Resources>
             </ListBox>
 
             <!-- Leerzustand -->

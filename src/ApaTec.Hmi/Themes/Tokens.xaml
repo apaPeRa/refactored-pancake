@@ -36,13 +36,13 @@
   <sys:Double x:Key="Size.Icon.Stroke">2</sys:Double>
   <sys:Double x:Key="Size.Icon.Stroke.Thick">3</sys:Double>
 
-  <!-- Rahmen-Grid des Hauptfensters (3.2): Spalten 3* : 37*, Zeilen 4* : 3* : 34* : 4* -->
+  <!-- Rahmen-Grid des Hauptfensters (3.2, geaendert durch A-102): Spalten 3* : 37*; Zeilen Kopf 88, Brotkruemel 80, Inhalt *, Funktionsleiste 80 (feste Hoehen statt Sternanteilen) -->
   <GridLength x:Key="Size.Sidebar.Width">3*</GridLength>
   <GridLength x:Key="Size.Workspace.Width">37*</GridLength>
-  <GridLength x:Key="Size.Header.Height">4*</GridLength>
-  <GridLength x:Key="Size.Crumb.Height">3*</GridLength>
-  <GridLength x:Key="Size.Content.Height">34*</GridLength>
-  <GridLength x:Key="Size.FunctionBar.Height">4*</GridLength>
+  <GridLength x:Key="Size.Header.Height">88</GridLength>
+  <GridLength x:Key="Size.Crumb.Height">80</GridLength>
+  <GridLength x:Key="Size.Content.Height">*</GridLength>
+  <GridLength x:Key="Size.FunctionBar.Height">80</GridLength>
   <GridLength x:Key="Size.Header.Col.Logo">12*</GridLength>
   <GridLength x:Key="Size.Header.Col.Message">13*</GridLength>
   <GridLength x:Key="Size.Header.Col.Mode">6*</GridLength>
@@ -51,7 +51,11 @@
   <GridLength x:Key="Size.Crumb.Col.Speed">10*</GridLength>
   <GridLength x:Key="Size.Crumb.Col.Angle">10*</GridLength>
 
-  <Thickness x:Key="Size.Content.Margin">24</Thickness>
+  <Thickness x:Key="Size.Content.Margin">16</Thickness>
+  <!-- Kompakte Dichte und Scrollleiste (A-102) -->
+  <sys:Double x:Key="Size.Scrollbar">32</sys:Double>
+  <sys:Double x:Key="Size.Field.MinWidth">112</sys:Double>
+  <sys:Double x:Key="Size.Label.MinWidth">120</sys:Double>
   <sys:Double x:Key="Size.Button.MinWidth">160</sys:Double>
   <sys:Double x:Key="Size.FunctionButton.MinWidth">224</sys:Double>
   <sys:Double x:Key="Size.Avatar">64</sys:Double>
@@ -80,7 +84,11 @@
   <Thickness x:Key="Inset.L">24</Thickness>
   <Thickness x:Key="Inset.XL">32</Thickness>
   <Thickness x:Key="Inset.Touch.Gap">16</Thickness>
+  <Thickness x:Key="Inset.Panel">12</Thickness>
+  <Thickness x:Key="Inset.Frame.Tile">8,8,8,8</Thickness>
+  <Thickness x:Key="Inset.Frame.Tile.End">8,8,16,8</Thickness>
   <Thickness x:Key="Inset.Button">16,0,16,0</Thickness>
+  <Thickness x:Key="Inset.Button.Permission">40,0,40,0</Thickness>
 
   <!-- Radien und Rahmen (4) -->
   <sys:Double x:Key="Radius.Control.Size">6</sys:Double>

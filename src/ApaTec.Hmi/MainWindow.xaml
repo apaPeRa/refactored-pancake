@@ -31,9 +31,15 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="Shell.ContentHost" TargetType="ContentControl">
+        <!-- Inhaltsbereich: Scrollbereich (S-01, A-102). Die Seite bekommt mindestens die sichtbare Hoehe (Stern-Zeilen fuellen sie), ist sie hoeher, erscheint die themenkonforme Scrollleiste. -->
+        <Style x:Key="Shell.ContentScroll" TargetType="ScrollViewer">
             <Setter Property="Grid.Column" Value="1" />
             <Setter Property="Grid.Row" Value="2" />
+            <Setter Property="Padding" Value="{StaticResource Size.Content.Margin}" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="PanningMode" Value="VerticalOnly" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding ShowFrame}" Value="False">
                     <Setter Property="Grid.Column" Value="0" />
@@ -64,7 +70,7 @@
         </Style>
     </Window.Resources>
 
-    <!-- Rahmen-Grid nach Designsystem 3.2: Spalten 3* : 37*, Zeilen im Arbeitsbereich 4* : 3* : 34* : 4*. Keine festen Pixelpositionen. -->
+    <!-- Rahmen-Grid nach Designsystem 3.2: Spalten 3* : 37*; Zeilen Kopf/Brotkruemel/Funktionsleiste in festen Hoehen (Tokens, A-102), Inhalt *. -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{StaticResource Size.Sidebar.Width}" />
@@ -121,6 +127,7 @@
                                       NavigateCommand="{Binding NavigateToAncestorCommand}" />
             <!-- Geschwindigkeit: antippbar, oeffnet HS-03 (Navigation.md 3.2); hinter Pop-ups gesperrt -->
             <controls:HM05_MetricTile x:Name="SpeedHost" Grid.Column="1"
+                                      Margin="{StaticResource Inset.Frame.Tile}"
                                       TileSize="Frame"
                                       Icon="{StaticResource Icon.Speed}"
                                       Unit="{res:Loc HM05_Unit_Speed}"
@@ -132,6 +139,7 @@
                                       CommandParameter="{x:Static nav:PageKeys.MachineSpeed}" />
             <!-- Maschinenwinkel: nur Anzeige -->
             <controls:HM05_MetricTile x:Name="AngleHost" Grid.Column="2"
+                                      Margin="{StaticResource Inset.Frame.Tile.End}"
                                       TileSize="Frame"
                                       Icon="{StaticResource Icon.Angle}"
                                       Unit="{res:Loc HM05_Unit_Angle}"
@@ -140,11 +148,13 @@
         </Grid>
 
         <!-- Inhaltsbereich: zeigt das aktuelle Seiten-ViewModel; die View kommt per ViewLocator (Namenskonvention). -->
-        <ContentControl x:Name="ContentHost"
-                        Style="{StaticResource Shell.ContentHost}"
-                        Margin="{StaticResource Size.Content.Margin}"
-                        Content="{Binding CurrentPage}"
-                        ContentTemplateSelector="{StaticResource ViewLocator}" />
+        <ScrollViewer x:Name="ContentScroll" Style="{StaticResource Shell.ContentScroll}">
+            <ContentControl x:Name="ContentHost"
+                            IsTabStop="False"
+                            MinHeight="{Binding ViewportHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                            Content="{Binding CurrentPage}"
+                            ContentTemplateSelector="{StaticResource ViewLocator}" />
+        </ScrollViewer>
 
         <!-- Untere Funktionsleiste (HM-06); die Tasten liefert das Seiten-ViewModel (FunctionBarItems). Hinter Pop-ups gesperrt, bleibt sichtbar. -->
         <controls:HM06_FunctionBar x:Name="FunctionBarHost"

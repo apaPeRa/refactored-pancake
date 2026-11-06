@@ -30,7 +30,7 @@
                   BorderBrush="{DynamicResource Brush.Divider}"
                   BorderThickness="{StaticResource Border.Thin}"
                   CornerRadius="{StaticResource Radius.Card}"
-                  Padding="{StaticResource Inset.M}">
+                  Padding="{StaticResource Inset.Panel}">
             <Grid>
               <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

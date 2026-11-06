@@ -57,7 +57,7 @@
               <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" MinWidth="{StaticResource Size.Label.MinWidth}" />
               <ColumnDefinition Width="Auto" />
               <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
@@ -66,14 +66,14 @@
                        Text="{TemplateBinding Label}"
                        Foreground="{TemplateBinding Foreground}"
                        FontFamily="{TemplateBinding FontFamily}"
-                       FontSize="{TemplateBinding FontSize}"
+                       FontSize="{StaticResource Font.Size.Caption}"
                        TextWrapping="Wrap"
                        VerticalAlignment="Center"
                        Margin="{StaticResource Inset.S}" />
             <!-- Feld: Flaeche, Kontur, Symbol, Wert mit Einheit, Schluessel/Schloss -->
             <Grid Grid.Row="0" Grid.Column="1">
               <Border x:Name="Face"
-                      MinWidth="{StaticResource Size.Button.MinWidth}"
+                      MinWidth="{StaticResource Size.Field.MinWidth}"
                       MinHeight="{TemplateBinding MinHeight}"
                       Background="{TemplateBinding Background}"
                       BorderBrush="{TemplateBinding BorderBrush}"
@@ -145,7 +145,7 @@
                          StrokeDashArray="{StaticResource Border.Dash}" />
             </Grid>
             <!-- Zaehler (Zusatzzaehler, gekoppelter Zaehler) rechts neben dem Feld -->
-            <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="{StaticResource Inset.S}">
+            <StackPanel x:Name="CounterPanel" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="{StaticResource Inset.S}">
               <TextBlock x:Name="CounterText" Style="{StaticResource HM12.Caption}">
                 <Run Text="{Binding Counter, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" /><Run Text="{res:Loc HM12_Counter_Unit}" />
               </TextBlock>
@@ -190,6 +190,14 @@
             <Trigger Property="CoupledCounter" Value="{x:Null}">
               <Setter TargetName="CoupledCounterText" Property="Visibility" Value="Collapsed" />
             </Trigger>
+            <!-- ohne Zaehler keine reservierte Spalte: Eingabe- und Anzeigefelder schliessen rechts buendig ab (S-05) -->
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="Counter" Value="{x:Null}" />
+                <Condition Property="CoupledCounter" Value="{x:Null}" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="CounterPanel" Property="Visibility" Value="Collapsed" />
+            </MultiTrigger>
             <!-- Geaendert, nicht geschrieben: Punkt-Symbol und Text -->
             <Trigger Property="IsPendingWrite" Value="True">
               <Setter TargetName="PendingRow" Property="Visibility" Value="Visible" />

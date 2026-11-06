@@ -116,22 +116,22 @@
                     BorderBrush="{DynamicResource Brush.Border.Focus}"
                     BorderThickness="{StaticResource Border.Thick}"
                     CornerRadius="{StaticResource Radius.Control}" />
-            <!-- Berechtigung: Schluessel (vorhanden) oder Schloss (fehlt), 24 px oben rechts -->
+            <!-- Berechtigung: Schluessel (vorhanden) oder Schloss (fehlt), 24 px rechts mittig; die Taste reserviert dafuer Innenabstand (Inset.Button.Permission, S-04) -->
             <Path x:Name="KeyIcon"
                   Visibility="Collapsed"
                   Style="{StaticResource HM07.Icon}"
                   Data="{StaticResource Icon.Key}"
                   Stroke="{DynamicResource Brush.Text.Primary}"
-                  HorizontalAlignment="Right" VerticalAlignment="Top"
-                  Margin="{StaticResource Inset.XS}" />
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  Margin="{StaticResource Inset.S}" />
             <Path x:Name="LockIcon"
                   Visibility="Collapsed"
                   Style="{StaticResource HM07.Icon}"
                   Data="{StaticResource Icon.Lock}"
                   Stroke="{DynamicResource Brush.Text.Primary}"
                   ToolTip="{res:Loc HM07_PermissionRequired_Hint}"
-                  HorizontalAlignment="Right" VerticalAlignment="Top"
-                  Margin="{StaticResource Inset.XS}" />
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  Margin="{StaticResource Inset.S}" />
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="Icon" Value="{x:Null}">
@@ -161,6 +161,7 @@
                 <Condition Property="IsAuthorized" Value="True" />
               </MultiTrigger.Conditions>
               <Setter TargetName="KeyIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="Face" Property="Padding" Value="{StaticResource Inset.Button.Permission}" />
             </MultiTrigger>
             <MultiTrigger>
               <MultiTrigger.Conditions>
@@ -168,6 +169,7 @@
                 <Condition Property="IsAuthorized" Value="False" />
               </MultiTrigger.Conditions>
               <Setter TargetName="LockIcon" Property="Visibility" Value="Visible" />
+              <Setter TargetName="Face" Property="Padding" Value="{StaticResource Inset.Button.Permission}" />
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="Face" Property="Background" Value="{DynamicResource Brush.Button.Disabled}" />

@@ -74,7 +74,7 @@
               </Border>
 
               <!-- Uhrzeit und Datum (Spalte 4) -->
-              <Border Grid.Column="3" Margin="{StaticResource Inset.S}"
+              <Border Grid.Column="3" Margin="{StaticResource Inset.Frame.Tile.End}"
                       Background="{DynamicResource Brush.Surface.Sunken}"
                       CornerRadius="{StaticResource Radius.Control}">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

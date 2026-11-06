@@ -92,7 +92,7 @@
         <ControlTemplate TargetType="{x:Type local:HM11_ValueDisplay}">
           <Grid>
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" MinWidth="{StaticResource Size.Label.MinWidth}" />
               <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="LabelText"
@@ -100,13 +100,13 @@
                        Text="{TemplateBinding Label}"
                        Foreground="{TemplateBinding Foreground}"
                        FontFamily="{TemplateBinding FontFamily}"
-                       FontSize="{TemplateBinding FontSize}"
+                       FontSize="{StaticResource Font.Size.Caption}"
                        TextWrapping="Wrap"
                        VerticalAlignment="Center"
                        Margin="{StaticResource Inset.S}" />
             <Border x:Name="Face"
                     Grid.Column="1"
-                    MinWidth="{StaticResource Size.Button.MinWidth}"
+                    MinWidth="{StaticResource Size.Field.MinWidth}"
                     MinHeight="{StaticResource Size.Field.Height}"
                     Background="{DynamicResource Brush.Surface}"
                     BorderBrush="{DynamicResource Brush.Border.Control}"

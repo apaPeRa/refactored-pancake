@@ -92,6 +92,10 @@
                     CornerRadius="{StaticResource Radius.Control}"
                     Padding="{TemplateBinding Padding}">
               <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto" />
                   <ColumnDefinition Width="*" />
@@ -106,7 +110,7 @@
                       Stroke="{TemplateBinding Foreground}"
                       Margin="{StaticResource Inset.XS}" />
                 <!-- Beschriftung links, Berechtigungssymbol hinter der Beschriftung -->
-                <Grid Grid.Column="1">
+                <Grid x:Name="LabelHost" Grid.Column="1">
                   <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -158,7 +162,7 @@
                           CornerRadius="{StaticResource Radius.Pill}" />
                 </Grid>
                 <!-- Zweiter Kanal: Zustandssymbol und Wort -->
-                <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel x:Name="StatePanel" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
                   <Path x:Name="StateIcon"
                         Style="{StaticResource HM08.Icon}"
                         Data="{StaticResource Icon.State.Off}"
@@ -168,7 +172,7 @@
                              Style="{StaticResource HM08.Word}"
                              Foreground="{TemplateBinding Foreground}"
                              FontFamily="{TemplateBinding FontFamily}"
-                             MinWidth="{StaticResource Size.Touch.Min}" />
+                             MinWidth="{StaticResource Size.Touch.Min}" TextWrapping="NoWrap" />
                 </StackPanel>
               </Grid>
             </Border>
@@ -194,13 +198,27 @@
               <Setter TargetName="Face" Property="BorderBrush" Value="Transparent" />
               <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Thick}" />
               <Setter TargetName="TrackHost" Property="Visibility" Value="Visible" />
+              <!-- Schalter: Knopfstellung und Wort sind der zweite Kanal; das Zustandssymbol entfaellt, damit die Beschriftung nicht mitten im Wort umbricht (S-02) -->
+              <Setter TargetName="StateIcon" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="LabelText" Property="FontSize" Value="{StaticResource Font.Size.Caption}" />
+              <Setter TargetName="WordText" Property="MinWidth" Value="0" />
+              <Setter TargetName="WordText" Property="FontSize" Value="{StaticResource Font.Size.Caption}" />
+              <Setter TargetName="TrackHost" Property="Margin" Value="{StaticResource Inset.XS}" />
             </Trigger>
+            <!-- Kachel: Beschriftung oben ueber die volle Breite, darunter Zustandssymbol und Wort (S-02) -->
             <MultiTrigger>
               <MultiTrigger.Conditions>
                 <Condition Property="ToggleStyle" Value="Button" />
                 <Condition Property="ButtonSize" Value="Tile" />
               </MultiTrigger.Conditions>
               <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Large}" />
+              <Setter TargetName="LabelHost" Property="Grid.ColumnSpan" Value="3" />
+              <Setter TargetName="LabelText" Property="FontSize" Value="{StaticResource Font.Size.Caption}" />
+              <Setter TargetName="StatePanel" Property="Grid.Row" Value="1" />
+              <Setter TargetName="StatePanel" Property="Grid.Column" Value="1" />
+              <Setter TargetName="StatePanel" Property="Grid.ColumnSpan" Value="3" />
+              <Setter TargetName="StatePanel" Property="HorizontalAlignment" Value="Left" />
+              <Setter TargetName="WordText" Property="FontSize" Value="{StaticResource Font.Size.Caption}" />
             </MultiTrigger>
             <Trigger Property="Icon" Value="{x:Null}">
               <Setter TargetName="IconPath" Property="Visibility" Value="Collapsed" />
@@ -227,11 +245,13 @@
               <Setter TargetName="Track" Property="BorderThickness" Value="{StaticResource Border.Medium}" />
               <Setter TargetName="Knob" Property="HorizontalAlignment" Value="Center" />
               <Setter TargetName="StateIcon" Property="Data" Value="{StaticResource Icon.State.Partial}" />
+              <Setter TargetName="StateIcon" Property="Visibility" Value="Visible" />
             </Trigger>
             <!-- Ausstehend: Zustand wie Soll, Kontur gestrichelt, Symbol und Text -->
             <Trigger Property="IsPending" Value="True">
               <Setter TargetName="DashOverlay" Property="Visibility" Value="Visible" />
               <Setter TargetName="StateIcon" Property="Data" Value="{StaticResource Icon.State.Pending}" />
+              <Setter TargetName="StateIcon" Property="Visibility" Value="Visible" />
             </Trigger>
             <!-- Fehler: Kontur 3 px Fehlerfarbe, Flaeche Subtle, Symbol und Fehlertext -->
             <DataTrigger Binding="{Binding ErrorText, RelativeSource={RelativeSource Self}, Converter={StaticResource HM08.HasText}}" Value="True">
@@ -240,6 +260,7 @@
               <Setter TargetName="Face" Property="BorderThickness" Value="{StaticResource Border.Thick}" />
               <Setter TargetName="StateIcon" Property="Data" Value="{StaticResource Icon.Status.Error}" />
               <Setter TargetName="StateIcon" Property="Stroke" Value="{DynamicResource Brush.Status.Error.Fg}" />
+              <Setter TargetName="StateIcon" Property="Visibility" Value="Visible" />
               <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
             </DataTrigger>
             <Trigger Property="IsKeyboardFocused" Value="True">

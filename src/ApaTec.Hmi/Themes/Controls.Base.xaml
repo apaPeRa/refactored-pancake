@@ -102,6 +102,71 @@
     </Setter>
   </Style>
 
+  <!-- Rollbalken (S-09, A-102): themenkonform, Breite Size.Scrollbar, Schieber mindestens Size.Touch.Default lang; gilt implizit fuer alle ScrollBars -->
+  <Style x:Key="Scroll.Page" TargetType="RepeatButton">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="RepeatButton">
+          <Border Background="Transparent" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="Scroll.Thumb" TargetType="Thumb">
+    <Setter Property="MinHeight" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="MinWidth" Value="{StaticResource Size.Touch.Default}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Thumb">
+          <Border Background="{DynamicResource Brush.Button.Normal}" BorderBrush="{DynamicResource Brush.Border.Control}"
+                  BorderThickness="{StaticResource Border.Medium}" CornerRadius="{StaticResource Radius.Control}" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="ScrollBar">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="Width" Value="{StaticResource Size.Scrollbar}" />
+    <Setter Property="MinWidth" Value="{StaticResource Size.Scrollbar}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ScrollBar">
+          <Border Background="{DynamicResource Brush.Surface.Sunken}" BorderBrush="{DynamicResource Brush.Divider}"
+                  BorderThickness="{StaticResource Border.Thin}" CornerRadius="{StaticResource Radius.Control}">
+            <Track x:Name="PART_Track" IsDirectionReversed="True" Orientation="{TemplateBinding Orientation}">
+              <Track.DecreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource Scroll.Page}" />
+              </Track.DecreaseRepeatButton>
+              <Track.Thumb>
+                <Thumb Style="{StaticResource Scroll.Thumb}" />
+              </Track.Thumb>
+              <Track.IncreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource Scroll.Page}" />
+              </Track.IncreaseRepeatButton>
+            </Track>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+              <Setter TargetName="PART_Track" Property="IsDirectionReversed" Value="False" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <Trigger Property="Orientation" Value="Horizontal">
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Height" Value="{StaticResource Size.Scrollbar}" />
+        <Setter Property="MinHeight" Value="{StaticResource Size.Scrollbar}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
   <!-- Platzhalter fuer Rahmenbereiche des Hauptfensters (M2-04 ersetzt sie durch die Module HM-01 bis HM-06).
        Tag = Beschriftung des Platzhalters (Ressourcentext), Background/BorderBrush kommen von der Verwendung. -->
   <Style x:Key="Frame.Placeholder" TargetType="ContentControl">
