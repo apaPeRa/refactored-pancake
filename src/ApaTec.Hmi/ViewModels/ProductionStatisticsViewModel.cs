@@ -15,6 +15,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.ProductionStatistics)]
 public sealed partial class ProductionStatisticsViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     /// <summary>Name des Seitenparameters (Navigation.md 5.1).</summary>
     public const string DayOffsetParameter = "dayOffset";
 

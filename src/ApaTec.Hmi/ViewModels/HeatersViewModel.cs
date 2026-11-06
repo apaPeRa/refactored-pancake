@@ -82,6 +82,9 @@ public sealed partial class HeaterZoneViewModel : ObservableObject
 [PageKey(PageKeys.Heaters)]
 public sealed partial class HeatersViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     /// <summary>Dummy-Rolle fuer Heizung, Meldung und Soll (OP-25).</summary>
     private const UserRole RequiredRole = UserRole.Technician;
 

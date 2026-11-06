@@ -13,6 +13,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.MessageArchive)]
 public sealed partial class MessageArchiveViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     /// <summary>Rollenstufe der Schluessel-Tasten Export und Liste leeren (Dummy, OP-25).</summary>
     private const UserRole ActionRole = UserRole.Technician;
 

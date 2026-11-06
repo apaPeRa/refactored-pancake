@@ -14,6 +14,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.ScreenCleaning)]
 public sealed partial class ScreenCleaningViewModel : PageViewModelBase, IDisposable
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     private const int TickMilliseconds = 250;
 
     private readonly ISettingsService _settings;

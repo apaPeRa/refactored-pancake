@@ -23,8 +23,9 @@
 
   <!-- Zustandswort: StateText ueberschreibt, sonst Standardwort des Zustands (Ressourcen) -->
   <Style x:Key="HM09.Word" TargetType="TextBlock">
-    <Setter Property="FontSize" Value="{StaticResource Font.Size.Body}" />
+    <Setter Property="FontSize" Value="{StaticResource Font.Size.Caption}" />
     <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="TextWrapping" Value="NoWrap" />
     <Setter Property="Text" Value="{Binding StateText, RelativeSource={RelativeSource TemplatedParent}}" />
     <Style.Triggers>
       <MultiDataTrigger>
@@ -106,7 +107,7 @@
                          Text="{TemplateBinding Label}"
                          Foreground="{TemplateBinding Foreground}"
                          FontFamily="{TemplateBinding FontFamily}"
-                         FontSize="{TemplateBinding FontSize}"
+                         FontSize="{StaticResource Font.Size.Caption}"
                          TextWrapping="Wrap" />
               <TextBlock x:Name="IdentifierText"
                          Text="{TemplateBinding Identifier}"

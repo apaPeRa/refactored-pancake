@@ -13,6 +13,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.Service)]
 public sealed partial class ServiceViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     /// <summary>Anzeigelimit der Liste ("500 von 111427", OP-49).</summary>
     private const int DisplayLimit = 500;
 

@@ -13,6 +13,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.Trend)]
 public sealed partial class TrendViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     /// <summary>Schritt der Y-Achse in g (Bild RS-15_01).</summary>
     private const double Step = 0.5;
 

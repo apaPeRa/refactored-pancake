@@ -55,12 +55,13 @@
                         <ColumnDefinition Width="2*" />
                         <ColumnDefinition Width="2*" />
                         <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="{StaticResource Size.Scrollbar.Column}" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="1" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" Text="{res:Loc HS08_Col_Setpoint}" />
                     <TextBlock Grid.Column="2" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" Text="{res:Loc HS08_Col_Actual}" />
                     <TextBlock Grid.Column="3" Style="{StaticResource Text.Value}" Margin="{StaticResource Inset.S}" Text="{res:Loc HS08_Col_Status}" />
                 </Grid>
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" PanningMode="VerticalOnly">
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible" PanningMode="VerticalOnly">
                     <ItemsControl ItemsSource="{Binding Zones}" Focusable="False">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>

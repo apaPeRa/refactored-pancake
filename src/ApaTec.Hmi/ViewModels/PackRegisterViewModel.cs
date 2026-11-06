@@ -15,6 +15,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.PackRegister)]
 public sealed partial class PackRegisterViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     // Reihenfolge der Legende (HS-28): Nicht vorhanden, Schlecht, Vorhanden, Befuellt, Gut.
     private static readonly PackState[] StateCycle = { PackState.None, PackState.Bad, PackState.Present, PackState.Filled, PackState.Ok };
 

@@ -36,8 +36,8 @@
   <data name="HM28_Zone_SwitchOn" xml:space="preserve"><value>Einschalten</value><comment>HM-28: Taste Zone einschalten (Zone ist aus)</comment></data>
   <data name="HM28_Heating_Label" xml:space="preserve"><value>Heizung</value><comment>HM-28: Schalter Heizung (Name für Screenreader)</comment></data>
   <data name="HM28_Monitor_Label" xml:space="preserve"><value>Meldung</value><comment>HM-28: Schalter Überwachung (Name für Screenreader)</comment></data>
-  <data name="HM28_State_Label" xml:space="preserve"><value>State</value><comment>HM-28: Status-LED State</comment></data>
-  <data name="HM28_Out_Label" xml:space="preserve"><value>Out</value><comment>HM-28: Status-LED Out</comment></data>
+  <data name="HM28_State_Label" xml:space="preserve"><value>Zustand</value><comment>HM-28: Status-LED State</comment></data>
+  <data name="HM28_Out_Label" xml:space="preserve"><value>Ausgang</value><comment>HM-28: Status-LED Out</comment></data>
   <data name="HM29_Schedule_Name" xml:space="preserve"><value>Wochen-Zeitplan</value><comment>HM-29: Name für Screenreader</comment></data>
   <data name="HM29_Add_Name" xml:space="preserve"><value>Neuer Eintrag</value><comment>HM-29: Plus-Taste</comment></data>
   <data name="HM29_Invalid_Text" xml:space="preserve"><value>Ungültig</value><comment>HM-29: ungültiger Eintrag oder Überschneidung</comment></data>

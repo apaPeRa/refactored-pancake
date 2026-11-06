@@ -12,6 +12,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.CamOverview)]
 public sealed partial class CamOverviewViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     /// <summary>Zeilen je Seite (Annahme S26-1).</summary>
     public const int RowsPerPage = 11;
 

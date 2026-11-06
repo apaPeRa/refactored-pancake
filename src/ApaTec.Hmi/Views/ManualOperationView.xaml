@@ -45,7 +45,7 @@
         <!-- E13 Position -->
         <controls:HM11_ValueDisplay Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="4" Margin="{StaticResource Inset.S}" VerticalAlignment="Center"
                                     Label="{res:Loc HS31_Position_Label}" ValueKind="Number" NumberValue="{Binding Position}"
-                                    Unit="{res:Loc HS31_Position_Unit}" Decimals="2" Presentation="Field" Emphasis="Large" />
+                                    Unit="{res:Loc HS31_Position_Unit}" Decimals="2" Presentation="Field" Emphasis="Large" FieldLabelPlacement="Top" />
         <!-- E11/E12 Freigabe und Endlage rechts -->
         <StackPanel Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" Margin="{StaticResource Inset.S}" VerticalAlignment="Center">
             <controls:HM09_StatusLed Label="{res:Loc HS31_Release_Label}" State="{Binding ReleasePlusState}" StateText="{Binding ReleasePlusText}" />

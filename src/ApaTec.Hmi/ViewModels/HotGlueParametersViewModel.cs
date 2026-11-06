@@ -11,6 +11,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.HotGlueParameters)]
 public sealed partial class HotGlueParametersViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     private readonly SynchronizationContext? _uiContext = SynchronizationContext.Current;
 
     private readonly HotGlueEditContext _context;

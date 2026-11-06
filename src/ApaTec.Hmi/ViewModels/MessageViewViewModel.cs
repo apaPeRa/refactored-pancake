@@ -11,6 +11,9 @@ namespace ApaTec.Hmi.ViewModels;
 [PageKey(PageKeys.MessageView)]
 public sealed partial class MessageViewViewModel : PageViewModelBase
 {
+    /// <summary>Die Seite scrollt selbst und fuellt den Inhaltsbereich (S-01).</summary>
+    public override bool FillsContentArea => true;
+
     /// <summary>Sichtbare Zeilen der Liste ohne Blaettern (Annahme, Zeilenhoehe Size.Touch.Min im Arbeitsbereich); Grundlage der Positionsanzeige "n bis m von k" (HM-25).</summary>
     public const int VisibleRows = 12;
 

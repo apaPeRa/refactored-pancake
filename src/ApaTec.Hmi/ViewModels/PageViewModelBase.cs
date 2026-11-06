@@ -26,6 +26,13 @@ public abstract partial class PageViewModelBase : ObservableObject
     /// <summary>Tasten der unteren Funktionsleiste, links beginnend (HM-06).</summary>
     public ObservableCollection<FunctionBarItem> FunctionBarItems { get; } = new();
 
+    /// <summary>
+    /// true, wenn die Seite die sichtbare Hoehe des Inhaltsbereichs exakt ausfuellt und selbst scrollt (Listen, Diagramme, Tabellen mit Bildlauf).
+    /// Der Rahmen (MainWindow) gibt solchen Seiten die begrenzte Hoehe; alle anderen Seiten liegen in einem Scrollbereich und erhalten bei Bedarf
+    /// eine themenkonforme Scrollleiste (S-01, A-102).
+    /// </summary>
+    public virtual bool FillsContentArea => false;
+
     /// <summary>Wird nach dem Seitenwechsel aufgerufen; <paramref name="parameter"/> siehe <see cref="NavigationParameters"/>. Auch beim Blaettern (ReplaceParameter).</summary>
     public virtual void OnNavigatedTo(object? parameter)
     {

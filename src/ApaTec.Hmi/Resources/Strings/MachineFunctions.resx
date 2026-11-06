@@ -12,8 +12,8 @@
 <data name="HS22_Header_Monitor" xml:space="preserve"><value>Meldung</value></data>
 <data name="HS22_Header_Setpoint" xml:space="preserve"><value>Soll</value></data>
 <data name="HS22_Header_Actual" xml:space="preserve"><value>Ist</value></data>
-<data name="HS22_Header_State" xml:space="preserve"><value>State</value></data>
-<data name="HS22_Header_Out" xml:space="preserve"><value>Out</value></data>
+<data name="HS22_Header_State" xml:space="preserve"><value>Zustand</value></data>
+<data name="HS22_Header_Out" xml:space="preserve"><value>Ausgang</value></data>
 <data name="HS22_ScrollUp_Name" xml:space="preserve"><value>Liste nach oben</value></data>
 <data name="HS22_ScrollDown_Name" xml:space="preserve"><value>Liste nach unten</value></data>
 <data name="HS22_Setpoint_Title" xml:space="preserve"><value>{0}: Soll</value></data>

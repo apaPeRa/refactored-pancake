@@ -41,6 +41,10 @@
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
             <Setter Property="PanningMode" Value="VerticalOnly" />
             <Style.Triggers>
+                <!-- Seiten mit eigenem Bildlauf (Listen, Diagramme) bekommen die begrenzte Hoehe -->
+                <DataTrigger Binding="{Binding CurrentPage.FillsContentArea}" Value="True">
+                    <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
+                </DataTrigger>
                 <DataTrigger Binding="{Binding ShowFrame}" Value="False">
                     <Setter Property="Grid.Column" Value="0" />
                     <Setter Property="Grid.ColumnSpan" Value="2" />
