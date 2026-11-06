@@ -58,6 +58,6 @@ ApaTec.Hmi.exe --page=Heaters --dialog=Confirmation
 
 ## Hinweise und bekannte Grenzen
 
-- Das Fenster ist 1920 × 1080 **inklusive** Titelleiste und Rahmen (`Size.Window.*`); der Clientbereich ist deshalb kleiner als 1920 × 1080, solange das Fenster nicht größer gezogen wird. `Capture-Pages.ps1` vergrößert das Fenster auf einen Clientbereich von 1920 × 1080 (Teile außerhalb des Bildschirms sind für `PrintWindow` unproblematisch). Das Verhalten bei abweichender Fenstergröße ist Prüfpunkt M3-06.
+- Das Fenster ist 1920 × 1080 **inklusive** Titelleiste und Rahmen (`Size.Window.*`); der Clientbereich ist im Normalbetrieb deshalb kleiner als 1920 × 1080. `Capture-Pages.ps1` entfernt für die Aufnahme Titelleiste und Rahmen (`WS_CAPTION`, `WS_THICKFRAME`) und setzt das Fenster auf exakt 1920 × 1080 an Position 0,0, sodass die Clientfläche der Bildschirmfläche entspricht (Befund S-08; vorher 1920 × 1061 mit schwarzem Rand). Weicht die Clientgröße trotzdem ab, regelt das Skript zweimal nach und warnt. Das Verhalten bei abweichender Fenstergröße ist Prüfpunkt M3-06; für den Betrieb ist ein Kioskfenster (`WindowStyle="None"`) vorgesehen, nicht Teil dieses Pakets.
 - Das Dummy-Datenmaterial wechselt (Uhr, Meldungen); Aufnahmen können sich in Uhrzeit und Werten unterscheiden.
 - Bei hängenden Prozessen: `Get-Process ApaTec.Hmi | Stop-Process`.

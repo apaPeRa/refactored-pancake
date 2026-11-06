@@ -70,6 +70,7 @@
       <DataTrigger Binding="{Binding IsLast}" Value="True">
         <Setter TargetName="CellFrame" Property="BorderBrush" Value="{DynamicResource Brush.Border.Focus}" />
         <Setter TargetName="CellFrame" Property="BorderThickness" Value="{StaticResource Border.Thick}" />
+        <Setter TargetName="CellFrame" Property="Padding" Value="{StaticResource Inset.Hair}" />
         <Setter TargetName="LastMarker" Property="Visibility" Value="Visible" />
       </DataTrigger>
     </DataTemplate.Triggers>
@@ -87,7 +88,7 @@
               <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <!-- Kopf: Umschalter Einzel/Fortlaufend und Start -->
-            <Grid Grid.Row="0" Margin="{StaticResource Inset.XS}">
+            <Grid x:Name="HeaderRow" Grid.Row="0" Margin="{StaticResource Inset.XS}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
@@ -113,6 +114,9 @@
             </ItemsControl>
           </Grid>
           <ControlTemplate.Triggers>
+            <Trigger Property="ShowHeader" Value="False">
+              <Setter TargetName="HeaderRow" Property="Visibility" Value="Collapsed" />
+            </Trigger>
             <Trigger Property="Mode" Value="Continuous">
               <Setter TargetName="ModeSwitch" Property="IsChecked" Value="True" />
               <Setter TargetName="StartButton" Property="IsEnabled" Value="False" />

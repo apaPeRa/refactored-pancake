@@ -27,7 +27,7 @@
       <controls:HM05_MetricTile Grid.Column="2" Margin="{StaticResource Inset.S}"
                                 Label="{res:Loc HS14_Count_Label}" Value="{Binding Capacity}" StringFormat="N0" />
     </Grid>
-    <controls:HM37_ValueGrid Grid.Row="1" Margin="{StaticResource Inset.S}"
+    <controls:HM37_ValueGrid Grid.Row="1" Margin="{StaticResource Inset.S}" ShowHeader="False"
                              AutomationProperties.Name="{res:Loc HS14_Grid_Name}"
                              Cells="{Binding Cells}" LastIndex="{Binding LastIndex}" Mode="{Binding Mode}" Capacity="{Binding Capacity}"
                              StartCommand="{Binding StartCommand}" ToggleModeCommand="{Binding ToggleModeCommand}" />

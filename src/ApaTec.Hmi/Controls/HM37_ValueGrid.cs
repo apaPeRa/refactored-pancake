@@ -48,8 +48,18 @@ public sealed class HM37_ValueGrid : Control
     }
 
     /// <summary>Zellen in Anzeigereihenfolge (zeilenweise), höchstens Capacity.</summary>
+    /// <summary>false blendet die Kopfzeile (Umschalter, Start) aus, wenn die Tasten bereits in der Funktionsleiste liegen (HS-14, B-16).</summary>
+    public static readonly DependencyProperty ShowHeaderProperty = DependencyProperty.Register(
+        nameof(ShowHeader), typeof(bool), typeof(HM37_ValueGrid), new PropertyMetadata(true));
+
     public static readonly DependencyProperty CellsProperty =
         DependencyProperty.Register(nameof(Cells), typeof(IReadOnlyList<WeightCell>), typeof(HM37_ValueGrid), new PropertyMetadata(null));
+
+    public bool ShowHeader
+    {
+        get => (bool)GetValue(ShowHeaderProperty);
+        set => SetValue(ShowHeaderProperty, value);
+    }
 
     public IReadOnlyList<WeightCell>? Cells
     {

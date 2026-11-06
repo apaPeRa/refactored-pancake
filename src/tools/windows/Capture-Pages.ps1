@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
     Startet die Anwendung je Seite und Thema (Hell/Dunkel) und speichert Screenshots (1920 x 1080) fuer den Bildabgleich. Meilenstein 3.
+    Das Fenster wird fuer die Aufnahme rahmenlos auf exakt 1920 x 1080 (Position 0,0) gesetzt (Befund S-08: vorher 1920 x 1061 mit schwarzem Rand).
 
 .DESCRIPTION
     Je Seite (HS-01 bis HS-43) und Thema:
@@ -81,6 +82,8 @@ public static class HmiNative
     [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr hWnd, IntPtr after, int x, int y, int cx, int cy, uint flags);
     [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hWnd);
     [DllImport("user32.dll")] public static extern bool PrintWindow(IntPtr hWnd, IntPtr hdc, uint flags);
+    [DllImport("user32.dll", EntryPoint = "GetWindowLongW")] public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+    [DllImport("user32.dll", EntryPoint = "SetWindowLongW")] public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 }
 '@
 }
@@ -190,16 +193,31 @@ function Wait-MainWindow([System.Diagnostics.Process]$Process, [int]$TimeoutSeco
 }
 
 function Save-ClientShot([IntPtr]$Handle, [string]$Path) {
-    # Fenster auf Clientgroesse 1920 x 1080 bringen (Position links oben; Rest kann ausserhalb des Bildschirms liegen, PrintWindow braucht ihn nicht sichtbar)
+    # S-08: Fenster rahmenlos machen (Titelleiste und Rahmen entfernen) und exakt auf 1920 x 1080 an Position 0,0 setzen.
+    # So gilt Clientflaeche = Fenster = Bildschirm; Windows begrenzt ein Fenster mit Titelleiste auf weniger als die Bildschirmhoehe
+    # (das ergab 1920 x 1061 und schwarze Raender). PrintWindow braucht das Fenster vollstaendig im Bildschirm.
+    $GWL_STYLE = -16
+    $WS_CAPTION = 0x00C00000
+    $WS_THICKFRAME = 0x00040000
+    $style = [HmiNative]::GetWindowLong($Handle, $GWL_STYLE)
+    [void][HmiNative]::SetWindowLong($Handle, $GWL_STYLE, ($style -band (-bnot ($WS_CAPTION -bor $WS_THICKFRAME))))
+    $SWP_NOZORDER = 0x0004
+    $SWP_FRAMECHANGED = 0x0020
+    $SWP_SHOWWINDOW = 0x0040
     $win = New-Object HmiNative+RECT
     $cli = New-Object HmiNative+RECT
-    [void][HmiNative]::GetWindowRect($Handle, [ref]$win)
-    [void][HmiNative]::GetClientRect($Handle, [ref]$cli)
-    $extraW = ($win.Right - $win.Left) - ($cli.Right - $cli.Left)
-    $extraH = ($win.Bottom - $win.Top) - ($cli.Bottom - $cli.Top)
-    $SWP_NOZORDER = 0x0004
-    [void][HmiNative]::SetWindowPos($Handle, [IntPtr]::Zero, 0, 0, $TargetWidth + $extraW, $TargetHeight + $extraH, $SWP_NOZORDER)
+    [void][HmiNative]::SetWindowPos($Handle, [IntPtr]::Zero, 0, 0, $TargetWidth, $TargetHeight, ($SWP_NOZORDER -bor $SWP_FRAMECHANGED -bor $SWP_SHOWWINDOW))
     Start-Sleep -Milliseconds 800
+    # Nachregeln, falls die Clientflaeche trotzdem abweicht (z. B. Restrahmen): Differenz zur Zielgroesse ausgleichen
+    for ($i = 0; $i -lt 2; $i++) {
+        [void][HmiNative]::GetClientRect($Handle, [ref]$cli)
+        [void][HmiNative]::GetWindowRect($Handle, [ref]$win)
+        $dW = $TargetWidth - ($cli.Right - $cli.Left)
+        $dH = $TargetHeight - ($cli.Bottom - $cli.Top)
+        if ($dW -eq 0 -and $dH -eq 0) { break }
+        [void][HmiNative]::SetWindowPos($Handle, [IntPtr]::Zero, 0, 0, ($win.Right - $win.Left) + $dW, ($win.Bottom - $win.Top) + $dH, ($SWP_NOZORDER -bor $SWP_FRAMECHANGED))
+        Start-Sleep -Milliseconds 500
+    }
     [void][HmiNative]::SetForegroundWindow($Handle)
     Start-Sleep -Milliseconds 200
 
